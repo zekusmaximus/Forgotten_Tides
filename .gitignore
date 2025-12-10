@@ -1,0 +1,12 @@
+# editors / OS
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/
+
+# build artifacts
+node_modules/
+dist/
+.out/
