@@ -7,6 +7,7 @@ const path = require("path");
 const { classify } = require("./route_intent.js");
 const { resolve: resolveIDs } = require("./resolve_ids.js");
 const { spawn } = require("child_process");
+const { autotagScene } = require("./scene_autotag.js");
 
 function sh(cmd) {
   try {
@@ -335,6 +336,20 @@ async function orchestrate(query, options = {}) {
         if (authoringResult.updated_file) artifacts.push(authoringResult.updated_file);
         if (authoringResult.outline_file) artifacts.push(authoringResult.outline_file);
         if (authoringResult.backup_file) artifacts.push(authoringResult.backup_file);
+
+        // Auto-tag scenes after save_scene and replace_scene operations
+        if ((intent === 'save_scene' || intent === 'replace_scene') && authoringResult.scene_file) {
+          try {
+            const scenePath = authoringResult.scene_file;
+            if (fs.existsSync(scenePath)) {
+              autotagScene(scenePath, packPath, contextPath);
+              console.log(`Auto-tagged scene: ${scenePath}`);
+            }
+          } catch (autotagError) {
+            console.warn(`Warning: Auto-tagging failed for scene ${authoringResult.scene_file}: ${autotagError.message}`);
+            // Continue pipeline - don't fail on autotag errors
+          }
+        }
 
         // Include authoring result in session report
         sessionState.authoring_result = authoringResult;
