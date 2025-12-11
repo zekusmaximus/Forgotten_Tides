@@ -1,0 +1,15 @@
+# Code Owners for The Forgotten Tides Universe
+
+# Protected paths requiring review by DX lead and maintainers
+docs/schemas/** @dx-lead @maintainers
+scripts/** @dx-lead @maintainers
+data/** @dx-lead @maintainers
+
+# General documentation requiring DX lead review
+docs/** @dx-lead
+
+# Schema examples requiring schema maintainer review
+docs/schemas/examples/** @schema-maintainer
+
+# Default owners for all other files
+* @dx-lead @maintainers

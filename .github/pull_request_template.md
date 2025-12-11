@@ -1,44 +1,57 @@
-# PR Title
+# Pull Request: [Brief Description]
 
 ## Summary
-> Concise description of the change and *why* it’s needed.
 
-## Files Changed
-- [ ] `/stories/...`
-- [ ] `/bible/ARCHIVISTS_WAKE_STORY_BIBLE.md`
-- [ ] `/mechanics/...`
-- [ ] `/manuals/PILOT_MANUAL.md`
-- [ ] `/lore/...`
-- [ ] `/lore/theology/...`
-- [ ] `/lexicon/GLOSSARY.md` or `/lexicon/LINK_MAP.md`
-- [ ] `/characters/...`
-- [ ] Other: `...`
+Provide a clear, concise summary of the changes in this PR. Include:
+- What problem this solves or feature this adds
+- Key changes made
+- Any breaking changes or migration requirements
 
-## Canon Impact (select one)
-- [ ] **None** — purely editorial, formatting, or link fix
-- [ ] **Conforms** — adds content that **strictly** follows existing canon
-- [ ] **Canon Note** — proposes a change that *touches* canon (requires maintainer approval)
+## Affected Paths
 
-### If “Canon Note,” explain precisely:
-- Affected section(s) of Bible: `...`
-- Reason change is necessary: `...`
-- How contradictions are avoided/mitigated: `...`
+List all major files/directories affected by this change:
+- `path/to/changed/files/**`
+- `another/path/**`
 
-## Red Line Compliance (must pass)
-- [ ] Anchors are **never** restored/regenerated  
-- [ ] Corridors **always** require memory input; attention binds coherence  
-- [ ] Heliodrome dementia is **not** spontaneously resolved  
-- [ ] No deus ex machina violating memory=gravity law  
-- [ ] Tone: precise, restrained, consequence-driven
+## Schema Impact
 
-## Validation
-- [ ] Ran `scripts/validate_links.sh` (or CI link check is green)
-- [ ] Ran `scripts/check_canon.sh` (basic Bible smoke tests pass)
-- [ ] Cross-checked relevant terms in `/lexicon/LINK_MAP.md`
+If this PR affects any schemas:
+- [ ] No schema changes
+- [ ] New schema(s) added
+- [ ] Existing schema(s) modified
+- [ ] Schema validation requirements changed
 
-## References
-- Link to relevant sections (Bible/Mechanics/Manual/Theology):
-  - `...`
+List specific schema files affected:
+- `docs/schemas/filename.schema.json`
 
-## Reviewer Notes
-- Anything reviewers should focus on: `...`
+## Lint Status
+
+Run the following lint commands and report results:
+```bash
+npm run lint
+npm run check
+```
+
+- [ ] All lints pass
+- [ ] Warnings present (list below)
+- [ ] Failures present (must be addressed before merge)
+
+## Screenshots/Artifacts
+
+Add any relevant screenshots, logs, or artifacts that demonstrate the changes:
+- Before/after comparisons
+- Error messages resolved
+- New functionality in action
+
+## Checklist
+
+- [ ] Code follows project style guidelines
+- [ ] Documentation updated (if applicable)
+- [ ] Tests added/updated (if applicable)
+- [ ] Changelog entry added (if applicable)
+- [ ] Breaking changes documented
+- [ ] Related issues referenced
+
+## Additional Context
+
+Add any other context about the changes here.
