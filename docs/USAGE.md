@@ -306,3 +306,161 @@ Session state is stored in `out/session/state.json`:
 5. **Validate regularly** with `npm run lint:schema`
 6. **Check link maps** with `npm run linkmap:build`
 7. **Monitor token usage** with entity caps
+
+## New Intents & Examples
+
+### `save_scene`
+Saves scene content to the appropriate location.
+
+**Example:**
+```bash
+node scripts/prompt/orchestrate.js "save scene where Archivist encounters memory eddy"
+```
+
+**Output:**
+- Creates scene file in `stories/{work_type}/{work_name}/scenes/{timestamp}_scene.md`
+- Includes proper frontmatter with scene metadata
+- Places content in appropriate manuscript position
+
+### `start_work`
+Initializes a new work project with outline and structure.
+
+**Example:**
+```bash
+node scripts/prompt/orchestrate.js "start work on novella about the Outer Veil expedition"
+```
+
+**Output:**
+- Creates work directory in `stories/novella/{work_name}/`
+- Generates initial outline file
+- Sets up scenes directory
+- Creates manuscript.md with include structure
+
+**Place scene examples:**
+```bash
+node scripts/prompt/orchestrate.js "place scene memory_corridor_collapse in act 2 position 3"
+```
+
+### `replace_scene`
+Replaces existing scene content while maintaining structure.
+
+**Example:**
+```bash
+node scripts/prompt/orchestrate.js "replace scene where Sutira discovers the memory stone"
+```
+
+**Output:**
+- Updates existing scene file
+- Maintains frontmatter and metadata
+- Preserves manuscript include order
+
+### `save_notes`
+Saves general notes and ideas for future reference.
+
+**Example:**
+```bash
+node scripts/prompt/orchestrate.js "save notes about memory physics implications"
+```
+
+**Output:**
+- Creates note file in `lore/notes/{timestamp}_notes.md`
+- Includes categorized content
+- Cross-references related entities
+
+### `update_outline`
+Updates existing outline with new structure or content.
+
+**Example:**
+```bash
+node scripts/prompt/orchestrate.js "update outline to include new faction conflict in act 3"
+```
+
+**Output:**
+- Modifies existing outline file
+- Maintains canonical consistency
+- Updates scene references
+
+## File Conventions
+
+### Path Structures
+
+**Story Work Types:**
+- `stories/novella/{work_name}/` - Novella projects
+- `stories/novels/{work_name}/` - Novel projects
+- `stories/shorts/{work_name}/` - Short story projects
+
+**Scene Organization:**
+- `stories/{work_type}/{work_name}/scenes/{timestamp}_scene.md` - Individual scenes
+- `stories/{work_type}/{work_name}/manuscript.md` - Main manuscript file
+- `stories/{work_type}/{work_name}/outline.md` - Work outline
+
+**Support Files:**
+- `lore/ideas/{timestamp}_{intent}.md` - Brainstorming and idea files
+- `lore/notes/{timestamp}_notes.md` - General notes and references
+- `data/{entity_type}/` - Canonical entity definitions
+
+### Frontmatter Specifications
+
+**Required Fields:**
+```yaml
+---
+id: unique_identifier
+title: "Human Readable Title"
+type: entity_type
+date: ISO_8601_timestamp
+related: [entity_id1, entity_id2]
+---
+```
+
+**Scene-Specific Fields:**
+```yaml
+---
+id: scene_identifier
+title: "Scene Title"
+type: scene
+date: ISO_8601_timestamp
+work: work_identifier
+act: act_number
+position: scene_position
+characters: [character_id1, character_id2]
+locations: [location_id1]
+themes: [theme1, theme2]
+---
+```
+
+**Note Fields:**
+```yaml
+---
+id: note_identifier
+title: "Note Title"
+type: note
+date: ISO_8601_timestamp
+category: [mechanics|lore|characters|plot]
+tags: [tag1, tag2]
+---
+```
+
+### Manuscript Include Order
+
+Manuscript files use include directives to assemble content:
+
+```markdown
+# {Work Title}
+
+## Act 1: {Act Title}
+
+<!-- include: scenes/2025-12-11T16-41-45-733Z_scene.md -->
+<!-- include: scenes/2025-12-11T16-42-17-950Z_scene.md -->
+
+## Act 2: {Act Title}
+
+<!-- include: scenes/2025-12-11T16-42-48-032Z_scene.md -->
+<!-- include: scenes/2025-12-11T16-58-41-320Z_scene.md -->
+```
+
+**Include Rules:**
+1. Scenes must be ordered by act and position
+2. Include comments use format: `<!-- include: relative/path/to/file.md -->`
+3. Each include should be on its own line
+4. Maintain chronological order within acts
+5. Update outline when changing scene order

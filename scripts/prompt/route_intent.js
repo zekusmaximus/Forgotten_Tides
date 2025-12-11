@@ -5,6 +5,11 @@ function classify(s) {
   const q = (s || "").toLowerCase();
 
   const rules = [
+    { intent: "save_scene", tests: [/save this as a scene|add scene|place this as a scene/] },
+    { intent: "save_notes", tests: [/save notes|highlights of this chat|capture notes/] },
+    { intent: "start_work", tests: [/start a new (short story|novella|novel)|create work/] },
+    { intent: "replace_scene", tests: [/replace the scene|overwrite scene with this revision/] },
+    { intent: "update_outline", tests: [/save these changes to the outline|update outline/] },
     { intent: "revise_scene", tests: [/revise|rewrite|insert|line[- ]?edit|edit\b/] },
     { intent: "outline", tests: [/outline|beatsheet|beat[- ]?sheet|structure|three[- ]?act|act\b|synopsis/] },
     { intent: "worldbuild_mechanics", tests: [/mechanic|rule|system|physics|magic|memory corridor|ftl|rule(s)?\b|mechanics\b/] },

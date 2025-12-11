@@ -14,8 +14,331 @@
         "TERM-0010"
       ],
       "timestamp": "2025-12-11T16:00:22.462Z"
+    },
+    {
+      "query": "save this as a scene in Test Story",
+      "intent": "save_scene",
+      "ids": [
+        "TERM-0001",
+        "TERM-0002",
+        "TERM-0003",
+        "TERM-0005",
+        "TERM-0006",
+        "TERM-0007",
+        "TERM-0008",
+        "TERM-0009"
+      ],
+      "timestamp": "2025-12-11T16:39:33.954Z"
+    },
+    {
+      "query": "save this as a scene in Test Story",
+      "intent": "save_scene",
+      "ids": [
+        "TERM-0001",
+        "TERM-0002",
+        "TERM-0003",
+        "TERM-0005",
+        "TERM-0006",
+        "TERM-0007",
+        "TERM-0008",
+        "TERM-0009"
+      ],
+      "timestamp": "2025-12-11T16:41:45.735Z"
+    },
+    {
+      "query": "save this as a scene titled First Scene in Test Story with order 1",
+      "intent": "save_scene",
+      "ids": [
+        "TERM-0001",
+        "TERM-0002",
+        "TERM-0003",
+        "TERM-0005",
+        "TERM-0006",
+        "TERM-0007",
+        "TERM-0008",
+        "TERM-0009"
+      ],
+      "timestamp": "2025-12-11T16:42:17.952Z"
+    },
+    {
+      "query": "start a new novella titled Test Story",
+      "intent": "start_work",
+      "ids": [
+        "TERM-0001",
+        "TERM-0002",
+        "TERM-0003",
+        "TERM-0006",
+        "TERM-0007",
+        "TERM-0008",
+        "TERM-0009",
+        "TERM-0010"
+      ],
+      "timestamp": "2025-12-11T16:42:48.034Z"
+    },
+    {
+      "query": "start a new novella titled Test Story",
+      "intent": "start_work",
+      "ids": [
+        "TERM-0001",
+        "TERM-0002",
+        "TERM-0003",
+        "TERM-0006",
+        "TERM-0007",
+        "TERM-0008",
+        "TERM-0009",
+        "TERM-0010"
+      ],
+      "timestamp": "2025-12-11T16:58:41.322Z"
+    },
+    {
+      "query": "start a new novella titled Test Story",
+      "intent": "start_work",
+      "ids": [
+        "TERM-0001",
+        "TERM-0002",
+        "TERM-0003",
+        "TERM-0006",
+        "TERM-0007",
+        "TERM-0008",
+        "TERM-0009",
+        "TERM-0010"
+      ],
+      "timestamp": "2025-12-11T16:59:44.306Z"
+    },
+    {
+      "query": "start a new novella titled Test Story",
+      "intent": "start_work",
+      "ids": [
+        "TERM-0001",
+        "TERM-0002",
+        "TERM-0003",
+        "TERM-0006",
+        "TERM-0007",
+        "TERM-0008",
+        "TERM-0009",
+        "TERM-0010"
+      ],
+      "timestamp": "2025-12-11T17:00:37.724Z"
+    },
+    {
+      "query": "start a new novella titled Test Story",
+      "intent": "start_work",
+      "ids": [
+        "TERM-0001",
+        "TERM-0002",
+        "TERM-0003",
+        "TERM-0006",
+        "TERM-0007",
+        "TERM-0008",
+        "TERM-0009",
+        "TERM-0010"
+      ],
+      "timestamp": "2025-12-11T17:01:36.985Z"
+    },
+    {
+      "query": "start a new novella titled Test Story",
+      "intent": "start_work",
+      "ids": [
+        "TERM-0001",
+        "TERM-0002",
+        "TERM-0003",
+        "TERM-0006",
+        "TERM-0007",
+        "TERM-0008",
+        "TERM-0009",
+        "TERM-0010"
+      ],
+      "timestamp": "2025-12-11T17:02:37.363Z"
+    },
+    {
+      "query": "start a new novella titled Test Story",
+      "intent": "start_work",
+      "ids": [
+        "TERM-0001",
+        "TERM-0002",
+        "TERM-0003",
+        "TERM-0006",
+        "TERM-0007",
+        "TERM-0008",
+        "TERM-0009",
+        "TERM-0010"
+      ],
+      "timestamp": "2025-12-11T17:03:30.149Z"
+    },
+    {
+      "query": "start a new novella titled Test Story",
+      "intent": "start_work",
+      "ids": [
+        "TERM-0001",
+        "TERM-0002",
+        "TERM-0003",
+        "TERM-0006",
+        "TERM-0007",
+        "TERM-0008",
+        "TERM-0009",
+        "TERM-0010"
+      ],
+      "timestamp": "2025-12-11T17:05:02.634Z"
+    },
+    {
+      "query": "save these changes as notes titled Meeting Notes",
+      "intent": "brainstorm",
+      "ids": [
+        "TERM-0001",
+        "TERM-0013",
+        "TERM-0020"
+      ],
+      "timestamp": "2025-12-11T17:08:50.538Z"
+    },
+    {
+      "query": "save notes titled Meeting Notes",
+      "intent": "save_notes",
+      "ids": [],
+      "timestamp": "2025-12-11T17:09:40.107Z"
+    },
+    {
+      "query": "start a new novella titled First Corridor and place this as a scene",
+      "intent": "save_scene",
+      "ids": [
+        "TERM-0001",
+        "TERM-0002",
+        "TERM-0003",
+        "TERM-0006",
+        "TERM-0007",
+        "TERM-0008",
+        "TERM-0009",
+        "TERM-0010"
+      ],
+      "timestamp": "2025-12-11T17:13:55.440Z"
+    },
+    {
+      "query": "start a new novella titled 'First Corridor' and place this as a scene",
+      "intent": "save_scene",
+      "ids": [
+        "TERM-0001",
+        "TERM-0002",
+        "TERM-0003",
+        "TERM-0006",
+        "TERM-0007",
+        "TERM-0008",
+        "TERM-0009",
+        "TERM-0010"
+      ],
+      "timestamp": "2025-12-11T17:14:35.142Z"
+    },
+    {
+      "query": "start a new novella titled 'First Corridor'",
+      "intent": "start_work",
+      "ids": [
+        "TERM-0001",
+        "TERM-0002",
+        "TERM-0003",
+        "TERM-0006",
+        "TERM-0007",
+        "TERM-0008",
+        "TERM-0009",
+        "TERM-0010"
+      ],
+      "timestamp": "2025-12-11T17:14:53.509Z"
+    },
+    {
+      "query": "save this as a scene in First Corridor",
+      "intent": "save_scene",
+      "ids": [
+        "TERM-0001",
+        "TERM-0002",
+        "TERM-0003",
+        "TERM-0005",
+        "TERM-0006",
+        "TERM-0007",
+        "TERM-0008",
+        "TERM-0009"
+      ],
+      "timestamp": "2025-12-11T17:15:12.997Z"
+    },
+    {
+      "query": "save this as a scene titled 'Scene B' in NOVELLA_FIRST_CORRIDOR",
+      "intent": "save_scene",
+      "ids": [
+        "TERM-0001",
+        "TERM-0002",
+        "TERM-0003",
+        "TERM-0005",
+        "TERM-0006",
+        "TERM-0007",
+        "TERM-0008",
+        "TERM-0009"
+      ],
+      "timestamp": "2025-12-11T17:15:47.462Z"
+    },
+    {
+      "query": "save this as a scene in work NOVELLA_FIRST_CORRIDOR",
+      "intent": "save_scene",
+      "ids": [
+        "TERM-0001",
+        "TERM-0002",
+        "TERM-0003",
+        "TERM-0005",
+        "TERM-0006",
+        "TERM-0007",
+        "TERM-0008",
+        "TERM-0009"
+      ],
+      "timestamp": "2025-12-11T17:16:19.250Z"
+    },
+    {
+      "query": "save this as a scene titled 'Scene B' in work titled 'First Corridor'",
+      "intent": "save_scene",
+      "ids": [
+        "TERM-0001",
+        "TERM-0002",
+        "TERM-0003",
+        "TERM-0005",
+        "TERM-0006",
+        "TERM-0007",
+        "TERM-0008",
+        "TERM-0009"
+      ],
+      "timestamp": "2025-12-11T17:18:31.284Z"
+    },
+    {
+      "query": "save the highlights of this chat as notes",
+      "intent": "save_notes",
+      "ids": [
+        "TERM-0001",
+        "TERM-0002",
+        "TERM-0003",
+        "TERM-0005",
+        "TERM-0006",
+        "TERM-0007",
+        "TERM-0008",
+        "TERM-0009"
+      ],
+      "timestamp": "2025-12-11T17:19:01.462Z"
+    },
+    {
+      "query": "save these changes to the outline for First Corridor",
+      "intent": "update_outline",
+      "ids": [
+        "TERM-0001",
+        "TERM-0002",
+        "TERM-0003",
+        "TERM-0004",
+        "TERM-0005",
+        "TERM-0006",
+        "TERM-0007",
+        "TERM-0008"
+      ],
+      "timestamp": "2025-12-11T17:19:15.842Z"
     }
   ],
   "sticky_ids": [],
-  "last_intent": "revise_scene"
+  "last_intent": "update_outline",
+  "authoring_result": {
+    "operation": "save_notes",
+    "notes_id": "NOTES_CHAT_HIGHLIGHTS_1765473539542",
+    "notes_title": "Chat Highlights",
+    "notes_file": "lore\\notes\\NOTES_CHAT_HIGHLIGHTS_1765473539542.md",
+    "word_count": 5
+  }
 }

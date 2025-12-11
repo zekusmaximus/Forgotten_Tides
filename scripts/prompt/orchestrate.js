@@ -6,6 +6,7 @@ const fs = require("fs");
 const path = require("path");
 const { classify } = require("./route_intent.js");
 const { resolve: resolveIDs } = require("./resolve_ids.js");
+const { spawn } = require("child_process");
 
 function sh(cmd) {
   try {
@@ -43,6 +44,170 @@ function runLints() {
     results.push({ step: s.name, output: typeof out === "string" ? out : out.error || "" });
   }
   return results;
+}
+
+function runAuthoringOperation(intent, query, bodyContent) {
+  return new Promise((resolve, reject) => {
+    // Extract parameters from query using heuristic parsing
+    const params = extractAuthoringParams(query, intent);
+
+    // Build authoring command
+    const args = ['--intent', intent];
+
+    // Add parameters based on intent
+    if (params.work) args.push('--work', params.work);
+    if (params.kind) args.push('--kind', params.kind);
+    if (params.title) args.push('--title', params.title);
+    if (params.scene) args.push('--scene', params.scene);
+    if (params.order) args.push('--order', params.order);
+    if (params.notes) args.push('--notes', params.notes);
+    if (params.outline) args.push('--outline', params.outline);
+
+    // Spawn authoring process
+    const authoringProcess = spawn('node', ['scripts/prompt/authoring.js', ...args]);
+
+    let stdout = '';
+    let stderr = '';
+
+    // Pipe body content to authoring process
+    if (bodyContent) {
+      authoringProcess.stdin.write(bodyContent);
+    }
+    authoringProcess.stdin.end();
+
+    authoringProcess.stdout.on('data', (data) => {
+      stdout += data.toString();
+    });
+
+    authoringProcess.stderr.on('data', (data) => {
+      stderr += data.toString();
+    });
+
+    authoringProcess.on('close', (code) => {
+      if (code !== 0) {
+        reject(new Error(`Authoring failed: ${stderr || 'unknown error'}`));
+      } else {
+        try {
+          const result = JSON.parse(stdout);
+          resolve(result);
+        } catch (e) {
+          reject(new Error(`Failed to parse authoring output: ${e.message}`));
+        }
+      }
+    });
+  });
+}
+
+function extractAuthoringParams(query, intent) {
+  const q = query.toLowerCase();
+  const params = {};
+
+  // Extract work kind (use the values expected by authoring.js)
+  if (/short story/.test(q)) {
+    params.kind = 'short';
+  } else if (/novella/.test(q)) {
+    params.kind = 'novella';
+  } else if (/novel/.test(q)) {
+    params.kind = 'novel';
+  } else {
+    params.kind = 'novella'; // default
+  }
+
+  // Extract work identification (try WORK-ID first, then title)
+  const workIdMatch = query.match(/([A-Z]{2,}-\d+)/);
+  if (workIdMatch) {
+    params.work = workIdMatch[1];
+  } else {
+    // Try to extract title from quotes or after "titled"
+    const titleMatch = query.match(/titled "([^"]+)"|titled '([^']+)'|titled (.+?)(?= |$)|"([^"]+)"/i);
+    if (titleMatch) {
+      params.work = titleMatch[1] || titleMatch[2] || titleMatch[3];
+      params.title = params.work;
+    } else {
+      // Try to extract work title from "in [title]" pattern
+      const inTitleMatch = query.match(/in "([^"]+)"|in '([^']+)'|in ([^\s]+)/i);
+      if (inTitleMatch) {
+        params.work = inTitleMatch[1] || inTitleMatch[2] || inTitleMatch[3];
+      } else {
+        // Try to extract title from "named [title]" pattern
+        const namedMatch = query.match(/named "([^"]+)"|named '([^']+)'|named ([^\s]+)/i);
+        if (namedMatch) {
+          params.work = namedMatch[1] || namedMatch[2] || namedMatch[3];
+        } else {
+          // Try to extract title from "called [title]" pattern
+          const calledMatch = query.match(/called "([^"]+)"|called '([^']+)'|called ([^\s]+)/i);
+          if (calledMatch) {
+            params.work = calledMatch[1] || calledMatch[2] || calledMatch[3];
+          } else {
+            // Try to extract title from "for [title]" pattern
+            const forMatch = query.match(/for "([^"]+)"|for '([^']+)'|for ([^\s]+)/i);
+            if (forMatch) {
+              params.work = forMatch[1] || forMatch[2] || forMatch[3];
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // Extract scene identification
+  const sceneIdMatch = query.match(/(SC-\d+)/);
+  if (sceneIdMatch) {
+    params.scene = sceneIdMatch[1];
+  } else if (intent === 'save_scene' || intent === 'replace_scene') {
+    // Try to extract scene title from query
+    const sceneTitleMatch = query.match(/scene "([^"]+)"|scene '([^']+)'|as a scene in "([^"]+)"|as a scene in '([^']+)'/);
+    if (sceneTitleMatch) {
+      params.scene = sceneTitleMatch[1] || sceneTitleMatch[2] || sceneTitleMatch[3] || sceneTitleMatch[4];
+    }
+  }
+
+  // Extract order for save_scene
+  if (intent === 'save_scene') {
+    const orderMatch = query.match(/order (\d+)/);
+    if (orderMatch) {
+      params.order = orderMatch[1];
+    } else {
+      params.order = '1'; // default order
+    }
+  }
+
+  // Extract notes title
+  if (intent === 'save_notes') {
+    const notesMatch = query.match(/notes "([^"]+)"|notes '([^']+)'|as notes titled "([^"]+)"|as notes titled '([^']+)'/);
+    if (notesMatch) {
+      params.notes = notesMatch[1] || notesMatch[2] || notesMatch[3] || notesMatch[4];
+    } else {
+      params.notes = 'Chat Highlights';
+    }
+  }
+
+  // Extract outline title
+  if (intent === 'update_outline') {
+    const outlineMatch = query.match(/outline for "([^"]+)"|outline for '([^']+)'/);
+    if (outlineMatch) {
+      params.outline = outlineMatch[1] || outlineMatch[2];
+    }
+  }
+
+  return params;
+}
+
+function getBodyContentForAuthoring() {
+  return new Promise((resolve) => {
+    let stdin = '';
+    process.stdin.setEncoding('utf8');
+    process.stdin.on('data', (chunk) => {
+      stdin += chunk;
+    });
+    process.stdin.on('end', () => {
+      resolve(stdin);
+    });
+    // If no stdin data is coming, resolve with empty string
+    setTimeout(() => {
+      if (stdin === '') resolve('');
+    }, 100);
+  });
 }
 
 function writeSessionReport({query, intent, ids, packPath, artifacts, lintResults, contextPath, stickyIds}) {
@@ -88,7 +253,7 @@ function saveSessionState(state) {
   fs.writeFileSync(sessionFile, JSON.stringify(state, null, 2));
 }
 
-function orchestrate(query, options = {}) {
+async function orchestrate(query, options = {}) {
   const { profile = "default", carry = false, clear = false } = options;
   ensureDirs();
 
@@ -144,6 +309,42 @@ function orchestrate(query, options = {}) {
   const artifacts = [];
 
   switch (intent) {
+    case "save_scene":
+    case "save_notes":
+    case "start_work":
+    case "replace_scene":
+    case "update_outline": {
+      // Authoring operations take precedence
+      try {
+        // Get body content from stdin only for operations that need it
+        const bodyContent = (intent === 'save_scene' || intent === 'replace_scene' || intent === 'save_notes' || intent === 'update_outline')
+          ? await getBodyContentForAuthoring()
+          : '';
+        const authoringResult = await runAuthoringOperation(intent, query, bodyContent);
+
+        // Add created files to artifacts
+        if (authoringResult.files_created) {
+          authoringResult.files_created.forEach(file => {
+            if (typeof file === 'string') {
+              artifacts.push(path.join(authoringResult.work_path || '', file));
+            }
+          });
+        }
+        if (authoringResult.scene_file) artifacts.push(authoringResult.scene_file);
+        if (authoringResult.notes_file) artifacts.push(authoringResult.notes_file);
+        if (authoringResult.updated_file) artifacts.push(authoringResult.updated_file);
+        if (authoringResult.outline_file) artifacts.push(authoringResult.outline_file);
+        if (authoringResult.backup_file) artifacts.push(authoringResult.backup_file);
+
+        // Include authoring result in session report
+        sessionState.authoring_result = authoringResult;
+      } catch (error) {
+        console.error(`Authoring operation failed: ${error.message}`);
+        // Fall back to regular pack export
+        if (packPath) artifacts.push(packPath);
+      }
+      break;
+    }
     case "brainstorm": {
       const stamp = new Date().toISOString().replace(/[:.]/g,"-");
       const outp = `lore/ideas/${stamp}_brainstorm.md`;
@@ -264,7 +465,7 @@ ENVIRONMENT
   Reads from: characters/, data/, stories/, data/lexicon/
 
 INTENTS SUPPORTED
-  brainstorm, outline, revise_scene, worldbuild_mechanics, compile_artifacts, export_pack_only
+  brainstorm, outline, revise_scene, worldbuild_mechanics, compile_artifacts, export_pack_only, save_scene, save_notes, start_work, replace_scene, update_outline
 `);
     process.exit(0);
   }
