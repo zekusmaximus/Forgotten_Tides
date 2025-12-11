@@ -6,11 +6,29 @@
     "check:continuity": "node scripts/checks/continuity.js",
     "check:timeline": "node scripts/checks/timeline_variance.js",
     "check": "npm run check:continuity && npm run check:timeline",
-    "lint": "npm run lint:schema && npm run lint:refs && npm run lint:glossary"
+    "lint": "npm run lint:schema && npm run lint:refs && npm run lint:glossary",
+    "orchestrate": "node scripts/prompt/orchestrate.js",
+    "pack:export": "node scripts/prompt/export_prompt_pack.js",
+    "ids:resolve": "node scripts/prompt/resolve_ids.js",
+    "intent:route": "node scripts/prompt/route_intent.js"
   },
   "dependencies": {
     "ajv": "^8.17.1",
+    "glob": "^11.0.0",
+    "gray-matter": "^4.0.3",
     "js-yaml": "^4.1.1",
     "uuid": "^13.0.0"
-  }
+  },
+  "name": "forgotten_tides",
+  "version": "1.0.0",
+  "description": "**The Forgotten Tides** is a hard-speculative, metaphysical space-opera universe built on a single governing principle:",
+  "main": "migrate_frontmatter.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "devDependencies": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
 }
