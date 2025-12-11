@@ -2,15 +2,60 @@
 
 const fs = require('fs');
 const path = require('path');
+const yaml = require('js-yaml');
 
-// Load glossary terms from GLOSSARY.md
+/**
+ * Updated Glossary Enforcer
+ * Now uses structured YAML data from data/lexicon/terms.yaml
+ */
+
+// Load glossary terms from structured YAML
 function loadGlossaryTerms() {
+  const glossaryPath = path.join(__dirname, '../../data/lexicon/terms.yaml');
+  const terms = new Set();
+  const termMap = new Map(); // For additional metadata
+
+  if (!fs.existsSync(glossaryPath)) {
+    console.warn('⚠️  No terms.yaml found, falling back to legacy GLOSSARY.md');
+    return loadLegacyGlossaryTerms();
+  }
+
+  try {
+    const content = fs.readFileSync(glossaryPath, 'utf8');
+    const yamlData = yaml.load(content);
+
+    if (yamlData.terms && Array.isArray(yamlData.terms)) {
+      yamlData.terms.forEach(termObj => {
+        const term = termObj.term;
+        terms.add(term);
+
+        // Add aliases if present
+        if (termObj.aliases && Array.isArray(termObj.aliases)) {
+          termObj.aliases.forEach(alias => {
+            terms.add(alias);
+            termMap.set(alias, term); // Map alias to canonical term
+          });
+        }
+
+        termMap.set(term, termObj); // Store full term data
+      });
+    }
+
+    return { terms, termMap };
+  } catch (error) {
+    console.error(`❌ Error loading terms.yaml: ${error.message}`);
+    return loadLegacyGlossaryTerms();
+  }
+}
+
+// Fallback to legacy GLOSSARY.md if YAML not available
+function loadLegacyGlossaryTerms() {
   const glossaryPath = path.join(__dirname, '../../lexicon/GLOSSARY.md');
   const terms = new Set();
 
   if (!fs.existsSync(glossaryPath)) {
     console.warn('⚠️  No GLOSSARY.md found, skipping glossary enforcement');
-    return terms;
+    return { terms, termMap: new Map() };
   }
 
   try {
@@ -22,10 +67,10 @@ function loadGlossaryTerms() {
       terms.add(match[1].trim());
     }
 
-    return terms;
+    return { terms, termMap: new Map() };
   } catch (error) {
-    console.error(`❌ Error loading glossary: ${error.message}`);
-    return terms;
+    console.error(`❌ Error loading legacy glossary: ${error.message}`);
+    return { terms, termMap: new Map() };
   }
 }
 
@@ -53,7 +98,7 @@ function loadIgnoreList() {
 }
 
 // Scan markdown files for capitalized multiword terms
-function scanForGlossaryTerms(filePath, glossaryTerms, ignoredTerms) {
+function scanForGlossaryTerms(filePath, glossaryTerms, ignoredTerms, termMap) {
   const warnings = [];
 
   try {
@@ -67,8 +112,8 @@ function scanForGlossaryTerms(filePath, glossaryTerms, ignoredTerms) {
     // This matches terms like "Memory Drive", "Conceptual Drift", etc.
     const termRegex = /\b([A-Z][a-z]+(?:\s+[A-Z][a-z]+)+)\b/g;
     const matches = bodyContent.matchAll(termRegex);
-
     const foundTerms = new Set();
+
     for (const match of matches) {
       const term = match[1];
       foundTerms.add(term);
@@ -89,7 +134,7 @@ function scanForGlossaryTerms(filePath, glossaryTerms, ignoredTerms) {
 }
 
 // Walk stories directory and check for glossary terms
-function checkStoriesDirectory(glossaryTerms, ignoredTerms) {
+function checkStoriesDirectory(glossaryTerms, ignoredTerms, termMap) {
   const storiesDir = path.join(__dirname, '../../stories');
   let hasWarnings = false;
 
@@ -102,7 +147,7 @@ function checkStoriesDirectory(glossaryTerms, ignoredTerms) {
   files.forEach(file => {
     if (file.endsWith('.md')) {
       const filePath = path.join(storiesDir, file);
-      const warnings = scanForGlossaryTerms(filePath, glossaryTerms, ignoredTerms);
+      const warnings = scanForGlossaryTerms(filePath, glossaryTerms, ignoredTerms, termMap);
 
       if (warnings.length > 0) {
         console.log(`\n📄 ${filePath}`);
@@ -119,9 +164,9 @@ function checkStoriesDirectory(glossaryTerms, ignoredTerms) {
 
 // Main execution
 function main() {
-  console.log('🔍 Enforcing glossary terms...');
+  console.log('🔍 Enforcing glossary terms from structured YAML...');
 
-  const glossaryTerms = loadGlossaryTerms();
+  const { terms: glossaryTerms, termMap } = loadGlossaryTerms();
   const ignoredTerms = loadIgnoreList();
 
   if (glossaryTerms.size === 0) {
@@ -129,12 +174,12 @@ function main() {
     process.exit(0);
   }
 
-  console.log(`📚 Loaded ${glossaryTerms.size} glossary terms`);
+  console.log(`📚 Loaded ${glossaryTerms.size} glossary terms from structured data`);
   if (ignoredTerms.size > 0) {
     console.log(`🚫 Ignoring ${ignoredTerms.size} terms from ignore list`);
   }
 
-  const hasWarnings = checkStoriesDirectory(glossaryTerms, ignoredTerms);
+  const hasWarnings = checkStoriesDirectory(glossaryTerms, ignoredTerms, termMap);
 
   if (hasWarnings) {
     console.log('\n⚠️  Found terms not in glossary (warnings only, exit code 0)');

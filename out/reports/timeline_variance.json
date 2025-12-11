@@ -1,0 +1,16 @@
+{
+  "timestamp": "2025-12-11T02:01:05.563Z",
+  "events": [],
+  "stories": [],
+  "issues": {
+    "hard": [],
+    "soft": []
+  },
+  "summary": {
+    "total_events": 0,
+    "total_stories": 0,
+    "hard_failures": 0,
+    "soft_warnings": 0,
+    "timeline_span": null
+  }
+}

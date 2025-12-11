@@ -1,0 +1,47 @@
+{
+  "timestamp": "2025-12-11T02:01:05.335Z",
+  "characters": {
+    "Estavan": {
+      "invariants": [
+        "Species: Human",
+        "Memory physics rules apply",
+        "Anchor burn consequences are permanent"
+      ],
+      "issues": []
+    },
+    "Rell": {
+      "invariants": [
+        "Species: Human (Mid-Gravity)",
+        "Memory physics rules apply",
+        "Anchor burn consequences are permanent"
+      ],
+      "issues": []
+    },
+    "Sutira": {
+      "invariants": [
+        "Species: Human (Mid-Gravity)",
+        "Memory physics rules apply",
+        "Anchor burn consequences are permanent"
+      ],
+      "issues": []
+    },
+    "Tari": {
+      "invariants": [
+        "Species: Human",
+        "Memory physics rules apply",
+        "Anchor burn consequences are permanent"
+      ],
+      "issues": []
+    }
+  },
+  "issues": {
+    "hard": [],
+    "soft": []
+  },
+  "summary": {
+    "total_characters": 4,
+    "total_stories": 0,
+    "hard_failures": 0,
+    "soft_warnings": 0
+  }
+}
