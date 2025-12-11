@@ -3,6 +3,9 @@
     "lint:schema": "node scripts/lint/schema_validate.js",
     "lint:refs": "node scripts/lint/unresolved_refs.js",
     "lint:glossary": "node scripts/lint/glossary_enforcer.js",
+    "check:continuity": "node scripts/checks/continuity.js",
+    "check:timeline": "node scripts/checks/timeline_variance.js",
+    "check": "npm run check:continuity && npm run check:timeline",
     "lint": "npm run lint:schema && npm run lint:refs && npm run lint:glossary"
   },
   "dependencies": {
