@@ -10,6 +10,7 @@ const path = require('path');
 const { execSync } = require('child_process');
 const { makeSceneId, makeWorkId, slugify } = require('../lib/idgen');
 const yaml = require('js-yaml');
+const { ensureMeta, touchModified } = require('./work_meta');
 
 // Command line argument parsing
 const args = process.argv.slice(2);
@@ -85,6 +86,12 @@ async function startWork() {
   const workId = makeWorkId(flags.kind, flags.title);
   const workPath = createWorkDirectory(workId, flags.title, flags.kind);
 
+  // Create meta.yaml with initial metadata
+  ensureMeta(workPath, {
+    title: flags.title,
+    status: 'draft'
+  });
+
   // Create manuscript.md
   const manuscriptContent = generateFrontmatter({
     id: workId,
@@ -114,7 +121,7 @@ async function startWork() {
     work_title: flags.title,
     work_kind: flags.kind,
     work_path: workPath,
-    files_created: ['manuscript.md', 'outline.md', 'scenes/']
+    files_created: ['meta.yaml', 'manuscript.md', 'outline.md', 'scenes/']
   };
 }
 
@@ -172,6 +179,9 @@ async function saveScene() {
     manuscriptContent = manuscriptContent.replace(frontmatterMatch[0], newFrontmatter);
     fs.writeFileSync(manuscriptPath, manuscriptContent);
   }
+
+  // Update modified timestamp in meta.yaml
+  touchModified(workPath);
 
   return {
     operation: 'save_scene',
@@ -232,6 +242,9 @@ async function replaceScene() {
   // Write new content with preserved frontmatter
   const newContent = generateFrontmatter(frontmatter) + bodyContent;
   fs.writeFileSync(scenePath, newContent);
+
+  // Update modified timestamp in meta.yaml
+  touchModified(workPath);
 
   return {
     operation: 'replace_scene',
@@ -323,6 +336,9 @@ async function updateOutline() {
   }
 
   fs.writeFileSync(outlinePath, finalContent);
+
+  // Update modified timestamp in meta.yaml
+  touchModified(workPath);
 
   return {
     operation: 'update_outline',
