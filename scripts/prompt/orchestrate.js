@@ -45,7 +45,7 @@ function runLints() {
   return results;
 }
 
-function writeSessionReport({query, intent, ids, packPath, artifacts, lintResults}) {
+function writeSessionReport({query, intent, ids, packPath, artifacts, lintResults, contextPath}) {
   const stamp = new Date().toISOString().replace(/[:.]/g,"-");
   const p = `docs/session/${stamp}_${intent}.md`;
   const lines = [
@@ -53,6 +53,7 @@ function writeSessionReport({query, intent, ids, packPath, artifacts, lintResult
     `- **Query:** ${query}`,
     `- **IDs:** ${ids?.join(", ") || "(none)"}`,
     `- **Pack:** ${packPath || "(none)"}`,
+    `- **Context:** ${contextPath || "(none)"}`,
     `- **Artifacts:** ${(artifacts||[]).join(", ") || "(none)"}`,
     `\n## Lint/Checks`,
   ];
@@ -63,18 +64,87 @@ function writeSessionReport({query, intent, ids, packPath, artifacts, lintResult
   return p;
 }
 
-function orchestrate(query) {
+function loadSessionState() {
+  try {
+    const sessionFile = "docs/session/state.json";
+    if (fs.existsSync(sessionFile)) {
+      return JSON.parse(fs.readFileSync(sessionFile, "utf8"));
+    }
+  } catch (e) {
+    // Ignore errors and return default state
+  }
+  return {
+    history: [],
+    sticky_ids: [],
+    last_intent: null
+  };
+}
+
+function saveSessionState(state) {
+  const sessionFile = "docs/session/state.json";
+  fs.writeFileSync(sessionFile, JSON.stringify(state, null, 2));
+}
+
+function orchestrate(query, options = {}) {
+  const { profile = "default", carry = false, clear = false } = options;
   ensureDirs();
+
+  // Load and manage session state
+  let sessionState = loadSessionState();
+
+  if (clear) {
+    // Reset session state to defaults
+    sessionState = {
+      history: [],
+      sticky_ids: [],
+      last_intent: null
+    };
+  }
+
+  // Step 1: Build context first using context_builder.js
+  const contextBuilderCmd = `node scripts/prompt/context_builder.js "${query}" --profile ${profile}`;
+  const contextOutputPath = sh(contextBuilderCmd);
+
+  // Read the context JSON to get the canonical IDs list
+  let contextOrder = [];
+  let contextPath = null;
+  if (contextOutputPath && !contextOutputPath.error) {
+    contextPath = contextOutputPath;
+    try {
+      const contextData = JSON.parse(fs.readFileSync(contextOutputPath, "utf8"));
+      contextOrder = contextData.order || [];
+    } catch (e) {
+      console.warn("Warning: Could not read context builder output");
+    }
+  }
+
+  // Get intent and resolve IDs (for session management)
   const intent = classify(query);
-  const ids = resolveIDs(query);
-  const packPath = exportPack(ids);
+  const resolvedIds = resolveIDs(query);
+
+  // Merge sticky_ids if --carry flag is set
+  let finalIds = [...contextOrder];
+  if (carry && sessionState.sticky_ids && sessionState.sticky_ids.length > 0) {
+    // Merge sticky_ids to front, deduplicate, and cap
+    const stickyIds = [...new Set(sessionState.sticky_ids)];
+    finalIds = [...stickyIds, ...contextOrder.filter(id => !stickyIds.includes(id))];
+
+    // Apply deterministic ordering by ID
+    finalIds = [...new Set(finalIds)].sort();
+  }
+
+  // Apply hard cap of 50 entities to prevent token bloat
+  finalIds = finalIds.slice(0, 50);
+
+  // Export pack with final IDs
+  const packPath = exportPack(finalIds);
   const artifacts = [];
 
   switch (intent) {
     case "brainstorm": {
       const stamp = new Date().toISOString().replace(/[:.]/g,"-");
       const outp = `lore/ideas/${stamp}_brainstorm.md`;
-      const header = `---\nintent: brainstorm\nsource_query: "${query.replace(/"/g,'\\"')}"\nids: ${JSON.stringify(ids)}\npack: ${JSON.stringify(packPath)}\n---\n\n# Brainstorm Notes\n\n- Generate 5–8 options consistent with canon.\n- Label non-canon ideas as 'speculative'.\n`;
+      const header = `---\nintent: brainstorm\nsource_query: "${query.replace(/"/g,'\\"')}"\nids: ${JSON.stringify(finalIds)}\npack: ${JSON.stringify(packPath)}\n---\n\n# Brainstorm Notes\n\n- Generate 5–8 options consistent with canon.\n- Label non-canon ideas as 'speculative'.\n`;
       fs.writeFileSync(outp, header);
       artifacts.push(outp);
       break;
@@ -82,21 +152,21 @@ function orchestrate(query) {
     case "outline": {
       const stamp = new Date().toISOString().replace(/[:.]/g,"-");
       const outp = `lore/ideas/${stamp}_outline.md`;
-      fs.writeFileSync(outp, `---\nintent: outline\nsource_query: "${query.replace(/"/g,'\\"')}"\nids: ${JSON.stringify(ids)}\npack: ${JSON.stringify(packPath)}\n---\n\n# Outline Draft\n\nAct I:\nAct II:\nAct III:\n`);
+      fs.writeFileSync(outp, `---\nintent: outline\nsource_query: "${query.replace(/"/g,'\\"')}"\nids: ${JSON.stringify(finalIds)}\npack: ${JSON.stringify(packPath)}\n---\n\n# Outline Draft\n\nAct I:\nAct II:\nAct III:\n`);
       artifacts.push(outp);
       break;
     }
     case "revise_scene": {
       const stamp = new Date().toISOString().replace(/[:.]/g,"-");
       const outp = `lore/ideas/${stamp}_revision_plan.md`;
-      fs.writeFileSync(outp, `---\nintent: revise_scene\nsource_query: "${query.replace(/"/g,'\\"')}"\nids: ${JSON.stringify(ids)}\npack: ${JSON.stringify(packPath)}\n---\n\n## Revision Plan\n- Target scene(s): (add file paths / IDs)\n- Change: (describe insertion/modification)\n- Constraints: continuity invariants, rules used\n`);
+      fs.writeFileSync(outp, `---\nintent: revise_scene\nsource_query: "${query.replace(/"/g,'\\"')}"\nids: ${JSON.stringify(finalIds)}\npack: ${JSON.stringify(packPath)}\n---\n\n## Revision Plan\n- Target scene(s): (add file paths / IDs)\n- Change: (describe insertion/modification)\n- Constraints: continuity invariants, rules used\n`);
       artifacts.push(outp);
       break;
     }
     case "worldbuild_mechanics": {
       const stamp = new Date().toISOString().replace(/[:.]/g,"-");
       const outp = `lore/ideas/${stamp}_mechanics_notes.md`;
-      fs.writeFileSync(outp, `---\nintent: worldbuild_mechanics\nsource_query: "${query.replace(/"/g,'\\"')}"\nids: ${JSON.stringify(ids)}\npack: ${JSON.stringify(packPath)}\n---\n\n## Mechanics Exploration\n- Hypotheses (speculative)\n- Tests/examples\n- Candidate canonical changes (PR into data/mechanics)\n`);
+      fs.writeFileSync(outp, `---\nintent: worldbuild_mechanics\nsource_query: "${query.replace(/"/g,'\\"')}"\nids: ${JSON.stringify(finalIds)}\npack: ${JSON.stringify(packPath)}\n---\n\n## Mechanics Exploration\n- Hypotheses (speculative)\n- Tests/examples\n- Candidate canonical changes (PR into data/mechanics)\n`);
       artifacts.push(outp);
       break;
     }
@@ -119,19 +189,75 @@ function orchestrate(query) {
   }
 
   const lintResults = runLints();
-  const report = writeSessionReport({ query, intent, ids, packPath, artifacts, lintResults });
-  const summary = { intent, ids, packPath, artifacts, report };
+  const report = writeSessionReport({ query, intent, finalIds, packPath, artifacts, lintResults, contextPath });
+
+  // Update session state
+  sessionState.last_intent = intent;
+  sessionState.history.push({
+    query,
+    intent,
+    ids: finalIds,
+    timestamp: new Date().toISOString()
+  });
+
+  // Cap history at 50 entries
+  if (sessionState.history.length > 50) {
+    sessionState.history = sessionState.history.slice(-50);
+  }
+
+  // Update sticky_ids if --carry flag was used
+  if (carry) {
+    const uniqueOrderedIds = [...new Set(finalIds)];
+    sessionState.sticky_ids = uniqueOrderedIds.slice(0, 8); // Cap at 8 most recent
+  }
+
+  saveSessionState(sessionState);
+
+  const summary = { intent, ids: finalIds, packPath, artifacts, report, context: contextPath };
 
   process.stdout.write(JSON.stringify(summary, null, 2));
 }
 
-if (require.main === module) {
-  const q = process.argv.slice(2).join(" ").trim();
-  if (!q) {
-    console.error("Usage: node scripts/prompt/orchestrate.js \"your natural language request\"");
+function parseArgs() {
+  const args = process.argv.slice(2);
+  let query = "";
+  let profile = "default";
+  let carry = false;
+  let clear = false;
+
+  for (let i = 0; i < args.length; i++) {
+    const arg = args[i];
+    if (arg.startsWith("--")) {
+      const flag = arg.slice(2);
+      const value = args[i + 1];
+      if (flag === "profile" && value && !value.startsWith("--")) {
+        profile = value;
+        i++;
+      } else if (flag === "carry") {
+        carry = true;
+      } else if (flag === "clear") {
+        clear = true;
+      } else {
+        // Unknown flag, treat as part of query
+        query += arg + " ";
+      }
+    } else {
+      query += arg + " ";
+    }
+  }
+
+  query = query.trim();
+  if (!query) {
+    console.error("Usage: node scripts/prompt/orchestrate.js \"your natural language request\" [--profile <name>] [--carry] [--clear]");
     process.exit(2);
   }
-  orchestrate(q);
+
+  return { query, profile, carry, clear };
+}
+
+if (require.main === module) {
+  const { query, profile, carry, clear } = parseArgs();
+  orchestrate(query, { profile, carry, clear });
 }
 
 module.exports = { orchestrate };
