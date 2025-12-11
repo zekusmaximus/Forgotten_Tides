@@ -8,6 +8,9 @@ const { classify } = require("./route_intent.js");
 const { resolve: resolveIDs } = require("./resolve_ids.js");
 const { spawn } = require("child_process");
 const { autotagScene } = require("./scene_autotag.js");
+const { extract } = require("./extract_metadata.js");
+const OrderingEngine = require("./ordering.js");
+const { touchModified } = require("./work_meta.js");
 
 function sh(cmd) {
   try {
@@ -47,22 +50,22 @@ function runLints() {
   return results;
 }
 
-function runAuthoringOperation(intent, query, bodyContent) {
+function runAuthoringOperation(intent, query, bodyContent, params = null) {
   return new Promise((resolve, reject) => {
-    // Extract parameters from query using heuristic parsing
-    const params = extractAuthoringParams(query, intent);
+    // Use provided params or extract from query
+    const finalParams = params || extractAuthoringParams(query, intent);
 
     // Build authoring command
     const args = ['--intent', intent];
 
     // Add parameters based on intent
-    if (params.work) args.push('--work', params.work);
-    if (params.kind) args.push('--kind', params.kind);
-    if (params.title) args.push('--title', params.title);
-    if (params.scene) args.push('--scene', params.scene);
-    if (params.order) args.push('--order', params.order);
-    if (params.notes) args.push('--notes', params.notes);
-    if (params.outline) args.push('--outline', params.outline);
+    if (finalParams.work) args.push('--work', finalParams.work);
+    if (finalParams.kind) args.push('--kind', finalParams.kind);
+    if (finalParams.title) args.push('--title', finalParams.title);
+    if (finalParams.scene) args.push('--scene', finalParams.scene);
+    if (finalParams.order) args.push('--order', finalParams.order);
+    if (finalParams.notes) args.push('--notes', finalParams.notes);
+    if (finalParams.outline) args.push('--outline', finalParams.outline);
 
     // Spawn authoring process
     const authoringProcess = spawn('node', ['scripts/prompt/authoring.js', ...args]);
@@ -97,6 +100,22 @@ function runAuthoringOperation(intent, query, bodyContent) {
       }
     });
   });
+}
+
+function convertOrderToAuthoringFormat(extractedOrder) {
+  if (!extractedOrder) return null;
+
+  const { mode, value } = extractedOrder;
+
+  switch (mode) {
+    case 'first': return 'first';
+    case 'last': return 'last';
+    case 'before': return `before:${value}`;
+    case 'after': return `after:${value}`;
+    case 'index': return `at:${value}`;
+    case 'midpoint': return 'midpoint';
+    default: return null;
+  }
 }
 
 function extractAuthoringParams(query, intent) {
@@ -317,12 +336,47 @@ async function orchestrate(query, options = {}) {
     case "update_outline": {
       // Authoring operations take precedence
       try {
+        // Perform NL extraction for authoring operations
+        const extractedData = extract(query);
+
+        // Handle clarification cases
+        if (extractedData.needs_clarification) {
+          console.log(extractedData.needs_clarification.question);
+          if (extractedData.needs_clarification.options && extractedData.needs_clarification.options.length > 0) {
+            extractedData.needs_clarification.options.forEach((option, index) => {
+              console.log(`${index + 1}. ${option.label}`);
+            });
+          }
+          process.exit(0);
+        }
+
         // Get body content from stdin only for operations that need it
         const bodyContent = (intent === 'save_scene' || intent === 'replace_scene' || intent === 'save_notes' || intent === 'update_outline')
           ? await getBodyContentForAuthoring()
           : '';
-        const authoringResult = await runAuthoringOperation(intent, query, bodyContent);
 
+        // Map extracted data to authoring parameters
+        const params = {
+          work: extractedData.work?.id || null,
+          kind: extractedData.work?.kind || null,
+          scene: extractedData.scene?.id || null,
+          order: extractedData.order ? convertOrderToAuthoringFormat(extractedData.order) : null,
+          notes: extractedData.outline_section || null,
+          outline: extractedData.outline_section || null
+        };
+
+        // Fallback to original parameter extraction if NL extraction didn't find values
+        const fallbackParams = extractAuthoringParams(query, intent);
+        const finalParams = {
+          work: params.work || fallbackParams.work,
+          kind: params.kind || fallbackParams.kind,
+          scene: params.scene || fallbackParams.scene,
+          order: params.order || fallbackParams.order,
+          notes: params.notes || fallbackParams.notes,
+          outline: params.outline || fallbackParams.outline
+        };
+
+        const authoringResult = await runAuthoringOperation(intent, query, bodyContent, finalParams);
         // Add created files to artifacts
         if (authoringResult.files_created) {
           authoringResult.files_created.forEach(file => {
@@ -348,6 +402,39 @@ async function orchestrate(query, options = {}) {
           } catch (autotagError) {
             console.warn(`Warning: Auto-tagging failed for scene ${authoringResult.scene_file}: ${autotagError.message}`);
             // Continue pipeline - don't fail on autotag errors
+          }
+        }
+
+        // Apply ordering after save_scene operations
+        if (intent === 'save_scene' && authoringResult.scene_file && extractedData.order) {
+          try {
+            const workDir = path.dirname(path.dirname(authoringResult.scene_file));
+            const sceneRelPath = path.relative(workDir, authoringResult.scene_file);
+
+            // Load current include list
+            const includeList = OrderingEngine.load(workDir);
+
+            // Insert the new scene with the specified ordering
+            const newIncludeList = OrderingEngine.insert(includeList, sceneRelPath, extractedData.order);
+
+            // Save the updated include list
+            OrderingEngine.save(workDir, newIncludeList);
+            console.log(`Applied ordering: ${extractedData.order.mode} ${extractedData.order.value || ''}`);
+          } catch (orderingError) {
+            console.warn(`Warning: Ordering failed: ${orderingError.message}`);
+            // Continue pipeline - don't fail on ordering errors
+          }
+        }
+
+        // Call work_meta.touchModified after any authoring op that touches a work
+        if (authoringResult.work_id) {
+          try {
+            const workDir = path.join('stories', authoringResult.work_kind || 'novels', authoringResult.work_id);
+            touchModified(workDir);
+            console.log(`Updated work metadata for: ${authoringResult.work_id}`);
+          } catch (metaError) {
+            console.warn(`Warning: Failed to update work metadata: ${metaError.message}`);
+            // Continue pipeline - don't fail on metadata errors
           }
         }
 

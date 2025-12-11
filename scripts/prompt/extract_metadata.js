@@ -1,10 +1,5 @@
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
-
-// Convert import.meta.url to __dirname equivalent
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const fs = require('fs');
+const path = require('path');
 
 // Levenshtein distance implementation
 function levenshteinDistance(a, b) {
@@ -206,7 +201,7 @@ function findTopLevelScenes() {
 }
 
 // Main extraction function
-export function extract(query) {
+function extract(query) {
     try {
         // Cache works and scenes for this extraction
         const works = findAllWorks();
@@ -403,3 +398,8 @@ export function extract(query) {
         };
     }
 }
+
+// Export for CommonJS
+module.exports = {
+    extract
+};
