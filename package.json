@@ -1,4 +1,10 @@
 {
+  "scripts": {
+    "lint:schema": "node scripts/lint/schema_validate.js",
+    "lint:refs": "node scripts/lint/unresolved_refs.js",
+    "lint:glossary": "node scripts/lint/glossary_enforcer.js",
+    "lint": "npm run lint:schema && npm run lint:refs && npm run lint:glossary"
+  },
   "dependencies": {
     "ajv": "^8.17.1",
     "js-yaml": "^4.1.1",
