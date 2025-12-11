@@ -10,6 +10,55 @@ const { execSync } = require("child_process");
 // CLI Argument Parsing
 function parseArgs() {
   const args = process.argv.slice(2);
+
+  // Check for --help flag first
+  if (args.includes("--help") || args.includes("-h")) {
+    console.log(`
+Forgotten Tides Context Builder CLI
+===================================
+
+SYNOPSIS
+  node scripts/prompt/context_builder.js "<query>" [options]
+
+DESCRIPTION
+  Builds contextual entity packs from natural language queries with:
+  - Intent classification
+  - ID resolution
+  - 1-hop entity expansion
+  - Profile-based ordering and capping
+
+EXAMPLES
+  # Default context building
+  node scripts/prompt/context_builder.js "memory corridor physics"
+
+  # With custom profile and max entities
+  node scripts/prompt/context_builder.js "faction politics" --profile storytelling --max 15
+
+  # Disable expansion
+  node scripts/prompt/context_builder.js "character backstory" --expand none
+
+FLAGS
+  --profile <name>   Use a specific context profile (default: "default")
+  --max <number>     Maximum number of entities to include
+  --expand <mode>    Expansion mode: "one" (default) or "none"
+  --help, -h         Show this help message
+
+ENVIRONMENT
+  Requires Node.js 18+
+  Assumes project root contains: characters/, data/, stories/, data/lexicon/
+  Writes to: out/prompts/
+  Reads context profiles from: docs/agents/context_profiles.json
+
+OUTPUT
+  JSON file in out/prompts/ with:
+  - query, intent, profile
+  - primary_ids, expanded entities
+  - final ordered entity list
+  - provenance tracking
+`);
+    process.exit(0);
+  }
+
   if (args.length === 0) {
     console.error("Usage: node scripts/prompt/context_builder.js \"<query>\" [--profile storytelling] [--max 10] [--expand one]");
     process.exit(1);

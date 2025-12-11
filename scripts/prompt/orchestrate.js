@@ -45,7 +45,7 @@ function runLints() {
   return results;
 }
 
-function writeSessionReport({query, intent, ids, packPath, artifacts, lintResults, contextPath}) {
+function writeSessionReport({query, intent, ids, packPath, artifacts, lintResults, contextPath, stickyIds}) {
   const stamp = new Date().toISOString().replace(/[:.]/g,"-");
   const p = `docs/session/${stamp}_${intent}.md`;
   const lines = [
@@ -55,6 +55,8 @@ function writeSessionReport({query, intent, ids, packPath, artifacts, lintResult
     `- **Pack:** ${packPath || "(none)"}`,
     `- **Context:** ${contextPath || "(none)"}`,
     `- **Artifacts:** ${(artifacts||[]).join(", ") || "(none)"}`,
+    `- **Carried IDs:** ${stickyIds?.join(", ") || "(none)"}`,
+    `- **Session State:** out/session/state.json`,
     `\n## Lint/Checks`,
   ];
   for (const r of (lintResults||[])) {
@@ -66,7 +68,7 @@ function writeSessionReport({query, intent, ids, packPath, artifacts, lintResult
 
 function loadSessionState() {
   try {
-    const sessionFile = "docs/session/state.json";
+    const sessionFile = "out/session/state.json";
     if (fs.existsSync(sessionFile)) {
       return JSON.parse(fs.readFileSync(sessionFile, "utf8"));
     }
@@ -74,14 +76,15 @@ function loadSessionState() {
     // Ignore errors and return default state
   }
   return {
-    history: [],
+    last_intent: null,
+    active_work: null,
     sticky_ids: [],
-    last_intent: null
+    history: []
   };
 }
 
 function saveSessionState(state) {
-  const sessionFile = "docs/session/state.json";
+  const sessionFile = "out/session/state.json";
   fs.writeFileSync(sessionFile, JSON.stringify(state, null, 2));
 }
 
@@ -189,7 +192,7 @@ function orchestrate(query, options = {}) {
   }
 
   const lintResults = runLints();
-  const report = writeSessionReport({ query, intent, finalIds, packPath, artifacts, lintResults, contextPath });
+  const report = writeSessionReport({ query, intent, finalIds, packPath, artifacts, lintResults, contextPath, stickyIds: sessionState.sticky_ids });
 
   // Update session state
   sessionState.last_intent = intent;
@@ -224,6 +227,47 @@ function parseArgs() {
   let profile = "default";
   let carry = false;
   let clear = false;
+
+  // Check for --help flag first
+  if (args.includes("--help") || args.includes("-h")) {
+    console.log(`
+Forgotten Tides Orchestrator CLI
+================================
+
+SYNOPSIS
+  node scripts/prompt/orchestrate.js "<query>" [options]
+
+DESCRIPTION
+  Orchestrates natural language requests into structured workflows:
+  query → intent classification → ID resolution → prompt pack → artifacts → reports
+
+EXAMPLES
+  # Brainstorm new mechanics
+  node scripts/prompt/orchestrate.js "brainstorm memory corridor stabilization techniques"
+
+  # Outline a story with session carry
+  node scripts/prompt/orchestrate.js "outline the Archivist's next mission" --carry
+
+  # Worldbuild with specific profile
+  node scripts/prompt/orchestrate.js "worldbuild faction politics" --profile storytelling
+
+FLAGS
+  --profile <name>   Use a specific context profile (default: "default")
+  --carry            Carry forward sticky IDs from previous session
+  --clear            Clear session state before processing
+  --help, -h         Show this help message
+
+ENVIRONMENT
+  Requires Node.js 18+
+  Assumes project root contains: out/, lore/, docs/, data/
+  Writes to: out/prompts/, out/reports/, lore/ideas/, docs/session/
+  Reads from: characters/, data/, stories/, data/lexicon/
+
+INTENTS SUPPORTED
+  brainstorm, outline, revise_scene, worldbuild_mechanics, compile_artifacts, export_pack_only
+`);
+    process.exit(0);
+  }
 
   for (let i = 0; i < args.length; i++) {
     const arg = args[i];

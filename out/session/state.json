@@ -1,27 +1,21 @@
 {
   "history": [
     {
-      "query": "test session memory",
-      "intent": "brainstorm",
+      "query": "revise scene 14 to add a love interest",
+      "intent": "revise_scene",
       "ids": [
         "TERM-0001",
         "TERM-0002",
         "TERM-0003",
-        "TERM-0004",
-        "TERM-0005",
         "TERM-0006",
         "TERM-0007",
-        "TERM-0008"
+        "TERM-0008",
+        "TERM-0009",
+        "TERM-0010"
       ],
-      "timestamp": "2025-12-11T15:21:04.803Z"
-    },
-    {
-      "query": "test carry functionality",
-      "intent": "brainstorm",
-      "ids": [],
-      "timestamp": "2025-12-11T15:21:27.025Z"
+      "timestamp": "2025-12-11T16:00:22.462Z"
     }
   ],
   "sticky_ids": [],
-  "last_intent": "brainstorm"
+  "last_intent": "revise_scene"
 }
