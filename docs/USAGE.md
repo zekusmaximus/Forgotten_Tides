@@ -464,3 +464,170 @@ Manuscript files use include directives to assemble content:
 3. Each include should be on its own line
 4. Maintain chronological order within acts
 5. Update outline when changing scene order
+
+## Phase 2.5 Features
+
+### Natural Language Extraction
+
+The system supports natural language commands for scene placement and organization:
+
+**Examples:**
+```bash
+# Save as opening scene in a specific work
+node scripts/prompt/orchestrate.js "save this as the opening scene in First Corridor"
+
+# Save as specific scene number
+node scripts/prompt/orchestrate.js "save this as scene 3"
+
+# Place relative to existing scene
+node scripts/prompt/orchestrate.js "place this after SC-014"
+
+# Update outline sections
+node scripts/prompt/orchestrate.js "update the outline for the second act"
+```
+
+**Behavior:**
+- Extracts work names, scene identifiers, and positional information
+- Handles relative positioning ("before", "after", "between")
+- Supports act-based placement ("opening scene", "act 2 finale")
+- Maintains canonical consistency in scene ordering
+
+### Ordering System
+
+The ordering system provides deterministic entity sequencing for consistent output:
+
+**Flags:**
+- `--order`: Specify ordering profile (default, storytelling, technical, lore)
+- `--expand`: Control relationship expansion (none, one, all)
+- `--max`: Set maximum entity count
+
+**Examples:**
+```bash
+# Use storytelling ordering
+node scripts/prompt/context_builder.js "character development" --order storytelling
+
+# Limit to 10 entities with no expansion
+node scripts/prompt/context_builder.js "memory physics" --max 10 --expand none
+
+# Custom ordering with expansion
+node scripts/prompt/context_builder.js "faction politics" --order lore --expand one
+```
+
+**Ordering Profiles:**
+- `default`: Rules → Characters → Locations → Mechanics → Factions → Terms → Stories
+- `storytelling`: Characters → Stories → Locations → Themes → Factions
+- `technical`: Rules → Mechanics → Locations → Factions → Characters
+- `lore`: Factions → Cosmic Regions → Mechanics → Characters → Stories
+
+### Work Metadata (meta.yaml)
+
+Each work project includes a `meta.yaml` file that defines project metadata and structure:
+
+**Purpose:**
+- Tracks work status, themes, and relationships
+- Defines scene ordering and act structure
+- Stores work-specific configuration
+
+**Fields:**
+```yaml
+---
+id: work_identifier
+title: "Work Title"
+type: novella|novel|short
+date: ISO_8601_timestamp
+status: planning|draft|review|final
+acts:
+  - number: 1
+    title: "Act Title"
+    scenes: [scene_id1, scene_id2]
+  - number: 2
+    title: "Act Title"
+    scenes: [scene_id3, scene_id4]
+themes: [theme1, theme2]
+characters: [character_id1, character_id2]
+locations: [location_id1]
+related_works: [work_id1, work_id2]
+---
+
+**Usage:**
+- Automatically created with `start_work` intent
+- Updated when scenes are added or reordered
+- Used by scene navigator for work visualization
+
+### Auto-tagging System
+
+The auto-tagging system automatically applies tags to scenes based on content analysis:
+
+**Behavior:**
+- Analyzes scene content for key themes and entities
+- Applies relevant tags from canonical taxonomy
+- Respects manual tagging precedence
+- Limits to 5 auto-generated tags per scene
+
+**Precedence Rules:**
+1. Manual tags (explicitly set) take highest priority
+2. Auto-tags from content analysis
+3. Inherited tags from work metadata
+4. Default tags from entity relationships
+
+**Examples:**
+```bash
+# Scene with memory physics content
+# Auto-tags: memory_physics, corridor_mechanics, gravity_theory
+
+# Scene with character conflict
+# Auto-tags: character_conflict, emotional_tension, dialogue_heavy
+
+# Scene with faction politics
+# Auto-tags: political_intrigue, faction_dynamics, power_struggle
+```
+
+**Limits:**
+- Maximum 5 auto-tags per scene
+- Maximum 10 total tags (manual + auto)
+- Tag conflicts resolved by precedence rules
+
+### Scene Navigator
+
+The scene navigator provides CLI tools for managing and visualizing scene structures:
+
+**Commands:**
+
+```bash
+# List all scenes in a work
+npm run scenes:list -- --work "First Corridor"
+
+# Generate scene dependency graph
+npm run scenes:graph -- --work "First Corridor"
+
+# Open specific scene in editor
+npm run scenes:open -- --scene SC-0001
+```
+
+**Usage Examples:**
+
+```bash
+# List scenes with detailed information
+npm run scenes:list -- --work "First Corridor" --verbose
+
+# Generate graph visualization (DOT format)
+npm run scenes:graph -- --work "First Corridor" --format dot > graph.dot
+
+# Open scene by ID
+npm run scenes:open -- --scene SC-0001 --editor vscode
+
+# List scenes by act
+npm run scenes:list -- --work "First Corridor" --act 2
+```
+
+**Output Formats:**
+- `list`: Tabular scene listing with metadata
+- `graph`: Dependency graph in DOT format
+- `json`: Machine-readable scene data
+- `markdown`: Formatted scene summary
+
+**Features:**
+- Filter by act, character, or location
+- Visualize scene dependencies and relationships
+- Navigate complex work structures
+- Export for external analysis tools
