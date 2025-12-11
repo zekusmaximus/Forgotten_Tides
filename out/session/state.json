@@ -1,0 +1,27 @@
+{
+  "history": [
+    {
+      "query": "test session memory",
+      "intent": "brainstorm",
+      "ids": [
+        "TERM-0001",
+        "TERM-0002",
+        "TERM-0003",
+        "TERM-0004",
+        "TERM-0005",
+        "TERM-0006",
+        "TERM-0007",
+        "TERM-0008"
+      ],
+      "timestamp": "2025-12-11T15:21:04.803Z"
+    },
+    {
+      "query": "test carry functionality",
+      "intent": "brainstorm",
+      "ids": [],
+      "timestamp": "2025-12-11T15:21:27.025Z"
+    }
+  ],
+  "sticky_ids": [],
+  "last_intent": "brainstorm"
+}
