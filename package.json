@@ -10,7 +10,9 @@
     "orchestrate": "node scripts/prompt/orchestrate.js",
     "pack:export": "node scripts/prompt/export_prompt_pack.js",
     "ids:resolve": "node scripts/prompt/resolve_ids.js",
-    "intent:route": "node scripts/prompt/route_intent.js"
+    "intent:route": "node scripts/prompt/route_intent.js",
+    "context:build": "node scripts/prompt/context_builder.js",
+    "linkmap:build": "node scripts/prompt/build_linkmap.js"
   },
   "dependencies": {
     "ajv": "^8.17.1",
