@@ -1,0 +1,6 @@
+{
+  "worldbuilding": { "order": ["rules","mechanics","locations","characters","factions","terms","stories"], "max_entities": 8 },
+  "storytelling":  { "order": ["characters","rules","locations","factions","mechanics","stories","terms"], "max_entities": 10 },
+  "technical":     { "order": ["mechanics","rules","examples","locations","terms","characters"], "max_entities": 6 },
+  "default":       { "order": ["rules","characters","locations","mechanics","factions","terms","stories"], "max_entities": 8 }
+}
