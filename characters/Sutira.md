@@ -1,3 +1,35 @@
+---
+id: CHAR-0002
+uuid: c19071ad-b66e-4eef-8bfb-b583e5fbf853
+type: character
+name: Sutira
+summary_50: Captain, Canticle Fleet
+summary_200: 'Sutira is a key character in The Forgotten Tides universe. Captain, Canticle Fleet  '
+cross_refs:
+  characters:
+    - CHAR-0001
+    - CHAR-0003
+    - CHAR-0004
+  locations: []
+  factions:
+    - FACT-0001
+  mechanics: []
+  stories: []
+continuity:
+  invariants:
+    - 'Species: Human (Mid-Gravity)'
+    - Memory physics rules apply
+    - Anchor burn consequences are permanent
+  watchlist:
+    - Anchor count changes
+    - Relationship dynamics
+    - Psychological state evolution
+metadata:
+  status: canonical
+  created: '2025-12-11T00:55:01.578Z'
+  modified: '2025-12-11T00:55:01.578Z'
+---
+
 # Sutira
 Captain, Canticle Fleet  
 Continuity Profile: ARCH-CTLP-882-S

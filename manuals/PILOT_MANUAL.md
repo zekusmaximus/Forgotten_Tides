@@ -1,3 +1,22 @@
+---
+id: MANUAL-0001
+uuid: 0b413a03-75dd-46cf-8978-ff064d79becc
+type: manual
+title: PILOT MANUAL
+summary_50: 'Issued jointly by:'
+summary_200: 'PILOT MANUAL is a technical manual in The Forgotten Tides universe. Issued jointly by:  '
+cross_refs:
+  characters: []
+  locations: []
+  factions: []
+  mechanics: []
+  stories: []
+metadata:
+  status: canonical
+  created: '2025-12-11T00:55:01.582Z'
+  modified: '2025-12-11T00:55:01.582Z'
+---
+
 # Canticle Fleet Pilot Manual
 ## Memory Corridor Operations & Anchor Integrity Protocols  
 Issued jointly by:  

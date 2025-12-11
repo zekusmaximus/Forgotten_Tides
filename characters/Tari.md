@@ -1,3 +1,35 @@
+---
+id: CHAR-0004
+uuid: 90a709b9-8af0-4343-bd12-dd1a4db2f99f
+type: character
+name: Tari
+summary_50: Archivist Novice, Heliodrome Survivor
+summary_200: 'Tari is a key character in The Forgotten Tides universe. Archivist Novice, Heliodrome Survivor  '
+cross_refs:
+  characters:
+    - CHAR-0001
+    - CHAR-0002
+    - CHAR-0003
+  locations: []
+  factions:
+    - FACT-0001
+  mechanics: []
+  stories: []
+continuity:
+  invariants:
+    - 'Species: Human'
+    - Memory physics rules apply
+    - Anchor burn consequences are permanent
+  watchlist:
+    - Anchor count changes
+    - Relationship dynamics
+    - Psychological state evolution
+metadata:
+  status: canonical
+  created: '2025-12-11T00:55:01.578Z'
+  modified: '2025-12-11T00:55:01.578Z'
+---
+
 # Tari
 Archivist Novice, Heliodrome Survivor  
 Continuity Profile: ARCH-CHLD-047-T

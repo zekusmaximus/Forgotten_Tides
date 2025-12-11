@@ -1,3 +1,34 @@
+---
+id: MECH-4
+uuid: d0b1fd40-264a-4aeb-851c-c18b5a38bcad
+type: mechanics
+name: MEMORY PHYSICS
+category: memory-physics
+summary_50: Core Metaphysics of The Forgotten Tides Universe
+summary_200: MEMORY PHYSICS is a core mechanics rule in The Forgotten Tides universe. Core Metaphysics of The Forgotten Tides Universe
+cross_refs:
+  characters:
+    - CHAR-0001
+  locations:
+    - LOC-0001
+  stories:
+    - STORY-0001
+rules:
+  - statement: Memory generates gravitational coherence
+    formula: Coherence = (Remembrance × Density) + Cultural_Reinforcement
+examples:
+  - description: Rell stabilizing a corridor
+    outcome: Temporary stabilization with anchor cost
+tests:
+  - scenario: Zero memory input
+    expected: Corridor collapse
+    continuity_impact: critical
+metadata:
+  status: canonical
+  created: '2025-12-11T00:55:01.580Z'
+  modified: '2025-12-11T00:55:01.580Z'
+---
+
 # Memory Physics
 Core Metaphysics of The Forgotten Tides Universe
 

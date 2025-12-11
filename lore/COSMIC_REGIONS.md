@@ -1,3 +1,22 @@
+---
+id: LORE-7
+uuid: 5c877eda-dbc1-43b3-afce-0cdd06e29df8
+type: lore
+title: COSMIC REGIONS
+summary_50: Space is structured not by mass alone, but by **concentrations of memory**.
+summary_200: 'COSMIC REGIONS is a lore document in The Forgotten Tides universe. Space is structured not by mass alone, but by **concentrations of memory**.  '
+cross_refs:
+  characters: []
+  locations: []
+  factions: []
+  mechanics: []
+  stories: []
+metadata:
+  status: canonical
+  created: '2025-12-11T00:55:01.581Z'
+  modified: '2025-12-11T00:55:01.581Z'
+---
+
 # Cosmic Regions of The Forgotten Tides
 
 Space is structured not by mass alone, but by **concentrations of memory**.  

@@ -1,3 +1,38 @@
+---
+id: CHAR-0001
+uuid: bf91c589-4981-43f7-bf0e-b59578a93625
+type: character
+name: Rell
+summary_50: Pilot-Technician, Canticle Fleet
+summary_200: 'Rell is a key character in The Forgotten Tides universe. Pilot-Technician, Canticle Fleet  '
+cross_refs:
+  characters:
+    - CHAR-0002
+    - CHAR-0003
+    - CHAR-0004
+  locations:
+    - LOC-0001
+  factions:
+    - FACT-0001
+  mechanics:
+    - MECH-0001
+    - MECH-0002
+  stories: []
+continuity:
+  invariants:
+    - 'Species: Human (Mid-Gravity)'
+    - Memory physics rules apply
+    - Anchor burn consequences are permanent
+  watchlist:
+    - Anchor count changes
+    - Relationship dynamics
+    - Psychological state evolution
+metadata:
+  status: canonical
+  created: '2025-12-11T00:55:01.578Z'
+  modified: '2025-12-11T00:55:01.578Z'
+---
+
 # Rell
 Pilot-Technician, Canticle Fleet  
 Continuity Profile: ARCH-CTLP-1192-R  

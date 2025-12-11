@@ -1,3 +1,22 @@
+---
+id: LORE-7
+uuid: 1e82edb1-15bd-49b4-96da-3ef17e45b5df
+type: lore
+title: MEMORY ECONOMY
+summary_50: Exchange, regulation, and exploitation of memory as a resource
+summary_200: MEMORY ECONOMY is a lore document in The Forgotten Tides universe. Exchange, regulation, and exploitation of memory as a resource
+cross_refs:
+  characters: []
+  locations: []
+  factions: []
+  mechanics: []
+  stories: []
+metadata:
+  status: canonical
+  created: '2025-12-11T00:55:01.581Z'
+  modified: '2025-12-11T00:55:01.581Z'
+---
+
 # The Memory Economy
 Exchange, regulation, and exploitation of memory as a resource
 

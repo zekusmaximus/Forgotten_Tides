@@ -1,3 +1,35 @@
+---
+id: CHAR-0003
+uuid: dda2aa7b-19d1-4732-be53-48c2c0c3f8bc
+type: character
+name: Estavan
+summary_50: Chief Archivist-Engineer, Canticle Fleet
+summary_200: 'Estavan is a key character in The Forgotten Tides universe. Chief Archivist-Engineer, Canticle Fleet  '
+cross_refs:
+  characters:
+    - CHAR-0001
+    - CHAR-0002
+    - CHAR-0004
+  locations: []
+  factions:
+    - FACT-0001
+  mechanics: []
+  stories: []
+continuity:
+  invariants:
+    - 'Species: Human'
+    - Memory physics rules apply
+    - Anchor burn consequences are permanent
+  watchlist:
+    - Anchor count changes
+    - Relationship dynamics
+    - Psychological state evolution
+metadata:
+  status: canonical
+  created: '2025-12-11T00:55:01.575Z'
+  modified: '2025-12-11T00:55:01.575Z'
+---
+
 # Estavan
 Chief Archivist-Engineer, Canticle Fleet  
 Continuity Profile: ARCH-CTLP-331-E
