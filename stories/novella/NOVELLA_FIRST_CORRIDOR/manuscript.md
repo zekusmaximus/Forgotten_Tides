@@ -3,7 +3,17 @@ id: NOVELLA_FIRST_CORRIDOR
 title: First Corridor
 kind: novella
 status: draft
-created: '2025-12-11T17:14:51.683Z'
-scenes: []
+created: '2025-12-11T19:53:21.351Z'
+scenes:
+  - id: SCENE_96A0A49F0F2BCA0EE73308E6FD97DA80711DEBBC
+    title: Opening Scene
+    order: 1
+    file: scenes\SCENE_96A0A49F0F2BCA0EE73308E6FD97DA80711DEBBC.md
+  - id: SCENE_D9B9E99CD4CDD7109B0756CE955E9574912E36A6
+    title: Second Scene
+    order: 2
+    file: scenes\SCENE_D9B9E99CD4CDD7109B0756CE955E9574912E36A6.md
 ---
+
+
 

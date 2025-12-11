@@ -64,7 +64,7 @@ function findAllWorks() {
     const storiesDir = path.join(__dirname, '../../../stories');
     const works = [];
 
-    const categories = ['shorts', 'novellas', 'novels'];
+    const categories = ['shorts', 'novella', 'novels'];
     for (const category of categories) {
         const categoryPath = path.join(storiesDir, category);
         if (!fs.existsSync(categoryPath)) continue;
