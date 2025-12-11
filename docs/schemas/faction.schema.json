@@ -1,0 +1,126 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://forgotten-tides.com/schemas/faction.schema.json",
+  "title": "Faction Schema",
+  "description": "Schema for factions in The Forgotten Tides universe",
+  "type": "object",
+  "required": ["id", "type", "summary_50", "summary_200", "cross_refs"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^FACT-\\d{4}$",
+      "description": "Faction ID in format FACT-####"
+    },
+    "uuid": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Optional UUID for unique identification"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["faction"],
+      "description": "Entity type"
+    },
+    "name": {
+      "type": "string",
+      "description": "Faction name"
+    },
+    "faction_type": {
+      "type": "string",
+      "enum": ["political", "military", "religious", "corporate", "scientific", "criminal"],
+      "description": "Type of faction"
+    },
+    "summary_50": {
+      "type": "string",
+      "maxLength": 220,
+      "description": "Brief summary (≤ 220 characters)"
+    },
+    "summary_200": {
+      "type": "string",
+      "maxLength": 1200,
+      "description": "Detailed summary (≤ 1200 characters)"
+    },
+    "cross_refs": {
+      "type": "object",
+      "description": "Cross-references to other entities",
+      "properties": {
+        "characters": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^CHAR-\\d{4}$"
+          }
+        },
+        "locations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^LOC-\\d{4}$"
+          }
+        },
+        "factions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^FACT-\\d{4}$"
+          }
+        },
+        "mechanics": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^MECH-\\d{4}$"
+          }
+        },
+        "stories": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^STORY-\\d{4}$"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "doctrine": {
+      "type": "object",
+      "properties": {
+        "core_beliefs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "memory_policy": {
+          "type": "string",
+          "enum": ["preservation", "selective-forgetting", "oblivion", "balanced"],
+          "description": "Faction's approach to memory management"
+        },
+        "technology_focus": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "modified": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["canonical", "speculative", "deprecated"]
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}

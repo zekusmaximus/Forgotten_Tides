@@ -1,0 +1,61 @@
+{
+  "id": "MECH-0001",
+  "type": "mechanics",
+  "name": "Memory Gravity Equation",
+  "category": "memory-physics",
+  "summary_50": "Core equation governing memory-to-gravity conversion in the universe.",
+  "summary_200": "The Memory Gravity Equation defines how remembrance generates gravitational coherence. It establishes that memory density, cultural reinforcement, and personal significance directly affect an object's gravitational weight. This fundamental physics rule underpins all FTL travel and structural stability in the universe.",
+  "cross_refs": {
+    "characters": ["CHAR-0001"],
+    "locations": ["LOC-0001"],
+    "stories": ["STORY-0001"]
+  },
+  "rules": [
+    {
+      "statement": "Gravitational coherence is directly proportional to memory density and cultural reinforcement",
+      "formula": "Coherence = (Remembrance × Density) + Cultural_Reinforcement",
+      "variables": {
+        "Remembrance": "Intensity of memory recall",
+        "Density": "Number of entities remembering",
+        "Cultural_Reinforcement": "Strength of shared narratives"
+      }
+    }
+  ],
+  "examples": [
+    {
+      "description": "Rell stabilizing a thinning corridor",
+      "input": {
+        "pilot_skill": "expert",
+        "memory_intensity": 0.95,
+        "cultural_support": 0.7
+      },
+      "outcome": "Corridor stabilization achieved with minimal anchor burn",
+      "canonical_source": "The Archivist's Wake"
+    }
+  ],
+  "tests": [
+    {
+      "scenario": "Zero memory input to corridor",
+      "input": {
+        "memory_intensity": 0,
+        "cultural_support": 0
+      },
+      "expected": "Immediate corridor collapse and oblivion",
+      "continuity_impact": "critical"
+    },
+    {
+      "scenario": "High cultural reinforcement with low personal memory",
+      "input": {
+        "memory_intensity": 0.3,
+        "cultural_support": 0.9
+      },
+      "expected": "Temporary stabilization with conceptual drift",
+      "continuity_impact": "major"
+    }
+  ],
+  "metadata": {
+    "status": "canonical",
+    "created": "2025-12-11T00:00:00Z",
+    "modified": "2025-12-11T00:00:00Z"
+  }
+}

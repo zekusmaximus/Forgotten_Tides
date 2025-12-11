@@ -1,0 +1,55 @@
+{
+  "id": "STORY-0001",
+  "type": "story",
+  "title": "The Archivist's Wake",
+  "story_type": "short-story",
+  "summary_50": "A Canticle crew faces memory sacrifice and identity loss during a critical corridor traversal.",
+  "summary_200": "The Archivist's Wake follows pilot Rell and the Canticle crew as they navigate a thinning memory corridor to reach the failing Heliodrome station. The story explores themes of sacrifice, identity erosion, and the cost of memory-based FTL travel. Rell's forbidden anchor burn creates permanent consequences that embody the universe's core metaphysics.",
+  "cross_refs": {
+    "characters": ["CHAR-0001", "CHAR-0002", "CHAR-0003", "CHAR-0004"],
+    "locations": ["LOC-0001"],
+    "factions": ["FACT-0001"],
+    "mechanics": ["MECH-0001", "MECH-0002", "MECH-0003"]
+  },
+  "timeline": {
+    "setting": "Lattice Gap region, during Heliodrome crisis",
+    "duration": "Approximately 72 hours",
+    "chronology": [
+      {
+        "event": "Corridor instability detected",
+        "timestamp": "T0"
+      },
+      {
+        "event": "Tari experiences semi-impermanence",
+        "timestamp": "T0+0.5h"
+      },
+      {
+        "event": "Rell performs zero-anchoring",
+        "timestamp": "T0+1h"
+      },
+      {
+        "event": "Heliodrome docking completed",
+        "timestamp": "T0+48h"
+      }
+    ]
+  },
+  "themes": [
+    "memory-as-cost",
+    "identity-erosion",
+    "sacrifice",
+    "conceptual-fragility",
+    "quiet-heroism"
+  ],
+  "continuity_notes": [
+    "Establishes that anchors cannot be restored",
+    "First canonical appearance of eddy tracking behavior",
+    "Defines Heliodrome's conceptual dementia progression"
+  ],
+  "metadata": {
+    "status": "canonical",
+    "word_count": 8500,
+    "author": "Jeffrey A. Zyjeski",
+    "created": "2025-12-11T00:00:00Z",
+    "modified": "2025-12-11T00:00:00Z"
+  }
+}

@@ -1,0 +1,182 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://forgotten-tides.com/schemas/mechanics_rule.schema.json",
+  "title": "Mechanics Rule Schema",
+  "description": "Schema for mechanics rules in The Forgotten Tides universe",
+  "type": "object",
+  "required": ["id", "type", "summary_50", "summary_200", "cross_refs", "rules", "examples", "tests"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^MECH-\\d{4}$",
+      "description": "Mechanics rule ID in format MECH-####"
+    },
+    "uuid": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Optional UUID for unique identification"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["mechanics"],
+      "description": "Entity type"
+    },
+    "name": {
+      "type": "string",
+      "description": "Mechanics rule name"
+    },
+    "category": {
+      "type": "string",
+      "enum": ["memory-physics", "ftl-travel", "anchor-technology", "conceptual-decay", "memory-drives"],
+      "description": "Category of mechanics"
+    },
+    "summary_50": {
+      "type": "string",
+      "maxLength": 220,
+      "description": "Brief summary (≤ 220 characters)"
+    },
+    "summary_200": {
+      "type": "string",
+      "maxLength": 1200,
+      "description": "Detailed summary (≤ 1200 characters)"
+    },
+    "cross_refs": {
+      "type": "object",
+      "description": "Cross-references to other entities",
+      "properties": {
+        "characters": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^CHAR-\\d{4}$"
+          }
+        },
+        "locations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^LOC-\\d{4}$"
+          }
+        },
+        "factions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^FACT-\\d{4}$"
+          }
+        },
+        "mechanics": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^MECH-\\d{4}$"
+          }
+        },
+        "stories": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^STORY-\\d{4}$"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["statement", "formula"],
+        "properties": {
+          "statement": {
+            "type": "string",
+            "description": "Rule statement in natural language"
+          },
+          "formula": {
+            "type": "string",
+            "description": "Mathematical or logical formula representing the rule"
+          },
+          "variables": {
+            "type": "object",
+            "description": "Variables used in the formula",
+            "additionalProperties": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "description": "Core rules of this mechanics system"
+    },
+    "examples": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["description", "outcome"],
+        "properties": {
+          "description": {
+            "type": "string",
+            "description": "Example scenario description"
+          },
+          "input": {
+            "type": "object",
+            "description": "Input parameters for the example"
+          },
+          "outcome": {
+            "type": "string",
+            "description": "Expected outcome of the example"
+          },
+          "canonical_source": {
+            "type": "string",
+            "description": "Source story or document where this example appears"
+          }
+        }
+      },
+      "description": "Practical examples of the mechanics in action"
+    },
+    "tests": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["scenario", "expected"],
+        "properties": {
+          "scenario": {
+            "type": "string",
+            "description": "Test scenario description"
+          },
+          "input": {
+            "type": "object",
+            "description": "Input parameters for the test"
+          },
+          "expected": {
+            "type": "string",
+            "description": "Expected result of the test"
+          },
+          "continuity_impact": {
+            "type": "string",
+            "enum": ["critical", "major", "minor", "none"],
+            "description": "Impact level if this test fails"
+          }
+        }
+      },
+      "description": "Test cases for validating the mechanics"
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "modified": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["canonical", "speculative", "deprecated"]
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}

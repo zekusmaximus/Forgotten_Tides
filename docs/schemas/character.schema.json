@@ -1,0 +1,126 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://forgotten-tides.com/schemas/character.schema.json",
+  "title": "Character Schema",
+  "description": "Schema for characters in The Forgotten Tides universe",
+  "type": "object",
+  "required": ["id", "type", "summary_50", "summary_200", "cross_refs", "continuity"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^CHAR-\\d{4}$",
+      "description": "Character ID in format CHAR-####"
+    },
+    "uuid": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Optional UUID for unique identification"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["character"],
+      "description": "Entity type"
+    },
+    "name": {
+      "type": "string",
+      "description": "Character's full name"
+    },
+    "aliases": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Alternative names or titles"
+    },
+    "summary_50": {
+      "type": "string",
+      "maxLength": 220,
+      "description": "Brief summary (≤ 220 characters)"
+    },
+    "summary_200": {
+      "type": "string",
+      "maxLength": 1200,
+      "description": "Detailed summary (≤ 1200 characters)"
+    },
+    "cross_refs": {
+      "type": "object",
+      "description": "Cross-references to other entities",
+      "properties": {
+        "characters": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^CHAR-\\d{4}$"
+          }
+        },
+        "locations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^LOC-\\d{4}$"
+          }
+        },
+        "factions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^FACT-\\d{4}$"
+          }
+        },
+        "mechanics": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^MECH-\\d{4}$"
+          }
+        },
+        "stories": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^STORY-\\d{4}$"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "continuity": {
+      "type": "object",
+      "required": ["invariants", "watchlist"],
+      "properties": {
+        "invariants": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Rules that must never be violated for this character"
+        },
+        "watchlist": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Aspects that require special attention for continuity"
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "modified": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["canonical", "speculative", "deprecated"]
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}

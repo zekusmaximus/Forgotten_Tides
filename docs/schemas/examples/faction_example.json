@@ -1,0 +1,31 @@
+{
+  "id": "FACT-0001",
+  "type": "faction",
+  "name": "Canticle Fleet",
+  "faction_type": "military",
+  "summary_50": "Elite memory-corridor navigation fleet with strict ethical protocols.",
+  "summary_200": "The Canticle Fleet is a military organization specializing in memory-corridor navigation and stabilization. Known for their disciplined approach to anchor management and ethical memory usage, they operate under strict protocols to prevent reckless identity sacrifice while maintaining operational effectiveness.",
+  "cross_refs": {
+    "characters": ["CHAR-0001", "CHAR-0002", "CHAR-0003"],
+    "locations": ["LOC-0001"],
+    "mechanics": ["MECH-0001", "MECH-0002"]
+  },
+  "doctrine": {
+    "core_beliefs": [
+      "Memory preservation is paramount",
+      "Sacrifice must be justified and measured",
+      "Corridor stability over individual heroism"
+    ],
+    "memory_policy": "preservation",
+    "technology_focus": [
+      "Memory drive optimization",
+      "Anchor stabilization",
+      "Conceptual drift detection"
+    ]
+  },
+  "metadata": {
+    "status": "canonical",
+    "created": "2025-12-11T00:00:00Z",
+    "modified": "2025-12-11T00:00:00Z"
+  }
+}

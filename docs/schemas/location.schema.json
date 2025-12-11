@@ -1,0 +1,120 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://forgotten-tides.com/schemas/location.schema.json",
+  "title": "Location Schema",
+  "description": "Schema for locations in The Forgotten Tides universe",
+  "type": "object",
+  "required": ["id", "type", "summary_50", "summary_200", "cross_refs"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^LOC-\\d{4}$",
+      "description": "Location ID in format LOC-####"
+    },
+    "uuid": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Optional UUID for unique identification"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["location"],
+      "description": "Entity type"
+    },
+    "name": {
+      "type": "string",
+      "description": "Location name"
+    },
+    "location_type": {
+      "type": "string",
+      "enum": ["station", "planet", "ship", "region", "artifact", "structure"],
+      "description": "Type of location"
+    },
+    "summary_50": {
+      "type": "string",
+      "maxLength": 220,
+      "description": "Brief summary (≤ 220 characters)"
+    },
+    "summary_200": {
+      "type": "string",
+      "maxLength": 1200,
+      "description": "Detailed summary (≤ 1200 characters)"
+    },
+    "cross_refs": {
+      "type": "object",
+      "description": "Cross-references to other entities",
+      "properties": {
+        "characters": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^CHAR-\\d{4}$"
+          }
+        },
+        "locations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^LOC-\\d{4}$"
+          }
+        },
+        "factions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^FACT-\\d{4}$"
+          }
+        },
+        "mechanics": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^MECH-\\d{4}$"
+          }
+        },
+        "stories": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^STORY-\\d{4}$"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "coordinates": {
+      "type": "object",
+      "properties": {
+        "region": {
+          "type": "string"
+        },
+        "sector": {
+          "type": "string"
+        },
+        "memory_density": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "modified": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["canonical", "speculative", "deprecated"]
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}
