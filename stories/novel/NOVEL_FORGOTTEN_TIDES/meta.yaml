@@ -1,0 +1,55 @@
+id: NOVEL_FORGOTTEN_TIDES
+title: "Forgotten Tides"
+working_title: "The Bleached Horizon"
+series: "Forgotten Tides"
+series_position: 1
+type: novel
+status: draft
+protagonist: Gorgi
+logline: >
+  A ship technician from an unremarkable planet discovers his homeworld is being
+  erased from existence, and his ordinary memories may be the only evidence of a
+  conspiracy that threatens the galaxy.
+primary_focus: political
+secondary_focus:
+  - personal journey
+  - mystery
+  - survival
+tone:
+  - working-class noir
+  - grounded space opera
+  - propulsive thriller
+  - moments of dark humor
+  - emotional gravity in key moments
+themes:
+  - memory as home
+  - the invisible working class
+  - the cost of bearing witness
+  - identity and what makes you "you"
+  - political corruption in the memory economy
+setting:
+  primary:
+    - The Raoniar (cargo/passenger vessel)
+    - Heavonly (political hub, gateway to three galaxies)
+  secondary:
+    - Gorgi's unnamed mid-planet homeworld
+    - Heavonly's lower decks and working districts
+connections:
+  factions:
+    - Mnemosyne Lattice Consortium
+    - Archivist Orders
+    - Obsidian Synod
+  mechanics:
+    - Memory Physics
+    - Corridor Mechanics
+    - The Bleaching (origin reveal)
+  lore:
+    - Memory Economy (criminal underbelly)
+    - Floater ecology and cultivation
+series_arc_setup:
+  - Floaters being cultivated through bleaching for unknown purpose
+  - "The heaviest thing in the universe" and its significance
+  - Large-scale memory extraction technology
+  - Seeds of galaxy-spanning conspiracy
+created: '2025-12-12'
+modified: '2025-12-12'
