@@ -62,9 +62,23 @@ This repo is intended to become the **canonical reference implementation** of Th
 /lexicon – Glossary of in-universe terminology
 /agents – AI agent prompts for consistent story/world generation
 /design – Maps, diagrams, conceptual art references
+/dashboard – Interactive continuity visualization tool
 
 
 Additional tooling (schema validators, AI assist templates, MD → PDF exporters) will be added as the universe grows.
+
+### 🌐 Continuity Dashboard
+
+An interactive web-based tool for visualizing canonical relationships between entities in the universe. The dashboard reads `REFERENCE_MAP.json` and renders an interactive network graph showing how characters, locations, mechanics, factions, and stories are interconnected.
+
+**Quick Start:**
+```bash
+npm run dashboard
+```
+
+Then open your browser to `http://localhost:8080/dashboard/`
+
+See [dashboard/README.md](./dashboard/README.md) for full documentation.
 
 ---
 

@@ -92,6 +92,34 @@ node scripts/prompt/orchestrate.js "compile all artifacts for review"
 - Exports RAG chunks
 - Validates all schemas
 
+## Continuity Dashboard
+
+Visualize canonical relationships between entities in the universe using an interactive network graph.
+
+```bash
+npm run dashboard
+```
+
+Then open your browser to `http://localhost:8080/dashboard/`
+
+**Features:**
+- Interactive network graph visualization of all entities
+- Color-coded nodes by entity type (characters, locations, mechanics, factions, stories)
+- Click nodes to view detailed information
+- Filter by entity type to focus on specific relationships
+- Zoom, pan, and navigate large relationship graphs
+- Highlights missing or speculative nodes
+- Reads from `REFERENCE_MAP.json` in real-time
+
+**Use Cases:**
+- High-level continuity review
+- Identifying entity relationship patterns
+- Finding isolated or disconnected entities
+- Exploring cross-references between mechanics and stories
+- Understanding faction relationships
+
+See [dashboard/README.md](../dashboard/README.md) for detailed documentation.
+
 ## Story Compilation (Local)
 
 Compile all story markdown into a single source file plus PDF and ePub outputs.
