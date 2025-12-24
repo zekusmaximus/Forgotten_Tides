@@ -105,6 +105,24 @@ scripts/compile_stories.sh
 - `out/compiled/forgotten_tides_stories.pdf`
 - `out/compiled/forgotten_tides_stories.epub`
 
+## Chunking & Summaries (RAG)
+
+Generate chunked JSON artifacts with short summaries for larger markdown files.
+
+```bash
+npm run context:chunk
+```
+
+**Output:**
+- `out/chunks/*.json` per source file
+- `out/chunks/chunk_manifest.json`
+
+**Optional environment overrides:**
+- `CHUNK_MAX_CHARS` (default: 1400)
+- `CHUNK_MIN_CHARS` (default: 400)
+- `CHUNK_OUT_DIR` (default: `out/chunks`)
+- `CHUNK_ROOT_DIR` (default: repo root)
+
 ### `export_pack_only`
 Exports only the prompt pack without additional processing.
 

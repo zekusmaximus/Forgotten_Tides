@@ -37,6 +37,21 @@ metadata:
   modified: '2025-12-11T00:55:01.580Z'
 ---
 
+```yaml
+quick_reference:
+  scope: Core metaphysics of memory-gravity and coherence.
+  key_principles:
+    - Memory generates gravitational coherence.
+    - Forgetting manifests as entropy and spatial distortion.
+    - Collective memory stabilizes macrostructures; personal memory stabilizes microstructures.
+  failure_states:
+    - Zero or eroded memory leads to coherence collapse and oblivion.
+    - Conceptual decay precedes physical failure.
+  canonical_examples:
+    - Memory stones stabilize corridors in The Archivist’s Wake.
+    - Stations lose spatial coherence as floors forget they are floors.
+```
+
 # Memory Physics
 Core Metaphysics of The Forgotten Tides Universe
 

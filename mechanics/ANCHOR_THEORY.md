@@ -37,6 +37,22 @@ metadata:
   modified: '2025-12-11T00:55:01.579Z'
 ---
 
+```yaml
+quick_reference:
+  scope: Pilot anchor structures that preserve identity in corridors.
+  anchor_types:
+    - basic
+    - ritual
+    - emotional
+    - forbidden
+  failure_states:
+    - Moderate loss removes skills, names, or relationships.
+    - Catastrophic loss yields conceptual ghosting and oblivion.
+  canonical_examples:
+    - Rell burns a forbidden anchor during corridor stabilization.
+    - Anchor audits are mandatory before and after each run.
+```
+
 # Anchor Theory
 Psychocognitive Structures for Surviving Memory-Driven FTL Travel
 

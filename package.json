@@ -11,6 +11,7 @@
     "author:apply": "node scripts/prompt/authoring.js",
     "orchestrate": "node scripts/prompt/orchestrate.js",
     "context:build": "node scripts/prompt/context_builder.js",
+    "context:chunk": "node scripts/context/chunk_and_summarize.js",
     "scenes:list": "node scripts/prompt/scenes_cli.js list",
     "scenes:graph": "node scripts/prompt/scenes_cli.js graph",
     "scenes:open": "node scripts/prompt/scenes_cli.js open",
