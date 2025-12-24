@@ -1,423 +1,256 @@
 # Structural Audit & Optimization Plan for The Forgotten Tides Universe Repository
 
-## 1. Structural Audit & Taxonomy Analysis
+## Phase 1 — Completed / In-Place Foundations (Already Done)
 
-### Current Structure Issues
+> This phase captures work that is already present in the repository. These items are considered complete unless future changes explicitly alter them.
 
-**1.1. Dangerous Data Duplication Between Lore and Bible**
-- **Problem**: The current distinction between `lore/` (myth/history) and `bible/` (canonical facts) creates potential for dangerous duplication and inconsistency.
-- **Evidence**: The `bible/ARCHIVISTS_WAKE_STORY_BIBLE.md` contains canonical character definitions that could conflict with lore files.
-- **Risk**: AI agents querying for character details might get conflicting information from different sources.
+### 1.1 Structured YAML Frontmatter on Canon Files (Completed)
+**Status:** ✅ Complete
 
-**1.2. Lexicon as Standalone vs Structured Data**
-- **Problem**: The `lexicon/GLOSSARY.md` is currently a standalone markdown file, making programmatic access difficult for RAG systems.
-- **Evidence**: Terms are organized alphabetically but lack unique identifiers or structured metadata.
-- **Risk**: Cross-referencing terms in stories becomes manual and error-prone.
+**What exists today**
+- Character and mechanics files already include YAML frontmatter blocks with IDs, metadata, and cross references.
 
-**1.3. Inconsistent File Organization**
-- **Problem**: Some directories mentioned in README.md don't exist in the current structure (`/factions`, `/atlas`, `/design`).
-- **Evidence**: README.md lists future directories that aren't implemented yet.
-- **Risk**: Creates confusion about where new content should be placed.
+**Evidence**
+- `characters/*.md` (e.g., `characters/Rell.md`)
+- `mechanics/*.md` (e.g., `mechanics/MEMORY_PHYSICS.md`)
 
-### Proposed Hierarchy
+**Notes for agents**
+- Do **not** remove existing frontmatter fields. Extend or migrate carefully during later phases.
 
-```mermaid
-graph TD
-    A[Source Material - Immutable] --> B[/bible/]
-    A --> C[/mechanics/]
-    A --> D[/lexicon/]
-    E[Creative Output - Mutable] --> F[/lore/]
-    E --> G[/characters/]
-    E --> H[/stories/]
-    E --> I[/manuals/]
-    J[Meta & Automation] --> K[/docs/]
-    J --> L[/scripts/]
-    J --> M[/agents/]
-```
+### 1.2 Structured Lexicon Data (Completed)
+**Status:** ✅ Complete
 
-**Key Improvements:**
-1. **Source Material (Immutable Facts)**:
-   - `/bible/` - Canonical story bibles and immutable facts
-   - `/mechanics/` - Physics rules and hard magic systems
-   - `/lexicon/` - Structured glossary with unique IDs
+**What exists today**
+- `data/lexicon/terms.yaml` with structured glossary terms.
+- Legacy glossary retained at `data/lexicon/legacy/GLOSSARY.md`.
 
-2. **Creative Output (Mutable Drafts)**:
-   - `/lore/` - Historical events, myths, timelines
-   - `/characters/` - Character profiles with YAML frontmatter
-   - `/stories/` - Completed fiction
-   - `/manuals/` - In-universe technical documents
+**Evidence**
+- `data/lexicon/terms.yaml`
+- `data/lexicon/legacy/GLOSSARY.md`
 
-3. **Meta & Automation**:
-   - `/docs/` - Contribution guidelines, style guides
-   - `/scripts/` - Automation and validation tools
-   - `/agents/` - AI agent prompts
+**Notes for agents**
+- Scripts already consume `data/lexicon/terms.yaml`. Treat this as the canonical structured lexicon source going forward.
 
-## 2. File Format & Metadata Standards
+### 1.3 Glossary Enforcement & Schema Validation Tooling (Completed)
+**Status:** ✅ Complete
 
-### Recommended YAML Frontmatter Schema
+**What exists today**
+- Glossary enforcement script (uses structured lexicon with legacy fallback).
+- YAML frontmatter schema validation tooling.
 
-```yaml
----
-canonical_id: "char_1192-R"  # Unique identifier
-type: "character"            # or "location", "event", etc.
-name: "Rell"
-aliases: ["Pilot-Technician", "The Hollow One"]
-universe: "The Forgotten Tides"
-status: "canonical"          # canonical, speculative, deprecated
-created: "2025-12-11"
-modified: "2025-12-11"
-tags:
-  - "pilot"
-  - "memory-corridor"
-  - "anchor-burn"
-  - "canticle-fleet"
-references:
-  characters: ["char_1193-S", "char_1194-E", "char_1195-T"]  # Sutira, Estavan, Tari
-  locations: ["loc_401-H"]    # Heliodrome
-  events: ["event_201-LG"]    # Lattice Gap incident
-  mechanics: ["mech_301-MD"]  # Memory Drive mechanics
+**Evidence**
+- `scripts/lint/glossary_enforcer.js`
+- `scripts/lint/schema_validate.js`
+
+**Notes for agents**
+- Extend these tools rather than creating duplicates.
+
 ---
 
-# Rell
-Pilot-Technician, Canticle Fleet
-```
+## Phase 2 — Structural Alignment & Directory Gaps
 
-**Key Features:**
-- `canonical_id`: Unique UUID-style identifier for disambiguation
-- `references`: Cross-reference IDs for tracing relationships
-- `status`: Clear indication of canon level
-- `tags`: Semantic categorization for RAG retrieval
+> Goal: align the physical repository layout with the intended taxonomy in the plan.
 
-### Lexicon Structure Recommendation
+### 2.1 Create Missing Directories (from README vision)
+**Status:** ⏳ Pending
 
-Convert `lexicon/GLOSSARY.md` to structured format:
+**Subtasks**
+1. Create directories: `factions/`, `atlas/`, `design/` at repository root.
+2. Add minimal `README.md` files inside each directory clarifying intended content.
+3. Update any documentation references that point to non-existent directories.
 
-```yaml
-# lexicon/terms.yaml
-terms:
-  - id: "term_001"
-    term: "Anchor"
-    definition: "A memory or mental construct used by pilots to maintain selfhood under corridor stress."
-    category: "memory-technology"
-    related_terms: ["anchor-burn", "anchor-knot", "zero-anchoring"]
-    canonical_source: "bible/ARCHIVISTS_WAKE_STORY_BIBLE.md"
-    first_appearance: "The Archivist's Wake"
+**Agent guidance**
+- Use short, declarative README content (“Purpose”, “Expected file types”, “Status”).
 
-  - id: "term_002"
-    term: "Memory Corridor"
-    definition: "A spacetime pathway stabilized by memory for FTL traversal."
-    category: "ftl-technology"
-    related_terms: ["corridor-thinning", "memory-drive", "eddy"]
-    # ... etc
-```
+### 2.2 Relocate Lexicon Legacy Source to a Single Canonical Location
+**Status:** ⏳ Pending
 
-## 3. Agents & Scripts Review
+**Subtasks**
+1. Move `lexicon/GLOSSARY.md` → `data/lexicon/legacy/GLOSSARY.md` (if not already merged).
+2. Replace `lexicon/GLOSSARY.md` with a short stub that points to `data/lexicon/terms.yaml` for canonical data.
+3. Ensure all scripts reference `data/lexicon/terms.yaml` first, with a legacy fallback if required.
 
-### Current Automation Assessment
+**Agent guidance**
+- Preserve the legacy glossary content verbatim.
+- Avoid breaking existing tooling that expects `lexicon/GLOSSARY.md` (keep a pointer file).
 
-**Existing Scripts:**
-- `check_canon.sh`: Basic smoke tests for canonical rules
-- `validate_links.sh`: Link validation using lychee
+### 2.3 Directory-Level Taxonomy Confirmation
+**Status:** ⏳ Pending
 
-**Missing Automation Opportunities:**
-1. **Glossary Linter**: Check if capitalized terms in stories exist in lexicon
-2. **Canonical Reference Validator**: Ensure character/location references are valid
-3. **YAML Frontmatter Validator**: Validate schema compliance
-4. **Cross-Reference Builder**: Auto-generate reference maps
+**Subtasks**
+1. Verify `/bible/`, `/mechanics/`, `/lexicon/`, `/lore/`, `/characters/`, `/stories/`, `/manuals/`, `/docs/`, `/scripts/`, `/agents/` all exist and are in active use.
+2. Add short index files (e.g., `README.md` or `INDEX.md`) where missing to reinforce intended scope.
 
-### Recommended Python Scripts
+**Agent guidance**
+- Keep index files minimal, consistent, and cross-linked.
 
-```python
-# scripts/glossary_linter.py
-import re
-import yaml
-import glob
-from pathlib import Path
-
-def load_lexicon():
-    """Load structured lexicon data"""
-    with open('lexicon/terms.yaml', 'r') as f:
-        return yaml.safe_load(f)
-
-def check_story_terms(story_path, lexicon):
-    """Check if all capitalized terms exist in lexicon"""
-    with open(story_path, 'r') as f:
-        content = f.read()
-
-    # Find capitalized terms (simplified regex)
-    capitalized_terms = re.findall(r'\b[A-Z][a-zA-Z]+(?: [A-Z][a-zA-Z]+)*\b', content)
-
-    # Filter out common words and check against lexicon
-    lexicon_terms = {term['term'].lower() for term in lexicon['terms']}
-    issues = []
-
-    for term in capitalized_terms:
-        if term.lower() not in lexicon_terms and term not in ['The', 'And', 'But', 'Or']:
-            issues.append(f"Term '{term}' not found in lexicon")
-
-    return issues
-
-# scripts/canonical_validator.py
-import yaml
-import frontmatter
-from pathlib import Path
-
-def validate_references(file_path):
-    """Validate that all referenced IDs exist in the knowledge base"""
-    post = frontmatter.load(file_path)
-    metadata = post.metadata
-
-    # Load all canonical IDs from the knowledge base
-    # This would be implemented with actual file scanning
-    all_characters = load_all_character_ids()
-    all_locations = load_all_location_ids()
-
-    issues = []
-
-    for ref_type, ref_ids in metadata.get('references', {}).items():
-        if ref_type == 'characters':
-            for char_id in ref_ids:
-                if char_id not in all_characters:
-                    issues.append(f"Character reference '{char_id}' not found")
-        elif ref_type == 'locations':
-            for loc_id in ref_ids:
-                if loc_id not in all_locations:
-                    issues.append(f"Location reference '{loc_id}' not found")
-
-    return issues
-```
-
-### GitHub Action Workflow
-
-```yaml
-# .github/workflows/compile-stories.yml
-name: Compile Stories to PDF/ePub
-
-on:
-  push:
-    branches: [ main ]
-    paths:
-      - 'stories/**'
-      - '!stories/README.md'
-
-jobs:
-  compile:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.11'
-
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install pypandoc markdown
-
-      - name: Compile stories to PDF
-        run: |
-          # Concatenate all story markdown files
-          cat stories/*.md > combined_stories.md
-
-          # Convert to PDF using pandoc
-          pandoc combined_stories.md \
-            --metadata title="The Forgotten Tides Anthology" \
-            --metadata author="Jeffrey A. Zyjeski" \
-            --output stories/The_Forgotten_Tides_Anthology.pdf
-
-          # Convert to ePub
-          pandoc combined_stories.md \
-            --metadata title="The Forgotten Tides Anthology" \
-            --metadata author="Jeffrey A. Zyjeski" \
-            --output stories/The_Forgotten_Tides_Anthology.epub
-
-      - name: Upload artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: story-compilation
-          path: |
-            stories/The_Forgotten_Tides_Anthology.pdf
-            stories/The_Forgotten_Tides_Anthology.epub
-```
-
-## 4. Context Window Optimization
-
-### Mechanics File Structure Recommendation
-
-**Current Issue**: Mechanics files mix prose and technical details, making RAG retrieval inefficient.
-
-**Recommended Structure:**
-
-```markdown
-# Memory Physics
----
-canonical_id: "mech_301-MP"
-type: "mechanics"
-category: "core-metaphysics"
-status: "canonical"
 ---
 
-## Quick Reference (Structured Data)
+## Phase 3 — Canonical IDs, Metadata Harmonization, and Reference Consistency
 
-```yaml
-memory_gravity_equation: "Coherence = f(Remembrance, Density, Cultural Reinforcement)"
-memory_types:
-  - personal: "Microscale gravitational stabilization"
-  - collective: "Macroscale planetary/star stabilization"
-  - institutional: "Stabilizes political structures and megastructures"
-forgetting_stages:
-  - conceptual_decay: "Loss of meaning before material collapse"
-  - spatial_misalignment: "Physical distortion of structures"
-  - oblivion: "Zero coherence state"
-```
+> Goal: unify metadata conventions across files and eliminate ambiguity for automated tooling.
 
-## Detailed Explanation
+### 3.1 Canonical ID Standardization
+**Status:** ⏳ Pending
 
-Memory generates gravity through the following process:
-1. **Remembrance Phase**: Active recall creates coherence field
-2. **Density Accumulation**: Multiple memories reinforce gravitational weight
-3. **Cultural Reinforcement**: Shared narratives amplify stability
+**Subtasks**
+1. Define a canonical ID schema in `docs/` (format, prefixes, examples).
+2. Map existing `id`/`uuid` fields in YAML frontmatter to the canonical ID standard.
+3. Add a `canonical_id` field to all character, location, event, and mechanics files.
+4. Maintain backward compatibility by keeping existing IDs in place.
 
-## Failure States
+**Agent guidance**
+- Do not rename files without a clear mapping.
+- Create a translation table (CSV or JSON) mapping old IDs → canonical IDs.
 
-- **Conceptual Drift**: Objects lose their defined purpose
-- **Structural Raveling**: Physical integrity fails
-- **Oblivion**: Complete memory absence, zero gravitational interaction
+### 3.2 Reference Integrity Pass
+**Status:** ⏳ Pending
 
-## Canonical Examples
+**Subtasks**
+1. Normalize `cross_refs` so all references point to canonical IDs.
+2. Update any references in stories and mechanics to canonical IDs.
+3. Add explicit `references` nodes in YAML frontmatter where missing.
 
-- **Heliodrome**: Station suffering progressive conceptual dementia
-- **Rell's Anchor Burn**: Permanent identity removal with measurable gravitational reduction
-```
+**Agent guidance**
+- Start with characters and mechanics before stories.
+- Keep a changelog of updated references.
 
-**Benefits:**
-1. **Structured YAML section** for efficient RAG token usage
-2. **Quick reference** for AI agents needing specific data points
-3. **Detailed prose** for narrative context
-4. **Canonical examples** for continuity verification
+### 3.3 Canonical Index and Reference Map
+**Status:** ⏳ Pending
 
-### Token Optimization Strategies
+**Subtasks**
+1. Create `CANONICAL_INDEX.md` listing all canonical entities (grouped by type).
+2. Create `REFERENCE_MAP.json` describing relationships between entities.
+3. Ensure both files include canonical IDs and source file paths.
 
-1. **Frontload Critical Data**: Place most important facts in first 512 tokens
-2. **Use Structured Formats**: YAML/JSON for technical data, markdown for narrative
-3. **Implement Reference Chaining**: Allow RAG to follow canonical_id references
-4. **Create Summary Files**: Generate auto-summaries of complex topics
+**Agent guidance**
+- Generate these files from frontmatter to avoid manual drift.
 
-## 5. The Refactor - Immediate Structural Changes
+---
 
-### Phase 1: Directory Restructuring
+## Phase 4 — Automation & Validation Enhancements
 
-```bash
-# Create missing directories from README vision
-mkdir -p factions atlas design
+> Goal: improve tooling to prevent continuity drift and reduce manual oversight.
 
-# Move lexicon to structured format
-mv lexicon/GLOSSARY.md lexicon/legacy/
-# Create lexicon/terms.yaml with structured data
+### 4.1 Canonical Reference Validator
+**Status:** ⏳ Pending
 
-# Add canonical_id to all character files
-# using YAML frontmatter
-```
+**Subtasks**
+1. Build a script (Node or Python) that scans frontmatter references.
+2. Validate that each referenced ID exists in the knowledge base.
+3. Emit a report to `out/reports/` with broken references.
 
-### Phase 2: File Migration Plan
+**Agent guidance**
+- Use the canonical index as the source of truth.
+- Add the validator to existing lint/check workflows.
 
-1. **Add YAML Frontmatter** to all character files with canonical IDs
-2. **Convert Lexicon** from markdown to structured YAML
-3. **Create Reference Maps** linking characters to locations/events
-4. **Implement Validation Scripts** for cross-reference checking
-5. **Set Up GitHub Actions** for story compilation and validation
+### 4.2 Glossary Linter Enhancements
+**Status:** ⏳ Pending
 
-### Phase 3: Content Organization
+**Subtasks**
+1. Extend `scripts/lint/glossary_enforcer.js` to suggest closest matching glossary terms.
+2. Log missing glossary terms with file/line context.
+3. Add configuration to allow per-directory ignore lists.
 
-1. **Separate Source vs Creative**:
-   - Source: `/bible/`, `/mechanics/`, `/lexicon/`
-   - Creative: `/lore/`, `/characters/`, `/stories/`
+**Agent guidance**
+- Keep output machine-readable for CI use.
 
-2. **Implement Status Tags**:
-   - `canonical`: Immutable facts from published works
-   - `speculative`: Theories not yet confirmed in canon
-   - `deprecated`: Overwritten by newer canon
+### 4.3 Frontmatter Schema Expansion
+**Status:** ⏳ Pending
 
-3. **Create Index Files**:
-   - `CANONICAL_INDEX.md`: Master list of all canonical elements
-   - `REFERENCE_MAP.json`: Machine-readable relationship graph
+**Subtasks**
+1. Update schema definitions to include `canonical_id`, `references`, `status`, `tags`.
+2. Validate files by type (character vs mechanics vs story).
+3. Add schema versioning to reduce future churn.
 
-## 6. Tooling & Automation Roadmap
+**Agent guidance**
+- Validate new fields without breaking older files; warn before failing.
 
-### 4-6 Item Roadmap
+---
 
-1. **Glossary Linter Script** (High Priority)
-   - Python script to validate story terms against lexicon
-   - Generate warnings for undefined capitalized terms
-   - Suggest similar existing terms
+## Phase 5 — Story Compilation & Publication Workflow
 
-2. **Canonical Reference Validator** (High Priority)
-   - Validate all cross-references in YAML frontmatter
-   - Check that referenced IDs exist in knowledge base
-   - Prevent broken references in RAG queries
+> Goal: build a reproducible pipeline for compiled outputs.
 
-3. **YAML Frontmatter Generator**
-   - CLI tool to add proper frontmatter to existing files
-   - Auto-generate canonical_ids with proper naming conventions
-   - Batch process entire directories
+### 5.1 GitHub Action for Story Compilation
+**Status:** ⏳ Pending
 
-4. **RAG Optimization Pipeline**
-   - Pre-process files for efficient vector embedding
-   - Create chunked versions with optimal token windows
-   - Generate reference summaries for complex topics
+**Subtasks**
+1. Add `.github/workflows/compile-stories.yml`.
+2. Concatenate `stories/*.md` into a single source file.
+3. Generate PDF and ePub artifacts via Pandoc.
+4. Upload artifacts to the workflow summary.
 
-5. **Story Compilation Workflow**
-   - GitHub Action to compile stories to PDF/ePub
-   - Auto-generate table of contents
-   - Include canonical references and glossary
+**Agent guidance**
+- Ensure the workflow doesn’t run on `stories/README.md` changes only.
 
-6. **Continuity Dashboard**
-   - Web interface showing canonical relationships
-   - Visualize reference graphs
-   - Highlight potential continuity conflicts
+### 5.2 Local Build Script
+**Status:** ⏳ Pending
 
-## 7. Implementation Recommendations
+**Subtasks**
+1. Add `scripts/compile_stories.sh` mirroring the workflow logic.
+2. Document how to run it in `docs/`.
 
-### For RAG Optimization
+**Agent guidance**
+- Use predictable output filenames.
 
-1. **Vector Database Schema**:
-```json
-{
-  "canonical_id": "char_1192-R",
-  "type": "character",
-  "content": "Rell is a pilot-technician...",
-  "metadata": {
-    "name": "Rell",
-    "status": "canonical",
-    "references": ["char_1193-S", "loc_401-H"],
-    "source_file": "characters/Rell.md",
-    "embedding": [0.123, 0.456, ...]
-  },
-  "chunk_id": "char_1192-R_001",
-  "chunk_sequence": 1
-}
-```
+---
 
-2. **Query Optimization Strategy**:
-- First search by `canonical_id` for exact matches
-- Fall back to semantic search with reference chaining
-- Use metadata filters for type-specific queries
+## Phase 6 — RAG & Context Optimization
 
-3. **Hallucination Prevention**:
-- Require all responses to cite `canonical_id` sources
-- Implement confidence scoring based on status tags
-- Flag speculative content in responses
+> Goal: make content more retrieval-friendly while preserving narrative quality.
 
-## Conclusion
+### 6.1 Mechanics File “Quick Reference” Blocks
+**Status:** ⏳ Pending
 
-This optimization plan addresses the core requirements for AI-assisted writing while maintaining the rich narrative depth of The Forgotten Tides universe. The proposed structure:
+**Subtasks**
+1. Add a structured YAML “Quick Reference” block to each mechanics file.
+2. Ensure the block is near the top of the file for token efficiency.
+3. Include canonical examples and failure states.
 
-1. **Eliminates dangerous duplication** through clear source/creative separation
-2. **Enables efficient RAG queries** with structured metadata and canonical IDs
-3. **Prevents continuity errors** through automated validation
-4. **Optimizes token usage** with strategic file organization
-5. **Supports future growth** with scalable automation tools
+**Agent guidance**
+- Keep the block small and strictly structured.
 
-The implementation can proceed incrementally, starting with the most critical structural changes and validation tools, then expanding to advanced RAG optimization features.
+### 6.2 Chunking & Summaries Pipeline
+**Status:** ⏳ Pending
+
+**Subtasks**
+1. Implement a script to generate chunked versions of large files.
+2. Add automated summaries for each chunk.
+3. Store outputs in `out/` with a consistent naming convention.
+
+**Agent guidance**
+- Avoid modifying original files; generate derived artifacts.
+
+---
+
+## Phase 7 — Continuity Dashboard (Optional / Future)
+
+> Goal: a visual representation of canonical relationships for high-level continuity review.
+
+### 7.1 Continuity Web UI
+**Status:** 💤 Deferred
+
+**Subtasks**
+1. Build a small web UI reading `REFERENCE_MAP.json`.
+2. Render relationships as a network graph.
+3. Highlight missing or speculative nodes.
+
+**Agent guidance**
+- Keep UI minimal; the value is the graph, not styling.
+
+---
+
+## Implementation Summary
+
+**Already Completed:**
+- Structured lexicon in `data/lexicon/terms.yaml`
+- Glossary enforcement tooling
+- YAML frontmatter present on canon files
+
+**Immediate Next Steps (Recommended):**
+1. Phase 2 directory alignment
+2. Phase 3 canonical ID standardization
+3. Phase 4 reference validation tooling
+
+This phased plan is designed so multiple AI agents can work in parallel without conflict, with each phase being independently verifiable and testable.
