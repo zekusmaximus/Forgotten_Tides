@@ -37,6 +37,20 @@ metadata:
   modified: '2025-12-11T00:55:01.580Z'
 ---
 
+```yaml
+quick_reference:
+  scope: Memory Corridor FTL traversal and stabilization.
+  key_systems:
+    - Memory Drive converts memory into corridor coherence.
+    - Anchor-knot checks maintain pilot identity under shear.
+  failure_states:
+    - Thinning to raveling leads to corridor collapse and conceptual shear.
+    - Anchor burn causes permanent memory loss.
+  canonical_examples:
+    - Rell stabilizes a corridor with anchor cost.
+    - Predatory forgetting eddies follow attention gradients.
+```
+
 # Memory Corridor Mechanics
 How Faster-Than-Light Travel Functions in The Forgotten Tides
 

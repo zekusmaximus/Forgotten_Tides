@@ -220,7 +220,7 @@
 > Goal: make content more retrieval-friendly while preserving narrative quality.
 
 ### 6.1 Mechanics File “Quick Reference” Blocks
-**Status:** ⏳ Pending
+**Status:** ✅ Complete
 
 **Subtasks**
 1. Add a structured YAML “Quick Reference” block to each mechanics file.
@@ -230,8 +230,13 @@
 **Agent guidance**
 - Keep the block small and strictly structured.
 
+**Evidence**
+- `mechanics/MEMORY_PHYSICS.md`
+- `mechanics/CORRIDOR_MECHANICS.md`
+- `mechanics/ANCHOR_THEORY.md`
+
 ### 6.2 Chunking & Summaries Pipeline
-**Status:** ⏳ Pending
+**Status:** ✅ Complete
 
 **Subtasks**
 1. Implement a script to generate chunked versions of large files.
@@ -240,6 +245,10 @@
 
 **Agent guidance**
 - Avoid modifying original files; generate derived artifacts.
+
+**Evidence**
+- `scripts/context/chunk_and_summarize.js`
+- `out/chunks/chunk_manifest.json`
 
 ---
 
