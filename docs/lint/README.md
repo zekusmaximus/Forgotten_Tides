@@ -115,7 +115,7 @@ Schema files are located in `docs/schemas/` and follow JSON Schema Draft 2020-12
 
 **Unresolved references**:
 - Make sure the referenced entity exists
-- Check that the ID format is correct (e.g., `CHAR-0001`)
+- Check that the canonical ID format is correct (e.g., `char-0001`)
 - Verify the entity is in the correct directory
 
 **Glossary warnings**:

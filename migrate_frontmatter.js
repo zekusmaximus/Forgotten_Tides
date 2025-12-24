@@ -23,13 +23,39 @@ const FACTION_IDS = {
 };
 
 const MECHANICS_IDS = {
-    'Memory Gravity Equation': 'MECH-0001',
-    'Anchor Theory': 'MECH-0002',
-    'Conceptual Decay': 'MECH-0003'
+    'MEMORY PHYSICS': 'MECH-0001',
+    'CORRIDOR MECHANICS': 'MECH-0002',
+    'ANCHOR THEORY': 'MECH-0003'
 };
 
 const STORY_IDS = {
     'The Archivist\'s Wake': 'STORY-0001'
+};
+
+const CANONICAL_CHARACTER_IDS = {
+    'Rell': 'char-0001',
+    'Sutira': 'char-0002',
+    'Estavan': 'char-0003',
+    'Tari': 'char-0004'
+};
+
+const CANONICAL_LOCATION_IDS = {
+    'Heliodrome': 'loc-0001',
+    'Lattice Gap': 'loc-0002'
+};
+
+const CANONICAL_FACTION_IDS = {
+    'Canticle Fleet': 'fact-0001'
+};
+
+const CANONICAL_MECHANICS_IDS = {
+    'MEMORY PHYSICS': 'mech-0001',
+    'CORRIDOR MECHANICS': 'mech-0002',
+    'ANCHOR THEORY': 'mech-0003'
+};
+
+const CANONICAL_STORY_IDS = {
+    'The Archivist\'s Wake': 'story-0001'
 };
 
 // Migration report
@@ -70,19 +96,19 @@ function generateFrontmatterForCharacter(content, filename) {
 
     // Add known relationships based on character
     if (name === 'Rell') {
-        crossRefs.characters = ['CHAR-0002', 'CHAR-0003', 'CHAR-0004']; // Sutira, Estavan, Tari
-        crossRefs.locations = ['LOC-0001']; // Heliodrome
-        crossRefs.mechanics = ['MECH-0001', 'MECH-0002']; // Memory Gravity, Anchor Theory
-        crossRefs.factions = ['FACT-0001']; // Canticle Fleet
+        crossRefs.characters = ['char-0002', 'char-0003', 'char-0004']; // Sutira, Estavan, Tari
+        crossRefs.locations = ['loc-0001']; // Heliodrome
+        crossRefs.mechanics = ['mech-0001', 'mech-0003']; // Memory Gravity, Anchor Theory
+        crossRefs.factions = ['fact-0001']; // Canticle Fleet
     } else if (name === 'Sutira') {
-        crossRefs.characters = ['CHAR-0001', 'CHAR-0003', 'CHAR-0004']; // Rell, Estavan, Tari
-        crossRefs.factions = ['FACT-0001']; // Canticle Fleet
+        crossRefs.characters = ['char-0001', 'char-0003', 'char-0004']; // Rell, Estavan, Tari
+        crossRefs.factions = ['fact-0001']; // Canticle Fleet
     } else if (name === 'Estavan') {
-        crossRefs.characters = ['CHAR-0001', 'CHAR-0002', 'CHAR-0004']; // Rell, Sutira, Tari
-        crossRefs.factions = ['FACT-0001']; // Canticle Fleet
+        crossRefs.characters = ['char-0001', 'char-0002', 'char-0004']; // Rell, Sutira, Tari
+        crossRefs.factions = ['fact-0001']; // Canticle Fleet
     } else if (name === 'Tari') {
-        crossRefs.characters = ['CHAR-0001', 'CHAR-0002', 'CHAR-0003']; // Rell, Sutira, Estavan
-        crossRefs.factions = ['FACT-0001']; // Canticle Fleet
+        crossRefs.characters = ['char-0001', 'char-0002', 'char-0003']; // Rell, Sutira, Estavan
+        crossRefs.factions = ['fact-0001']; // Canticle Fleet
     }
 
     // Generate continuity invariants and watchlist
@@ -102,12 +128,14 @@ function generateFrontmatterForCharacter(content, filename) {
 
     return {
         id: CHARACTER_IDS[name] || `CHAR-${Object.keys(CHARACTER_IDS).length + 1}`,
+        canonical_id: CANONICAL_CHARACTER_IDS[name] || `char-${String(Object.keys(CHARACTER_IDS).length + 1).padStart(4, '0')}`,
         uuid: uuidv4(),
         type: 'character',
         name: name,
         summary_50: summary50,
         summary_200: summary200,
         cross_refs: crossRefs,
+        references: crossRefs,
         continuity: {
             invariants: invariants,
             watchlist: watchlist
@@ -130,6 +158,7 @@ function generateFrontmatterForStory(content, filename) {
 
     return {
         id: STORY_IDS[title] || `STORY-${Object.keys(STORY_IDS).length + 1}`,
+        canonical_id: CANONICAL_STORY_IDS[title] || `story-${String(Object.keys(STORY_IDS).length + 1).padStart(4, '0')}`,
         uuid: uuidv4(),
         type: 'story',
         title: title,
@@ -137,10 +166,16 @@ function generateFrontmatterForStory(content, filename) {
         summary_50: summary50,
         summary_200: summary200,
         cross_refs: {
-            characters: ['CHAR-0001', 'CHAR-0002', 'CHAR-0003', 'CHAR-0004'],
-            locations: ['LOC-0001'],
-            factions: ['FACT-0001'],
-            mechanics: ['MECH-0001', 'MECH-0002', 'MECH-0003']
+            characters: ['char-0001', 'char-0002', 'char-0003', 'char-0004'],
+            locations: ['loc-0001'],
+            factions: ['fact-0001'],
+            mechanics: ['mech-0001', 'mech-0002', 'mech-0003']
+        },
+        references: {
+            characters: ['char-0001', 'char-0002', 'char-0003', 'char-0004'],
+            locations: ['loc-0001'],
+            factions: ['fact-0001'],
+            mechanics: ['mech-0001', 'mech-0002', 'mech-0003']
         },
         themes: ['memory-as-cost', 'identity-erosion', 'sacrifice'],
         continuity_notes: [
@@ -167,6 +202,7 @@ function generateFrontmatterForMechanics(content, filename) {
 
     return {
         id: MECHANICS_IDS[name] || `MECH-${Object.keys(MECHANICS_IDS).length + 1}`,
+        canonical_id: CANONICAL_MECHANICS_IDS[name] || `mech-${String(Object.keys(MECHANICS_IDS).length + 1).padStart(4, '0')}`,
         uuid: uuidv4(),
         type: 'mechanics',
         name: name,
@@ -174,9 +210,14 @@ function generateFrontmatterForMechanics(content, filename) {
         summary_50: summary50,
         summary_200: summary200,
         cross_refs: {
-            characters: ['CHAR-0001'],
-            locations: ['LOC-0001'],
-            stories: ['STORY-0001']
+            characters: ['char-0001'],
+            locations: ['loc-0001'],
+            stories: ['story-0001']
+        },
+        references: {
+            characters: ['char-0001'],
+            locations: ['loc-0001'],
+            stories: ['story-0001']
         },
         rules: [
             {
@@ -215,12 +256,20 @@ function generateFrontmatterForLore(content, filename) {
 
     return {
         id: `LORE-${Object.keys(CHARACTER_IDS).length + Object.keys(LOCATION_IDS).length + 1}`,
+        canonical_id: `lore-${String(Object.keys(CHARACTER_IDS).length + Object.keys(LOCATION_IDS).length + 1).padStart(4, '0')}`,
         uuid: uuidv4(),
         type: 'lore',
         title: title,
         summary_50: summary50,
         summary_200: summary200,
         cross_refs: {
+            characters: [],
+            locations: [],
+            factions: [],
+            mechanics: [],
+            stories: []
+        },
+        references: {
             characters: [],
             locations: [],
             factions: [],
@@ -245,12 +294,20 @@ function generateFrontmatterForManual(content, filename) {
 
     return {
         id: `MANUAL-0001`,
+        canonical_id: `manual-0001`,
         uuid: uuidv4(),
         type: 'manual',
         title: title,
         summary_50: summary50,
         summary_200: summary200,
         cross_refs: {
+            characters: [],
+            locations: [],
+            factions: [],
+            mechanics: [],
+            stories: []
+        },
+        references: {
             characters: [],
             locations: [],
             factions: [],
@@ -409,7 +466,7 @@ ${report.errors.length > 0 ? report.errors.join('\n') : 'None'}
 - All updated files now start with YAML frontmatter in the format: \`---\\n<yaml>\\n---\\n\`
 - No narrative body content was lost during migration
 - UUIDs were generated using UUID v4 standard
-- Cross-references follow the ID patterns defined in the JSON schemas
+- Cross-references follow the canonical ID patterns defined in the JSON schemas
 - Continuity invariants and watchlists were added for characters
 - Character summaries were generated from existing content where possible
 

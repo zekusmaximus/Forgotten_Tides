@@ -1,0 +1,61 @@
+[
+  {
+    "file": "characters/Rell.md",
+    "legacy_id": "CHAR-0001",
+    "uuid": "bf91c589-4981-43f7-bf0e-b59578a93625",
+    "canonical_id": "char-0001"
+  },
+  {
+    "file": "characters/Sutira.md",
+    "legacy_id": "CHAR-0002",
+    "uuid": "c19071ad-b66e-4eef-8bfb-b583e5fbf853",
+    "canonical_id": "char-0002"
+  },
+  {
+    "file": "characters/Estavan.md",
+    "legacy_id": "CHAR-0003",
+    "uuid": "dda2aa7b-19d1-4732-be53-48c2c0c3f8bc",
+    "canonical_id": "char-0003"
+  },
+  {
+    "file": "characters/Tari.md",
+    "legacy_id": "CHAR-0004",
+    "uuid": "90a709b9-8af0-4343-bd12-dd1a4db2f99f",
+    "canonical_id": "char-0004"
+  },
+  {
+    "file": "mechanics/MEMORY_PHYSICS.md",
+    "legacy_id": "MECH-4",
+    "uuid": "d0b1fd40-264a-4aeb-851c-c18b5a38bcad",
+    "canonical_id": "mech-0001"
+  },
+  {
+    "file": "mechanics/CORRIDOR_MECHANICS.md",
+    "legacy_id": "MECH-4",
+    "uuid": "4763b298-b906-49a1-b85a-7f857c6bf6e9",
+    "canonical_id": "mech-0002"
+  },
+  {
+    "file": "mechanics/ANCHOR_THEORY.md",
+    "legacy_id": "MECH-4",
+    "uuid": "a8a5ce35-0239-40a7-829f-2478c50040de",
+    "canonical_id": "mech-0003"
+  },
+  {
+    "file": "atlas/Heliodrome.md",
+    "legacy_id": "LOC-0001",
+    "uuid": "9f6fc7ad-14ca-44d9-9bed-98d8302e2dd7",
+    "canonical_id": "loc-0001"
+  },
+  {
+    "file": "factions/Canticle_Fleet.md",
+    "legacy_id": "FACT-0001",
+    "uuid": "0a7fc7ef-2a3a-4b2f-84d3-16b14fbe6c88",
+    "canonical_id": "fact-0001"
+  },
+  {
+    "file": "The_Archivists_Wake.md",
+    "legacy_id": "STORY-0001",
+    "canonical_id": "story-0001"
+  }
+]

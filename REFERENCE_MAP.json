@@ -1,0 +1,81 @@
+{
+  "generated": "2025-12-12T00:00:00Z",
+  "nodes": [
+    { "canonical_id": "char-0001", "type": "character", "name": "Rell", "path": "characters/Rell.md" },
+    { "canonical_id": "char-0002", "type": "character", "name": "Sutira", "path": "characters/Sutira.md" },
+    { "canonical_id": "char-0003", "type": "character", "name": "Estavan", "path": "characters/Estavan.md" },
+    { "canonical_id": "char-0004", "type": "character", "name": "Tari", "path": "characters/Tari.md" },
+    { "canonical_id": "loc-0001", "type": "location", "name": "Heliodrome", "path": "atlas/Heliodrome.md" },
+    { "canonical_id": "fact-0001", "type": "faction", "name": "Canticle Fleet", "path": "factions/Canticle_Fleet.md" },
+    { "canonical_id": "mech-0001", "type": "mechanics", "name": "Memory Physics", "path": "mechanics/MEMORY_PHYSICS.md" },
+    { "canonical_id": "mech-0002", "type": "mechanics", "name": "Corridor Mechanics", "path": "mechanics/CORRIDOR_MECHANICS.md" },
+    { "canonical_id": "mech-0003", "type": "mechanics", "name": "Anchor Theory", "path": "mechanics/ANCHOR_THEORY.md" },
+    { "canonical_id": "story-0001", "type": "story", "name": "The Archivist's Wake", "path": "The_Archivists_Wake.md" }
+  ],
+  "edges": [
+    { "from": "char-0001", "to": "char-0002", "type": "characters" },
+    { "from": "char-0001", "to": "char-0003", "type": "characters" },
+    { "from": "char-0001", "to": "char-0004", "type": "characters" },
+    { "from": "char-0001", "to": "loc-0001", "type": "locations" },
+    { "from": "char-0001", "to": "fact-0001", "type": "factions" },
+    { "from": "char-0001", "to": "mech-0001", "type": "mechanics" },
+    { "from": "char-0001", "to": "mech-0003", "type": "mechanics" },
+
+    { "from": "char-0002", "to": "char-0001", "type": "characters" },
+    { "from": "char-0002", "to": "char-0003", "type": "characters" },
+    { "from": "char-0002", "to": "char-0004", "type": "characters" },
+    { "from": "char-0002", "to": "fact-0001", "type": "factions" },
+
+    { "from": "char-0003", "to": "char-0001", "type": "characters" },
+    { "from": "char-0003", "to": "char-0002", "type": "characters" },
+    { "from": "char-0003", "to": "char-0004", "type": "characters" },
+    { "from": "char-0003", "to": "fact-0001", "type": "factions" },
+
+    { "from": "char-0004", "to": "char-0001", "type": "characters" },
+    { "from": "char-0004", "to": "char-0002", "type": "characters" },
+    { "from": "char-0004", "to": "char-0003", "type": "characters" },
+    { "from": "char-0004", "to": "fact-0001", "type": "factions" },
+
+    { "from": "mech-0001", "to": "char-0001", "type": "characters" },
+    { "from": "mech-0001", "to": "loc-0001", "type": "locations" },
+    { "from": "mech-0001", "to": "story-0001", "type": "stories" },
+
+    { "from": "mech-0002", "to": "char-0001", "type": "characters" },
+    { "from": "mech-0002", "to": "loc-0001", "type": "locations" },
+    { "from": "mech-0002", "to": "story-0001", "type": "stories" },
+
+    { "from": "mech-0003", "to": "char-0001", "type": "characters" },
+    { "from": "mech-0003", "to": "loc-0001", "type": "locations" },
+    { "from": "mech-0003", "to": "story-0001", "type": "stories" },
+
+    { "from": "loc-0001", "to": "char-0001", "type": "characters" },
+    { "from": "loc-0001", "to": "char-0002", "type": "characters" },
+    { "from": "loc-0001", "to": "char-0003", "type": "characters" },
+    { "from": "loc-0001", "to": "char-0004", "type": "characters" },
+    { "from": "loc-0001", "to": "fact-0001", "type": "factions" },
+    { "from": "loc-0001", "to": "mech-0001", "type": "mechanics" },
+    { "from": "loc-0001", "to": "mech-0002", "type": "mechanics" },
+    { "from": "loc-0001", "to": "mech-0003", "type": "mechanics" },
+    { "from": "loc-0001", "to": "story-0001", "type": "stories" },
+
+    { "from": "fact-0001", "to": "char-0001", "type": "characters" },
+    { "from": "fact-0001", "to": "char-0002", "type": "characters" },
+    { "from": "fact-0001", "to": "char-0003", "type": "characters" },
+    { "from": "fact-0001", "to": "char-0004", "type": "characters" },
+    { "from": "fact-0001", "to": "loc-0001", "type": "locations" },
+    { "from": "fact-0001", "to": "mech-0001", "type": "mechanics" },
+    { "from": "fact-0001", "to": "mech-0002", "type": "mechanics" },
+    { "from": "fact-0001", "to": "mech-0003", "type": "mechanics" },
+    { "from": "fact-0001", "to": "story-0001", "type": "stories" },
+
+    { "from": "story-0001", "to": "char-0001", "type": "characters" },
+    { "from": "story-0001", "to": "char-0002", "type": "characters" },
+    { "from": "story-0001", "to": "char-0003", "type": "characters" },
+    { "from": "story-0001", "to": "char-0004", "type": "characters" },
+    { "from": "story-0001", "to": "loc-0001", "type": "locations" },
+    { "from": "story-0001", "to": "fact-0001", "type": "factions" },
+    { "from": "story-0001", "to": "mech-0001", "type": "mechanics" },
+    { "from": "story-0001", "to": "mech-0002", "type": "mechanics" },
+    { "from": "story-0001", "to": "mech-0003", "type": "mechanics" }
+  ]
+}

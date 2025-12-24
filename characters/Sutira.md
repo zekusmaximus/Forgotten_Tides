@@ -1,18 +1,29 @@
 ---
 id: CHAR-0002
 uuid: c19071ad-b66e-4eef-8bfb-b583e5fbf853
+canonical_id: char-0002
 type: character
 name: Sutira
 summary_50: Captain, Canticle Fleet
 summary_200: 'Sutira is a key character in The Forgotten Tides universe. Captain, Canticle Fleet  '
 cross_refs:
   characters:
-    - CHAR-0001
-    - CHAR-0003
-    - CHAR-0004
+    - char-0001
+    - char-0003
+    - char-0004
   locations: []
   factions:
-    - FACT-0001
+    - fact-0001
+  mechanics: []
+  stories: []
+references:
+  characters:
+    - char-0001
+    - char-0003
+    - char-0004
+  locations: []
+  factions:
+    - fact-0001
   mechanics: []
   stories: []
 continuity:
@@ -153,4 +164,3 @@ She provides:
 
 Her story arc intersects directly with the theology of memory:  
 **how much of another's loss should one permit?**
-

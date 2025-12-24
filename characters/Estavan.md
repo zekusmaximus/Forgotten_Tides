@@ -1,18 +1,29 @@
 ---
 id: CHAR-0003
 uuid: dda2aa7b-19d1-4732-be53-48c2c0c3f8bc
+canonical_id: char-0003
 type: character
 name: Estavan
 summary_50: Chief Archivist-Engineer, Canticle Fleet
 summary_200: 'Estavan is a key character in The Forgotten Tides universe. Chief Archivist-Engineer, Canticle Fleet  '
 cross_refs:
   characters:
-    - CHAR-0001
-    - CHAR-0002
-    - CHAR-0004
+    - char-0001
+    - char-0002
+    - char-0004
   locations: []
   factions:
-    - FACT-0001
+    - fact-0001
+  mechanics: []
+  stories: []
+references:
+  characters:
+    - char-0001
+    - char-0002
+    - char-0004
+  locations: []
+  factions:
+    - fact-0001
   mechanics: []
   stories: []
 continuity:
@@ -143,4 +154,3 @@ He is also the crew’s ballast:
 - keeping Tari from romanticizing sacrifice  
 
 If Rell embodies the universe’s cost, Estavan embodies its conscience.
-
