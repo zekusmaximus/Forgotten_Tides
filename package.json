@@ -18,7 +18,8 @@
     "pack:export": "node scripts/prompt/export_prompt_pack.js",
     "ids:resolve": "node scripts/prompt/resolve_ids.js",
     "intent:route": "node scripts/prompt/route_intent.js",
-    "linkmap:build": "node scripts/prompt/build_linkmap.js"
+    "linkmap:build": "node scripts/prompt/build_linkmap.js",
+    "dashboard": "npx http-server -p 8080 -o /dashboard/"
   },
   "dependencies": {
     "ajv": "^8.17.1",

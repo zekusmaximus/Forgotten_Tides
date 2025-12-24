@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Continuity Dashboard - The Forgotten Tides Universe</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #0a0a0a;
+            color: #e0e0e0;
+            overflow: hidden;
+        }
+
+        #header {
+            background: #1a1a1a;
+            padding: 1rem 2rem;
+            border-bottom: 2px solid #2a2a2a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #4a9eff;
+        }
+
+        #controls {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn {
+            background: #2a2a2a;
+            color: #e0e0e0;
+            border: 1px solid #3a3a3a;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        .btn:hover {
+            background: #3a3a3a;
+            border-color: #4a4a4a;
+        }
+
+        .filter-group {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .filter-group label {
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .filter-group input[type="checkbox"] {
+            cursor: pointer;
+        }
+
+        #graph-container {
+            width: 100%;
+            height: calc(100vh - 120px);
+            position: relative;
+            background: #0f0f0f;
+        }
+
+        #legend {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(26, 26, 26, 0.95);
+            padding: 1rem;
+            border-radius: 4px;
+            border: 1px solid #2a2a2a;
+            font-size: 0.85rem;
+            z-index: 1000;
+        }
+
+        #legend h3 {
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            color: #4a9eff;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        #info-panel {
+            position: absolute;
+            bottom: 1rem;
+            left: 1rem;
+            background: rgba(26, 26, 26, 0.95);
+            padding: 1rem;
+            border-radius: 4px;
+            border: 1px solid #2a2a2a;
+            max-width: 300px;
+            display: none;
+            z-index: 1000;
+        }
+
+        #info-panel h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+            color: #4a9eff;
+        }
+
+        #info-panel p {
+            font-size: 0.85rem;
+            margin-bottom: 0.25rem;
+            line-height: 1.4;
+        }
+
+        #info-panel .info-label {
+            color: #888;
+        }
+
+        #footer {
+            background: #1a1a1a;
+            padding: 0.75rem 2rem;
+            border-top: 1px solid #2a2a2a;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        #loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            font-size: 1.2rem;
+            color: #4a9eff;
+        }
+
+        .spinner {
+            border: 3px solid #2a2a2a;
+            border-top: 3px solid #4a9eff;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        #error {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: #ff6b6b;
+            display: none;
+            max-width: 600px;
+            padding: 2rem;
+            background: rgba(26, 26, 26, 0.95);
+            border-radius: 8px;
+            border: 2px solid #ff6b6b;
+        }
+
+        #error h2 {
+            margin-bottom: 1rem;
+        }
+
+        #error p {
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        #error code {
+            background: #1a1a1a;
+            padding: 0.25rem 0.5rem;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <div id="header">
+        <h1>🌊 The Forgotten Tides — Continuity Dashboard</h1>
+        <div id="controls">
+            <div class="filter-group">
+                <label><input type="checkbox" id="filter-character" checked> Characters</label>
+                <label><input type="checkbox" id="filter-location" checked> Locations</label>
+                <label><input type="checkbox" id="filter-mechanics" checked> Mechanics</label>
+                <label><input type="checkbox" id="filter-faction" checked> Factions</label>
+                <label><input type="checkbox" id="filter-story" checked> Stories</label>
+            </div>
+            <button class="btn" id="reset-view">Reset View</button>
+            <button class="btn" id="reload-data">Reload Data</button>
+        </div>
+    </div>
+
+    <div id="graph-container">
+        <div id="loading">
+            <div class="spinner"></div>
+            <div>Loading reference map...</div>
+        </div>
+
+        <div id="error">
+            <h2>⚠️ Error Loading Dashboard</h2>
+            <p id="error-message"></p>
+        </div>
+
+        <div id="legend">
+            <h3>Entity Types</h3>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #4a9eff;"></div>
+                <span>Character</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #ff6b6b;"></div>
+                <span>Location</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #51cf66;"></div>
+                <span>Mechanics</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #ffd93d;"></div>
+                <span>Faction</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #a78bfa;"></div>
+                <span>Story</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #888; opacity: 0.5;"></div>
+                <span>Missing/Speculative</span>
+            </div>
+        </div>
+
+        <div id="info-panel">
+            <h3 id="info-title"></h3>
+            <p><span class="info-label">Type:</span> <span id="info-type"></span></p>
+            <p><span class="info-label">ID:</span> <span id="info-id"></span></p>
+            <p><span class="info-label">Path:</span> <span id="info-path"></span></p>
+            <p><span class="info-label">Connections:</span> <span id="info-connections"></span></p>
+        </div>
+    </div>
+
+    <div id="footer">
+        Continuity Dashboard v1.0 — The Forgotten Tides Universe — Use mouse wheel to zoom, drag to pan, click nodes for details
+    </div>
+
+    <!-- Using vis-network for graph visualization -->
+    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>
