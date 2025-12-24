@@ -47,7 +47,7 @@ npm run lint:refs
 **Purpose**: Enforces glossary term usage in stories.
 
 **What it does**:
-- Loads canonical terms from `lexicon/GLOSSARY.md`
+- Loads canonical terms from `data/lexicon/terms.yaml` (legacy fallback at `data/lexicon/legacy/GLOSSARY.md`)
 - Scans `stories/*.md` files for capitalized multiword terms (e.g., "Memory Drive")
 - Warns about terms not found in the glossary
 - Respects ignore list in `docs/lint/glossary_ignore.txt`
@@ -103,7 +103,7 @@ Schema files are located in `docs/schemas/` and follow JSON Schema Draft 2020-12
 
 1. **Run linting before commits**: Add `npm run lint` as a pre-commit hook
 2. **Fix schema errors first**: Validation errors often cascade to reference errors
-3. **Update glossary proactively**: Add new terms to `GLOSSARY.md` as they emerge
+3. **Update glossary proactively**: Add new terms to `data/lexicon/terms.yaml` as they emerge
 4. **Use ignore list sparingly**: Only ignore terms that are truly exceptions
 
 ## Troubleshooting
@@ -119,6 +119,6 @@ Schema files are located in `docs/schemas/` and follow JSON Schema Draft 2020-12
 - Verify the entity is in the correct directory
 
 **Glossary warnings**:
-- Add missing terms to `lexicon/GLOSSARY.md`
+- Add missing terms to `data/lexicon/terms.yaml`
 - Or add them to `docs/lint/glossary_ignore.txt` if appropriate
 - Remember that warnings don't fail the build

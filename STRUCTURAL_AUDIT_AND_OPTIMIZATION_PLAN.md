@@ -52,7 +52,7 @@
 > Goal: align the physical repository layout with the intended taxonomy in the plan.
 
 ### 2.1 Create Missing Directories (from README vision)
-**Status:** ⏳ Pending
+**Status:** ✅ Complete
 
 **Subtasks**
 1. Create directories: `factions/`, `atlas/`, `design/` at repository root.
@@ -63,7 +63,7 @@
 - Use short, declarative README content (“Purpose”, “Expected file types”, “Status”).
 
 ### 2.2 Relocate Lexicon Legacy Source to a Single Canonical Location
-**Status:** ⏳ Pending
+**Status:** ✅ Complete
 
 **Subtasks**
 1. Move `lexicon/GLOSSARY.md` → `data/lexicon/legacy/GLOSSARY.md` (if not already merged).
@@ -75,7 +75,7 @@
 - Avoid breaking existing tooling that expects `lexicon/GLOSSARY.md` (keep a pointer file).
 
 ### 2.3 Directory-Level Taxonomy Confirmation
-**Status:** ⏳ Pending
+**Status:** ✅ Complete
 
 **Subtasks**
 1. Verify `/bible/`, `/mechanics/`, `/lexicon/`, `/lore/`, `/characters/`, `/stories/`, `/manuals/`, `/docs/`, `/scripts/`, `/agents/` all exist and are in active use.
@@ -249,8 +249,7 @@
 - YAML frontmatter present on canon files
 
 **Immediate Next Steps (Recommended):**
-1. Phase 2 directory alignment
-2. Phase 3 canonical ID standardization
-3. Phase 4 reference validation tooling
+1. Phase 3 canonical ID standardization
+2. Phase 4 reference validation tooling
 
 This phased plan is designed so multiple AI agents can work in parallel without conflict, with each phase being independently verifiable and testable.
