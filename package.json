@@ -8,6 +8,7 @@
     "check:timeline": "node scripts/checks/timeline_variance.js",
     "check": "npm run check:continuity && npm run check:timeline",
     "lint": "npm run lint:schema && npm run lint:refs && npm run lint:canonical-refs && npm run lint:glossary",
+    "test:dashboard": "node scripts/tests/test_dashboard.js",
     "author:apply": "node scripts/prompt/authoring.js",
     "orchestrate": "node scripts/prompt/orchestrate.js",
     "context:build": "node scripts/prompt/context_builder.js",
@@ -18,7 +19,8 @@
     "pack:export": "node scripts/prompt/export_prompt_pack.js",
     "ids:resolve": "node scripts/prompt/resolve_ids.js",
     "intent:route": "node scripts/prompt/route_intent.js",
-    "linkmap:build": "node scripts/prompt/build_linkmap.js"
+    "linkmap:build": "node scripts/prompt/build_linkmap.js",
+    "dashboard": "npx http-server -p 8080 -o /dashboard/"
   },
   "dependencies": {
     "ajv": "^8.17.1",

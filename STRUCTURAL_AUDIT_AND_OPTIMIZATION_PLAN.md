@@ -257,15 +257,21 @@
 > Goal: a visual representation of canonical relationships for high-level continuity review.
 
 ### 7.1 Continuity Web UI
-**Status:** 💤 Deferred
+**Status:** ✅ Complete
 
 **Subtasks**
-1. Build a small web UI reading `REFERENCE_MAP.json`.
-2. Render relationships as a network graph.
-3. Highlight missing or speculative nodes.
+1. Build a small web UI reading `REFERENCE_MAP.json`. ✅
+2. Render relationships as a network graph. ✅
+3. Highlight missing or speculative nodes. ✅
 
 **Agent guidance**
 - Keep UI minimal; the value is the graph, not styling.
+
+**Evidence**
+- `dashboard/index.html` - Main HTML structure with minimal styling
+- `dashboard/dashboard.js` - Graph rendering logic using vis-network
+- `dashboard/README.md` - Comprehensive usage documentation
+- `package.json` - Added `npm run dashboard` script for easy local serving
 
 ---
 
