@@ -75,8 +75,7 @@ function loadLegacyGlossaryTerms() {
 }
 
 // Load ignore list
-function loadIgnoreList() {
-  const ignorePath = path.join(__dirname, '../../docs/lint/glossary_ignore.txt');
+function loadIgnoreList(ignorePath) {
   const ignored = new Set();
 
   if (fs.existsSync(ignorePath)) {
@@ -97,6 +96,65 @@ function loadIgnoreList() {
   return ignored;
 }
 
+function loadGlobalIgnoreList() {
+  const ignorePath = path.join(__dirname, '../../docs/lint/glossary_ignore.txt');
+  return loadIgnoreList(ignorePath);
+}
+
+function loadDirectoryIgnoreList(filePath) {
+  const ignored = new Set();
+  let currentDir = path.dirname(filePath);
+  const repoRoot = path.resolve(__dirname, '../..');
+
+  while (currentDir.startsWith(repoRoot)) {
+    const ignorePath = path.join(currentDir, '.glossary_ignore.txt');
+    const localIgnored = loadIgnoreList(ignorePath);
+    localIgnored.forEach(term => ignored.add(term));
+
+    const parentDir = path.dirname(currentDir);
+    if (parentDir === currentDir) {
+      break;
+    }
+    currentDir = parentDir;
+  }
+
+  return ignored;
+}
+
+function levenshteinDistance(a, b) {
+  const matrix = Array.from({ length: a.length + 1 }, () => Array(b.length + 1).fill(0));
+
+  for (let i = 0; i <= a.length; i++) matrix[i][0] = i;
+  for (let j = 0; j <= b.length; j++) matrix[0][j] = j;
+
+  for (let i = 1; i <= a.length; i++) {
+    for (let j = 1; j <= b.length; j++) {
+      const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+      matrix[i][j] = Math.min(
+        matrix[i - 1][j] + 1,
+        matrix[i][j - 1] + 1,
+        matrix[i - 1][j - 1] + cost
+      );
+    }
+  }
+
+  return matrix[a.length][b.length];
+}
+
+function suggestClosestTerms(term, glossaryTerms) {
+  const normalizedTerm = term.toLowerCase();
+  const candidates = [];
+
+  glossaryTerms.forEach(glossaryTerm => {
+    const distance = levenshteinDistance(normalizedTerm, glossaryTerm.toLowerCase());
+    candidates.push({ term: glossaryTerm, distance });
+  });
+
+  candidates.sort((a, b) => a.distance - b.distance);
+  const maxDistance = Math.max(3, Math.floor(term.length * 0.3));
+  return candidates.filter(candidate => candidate.distance <= maxDistance).slice(0, 3).map(candidate => candidate.term);
+}
+
 // Scan markdown files for capitalized multiword terms
 function scanForGlossaryTerms(filePath, glossaryTerms, ignoredTerms, termMap) {
   const warnings = [];
@@ -104,27 +162,39 @@ function scanForGlossaryTerms(filePath, glossaryTerms, ignoredTerms, termMap) {
   try {
     const content = fs.readFileSync(filePath, 'utf8');
 
-    // Skip frontmatter
-    const bodyMatch = content.match(/^---\s*([\s\S]*?)\s*---([\s\S]*)/);
-    const bodyContent = bodyMatch ? bodyMatch[2] : content;
+    const lines = content.split('\n');
+    let startLine = 0;
+
+    if (lines[0] && lines[0].trim() === '---') {
+      for (let i = 1; i < lines.length; i++) {
+        if (lines[i].trim() === '---') {
+          startLine = i + 1;
+          break;
+        }
+      }
+    }
 
     // Regex for capitalized multiword terms (2+ words, title case)
     // This matches terms like "Memory Drive", "Conceptual Drift", etc.
     const termRegex = /\b([A-Z][a-z]+(?:\s+[A-Z][a-z]+)+)\b/g;
-    const matches = bodyContent.matchAll(termRegex);
-    const foundTerms = new Set();
 
-    for (const match of matches) {
-      const term = match[1];
-      foundTerms.add(term);
-    }
+    for (let lineIndex = startLine; lineIndex < lines.length; lineIndex++) {
+      const line = lines[lineIndex];
+      const matches = line.matchAll(termRegex);
 
-    // Check which found terms are not in glossary and not ignored
-    foundTerms.forEach(term => {
-      if (!glossaryTerms.has(term) && !ignoredTerms.has(term)) {
-        warnings.push(`⚠️  Term "${term}" not found in glossary`);
+      for (const match of matches) {
+        const term = match[1];
+        if (!glossaryTerms.has(term) && !ignoredTerms.has(term)) {
+          const suggestions = suggestClosestTerms(term, glossaryTerms);
+          warnings.push({
+            file: filePath,
+            line: lineIndex + 1,
+            term,
+            suggestions
+          });
+        }
       }
-    });
+    }
 
     return warnings;
   } catch (error) {
@@ -147,14 +217,27 @@ function checkStoriesDirectory(glossaryTerms, ignoredTerms, termMap) {
   files.forEach(file => {
     if (file.endsWith('.md')) {
       const filePath = path.join(storiesDir, file);
-      const warnings = scanForGlossaryTerms(filePath, glossaryTerms, ignoredTerms, termMap);
+      const directoryIgnored = loadDirectoryIgnoreList(filePath);
+      const combinedIgnored = new Set([...ignoredTerms, ...directoryIgnored]);
+      const warnings = scanForGlossaryTerms(filePath, glossaryTerms, combinedIgnored, termMap);
 
       if (warnings.length > 0) {
-        console.log(`\n📄 ${filePath}`);
-        warnings.forEach(warning => console.log(`  ${warning}`));
+        warnings.forEach(warning => {
+          console.log(JSON.stringify({
+            level: 'warn',
+            file: path.relative(process.cwd(), warning.file),
+            line: warning.line,
+            term: warning.term,
+            suggestions: warning.suggestions
+          }));
+        });
         hasWarnings = true;
       } else {
-        console.log(`✅ ${filePath} - All terms in glossary`);
+        console.log(JSON.stringify({
+          level: 'info',
+          file: path.relative(process.cwd(), filePath),
+          status: 'ok'
+        }));
       }
     }
   });
@@ -167,7 +250,7 @@ function main() {
   console.log('🔍 Enforcing glossary terms from structured YAML...');
 
   const { terms: glossaryTerms, termMap } = loadGlossaryTerms();
-  const ignoredTerms = loadIgnoreList();
+  const ignoredTerms = loadGlobalIgnoreList();
 
   if (glossaryTerms.size === 0) {
     console.log('ℹ️  No glossary terms loaded, skipping check');

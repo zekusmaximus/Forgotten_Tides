@@ -52,7 +52,17 @@ function validateFile(filePath, schemaName) {
     const valid = validate(data);
 
     if (valid) {
-      return { valid: true };
+      const warnings = [];
+      if (!data.schema_version) {
+        warnings.push('Missing recommended field: schema_version');
+      }
+      if (!data.tags) {
+        warnings.push('Missing recommended field: tags');
+      }
+      if (!data.status && !(data.metadata && data.metadata.status)) {
+        warnings.push('Missing recommended field: status (top-level or metadata.status)');
+      }
+      return { valid: true, warnings };
     } else {
       return { valid: false, errors: validate.errors.map(err => {
         const propertyPath = err.instancePath || err.schemaPath;
@@ -98,6 +108,9 @@ function walkDir(dir, schemaName) {
         }
       } else {
         console.log(`✅ ${filePath}`);
+        if (result.warnings && result.warnings.length > 0) {
+          result.warnings.forEach(warning => console.warn(`⚠️  ${filePath}: ${warning}`));
+        }
       }
     }
   }
@@ -118,6 +131,21 @@ function main() {
 
   // Validate stories
   if (walkDir(path.join(__dirname, '../../stories'), 'story')) {
+    hasErrors = true;
+  }
+
+  // Validate mechanics
+  if (walkDir(path.join(__dirname, '../../mechanics'), 'mechanics_rule')) {
+    hasErrors = true;
+  }
+
+  // Validate factions
+  if (walkDir(path.join(__dirname, '../../factions'), 'faction')) {
+    hasErrors = true;
+  }
+
+  // Validate atlas locations
+  if (walkDir(path.join(__dirname, '../../atlas'), 'location')) {
     hasErrors = true;
   }
 

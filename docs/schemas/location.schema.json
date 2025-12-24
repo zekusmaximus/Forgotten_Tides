@@ -16,6 +16,11 @@
       "pattern": "^loc-\\d{4}$",
       "description": "Canonical location ID in format loc-####"
     },
+    "schema_version": {
+      "type": "string",
+      "pattern": "^v?\\d+\\.\\d+\\.\\d+$",
+      "description": "Schema version for this frontmatter"
+    },
     "uuid": {
       "type": "string",
       "format": "uuid",
@@ -29,6 +34,18 @@
     "name": {
       "type": "string",
       "description": "Location name"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["canonical", "speculative", "deprecated"],
+      "description": "Canonical status of the location"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Optional tags for grouping or filtering"
     },
     "location_type": {
       "type": "string",
