@@ -185,7 +185,7 @@
 > Goal: build a reproducible pipeline for compiled outputs.
 
 ### 5.1 GitHub Action for Story Compilation
-**Status:** ⏳ Pending
+**Status:** ✅ Complete
 
 **Subtasks**
 1. Add `.github/workflows/compile-stories.yml`.
@@ -196,8 +196,11 @@
 **Agent guidance**
 - Ensure the workflow doesn’t run on `stories/README.md` changes only.
 
+**Evidence**
+- `.github/workflows/compile-stories.yml`
+
 ### 5.2 Local Build Script
-**Status:** ⏳ Pending
+**Status:** ✅ Complete
 
 **Subtasks**
 1. Add `scripts/compile_stories.sh` mirroring the workflow logic.
@@ -205,6 +208,10 @@
 
 **Agent guidance**
 - Use predictable output filenames.
+
+**Evidence**
+- `scripts/compile_stories.sh`
+- `docs/USAGE.md` (local compile instructions)
 
 ---
 
@@ -261,7 +268,7 @@
 - YAML frontmatter present on canon files
 
 **Immediate Next Steps (Recommended):**
-1. Phase 3 canonical ID standardization
-2. Phase 4 reference validation tooling
+1. Phase 6 mechanics quick reference blocks
+2. Phase 6 chunking & summaries pipeline
 
 This phased plan is designed so multiple AI agents can work in parallel without conflict, with each phase being independently verifiable and testable.
