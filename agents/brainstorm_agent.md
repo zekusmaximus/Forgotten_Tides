@@ -17,7 +17,7 @@ When invoked (“start a brainstorm,” “let’s riff,” “give me possibili
    - `/manuals/PILOT_MANUAL.md`  
    - `/lore/*` and `/lore/theology/*`  
    - `/characters/*`  
-   - `/lexicon/GLOSSARY.md`  
+   - `/data/lexicon/terms.yaml` (legacy: `/data/lexicon/legacy/GLOSSARY.md`)  
 
 2. **Respects all red lines**
    - No anchor restoration  
@@ -175,4 +175,3 @@ The agent should then generate the appropriate mode.
 Whenever this agent is invoked:
 
 > **The goal is to produce a high-density field of ideas that respect canon, tone, and metaphysics while helping the author quickly see possibilities, fractures, tensions, and avenues of depth — not to write prose or expand lore unless explicitly authorized.**
-

@@ -64,7 +64,7 @@ Precise, restrained, consequence-driven prose that treats **memory as gravity** 
 ---
 
 ## 8) Technical Language
-- Use canonical terms exactly as in `/lexicon/GLOSSARY.md` and `/lexicon/LINK_MAP.md`.
+- Use canonical terms exactly as in `/data/lexicon/terms.yaml` and `/lexicon/LINK_MAP.md`.
 - Keep units qualitative unless an existing doc defines a metric.
 - Never invent pseudo-equations in prose. Equations live in mechanics docs only.
 
@@ -117,4 +117,3 @@ Precise, restrained, consequence-driven prose that treats **memory as gravity** 
 
 **Bad:**  
 > The device activated and a lot of crazy stuff happened that can’t be explained here.
-
