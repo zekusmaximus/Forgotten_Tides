@@ -2,11 +2,12 @@
   "scripts": {
     "lint:schema": "node scripts/lint/schema_validate.js",
     "lint:refs": "node scripts/lint/unresolved_refs.js",
+    "lint:canonical-refs": "node scripts/lint/canonical_reference_validator.js",
     "lint:glossary": "node scripts/lint/glossary_enforcer.js",
     "check:continuity": "node scripts/checks/continuity.js",
     "check:timeline": "node scripts/checks/timeline_variance.js",
     "check": "npm run check:continuity && npm run check:timeline",
-    "lint": "npm run lint:schema && npm run lint:refs && npm run lint:glossary",
+    "lint": "npm run lint:schema && npm run lint:refs && npm run lint:canonical-refs && npm run lint:glossary",
     "author:apply": "node scripts/prompt/authoring.js",
     "orchestrate": "node scripts/prompt/orchestrate.js",
     "context:build": "node scripts/prompt/context_builder.js",

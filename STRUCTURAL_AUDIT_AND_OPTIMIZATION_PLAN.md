@@ -133,7 +133,7 @@
 > Goal: improve tooling to prevent continuity drift and reduce manual oversight.
 
 ### 4.1 Canonical Reference Validator
-**Status:** ⏳ Pending
+**Status:** ✅ Complete
 
 **Subtasks**
 1. Build a script (Node or Python) that scans frontmatter references.
@@ -144,8 +144,13 @@
 - Use the canonical index as the source of truth.
 - Add the validator to existing lint/check workflows.
 
+**Evidence**
+- `scripts/lint/canonical_reference_validator.js`
+- `out/reports/canonical_reference_report.json` (generated output)
+- `package.json` (wired into `npm run lint`)
+
 ### 4.2 Glossary Linter Enhancements
-**Status:** ⏳ Pending
+**Status:** ✅ Complete
 
 **Subtasks**
 1. Extend `scripts/lint/glossary_enforcer.js` to suggest closest matching glossary terms.
@@ -155,8 +160,11 @@
 **Agent guidance**
 - Keep output machine-readable for CI use.
 
+**Evidence**
+- `scripts/lint/glossary_enforcer.js` (JSON warnings with suggestions + line context; `.glossary_ignore.txt` support)
+
 ### 4.3 Frontmatter Schema Expansion
-**Status:** ⏳ Pending
+**Status:** ✅ Complete
 
 **Subtasks**
 1. Update schema definitions to include `canonical_id`, `references`, `status`, `tags`.
@@ -165,6 +173,10 @@
 
 **Agent guidance**
 - Validate new fields without breaking older files; warn before failing.
+
+**Evidence**
+- `docs/schemas/*.schema.json` (status/tags/schema_version fields added)
+- `scripts/lint/schema_validate.js` (warnings for missing recommended fields + expanded directory validation)
 
 ---
 

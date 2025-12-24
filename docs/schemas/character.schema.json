@@ -16,6 +16,11 @@
       "pattern": "^char-\\d{4}$",
       "description": "Canonical character ID in format char-####"
     },
+    "schema_version": {
+      "type": "string",
+      "pattern": "^v?\\d+\\.\\d+\\.\\d+$",
+      "description": "Schema version for this frontmatter"
+    },
     "uuid": {
       "type": "string",
       "format": "uuid",
@@ -36,6 +41,18 @@
         "type": "string"
       },
       "description": "Alternative names or titles"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["canonical", "speculative", "deprecated"],
+      "description": "Canonical status of the character"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Optional tags for grouping or filtering"
     },
     "summary_50": {
       "type": "string",
