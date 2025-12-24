@@ -1,0 +1,52 @@
+name: Compile Stories
+
+on:
+  push:
+    paths:
+      - 'stories/**'
+      - 'scripts/compile_stories.sh'
+      - '.github/workflows/compile-stories.yml'
+    paths-ignore:
+      - 'stories/README.md'
+  pull_request:
+    paths:
+      - 'stories/**'
+      - 'scripts/compile_stories.sh'
+      - '.github/workflows/compile-stories.yml'
+    paths-ignore:
+      - 'stories/README.md'
+  workflow_dispatch:
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install pandoc
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y pandoc
+
+      - name: Compile stories
+        run: scripts/compile_stories.sh
+
+      - name: Upload compiled stories
+        uses: actions/upload-artifact@v4
+        with:
+          name: forgotten-tides-stories
+          path: |
+            out/compiled/forgotten_tides_stories.md
+            out/compiled/forgotten_tides_stories.pdf
+            out/compiled/forgotten_tides_stories.epub
+
+      - name: Write workflow summary
+        run: |
+          {
+            echo "## Story compilation artifacts";
+            echo "";
+            echo "- out/compiled/forgotten_tides_stories.md";
+            echo "- out/compiled/forgotten_tides_stories.pdf";
+            echo "- out/compiled/forgotten_tides_stories.epub";
+          } >> "$GITHUB_STEP_SUMMARY"

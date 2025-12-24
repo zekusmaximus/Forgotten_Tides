@@ -92,6 +92,19 @@ node scripts/prompt/orchestrate.js "compile all artifacts for review"
 - Exports RAG chunks
 - Validates all schemas
 
+## Story Compilation (Local)
+
+Compile all story markdown into a single source file plus PDF and ePub outputs.
+
+```bash
+scripts/compile_stories.sh
+```
+
+**Output:**
+- `out/compiled/forgotten_tides_stories.md`
+- `out/compiled/forgotten_tides_stories.pdf`
+- `out/compiled/forgotten_tides_stories.epub`
+
 ### `export_pack_only`
 Exports only the prompt pack without additional processing.
 
