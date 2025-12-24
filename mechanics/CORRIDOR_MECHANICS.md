@@ -1,6 +1,7 @@
 ---
 id: MECH-4
 uuid: 4763b298-b906-49a1-b85a-7f857c6bf6e9
+canonical_id: mech-0002
 type: mechanics
 name: CORRIDOR MECHANICS
 category: memory-physics
@@ -8,11 +9,18 @@ summary_50: How Faster-Than-Light Travel Functions in The Forgotten Tides
 summary_200: CORRIDOR MECHANICS is a core mechanics rule in The Forgotten Tides universe. How Faster-Than-Light Travel Functions in The Forgotten Tides
 cross_refs:
   characters:
-    - CHAR-0001
+    - char-0001
   locations:
-    - LOC-0001
+    - loc-0001
   stories:
-    - STORY-0001
+    - story-0001
+references:
+  characters:
+    - char-0001
+  locations:
+    - loc-0001
+  stories:
+    - story-0001
 rules:
   - statement: Memory generates gravitational coherence
     formula: Coherence = (Remembrance × Density) + Cultural_Reinforcement
@@ -164,4 +172,3 @@ Corridor formation depends on:
 - personal anchor-tax  
 
 Physicists describe corridors as “narrative tubes” through spacetime—subject to the stories beings tell about themselves and their destinations.
-

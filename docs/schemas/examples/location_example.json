@@ -1,14 +1,20 @@
 {
   "id": "LOC-0001",
+  "canonical_id": "loc-0001",
   "type": "location",
   "name": "Heliodrome",
   "location_type": "station",
   "summary_50": "Major station suffering progressive conceptual dementia and memory loss.",
   "summary_200": "The Heliodrome is a critical station in the Lattice Gap region experiencing advanced conceptual dementia. Its architecture and systems are failing due to collective memory loss, mirroring forgetting diseases on a civilizational scale. The station requires constant memory reinforcement to prevent collapse.",
   "cross_refs": {
-    "characters": ["CHAR-0001", "CHAR-0002"],
-    "mechanics": ["MECH-0003"],
-    "stories": ["STORY-0001"]
+    "characters": ["char-0001", "char-0002"],
+    "mechanics": ["mech-0003"],
+    "stories": ["story-0001"]
+  },
+  "references": {
+    "characters": ["char-0001", "char-0002"],
+    "mechanics": ["mech-0003"],
+    "stories": ["story-0001"]
   },
   "coordinates": {
     "region": "Lattice Gap",

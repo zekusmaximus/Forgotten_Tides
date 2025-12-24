@@ -1,6 +1,7 @@
 ---
 id: MECH-4
 uuid: a8a5ce35-0239-40a7-829f-2478c50040de
+canonical_id: mech-0003
 type: mechanics
 name: ANCHOR THEORY
 category: memory-physics
@@ -8,11 +9,18 @@ summary_50: Psychocognitive Structures for Surviving Memory-Driven FTL Travel
 summary_200: ANCHOR THEORY is a core mechanics rule in The Forgotten Tides universe. Psychocognitive Structures for Surviving Memory-Driven FTL Travel
 cross_refs:
   characters:
-    - CHAR-0001
+    - char-0001
   locations:
-    - LOC-0001
+    - loc-0001
   stories:
-    - STORY-0001
+    - story-0001
+references:
+  characters:
+    - char-0001
+  locations:
+    - loc-0001
+  stories:
+    - story-0001
 rules:
   - statement: Memory generates gravitational coherence
     formula: Coherence = (Remembrance × Density) + Cultural_Reinforcement
@@ -132,4 +140,3 @@ Anchor theory shapes:
 - rituals  
 - legal frameworks  
 - ethics of memory preservation  
-

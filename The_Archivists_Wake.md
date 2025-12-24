@@ -1,3 +1,47 @@
+---
+id: STORY-0001
+canonical_id: story-0001
+type: story
+title: The Archivist's Wake
+story_type: short-story
+summary_50: Canticle crew endures corridor thinning to reach the failing Heliodrome.
+summary_200: The Archivist's Wake follows Rell, Sutira, Estavan, and Tari during a corridor failure en route to the Heliodrome. The story establishes anchor burn permanence, memory-gravity physics, and the ethical cost of survival.
+cross_refs:
+  characters:
+    - char-0001
+    - char-0002
+    - char-0003
+    - char-0004
+  locations:
+    - loc-0001
+  factions:
+    - fact-0001
+  mechanics:
+    - mech-0001
+    - mech-0002
+    - mech-0003
+  stories: []
+references:
+  characters:
+    - char-0001
+    - char-0002
+    - char-0003
+    - char-0004
+  locations:
+    - loc-0001
+  factions:
+    - fact-0001
+  mechanics:
+    - mech-0001
+    - mech-0002
+    - mech-0003
+  stories: []
+metadata:
+  status: canonical
+  created: '2025-12-11T00:55:01.000Z'
+  modified: '2025-12-11T00:55:01.000Z'
+---
+
 THE ARCHIVIST’S WAKE
 
 I. Mouth of the Corridor
@@ -113,6 +157,5 @@ I checked my mind for the old familiar ache, the memory I used to keep for the d
 Nothing. Just clean, white space.
 I was lighter than I’d ever been. It was terrifying.
 I kept walking.
-
 
 

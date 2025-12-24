@@ -1,14 +1,20 @@
 {
   "id": "CHAR-0001",
+  "canonical_id": "char-0001",
   "type": "character",
   "name": "Rell",
   "aliases": ["Pilot-Technician", "The Hollow One"],
   "summary_50": "Skilled memory-corridor pilot with dangerous anchor degradation. Sacrifices identity to protect others.",
   "summary_200": "Rell is a Canticle Fleet pilot-technician known for exceptional corridor stabilization skills and reckless self-sacrifice. After burning forbidden emotional anchors, he exhibits identity void and reduced gravitational coherence. His story embodies the core theme of memory as sacrificial currency.",
   "cross_refs": {
-    "characters": ["CHAR-0002", "CHAR-0003", "CHAR-0004"],
-    "locations": ["LOC-0001"],
-    "mechanics": ["MECH-0001", "MECH-0002"]
+    "characters": ["char-0002", "char-0003", "char-0004"],
+    "locations": ["loc-0001"],
+    "mechanics": ["mech-0001", "mech-0002"]
+  },
+  "references": {
+    "characters": ["char-0002", "char-0003", "char-0004"],
+    "locations": ["loc-0001"],
+    "mechanics": ["mech-0001", "mech-0002"]
   },
   "continuity": {
     "invariants": [

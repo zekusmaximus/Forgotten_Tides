@@ -91,7 +91,7 @@
 > Goal: unify metadata conventions across files and eliminate ambiguity for automated tooling.
 
 ### 3.1 Canonical ID Standardization
-**Status:** ⏳ Pending
+**Status:** ✅ Complete
 
 **Subtasks**
 1. Define a canonical ID schema in `docs/` (format, prefixes, examples).
@@ -104,7 +104,7 @@
 - Create a translation table (CSV or JSON) mapping old IDs → canonical IDs.
 
 ### 3.2 Reference Integrity Pass
-**Status:** ⏳ Pending
+**Status:** ✅ Complete
 
 **Subtasks**
 1. Normalize `cross_refs` so all references point to canonical IDs.
@@ -116,7 +116,7 @@
 - Keep a changelog of updated references.
 
 ### 3.3 Canonical Index and Reference Map
-**Status:** ⏳ Pending
+**Status:** ✅ Complete
 
 **Subtasks**
 1. Create `CANONICAL_INDEX.md` listing all canonical entities (grouped by type).

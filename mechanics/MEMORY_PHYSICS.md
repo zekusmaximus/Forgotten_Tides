@@ -1,6 +1,7 @@
 ---
 id: MECH-4
 uuid: d0b1fd40-264a-4aeb-851c-c18b5a38bcad
+canonical_id: mech-0001
 type: mechanics
 name: MEMORY PHYSICS
 category: memory-physics
@@ -8,11 +9,18 @@ summary_50: Core Metaphysics of The Forgotten Tides Universe
 summary_200: MEMORY PHYSICS is a core mechanics rule in The Forgotten Tides universe. Core Metaphysics of The Forgotten Tides Universe
 cross_refs:
   characters:
-    - CHAR-0001
+    - char-0001
   locations:
-    - LOC-0001
+    - loc-0001
   stories:
-    - STORY-0001
+    - story-0001
+references:
+  characters:
+    - char-0001
+  locations:
+    - loc-0001
+  stories:
+    - story-0001
 rules:
   - statement: Memory generates gravitational coherence
     formula: Coherence = (Remembrance × Density) + Cultural_Reinforcement
@@ -159,4 +167,3 @@ Because memory *is* mass:
 - Destruction of memory can destabilize entire regions.
 
 The universe is ethically fragile.
-

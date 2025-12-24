@@ -4,12 +4,17 @@
   "title": "Character Schema",
   "description": "Schema for characters in The Forgotten Tides universe",
   "type": "object",
-  "required": ["id", "type", "summary_50", "summary_200", "cross_refs", "continuity"],
+  "required": ["id", "canonical_id", "type", "summary_50", "summary_200", "cross_refs", "references", "continuity"],
   "properties": {
     "id": {
       "type": "string",
       "pattern": "^CHAR-\\d{4}$",
       "description": "Character ID in format CHAR-####"
+    },
+    "canonical_id": {
+      "type": "string",
+      "pattern": "^char-\\d{4}$",
+      "description": "Canonical character ID in format char-####"
     },
     "uuid": {
       "type": "string",
@@ -50,35 +55,77 @@
           "type": "array",
           "items": {
             "type": "string",
-            "pattern": "^CHAR-\\d{4}$"
+            "pattern": "^char-\\d{4}$"
           }
         },
         "locations": {
           "type": "array",
           "items": {
             "type": "string",
-            "pattern": "^LOC-\\d{4}$"
+            "pattern": "^loc-\\d{4}$"
           }
         },
         "factions": {
           "type": "array",
           "items": {
             "type": "string",
-            "pattern": "^FACT-\\d{4}$"
+            "pattern": "^fact-\\d{4}$"
           }
         },
         "mechanics": {
           "type": "array",
           "items": {
             "type": "string",
-            "pattern": "^MECH-\\d{4}$"
+            "pattern": "^mech-\\d{4}$"
           }
         },
         "stories": {
           "type": "array",
           "items": {
             "type": "string",
-            "pattern": "^STORY-\\d{4}$"
+            "pattern": "^story-\\d{4}$"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "references": {
+      "type": "object",
+      "description": "Canonical references to other entities",
+      "properties": {
+        "characters": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^char-\\d{4}$"
+          }
+        },
+        "locations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^loc-\\d{4}$"
+          }
+        },
+        "factions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^fact-\\d{4}$"
+          }
+        },
+        "mechanics": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^mech-\\d{4}$"
+          }
+        },
+        "stories": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^story-\\d{4}$"
           }
         }
       },
