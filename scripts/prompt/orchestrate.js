@@ -230,14 +230,15 @@ function getBodyContentForAuthoring() {
   });
 }
 
-function writeSessionReport({query, intent, ids, packPath, artifacts, lintResults, contextPath, stickyIds}) {
+function writeSessionReport({query, intent, ids, packPath, packMdPath, artifacts, lintResults, contextPath, stickyIds}) {
   const stamp = new Date().toISOString().replace(/[:.]/g,"-");
   const p = `docs/session/${stamp}_${intent}.md`;
   const lines = [
     `# Session Report — ${intent}`,
     `- **Query:** ${query}`,
     `- **IDs:** ${ids?.join(", ") || "(none)"}`,
-    `- **Pack:** ${packPath || "(none)"}`,
+    `- **Pack (JSON):** ${packPath || "(none)"}`,
+    `- **Pack (MD):** ${packMdPath || "(none)"}`,
     `- **Context:** ${contextPath || "(none)"}`,
     `- **Artifacts:** ${(artifacts||[]).join(", ") || "(none)"}`,
     `- **Carried IDs:** ${stickyIds?.join(", ") || "(none)"}`,
@@ -326,6 +327,7 @@ async function orchestrate(query, options = {}) {
 
   // Export pack with final IDs
   const packPath = exportPack(finalIds);
+  const packMdPath = packPath ? packPath.replace(".json", ".md") : null;
   const artifacts = [];
 
   switch (intent) {
@@ -495,7 +497,12 @@ async function orchestrate(query, options = {}) {
   }
 
   const lintResults = runLints();
-  const report = writeSessionReport({ query, intent, finalIds, packPath, artifacts, lintResults, contextPath, stickyIds: sessionState.sticky_ids });
+  const report = writeSessionReport({ query, intent, ids: finalIds, packPath, packMdPath, artifacts, lintResults, contextPath, stickyIds: sessionState.sticky_ids });
+
+  console.log(`\n--- Orchestration Complete ---`);
+  console.log(`Intent: ${intent}`);
+  console.log(`Report: ${report}`);
+  if (packMdPath) console.log(`Pack (MD): ${packMdPath}`);
 
   // Update session state
   sessionState.last_intent = intent;

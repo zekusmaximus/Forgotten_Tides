@@ -26,46 +26,77 @@ async function buildLinkMap() {
         const entityDirs = [
             'characters',
             'factions',
-            'locations',
+            'atlas',
             'mechanics',
-            'stories'
+            'stories',
+            'lore'
         ];
 
         for (const dir of entityDirs) {
             const dirPath = path.join(__dirname, `../../${dir}`);
             if (fs.existsSync(dirPath)) {
-                const files = fs.readdirSync(dirPath);
+                const files = glob.sync('**/*.{md,yaml,json}', { cwd: dirPath });
                 for (const file of files) {
-                    if (file.endsWith('.md') || file.endsWith('.yaml') || file.endsWith('.json')) {
-                        const filePath = path.join(dirPath, file);
-                        const content = fs.readFileSync(filePath, 'utf8');
-                        let entityData;
+                    const filePath = path.join(dirPath, file);
+                    const content = fs.readFileSync(filePath, 'utf8');
+                    let entityData;
 
-                        try {
-                            if (file.endsWith('.json')) {
-                                entityData = JSON.parse(content);
-                            } else if (file.endsWith('.yaml')) {
-                                entityData = yaml.load(content);
-                            } else {
-                                // Try to parse frontmatter for .md files
-                                const frontmatterMatch = content.match(/^---\n([\s\S]*?)\n---/);
-                                if (frontmatterMatch) {
-                                    entityData = yaml.load(frontmatterMatch[1]);
-                                }
+                    try {
+                        if (file.endsWith('.json')) {
+                            entityData = JSON.parse(content);
+                        } else if (file.endsWith('.yaml')) {
+                            entityData = yaml.load(content);
+                        } else {
+                            // Try to parse frontmatter for .md files
+                            const frontmatterMatch = content.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+                            if (frontmatterMatch) {
+                                entityData = yaml.load(frontmatterMatch[1]);
                             }
-
-                            if (entityData && entityData.id) {
-                                entities[entityData.id] = {
-                                    id: entityData.id,
-                                    type: dir,
-                                    file: file,
-                                    ...entityData
-                                };
-                            }
-                        } catch (error) {
-                            console.warn(`Could not parse ${filePath}: ${error.message}`);
                         }
+
+                        if (entityData && entityData.id) {
+                            const relativePath = path.join(dir, file).replace(/\\/g, '/');
+                            let type = dir.replace(/s$/, '');
+                            if (dir === 'atlas') type = 'location';
+                            if (dir === 'stories') type = 'story';
+                            
+                            entities[entityData.id] = {
+                                id: entityData.id,
+                                type: type,
+                                name: entityData.name || entityData.title || entityData.id,
+                                path: relativePath,
+                                file: file,
+                                ...entityData
+                            };
+                        }
+                    } catch (error) {
+                        console.warn(`Could not parse ${filePath}: ${error.message}`);
                     }
+                }
+            }
+        }
+
+        // Also check root for story files
+        const rootFiles = fs.readdirSync(path.join(__dirname, '../../'));
+        for (const file of rootFiles) {
+            if (file.endsWith('.md') && file !== 'README.md' && file !== 'CANONICAL_INDEX.md') {
+                const filePath = path.join(__dirname, '../../', file);
+                const content = fs.readFileSync(filePath, 'utf8');
+                const frontmatterMatch = content.match(/^---\n([\s\S]*?)\n---/);
+                if (frontmatterMatch) {
+                    try {
+                        const entityData = yaml.load(frontmatterMatch[1]);
+                        if (entityData && entityData.id) {
+                            entities[entityData.id] = {
+                                id: entityData.id,
+                                type: 'story',
+                                name: entityData.name || entityData.title || entityData.id,
+                                path: file,
+                                file: file,
+                                ...entityData
+                            };
+                        }
+                    } catch (e) {}
                 }
             }
         }
@@ -117,6 +148,43 @@ async function buildLinkMap() {
 
         const entitiesJsonPath = path.join(outGraphsDir, 'entities.json');
         fs.writeFileSync(entitiesJsonPath, JSON.stringify(entitiesOutput, null, 2));
+
+        // Write REFERENCE_MAP.json for the dashboard
+        const referenceMap = {
+            generated: new Date().toISOString(),
+            nodes: Object.values(entities).map(e => ({
+                canonical_id: e.id,
+                type: e.type,
+                name: e.name,
+                path: e.path
+            })),
+            edges: relationships.map(r => ({
+                from: r.source,
+                to: r.target,
+                type: r.type
+            }))
+        };
+        const referenceMapPath = path.join(__dirname, '../../REFERENCE_MAP.json');
+        fs.writeFileSync(referenceMapPath, JSON.stringify(referenceMap, null, 2));
+
+        // Write CANONICAL_INDEX.md
+        const sortedEntities = Object.values(entities).sort((a, b) => a.id.localeCompare(b.id));
+        const types = [...new Set(sortedEntities.map(e => e.type))].sort();
+        
+        let canonicalIndexContent = `# Canonical Index\n\nThis index lists canonical entities, their IDs, and source paths. Generated: ${new Date().toISOString()}\n\n`;
+        
+        for (const type of types) {
+            const typeLabel = type.charAt(0).toUpperCase() + type.slice(1);
+            canonicalIndexContent += `## ${typeLabel}\n`;
+            const typeEntities = sortedEntities.filter(e => e.type === type);
+            for (const entity of typeEntities) {
+                canonicalIndexContent += `- \`${entity.id}\` — ${entity.name} (\`${entity.path}\`)\n`;
+            }
+            canonicalIndexContent += `\n`;
+        }
+
+        const canonicalIndexPath = path.join(__dirname, '../../CANONICAL_INDEX.md');
+        fs.writeFileSync(canonicalIndexPath, canonicalIndexContent);
 
         // Write LINK_MAP.md
         const linkMapContent = `# Link Map - Entity Relationships

@@ -273,30 +273,38 @@
         const nodes = filteredNodes.map(node => {
             const type = node.type || 'missing';
             const color = typeColors[type] || typeColors.missing;
+            
+            // Conflict detection: Orphaned nodes (no connections)
+            const connections = rawData.edges.filter(e => 
+                e.from === node.canonical_id || e.to === node.canonical_id
+            ).length;
+            const isOrphaned = connections === 0;
             const isMissing = node.status === 'missing' || node.status === 'speculative' || !node.path;
             
             return {
                 id: node.canonical_id,
                 label: node.name,
-                title: `${node.name}\nType: ${type}\nID: ${node.canonical_id}`,
+                title: `${node.name}\nType: ${type}\nID: ${node.canonical_id}${isOrphaned ? '\n⚠️ ORPHANED (No connections)' : ''}`,
                 color: {
                     background: color,
-                    border: isMissing ? '#888' : '#fff',
+                    border: isOrphaned ? '#ff0000' : (isMissing ? '#888' : '#fff'),
                     highlight: {
                         background: color,
-                        border: '#fff'
+                        border: isOrphaned ? '#ff0000' : '#fff'
                     }
                 },
-                borderWidth: isMissing ? 2 : 1,
-                borderWidthSelected: 3,
+                borderWidth: isOrphaned ? 4 : (isMissing ? 2 : 1),
+                borderWidthSelected: isOrphaned ? 6 : 3,
                 font: {
                     color: '#ffffff',
                     size: 14,
-                    face: 'arial'
+                    face: 'arial',
+                    strokeWidth: isOrphaned ? 2 : 0,
+                    strokeColor: '#000'
                 },
                 opacity: isMissing ? 0.5 : 1,
                 shape: 'dot',
-                size: 20,
+                size: isOrphaned ? 25 : 20,
                 _data: node
             };
         });
@@ -339,6 +347,19 @@
         document.getElementById('info-id').textContent = node.canonical_id;
         document.getElementById('info-path').textContent = node.path || 'Not specified';
         
+        // Update VS Code link
+        const vscodeLink = document.getElementById('info-vscode-link');
+        if (node.path) {
+            // Use vscode://file/ protocol
+            // Note: This requires the user to have VS Code installed and the protocol registered
+            // We use a relative path which might be tricky, but usually VS Code handles it if the workspace is open
+            const absolutePath = window.location.pathname.replace('/dashboard/index.html', '') + '/' + node.path;
+            vscodeLink.href = `vscode://file/${node.path}`; 
+            vscodeLink.style.display = 'inline-block';
+        } else {
+            vscodeLink.style.display = 'none';
+        }
+
         // Count connections
         const connections = rawData.edges.filter(e => 
             e.from === node.canonical_id || e.to === node.canonical_id

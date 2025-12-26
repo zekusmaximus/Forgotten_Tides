@@ -88,7 +88,8 @@ function readFM(p) {
 }
 
 function findById(id) {
-  const files = globFiles(`{data,stories}/**/*.md`, { nodir: true });
+  const dirs = ['characters', 'factions', 'atlas', 'mechanics', 'stories', 'lore', 'data'];
+  const files = globFiles(`{${dirs.join(',')}}/**/*.md`, { nodir: true });
   for (const f of files) {
     const { meta, body } = readFM(f);
     if (meta && meta.id === id) return { path: f, meta, body };
@@ -131,9 +132,33 @@ if (require.main === module) {
   }
   if (!fs.existsSync("out/prompts")) fs.mkdirSync("out/prompts", { recursive: true });
   const payload = pack(ids);
-  const file = `out/prompts/${payload.created_at.replace(/[:.]/g, "-")}_pack.json`;
-  fs.writeFileSync(file, JSON.stringify(payload, null, 2));
-  process.stdout.write(file);
+  const timestamp = payload.created_at.replace(/[:.]/g, "-");
+  const jsonFile = `out/prompts/${timestamp}_pack.json`;
+  const mdFile = `out/prompts/${timestamp}_pack.md`;
+  
+  fs.writeFileSync(jsonFile, JSON.stringify(payload, null, 2));
+  
+  // Generate Markdown version
+  let mdContent = `# Prompt Pack: ${payload.created_at}\n\n`;
+  for (const entry of payload.entries) {
+    mdContent += `## ${entry.name} (${entry.id})\n`;
+    mdContent += `**Type:** ${entry.type}\n`;
+    if (entry.summary_200) mdContent += `**Summary:** ${entry.summary_200}\n\n`;
+    else if (entry.summary_50) mdContent += `**Summary:** ${entry.summary_50}\n\n`;
+    
+    if (entry.rules && entry.rules.length > 0) {
+      mdContent += `### Rules\n`;
+      for (const rule of entry.rules) {
+        mdContent += `- ${rule}\n`;
+      }
+      mdContent += `\n`;
+    }
+    
+    mdContent += `---\n\n`;
+  }
+  fs.writeFileSync(mdFile, mdContent);
+  
+  process.stdout.write(jsonFile);
 }
 
 module.exports = { pack };

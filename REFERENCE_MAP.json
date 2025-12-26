@@ -1,81 +1,144 @@
 {
-  "generated": "2025-12-12T00:00:00Z",
+  "generated": "2025-12-26T16:30:03.675Z",
   "nodes": [
-    { "canonical_id": "char-0001", "type": "character", "name": "Rell", "path": "characters/Rell.md" },
-    { "canonical_id": "char-0002", "type": "character", "name": "Sutira", "path": "characters/Sutira.md" },
-    { "canonical_id": "char-0003", "type": "character", "name": "Estavan", "path": "characters/Estavan.md" },
-    { "canonical_id": "char-0004", "type": "character", "name": "Tari", "path": "characters/Tari.md" },
-    { "canonical_id": "loc-0001", "type": "location", "name": "Heliodrome", "path": "atlas/Heliodrome.md" },
-    { "canonical_id": "fact-0001", "type": "faction", "name": "Canticle Fleet", "path": "factions/Canticle_Fleet.md" },
-    { "canonical_id": "mech-0001", "type": "mechanics", "name": "Memory Physics", "path": "mechanics/MEMORY_PHYSICS.md" },
-    { "canonical_id": "mech-0002", "type": "mechanics", "name": "Corridor Mechanics", "path": "mechanics/CORRIDOR_MECHANICS.md" },
-    { "canonical_id": "mech-0003", "type": "mechanics", "name": "Anchor Theory", "path": "mechanics/ANCHOR_THEORY.md" },
-    { "canonical_id": "story-0001", "type": "story", "name": "The Archivist's Wake", "path": "The_Archivists_Wake.md" }
+    {
+      "canonical_id": "CHAR-0004",
+      "type": "character",
+      "name": "Tari",
+      "path": "characters/Tari.md"
+    },
+    {
+      "canonical_id": "CHAR-0002",
+      "type": "character",
+      "name": "Sutira",
+      "path": "characters/Sutira.md"
+    },
+    {
+      "canonical_id": "CHAR-0001",
+      "type": "character",
+      "name": "Rell",
+      "path": "characters/Rell.md"
+    },
+    {
+      "canonical_id": "CHAR-0003",
+      "type": "character",
+      "name": "Estavan",
+      "path": "characters/Estavan.md"
+    },
+    {
+      "canonical_id": "FACT-0001",
+      "type": "faction",
+      "name": "Canticle Fleet",
+      "path": "factions/Canticle_Fleet.md"
+    },
+    {
+      "canonical_id": "LOC-0001",
+      "type": "location",
+      "name": "Heliodrome",
+      "path": "atlas/Heliodrome.md"
+    },
+    {
+      "canonical_id": "MECH-4",
+      "type": "mechanics",
+      "name": "ANCHOR THEORY",
+      "path": "mechanics/ANCHOR_THEORY.md"
+    },
+    {
+      "canonical_id": "NOVELLA_TEST_NOVELLA_OUTLINE",
+      "type": "story",
+      "name": "Test Novella - Outline",
+      "path": "stories/novella/NOVELLA_TEST_NOVELLA/outline.md"
+    },
+    {
+      "canonical_id": "NOVELLA_TEST_NOVELLA",
+      "type": "story",
+      "name": "Test Novella",
+      "path": "stories/novella/NOVELLA_TEST_NOVELLA/manuscript.md"
+    },
+    {
+      "canonical_id": "SCENE_9FB5CD97D313E440A565FDFFC9BC933411B6B453",
+      "type": "story",
+      "name": "Test Scene",
+      "path": "stories/novella/NOVELLA_TEST_NOVELLA/scenes/SCENE_9FB5CD97D313E440A565FDFFC9BC933411B6B453.md"
+    },
+    {
+      "canonical_id": "NOVELLA_TEST_OUTLINE",
+      "type": "story",
+      "name": "Test - Outline",
+      "path": "stories/novella/NOVELLA_TEST/outline.md"
+    },
+    {
+      "canonical_id": "NOVELLA_TEST",
+      "type": "story",
+      "name": "Test",
+      "path": "stories/novella/NOVELLA_TEST/manuscript.md"
+    },
+    {
+      "canonical_id": "NOVELLA_FIRST_CORRIDOR_OUTLINE",
+      "type": "story",
+      "name": "First Corridor - Outline",
+      "path": "stories/novella/NOVELLA_FIRST_CORRIDOR/outline.md"
+    },
+    {
+      "canonical_id": "NOVELLA_FIRST_CORRIDOR",
+      "type": "story",
+      "name": "First Corridor",
+      "path": "stories/novella/NOVELLA_FIRST_CORRIDOR/manuscript.md"
+    },
+    {
+      "canonical_id": "SCENE_D9B9E99CD4CDD7109B0756CE955E9574912E36A6",
+      "type": "story",
+      "name": "Second Scene",
+      "path": "stories/novella/NOVELLA_FIRST_CORRIDOR/scenes/SCENE_D9B9E99CD4CDD7109B0756CE955E9574912E36A6.md"
+    },
+    {
+      "canonical_id": "SCENE_96A0A49F0F2BCA0EE73308E6FD97DA80711DEBBC",
+      "type": "story",
+      "name": "Opening Scene",
+      "path": "stories/novella/NOVELLA_FIRST_CORRIDOR/scenes/SCENE_96A0A49F0F2BCA0EE73308E6FD97DA80711DEBBC.md"
+    },
+    {
+      "canonical_id": "NOVEL_FORGOTTEN_TIDES_OUTLINE",
+      "type": "story",
+      "name": "Forgotten Tides - Outline",
+      "path": "stories/novel/NOVEL_FORGOTTEN_TIDES/outline.md"
+    },
+    {
+      "canonical_id": "NOVEL_FORGOTTEN_TIDES_NOTES",
+      "type": "story",
+      "name": "Forgotten Tides - Development Notes",
+      "path": "stories/novel/NOVEL_FORGOTTEN_TIDES/notes.md"
+    },
+    {
+      "canonical_id": "NOVEL_FORGOTTEN_TIDES_MANUSCRIPT",
+      "type": "story",
+      "name": "Forgotten Tides",
+      "path": "stories/novel/NOVEL_FORGOTTEN_TIDES/manuscript.md"
+    },
+    {
+      "canonical_id": "SCENE_541938A8FD6140A456619C4030B828CCC5AC4298",
+      "type": "story",
+      "name": "Floaters",
+      "path": "stories/novel/NOVEL_FORGOTTEN_TIDES/scenes/SCENE_541938A8FD6140A456619C4030B828CCC5AC4298.md"
+    },
+    {
+      "canonical_id": "LORE-7",
+      "type": "lore",
+      "name": "COSMIC REGIONS",
+      "path": "lore/COSMIC_REGIONS.md"
+    },
+    {
+      "canonical_id": "NOTES_CHAT_HIGHLIGHTS_1765473539542",
+      "type": "notes",
+      "name": "Chat Highlights",
+      "path": "lore/notes/NOTES_CHAT_HIGHLIGHTS_1765473539542.md"
+    },
+    {
+      "canonical_id": "NOTES_CHAT_HIGHLIGHTS_1765472978233",
+      "type": "notes",
+      "name": "Chat Highlights",
+      "path": "lore/notes/NOTES_CHAT_HIGHLIGHTS_1765472978233.md"
+    }
   ],
-  "edges": [
-    { "from": "char-0001", "to": "char-0002", "type": "characters" },
-    { "from": "char-0001", "to": "char-0003", "type": "characters" },
-    { "from": "char-0001", "to": "char-0004", "type": "characters" },
-    { "from": "char-0001", "to": "loc-0001", "type": "locations" },
-    { "from": "char-0001", "to": "fact-0001", "type": "factions" },
-    { "from": "char-0001", "to": "mech-0001", "type": "mechanics" },
-    { "from": "char-0001", "to": "mech-0003", "type": "mechanics" },
-
-    { "from": "char-0002", "to": "char-0001", "type": "characters" },
-    { "from": "char-0002", "to": "char-0003", "type": "characters" },
-    { "from": "char-0002", "to": "char-0004", "type": "characters" },
-    { "from": "char-0002", "to": "fact-0001", "type": "factions" },
-
-    { "from": "char-0003", "to": "char-0001", "type": "characters" },
-    { "from": "char-0003", "to": "char-0002", "type": "characters" },
-    { "from": "char-0003", "to": "char-0004", "type": "characters" },
-    { "from": "char-0003", "to": "fact-0001", "type": "factions" },
-
-    { "from": "char-0004", "to": "char-0001", "type": "characters" },
-    { "from": "char-0004", "to": "char-0002", "type": "characters" },
-    { "from": "char-0004", "to": "char-0003", "type": "characters" },
-    { "from": "char-0004", "to": "fact-0001", "type": "factions" },
-
-    { "from": "mech-0001", "to": "char-0001", "type": "characters" },
-    { "from": "mech-0001", "to": "loc-0001", "type": "locations" },
-    { "from": "mech-0001", "to": "story-0001", "type": "stories" },
-
-    { "from": "mech-0002", "to": "char-0001", "type": "characters" },
-    { "from": "mech-0002", "to": "loc-0001", "type": "locations" },
-    { "from": "mech-0002", "to": "story-0001", "type": "stories" },
-
-    { "from": "mech-0003", "to": "char-0001", "type": "characters" },
-    { "from": "mech-0003", "to": "loc-0001", "type": "locations" },
-    { "from": "mech-0003", "to": "story-0001", "type": "stories" },
-
-    { "from": "loc-0001", "to": "char-0001", "type": "characters" },
-    { "from": "loc-0001", "to": "char-0002", "type": "characters" },
-    { "from": "loc-0001", "to": "char-0003", "type": "characters" },
-    { "from": "loc-0001", "to": "char-0004", "type": "characters" },
-    { "from": "loc-0001", "to": "fact-0001", "type": "factions" },
-    { "from": "loc-0001", "to": "mech-0001", "type": "mechanics" },
-    { "from": "loc-0001", "to": "mech-0002", "type": "mechanics" },
-    { "from": "loc-0001", "to": "mech-0003", "type": "mechanics" },
-    { "from": "loc-0001", "to": "story-0001", "type": "stories" },
-
-    { "from": "fact-0001", "to": "char-0001", "type": "characters" },
-    { "from": "fact-0001", "to": "char-0002", "type": "characters" },
-    { "from": "fact-0001", "to": "char-0003", "type": "characters" },
-    { "from": "fact-0001", "to": "char-0004", "type": "characters" },
-    { "from": "fact-0001", "to": "loc-0001", "type": "locations" },
-    { "from": "fact-0001", "to": "mech-0001", "type": "mechanics" },
-    { "from": "fact-0001", "to": "mech-0002", "type": "mechanics" },
-    { "from": "fact-0001", "to": "mech-0003", "type": "mechanics" },
-    { "from": "fact-0001", "to": "story-0001", "type": "stories" },
-
-    { "from": "story-0001", "to": "char-0001", "type": "characters" },
-    { "from": "story-0001", "to": "char-0002", "type": "characters" },
-    { "from": "story-0001", "to": "char-0003", "type": "characters" },
-    { "from": "story-0001", "to": "char-0004", "type": "characters" },
-    { "from": "story-0001", "to": "loc-0001", "type": "locations" },
-    { "from": "story-0001", "to": "fact-0001", "type": "factions" },
-    { "from": "story-0001", "to": "mech-0001", "type": "mechanics" },
-    { "from": "story-0001", "to": "mech-0002", "type": "mechanics" },
-    { "from": "story-0001", "to": "mech-0003", "type": "mechanics" }
-  ]
+  "edges": []
 }

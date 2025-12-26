@@ -4,10 +4,11 @@
     "lint:refs": "node scripts/lint/unresolved_refs.js",
     "lint:canonical-refs": "node scripts/lint/canonical_reference_validator.js",
     "lint:glossary": "node scripts/lint/glossary_enforcer.js",
+    "lint:canon": "node scripts/checks/canon_linter.js",
     "check:continuity": "node scripts/checks/continuity.js",
     "check:timeline": "node scripts/checks/timeline_variance.js",
     "check": "npm run check:continuity && npm run check:timeline",
-    "lint": "npm run lint:schema && npm run lint:refs && npm run lint:canonical-refs && npm run lint:glossary",
+    "lint": "npm run lint:schema && npm run lint:refs && npm run lint:canonical-refs && npm run lint:glossary && npm run lint:canon",
     "test:dashboard": "node scripts/tests/test_dashboard.js",
     "author:apply": "node scripts/prompt/authoring.js",
     "orchestrate": "node scripts/prompt/orchestrate.js",
@@ -36,7 +37,9 @@
   "directories": {
     "doc": "docs"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",

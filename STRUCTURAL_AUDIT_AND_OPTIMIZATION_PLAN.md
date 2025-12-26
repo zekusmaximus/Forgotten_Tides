@@ -1,6 +1,32 @@
+
 # Structural Audit & Optimization Plan for The Forgotten Tides Universe Repository
 
-## Phase 1 — Completed / In-Place Foundations (Already Done)
+## Executive Summary
+
+This document outlines the implementation plan for structural improvements to The Forgotten Tides repository, based on the structural audit response. The plan addresses data duplication, file organization, metadata standards, and automation tooling to support AI-assisted writing and RAG optimization.
+
+## Current Status
+
+### Completed Items
+
+- **Phase 1: Foundations** - Structured lexicon and frontmatter standards established.
+- **Phase 2: Directory Structure** - All required directories exist (`factions/`, `atlas/`, `design/`).
+- **Phase 3: Canonical ID System** - [`CANONICAL_INDEX.md`](CANONICAL_INDEX.md) established with canonical IDs.
+- **Phase 4: Validation Scripts** - Multiple linting and validation scripts implemented.
+- **Phase 5: Story Compilation** - GitHub Action and local scripts for PDF/ePub generation.
+- **Phase 6: Context Chunking** - Chunking and summarization pipeline operational.
+- **Phase 7: Continuity Dashboard** - Interactive network visualization of canonical relationships.
+
+### Generated Artifacts
+
+- `out/reports/canonical_reference_report.json` - Canonical reference validation report.
+- `out/chunks/chunk_manifest.json` - Chunk manifest for RAG optimization.
+- `REFERENCE_MAP.json` - Machine-readable relationship graph.
+- `dashboard/` - Web-based continuity visualization tool.
+
+## Implementation Phases
+
+### Phase 1 — Completed / In-Place Foundations
 
 > This phase captures work that is already present in the repository. These items are considered complete unless future changes explicitly alter them.
 
@@ -11,11 +37,8 @@
 - Character and mechanics files already include YAML frontmatter blocks with IDs, metadata, and cross references.
 
 **Evidence**
-- `characters/*.md` (e.g., `characters/Rell.md`)
-- `mechanics/*.md` (e.g., `mechanics/MEMORY_PHYSICS.md`)
-
-**Notes for agents**
-- Do **not** remove existing frontmatter fields. Extend or migrate carefully during later phases.
+- `characters/*.md` (e.g., [characters/Rell.md](characters/Rell.md))
+- `mechanics/*.md` (e.g., [mechanics/MEMORY_PHYSICS.md](mechanics/MEMORY_PHYSICS.md))
 
 ### 1.2 Structured Lexicon Data (Completed)
 **Status:** ✅ Complete
@@ -28,9 +51,6 @@
 - `data/lexicon/terms.yaml`
 - `data/lexicon/legacy/GLOSSARY.md`
 
-**Notes for agents**
-- Scripts already consume `data/lexicon/terms.yaml`. Treat this as the canonical structured lexicon source going forward.
-
 ### 1.3 Glossary Enforcement & Schema Validation Tooling (Completed)
 **Status:** ✅ Complete
 
@@ -39,11 +59,8 @@
 - YAML frontmatter schema validation tooling.
 
 **Evidence**
-- `scripts/lint/glossary_enforcer.js`
-- `scripts/lint/schema_validate.js`
-
-**Notes for agents**
-- Extend these tools rather than creating duplicates.
+- [scripts/lint/glossary_enforcer.js](scripts/lint/glossary_enforcer.js)
+- [scripts/lint/schema_validate.js](scripts/lint/schema_validate.js)
 
 ---
 
@@ -59,30 +76,20 @@
 2. Add minimal `README.md` files inside each directory clarifying intended content.
 3. Update any documentation references that point to non-existent directories.
 
-**Agent guidance**
-- Use short, declarative README content (“Purpose”, “Expected file types”, “Status”).
-
 ### 2.2 Relocate Lexicon Legacy Source to a Single Canonical Location
 **Status:** ✅ Complete
 
 **Subtasks**
-1. Move `lexicon/GLOSSARY.md` → `data/lexicon/legacy/GLOSSARY.md` (if not already merged).
-2. Replace `lexicon/GLOSSARY.md` with a short stub that points to `data/lexicon/terms.yaml` for canonical data.
-3. Ensure all scripts reference `data/lexicon/terms.yaml` first, with a legacy fallback if required.
-
-**Agent guidance**
-- Preserve the legacy glossary content verbatim.
-- Avoid breaking existing tooling that expects `lexicon/GLOSSARY.md` (keep a pointer file).
+1. Move `lexicon/GLOSSARY.md` → `data/lexicon/legacy/GLOSSARY.md`.
+2. Replace `lexicon/GLOSSARY.md` with a short stub that points to `data/lexicon/terms.yaml`.
+3. Ensure all scripts reference `data/lexicon/terms.yaml` first.
 
 ### 2.3 Directory-Level Taxonomy Confirmation
 **Status:** ✅ Complete
 
 **Subtasks**
-1. Verify `/bible/`, `/mechanics/`, `/lexicon/`, `/lore/`, `/characters/`, `/stories/`, `/manuals/`, `/docs/`, `/scripts/`, `/agents/` all exist and are in active use.
-2. Add short index files (e.g., `README.md` or `INDEX.md`) where missing to reinforce intended scope.
-
-**Agent guidance**
-- Keep index files minimal, consistent, and cross-linked.
+1. Verify `/bible/`, `/mechanics/`, `/lexicon/`, `/lore/`, `/characters/`, `/stories/`, `/manuals/`, `/docs/`, `/scripts/`, `/agents/` all exist.
+2. Add short index files where missing to reinforce intended scope.
 
 ---
 
@@ -97,11 +104,6 @@
 1. Define a canonical ID schema in `docs/` (format, prefixes, examples).
 2. Map existing `id`/`uuid` fields in YAML frontmatter to the canonical ID standard.
 3. Add a `canonical_id` field to all character, location, event, and mechanics files.
-4. Maintain backward compatibility by keeping existing IDs in place.
-
-**Agent guidance**
-- Do not rename files without a clear mapping.
-- Create a translation table (CSV or JSON) mapping old IDs → canonical IDs.
 
 ### 3.2 Reference Integrity Pass
 **Status:** ✅ Complete
@@ -111,20 +113,13 @@
 2. Update any references in stories and mechanics to canonical IDs.
 3. Add explicit `references` nodes in YAML frontmatter where missing.
 
-**Agent guidance**
-- Start with characters and mechanics before stories.
-- Keep a changelog of updated references.
-
 ### 3.3 Canonical Index and Reference Map
 **Status:** ✅ Complete
 
 **Subtasks**
-1. Create `CANONICAL_INDEX.md` listing all canonical entities (grouped by type).
+1. Create [`CANONICAL_INDEX.md`](CANONICAL_INDEX.md) listing all canonical entities.
 2. Create `REFERENCE_MAP.json` describing relationships between entities.
 3. Ensure both files include canonical IDs and source file paths.
-
-**Agent guidance**
-- Generate these files from frontmatter to avoid manual drift.
 
 ---
 
@@ -136,18 +131,13 @@
 **Status:** ✅ Complete
 
 **Subtasks**
-1. Build a script (Node or Python) that scans frontmatter references.
+1. Build a script that scans frontmatter references.
 2. Validate that each referenced ID exists in the knowledge base.
 3. Emit a report to `out/reports/` with broken references.
 
-**Agent guidance**
-- Use the canonical index as the source of truth.
-- Add the validator to existing lint/check workflows.
-
 **Evidence**
-- `scripts/lint/canonical_reference_validator.js`
-- `out/reports/canonical_reference_report.json` (generated output)
-- `package.json` (wired into `npm run lint`)
+- [scripts/lint/canonical_reference_validator.js](scripts/lint/canonical_reference_validator.js)
+- `out/reports/canonical_reference_report.json`
 
 ### 4.2 Glossary Linter Enhancements
 **Status:** ✅ Complete
@@ -157,11 +147,8 @@
 2. Log missing glossary terms with file/line context.
 3. Add configuration to allow per-directory ignore lists.
 
-**Agent guidance**
-- Keep output machine-readable for CI use.
-
 **Evidence**
-- `scripts/lint/glossary_enforcer.js` (JSON warnings with suggestions + line context; `.glossary_ignore.txt` support)
+- [scripts/lint/glossary_enforcer.js](scripts/lint/glossary_enforcer.js)
 
 ### 4.3 Frontmatter Schema Expansion
 **Status:** ✅ Complete
@@ -169,14 +156,10 @@
 **Subtasks**
 1. Update schema definitions to include `canonical_id`, `references`, `status`, `tags`.
 2. Validate files by type (character vs mechanics vs story).
-3. Add schema versioning to reduce future churn.
-
-**Agent guidance**
-- Validate new fields without breaking older files; warn before failing.
 
 **Evidence**
-- `docs/schemas/*.schema.json` (status/tags/schema_version fields added)
-- `scripts/lint/schema_validate.js` (warnings for missing recommended fields + expanded directory validation)
+- `docs/schemas/*.schema.json`
+- [scripts/lint/schema_validate.js](scripts/lint/schema_validate.js)
 
 ---
 
@@ -191,10 +174,6 @@
 1. Add `.github/workflows/compile-stories.yml`.
 2. Concatenate `stories/*.md` into a single source file.
 3. Generate PDF and ePub artifacts via Pandoc.
-4. Upload artifacts to the workflow summary.
-
-**Agent guidance**
-- Ensure the workflow doesn’t run on `stories/README.md` changes only.
 
 **Evidence**
 - `.github/workflows/compile-stories.yml`
@@ -206,12 +185,9 @@
 1. Add `scripts/compile_stories.sh` mirroring the workflow logic.
 2. Document how to run it in `docs/`.
 
-**Agent guidance**
-- Use predictable output filenames.
-
 **Evidence**
 - `scripts/compile_stories.sh`
-- `docs/USAGE.md` (local compile instructions)
+- [docs/USAGE.md](docs/USAGE.md)
 
 ---
 
@@ -225,15 +201,11 @@
 **Subtasks**
 1. Add a structured YAML “Quick Reference” block to each mechanics file.
 2. Ensure the block is near the top of the file for token efficiency.
-3. Include canonical examples and failure states.
-
-**Agent guidance**
-- Keep the block small and strictly structured.
 
 **Evidence**
-- `mechanics/MEMORY_PHYSICS.md`
-- `mechanics/CORRIDOR_MECHANICS.md`
-- `mechanics/ANCHOR_THEORY.md`
+- [mechanics/MEMORY_PHYSICS.md](mechanics/MEMORY_PHYSICS.md)
+- [mechanics/CORRIDOR_MECHANICS.md](mechanics/CORRIDOR_MECHANICS.md)
+- [mechanics/ANCHOR_THEORY.md](mechanics/ANCHOR_THEORY.md)
 
 ### 6.2 Chunking & Summaries Pipeline
 **Status:** ✅ Complete
@@ -243,16 +215,13 @@
 2. Add automated summaries for each chunk.
 3. Store outputs in `out/` with a consistent naming convention.
 
-**Agent guidance**
-- Avoid modifying original files; generate derived artifacts.
-
 **Evidence**
-- `scripts/context/chunk_and_summarize.js`
+- [scripts/context/chunk_and_summarize.js](scripts/context/chunk_and_summarize.js)
 - `out/chunks/chunk_manifest.json`
 
 ---
 
-## Phase 7 — Continuity Dashboard (Optional / Future)
+## Phase 7 — Continuity Dashboard
 
 > Goal: a visual representation of canonical relationships for high-level continuity review.
 
@@ -264,26 +233,80 @@
 2. Render relationships as a network graph. ✅
 3. Highlight missing or speculative nodes. ✅
 
-**Agent guidance**
-- Keep UI minimal; the value is the graph, not styling.
-
 **Evidence**
-- `dashboard/index.html` - Main HTML structure with minimal styling
-- `dashboard/dashboard.js` - Graph rendering logic using vis-network
-- `dashboard/README.md` - Comprehensive usage documentation
-- `package.json` - Added `npm run dashboard` script for easy local serving
+- [dashboard/index.html](dashboard/index.html) - Main HTML structure
+- [dashboard/dashboard.js](dashboard/dashboard.js) - Graph rendering logic
+- [dashboard/README.md](dashboard/README.md) - Usage documentation
+- `package.json` - Added `npm run dashboard` script
 
 ---
 
-## Implementation Summary
+## Phase 8 — Advanced Automation & Validation
 
-**Already Completed:**
-- Structured lexicon in `data/lexicon/terms.yaml`
-- Glossary enforcement tooling
-- YAML frontmatter present on canon files
+> Goal: move from manual maintenance to a fully automated, self-validating repository.
 
-**Immediate Next Steps (Recommended):**
-1. Phase 6 mechanics quick reference blocks
-2. Phase 6 chunking & summaries pipeline
+### 8.1 Dynamic Data Synchronization
+**Status:** ✅ Complete
 
-This phased plan is designed so multiple AI agents can work in parallel without conflict, with each phase being independently verifiable and testable.
+**Subtasks**
+1. Automate `REFERENCE_MAP.json` generation from entity frontmatter.
+2. Automate `CANONICAL_INDEX.md` rebuilding to prevent index drift.
+3. Integrate both into the `build_linkmap.js` pipeline.
+
+**Evidence**
+- [scripts/prompt/build_linkmap.js](scripts/prompt/build_linkmap.js) (Updated)
+- [CANONICAL_INDEX.md](CANONICAL_INDEX.md) (Auto-generated)
+- [REFERENCE_MAP.json](REFERENCE_MAP.json) (Auto-generated)
+
+### 8.2 Canon Linter (Red Line Enforcement)
+**Status:** ✅ Complete
+
+**Subtasks**
+1. Implement a linter that checks for Story Bible "Red Line" violations.
+2. Integrate canon checks into the standard `npm run lint` workflow.
+
+**Evidence**
+- [scripts/checks/canon_linter.js](scripts/checks/canon_linter.js)
+- `package.json` (`lint:canon` script)
+
+### 8.3 Context Packing & Dashboard UX
+**Status:** ✅ Complete
+
+**Subtasks**
+1. Enhance `orchestrate.js` to generate Markdown "Prompt Packs" for AI agents.
+2. Add VS Code deep-linking to the Continuity Dashboard for direct file editing.
+3. Implement "Orphaned Node" highlighting in the dashboard to find lore gaps.
+
+**Evidence**
+- [scripts/prompt/orchestrate.js](scripts/prompt/orchestrate.js) (Updated)
+- [scripts/prompt/export_prompt_pack.js](scripts/prompt/export_prompt_pack.js) (Updated)
+- [dashboard/dashboard.js](dashboard/dashboard.js) (Updated)
+
+---
+
+## Tooling & Automation
+
+### Available npm Scripts
+
+```json
+{
+  "lint:schema": "node scripts/lint/schema_validate.js",
+  "lint:refs": "node scripts/lint/unresolved_refs.js",
+  "lint:canonical-refs": "node scripts/lint/canonical_reference_validator.js",
+  "lint:glossary": "node scripts/lint/glossary_enforcer.js",
+  "check:continuity": "node scripts/checks/continuity.js",
+  "check:timeline": "node scripts/checks/timeline_variance.js",
+  "check": "npm run check:continuity && npm run check:timeline",
+  "lint": "npm run lint:schema && npm run lint:refs && npm run lint:canonical-refs && npm run lint:glossary && npm run lint:canon",
+  "context:build": "node scripts/prompt/context_builder.js",
+  "context:chunk": "node scripts/context/chunk_and_summarize.js",
+  "dashboard": "npx http-server -p 8080 -o /dashboard/"
+}
+```
+
+### Dependencies
+
+**Production Dependencies:**
+- `ajv` - JSON schema validation
+- `glob` - File pattern matching
+- `gray-matter` - YAML frontmatter parsing
