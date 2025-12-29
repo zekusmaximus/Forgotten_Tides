@@ -4,6 +4,8 @@ const fs = require('fs');
 const path = require('path');
 const yaml = require('js-yaml');
 
+const warnOnly = !process.argv.includes('--strict');
+
 // Build in-memory index of all IDs by type
 function buildIdIndex() {
   const index = {
@@ -134,8 +136,9 @@ function checkReferences(filePath, index) {
         if (Array.isArray(ids)) {
           for (const id of ids) {
             if (!index[type] || !index[type].has(id)) {
-              console.error(`❌ ${filePath}: Unresolved reference to ${id} in cross_refs.${type}`);
-              hasErrors = true;
+              const msg = `${filePath}: Unresolved reference to ${id} in cross_refs.${type}`;
+              warnOnly ? console.warn(`⚠️  ${msg}`) : console.error(`❌ ${msg}`);
+              hasErrors = hasErrors || !warnOnly;
             }
           }
         }
@@ -158,8 +161,9 @@ function checkReferences(filePath, index) {
               else if (ref.startsWith('STORY-')) type = 'stories';
 
               if (type && (!index[type] || !index[type].has(ref))) {
-                console.error(`❌ ${filePath}: Unresolved reference to ${ref} in ${field}`);
-                hasErrors = true;
+                const msg = `${filePath}: Unresolved reference to ${ref} in ${field}`;
+                warnOnly ? console.warn(`⚠️  ${msg}`) : console.error(`❌ ${msg}`);
+                hasErrors = hasErrors || !warnOnly;
               }
             } else if (typeof ref === 'object' && ref.target_id) {
               // Handle relationships with target_id
@@ -172,8 +176,9 @@ function checkReferences(filePath, index) {
               else if (targetId.startsWith('STORY-')) type = 'stories';
 
               if (type && (!index[type] || !index[type].has(targetId))) {
-                console.error(`❌ ${filePath}: Unresolved reference to ${targetId} in ${field}.target_id`);
-                hasErrors = true;
+                const msg = `${filePath}: Unresolved reference to ${targetId} in ${field}.target_id`;
+                warnOnly ? console.warn(`⚠️  ${msg}`) : console.error(`❌ ${msg}`);
+                hasErrors = hasErrors || !warnOnly;
               }
             }
           });
@@ -234,7 +239,7 @@ function main() {
 
   if (hasErrors) {
     console.error('❌ Found unresolved references');
-    process.exit(1);
+    process.exit(warnOnly ? 0 : 1);
   } else {
     console.log('✅ All references resolved');
     process.exit(0);

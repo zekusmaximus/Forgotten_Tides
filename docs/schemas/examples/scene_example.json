@@ -1,0 +1,25 @@
+{
+  "id": "SCENE_SAMPLE_0001",
+  "work_id": "SCREENPLAY_SAMPLE",
+  "title": "Drive Test",
+  "pov": "Sutira",
+  "location": "Memory Chamber",
+  "stakes": {
+    "summary": "If the drive misfires, the ship forgets its hull.",
+    "level": "high",
+    "irreversibility": true
+  },
+  "promise_links": [
+    { "id": "drive_overload_warning", "role": "setup" }
+  ],
+  "knowledge_delta": [
+    { "entity": "drive_overload_warning", "change": "reveal" }
+  ],
+  "moral_actions": [
+    { "actor": "Sutira", "action": "risks self to stabilize drive", "direction": "aid", "weight": 3 }
+  ],
+  "metadata": {
+    "schema_version": "v0.1.0",
+    "status": "draft"
+  }
+}

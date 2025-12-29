@@ -366,6 +366,40 @@ Session state is stored in `out/session/state.json`:
 6. **Check link maps** with `npm run linkmap:build`
 7. **Monitor token usage** with entity caps
 
+## System Upgrades (V2)
+
+### Promise/Payoff, Stakes, Knowledge, Moral, Reader, POV
+```bash
+npm run lint:promise -- --work "<name>" --json       # promise/setup/payoff coverage
+npm run check:stakes -- --work "<name>" --json       # stakes drift + irreversibility
+npm run check:knowledge -- --work "<name>" --json    # epistemic state drift
+npm run lint:scene-failure -- --work "<name>" --json # inert scene detection
+npm run lint:moral -- --work "<name>" --json         # moral physics accounting
+npm run check:reader -- --work "<name>" --json       # reader-model confusion/decay
+npm run report:pov -- --work "<name>" --json         # POV pressure analytics
+```
+
+### Revision + Compilation Helpers
+```bash
+npm run compile:edit -- --work "<name>"              # edit packet with stakes/knowledge/moral table
+npm run compile:screenplay -- --work "<name>"        # emit .fountain from screenplay scenes
+npm run lint:screenplay -- --work "<name>"           # screenplay format guardrails
+node scripts/prompt/scene_diff.js --scene <new> --previous <old>  # semantic diff for replacements
+```
+
+### Sandbox + Drafting Mode
+```bash
+npm run sandbox:lint                                 # enforce canonical_lock and schema on sandbox/*
+npm run sandbox:merge -- --into canonical --if clean # gated copy to out/sandbox/merged
+npm run start:draft -- --work "<name>" --mode fast   # init work with draft_unstable status
+```
+
+### One-command validation
+```bash
+npm run validate:work -- --work "<name>"
+```
+Generates all upgrade reports under `out/reports/` without stopping on warnings.
+
 ## New Intents & Examples
 
 ### `save_scene`

@@ -1,0 +1,6 @@
+{
+  "recall_half_life_scenes": 3,
+  "entity_confusion_threshold": 5,
+  "reinforcement_window": 2,
+  "max_new_entities_per_scene": 4
+}

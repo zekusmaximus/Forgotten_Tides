@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://forgotten-tides.com/schemas/scene.schema.json",
+  "title": "Scene Schema",
+  "description": "Lightweight schema for scenes used across prose and screenplay modes.",
+  "type": "object",
+  "required": ["id"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Scene identifier (can be legacy string or SCENE_* slug)"
+    },
+    "canonical_id": {
+      "type": "string",
+      "pattern": "^scene-[a-z0-9_-]+$"
+    },
+    "work_id": {
+      "type": "string",
+      "description": "Parent work identifier"
+    },
+    "title": {
+      "type": "string"
+    },
+    "pov": {
+      "type": "string",
+      "description": "Point of view character or narrator"
+    },
+    "location": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "revised", "final", "sandbox"],
+      "default": "draft"
+    },
+    "summary": {
+      "type": "string"
+    },
+    "stakes": {
+      "type": "object",
+      "properties": {
+        "summary": { "type": "string" },
+        "risk": { "type": "string" },
+        "cost": { "type": "string" },
+        "level": { "type": "string", "enum": ["low", "medium", "high", "existential"] },
+        "irreversibility": { "type": "boolean" }
+      },
+      "additionalProperties": true
+    },
+    "promise_links": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "role": { "type": "string", "enum": ["setup", "payoff", "reminder"] },
+          "status": { "type": "string", "enum": ["open", "paid", "dropped"] }
+        },
+        "required": ["id", "role"],
+        "additionalProperties": false
+      }
+    },
+    "knowledge_state": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "description": "State of knowledge for an entity (known|unknown|false|rumor)"
+      }
+    },
+    "knowledge_delta": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "entity": { "type": "string" },
+          "change": { "type": "string", "enum": ["reveal", "reinforce", "contradict", "forget"] },
+          "note": { "type": "string" }
+        },
+        "required": ["entity", "change"],
+        "additionalProperties": false
+      }
+    },
+    "moral_actions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "actor": { "type": "string" },
+          "action": { "type": "string" },
+          "weight": { "type": "number" },
+          "direction": { "type": "string", "enum": ["harm", "aid", "mixed"] },
+          "note": { "type": "string" }
+        },
+        "required": ["actor", "action"],
+        "additionalProperties": false
+      }
+    },
+    "pov_pressure": {
+      "type": "object",
+      "properties": {
+        "decisions": { "type": "integer", "minimum": 0 },
+        "consequence_density": { "type": "number", "minimum": 0 }
+      },
+      "additionalProperties": true
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "schema_version": { "type": "string" },
+        "status": { "type": "string" },
+        "created": { "type": "string" },
+        "modified": { "type": "string" }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

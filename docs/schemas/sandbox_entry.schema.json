@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://forgotten-tides.com/schemas/sandbox_entry.schema.json",
+  "title": "Sandbox Entry Schema",
+  "description": "Schema for experimental sandbox items that must remain canon-safe until merged.",
+  "type": "object",
+  "required": ["id", "canonical_lock"],
+  "properties": {
+    "id": { "type": "string" },
+    "canonical_id": { "type": "string" },
+    "type": { "type": "string" },
+    "canonical_lock": { "type": "boolean", "description": "When true, merge is blocked." },
+    "status": {
+      "type": "string",
+      "enum": ["sandbox", "candidate", "ready"]
+    },
+    "cross_refs": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": { "type": "string" }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "created": { "type": "string" },
+        "author": { "type": "string" },
+        "notes": { "type": "string" }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

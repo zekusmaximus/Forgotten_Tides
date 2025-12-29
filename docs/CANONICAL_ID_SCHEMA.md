@@ -28,6 +28,9 @@ Canonical IDs are lowercase, hyphenated, and include a type prefix plus a four-d
 | `mech` | Mechanics rule |
 | `story` | Story |
 | `event` | Event |
+| `scene` | Scene (prose or screenplay) |
+| `sbx` | Sandbox entry (what-if experiments) |
+| `promise` | Promise/Payoff tracker entries |
 
 ## Rules
 

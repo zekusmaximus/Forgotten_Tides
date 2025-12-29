@@ -1,0 +1,11 @@
+id: sandbox_concept_example
+canonical_id: sandbox-010
+type: mechanic
+canonical_lock: false
+status: sandbox
+cross_refs:
+  mechanics:
+    - mech-0001
+metadata:
+  author: "Example Author"
+  notes: "Experimental anchor cooling field."

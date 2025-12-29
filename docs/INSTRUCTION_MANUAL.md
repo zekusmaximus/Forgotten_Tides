@@ -93,3 +93,18 @@ This manual explains the repository structure, canon guardrails, and all availab
 - Glossary warnings: add terms to `data/lexicon/terms.yaml` or ignore via `docs/lint/glossary_ignore.txt` (sparingly).
 - Dashboard empty: ensure `REFERENCE_MAP.json` exists and run a local server (`npm run dashboard`).
 - Timeline/continuity failures: inspect `out/reports/continuity.json` and `out/reports/timeline_variance.json` for offending files/lines.
+
+## 15) V2 System Upgrades (Promise/Payoff, Stakes, Reader Model)
+- Promise/Payoff: `npm run lint:promise -- --work "<name>" --json` → `out/reports/promise_payoff_<work>.{json,md}`.
+- Stakes drift: `npm run check:stakes -- --work "<name>" --json` → checks machine-readable stakes + irreversibility.
+- Knowledge state: `npm run check:knowledge -- --work "<name>" --json` → enforces epistemic consistency.
+- Scene failure modes: `npm run lint:scene-failure -- --work "<name>" --json` → flags inert/no-change scenes.
+- Moral physics: `npm run lint:moral -- --work "<name>" --json` → aggregates moral_action weights.
+- Reader model: `npm run check:reader -- --work "<name>" --json` → uses `docs/reader_model.json`.
+- POV pressure: `npm run report:pov -- --work "<name>" --json` → also writes `out/graphs/pov_pressure.json`.
+- Revision packet: `npm run compile:edit -- --work "<name>"` → `out/compiled/<work>_edit_packet.md`.
+- Screenplay mode: `npm run compile:screenplay -- --work "<name>"`, lint via `npm run lint:screenplay -- --work "<name>"`.
+- Sandbox guardrails: `npm run sandbox:lint` and `npm run sandbox:merge -- --into canonical --if clean` (copies into `out/sandbox/merged`).
+- Draft velocity: `npm run start:draft -- --work "<name>" --mode fast` (marks `draft_unstable`), `DRAFT_MODE` env supported by checkers.
+- Scene replacement diff: `node scripts/prompt/scene_diff.js --scene <new> --previous <old>` → `out/reports/scene_diff_<id>.md`.
+- One-command work validation: `npm run validate:work -- --work "<name>"`.

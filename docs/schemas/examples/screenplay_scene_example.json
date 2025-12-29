@@ -1,0 +1,26 @@
+{
+  "id": "SCENE_SCREENPLAY_SAMPLE_001",
+  "work_id": "SCREENPLAY_SAMPLE",
+  "scene_heading": "INT. MEMORY CHAMBER - NIGHT",
+  "pov": "Sutira",
+  "location": "Memory Chamber",
+  "beats": [
+    { "id": "beat-1", "intent": "Set danger", "stakes": "Overload may erase hull" },
+    { "id": "beat-2", "intent": "Reveal risk", "stakes": "Sutira risks self" }
+  ],
+  "stakes": {
+    "summary": "Drive overload risks permanent forgetting of the crew.",
+    "level": "high",
+    "irreversibility": true
+  },
+  "promise_links": [
+    { "id": "drive_overload_warning", "role": "setup" }
+  ],
+  "knowledge_delta": [
+    { "entity": "drive_overload_warning", "change": "reveal" }
+  ],
+  "metadata": {
+    "schema_version": "v0.1.0",
+    "status": "draft"
+  }
+}

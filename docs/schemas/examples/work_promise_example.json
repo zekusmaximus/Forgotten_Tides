@@ -1,0 +1,12 @@
+{
+  "work_id": "SCREENPLAY_SAMPLE",
+  "promises": [
+    {
+      "id": "drive_overload_warning",
+      "setup_scene": "SCENE_SCREENPLAY_SAMPLE_001",
+      "payoff_scene": "SCENE_SCREENPLAY_SAMPLE_002",
+      "description": "The drive threatens to erase the ship; later it exacts a cost.",
+      "status": "open"
+    }
+  ]
+}

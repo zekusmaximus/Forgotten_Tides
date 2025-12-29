@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://forgotten-tides.com/schemas/reader_model.schema.json",
+  "title": "Reader Model Schema",
+  "description": "Configuration for reader memory decay and confusion detection.",
+  "type": "object",
+  "required": ["recall_half_life_scenes", "entity_confusion_threshold", "reinforcement_window"],
+  "properties": {
+    "recall_half_life_scenes": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "entity_confusion_threshold": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "reinforcement_window": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "max_new_entities_per_scene": {
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "additionalProperties": false
+}
