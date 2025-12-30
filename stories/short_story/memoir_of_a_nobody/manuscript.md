@@ -1,3 +1,65 @@
+---
+id: STORY-0002
+canonical_id: story-0002
+schema_version: v1.0.0
+type: story
+title: Memoir of a Nobody
+story_type: short-story
+status: draft
+tags:
+  - dark-comedy
+  - sci-fi
+  - identity-erosion
+  - invisibility
+summary_50: A maintenance worker who became a living mnemonic siphon tries to apply for a promotion and confronts their own disappearance.
+summary_200: Vess Cormick is a station maintenance worker who became a living eddy after accidental exposure to micro-eddy material. Everyone forgets them immediately. When they attempt to apply for a promotion, the effort to become memorable forces them to confront how much of themselves they've lost—and how little time remains before they forget who they were entirely. A dark comedy about invisibility, identity erosion, and the cost of being forgotten.
+cross_refs:
+  characters: []
+  locations: []
+  factions: []
+  mechanics:
+    - mech-0001
+  stories: []
+references:
+  characters: []
+  locations: []
+  factions: []
+  mechanics:
+    - mech-0001
+  stories: []
+timeline:
+  setting: Waystation Commercial Hub 11-C (The Beige), stable memory region
+  duration: Approximately one week, plus epilogue years later
+  chronology:
+    - event: Vess applies for Continuity Maintenance Supervisor position
+      timestamp: T0
+    - event: Multiple failed application attempts
+      timestamp: T0-T0+3 days
+    - event: Discovery of self-memory erosion and resignation letter
+      timestamp: T0+5 days
+    - event: Final journal entry
+      timestamp: T0+7 days
+    - event: Journal discovered and published posthumously
+      timestamp: T0+several years
+themes:
+  - memory-as-cost
+  - identity-erosion
+  - sacrifice
+  - conceptual-fragility
+continuity_notes:
+  - Establishes unprecedented case of eddy material internalization
+  - Shows localized memory erasure affecting only memories of the host
+  - Demonstrates eddy turning inward, eroding self-memory
+  - Unique case—not replicable, freak accident only
+  - Canon-safe expansion of eddy mechanics
+metadata:
+  status: draft
+  word_count: 5100
+  author: AI Generated (Claude)
+  created: '2025-12-30T00:00:00Z'
+  modified: '2025-12-30T00:00:00Z'
+---
+
 # Memoir of a Nobody
 
 ## SITUATION
