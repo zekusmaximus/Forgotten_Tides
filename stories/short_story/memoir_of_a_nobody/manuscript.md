@@ -290,11 +290,11 @@ He leaves.
 
 I intercept him in the hallway. "How'd it go?"
 
-He looks at me. "Sorry, do I know you?"
+He doesn't slow. He looks past me, blinks, keeps walking. "Sorry, do I know you?"
 
-"I'm Vess. You just vouched for me."
+"You just vouched for me."
 
-"I— what? No, I was just in there asking about... uh..." He checks his datapad. The note is gone. He frowns. "Weird. I thought I had something to do. You need something?"
+"No, I was just in there asking about... uh..." He checks his datapad. The note is gone. He frowns. "Weird. I thought I had something to do. You need something?"
 
 "No," I say. "Thanks anyway."
 
@@ -384,9 +384,11 @@ Tucked into the file, handwritten on a scrap of paper:
 
 The handwriting is mine.
 
+In the margin, a notation: *"Found in patient personal effects, filed per protocol."* I have no memory of handing it to anyone.
+
 The date: three years ago.
 
-I don't remember writing this. I don't remember deciding to leave.
+I don't recall writing this. I don't remember deciding to leave.
 
 I stayed.
 
@@ -485,6 +487,8 @@ That's something.
 Maybe it's enough.
 
 I don't know what happens next. The eddy is growing. I can feel it — small gaps in my thoughts, moments where I lose the thread and have to check my lanyard to remember my name. Eventually, I'll forget this too. Forget writing this. Forget wanting the job. Forget being lonely.
+
+Or maybe I'll still be here. Different. Incomplete. But here.
 
 Maybe I'll forget I was ever anyone at all.
 
