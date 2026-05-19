@@ -4,7 +4,9 @@ const fs = require('fs');
 const path = require('path');
 const yaml = require('js-yaml');
 const Ajv = require('ajv');
+const addFormats = require('ajv-formats');
 const ajv = new Ajv({ allErrors: true, strict: false });
+addFormats(ajv);
 
 // Load all schemas
 const schemasDir = path.join(__dirname, '../../docs/schemas');
@@ -112,17 +114,9 @@ function walkDir(dir, schemaName) {
     } else if ((file.endsWith('.md') || file.endsWith('.yaml') || file.endsWith('.yml')) && !file.endsWith('README.md')) {
       const result = validateFile(filePath, schemaName);
       if (!result.valid) {
-        // Filter out UUID format warnings as they're not critical errors
-        const criticalErrors = result.errors.filter(error =>
-          !error.includes('unknown format "uuid" ignored in schema')
-        );
-        if (criticalErrors.length > 0) {
-          console.error(`❌ ${filePath}`);
-          criticalErrors.forEach(error => console.error(`  - ${error}`));
-          hasErrors = true;
-        } else {
-          console.log(`✅ ${filePath} (with warnings)`);
-        }
+        console.error(`❌ ${filePath}`);
+        result.errors.forEach(error => console.error(`  - ${error}`));
+        hasErrors = true;
       } else {
         console.log(`✅ ${filePath}`);
         if (result.warnings && result.warnings.length > 0) {

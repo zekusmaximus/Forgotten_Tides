@@ -1,43 +1,171 @@
 # Link Map - Entity Relationships
 
-Generated: 2025-12-26T16:30:03.683Z
+Generated: 2026-05-19T23:11:40.052Z
 
-## Entities (23)
+## Entities (49)
 
-- `CHAR-0004` (character)
-- `CHAR-0002` (character)
-- `CHAR-0001` (character)
-- `CHAR-0003` (character)
-- `FACT-0001` (faction)
-- `LOC-0001` (location)
-- `MECH-4` (mechanics)
-- `NOVELLA_TEST_NOVELLA_OUTLINE` (story)
-- `NOVELLA_TEST_NOVELLA` (story)
-- `SCENE_9FB5CD97D313E440A565FDFFC9BC933411B6B453` (story)
-- `NOVELLA_TEST_OUTLINE` (story)
-- `NOVELLA_TEST` (story)
-- `NOVELLA_FIRST_CORRIDOR_OUTLINE` (story)
-- `NOVELLA_FIRST_CORRIDOR` (story)
-- `SCENE_D9B9E99CD4CDD7109B0756CE955E9574912E36A6` (story)
-- `SCENE_96A0A49F0F2BCA0EE73308E6FD97DA80711DEBBC` (story)
-- `NOVEL_FORGOTTEN_TIDES_OUTLINE` (story)
-- `NOVEL_FORGOTTEN_TIDES_NOTES` (story)
-- `NOVEL_FORGOTTEN_TIDES_MANUSCRIPT` (story)
-- `SCENE_541938A8FD6140A456619C4030B828CCC5AC4298` (story)
-- `LORE-7` (lore)
-- `NOTES_CHAT_HIGHLIGHTS_1765473539542` (notes)
-- `NOTES_CHAT_HIGHLIGHTS_1765472978233` (notes)
+- `char-0001` (character)
+- `char-0002` (character)
+- `char-0003` (character)
+- `char-0004` (character)
+- `fact-0001` (faction)
+- `loc-0001` (location)
+- `lore-7` (lore)
+- `mech-0001` (mechanics)
+- `mech-0002` (mechanics)
+- `mech-0003` (mechanics)
+- `notes_chat_highlights_1765472978233` (lore)
+- `notes_chat_highlights_1765473539542` (lore)
+- `novel_forgotten_tides_manuscript` (story)
+- `novel_forgotten_tides_notes` (story)
+- `novel_forgotten_tides_outline` (story)
+- `novella_first_corridor` (story)
+- `novella_first_corridor_outline` (story)
+- `novella_test` (story)
+- `novella_test_novella` (story)
+- `novella_test_novella_outline` (story)
+- `novella_test_outline` (story)
+- `scene_541938a8fd6140a456619c4030b828ccc5ac4298` (story)
+- `scene_96a0a49f0f2bca0ee73308e6fd97da80711debbc` (story)
+- `scene_9fb5cd97d313e440a565fdffc9bc933411b6b453` (story)
+- `scene_d9b9e99cd4cdd7109b0756ce955e9574912e36a6` (story)
+- `scene_screenplay_sample_001` (story)
+- `screenplay_sample` (story)
+- `story-0001` (story)
+- `story-0002` (story)
+- `term-0001` (term)
+- `term-0002` (term)
+- `term-0003` (term)
+- `term-0004` (term)
+- `term-0005` (term)
+- `term-0006` (term)
+- `term-0007` (term)
+- `term-0008` (term)
+- `term-0009` (term)
+- `term-0010` (term)
+- `term-0011` (term)
+- `term-0012` (term)
+- `term-0013` (term)
+- `term-0014` (term)
+- `term-0015` (term)
+- `term-0016` (term)
+- `term-0017` (term)
+- `term-0018` (term)
+- `term-0019` (term)
+- `term-0020` (term)
 
-## Relationships (0)
+## Relationships (56)
 
+- `char-0004` → `char-0001` (characters)
+- `char-0004` → `char-0002` (characters)
+- `char-0004` → `char-0003` (characters)
+- `char-0004` → `fact-0001` (factions)
+- `char-0002` → `char-0001` (characters)
+- `char-0002` → `char-0003` (characters)
+- `char-0002` → `char-0004` (characters)
+- `char-0002` → `fact-0001` (factions)
+- `char-0001` → `char-0002` (characters)
+- `char-0001` → `char-0003` (characters)
+- `char-0001` → `char-0004` (characters)
+- `char-0001` → `loc-0001` (locations)
+- `char-0001` → `fact-0001` (factions)
+- `char-0001` → `mech-0001` (mechanics)
+- `char-0001` → `mech-0003` (mechanics)
+- `char-0003` → `char-0001` (characters)
+- `char-0003` → `char-0002` (characters)
+- `char-0003` → `char-0004` (characters)
+- `char-0003` → `fact-0001` (factions)
+- `fact-0001` → `char-0001` (characters)
+- `fact-0001` → `char-0002` (characters)
+- `fact-0001` → `char-0003` (characters)
+- `fact-0001` → `char-0004` (characters)
+- `fact-0001` → `loc-0001` (locations)
+- `fact-0001` → `mech-0001` (mechanics)
+- `fact-0001` → `mech-0002` (mechanics)
+- `fact-0001` → `mech-0003` (mechanics)
+- `fact-0001` → `story-0001` (stories)
+- `loc-0001` → `char-0001` (characters)
+- `loc-0001` → `char-0002` (characters)
+- `loc-0001` → `char-0003` (characters)
+- `loc-0001` → `char-0004` (characters)
+- `loc-0001` → `fact-0001` (factions)
+- `loc-0001` → `mech-0001` (mechanics)
+- `loc-0001` → `mech-0002` (mechanics)
+- `loc-0001` → `mech-0003` (mechanics)
+- `loc-0001` → `story-0001` (stories)
+- `mech-0001` → `char-0001` (characters)
+- `mech-0001` → `loc-0001` (locations)
+- `mech-0001` → `story-0001` (stories)
+- `mech-0002` → `char-0001` (characters)
+- `mech-0002` → `loc-0001` (locations)
+- `mech-0002` → `story-0001` (stories)
+- `mech-0003` → `char-0001` (characters)
+- `mech-0003` → `loc-0001` (locations)
+- `mech-0003` → `story-0001` (stories)
+- `story-0002` → `mech-0001` (mechanics)
+- `story-0001` → `char-0001` (characters)
+- `story-0001` → `char-0002` (characters)
+- `story-0001` → `char-0003` (characters)
+- `story-0001` → `char-0004` (characters)
+- `story-0001` → `loc-0001` (locations)
+- `story-0001` → `fact-0001` (factions)
+- `story-0001` → `mech-0001` (mechanics)
+- `story-0001` → `mech-0002` (mechanics)
+- `story-0001` → `mech-0003` (mechanics)
 
+## Orphaned Reference Targets (47)
+
+- `term-0001` → `anchor burn` (related_terms) — target not found
+- `term-0001` → `anchor knot` (related_terms) — target not found
+- `term-0001` → `memory drive` (related_terms) — target not found
+- `term-0002` → `anchor` (related_terms) — target not found
+- `term-0002` → `memory drive` (related_terms) — target not found
+- `term-0002` → `oblivion` (related_terms) — target not found
+- `term-0003` → `anchor` (related_terms) — target not found
+- `term-0003` → `pilot` (related_terms) — target not found
+- `term-0004` → `personal memory` (related_terms) — target not found
+- `term-0004` → `memory drive` (related_terms) — target not found
+- `term-0005` → `oblivion` (related_terms) — target not found
+- `term-0005` → `conceptual drift` (related_terms) — target not found
+- `term-0006` → `coherence` (related_terms) — target not found
+- `term-0006` → `shear` (related_terms) — target not found
+- `term-0006` → `thinning` (related_terms) — target not found
+- `term-0007` → `memory corridor` (related_terms) — target not found
+- `term-0007` → `memory drive` (related_terms) — target not found
+- `term-0007` → `corridor thinning` (related_terms) — target not found
+- `term-0008` → `corridor` (related_terms) — target not found
+- `term-0008` → `thinning` (related_terms) — target not found
+- `term-0008` → `raveling` (related_terms) — target not found
+- `term-0009` → `forgetting field` (related_terms) — target not found
+- `term-0009` → `oblivion` (related_terms) — target not found
+- `term-0010` → `eddy` (related_terms) — target not found
+- `term-0010` → `oblivion` (related_terms) — target not found
+- `term-0011` → `conceptual drift` (related_terms) — target not found
+- `term-0011` → `memory physics` (related_terms) — target not found
+- `term-0012` → `shear` (related_terms) — target not found
+- `term-0012` → `conceptual drift` (related_terms) — target not found
+- `term-0013` → `corridor` (related_terms) — target not found
+- `term-0013` → `anchor` (related_terms) — target not found
+- `term-0013` → `anchor burn` (related_terms) — target not found
+- `term-0014` → `reliquary` (related_terms) — target not found
+- `term-0014` → `memory drive` (related_terms) — target not found
+- `term-0015` → `coherence` (related_terms) — target not found
+- `term-0015` → `anchor burn` (related_terms) — target not found
+- `term-0015` → `eddy` (related_terms) — target not found
+- `term-0016` → `civic memory` (related_terms) — target not found
+- `term-0016` → `memory drive` (related_terms) — target not found
+- `term-0017` → `corridor` (related_terms) — target not found
+- `term-0017` → `corridor thinning` (related_terms) — target not found
+- `term-0018` → `lattice shear` (related_terms) — target not found
+- `term-0018` → `conceptual drift` (related_terms) — target not found
+- `term-0019` → `corridor thinning` (related_terms) — target not found
+- `term-0019` → `conceptual drift` (related_terms) — target not found
+- `term-0020` → `anchor` (related_terms) — target not found
+- `term-0020` → `memory drive` (related_terms) — target not found
 
 ## Statistics
 
-- **Total Entities**: 23
-- **Total Relationships**: 0
-- **Entity Types**: character, faction, location, mechanics, story, lore, notes
-
-## Notes
-
-This link map represents the canonical relationships between entities in The Forgotten Tides universe. Relationships are derived from explicit references in entity files and lexicon term associations.
+- **Total Entities**: 49
+- **Total Relationships**: 56
+- **Orphaned Targets**: 47
+- **Entity Types**: character, faction, location, lore, mechanics, story, term
