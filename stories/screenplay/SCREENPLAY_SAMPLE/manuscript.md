@@ -1,8 +1,12 @@
 ---
 id: screenplay_sample
+schema_version: v1.0.0
 title: Screenplay Sample
 type: screenplay
 work_id: SCREENPLAY_SAMPLE
+tags:
+  - screenplay
+  - sample
 ---
 
 # Screenplay Sample Manuscript

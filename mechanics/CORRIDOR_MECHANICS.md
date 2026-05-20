@@ -1,9 +1,15 @@
 ---
 id: mech-0002
 uuid: 4763b298-b906-49a1-b85a-7f857c6bf6e9
+schema_version: v1.0.0
 type: mechanics
 name: CORRIDOR MECHANICS
 category: memory-physics
+tags:
+  - memory-corridor
+  - ftl-travel
+  - corridor-thinning
+  - navigation
 summary_50: How Faster-Than-Light Travel Functions in The Forgotten Tides
 summary_200: CORRIDOR MECHANICS is a core mechanics rule in The Forgotten Tides universe. How Faster-Than-Light Travel Functions in The Forgotten Tides
 cross_refs:

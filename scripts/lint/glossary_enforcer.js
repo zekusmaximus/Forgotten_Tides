@@ -178,8 +178,29 @@ function scanForGlossaryTerms(filePath, glossaryTerms, ignoredTerms, termMap) {
     // This matches terms like "Memory Drive", "Conceptual Drift", etc.
     const termRegex = /\b([A-Z][a-z]+(?:\s+[A-Z][a-z]+)+)\b/g;
 
+    let inFencedCode = false;
+
     for (let lineIndex = startLine; lineIndex < lines.length; lineIndex++) {
-      const line = lines[lineIndex];
+      const rawLine = lines[lineIndex];
+
+      // Toggle fenced code blocks (``` or ~~~); the fence line itself is skipped.
+      if (/^\s*(```|~~~)/.test(rawLine)) {
+        inFencedCode = !inFencedCode;
+        continue;
+      }
+      if (inFencedCode) continue;
+
+      // Skip ATX headings — they are titles/labels, not prose to enforce.
+      if (/^\s{0,3}#{1,6}\s/.test(rawLine)) continue;
+
+      // Strip inline code and link/image markup so paths and code identifiers
+      // do not register as uncatalogued terms.
+      const line = rawLine
+        .replace(/`[^`]*`/g, ' ')
+        .replace(/!?\[[^\]]*\]\([^)]*\)/g, ' ')
+        .replace(/!?\[[^\]]*\]\[[^\]]*\]/g, ' ')
+        .replace(/<[^>\s]+>/g, ' ');
+
       const matches = line.matchAll(termRegex);
 
       for (const match of matches) {

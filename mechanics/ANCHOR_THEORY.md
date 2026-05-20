@@ -1,9 +1,15 @@
 ---
 id: mech-0003
 uuid: a8a5ce35-0239-40a7-829f-2478c50040de
+schema_version: v1.0.0
 type: mechanics
 name: ANCHOR THEORY
 category: memory-physics
+tags:
+  - anchor
+  - anchor-burn
+  - pilot-cognition
+  - identity
 summary_50: Psychocognitive Structures for Surviving Memory-Driven FTL Travel
 summary_200: ANCHOR THEORY is a core mechanics rule in The Forgotten Tides universe. Psychocognitive Structures for Surviving Memory-Driven FTL Travel
 cross_refs:

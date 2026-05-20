@@ -14,7 +14,7 @@
     "check:stakes": "node scripts/checks/stakes_drift_check.js",
     "check:knowledge": "node scripts/checks/knowledge_state_check.js",
     "check:reader": "node scripts/checks/reader_model_linter.js",
-    "check": "npm run check:continuity && npm run check:timeline",
+    "check": "npm run check:continuity && npm run check:timeline && npm run check:stakes && npm run check:knowledge && npm run check:reader",
     "lint": "npm run lint:schema && npm run lint:refs && npm run lint:canonical-refs && npm run lint:glossary && npm run lint:canon",
     "report:pov": "node scripts/checks/pov_pressure_report.js",
     "test:dashboard": "node scripts/tests/test_dashboard.js",

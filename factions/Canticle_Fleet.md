@@ -1,9 +1,15 @@
 ---
 id: fact-0001
 uuid: 05233dc7-5cbf-408d-b5c3-09288fe1762c
+schema_version: v1.0.0
 type: faction
 name: Canticle Fleet
 faction_type: military
+tags:
+  - military
+  - memory-corridor
+  - fleet
+  - preservation
 summary_50: Memory-corridor fleet tasked with preservation, escort, and triage.
 summary_200: The Canticle Fleet is a memory-corridor command fleet responsible for stabilizing corridor travel, protecting vulnerable routes, and triaging memory resources during crises. Its doctrine treats memory as mass and survival as a ledger of sacrifice.
 cross_refs:

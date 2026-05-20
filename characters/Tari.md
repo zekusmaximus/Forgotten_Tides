@@ -1,8 +1,14 @@
 ---
 id: char-0004
 uuid: 90a709b9-8af0-4343-bd12-dd1a4db2f99f
+schema_version: v1.0.0
 type: character
 name: Tari
+tags:
+  - archivist
+  - novice
+  - heliodrome
+  - survivor
 summary_50: Archivist Novice, Heliodrome Survivor
 summary_200: 'Tari is a key character in The Forgotten Tides universe. Archivist Novice, Heliodrome Survivor  '
 cross_refs:

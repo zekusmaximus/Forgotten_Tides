@@ -1,8 +1,14 @@
 ---
 id: char-0001
 uuid: bf91c589-4981-43f7-bf0e-b59578a93625
+schema_version: v1.0.0
 type: character
 name: Rell
+tags:
+  - pilot
+  - technician
+  - canticle-fleet
+  - anchor-burn
 summary_50: Pilot-Technician, Canticle Fleet
 summary_200: 'Rell is a key character in The Forgotten Tides universe. Pilot-Technician, Canticle Fleet  '
 cross_refs:
