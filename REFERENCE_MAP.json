@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-20T00:40:04.088Z",
+  "generated": "2026-05-20T04:00:19.617Z",
   "nodes": [
     {
       "canonical_id": "char-0004",
@@ -594,6 +594,221 @@
       "from": "story-0001",
       "to": "mech-0003",
       "type": "mechanics"
+    },
+    {
+      "from": "term-0001",
+      "to": "term-0002",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0001",
+      "to": "term-0003",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0001",
+      "to": "term-0013",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0002",
+      "to": "term-0001",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0002",
+      "to": "term-0013",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0002",
+      "to": "term-0015",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0003",
+      "to": "term-0001",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0004",
+      "to": "term-0016",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0004",
+      "to": "term-0013",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0005",
+      "to": "term-0015",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0005",
+      "to": "term-0006",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0006",
+      "to": "term-0005",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0006",
+      "to": "term-0018",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0006",
+      "to": "term-0019",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0007",
+      "to": "term-0013",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0007",
+      "to": "term-0008",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0008",
+      "to": "term-0007",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0008",
+      "to": "term-0019",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0008",
+      "to": "term-0017",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0009",
+      "to": "term-0010",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0009",
+      "to": "term-0015",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0010",
+      "to": "term-0009",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0010",
+      "to": "term-0015",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0011",
+      "to": "term-0006",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0012",
+      "to": "term-0018",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0012",
+      "to": "term-0006",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0013",
+      "to": "term-0007",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0013",
+      "to": "term-0001",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0013",
+      "to": "term-0002",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0014",
+      "to": "term-0013",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0015",
+      "to": "term-0005",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0015",
+      "to": "term-0002",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0015",
+      "to": "term-0009",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0016",
+      "to": "term-0004",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0016",
+      "to": "term-0013",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0017",
+      "to": "term-0007",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0017",
+      "to": "term-0008",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0018",
+      "to": "term-0012",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0018",
+      "to": "term-0006",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0019",
+      "to": "term-0008",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0019",
+      "to": "term-0006",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0020",
+      "to": "term-0001",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0020",
+      "to": "term-0013",
+      "type": "related_terms"
     }
   ]
 }

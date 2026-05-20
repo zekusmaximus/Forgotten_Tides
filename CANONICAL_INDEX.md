@@ -1,6 +1,6 @@
 # Canonical Index
 
-This index lists canonical entities, their IDs, and source paths. Generated: 2026-05-20T00:40:04.115Z
+This index lists canonical entities, their IDs, and source paths. Generated: 2026-05-20T04:00:19.625Z
 
 ## Character
 - `char-0001` — Rell (`characters/Rell.md`)

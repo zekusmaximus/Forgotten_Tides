@@ -27,6 +27,7 @@ Canonical IDs are lowercase, hyphenated, and include a type prefix plus a four-d
 | `fact` | Faction |
 | `mech` | Mechanics rule |
 | `story` | Story |
+| `term` | Lexicon term (`data/lexicon/terms.yaml`) |
 | `event` | Event |
 | `scene` | Scene (prose or screenplay) |
 | `sbx` | Sandbox entry (what-if experiments) |
