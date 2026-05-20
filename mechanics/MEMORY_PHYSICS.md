@@ -1,9 +1,15 @@
 ---
 id: mech-0001
 uuid: d0b1fd40-264a-4aeb-851c-c18b5a38bcad
+schema_version: v1.0.0
 type: mechanics
 name: MEMORY PHYSICS
 category: memory-physics
+tags:
+  - memory-physics
+  - core-metaphysics
+  - coherence
+  - gravity
 summary_50: Core Metaphysics of The Forgotten Tides Universe
 summary_200: MEMORY PHYSICS is a core mechanics rule in The Forgotten Tides universe. Core Metaphysics of The Forgotten Tides Universe
 cross_refs:

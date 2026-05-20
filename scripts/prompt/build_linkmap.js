@@ -77,6 +77,7 @@ async function buildLinkMap() {
         const files = glob.sync('**/*.{md,yaml,json}', { cwd: dirPath });
         for (const file of files) {
             if (file.toLowerCase().endsWith('readme.md')) continue;
+            if (/_backup_/.test(file)) continue;
             const filePath = path.join(dirPath, file);
             const data = parseEntityFile(filePath);
             if (!data) continue;

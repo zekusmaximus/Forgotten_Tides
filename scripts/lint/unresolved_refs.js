@@ -82,7 +82,7 @@ function walkDataDir(dir, index) {
 
     if (stat.isDirectory()) {
       walkDataDir(filePath, index);
-    } else if (file.endsWith('.md') || file.endsWith('.yaml') || file.endsWith('.yml')) {
+    } else if ((file.endsWith('.md') || file.endsWith('.yaml') || file.endsWith('.yml')) && !/_backup_/.test(file)) {
       try {
         const content = fs.readFileSync(filePath, 'utf8');
         const match = content.match(/^---\s*([\s\S]*?)\s*---/);
@@ -249,7 +249,7 @@ function walkDataDirForRefs(dir, index) {
 
     if (stat.isDirectory()) {
       walkDataDirForRefs(filePath, index);
-    } else if (file.endsWith('.md') || file.endsWith('.yaml') || file.endsWith('.yml')) {
+    } else if ((file.endsWith('.md') || file.endsWith('.yaml') || file.endsWith('.yml')) && !/_backup_/.test(file)) {
       checkReferences(filePath, index);
     }
   });

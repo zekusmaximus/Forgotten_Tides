@@ -1,8 +1,14 @@
 ---
 id: char-0003
 uuid: dda2aa7b-19d1-4732-be53-48c2c0c3f8bc
+schema_version: v1.0.0
 type: character
 name: Estavan
+tags:
+  - archivist
+  - engineer
+  - canticle-fleet
+  - memory-preservation
 summary_50: Chief Archivist-Engineer, Canticle Fleet
 summary_200: 'Estavan is a key character in The Forgotten Tides universe. Chief Archivist-Engineer, Canticle Fleet  '
 cross_refs:

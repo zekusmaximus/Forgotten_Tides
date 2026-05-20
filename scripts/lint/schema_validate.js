@@ -69,17 +69,21 @@ function validateFile(filePath, schemaName) {
 
     if (valid) {
       const warnings = [];
+      const requiredFieldErrors = [];
       if (!isMarkdown && !frontmatterMatch && Object.keys(data || {}).length === 0) {
         warnings.push('Parsed empty document');
       }
-      if (!data.schema_version) {
-        warnings.push('Missing recommended field: schema_version');
+      if (!data.schema_version && !(data.metadata && data.metadata.schema_version)) {
+        requiredFieldErrors.push('Missing required field: schema_version');
       }
       if (!data.tags) {
-        warnings.push('Missing recommended field: tags');
+        requiredFieldErrors.push('Missing required field: tags');
       }
       if (!data.status && !(data.metadata && data.metadata.status)) {
         warnings.push('Missing recommended field: status (top-level or metadata.status)');
+      }
+      if (requiredFieldErrors.length > 0) {
+        return { valid: false, errors: requiredFieldErrors };
       }
       return { valid: true, warnings };
     } else {
@@ -111,7 +115,7 @@ function walkDir(dir, schemaName) {
       if (walkDir(filePath, schemaName)) {
         hasErrors = true;
       }
-    } else if ((file.endsWith('.md') || file.endsWith('.yaml') || file.endsWith('.yml')) && !file.endsWith('README.md')) {
+    } else if ((file.endsWith('.md') || file.endsWith('.yaml') || file.endsWith('.yml')) && !file.endsWith('README.md') && !/_backup_/.test(file)) {
       const result = validateFile(filePath, schemaName);
       if (!result.valid) {
         console.error(`❌ ${filePath}`);

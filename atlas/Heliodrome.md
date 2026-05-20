@@ -1,9 +1,15 @@
 ---
 id: loc-0001
 uuid: 18c0eeff-d683-4852-865b-9d4cd16d0880
+schema_version: v1.0.0
 type: location
 name: Heliodrome
 location_type: station
+tags:
+  - station
+  - lattice-gap
+  - conceptual-drift
+  - memory-decay
 summary_50: Memory-sick station at the Lattice Gap, held together by ritualized remembrance.
 summary_200: The Heliodrome is a critical Canticle-adjacent station in the Lattice Gap region suffering advanced conceptual dementia. Its arrays jitter, its corridors misremember their own geometry, and its survival depends on continual memory reinforcement and careful corridor triage.
 cross_refs:

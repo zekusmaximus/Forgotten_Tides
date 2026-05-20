@@ -4,6 +4,10 @@ work_id: SCREENPLAY_SAMPLE
 scene_heading: INT. MEMORY CHAMBER - NIGHT
 pov: Sutira
 location: Memory Chamber
+tags:
+  - screenplay
+  - sample
+  - memory-drive
 summary: |
   Sutira tests an unstable memory drive while Gorgi monitors bleed-through.
 stakes:
