@@ -4,17 +4,12 @@
   "title": "Location Schema",
   "description": "Schema for locations in The Forgotten Tides universe",
   "type": "object",
-  "required": ["id", "canonical_id", "type", "summary_50", "summary_200", "cross_refs", "references"],
+  "required": ["id", "type", "summary_50", "summary_200", "cross_refs", "references"],
   "properties": {
     "id": {
       "type": "string",
-      "pattern": "^LOC-\\d{4}$",
-      "description": "Location ID in format LOC-####"
-    },
-    "canonical_id": {
-      "type": "string",
       "pattern": "^loc-\\d{4}$",
-      "description": "Canonical location ID in format loc-####"
+      "description": "Location ID in format loc-####"
     },
     "schema_version": {
       "type": "string",

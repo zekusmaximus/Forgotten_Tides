@@ -1,6 +1,6 @@
 ---
-id: SCREENPLAY_SAMPLE
-title: "Screenplay Sample"
+id: screenplay_sample
+title: Screenplay Sample
 type: screenplay
 work_id: SCREENPLAY_SAMPLE
 ---

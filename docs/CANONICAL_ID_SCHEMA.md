@@ -36,6 +36,6 @@ Canonical IDs are lowercase, hyphenated, and include a type prefix plus a four-d
 
 1. Canonical IDs are **stable** and must never be reused.
 2. Canonical IDs are **lowercase** and **hyphenated**.
-3. Legacy `id` fields remain in frontmatter for backward compatibility.
+3. Each entity has a single `id` field in its frontmatter holding its canonical ID.
 4. Cross-references (`cross_refs` and `references`) must use canonical IDs.
 5. Canonical IDs must be listed in `CANONICAL_INDEX.md` and `REFERENCE_MAP.json`.

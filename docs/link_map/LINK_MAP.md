@@ -1,8 +1,8 @@
 # Link Map - Entity Relationships
 
-Generated: 2026-05-19T23:11:40.052Z
+Generated: 2026-05-20T00:40:04.115Z
 
-## Entities (49)
+## Entities (52)
 
 - `char-0001` (character)
 - `char-0002` (character)
@@ -10,7 +10,10 @@ Generated: 2026-05-19T23:11:40.052Z
 - `char-0004` (character)
 - `fact-0001` (faction)
 - `loc-0001` (location)
-- `lore-7` (lore)
+- `lore-0001` (lore)
+- `lore-0002` (lore)
+- `lore-0003` (lore)
+- `lore-0004` (lore)
 - `mech-0001` (mechanics)
 - `mech-0002` (mechanics)
 - `mech-0003` (mechanics)
@@ -165,7 +168,7 @@ Generated: 2026-05-19T23:11:40.052Z
 
 ## Statistics
 
-- **Total Entities**: 49
+- **Total Entities**: 52
 - **Total Relationships**: 56
 - **Orphaned Targets**: 47
 - **Entity Types**: character, faction, location, lore, mechanics, story, term

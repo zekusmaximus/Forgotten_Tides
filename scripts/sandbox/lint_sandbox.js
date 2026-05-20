@@ -37,8 +37,8 @@ function lintSandbox() {
     if (data.canonical_lock === true) {
       findings.push({ severity: 'error', file: path.relative(process.cwd(), file), message: 'canonical_lock=true; cannot merge' });
     }
-    if (!data.canonical_id) {
-      findings.push({ severity: 'warning', file: path.relative(process.cwd(), file), message: 'Missing canonical_id' });
+    if (!data.id) {
+      findings.push({ severity: 'warning', file: path.relative(process.cwd(), file), message: 'Missing id' });
     }
   });
   return { files, findings };

@@ -1,7 +1,6 @@
 ---
-id: LOC-0001
+id: loc-0001
 uuid: 18c0eeff-d683-4852-865b-9d4cd16d0880
-canonical_id: loc-0001
 type: location
 name: Heliodrome
 location_type: station

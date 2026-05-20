@@ -7,7 +7,6 @@
   "required": ["id", "canonical_lock"],
   "properties": {
     "id": { "type": "string" },
-    "canonical_id": { "type": "string" },
     "type": { "type": "string" },
     "canonical_lock": { "type": "boolean", "description": "When true, merge is blocked." },
     "status": {

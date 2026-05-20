@@ -4,17 +4,12 @@
   "title": "Faction Schema",
   "description": "Schema for factions in The Forgotten Tides universe",
   "type": "object",
-  "required": ["id", "canonical_id", "type", "summary_50", "summary_200", "cross_refs", "references"],
+  "required": ["id", "type", "summary_50", "summary_200", "cross_refs", "references"],
   "properties": {
     "id": {
       "type": "string",
-      "pattern": "^FACT-\\d{4}$",
-      "description": "Faction ID in format FACT-####"
-    },
-    "canonical_id": {
-      "type": "string",
       "pattern": "^fact-\\d{4}$",
-      "description": "Canonical faction ID in format fact-####"
+      "description": "Faction ID in format fact-####"
     },
     "schema_version": {
       "type": "string",

@@ -60,9 +60,10 @@ function buildIdIndex() {
     });
   }
 
-  // Add data files if they exist
-  const dataDirs = ['data'];
-  dataDirs.forEach(dir => {
+  // Index every directory that can supply canonical entities. Without this,
+  // characters reference fact-/mech-/loc- IDs that the script never learns about.
+  const entityDirs = ['factions', 'mechanics', 'atlas', 'lore', 'manuals', 'data'];
+  entityDirs.forEach(dir => {
     const fullPath = path.join(__dirname, `../../${dir}`);
     if (fs.existsSync(fullPath)) {
       walkDataDir(fullPath, index);
@@ -88,21 +89,14 @@ function walkDataDir(dir, index) {
         if (match) {
           const data = yaml.load(match[1]);
           if (data.id) {
-            // Determine type from ID pattern or type field
+            // Type comes from the ID prefix, not data.type — `data.type + 's'`
+            // mis-pluralizes already-plural types like "mechanics".
             let type;
-            if (data.type) {
-              type = data.type + 's'; // pluralize
-            } else if (data.id.startsWith('CHAR-')) {
-              type = 'characters';
-            } else if (data.id.startsWith('LOC-')) {
-              type = 'locations';
-            } else if (data.id.startsWith('FACT-')) {
-              type = 'factions';
-            } else if (data.id.startsWith('MECH-')) {
-              type = 'mechanics';
-            } else if (data.id.startsWith('STORY-')) {
-              type = 'stories';
-            }
+            if (data.id.startsWith('char-')) type = 'characters';
+            else if (data.id.startsWith('loc-')) type = 'locations';
+            else if (data.id.startsWith('fact-')) type = 'factions';
+            else if (data.id.startsWith('mech-')) type = 'mechanics';
+            else if (data.id.startsWith('story-')) type = 'stories';
 
             if (type && index[type]) {
               index[type].add(data.id);
@@ -154,11 +148,11 @@ function checkReferences(filePath, index) {
             if (typeof ref === 'string') {
               // Try to determine type from ID pattern
               let type;
-              if (ref.startsWith('CHAR-')) type = 'characters';
-              else if (ref.startsWith('LOC-')) type = 'locations';
-              else if (ref.startsWith('FACT-')) type = 'factions';
-              else if (ref.startsWith('MECH-')) type = 'mechanics';
-              else if (ref.startsWith('STORY-')) type = 'stories';
+              if (ref.startsWith('char-')) type = 'characters';
+              else if (ref.startsWith('loc-')) type = 'locations';
+              else if (ref.startsWith('fact-')) type = 'factions';
+              else if (ref.startsWith('mech-')) type = 'mechanics';
+              else if (ref.startsWith('story-')) type = 'stories';
 
               if (type && (!index[type] || !index[type].has(ref))) {
                 const msg = `${filePath}: Unresolved reference to ${ref} in ${field}`;
@@ -169,11 +163,11 @@ function checkReferences(filePath, index) {
               // Handle relationships with target_id
               const targetId = ref.target_id;
               let type;
-              if (targetId.startsWith('CHAR-')) type = 'characters';
-              else if (targetId.startsWith('LOC-')) type = 'locations';
-              else if (targetId.startsWith('FACT-')) type = 'factions';
-              else if (targetId.startsWith('MECH-')) type = 'mechanics';
-              else if (targetId.startsWith('STORY-')) type = 'stories';
+              if (targetId.startsWith('char-')) type = 'characters';
+              else if (targetId.startsWith('loc-')) type = 'locations';
+              else if (targetId.startsWith('fact-')) type = 'factions';
+              else if (targetId.startsWith('mech-')) type = 'mechanics';
+              else if (targetId.startsWith('story-')) type = 'stories';
 
               if (type && (!index[type] || !index[type].has(targetId))) {
                 const msg = `${filePath}: Unresolved reference to ${targetId} in ${field}.target_id`;

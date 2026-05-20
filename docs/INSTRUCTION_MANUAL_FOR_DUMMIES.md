@@ -43,8 +43,7 @@ If you’re not sure, put it in `lore/` or `stories/` and label it clearly.
 Every canon file starts with YAML frontmatter at the top. It’s like a “metadata card” so tools can track canon consistently.
 
 Typical frontmatter includes:
-- `canonical_id` (the official ID)
-- `id` (a shorter name)
+- `id` (the canonical ID — lowercase, like `char-0001`)
 - `uuid` (unique ID for tracking)
 - `cross_refs` (other canon IDs this file references)
 - `metadata.status`

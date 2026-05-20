@@ -1,6 +1,6 @@
 # Canonical Index
 
-This index lists canonical entities, their IDs, and source paths. Generated: 2026-05-19T23:11:40.052Z
+This index lists canonical entities, their IDs, and source paths. Generated: 2026-05-20T00:40:04.115Z
 
 ## Character
 - `char-0001` — Rell (`characters/Rell.md`)
@@ -15,7 +15,10 @@ This index lists canonical entities, their IDs, and source paths. Generated: 202
 - `loc-0001` — Heliodrome (`atlas/Heliodrome.md`)
 
 ## Lore
-- `lore-7` — COSMIC REGIONS (`lore/COSMIC_REGIONS.md`)
+- `lore-0001` — COSMIC REGIONS (`lore/COSMIC_REGIONS.md`)
+- `lore-0002` — MEMORY ECONOMY (`lore/MEMORY_ECONOMY.md`)
+- `lore-0003` — POLITIES AND FACTIONS (`lore/POLITIES_AND_FACTIONS.md`)
+- `lore-0004` — SPECIIES OVERVIEW (`lore/SPECIIES_OVERVIEW.md`)
 - `notes_chat_highlights_1765472978233` — Chat Highlights (`lore/notes/NOTES_CHAT_HIGHLIGHTS_1765472978233.md`)
 - `notes_chat_highlights_1765473539542` — Chat Highlights (`lore/notes/NOTES_CHAT_HIGHLIGHTS_1765473539542.md`)
 

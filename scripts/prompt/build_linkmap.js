@@ -16,9 +16,6 @@ const TYPE_BY_DIR = {
 const REFERENCE_FIELDS = ['cross_refs', 'references'];
 
 function pickCanonicalId(entityData) {
-    if (entityData && typeof entityData.canonical_id === 'string' && entityData.canonical_id.trim()) {
-        return entityData.canonical_id.trim().toLowerCase();
-    }
     if (entityData && typeof entityData.id === 'string' && entityData.id.trim()) {
         return entityData.id.trim().toLowerCase();
     }
@@ -93,7 +90,7 @@ async function buildLinkMap() {
             }
             entities[canonicalId] = {
                 canonical_id: canonicalId,
-                display_id: data.id || data.canonical_id || canonicalId,
+                display_id: data.id || canonicalId,
                 type,
                 name: data.name || data.title || canonicalId,
                 path: relativePath,
@@ -117,7 +114,7 @@ async function buildLinkMap() {
         if (entities[canonicalId]) continue;
         entities[canonicalId] = {
             canonical_id: canonicalId,
-            display_id: data.id || data.canonical_id || canonicalId,
+            display_id: data.id || canonicalId,
             type: 'story',
             name: data.name || data.title || canonicalId,
             path: file,

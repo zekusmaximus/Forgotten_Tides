@@ -1,5 +1,5 @@
 ---
-id: MANUAL-0001
+id: manual-0001
 uuid: 0b413a03-75dd-46cf-8978-ff064d79becc
 type: manual
 title: PILOT MANUAL

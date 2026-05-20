@@ -57,7 +57,7 @@ function main() {
   const prior = fs.readFileSync(scenePath, 'utf8').replace('Hold steady.', 'Hold steady. (previous)');
   fs.writeFileSync(prevPath, prior, 'utf8');
   run(`node scripts/prompt/scene_diff.js --scene ${scenePath} --previous ${prevPath}`);
-  expectFile(path.join(reportsDir, `scene_diff_SCENE_SCREENPLAY_SAMPLE_001.json`));
+  expectFile(path.join(reportsDir, `scene_diff_scene_screenplay_sample_001.json`));
 
   console.log('All upgrade checks passed.');
 }

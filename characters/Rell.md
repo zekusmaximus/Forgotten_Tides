@@ -1,7 +1,6 @@
 ---
-id: CHAR-0001
+id: char-0001
 uuid: bf91c589-4981-43f7-bf0e-b59578a93625
-canonical_id: char-0001
 type: character
 name: Rell
 summary_50: Pilot-Technician, Canticle Fleet

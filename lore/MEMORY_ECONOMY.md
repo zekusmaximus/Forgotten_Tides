@@ -1,5 +1,5 @@
 ---
-id: LORE-7
+id: lore-0002
 uuid: 1e82edb1-15bd-49b4-96da-3ef17e45b5df
 type: lore
 title: MEMORY ECONOMY

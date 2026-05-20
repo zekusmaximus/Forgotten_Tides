@@ -1,5 +1,5 @@
 ---
-id: SCENE_96A0A49F0F2BCA0EE73308E6FD97DA80711DEBBC
+id: scene_96a0a49f0f2bca0ee73308e6fd97da80711debbc
 title: Opening Scene
 work_id: NOVELLA_FIRST_CORRIDOR
 order: 1

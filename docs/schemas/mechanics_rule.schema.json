@@ -4,17 +4,12 @@
   "title": "Mechanics Rule Schema",
   "description": "Schema for mechanics rules in The Forgotten Tides universe",
   "type": "object",
-  "required": ["id", "canonical_id", "type", "summary_50", "summary_200", "cross_refs", "references", "rules", "examples", "tests"],
+  "required": ["id", "type", "summary_50", "summary_200", "cross_refs", "references", "rules", "examples", "tests"],
   "properties": {
     "id": {
       "type": "string",
-      "pattern": "^MECH-\\d{1,4}$",
-      "description": "Mechanics rule ID in format MECH-# or MECH-####"
-    },
-    "canonical_id": {
-      "type": "string",
       "pattern": "^mech-\\d{4}$",
-      "description": "Canonical mechanics ID in format mech-####"
+      "description": "Mechanics rule ID in format mech-####"
     },
     "schema_version": {
       "type": "string",

@@ -1,5 +1,5 @@
 ---
-id: NOVELLA_FIRST_CORRIDOR
+id: novella_first_corridor
 title: First Corridor
 kind: novella
 status: draft

@@ -1,6 +1,6 @@
 ---
-id: NOVEL_FORGOTTEN_TIDES_NOTES
-title: "Forgotten Tides - Development Notes"
+id: novel_forgotten_tides_notes
+title: Forgotten Tides - Development Notes
 work_id: NOVEL_FORGOTTEN_TIDES
 created: '2025-12-12'
 status: draft

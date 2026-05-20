@@ -1,5 +1,5 @@
 ---
-id: NOVELLA_TEST
+id: novella_test
 title: Test
 kind: novella
 status: draft

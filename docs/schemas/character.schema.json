@@ -4,17 +4,12 @@
   "title": "Character Schema",
   "description": "Schema for characters in The Forgotten Tides universe",
   "type": "object",
-  "required": ["id", "canonical_id", "type", "summary_50", "summary_200", "cross_refs", "references", "continuity"],
+  "required": ["id", "type", "summary_50", "summary_200", "cross_refs", "references", "continuity"],
   "properties": {
     "id": {
       "type": "string",
-      "pattern": "^CHAR-\\d{4}$",
-      "description": "Character ID in format CHAR-####"
-    },
-    "canonical_id": {
-      "type": "string",
       "pattern": "^char-\\d{4}$",
-      "description": "Canonical character ID in format char-####"
+      "description": "Character ID in format char-####"
     },
     "schema_version": {
       "type": "string",

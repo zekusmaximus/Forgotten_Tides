@@ -1,7 +1,6 @@
 ---
-id: FACT-0001
+id: fact-0001
 uuid: 05233dc7-5cbf-408d-b5c3-09288fe1762c
-canonical_id: fact-0001
 type: faction
 name: Canticle Fleet
 faction_type: military

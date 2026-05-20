@@ -1,6 +1,5 @@
 {
-  "id": "MECH-0001",
-  "canonical_id": "mech-0001",
+  "id": "mech-0001",
   "type": "mechanics",
   "name": "Memory Gravity Equation",
   "category": "memory-physics",

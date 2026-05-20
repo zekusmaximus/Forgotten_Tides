@@ -1,5 +1,5 @@
 ---
-id: LORE-7
+id: lore-0004
 uuid: 0219b559-6ae3-4c2d-a50e-e8eb93ff4349
 type: lore
 title: SPECIIES OVERVIEW

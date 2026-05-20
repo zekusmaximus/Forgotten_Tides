@@ -1,7 +1,6 @@
 ---
-id: MECH-4
+id: mech-0003
 uuid: a8a5ce35-0239-40a7-829f-2478c50040de
-canonical_id: mech-0003
 type: mechanics
 name: ANCHOR THEORY
 category: memory-physics

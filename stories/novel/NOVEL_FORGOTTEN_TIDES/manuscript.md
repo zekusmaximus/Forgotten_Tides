@@ -1,6 +1,6 @@
 ---
-id: NOVEL_FORGOTTEN_TIDES_MANUSCRIPT
-title: "Forgotten Tides"
+id: novel_forgotten_tides_manuscript
+title: Forgotten Tides
 work_id: NOVEL_FORGOTTEN_TIDES
 status: draft
 word_count_target: 80000-100000
