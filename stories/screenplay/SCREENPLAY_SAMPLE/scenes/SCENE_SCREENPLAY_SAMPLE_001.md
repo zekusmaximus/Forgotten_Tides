@@ -1,10 +1,10 @@
 ---
-id: SCENE_SCREENPLAY_SAMPLE_001
+id: scene_screenplay_sample_001
 work_id: SCREENPLAY_SAMPLE
-scene_heading: "INT. MEMORY CHAMBER - NIGHT"
+scene_heading: INT. MEMORY CHAMBER - NIGHT
 pov: Sutira
 location: Memory Chamber
-summary: >
+summary: |
   Sutira tests an unstable memory drive while Gorgi monitors bleed-through.
 stakes:
   summary: Drive overload risks permanent forgetting of the crew.

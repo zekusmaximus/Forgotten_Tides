@@ -1,6 +1,5 @@
 ---
-id: STORY-0002
-canonical_id: story-0002
+id: story-0002
 schema_version: v1.0.0
 type: story
 title: Memoir of a Nobody

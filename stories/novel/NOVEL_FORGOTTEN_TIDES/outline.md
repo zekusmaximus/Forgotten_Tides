@@ -1,6 +1,6 @@
 ---
-id: NOVEL_FORGOTTEN_TIDES_OUTLINE
-title: "Forgotten Tides - Outline"
+id: novel_forgotten_tides_outline
+title: Forgotten Tides - Outline
 work_id: NOVEL_FORGOTTEN_TIDES
 created: '2025-12-12'
 status: draft

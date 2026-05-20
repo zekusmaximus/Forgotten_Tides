@@ -1,5 +1,4 @@
-id: sandbox_concept_001
-canonical_id: sandbox-001
+id: sandbox-001
 type: mechanic
 canonical_lock: false
 status: sandbox
@@ -8,4 +7,4 @@ cross_refs:
     - mech-0001
 metadata:
   author: codex
-  notes: "What-if exploration of reversible memory drive."
+  notes: What-if exploration of reversible memory drive.

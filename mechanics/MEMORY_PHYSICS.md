@@ -1,7 +1,6 @@
 ---
-id: MECH-4
+id: mech-0001
 uuid: d0b1fd40-264a-4aeb-851c-c18b5a38bcad
-canonical_id: mech-0001
 type: mechanics
 name: MEMORY PHYSICS
 category: memory-physics

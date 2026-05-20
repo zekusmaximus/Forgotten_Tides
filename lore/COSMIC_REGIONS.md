@@ -1,5 +1,5 @@
 ---
-id: LORE-7
+id: lore-0001
 uuid: 5c877eda-dbc1-43b3-afce-0cdd06e29df8
 type: lore
 title: COSMIC REGIONS

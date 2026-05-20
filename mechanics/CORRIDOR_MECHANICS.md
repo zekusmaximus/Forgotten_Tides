@@ -1,7 +1,6 @@
 ---
-id: MECH-4
+id: mech-0002
 uuid: 4763b298-b906-49a1-b85a-7f857c6bf6e9
-canonical_id: mech-0002
 type: mechanics
 name: CORRIDOR MECHANICS
 category: memory-physics

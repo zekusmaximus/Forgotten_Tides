@@ -1,6 +1,5 @@
 ---
-id: STORY-0001
-canonical_id: story-0001
+id: story-0001
 type: story
 title: The Archivist's Wake
 story_type: short-story

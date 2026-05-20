@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-19T23:11:40.044Z",
+  "generated": "2026-05-20T00:40:04.088Z",
   "nodes": [
     {
       "canonical_id": "char-0004",
@@ -152,7 +152,25 @@
       "path": "stories/novel/NOVEL_FORGOTTEN_TIDES/scenes/SCENE_541938A8FD6140A456619C4030B828CCC5AC4298.md"
     },
     {
-      "canonical_id": "lore-7",
+      "canonical_id": "lore-0004",
+      "type": "lore",
+      "name": "SPECIIES OVERVIEW",
+      "path": "lore/SPECIIES_OVERVIEW.md"
+    },
+    {
+      "canonical_id": "lore-0003",
+      "type": "lore",
+      "name": "POLITIES AND FACTIONS",
+      "path": "lore/POLITIES_AND_FACTIONS.md"
+    },
+    {
+      "canonical_id": "lore-0002",
+      "type": "lore",
+      "name": "MEMORY ECONOMY",
+      "path": "lore/MEMORY_ECONOMY.md"
+    },
+    {
+      "canonical_id": "lore-0001",
       "type": "lore",
       "name": "COSMIC REGIONS",
       "path": "lore/COSMIC_REGIONS.md"

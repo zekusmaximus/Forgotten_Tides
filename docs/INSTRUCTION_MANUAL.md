@@ -74,7 +74,7 @@ This manual explains the repository structure, canon guardrails, and all availab
 - If adding new automation, place additional tests under `scripts/tests/` and wire via `package.json`.
 
 ## 12) File & Frontmatter Conventions
-- Use YAML frontmatter matching `docs/schemas/*.schema.json`; include `canonical_id`, `id`, `uuid` (where applicable), `cross_refs` (canonical IDs), `metadata.status`, and type-specific fields.
+- Use YAML frontmatter matching `docs/schemas/*.schema.json`; include `id` (lowercase canonical, e.g. `char-0001`), `uuid` (where applicable), `cross_refs` (canonical IDs), `metadata.status`, and type-specific fields.
 - Prefer canonical IDs in cross references and filenames for determinism; regenerate link maps after adding entities.
 - Glossary terms should be added to `data/lexicon/terms.yaml`; avoid relying on the legacy glossary except as fallback.
 

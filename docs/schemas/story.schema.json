@@ -4,17 +4,12 @@
   "title": "Story Schema",
   "description": "Schema for stories in The Forgotten Tides universe",
   "type": "object",
-  "required": ["id", "canonical_id", "type", "summary_50", "summary_200", "cross_refs", "references"],
+  "required": ["id", "type", "summary_50", "summary_200", "cross_refs", "references"],
   "properties": {
     "id": {
       "type": "string",
-      "pattern": "^STORY-\\d{4}$",
-      "description": "Story ID in format STORY-####"
-    },
-    "canonical_id": {
-      "type": "string",
       "pattern": "^story-\\d{4}$",
-      "description": "Canonical story ID in format story-####"
+      "description": "Story ID in format story-####"
     },
     "schema_version": {
       "type": "string",

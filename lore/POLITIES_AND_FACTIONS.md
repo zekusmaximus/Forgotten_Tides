@@ -1,5 +1,5 @@
 ---
-id: LORE-7
+id: lore-0003
 uuid: 7dbd22c1-f15e-44e4-9a53-fea3c4d32240
 type: lore
 title: POLITIES AND FACTIONS

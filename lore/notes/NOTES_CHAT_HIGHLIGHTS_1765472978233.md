@@ -1,5 +1,5 @@
 ---
-id: NOTES_CHAT_HIGHLIGHTS_1765472978233
+id: notes_chat_highlights_1765472978233
 title: Chat Highlights
 type: notes
 status: draft

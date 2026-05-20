@@ -43,9 +43,9 @@ function loadYamlFile(filePath) {
 }
 
 function extractIdsFromBody(body) {
-  const regex = /\b(?:CHAR|LOC|FAC|RULE|mech)-[A-Z0-9\-]+\b/gi;
+  const regex = /\b(?:char|loc|fact|rule|mech|story)-[a-z0-9_-]+\b/gi;
   const matches = body.match(regex) || [];
-  return [...new Set(matches.map(id => id.toUpperCase()))];
+  return [...new Set(matches.map(id => id.toLowerCase()))];
 }
 
 function rankAndFilterEntities(candidates, bodyIds) {
@@ -64,26 +64,26 @@ function rankAndFilterEntities(candidates, bodyIds) {
     // Skip if already in body (they'll be added first)
     if (bodyIdSet.has(id)) continue;
 
-    if (id.startsWith('CHAR-')) {
+    if (id.startsWith('char-')) {
       ranked.characters.push(id);
-    } else if (id.startsWith('LOC-')) {
+    } else if (id.startsWith('loc-')) {
       ranked.locations.push(id);
-    } else if (id.startsWith('FAC-')) {
+    } else if (id.startsWith('fact-')) {
       ranked.factions.push(id);
-    } else if (id.startsWith('RULE-') || id.startsWith('mech-')) {
+    } else if (id.startsWith('rule-') || id.startsWith('mech-')) {
       ranked.rules_used.push(id);
     }
   }
 
   // Add body IDs first (highest priority)
   for (const id of bodyIds) {
-    if (id.startsWith('CHAR-')) {
+    if (id.startsWith('char-')) {
       ranked.characters.unshift(id);
-    } else if (id.startsWith('LOC-')) {
+    } else if (id.startsWith('loc-')) {
       ranked.locations.unshift(id);
-    } else if (id.startsWith('FAC-')) {
+    } else if (id.startsWith('fact-')) {
       ranked.factions.unshift(id);
-    } else if (id.startsWith('RULE-') || id.startsWith('mech-')) {
+    } else if (id.startsWith('rule-') || id.startsWith('mech-')) {
       ranked.rules_used.unshift(id);
     }
   }

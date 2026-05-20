@@ -127,7 +127,7 @@ const run = () => {
     const payload = {
       source: {
         path: path.relative(ROOT_DIR, filePath),
-        canonical_id: parsed.data?.canonical_id || null,
+        canonical_id: parsed.data?.id || null,
         title: extractTitle(parsed.data, content)
       },
       generated_at: new Date().toISOString(),

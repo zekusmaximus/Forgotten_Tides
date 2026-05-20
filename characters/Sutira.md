@@ -1,7 +1,6 @@
 ---
-id: CHAR-0002
+id: char-0002
 uuid: c19071ad-b66e-4eef-8bfb-b583e5fbf853
-canonical_id: char-0002
 type: character
 name: Sutira
 summary_50: Captain, Canticle Fleet

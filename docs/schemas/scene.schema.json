@@ -8,11 +8,7 @@
   "properties": {
     "id": {
       "type": "string",
-      "description": "Scene identifier (can be legacy string or SCENE_* slug)"
-    },
-    "canonical_id": {
-      "type": "string",
-      "pattern": "^scene-[a-z0-9_-]+$"
+      "description": "Scene identifier (typically a scene_* slug)"
     },
     "work_id": {
       "type": "string",

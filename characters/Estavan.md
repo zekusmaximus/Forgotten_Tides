@@ -1,7 +1,6 @@
 ---
-id: CHAR-0003
+id: char-0003
 uuid: dda2aa7b-19d1-4732-be53-48c2c0c3f8bc
-canonical_id: char-0003
 type: character
 name: Estavan
 summary_50: Chief Archivist-Engineer, Canticle Fleet
