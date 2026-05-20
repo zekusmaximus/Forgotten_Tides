@@ -1,6 +1,6 @@
 # Link Map - Entity Relationships
 
-Generated: 2026-05-20T00:40:04.115Z
+Generated: 2026-05-20T04:00:19.625Z
 
 ## Entities (52)
 
@@ -57,7 +57,7 @@ Generated: 2026-05-20T00:40:04.115Z
 - `term-0019` (term)
 - `term-0020` (term)
 
-## Relationships (56)
+## Relationships (99)
 
 - `char-0004` → `char-0001` (characters)
 - `char-0004` → `char-0002` (characters)
@@ -115,60 +115,57 @@ Generated: 2026-05-20T00:40:04.115Z
 - `story-0001` → `mech-0001` (mechanics)
 - `story-0001` → `mech-0002` (mechanics)
 - `story-0001` → `mech-0003` (mechanics)
+- `term-0001` → `term-0002` (related_terms)
+- `term-0001` → `term-0003` (related_terms)
+- `term-0001` → `term-0013` (related_terms)
+- `term-0002` → `term-0001` (related_terms)
+- `term-0002` → `term-0013` (related_terms)
+- `term-0002` → `term-0015` (related_terms)
+- `term-0003` → `term-0001` (related_terms)
+- `term-0004` → `term-0016` (related_terms)
+- `term-0004` → `term-0013` (related_terms)
+- `term-0005` → `term-0015` (related_terms)
+- `term-0005` → `term-0006` (related_terms)
+- `term-0006` → `term-0005` (related_terms)
+- `term-0006` → `term-0018` (related_terms)
+- `term-0006` → `term-0019` (related_terms)
+- `term-0007` → `term-0013` (related_terms)
+- `term-0007` → `term-0008` (related_terms)
+- `term-0008` → `term-0007` (related_terms)
+- `term-0008` → `term-0019` (related_terms)
+- `term-0008` → `term-0017` (related_terms)
+- `term-0009` → `term-0010` (related_terms)
+- `term-0009` → `term-0015` (related_terms)
+- `term-0010` → `term-0009` (related_terms)
+- `term-0010` → `term-0015` (related_terms)
+- `term-0011` → `term-0006` (related_terms)
+- `term-0012` → `term-0018` (related_terms)
+- `term-0012` → `term-0006` (related_terms)
+- `term-0013` → `term-0007` (related_terms)
+- `term-0013` → `term-0001` (related_terms)
+- `term-0013` → `term-0002` (related_terms)
+- `term-0014` → `term-0013` (related_terms)
+- `term-0015` → `term-0005` (related_terms)
+- `term-0015` → `term-0002` (related_terms)
+- `term-0015` → `term-0009` (related_terms)
+- `term-0016` → `term-0004` (related_terms)
+- `term-0016` → `term-0013` (related_terms)
+- `term-0017` → `term-0007` (related_terms)
+- `term-0017` → `term-0008` (related_terms)
+- `term-0018` → `term-0012` (related_terms)
+- `term-0018` → `term-0006` (related_terms)
+- `term-0019` → `term-0008` (related_terms)
+- `term-0019` → `term-0006` (related_terms)
+- `term-0020` → `term-0001` (related_terms)
+- `term-0020` → `term-0013` (related_terms)
 
-## Orphaned Reference Targets (47)
+## Orphaned Reference Targets (0)
 
-- `term-0001` → `anchor burn` (related_terms) — target not found
-- `term-0001` → `anchor knot` (related_terms) — target not found
-- `term-0001` → `memory drive` (related_terms) — target not found
-- `term-0002` → `anchor` (related_terms) — target not found
-- `term-0002` → `memory drive` (related_terms) — target not found
-- `term-0002` → `oblivion` (related_terms) — target not found
-- `term-0003` → `anchor` (related_terms) — target not found
-- `term-0003` → `pilot` (related_terms) — target not found
-- `term-0004` → `personal memory` (related_terms) — target not found
-- `term-0004` → `memory drive` (related_terms) — target not found
-- `term-0005` → `oblivion` (related_terms) — target not found
-- `term-0005` → `conceptual drift` (related_terms) — target not found
-- `term-0006` → `coherence` (related_terms) — target not found
-- `term-0006` → `shear` (related_terms) — target not found
-- `term-0006` → `thinning` (related_terms) — target not found
-- `term-0007` → `memory corridor` (related_terms) — target not found
-- `term-0007` → `memory drive` (related_terms) — target not found
-- `term-0007` → `corridor thinning` (related_terms) — target not found
-- `term-0008` → `corridor` (related_terms) — target not found
-- `term-0008` → `thinning` (related_terms) — target not found
-- `term-0008` → `raveling` (related_terms) — target not found
-- `term-0009` → `forgetting field` (related_terms) — target not found
-- `term-0009` → `oblivion` (related_terms) — target not found
-- `term-0010` → `eddy` (related_terms) — target not found
-- `term-0010` → `oblivion` (related_terms) — target not found
-- `term-0011` → `conceptual drift` (related_terms) — target not found
-- `term-0011` → `memory physics` (related_terms) — target not found
-- `term-0012` → `shear` (related_terms) — target not found
-- `term-0012` → `conceptual drift` (related_terms) — target not found
-- `term-0013` → `corridor` (related_terms) — target not found
-- `term-0013` → `anchor` (related_terms) — target not found
-- `term-0013` → `anchor burn` (related_terms) — target not found
-- `term-0014` → `reliquary` (related_terms) — target not found
-- `term-0014` → `memory drive` (related_terms) — target not found
-- `term-0015` → `coherence` (related_terms) — target not found
-- `term-0015` → `anchor burn` (related_terms) — target not found
-- `term-0015` → `eddy` (related_terms) — target not found
-- `term-0016` → `civic memory` (related_terms) — target not found
-- `term-0016` → `memory drive` (related_terms) — target not found
-- `term-0017` → `corridor` (related_terms) — target not found
-- `term-0017` → `corridor thinning` (related_terms) — target not found
-- `term-0018` → `lattice shear` (related_terms) — target not found
-- `term-0018` → `conceptual drift` (related_terms) — target not found
-- `term-0019` → `corridor thinning` (related_terms) — target not found
-- `term-0019` → `conceptual drift` (related_terms) — target not found
-- `term-0020` → `anchor` (related_terms) — target not found
-- `term-0020` → `memory drive` (related_terms) — target not found
+_none_
 
 ## Statistics
 
 - **Total Entities**: 52
-- **Total Relationships**: 56
-- **Orphaned Targets**: 47
+- **Total Relationships**: 99
+- **Orphaned Targets**: 0
 - **Entity Types**: character, faction, location, lore, mechanics, story, term

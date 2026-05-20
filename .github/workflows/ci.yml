@@ -23,6 +23,15 @@ jobs:
       - name: Rebuild canonical index and reference map
         run: node scripts/prompt/build_linkmap.js
 
+      - name: Verify generated artifacts are committed
+        run: |
+          if ! git diff --exit-code -I'[Gg]enerated' \
+              CANONICAL_INDEX.md REFERENCE_MAP.json docs/link_map/LINK_MAP.md; then
+            echo "::error::Generated artifacts are out of date."
+            echo "Run 'node scripts/prompt/build_linkmap.js' locally and commit the result."
+            exit 1
+          fi
+
       - name: Lint (schema, refs, glossary, canon)
         run: npm run lint
 
@@ -31,6 +40,9 @@ jobs:
 
       - name: Dashboard smoke test
         run: node scripts/tests/test_dashboard.js
+
+      - name: System upgrades test
+        run: node scripts/tests/test_system_upgrades.js
 
   links:
     name: Markdown link check
