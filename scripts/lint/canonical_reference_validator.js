@@ -18,16 +18,19 @@ function loadCanonicalIds() {
   }
 
   const content = fs.readFileSync(INDEX_PATH, 'utf8');
-  const matches = content.matchAll(/`([a-z]+-\d{4})`/g);
+  // Match the leading backticked identifier on each list line:
+  // `- \`<id>\` — Name (\`path\`)`. We use the line anchor and the ` — ` suffix
+  // so the path token (also backticked) is not picked up as an ID.
+  const matches = content.matchAll(/^- `([^`]+)` —/gm);
   for (const match of matches) {
-    ids.add(match[1]);
+    ids.add(match[1].trim().toLowerCase());
   }
 
   return ids;
 }
 
 function isCanonicalId(value) {
-  return typeof value === 'string' && /^[a-z]+-\d{4}$/.test(value);
+  return typeof value === 'string' && /^[A-Za-z][A-Za-z0-9_]*-\d+$/.test(value.trim());
 }
 
 function collectIdsFromValue(value, ids) {
@@ -81,7 +84,8 @@ function scanFile(filePath, canonicalIds, report) {
 
   const referencedIds = extractReferencedIds(data);
   referencedIds.forEach(id => {
-    if (!canonicalIds.has(id)) {
+    const normalized = id.trim().toLowerCase();
+    if (!canonicalIds.has(normalized)) {
       report.missing.push({
         file: path.relative(ROOT_DIR, filePath),
         id
