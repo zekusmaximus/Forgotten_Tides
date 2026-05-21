@@ -1,5 +1,6 @@
 ---
 id: story-0001
+schema_version: "1.0.0"
 type: story
 title: The Archivist's Wake
 story_type: short-story
@@ -39,6 +40,11 @@ metadata:
   status: canonical
   created: '2025-12-11T00:55:01.000Z'
   modified: '2025-12-11T00:55:01.000Z'
+tags:
+  - archivists-wake
+  - memory-corridor
+  - anchor-burn
+  - heliodrome
 ---
 
 THE ARCHIVIST’S WAKE

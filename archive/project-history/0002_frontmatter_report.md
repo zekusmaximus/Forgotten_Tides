@@ -23,7 +23,7 @@
 ✅ Updated /workspace/oauth-google-110150357040357220165/sessions/agent_24c98168-e0b9-4c2d-a01b-ed79cf845fee/lore/COSMIC_REGIONS.md (lore)
 ✅ Updated /workspace/oauth-google-110150357040357220165/sessions/agent_24c98168-e0b9-4c2d-a01b-ed79cf845fee/lore/MEMORY_ECONOMY.md (lore)
 ✅ Updated /workspace/oauth-google-110150357040357220165/sessions/agent_24c98168-e0b9-4c2d-a01b-ed79cf845fee/lore/POLITIES_AND_FACTIONS.md (lore)
-✅ Updated /workspace/oauth-google-110150357040357220165/sessions/agent_24c98168-e0b9-4c2d-a01b-ed79cf845fee/lore/SPECIIES_OVERVIEW.md (lore)
+Updated /workspace/oauth-google-110150357040357220165/sessions/agent_24c98168-e0b9-4c2d-a01b-ed79cf845fee/lore/SPECIES_OVERVIEW.md (lore)
 ⏭️  Skipped /workspace/oauth-google-110150357040357220165/sessions/agent_24c98168-e0b9-4c2d-a01b-ed79cf845fee/lore/theology/ARCHIVIST_DOCTRINE.md (unknown type)
 ⏭️  Skipped /workspace/oauth-google-110150357040357220165/sessions/agent_24c98168-e0b9-4c2d-a01b-ed79cf845fee/lore/theology/OBLIVION_HERESIES.md (unknown type)
 ⏭️  Skipped /workspace/oauth-google-110150357040357220165/sessions/agent_24c98168-e0b9-4c2d-a01b-ed79cf845fee/lore/theology/THEOLOGY_OF_MEMORY.md (unknown type)

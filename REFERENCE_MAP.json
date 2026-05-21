@@ -229,8 +229,8 @@
     {
       "canonical_id": "lore-0004",
       "type": "lore",
-      "name": "SPECIIES OVERVIEW",
-      "path": "lore/SPECIIES_OVERVIEW.md",
+      "name": "SPECIES OVERVIEW",
+      "path": "lore/SPECIES_OVERVIEW.md",
       "canon_tier": "working_canon",
       "source_weight": 95,
       "retrieval_role": "working_reference"
@@ -284,7 +284,7 @@
       "canonical_id": "story-0001",
       "type": "story",
       "name": "The Archivist's Wake",
-      "path": "The_Archivists_Wake.md",
+      "path": "stories/short_story/the_archivists_wake/manuscript.md",
       "canon_tier": "primary_canon",
       "source_weight": 110,
       "retrieval_role": "authoritative"

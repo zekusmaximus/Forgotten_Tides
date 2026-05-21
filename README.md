@@ -21,7 +21,7 @@ The repository houses:
 
 The first canonical short story in this universe is:
 
-> **[The Archivist’s Wake](./The_Archivists_Wake.md)**  
+> **[The Archivist's Wake](./stories/short_story/the_archivists_wake/manuscript.md)**  
 This story establishes Memory Corridor mechanics, anchor-loss, memory stones, conceptual decay of structures, and the ethical stakes of travel.
 
 ---

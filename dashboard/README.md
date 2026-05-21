@@ -236,7 +236,7 @@ Part of The Forgotten Tides Universe repository.
 
 ## Related Documentation
 
-- [STRUCTURAL_AUDIT_AND_OPTIMIZATION_PLAN.md](../STRUCTURAL_AUDIT_AND_OPTIMIZATION_PLAN.md) - Phase 7 requirements
+- [STRUCTURAL_AUDIT_AND_OPTIMIZATION_PLAN.md](../archive/project-history/STRUCTURAL_AUDIT_AND_OPTIMIZATION_PLAN.md) - Historical Phase 7 requirements
 - [CANONICAL_INDEX.md](../CANONICAL_INDEX.md) - Entity index
 - [REFERENCE_MAP.json](../REFERENCE_MAP.json) - Data source
 

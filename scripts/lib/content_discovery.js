@@ -4,6 +4,7 @@ const { listFiles } = require('./file_loader');
 const DEFAULT_EXCLUDED_DIRS = new Set([
   '.git',
   'node_modules',
+  'archive',
   'out'
 ]);
 

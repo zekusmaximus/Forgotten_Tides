@@ -18,7 +18,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `lore-0001` — COSMIC REGIONS (`lore/COSMIC_REGIONS.md`)
 - `lore-0002` — MEMORY ECONOMY (`lore/MEMORY_ECONOMY.md`)
 - `lore-0003` — POLITIES AND FACTIONS (`lore/POLITIES_AND_FACTIONS.md`)
-- `lore-0004` — SPECIIES OVERVIEW (`lore/SPECIIES_OVERVIEW.md`)
+- `lore-0004` — SPECIES OVERVIEW (`lore/SPECIES_OVERVIEW.md`)
 - `notes_chat_highlights_1765472978233` — Chat Highlights (`lore/notes/NOTES_CHAT_HIGHLIGHTS_1765472978233.md`)
 - `notes_chat_highlights_1765473539542` — Chat Highlights (`lore/notes/NOTES_CHAT_HIGHLIGHTS_1765473539542.md`)
 
@@ -43,7 +43,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `scene_d9b9e99cd4cdd7109b0756ce955e9574912e36a6` — Second Scene (`stories/novella/NOVELLA_FIRST_CORRIDOR/scenes/SCENE_D9B9E99CD4CDD7109B0756CE955E9574912E36A6.md`)
 - `scene_screenplay_sample_001` — scene_screenplay_sample_001 (`stories/screenplay/SCREENPLAY_SAMPLE/scenes/SCENE_SCREENPLAY_SAMPLE_001.md`)
 - `screenplay_sample` — Screenplay Sample (`stories/screenplay/SCREENPLAY_SAMPLE/manuscript.md`)
-- `story-0001` — The Archivist's Wake (`The_Archivists_Wake.md`)
+- `story-0001` — The Archivist's Wake (`stories/short_story/the_archivists_wake/manuscript.md`)
 - `story-0002` — Memoir of a Nobody (`stories/short_story/memoir_of_a_nobody/manuscript.md`)
 
 ## Term
@@ -80,13 +80,13 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `lore-0001` - COSMIC REGIONS (lore, working_canon, weight 95, `lore/COSMIC_REGIONS.md`)
 - `lore-0002` - MEMORY ECONOMY (lore, working_canon, weight 95, `lore/MEMORY_ECONOMY.md`)
 - `lore-0003` - POLITIES AND FACTIONS (lore, working_canon, weight 95, `lore/POLITIES_AND_FACTIONS.md`)
-- `lore-0004` - SPECIIES OVERVIEW (lore, working_canon, weight 95, `lore/SPECIIES_OVERVIEW.md`)
+- `lore-0004` - SPECIES OVERVIEW (lore, working_canon, weight 95, `lore/SPECIES_OVERVIEW.md`)
 - `mech-0001` - MEMORY PHYSICS (mechanics, primary_canon, weight 110, `mechanics/MEMORY_PHYSICS.md`)
 - `mech-0002` - CORRIDOR MECHANICS (mechanics, primary_canon, weight 110, `mechanics/CORRIDOR_MECHANICS.md`)
 - `mech-0003` - ANCHOR THEORY (mechanics, primary_canon, weight 110, `mechanics/ANCHOR_THEORY.md`)
 - `notes_chat_highlights_1765472978233` - Chat Highlights (lore, working_canon, weight 85, `lore/notes/NOTES_CHAT_HIGHLIGHTS_1765472978233.md`)
 - `notes_chat_highlights_1765473539542` - Chat Highlights (lore, working_canon, weight 85, `lore/notes/NOTES_CHAT_HIGHLIGHTS_1765473539542.md`)
-- `story-0001` - The Archivist's Wake (story, primary_canon, weight 110, `The_Archivists_Wake.md`)
+- `story-0001` - The Archivist's Wake (story, primary_canon, weight 110, `stories/short_story/the_archivists_wake/manuscript.md`)
 - `term-0001` - Anchor (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
 - `term-0002` - Anchor Burn (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
 - `term-0003` - Anchor Knot (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)

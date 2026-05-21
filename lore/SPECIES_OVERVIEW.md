@@ -2,9 +2,9 @@
 id: lore-0004
 uuid: 0219b559-6ae3-4c2d-a50e-e8eb93ff4349
 type: lore
-title: SPECIIES OVERVIEW
+title: SPECIES OVERVIEW
 summary_50: Evolution, physiology, and cognition under the memory-gravity paradigm.
-summary_200: SPECIIES OVERVIEW is a lore document in The Forgotten Tides universe. Evolution, physiology, and cognition under the memory-gravity paradigm.
+summary_200: SPECIES OVERVIEW is a lore document in The Forgotten Tides universe. Evolution, physiology, and cognition under the memory-gravity paradigm.
 cross_refs:
   characters: []
   locations: []

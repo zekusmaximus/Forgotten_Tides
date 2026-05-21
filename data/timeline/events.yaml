@@ -3,7 +3,7 @@ events:
     timestamp: "Cycle 0"
     summary: "The Archivist's Wake establishes memory corridor travel, anchor-loss consequences, memory stones, and conceptual decay as primary canon."
     canon_tier: primary_canon
-    source: The_Archivists_Wake.md
+    source: stories/short_story/the_archivists_wake/manuscript.md
     involved_entities:
       - story-0001
       - mech-0001

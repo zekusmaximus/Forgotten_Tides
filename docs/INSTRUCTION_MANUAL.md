@@ -13,7 +13,7 @@ This manual explains the repository structure, canon guardrails, and all availab
 - Canon ids: `docs/CANONICAL_ID_SCHEMA.md` (format rules) and generated `CANONICAL_INDEX.md` (the live registry).
 - Schemas: `docs/schemas/*.schema.json` define required frontmatter for characters, locations, mechanics, stories, etc.
 - Relationship map: `REFERENCE_MAP.json` (auto-generated) drives the dashboard and link map docs.
-- Structural plan: `STRUCTURAL_AUDIT_AND_OPTIMIZATION_PLAN.md` (phases, expected artifacts, and completed work).
+- Structural plan archive: `archive/project-history/STRUCTURAL_AUDIT_AND_OPTIMIZATION_PLAN.md` (historical phases, expected artifacts, and completed work).
 
 ## 3) Repository Layout (working set)
 - `stories/`, `lore/`, `mechanics/`, `atlas/`, `factions/`, `characters/`, `manuals/`, `design/`, `bible/`: Canonical content with YAML frontmatter.
