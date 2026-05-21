@@ -3,6 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 const yaml = require('js-yaml');
+const { discoverMarkdownFiles, toPosixPath } = require('../lib/content_discovery');
 
 /**
  * Timeline Variance Check Script
@@ -26,9 +27,18 @@ const timelineReport = {
     summary: {
         total_events: 0,
         total_stories: 0,
+        lore_files_seen: 0,
+        lore_files_scanned: 0,
+        story_files_seen: 0,
+        story_files_scanned: 0,
+        skipped_files: 0,
         hard_failures: 0,
         soft_warnings: 0,
         timeline_span: null
+    },
+    coverage: {
+        lore: {},
+        stories: {}
     }
 };
 
@@ -38,39 +48,39 @@ const timelineReport = {
 function parseTimelineEvents() {
     const loreDir = path.join(__dirname, '../../lore');
     let timelineEvents = [];
+    const { files: loreFiles, coverage } = discoverMarkdownFiles(loreDir, {
+        exclude: filePath => filePath.includes(`${path.sep}ideas${path.sep}`) || filePath.includes(`${path.sep}notes${path.sep}`)
+    });
+    timelineReport.coverage.lore = coverage;
+    timelineReport.summary.lore_files_seen = coverage.files_seen;
+    timelineReport.summary.lore_files_scanned = coverage.files_scanned;
+    timelineReport.summary.skipped_files += coverage.skipped_files;
 
-    try {
-        const loreFiles = fs.readdirSync(loreDir)
-            .filter(file => file.endsWith('.md'));
+    for (const filePath of loreFiles) {
+        const file = toPosixPath(path.relative(path.join(__dirname, '../..'), filePath));
+        const content = fs.readFileSync(filePath, 'utf8');
 
-        for (const file of loreFiles) {
-            const filePath = path.join(loreDir, file);
-            const content = fs.readFileSync(filePath, 'utf8');
-
-            // Look for timeline-like patterns in markdown
-            const timelineMatches = content.match(/## Timeline[\s\S]*?(?=##|$)/gi);
-            if (timelineMatches) {
-                for (const match of timelineMatches) {
-                    const events = parseTimelineSection(match);
-                    timelineEvents = timelineEvents.concat(events);
-                }
+        // Look for timeline-like patterns in markdown
+        const timelineMatches = content.match(/## Timeline[\s\S]*?(?=##|$)/gi);
+        if (timelineMatches) {
+            for (const match of timelineMatches) {
+                const events = parseTimelineSection(match, file);
+                timelineEvents = timelineEvents.concat(events);
             }
+        }
 
-            // Also look for individual event patterns
-            const eventPattern = /- \*\*(.*?)\*\*:?\s*(.*?)(?=\n-|\n##|\n$)/gis;
-            let eventMatch;
-            while ((eventMatch = eventPattern.exec(content)) !== null) {
-                const [, dateStr, description] = eventMatch;
-                if (dateStr && description) {
-                    const parsedEvent = parseEvent(dateStr.trim(), description.trim(), file);
-                    if (parsedEvent) {
-                        timelineEvents.push(parsedEvent);
-                    }
+        // Also look for individual event patterns
+        const eventPattern = /- \*\*(.*?)\*\*:?\s*(.*?)(?=\n-|\n##|\n$)/gis;
+        let eventMatch;
+        while ((eventMatch = eventPattern.exec(content)) !== null) {
+            const [, dateStr, description] = eventMatch;
+            if (dateStr && description) {
+                const parsedEvent = parseEvent(dateStr.trim(), description.trim(), file);
+                if (parsedEvent) {
+                    timelineEvents.push(parsedEvent);
                 }
             }
         }
-    } catch (error) {
-        console.warn('No lore directory found or error reading lore files:', error.message);
     }
 
     // Sort events by date
@@ -97,7 +107,7 @@ function parseTimelineEvents() {
 /**
  * Parse a timeline section
  */
-function parseTimelineSection(section) {
+function parseTimelineSection(section, source = 'timeline') {
     const events = [];
     const lines = section.split('\n');
 
@@ -110,7 +120,7 @@ function parseTimelineSection(section) {
         if (dateMatch) {
             // Save previous event if exists
             if (currentDate && currentDescription.length > 0) {
-                const parsedEvent = parseEvent(currentDate, currentDescription.join(' ').trim(), 'timeline');
+                const parsedEvent = parseEvent(currentDate, currentDescription.join(' ').trim(), source);
                 if (parsedEvent) {
                     events.push(parsedEvent);
                 }
@@ -125,7 +135,7 @@ function parseTimelineSection(section) {
 
     // Save last event
     if (currentDate && currentDescription.length > 0) {
-        const parsedEvent = parseEvent(currentDate, currentDescription.join(' ').trim(), 'timeline');
+        const parsedEvent = parseEvent(currentDate, currentDescription.join(' ').trim(), source);
         if (parsedEvent) {
             events.push(parsedEvent);
         }
@@ -183,28 +193,24 @@ function parseEvent(dateStr, description, source) {
  */
 function parseStoryTimelines() {
     const storiesDir = path.join(__dirname, '../../stories');
-    let storyFiles = [];
-
-    try {
-        storyFiles = fs.readdirSync(storiesDir)
-            .filter(file => file.endsWith('.md') && file !== 'README.md');
-    } catch (error) {
-        // Stories directory might not exist or be empty
-        return;
-    }
+    const { files: storyFiles, coverage } = discoverMarkdownFiles(storiesDir);
+    timelineReport.coverage.stories = coverage;
+    timelineReport.summary.story_files_seen = coverage.files_seen;
+    timelineReport.summary.story_files_scanned = coverage.files_scanned;
+    timelineReport.summary.skipped_files += coverage.skipped_files;
 
     const stories = [];
 
-    for (const file of storyFiles) {
-        const filePath = path.join(storiesDir, file);
+    for (const filePath of storyFiles) {
         const content = fs.readFileSync(filePath, 'utf8');
-        const storyName = path.basename(file, '.md');
+        const relativePath = toPosixPath(path.relative(path.join(__dirname, '../..'), filePath));
+        const storyName = relativePath.replace(/\.md$/i, '');
 
         // Extract YAML frontmatter
-        const match = content.match(/^---\n([\s\S]*?)\n---/);
+        const match = content.match(/^---\r?\n([\s\S]*?)\r?\n---/);
         let storyData = {
             name: storyName,
-            file: file,
+            file: relativePath,
             timeline: null,
             date: null,
             events: []
@@ -224,7 +230,7 @@ function parseStoryTimelines() {
                     }));
                 }
             } catch (error) {
-                console.error(`Error parsing story metadata in ${file}:`, error.message);
+                console.error(`Error parsing story metadata in ${relativePath}:`, error.message);
             }
         }
 
@@ -239,7 +245,7 @@ function parseStoryTimelines() {
             for (const pattern of datePatterns) {
                 const match = content.match(pattern);
                 if (match) {
-                    const parsedDate = parseEvent(match[1], `Story ${storyName}`, file);
+                    const parsedDate = parseEvent(match[1], `Story ${storyName}`, relativePath);
                     if (parsedDate) {
                         storyData.date = parsedDate.date;
                         break;
@@ -396,6 +402,21 @@ try {
 
     console.log('Parsing story timelines...');
     const stories = parseStoryTimelines();
+
+    if (timelineReport.summary.story_files_seen > 0 && timelineReport.summary.total_stories === 0) {
+        timelineReport.issues.hard.push({
+            type: 'hard',
+            issue: 'Timeline check saw story markdown files but scanned none.',
+            location: 'stories/'
+        });
+    }
+    if (timelineReport.summary.lore_files_scanned > 0 && timelineReport.summary.total_events === 0) {
+        timelineReport.issues.soft.push({
+            type: 'soft',
+            issue: 'Timeline check scanned lore files but found no parseable timeline events.',
+            location: 'lore/'
+        });
+    }
 
     console.log('Checking timeline consistency...');
     checkTimelineConsistency(timelineEvents, stories);

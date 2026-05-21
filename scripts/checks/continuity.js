@@ -3,6 +3,7 @@
 const fs = require('fs');
 const path = require('path');
 const yaml = require('js-yaml');
+const { discoverMarkdownFiles, toPosixPath } = require('../lib/content_discovery');
 
 /**
  * Continuity Check Script
@@ -25,8 +26,17 @@ const continuityReport = {
     summary: {
         total_characters: 0,
         total_stories: 0,
+        story_files_seen: 0,
+        story_files_scanned: 0,
+        character_files_seen: 0,
+        character_files_scanned: 0,
+        skipped_files: 0,
         hard_failures: 0,
         soft_warnings: 0
+    },
+    coverage: {
+        characters: {},
+        stories: {}
     }
 };
 
@@ -35,17 +45,18 @@ const continuityReport = {
  */
 function loadCharacterContinuity() {
     const charactersDir = path.join(__dirname, '../../characters');
-    const characterFiles = fs.readdirSync(charactersDir)
-        .filter(file => file.endsWith('.md'));
+    const { files: characterFiles, coverage } = discoverMarkdownFiles(charactersDir);
 
     const characters = {};
+    continuityReport.coverage.characters = coverage;
+    continuityReport.summary.character_files_seen = coverage.files_seen;
 
-    for (const file of characterFiles) {
-        const filePath = path.join(charactersDir, file);
+    for (const filePath of characterFiles) {
         const content = fs.readFileSync(filePath, 'utf8');
+        const file = toPosixPath(path.relative(path.join(__dirname, '../..'), filePath));
 
         // Extract YAML frontmatter
-        const match = content.match(/^---\n([\s\S]*?)\n---/);
+        const match = content.match(/^---\r?\n([\s\S]*?)\r?\n---/);
         if (!match) continue;
 
         try {
@@ -56,7 +67,7 @@ function loadCharacterContinuity() {
                 id: frontmatter.id,
                 invariants: frontmatter.continuity?.invariants || [],
                 watchlist: frontmatter.continuity?.watchlist || [],
-                file: file
+                file
             };
 
             continuityReport.characters[charName] = {
@@ -69,6 +80,7 @@ function loadCharacterContinuity() {
     }
 
     continuityReport.summary.total_characters = Object.keys(characters).length;
+    continuityReport.summary.character_files_scanned = characterFiles.length;
     return characters;
 }
 
@@ -77,33 +89,18 @@ function loadCharacterContinuity() {
  */
 function scanStories(characters) {
     const storiesDir = path.join(__dirname, '../../stories');
-    let storyFiles = [];
-
-    try {
-        storyFiles = fs.readdirSync(storiesDir)
-            .filter(file => file.endsWith('.md') && file !== 'README.md');
-    } catch (error) {
-        // Stories directory might not exist or be empty
-        return;
-    }
+    const { files: storyFiles, coverage } = discoverMarkdownFiles(storiesDir);
+    continuityReport.coverage.stories = coverage;
+    continuityReport.summary.story_files_seen = coverage.files_seen;
+    continuityReport.summary.story_files_scanned = coverage.files_scanned;
+    continuityReport.summary.skipped_files += coverage.skipped_files;
 
     continuityReport.summary.total_stories = storyFiles.length;
 
-    for (const file of storyFiles) {
-        const filePath = path.join(storiesDir, file);
+    for (const filePath of storyFiles) {
         const content = fs.readFileSync(filePath, 'utf8');
-        const storyName = path.basename(file, '.md');
-
-        // Extract YAML frontmatter for story metadata
-        const match = content.match(/^---\n([\s\S]*?)\n---/);
-        let storyMetadata = {};
-        if (match) {
-            try {
-                storyMetadata = yaml.load(match[1]);
-            } catch (error) {
-                console.error(`Error parsing story metadata in ${file}:`, error.message);
-            }
-        }
+        const relativePath = toPosixPath(path.relative(path.join(__dirname, '../..'), filePath));
+        const storyName = relativePath.replace(/\.md$/i, '');
 
         // Check each character's invariants against story content
         for (const [charName, charData] of Object.entries(characters)) {
@@ -168,7 +165,6 @@ function scanStories(characters) {
  */
 function findPropertyMentions(content, property) {
     const mentions = [];
-    const lines = content.split('\n');
 
     // Look for patterns like "eye color: blue" or "species is human"
     const patterns = [
@@ -221,6 +217,21 @@ try {
 
     console.log('Scanning stories for continuity issues...');
     scanStories(characters);
+
+    if (continuityReport.summary.total_characters === 0) {
+        continuityReport.issues.hard.push({
+            type: 'hard',
+            issue: 'Continuity check found no character files with valid frontmatter.',
+            location: 'characters/'
+        });
+    }
+    if (continuityReport.summary.story_files_seen > 0 && continuityReport.summary.total_stories === 0) {
+        continuityReport.issues.hard.push({
+            type: 'hard',
+            issue: 'Continuity check saw story markdown files but scanned none.',
+            location: 'stories/'
+        });
+    }
 
     console.log('Generating continuity report...');
     writeReport();

@@ -4,6 +4,8 @@
 
 The Forgotten Tides CLI provides a structured workflow for worldbuilding, storytelling, and canon management in the Forgotten Tides universe.
 
+On Windows PowerShell, use `npm.cmd` for npm commands if execution policy blocks `npm.ps1`.
+
 ### Basic Usage
 
 ```bash
@@ -97,7 +99,7 @@ node scripts/prompt/orchestrate.js "compile all artifacts for review"
 Visualize canonical relationships between entities in the universe using an interactive network graph.
 
 ```bash
-npm run dashboard
+npm.cmd run dashboard
 ```
 
 Then open your browser to `http://localhost:8080/dashboard/`
@@ -235,10 +237,10 @@ Generate and validate link maps for canon consistency:
 
 ```bash
 # Build link map
-npm run linkmap:build
+npm.cmd run linkmap:build
 
 # Validate links
-npm run lint:refs
+npm.cmd run lint:refs
 ```
 
 **Link Map Components:**
@@ -246,6 +248,16 @@ npm run lint:refs
 - Cross-references
 - Canonical dependencies
 - Memory corridor connections
+
+## Validation Coverage
+
+Continuity and timeline checks recursively scan markdown under `stories/`, including nested novel, novella, screenplay, and short-story scenes. Reports in `out/reports/continuity.json` and `out/reports/timeline_variance.json` include coverage counts for files seen, scanned, and skipped. If story markdown exists but a check scans zero story files, that is a hard failure.
+
+```bash
+npm.cmd run lint
+npm.cmd run check
+npm.cmd run test:coverage
+```
 
 ## Determinism & Token Discipline
 
@@ -352,7 +364,7 @@ Session state is stored in `out/session/state.json`:
 ### Environment Requirements
 
 - **Node.js**: Version 18+
-- **Dependencies**: Install with `npm install`
+- **Dependencies**: Install with `npm.cmd install` on Windows PowerShell, or `npm install` in shells where npm scripts are allowed
 - **Directory Structure**: Must maintain standard layout
 - **File Permissions**: Write access to `out/`, `lore/`, `docs/`
 

@@ -18,6 +18,7 @@
     "lint": "npm run lint:schema && npm run lint:refs && npm run lint:canonical-refs && npm run lint:glossary && npm run lint:canon",
     "report:pov": "node scripts/checks/pov_pressure_report.js",
     "test:dashboard": "node scripts/tests/test_dashboard.js",
+    "test:coverage": "node scripts/tests/test_recursive_coverage.js",
     "author:apply": "node scripts/prompt/authoring.js",
     "compile:edit": "node scripts/compile_edit_packet.js",
     "compile:screenplay": "node scripts/compile_screenplay.js",

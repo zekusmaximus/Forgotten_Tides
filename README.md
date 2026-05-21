@@ -65,7 +65,7 @@ This repo is intended to become the **canonical reference implementation** of Th
 /dashboard – Interactive continuity visualization tool
 
 
-Additional tooling (schema validators, AI assist templates, MD → PDF exporters) will be added as the universe grows.
+Automation is now part of the working repository: schema validators, reference checks, canon linting, RAG chunking, AI assist templates, and story compilation helpers are available through npm scripts. On Windows PowerShell, use `npm.cmd` if local script execution policy blocks `npm`.
 
 ### 🌐 Continuity Dashboard
 
@@ -73,7 +73,7 @@ An interactive web-based tool for visualizing canonical relationships between en
 
 **Quick Start:**
 ```bash
-npm run dashboard
+npm.cmd run dashboard
 ```
 
 Then open your browser to `http://localhost:8080/dashboard/`

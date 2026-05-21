@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-05-20T00:43:00.869Z",
+  "timestamp": "2026-05-21T17:57:59.178Z",
   "characters": {
     "Estavan": {
       "invariants": [
@@ -40,8 +40,59 @@
   },
   "summary": {
     "total_characters": 4,
-    "total_stories": 0,
+    "total_stories": 17,
+    "story_files_seen": 19,
+    "story_files_scanned": 17,
+    "character_files_seen": 5,
+    "character_files_scanned": 4,
+    "skipped_files": 2,
     "hard_failures": 0,
     "soft_warnings": 0
+  },
+  "coverage": {
+    "characters": {
+      "root": "C:\\Users\\zeke\\Projects\\Forgotten_Tides\\characters",
+      "files_seen": 5,
+      "files_scanned": 4,
+      "skipped_files": 1,
+      "skipped_by_reason": {
+        "readme": 1
+      },
+      "scanned_files": [
+        "Estavan.md",
+        "Rell.md",
+        "Sutira.md",
+        "Tari.md"
+      ]
+    },
+    "stories": {
+      "root": "C:\\Users\\zeke\\Projects\\Forgotten_Tides\\stories",
+      "files_seen": 19,
+      "files_scanned": 17,
+      "skipped_files": 2,
+      "skipped_by_reason": {
+        "backup": 1,
+        "readme": 1
+      },
+      "scanned_files": [
+        "novel/NOVEL_FORGOTTEN_TIDES/manuscript.md",
+        "novel/NOVEL_FORGOTTEN_TIDES/notes.md",
+        "novel/NOVEL_FORGOTTEN_TIDES/outline.md",
+        "novel/NOVEL_FORGOTTEN_TIDES/scenes/SCENE_541938A8FD6140A456619C4030B828CCC5AC4298.md",
+        "novella/NOVELLA_FIRST_CORRIDOR/manuscript.md",
+        "novella/NOVELLA_FIRST_CORRIDOR/outline.md",
+        "novella/NOVELLA_FIRST_CORRIDOR/scenes/SCENE_96A0A49F0F2BCA0EE73308E6FD97DA80711DEBBC.md",
+        "novella/NOVELLA_FIRST_CORRIDOR/scenes/SCENE_D9B9E99CD4CDD7109B0756CE955E9574912E36A6.md",
+        "novella/NOVELLA_TEST/manuscript.md",
+        "novella/NOVELLA_TEST/outline.md",
+        "novella/NOVELLA_TEST_NOVELLA/manuscript.md",
+        "novella/NOVELLA_TEST_NOVELLA/outline.md",
+        "novella/NOVELLA_TEST_NOVELLA/scenes/SCENE_9FB5CD97D313E440A565FDFFC9BC933411B6B453.md",
+        "screenplay/SCREENPLAY_SAMPLE/manuscript.md",
+        "screenplay/SCREENPLAY_SAMPLE/scenes/SCENE_SCREENPLAY_SAMPLE_001.md",
+        "short_story/memoir_of_a_nobody/manuscript.md",
+        "short_story/memoir_of_a_nobody/OUTLINE.md"
+      ]
+    }
   }
 }

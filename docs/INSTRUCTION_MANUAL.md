@@ -6,6 +6,7 @@ This manual explains the repository structure, canon guardrails, and all availab
 - Requirements: Node.js 18+, npm. Install dependencies with `npm install`.
 - Run commands from the repo root (`c:\Users\zeke\Projects\Forgotten_Tides`).
 - Writable outputs land in `out/` (reports, chunks, graphs, compiled artifacts).
+- On Windows PowerShell, use `npm.cmd` for npm commands if execution policy blocks `npm.ps1`.
 
 ## 2) Canon & Governance Sources
 - Universe rules: `AGENT.md` (non-negotiable tone, metaphysics, and red lines).
@@ -31,9 +32,10 @@ This manual explains the repository structure, canon guardrails, and all availab
 - `npm run lint` → Runs all lint steps above in sequence.
 
 ## 5) Continuity & Timeline Checks
-- `npm run check:continuity` → Scans stories for violations of character invariants; writes `out/reports/continuity.json`. Hard failures exit non-zero.
-- `npm run check:timeline` → Parses timeline markers in `lore/` and stories; writes `out/reports/timeline_variance.json` with hard/soft issues.
+- `npm run check:continuity` → Recursively scans story markdown, including nested work scenes such as `stories/novel/*/scenes/*.md`, for violations of character invariants; writes `out/reports/continuity.json`. Hard failures exit non-zero.
+- `npm run check:timeline` → Recursively scans story markdown and canonical lore timeline sources; writes `out/reports/timeline_variance.json` with hard/soft issues.
 - `npm run check` → Runs both continuity and timeline passes.
+- Both reports include coverage counts for files seen, files scanned, and skipped files. A check that sees story markdown but scans zero story files is treated as a hard failure.
 
 ## 6) Canon Graph & Index Generation
 - `npm run linkmap:build` (script: `scripts/prompt/build_linkmap.js`)
@@ -71,6 +73,7 @@ This manual explains the repository structure, canon guardrails, and all availab
 
 ## 11) Testing
 - `npm run test:dashboard` → Executes `scripts/tests/test_dashboard.js` against dashboard assets.
+- `npm run test:coverage` → Verifies recursive markdown discovery includes nested story scenes and skips README/backup files.
 - If adding new automation, place additional tests under `scripts/tests/` and wire via `package.json`.
 
 ## 12) File & Frontmatter Conventions
