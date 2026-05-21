@@ -32,6 +32,9 @@ const timelineReport = {
         story_files_seen: 0,
         story_files_scanned: 0,
         skipped_files: 0,
+        canonical_event_count: 0,
+        draft_event_count: 0,
+        frontmatter_event_count: 0,
         hard_failures: 0,
         soft_warnings: 0,
         timeline_span: null
@@ -47,7 +50,7 @@ const timelineReport = {
  */
 function parseTimelineEvents() {
     const loreDir = path.join(__dirname, '../../lore');
-    let timelineEvents = [];
+    let timelineEvents = parseTimelineDataEvents();
     const { files: loreFiles, coverage } = discoverMarkdownFiles(loreDir, {
         exclude: filePath => filePath.includes(`${path.sep}ideas${path.sep}`) || filePath.includes(`${path.sep}notes${path.sep}`)
     });
@@ -77,7 +80,7 @@ function parseTimelineEvents() {
             if (dateStr && description) {
                 const parsedEvent = parseEvent(dateStr.trim(), description.trim(), file);
                 if (parsedEvent) {
-                    timelineEvents.push(parsedEvent);
+                    timelineEvents.push({ ...parsedEvent, canon_tier: 'working_canon' });
                 }
             }
         }
@@ -87,11 +90,11 @@ function parseTimelineEvents() {
     timelineEvents.sort((a, b) => new Date(a.date) - new Date(b.date));
 
     timelineReport.events = timelineEvents;
-    timelineReport.summary.total_events = timelineEvents.length;
+    recomputeEventSummary();
 
     // Calculate timeline span if we have events
-    if (timelineEvents.length > 0) {
-        const dates = timelineEvents.map(e => new Date(e.date));
+    if (timelineEvents.some(e => e.date)) {
+        const dates = timelineEvents.filter(e => e.date).map(e => new Date(e.date));
         const minDate = new Date(Math.min(...dates));
         const maxDate = new Date(Math.max(...dates));
         timelineReport.summary.timeline_span = {
@@ -122,7 +125,7 @@ function parseTimelineSection(section, source = 'timeline') {
             if (currentDate && currentDescription.length > 0) {
                 const parsedEvent = parseEvent(currentDate, currentDescription.join(' ').trim(), source);
                 if (parsedEvent) {
-                    events.push(parsedEvent);
+                    events.push({ ...parsedEvent, canon_tier: 'working_canon' });
                 }
             }
 
@@ -137,7 +140,7 @@ function parseTimelineSection(section, source = 'timeline') {
     if (currentDate && currentDescription.length > 0) {
         const parsedEvent = parseEvent(currentDate, currentDescription.join(' ').trim(), source);
         if (parsedEvent) {
-            events.push(parsedEvent);
+            events.push({ ...parsedEvent, canon_tier: 'working_canon' });
         }
     }
 
@@ -224,10 +227,11 @@ function parseStoryTimelines() {
 
                 // Extract any events mentioned in the story
                 if (frontmatter.events) {
-                    storyData.events = frontmatter.events.map(event => ({
-                        ...event,
-                        story: storyName
-                    }));
+                    storyData.events = frontmatter.events
+                        .map(event => normalizeStructuredEvent(event, relativePath, storyName))
+                        .filter(Boolean);
+                    timelineReport.summary.frontmatter_event_count += storyData.events.length;
+                    timelineReport.events.push(...storyData.events);
                 }
             } catch (error) {
                 console.error(`Error parsing story metadata in ${relativePath}:`, error.message);
@@ -259,6 +263,7 @@ function parseStoryTimelines() {
 
     timelineReport.stories = stories;
     timelineReport.summary.total_stories = stories.length;
+    recomputeEventSummary();
 
     return stories;
 }
@@ -410,11 +415,11 @@ try {
             location: 'stories/'
         });
     }
-    if (timelineReport.summary.lore_files_scanned > 0 && timelineReport.summary.total_events === 0) {
+    if (timelineReport.summary.canonical_event_count === 0) {
         timelineReport.issues.soft.push({
             type: 'soft',
-            issue: 'Timeline check scanned lore files but found no parseable timeline events.',
-            location: 'lore/'
+            issue: 'Timeline check found no canonical timeline events.',
+            location: 'data/timeline/events.yaml'
         });
     }
 
@@ -426,4 +431,48 @@ try {
 } catch (error) {
     console.error('Error running timeline variance check:', error);
     process.exit(1);
+}
+
+function parseTimelineDataEvents() {
+    const timelinePath = path.join(__dirname, '../../data/timeline/events.yaml');
+    if (!fs.existsSync(timelinePath)) return [];
+
+    try {
+        const data = yaml.load(fs.readFileSync(timelinePath, 'utf8')) || {};
+        return (data.events || [])
+            .map(event => normalizeStructuredEvent(event, 'data/timeline/events.yaml'))
+            .filter(Boolean);
+    } catch (error) {
+        timelineReport.issues.hard.push({
+            type: 'hard',
+            issue: `Could not parse data/timeline/events.yaml: ${error.message}`,
+            location: 'data/timeline/events.yaml'
+        });
+        return [];
+    }
+}
+
+function normalizeStructuredEvent(event, source, storyName = null) {
+    if (!event || !event.id) return null;
+    const timestamp = event.timestamp || event.date || event.original_date;
+    const parsed = timestamp ? parseEvent(timestamp, event.summary || event.description || event.event || event.id, source) : null;
+    return {
+        id: event.id,
+        date: parsed?.date || null,
+        original_date: timestamp || null,
+        description: event.summary || event.description || event.event || '',
+        summary: event.summary || event.description || event.event || '',
+        canon_tier: event.canon_tier || 'draft',
+        source,
+        story: storyName || event.story || null,
+        involved_entities: event.involved_entities || event.entities || [],
+        causal_note: event.causal_note || '',
+        raw: parsed?.raw || `${timestamp || 'undated'}: ${event.summary || event.description || event.event || event.id}`
+    };
+}
+
+function recomputeEventSummary() {
+    timelineReport.summary.total_events = timelineReport.events.length;
+    timelineReport.summary.canonical_event_count = timelineReport.events.filter(event => ['primary_canon', 'working_canon'].includes(event.canon_tier)).length;
+    timelineReport.summary.draft_event_count = timelineReport.events.filter(event => event.canon_tier === 'draft').length;
 }

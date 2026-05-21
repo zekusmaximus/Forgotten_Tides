@@ -29,6 +29,14 @@
       "enum": ["draft", "revised", "final", "sandbox"],
       "default": "draft"
     },
+    "canon_tier": {
+      "type": "string",
+      "enum": ["primary_canon", "working_canon", "draft", "speculative", "sandbox", "test", "deprecated"],
+      "description": "Retrieval authority tier used by canon indexes and prompt packs"
+    },
+    "retrieval_role": {
+      "type": "string"
+    },
     "summary": {
       "type": "string"
     },
@@ -74,6 +82,30 @@
         },
         "required": ["entity", "change"],
         "additionalProperties": false
+      }
+    },
+    "events": {
+      "type": "array",
+      "description": "Structured event metadata for timeline validation",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "timestamp": { "type": "string" },
+          "summary": { "type": "string" },
+          "canon_tier": {
+            "type": "string",
+            "enum": ["primary_canon", "working_canon", "draft", "speculative", "sandbox", "test", "deprecated"]
+          },
+          "causal_note": { "type": "string" },
+          "involved_entities": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "source": { "type": "string" }
+        },
+        "required": ["id", "timestamp", "summary"],
+        "additionalProperties": true
       }
     },
     "moral_actions": {

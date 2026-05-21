@@ -1,0 +1,12 @@
+events:
+  - id: event-0001
+    timestamp: "Cycle 0"
+    summary: "The Archivist's Wake establishes memory corridor travel, anchor-loss consequences, memory stones, and conceptual decay as primary canon."
+    canon_tier: primary_canon
+    source: The_Archivists_Wake.md
+    involved_entities:
+      - story-0001
+      - mech-0001
+      - mech-0002
+      - mech-0003
+    causal_note: "Baseline continuity event for later memory-drive and corridor mechanics."

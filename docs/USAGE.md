@@ -259,6 +259,26 @@ npm.cmd run check
 npm.cmd run test:coverage
 ```
 
+## Canon Discrimination
+
+Prompt packs and graph outputs include `canon_tier`, `source_weight`, and `retrieval_role` so LLM review can distinguish authoritative canon from drafts, tests, and sandbox material.
+
+Canonical tiers:
+- `primary_canon`: published or governing canon such as mechanics, characters, bible material, lexicon, and The Archivist's Wake.
+- `working_canon`: stable lore/manual material that can guide future writing.
+- `draft`: active story/work material that should not be treated as settled universe law.
+- `speculative`, `sandbox`, `test`, `deprecated`: non-authoritative material excluded or down-ranked by default.
+
+Useful commands:
+```bash
+npm.cmd run report:canon-tiers
+node scripts/prompt/context_builder.js "memory corridor physics" --canon-only
+node scripts/prompt/export_prompt_pack.js --canon-only mech-0001 term-0007
+node scripts/prompt/export_prompt_pack.js --include-test scene_screenplay_sample_001
+```
+
+Default prompt-pack behavior excludes test and sandbox material while allowing active drafts with lower source weight. Use `--canon-only` for LLM conversations that should only cite authoritative or working canon.
+
 ## Determinism & Token Discipline
 
 ### Deterministic Behavior

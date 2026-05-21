@@ -4,6 +4,8 @@
 const fs = require("fs");
 const path = require("path");
 const yaml = require("js-yaml");
+const { discoverMarkdownFiles } = require("../lib/content_discovery");
+const { describePolicy } = require("../lib/canon_policy");
 
 let globSync;
 try {
@@ -20,10 +22,10 @@ try {
 }
 
 const DATA_DIRS = [
+  "characters", "factions", "atlas", "mechanics", "stories", "lore", "manuals",
   "data/characters", "data/locations", "data/factions",
   "data/mechanics", "data/rulesets", "data/timeline"
 ];
-const STORY_DIRS = ["stories/shorts", "stories/novels"];
 const LEXICON = "data/lexicon/terms.yaml";
 
 function walkDir(dir, files = []) {
@@ -113,29 +115,18 @@ function scoreField(text, qTokens, w) {
 function collectEntities() {
   const items = [];
 
-  const dataFiles = DATA_DIRS.flatMap(d => globFiles(`${d}/**/*.md`, { nodir: true }));
+  const dataFiles = DATA_DIRS.flatMap(d => discoverMarkdownFiles(d).files);
   for (const f of dataFiles) {
     const { meta } = readFrontmatter(f);
     if (!meta || !meta.id) continue;
+    const policy = describePolicy(meta, f, meta.type || "entity");
     items.push({
       id: meta.id, type: meta.type || "entity", name: meta.name || meta.title || "",
       aliases: meta.aliases || [], tags: meta.tags || [],
       summaries: [meta.summary_50 || "", meta.summary_200 || "", meta.summary_600 || ""],
-      path: f
+      path: f,
+      source_weight: policy.source_weight
     });
-  }
-
-  const storyFiles = STORY_DIRS.flatMap(d => globFiles(`${d}/**/*.md`, { nodir: true }));
-  for (const f of storyFiles) {
-    const { meta } = readFrontmatter(f);
-    if (meta && meta.id) {
-      items.push({
-        id: meta.id, type: meta.type || "story", name: meta.title || "",
-        aliases: [], tags: meta.tags || [],
-        summaries: [meta.summary_50 || "", meta.summary_200 || ""],
-        path: f
-      });
-    }
   }
 
   if (fs.existsSync(LEXICON)) {
@@ -153,7 +144,8 @@ function collectEntities() {
         aliases: [],
         tags: [t.category || ""],
         summaries: [t.definition || ""],
-        path: LEXICON
+        path: LEXICON,
+        source_weight: describePolicy(t, LEXICON, "term").source_weight
       });
     }
   }
@@ -171,10 +163,14 @@ function resolveIDs(query) {
     for (const a of it.aliases) s += scoreField(a, qTokens, 4);
     for (const t of it.tags) s += scoreField(t, qTokens, 3);
     for (const sum of it.summaries) s += scoreField(sum, qTokens, 1);
-    if (s > 0) scored.push({ id: it.id, type: it.type, score: s });
+    if (s > 0) scored.push({ id: it.id, type: it.type, score: s, source_weight: it.source_weight || 0 });
   }
 
-  scored.sort((a, b) => b.score - a.score);
+  scored.sort((a, b) => {
+    if (b.score !== a.score) return b.score - a.score;
+    if (b.source_weight !== a.source_weight) return b.source_weight - a.source_weight;
+    return String(a.id).localeCompare(String(b.id));
+  });
   const out = [];
   const seen = new Set();
   for (const r of scored) {

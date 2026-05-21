@@ -67,6 +67,8 @@ This repo is intended to become the **canonical reference implementation** of Th
 
 Automation is now part of the working repository: schema validators, reference checks, canon linting, RAG chunking, AI assist templates, and story compilation helpers are available through npm scripts. On Windows PowerShell, use `npm.cmd` if local script execution policy blocks `npm`.
 
+Canon-aware retrieval is also supported: generated indexes and prompt packs label sources by `canon_tier`, `source_weight`, and `retrieval_role` so LLM review can prefer authoritative canon while still allowing drafts, sandbox material, or tests when explicitly requested.
+
 ### 🌐 Continuity Dashboard
 
 An interactive web-based tool for visualizing canonical relationships between entities in the universe. The dashboard reads `REFERENCE_MAP.json` and renders an interactive network graph showing how characters, locations, mechanics, factions, and stories are interconnected.

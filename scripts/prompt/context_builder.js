@@ -6,6 +6,8 @@ const fs = require("fs");
 const path = require("path");
 const yaml = require("js-yaml");
 const { execSync } = require("child_process");
+const { discoverMarkdownFiles } = require("../lib/content_discovery");
+const { describePolicy, shouldInclude } = require("../lib/canon_policy");
 
 // CLI Argument Parsing
 function parseArgs() {
@@ -41,6 +43,10 @@ FLAGS
   --profile <name>   Use a specific context profile (default: "default")
   --max <number>     Maximum number of entities to include
   --expand <mode>    Expansion mode: "one" (default) or "none"
+  --canon-only       Include only primary/working canon
+  --include-test     Allow test/sample sources
+  --include-sandbox  Allow sandbox sources
+  --include-drafts   Allow draft sources when used with --canon-only workflows
   --help, -h         Show this help message
 
 ENVIRONMENT
@@ -68,6 +74,12 @@ OUTPUT
   let profile = "default";
   let max = null;
   let expand = "one";
+  const filters = {
+    canonOnly: false,
+    includeDrafts: false,
+    includeTest: false,
+    includeSandbox: false
+  };
 
   for (let i = 0; i < args.length; i++) {
     const arg = args[i];
@@ -83,6 +95,14 @@ OUTPUT
       } else if (flag === "expand" && value && !value.startsWith("--")) {
         expand = value;
         i++;
+      } else if (flag === "canon-only") {
+        filters.canonOnly = true;
+      } else if (flag === "include-drafts") {
+        filters.includeDrafts = true;
+      } else if (flag === "include-test") {
+        filters.includeTest = true;
+      } else if (flag === "include-sandbox") {
+        filters.includeSandbox = true;
       }
     } else {
       query = arg;
@@ -94,7 +114,7 @@ OUTPUT
     process.exit(1);
   }
 
-  return { query, profile, max, expand };
+  return { query, profile, max, expand, filters };
 }
 
 // Get intent classification
@@ -148,64 +168,35 @@ function loadContextProfiles() {
 }
 
 // Read entity data from files
-function readEntityData() {
+function readEntityData(filters = {}) {
   const entities = {};
 
   // Read from data directories
   const dataDirs = [
-    "characters", "data/characters", "data/locations", "data/factions",
-    "data/mechanics", "data/rulesets", "data/timeline"
+    "characters", "factions", "atlas", "mechanics", "stories", "lore", "manuals",
+    "data/characters", "data/locations", "data/factions", "data/mechanics", "data/rulesets"
   ];
 
   for (const dir of dataDirs) {
     if (!fs.existsSync(dir)) continue;
 
-    const files = fs.readdirSync(dir);
-    for (const file of files) {
-      if (!file.endsWith(".md")) continue;
-
-      const filePath = path.join(dir, file);
+    const { files } = discoverMarkdownFiles(dir);
+    for (const filePath of files) {
       try {
         const content = fs.readFileSync(filePath, "utf8");
         const matter = require("gray-matter");
         const { data } = matter(content);
 
         if (data && data.id) {
+          const policy = describePolicy(data, filePath, data.type || "entity");
+          if (!shouldInclude(policy, filters)) continue;
           entities[data.id] = {
             id: data.id,
             type: data.type || "entity",
             name: data.name || data.title || "",
-            ...data
-          };
-        }
-      } catch (e) {
-        // Skip files that can't be parsed
-        continue;
-      }
-    }
-  }
-
-  // Read from stories directories
-  const storyDirs = ["stories/shorts", "stories/novels"];
-  for (const dir of storyDirs) {
-    if (!fs.existsSync(dir)) continue;
-
-    const files = fs.readdirSync(dir);
-    for (const file of files) {
-      if (!file.endsWith(".md")) continue;
-
-      const filePath = path.join(dir, file);
-      try {
-        const content = fs.readFileSync(filePath, "utf8");
-        const matter = require("gray-matter");
-        const { data } = matter(content);
-
-        if (data && data.id) {
-          entities[data.id] = {
-            id: data.id,
-            type: data.type || "story",
-            name: data.title || "",
-            ...data
+            ...data,
+            ...policy,
+            source: filePath
           };
         }
       } catch (e) {
@@ -221,11 +212,15 @@ function readEntityData() {
     if (fs.existsSync(lexiconPath)) {
       const lexicon = yaml.load(fs.readFileSync(lexiconPath, "utf8"));
       for (const term of lexicon.terms || []) {
+        const policy = describePolicy(term, lexiconPath, "term");
+        if (!shouldInclude(policy, filters)) continue;
         entities[term.id] = {
           id: term.id,
           type: "term",
           name: term.term || "",
-          ...term
+          ...term,
+          ...policy,
+          source: lexiconPath
         };
       }
     }
@@ -311,8 +306,13 @@ function applyOrderingAndCapping(ids, expanded, profile, max, entities) {
     }
   }
 
-  // Sort by ID for deterministic ordering
-  allIds.sort();
+  // Sort by source quality first, then ID for deterministic ordering.
+  allIds.sort((a, b) => {
+    const aw = entities[a]?.source_weight || 0;
+    const bw = entities[b]?.source_weight || 0;
+    if (bw !== aw) return bw - aw;
+    return String(a).localeCompare(String(b));
+  });
 
   // Apply profile ordering
   const orderRules = profileConfig.order || [];
@@ -331,6 +331,11 @@ function applyOrderingAndCapping(ids, expanded, profile, max, entities) {
       if (rule === "terms" && entity.type === "term") return true;
       if (rule === "stories" && entity.type === "story") return true;
       return false;
+    }).sort((a, b) => {
+      const aw = entities[a]?.source_weight || 0;
+      const bw = entities[b]?.source_weight || 0;
+      if (bw !== aw) return bw - aw;
+      return String(a).localeCompare(String(b));
     });
 
     ordered.push(...matching);
@@ -348,12 +353,12 @@ function applyOrderingAndCapping(ids, expanded, profile, max, entities) {
 
 // Main function
 function main() {
-  const { query, profile, max, expand } = parseArgs();
+  const { query, profile, max, expand, filters } = parseArgs();
   const intent = getIntent(query);
   const primaryIds = getResolvedIDs(query);
 
   // Load entities
-  const entities = readEntityData();
+  const entities = readEntityData(filters);
 
   // One-hop expansion
   const expanded = expand === "one" ? expandEntities(primaryIds, entities) : [];
@@ -376,6 +381,16 @@ function main() {
     primary_ids: primaryIds,
     expanded: expanded,
     order: order,
+    filters,
+    entities: order.map(id => ({
+      id,
+      type: entities[id]?.type,
+      name: entities[id]?.name,
+      source: entities[id]?.source,
+      canon_tier: entities[id]?.canon_tier,
+      source_weight: entities[id]?.source_weight,
+      retrieval_role: entities[id]?.retrieval_role
+    })),
     limits: { max_entities: max !== null ? max : loadContextProfiles()[profile]?.max_entities || 8 },
     created_at: new Date().toISOString()
   };

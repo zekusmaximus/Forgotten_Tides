@@ -40,8 +40,10 @@ This manual explains the repository structure, canon guardrails, and all availab
 ## 6) Canon Graph & Index Generation
 - `npm run linkmap:build` (script: `scripts/prompt/build_linkmap.js`)
   - Rebuilds `REFERENCE_MAP.json` and `CANONICAL_INDEX.md` from entity frontmatter.
+  - Adds `canon_tier`, `source_weight`, and `retrieval_role` so graph and prompt workflows can separate authoritative canon from drafts, tests, and sandbox material.
   - Writes human-readable `docs/link_map/LINK_MAP.md` and graph data under `out/graphs/`.
 - Use before dashboard review or after adding new entities/relationships.
+- `npm run report:canon-tiers` writes `out/reports/canon_tier_report.{json,md}` with inferred tiers and a list of files missing explicit `canon_tier`.
 
 ## 7) Dashboard
 - Start local server: `npm run dashboard` (serves on port 8080).
@@ -64,6 +66,7 @@ This manual explains the repository structure, canon guardrails, and all availab
 - Scene utilities: `npm run scenes:list|graph|open -- --work "<name>"` (script: `scripts/prompt/scenes_cli.js`) for listing, DOT graphs, or opening scenes.
 - Authoring helper: `npm run author:apply` (`scripts/prompt/authoring.js`) can save scenes/notes using flags (`--intent`, `--work`, `--scene`, `--order`, `--body_file` or stdin).
 - Export packs: `npm run pack:export` (`scripts/prompt/export_prompt_pack.js`) to build prompt packs for agents.
+- Canon filters: context and prompt-pack tools support `--canon-only`, `--include-test`, and `--include-sandbox`. Default retrieval excludes test/sandbox material and down-ranks draft sources.
 - ID and intent plumbing: `resolve_ids.js`, `route_intent.js`, `ordering.js`, `work_meta.js`, `scene_autotag.js` support deterministic IDs, intent routing, and auto-tagging.
 
 ## 10) Story Compilation
@@ -74,6 +77,7 @@ This manual explains the repository structure, canon guardrails, and all availab
 ## 11) Testing
 - `npm run test:dashboard` → Executes `scripts/tests/test_dashboard.js` against dashboard assets.
 - `npm run test:coverage` → Verifies recursive markdown discovery includes nested story scenes and skips README/backup files.
+- `npm run test:canon-policy`, `npm run test:prompt-pack`, and `npm run test:timeline-events` → Verify canon-tier inference, prompt-pack filtering, and structured timeline event parsing.
 - If adding new automation, place additional tests under `scripts/tests/` and wire via `package.json`.
 
 ## 12) File & Frontmatter Conventions

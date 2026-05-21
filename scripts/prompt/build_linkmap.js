@@ -3,6 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const { glob } = require('glob');
 const yaml = require('js-yaml');
+const { describePolicy } = require('../lib/canon_policy');
 
 const TYPE_BY_DIR = {
     characters: 'character',
@@ -89,12 +90,14 @@ async function buildLinkMap() {
             if (entities[canonicalId]) {
                 console.warn(`Duplicate canonical_id ${canonicalId}: ${entities[canonicalId].path} vs ${relativePath}`);
             }
+            const policy = describePolicy(data, relativePath, type);
             entities[canonicalId] = {
                 canonical_id: canonicalId,
                 display_id: data.id || canonicalId,
                 type,
                 name: data.name || data.title || canonicalId,
                 path: relativePath,
+                ...policy,
                 _refs: REFERENCE_FIELDS.reduce((acc, field) => {
                     if (data[field]) acc[field] = data[field];
                     return acc;
@@ -113,12 +116,14 @@ async function buildLinkMap() {
         const canonicalId = pickCanonicalId(data);
         if (!canonicalId) continue;
         if (entities[canonicalId]) continue;
+        const policy = describePolicy(data, file, 'story');
         entities[canonicalId] = {
             canonical_id: canonicalId,
             display_id: data.id || canonicalId,
             type: 'story',
             name: data.name || data.title || canonicalId,
             path: file,
+            ...policy,
             _refs: REFERENCE_FIELDS.reduce((acc, field) => {
                 if (data[field]) acc[field] = data[field];
                 return acc;
@@ -136,12 +141,14 @@ async function buildLinkMap() {
                     if (!term || !term.id) continue;
                     const tid = String(term.id).toLowerCase();
                     if (!entities[tid]) {
+                        const policy = describePolicy(term, 'data/lexicon/terms.yaml', 'term');
                         entities[tid] = {
                             canonical_id: tid,
                             display_id: term.id,
                             type: 'term',
                             name: term.term || term.name || tid,
                             path: 'data/lexicon/terms.yaml',
+                            ...policy,
                             _refs: term.related_terms ? { related_terms: term.related_terms } : {}
                         };
                     }
@@ -217,7 +224,10 @@ async function buildLinkMap() {
             canonical_id: e.canonical_id,
             type: e.type,
             name: e.name,
-            path: e.path
+            path: e.path,
+            canon_tier: e.canon_tier,
+            source_weight: e.source_weight,
+            retrieval_role: e.retrieval_role
         })),
         edges: relationships.map(r => ({ from: r.source, to: r.target, type: r.type }))
     };
@@ -226,13 +236,27 @@ async function buildLinkMap() {
     const sortedEntities = Object.values(entities).sort((a, b) => a.canonical_id.localeCompare(b.canonical_id));
     const types = [...new Set(sortedEntities.map(e => e.type))].sort();
 
-    let indexContent = `# Canonical Index\n\nThis index lists canonical entities, their IDs, and source paths. Generated: ${new Date().toISOString()}\n\n`;
+    let indexContent = `# Canonical Index\n\nThis index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: ${new Date().toISOString()}\n\n`;
     for (const type of types) {
         indexContent += `## ${type.charAt(0).toUpperCase() + type.slice(1)}\n`;
         for (const entity of sortedEntities.filter(e => e.type === type)) {
             indexContent += `- \`${entity.canonical_id}\` — ${entity.name} (\`${entity.path}\`)\n`;
         }
         indexContent += `\n`;
+    }
+    const canonViews = [
+        { title: 'Authoritative Canon', tiers: ['primary_canon', 'working_canon'] },
+        { title: 'Active Drafts', tiers: ['draft'] },
+        { title: 'Speculative / Sandbox Material', tiers: ['speculative', 'sandbox'] },
+        { title: 'Test / Dev / Sample Material', tiers: ['test', 'deprecated'] }
+    ];
+    indexContent += `## Canon Views\n\n`;
+    for (const view of canonViews) {
+        const matches = sortedEntities.filter(e => view.tiers.includes(e.canon_tier));
+        indexContent += `### ${view.title}\n`;
+        indexContent += matches.length
+            ? `${matches.map(e => `- \`${e.canonical_id}\` - ${e.name} (${e.type}, ${e.canon_tier}, weight ${e.source_weight}, \`${e.path}\`)`).join('\n')}\n\n`
+            : `_none_\n\n`;
     }
     fs.writeFileSync(path.join(repoRoot, 'CANONICAL_INDEX.md'), indexContent);
 
@@ -242,7 +266,7 @@ Generated: ${new Date().toISOString()}
 
 ## Entities (${Object.keys(entities).length})
 
-${sortedEntities.map(e => `- \`${e.canonical_id}\` (${e.type})`).join('\n')}
+${sortedEntities.map(e => `- \`${e.canonical_id}\` (${e.type}, ${e.canon_tier}, weight ${e.source_weight})`).join('\n')}
 
 ## Relationships (${relationships.length})
 
@@ -260,6 +284,9 @@ ${orphanedTargets.length
 - **Total Relationships**: ${relationships.length}
 - **Orphaned Targets**: ${orphanedTargets.length}
 - **Entity Types**: ${types.join(', ')}
+- **Primary / Working Canon**: ${sortedEntities.filter(e => ['primary_canon', 'working_canon'].includes(e.canon_tier)).length}
+- **Draft Entities**: ${sortedEntities.filter(e => e.canon_tier === 'draft').length}
+- **Test / Sandbox / Deprecated Entities**: ${sortedEntities.filter(e => ['test', 'sandbox', 'deprecated'].includes(e.canon_tier)).length}
 `;
     fs.writeFileSync(path.join(docsLinkMapDir, 'LINK_MAP.md'), linkMapContent);
 

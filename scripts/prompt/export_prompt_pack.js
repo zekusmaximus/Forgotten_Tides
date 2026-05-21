@@ -5,6 +5,7 @@
 const fs = require("fs");
 const path = require("path");
 const yaml = require("js-yaml");
+const { describePolicy, shouldInclude, provenanceNote } = require("../lib/canon_policy");
 
 let globSync;
 try {
@@ -87,26 +88,62 @@ function readFM(p) {
   return { meta: fm.data || {}, body: fm.content || "" };
 }
 
-function findById(id) {
+function findById(id, options = {}) {
   const dirs = ['characters', 'factions', 'atlas', 'mechanics', 'stories', 'lore', 'data'];
   const files = globFiles(`{${dirs.join(',')}}/**/*.md`, { nodir: true });
   for (const f of files) {
+    if (/readme\.md$/i.test(f) || /_backup_/i.test(f)) continue;
     const { meta, body } = readFM(f);
-    if (meta && meta.id === id) return { path: f, meta, body };
+    if (meta && meta.id === id) {
+      const policy = describePolicy(meta, f, meta.type || "entity");
+      if (!shouldInclude(policy, options)) continue;
+      return { path: f, meta, body, policy };
+    }
+  }
+
+  const lexiconPath = 'data/lexicon/terms.yaml';
+  if (fs.existsSync(lexiconPath)) {
+    try {
+      const lexicon = yaml.load(fs.readFileSync(lexiconPath, 'utf8')) || {};
+      const term = (lexicon.terms || []).find(t => t.id === id);
+      if (term) {
+        const policy = describePolicy(term, lexiconPath, 'term');
+        if (!shouldInclude(policy, options)) return null;
+        return {
+          path: lexiconPath,
+          meta: {
+            id: term.id,
+            type: 'term',
+            name: term.term,
+            summary_50: term.definition,
+            summary_200: term.definition,
+            ...term
+          },
+          body: term.definition || '',
+          policy
+        };
+      }
+    } catch (e) {
+      return null;
+    }
   }
   return null;
 }
 
-function pack(ids) {
+function pack(ids, options = {}) {
   const entries = [];
   for (const id of ids) {
-    const hit = findById(id);
+    const hit = findById(id, options);
     if (!hit) continue;
-    const { path: p, meta } = hit;
+    const { path: p, meta, policy } = hit;
     const entry = {
       id: meta.id,
       type: meta.type || "entity",
       name: meta.name || meta.title || meta.id,
+      canon_tier: policy.canon_tier,
+      source_weight: policy.source_weight,
+      retrieval_role: policy.retrieval_role,
+      provenance: provenanceNote(policy),
       summary_50: meta.summary_50 || "",
       summary_200: meta.summary_200 || "",
       rules: Array.isArray(meta.rules) ? meta.rules : [],
@@ -120,18 +157,41 @@ function pack(ids) {
     };
     entries.push(entry);
   }
-  entries.sort((a, b) => String(a.id).localeCompare(String(b.id)));
-  return { created_at: new Date().toISOString(), entries };
+  entries.sort((a, b) => {
+    if (b.source_weight !== a.source_weight) return b.source_weight - a.source_weight;
+    return String(a.id).localeCompare(String(b.id));
+  });
+  return { created_at: new Date().toISOString(), filters: options, entries };
+}
+
+function parseArgs(argv) {
+  const ids = [];
+  const options = {
+    canonOnly: false,
+    includeDrafts: false,
+    includeTest: false,
+    includeSandbox: false
+  };
+
+  for (const arg of argv) {
+    if (arg === '--canon-only') options.canonOnly = true;
+    else if (arg === '--include-drafts') options.includeDrafts = true;
+    else if (arg === '--include-test') options.includeTest = true;
+    else if (arg === '--include-sandbox') options.includeSandbox = true;
+    else ids.push(arg);
+  }
+
+  return { ids, options };
 }
 
 if (require.main === module) {
-  const ids = process.argv.slice(2).filter(Boolean);
+  const { ids, options } = parseArgs(process.argv.slice(2).filter(Boolean));
   if (!ids.length) {
-    console.error("Usage: node scripts/prompt/export_prompt_pack.js ID [ID ...]");
+    console.error("Usage: node scripts/prompt/export_prompt_pack.js [--canon-only] [--include-test] [--include-sandbox] ID [ID ...]");
     process.exit(2);
   }
   if (!fs.existsSync("out/prompts")) fs.mkdirSync("out/prompts", { recursive: true });
-  const payload = pack(ids);
+  const payload = pack(ids, options);
   const timestamp = payload.created_at.replace(/[:.]/g, "-");
   const jsonFile = `out/prompts/${timestamp}_pack.json`;
   const mdFile = `out/prompts/${timestamp}_pack.md`;
@@ -143,6 +203,8 @@ if (require.main === module) {
   for (const entry of payload.entries) {
     mdContent += `## ${entry.name} (${entry.id})\n`;
     mdContent += `**Type:** ${entry.type}\n`;
+    mdContent += `**Canon Tier:** ${entry.canon_tier} (${entry.retrieval_role}, weight ${entry.source_weight})\n`;
+    mdContent += `**Provenance:** ${entry.provenance}\n`;
     if (entry.summary_200) mdContent += `**Summary:** ${entry.summary_200}\n\n`;
     else if (entry.summary_50) mdContent += `**Summary:** ${entry.summary_50}\n\n`;
     
@@ -161,4 +223,4 @@ if (require.main === module) {
   process.stdout.write(jsonFile);
 }
 
-module.exports = { pack };
+module.exports = { pack, parseArgs };

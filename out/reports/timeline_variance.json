@@ -1,6 +1,25 @@
 {
-  "timestamp": "2026-05-21T17:57:59.775Z",
-  "events": [],
+  "timestamp": "2026-05-21T18:14:13.163Z",
+  "events": [
+    {
+      "id": "event-0001",
+      "date": "2000-01-01T05:00:00.000Z",
+      "original_date": "Cycle 0",
+      "description": "The Archivist's Wake establishes memory corridor travel, anchor-loss consequences, memory stones, and conceptual decay as primary canon.",
+      "summary": "The Archivist's Wake establishes memory corridor travel, anchor-loss consequences, memory stones, and conceptual decay as primary canon.",
+      "canon_tier": "primary_canon",
+      "source": "data/timeline/events.yaml",
+      "story": null,
+      "involved_entities": [
+        "story-0001",
+        "mech-0001",
+        "mech-0002",
+        "mech-0003"
+      ],
+      "causal_note": "Baseline continuity event for later memory-drive and corridor mechanics.",
+      "raw": "Cycle 0: The Archivist's Wake establishes memory corridor travel, anchor-loss consequences, memory stones, and conceptual decay as primary canon."
+    }
+  ],
   "stories": [
     {
       "name": "stories/novel/NOVEL_FORGOTTEN_TIDES/manuscript",
@@ -125,22 +144,52 @@
     "soft": [
       {
         "type": "soft",
-        "issue": "Timeline check scanned lore files but found no parseable timeline events.",
-        "location": "lore/"
+        "story": "stories/novel/NOVEL_FORGOTTEN_TIDES/manuscript",
+        "issue": "Story date 2025-12-12T00:00:00.000Z is after latest timeline event 2000-01-01T05:00:00.000Z",
+        "story_date": "2025-12-12T00:00:00.000Z",
+        "timeline_end": "2000-01-01T05:00:00.000Z"
+      },
+      {
+        "type": "soft",
+        "story": "stories/novel/NOVEL_FORGOTTEN_TIDES/notes",
+        "issue": "Story date 2025-12-12T00:00:00.000Z is after latest timeline event 2000-01-01T05:00:00.000Z",
+        "story_date": "2025-12-12T00:00:00.000Z",
+        "timeline_end": "2000-01-01T05:00:00.000Z"
+      },
+      {
+        "type": "soft",
+        "story": "stories/novel/NOVEL_FORGOTTEN_TIDES/outline",
+        "issue": "Story date 2025-12-12T00:00:00.000Z is after latest timeline event 2000-01-01T05:00:00.000Z",
+        "story_date": "2025-12-12T00:00:00.000Z",
+        "timeline_end": "2000-01-01T05:00:00.000Z"
+      },
+      {
+        "type": "soft",
+        "story": "stories/novel/NOVEL_FORGOTTEN_TIDES/scenes/SCENE_541938A8FD6140A456619C4030B828CCC5AC4298",
+        "issue": "Story date 2025-12-12T00:00:00.000Z is after latest timeline event 2000-01-01T05:00:00.000Z",
+        "story_date": "2025-12-12T00:00:00.000Z",
+        "timeline_end": "2000-01-01T05:00:00.000Z"
       }
     ]
   },
   "summary": {
-    "total_events": 0,
+    "total_events": 1,
     "total_stories": 17,
     "lore_files_seen": 25,
     "lore_files_scanned": 8,
     "story_files_seen": 19,
     "story_files_scanned": 17,
     "skipped_files": 19,
+    "canonical_event_count": 1,
+    "draft_event_count": 0,
+    "frontmatter_event_count": 0,
     "hard_failures": 0,
-    "soft_warnings": 1,
-    "timeline_span": null
+    "soft_warnings": 4,
+    "timeline_span": {
+      "start": "2000-01-01T05:00:00.000Z",
+      "end": "2000-01-01T05:00:00.000Z",
+      "duration_days": 0
+    }
   },
   "coverage": {
     "lore": {
