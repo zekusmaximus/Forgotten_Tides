@@ -1,35 +1,33 @@
 ---
 id: story-0006
-schema_version: "1.0.0"
+schema_version: v1.0.0
 type: story
-title: The Anchorless Tide
+title: "The Anchorless Tide"
 story_type: short-story
-summary_50: A freelance salvager intercepts a rogue memory buoy pulsing with the echoes of a lost colony in the Forgotten Tides.
-summary_200: Kael, drifting in the outer reaches aboard the Quiet Drift, encounters an ancient buoy leaking unanchored memories from a vanished settlement. As the conceptual tide threatens to overwhelm his ship, he must choose between expending his final personal anchor to preserve the past or releasing it into the greater currents of forgetting.
+status: draft
+canon_tier: draft
+summary_50: "A freelance salvager intercepts a rogue memory buoy pulsing with the echoes of a lost colony in the Forgotten Tides."
+summary_200: "Kael, drifting in the outer reaches aboard the Quiet Drift, encounters an ancient buoy leaking unanchored memories from a vanished settlement. As the conceptual tide threatens to overwhelm his ship, he must choose between expending his final personal anchor to preserve the past or releasing it into the greater currents of forgetting."
 cross_refs:
-  characters: []
-  locations: []
+  characters: ["char-0007"]
+  locations: ["loc-0009"]
   factions: []
   mechanics: []
   stories: []
 references:
-  characters: []
-  locations: []
+  characters: ["char-0007"]
+  locations: ["loc-0009"]
   factions: []
   mechanics: []
   stories: []
+themes: ["memory-as-cost", "ethical-forgetting", "quiet-heroism"]
+tags: ["anchorless-tide", "memory-buoy", "salvager", "forgotten-echoes"]
 metadata:
-  status: draft
-  created: '2026-05-23T10:09:00.000Z'
-  modified: '2026-05-23T10:09:00.000Z'
-tags:
-  - anchorless-tide
-  - memory-buoy
-  - salvager
-  - forgotten-echoes
+  created: "2026-05-23T10:09:00.000Z"
+  modified: "2026-05-23T10:13:00.000Z"
 ---
 
-THE ANCHORLESS TIDE
+# THE ANCHORLESS TIDE
 
 **I. The Ping**
 
@@ -47,7 +45,7 @@ The engines murmured assent. Outside the viewports, the Tides swirled—great sl
 
 It was beautiful in the way wrecks are: a sphere of blackened alloy studded with crystal growths that glowed the color of old bruises. As the *Quiet Drift* matched velocity, the first wave hit.
 
-Not water. Not vacuum. A tide of *presence*. 
+Not water. Not vacuum. A tide of *presence*.
 
 A woman singing a lullaby in a language Kael’s implants couldn’t parse. The smell of wet soil after rain on a planet he’d never visited. Laughter that cut off mid-breath. Then the ache of erasure—entire family trees redacted in real time, names dissolving like salt in the current.
 
