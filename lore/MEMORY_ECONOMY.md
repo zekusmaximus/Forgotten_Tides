@@ -1,7 +1,12 @@
 ---
 id: lore-0002
 uuid: 1e82edb1-15bd-49b4-96da-3ef17e45b5df
+schema_version: v1.0.0
 type: lore
+tags:
+  - economy
+  - memory-physics
+  - worldbuilding
 title: MEMORY ECONOMY
 summary_50: Exchange, regulation, and exploitation of memory as a resource
 summary_200: MEMORY ECONOMY is a lore document in The Forgotten Tides universe. Exchange, regulation, and exploitation of memory as a resource

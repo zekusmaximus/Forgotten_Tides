@@ -164,6 +164,11 @@ function main() {
     hasErrors = true;
   }
 
+  // Validate lore documents (null schema name lets each file's type field determine the schema)
+  if (walkDir(path.join(__dirname, '../../lore'), null)) {
+    hasErrors = true;
+  }
+
   // Validate data directories if they exist
   const dataDirs = ['data'];
   dataDirs.forEach(dir => {

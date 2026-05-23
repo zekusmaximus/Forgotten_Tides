@@ -46,6 +46,21 @@ This repository is **continuity-locked**. All additions must comply with:
 3. **Narrative Tone**: Preserve the lyrical yet precise style of the universe
 4. **Canonical References**: Link to authoritative sources where possible
 
+## Understanding `cross_refs` vs `references`
+
+Every entity file (stories, characters, locations, factions) contains two sibling fields with identical structure: `cross_refs` and `references`. Both are required. Here is the semantic distinction:
+
+| Field | Meaning |
+|-------|---------|
+| `cross_refs` | Entities that **appear in or are mentioned by** this entity — narrative presence. A character who walks through a scene goes in `cross_refs`. |
+| `references` | Entities that this entity **depends on for continuity** — causal dependency. A character whose arc is built on the existence of another character or location goes in `references`. |
+
+**In most short stories these two lists are identical.** Populate both with the same IDs unless you have a specific reason to diverge (e.g., a story that mentions a faction in passing but whose plot does not depend on that faction's continuity).
+
+When in doubt: populate both with the same IDs. The linting suite validates format only; it does not enforce the semantic distinction.
+
+---
+
 ## Lint Commands
 
 Run these commands before submitting a PR:

@@ -1,7 +1,12 @@
 ---
 id: lore-0003
 uuid: 7dbd22c1-f15e-44e4-9a53-fea3c4d32240
+schema_version: v1.0.0
 type: lore
+tags:
+  - factions
+  - politics
+  - worldbuilding
 title: POLITIES AND FACTIONS
 summary_50: Civilizations in this universe do not compete for territory or resources alone—they compete for **memory stability**, **cultural survivability**, and **gravitational influence**.
 summary_200: 'POLITIES AND FACTIONS is a lore document in The Forgotten Tides universe. Civilizations in this universe do not compete for territory or resources alone—they compete for **memory stability**, **cultural survivability**, and **gravitational influence**.  '

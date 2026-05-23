@@ -1,6 +1,6 @@
 # Canonical Index
 
-This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-05-23T00:17:23.894Z
+This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-05-23T12:05:11.198Z
 
 ## Character
 - `char-0001` — Rell (`characters/Rell.md`)
@@ -10,9 +10,21 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 
 ## Faction
 - `fact-0001` — Canticle Fleet (`factions/Canticle_Fleet.md`)
+- `fact-0002` — Archivist Orders (`factions/Archivist_Orders.md`)
+- `fact-0003` — Mnemosyne Lattice Consortium (`factions/Mnemosyne_Lattice_Consortium.md`)
+- `fact-0004` — Drift Clades (`factions/Drift_Clades.md`)
+- `fact-0005` — Obsidian Synod (`factions/Obsidian_Synod.md`)
+- `fact-0006` — Remembrancers of Solace (`factions/Remembrancers_of_Solace.md`)
+- `fact-0007` — Heliodrome Authority (`factions/Heliodrome_Authority.md`)
 
 ## Location
 - `loc-0001` — Heliodrome (`atlas/Heliodrome.md`)
+- `loc-0002` — Helios Drift (`atlas/Helios_Drift.md`)
+- `loc-0003` — Lattice Gap (`atlas/Lattice_Gap.md`)
+- `loc-0004` — Remnant Seas (`atlas/Remnant_Seas.md`)
+- `loc-0005` — Mnemosyne Lattice Core (`atlas/Mnemosyne_Lattice_Core.md`)
+- `loc-0006` — Void Regions (`atlas/Void_Regions.md`)
+- `loc-0007` — Black Horizon (`atlas/Black_Horizon.md`)
 
 ## Lore
 - `lore-0001` — COSMIC REGIONS (`lore/COSMIC_REGIONS.md`)
@@ -46,6 +58,8 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `story-0001` — The Archivist's Wake (`stories/short_story/the_archivists_wake/manuscript.md`)
 - `story-0002` — Memoir of a Nobody (`stories/short_story/memoir_of_a_nobody/manuscript.md`)
 - `story-0003` — The Tuner of Last Lights (`stories/short_story/the_tuner_of_last_lights/manuscript.md`)
+- `story-0004` — The Light Inheritance (`stories/short_story/the_light_inheritance/manuscript.md`)
+- `story-0004-outline` — The Light Inheritance - Outline (`stories/short_story/the_light_inheritance/outline.md`)
 
 ## Term
 - `term-0001` — Anchor (`data/lexicon/terms.yaml`)
@@ -68,6 +82,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `term-0018` — Shear (`data/lexicon/terms.yaml`)
 - `term-0019` — Thinning (`data/lexicon/terms.yaml`)
 - `term-0020` — Zero-Anchoring (`data/lexicon/terms.yaml`)
+- `term-0021` — Light-Bequest (`data/lexicon/terms.yaml`)
 
 ## Canon Views
 
@@ -77,7 +92,19 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `char-0003` - Estavan (character, primary_canon, weight 110, `characters/Estavan.md`)
 - `char-0004` - Tari (character, primary_canon, weight 110, `characters/Tari.md`)
 - `fact-0001` - Canticle Fleet (faction, primary_canon, weight 110, `factions/Canticle_Fleet.md`)
+- `fact-0002` - Archivist Orders (faction, primary_canon, weight 110, `factions/Archivist_Orders.md`)
+- `fact-0003` - Mnemosyne Lattice Consortium (faction, primary_canon, weight 110, `factions/Mnemosyne_Lattice_Consortium.md`)
+- `fact-0004` - Drift Clades (faction, primary_canon, weight 110, `factions/Drift_Clades.md`)
+- `fact-0005` - Obsidian Synod (faction, primary_canon, weight 110, `factions/Obsidian_Synod.md`)
+- `fact-0006` - Remembrancers of Solace (faction, primary_canon, weight 110, `factions/Remembrancers_of_Solace.md`)
+- `fact-0007` - Heliodrome Authority (faction, primary_canon, weight 110, `factions/Heliodrome_Authority.md`)
 - `loc-0001` - Heliodrome (location, primary_canon, weight 110, `atlas/Heliodrome.md`)
+- `loc-0002` - Helios Drift (location, primary_canon, weight 110, `atlas/Helios_Drift.md`)
+- `loc-0003` - Lattice Gap (location, primary_canon, weight 110, `atlas/Lattice_Gap.md`)
+- `loc-0004` - Remnant Seas (location, primary_canon, weight 110, `atlas/Remnant_Seas.md`)
+- `loc-0005` - Mnemosyne Lattice Core (location, primary_canon, weight 110, `atlas/Mnemosyne_Lattice_Core.md`)
+- `loc-0006` - Void Regions (location, primary_canon, weight 110, `atlas/Void_Regions.md`)
+- `loc-0007` - Black Horizon (location, primary_canon, weight 110, `atlas/Black_Horizon.md`)
 - `lore-0001` - COSMIC REGIONS (lore, working_canon, weight 95, `lore/COSMIC_REGIONS.md`)
 - `lore-0002` - MEMORY ECONOMY (lore, working_canon, weight 95, `lore/MEMORY_ECONOMY.md`)
 - `lore-0003` - POLITIES AND FACTIONS (lore, working_canon, weight 95, `lore/POLITIES_AND_FACTIONS.md`)
@@ -108,6 +135,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `term-0018` - Shear (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
 - `term-0019` - Thinning (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
 - `term-0020` - Zero-Anchoring (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
+- `term-0021` - Light-Bequest (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
 
 ### Active Drafts
 - `novel_forgotten_tides_manuscript` - Forgotten Tides (story, draft, weight 55, `stories/novel/NOVEL_FORGOTTEN_TIDES/manuscript.md`)
@@ -120,6 +148,8 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `scene_d9b9e99cd4cdd7109b0756ce955e9574912e36a6` - Second Scene (story, draft, weight 50, `stories/novella/NOVELLA_FIRST_CORRIDOR/scenes/SCENE_D9B9E99CD4CDD7109B0756CE955E9574912E36A6.md`)
 - `story-0002` - Memoir of a Nobody (story, draft, weight 65, `stories/short_story/memoir_of_a_nobody/manuscript.md`)
 - `story-0003` - The Tuner of Last Lights (story, draft, weight 65, `stories/short_story/the_tuner_of_last_lights/manuscript.md`)
+- `story-0004` - The Light Inheritance (story, draft, weight 65, `stories/short_story/the_light_inheritance/manuscript.md`)
+- `story-0004-outline` - The Light Inheritance - Outline (story, draft, weight 55, `stories/short_story/the_light_inheritance/outline.md`)
 
 ### Speculative / Sandbox Material
 _none_

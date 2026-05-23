@@ -36,6 +36,7 @@
     "scenes:graph": "node scripts/prompt/scenes_cli.js graph",
     "scenes:open": "node scripts/prompt/scenes_cli.js open",
     "pack:export": "node scripts/prompt/export_prompt_pack.js",
+    "ids:next": "node scripts/ids_next.js",
     "ids:resolve": "node scripts/prompt/resolve_ids.js",
     "intent:route": "node scripts/prompt/route_intent.js",
     "linkmap:build": "node scripts/prompt/build_linkmap.js",

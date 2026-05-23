@@ -1,0 +1,152 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://forgotten-tides.com/schemas/lore.schema.json",
+  "title": "Lore Schema",
+  "description": "Schema for lore documents in The Forgotten Tides universe",
+  "type": "object",
+  "required": ["id", "type", "summary_50", "summary_200", "cross_refs"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Lore document ID"
+    },
+    "schema_version": {
+      "type": "string",
+      "pattern": "^v?\\d+\\.\\d+\\.\\d+$",
+      "description": "Schema version for this frontmatter"
+    },
+    "uuid": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Optional UUID for unique identification"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["lore"],
+      "description": "Entity type"
+    },
+    "title": {
+      "type": "string",
+      "description": "Title of the lore document"
+    },
+    "tags": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Optional tags for grouping or filtering"
+    },
+    "summary_50": {
+      "type": "string",
+      "maxLength": 500,
+      "description": "Brief summary"
+    },
+    "summary_200": {
+      "type": "string",
+      "maxLength": 2000,
+      "description": "Detailed summary"
+    },
+    "cross_refs": {
+      "type": "object",
+      "description": "Cross-references to other entities",
+      "properties": {
+        "characters": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^char-\\d{4}$"
+          }
+        },
+        "locations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^loc-\\d{4}$"
+          }
+        },
+        "factions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^fact-\\d{4}$"
+          }
+        },
+        "mechanics": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^mech-\\d{4}$"
+          }
+        },
+        "stories": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^story-\\d{4}$"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "references": {
+      "type": "object",
+      "description": "Canonical references to other entities",
+      "properties": {
+        "characters": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^char-\\d{4}$"
+          }
+        },
+        "locations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^loc-\\d{4}$"
+          }
+        },
+        "factions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^fact-\\d{4}$"
+          }
+        },
+        "mechanics": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^mech-\\d{4}$"
+          }
+        },
+        "stories": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^story-\\d{4}$"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": ["canonical", "speculative", "deprecated"],
+          "description": "Canonical status of the lore document"
+        },
+        "created": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "modified": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    }
+  }
+}

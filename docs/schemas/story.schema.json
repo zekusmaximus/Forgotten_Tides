@@ -205,7 +205,7 @@
       "type": "array",
       "items": {
         "type": "string",
-        "enum": ["memory-as-cost", "identity-erosion", "sacrifice", "conceptual-fragility", "quiet-heroism", "memory-preservation"]
+        "enum": ["memory-as-cost", "identity-erosion", "sacrifice", "conceptual-fragility", "quiet-heroism", "memory-preservation", "institutional-burden", "ethical-forgetting", "inheritance", "duty-vs-faith"]
       }
     },
     "continuity_notes": {

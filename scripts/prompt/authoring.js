@@ -92,14 +92,27 @@ async function startWork() {
     status: 'draft'
   });
 
-  // Create manuscript.md
+  // Create manuscript.md with schema-compliant frontmatter
+  const now = new Date().toISOString();
   const manuscriptContent = generateFrontmatter({
     id: workId,
+    schema_version: 'v1.0.0',
+    type: 'story',
     title: flags.title,
-    kind: flags.kind,
+    story_type: flags.kind === 'short_story' ? 'short-story' : (flags.kind || 'short-story'),
     status: 'draft',
-    created: new Date().toISOString(),
-    scenes: []
+    canon_tier: 'draft',
+    retrieval_role: 'active_draft',
+    tags: [],
+    summary_50: '',
+    summary_200: '',
+    cross_refs: { characters: [], locations: [], factions: [], mechanics: [], stories: [] },
+    references: { characters: [], locations: [], factions: [], mechanics: [], stories: [] },
+    themes: [],
+    metadata: {
+      created: now,
+      modified: now
+    }
   });
 
   fs.writeFileSync(path.join(workPath, 'manuscript.md'), manuscriptContent);
