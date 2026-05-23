@@ -10,20 +10,28 @@ retrieval_role: active_draft
 summary_50: A Continuity Cleric questions the worth of the station he recites into existence, risking structural collapse.
 summary_200: "On the aging mining station of Ostra-Vael, Continuity Cleric Kaelen recites the daily liturgies that keep the station's architecture from succumbing to conceptual drift. But as the station's purpose dwindles and its inhabitants leave or die, Kaelen begins to doubt the value of preserving a place that no longer serves a function. His crisis of faith manifests physically—corridors soften, airlocks forget their seals. When a Canticle Fleet courier arrives seeking shelter from an eddy, Kaelen must decide whether to let the station die a natural death or spend his own anchors to hold it together for one more night. The story explores the Archivist Orders' Continuity Clerics and the heavy burden of institutional memory."
 cross_refs:
-  characters: []
-  locations: []
+  characters:
+    - char-0005
+    - char-0006
+  locations:
+    - loc-0002
   factions:
     - fact-0001
   mechanics:
     - mech-0001
+    - mech-0003
   stories: []
 references:
-  characters: []
-  locations: []
+  characters:
+    - char-0005
+    - char-0006
+  locations:
+    - loc-0002
   factions:
     - fact-0001
   mechanics:
     - mech-0001
+    - mech-0003
   stories: []
 timeline:
   setting: Ostra-Vael, a decaying mining station near the Remnant Seas
@@ -39,9 +47,9 @@ timeline:
       timestamp: T0+20h
 themes:
   - memory-as-cost
-  - institutional-burden
+  - sacrifice
   - conceptual-fragility
-  - ethical-forgetting
+  - quiet-heroism
 continuity_notes:
   - Introduces Continuity Cleric daily operations (Archivist Orders) without contradicting POLITIES_AND_FACTIONS.md
   - Demonstrates institutional memory stabilizing macrostructures as per MEMORY_PHYSICS.md §1.1

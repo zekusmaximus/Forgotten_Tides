@@ -1,6 +1,15 @@
 {
-  "generated": "2026-05-23T00:17:23.880Z",
+  "generated": "2026-05-23T10:53:05.379Z",
   "nodes": [
+    {
+      "canonical_id": "char-0006",
+      "type": "character",
+      "name": "Vane",
+      "path": "characters/Vane.md",
+      "canon_tier": "primary_canon",
+      "source_weight": 110,
+      "retrieval_role": "authoritative"
+    },
     {
       "canonical_id": "char-0004",
       "type": "character",
@@ -29,6 +38,15 @@
       "retrieval_role": "authoritative"
     },
     {
+      "canonical_id": "char-0005",
+      "type": "character",
+      "name": "Kaelen",
+      "path": "characters/Kaelen.md",
+      "canon_tier": "primary_canon",
+      "source_weight": 110,
+      "retrieval_role": "authoritative"
+    },
+    {
       "canonical_id": "char-0003",
       "type": "character",
       "name": "Estavan",
@@ -42,6 +60,15 @@
       "type": "faction",
       "name": "Canticle Fleet",
       "path": "factions/Canticle_Fleet.md",
+      "canon_tier": "primary_canon",
+      "source_weight": 110,
+      "retrieval_role": "authoritative"
+    },
+    {
+      "canonical_id": "loc-0002",
+      "type": "location",
+      "name": "Ostra-Vael",
+      "path": "atlas/Ostra-Vael.md",
       "canon_tier": "primary_canon",
       "source_weight": 110,
       "retrieval_role": "authoritative"
@@ -87,6 +114,33 @@
       "type": "story",
       "name": "The Tuner of Last Lights",
       "path": "stories/short_story/the_tuner_of_last_lights/manuscript.md",
+      "canon_tier": "draft",
+      "source_weight": 65,
+      "retrieval_role": "active_draft"
+    },
+    {
+      "canonical_id": "story-0005",
+      "type": "story",
+      "name": "The Liturgy of Rust",
+      "path": "stories/short_story/the_liturgy_of_rust/manuscript.md",
+      "canon_tier": "draft",
+      "source_weight": 65,
+      "retrieval_role": "active_draft"
+    },
+    {
+      "canonical_id": "story-0004-outline",
+      "type": "story",
+      "name": "The Light Inheritance - Outline",
+      "path": "stories/short_story/the_light_inheritance/outline.md",
+      "canon_tier": "draft",
+      "source_weight": 55,
+      "retrieval_role": "active_draft"
+    },
+    {
+      "canonical_id": "story-0004",
+      "type": "story",
+      "name": "The Light Inheritance",
+      "path": "stories/short_story/the_light_inheritance/manuscript.md",
       "canon_tier": "draft",
       "source_weight": 65,
       "retrieval_role": "active_draft"
@@ -477,9 +531,65 @@
       "canon_tier": "primary_canon",
       "source_weight": 110,
       "retrieval_role": "authoritative"
+    },
+    {
+      "canonical_id": "term-0021",
+      "type": "term",
+      "name": "Light-Bequest",
+      "path": "data/lexicon/terms.yaml",
+      "canon_tier": "primary_canon",
+      "source_weight": 110,
+      "retrieval_role": "authoritative"
+    },
+    {
+      "canonical_id": "term-0022",
+      "type": "term",
+      "name": "Continuity Cleric",
+      "path": "data/lexicon/terms.yaml",
+      "canon_tier": "primary_canon",
+      "source_weight": 110,
+      "retrieval_role": "authoritative"
+    },
+    {
+      "canonical_id": "term-0023",
+      "type": "term",
+      "name": "Liturgy of the Hull",
+      "path": "data/lexicon/terms.yaml",
+      "canon_tier": "primary_canon",
+      "source_weight": 110,
+      "retrieval_role": "authoritative"
+    },
+    {
+      "canonical_id": "term-0024",
+      "type": "term",
+      "name": "Structural Softening",
+      "path": "data/lexicon/terms.yaml",
+      "canon_tier": "primary_canon",
+      "source_weight": 110,
+      "retrieval_role": "authoritative"
     }
   ],
   "edges": [
+    {
+      "from": "char-0006",
+      "to": "char-0005",
+      "type": "characters"
+    },
+    {
+      "from": "char-0006",
+      "to": "loc-0002",
+      "type": "locations"
+    },
+    {
+      "from": "char-0006",
+      "to": "mech-0001",
+      "type": "mechanics"
+    },
+    {
+      "from": "char-0006",
+      "to": "story-0005",
+      "type": "stories"
+    },
     {
       "from": "char-0004",
       "to": "char-0001",
@@ -554,6 +664,31 @@
       "from": "char-0001",
       "to": "mech-0003",
       "type": "mechanics"
+    },
+    {
+      "from": "char-0005",
+      "to": "loc-0002",
+      "type": "locations"
+    },
+    {
+      "from": "char-0005",
+      "to": "fact-0001",
+      "type": "factions"
+    },
+    {
+      "from": "char-0005",
+      "to": "mech-0001",
+      "type": "mechanics"
+    },
+    {
+      "from": "char-0005",
+      "to": "mech-0003",
+      "type": "mechanics"
+    },
+    {
+      "from": "char-0005",
+      "to": "story-0005",
+      "type": "stories"
     },
     {
       "from": "char-0003",
@@ -618,6 +753,31 @@
     {
       "from": "fact-0001",
       "to": "story-0001",
+      "type": "stories"
+    },
+    {
+      "from": "loc-0002",
+      "to": "char-0005",
+      "type": "characters"
+    },
+    {
+      "from": "loc-0002",
+      "to": "char-0006",
+      "type": "characters"
+    },
+    {
+      "from": "loc-0002",
+      "to": "fact-0001",
+      "type": "factions"
+    },
+    {
+      "from": "loc-0002",
+      "to": "mech-0001",
+      "type": "mechanics"
+    },
+    {
+      "from": "loc-0002",
+      "to": "story-0005",
       "type": "stories"
     },
     {
@@ -714,6 +874,46 @@
       "from": "story-0003",
       "to": "mech-0001",
       "type": "mechanics"
+    },
+    {
+      "from": "story-0005",
+      "to": "char-0005",
+      "type": "characters"
+    },
+    {
+      "from": "story-0005",
+      "to": "char-0006",
+      "type": "characters"
+    },
+    {
+      "from": "story-0005",
+      "to": "loc-0002",
+      "type": "locations"
+    },
+    {
+      "from": "story-0005",
+      "to": "fact-0001",
+      "type": "factions"
+    },
+    {
+      "from": "story-0005",
+      "to": "mech-0001",
+      "type": "mechanics"
+    },
+    {
+      "from": "story-0005",
+      "to": "mech-0003",
+      "type": "mechanics"
+    },
+    {
+      "from": "story-0004",
+      "to": "mech-0001",
+      "type": "mechanics"
+    },
+    {
+      "from": "story-0004",
+      "to": "story-0003",
+      "type": "stories"
     },
     {
       "from": "story-0001",
@@ -978,6 +1178,61 @@
     {
       "from": "term-0020",
       "to": "term-0013",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0021",
+      "to": "term-0014",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0021",
+      "to": "term-0016",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0021",
+      "to": "term-0004",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0022",
+      "to": "term-0005",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0022",
+      "to": "term-0006",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0022",
+      "to": "term-0004",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0023",
+      "to": "term-0005",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0023",
+      "to": "term-0006",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0024",
+      "to": "term-0006",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0024",
+      "to": "term-0019",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0024",
+      "to": "term-0005",
       "type": "related_terms"
     }
   ]

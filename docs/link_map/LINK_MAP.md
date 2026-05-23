@@ -1,15 +1,18 @@
 # Link Map - Entity Relationships
 
-Generated: 2026-05-23T00:17:23.894Z
+Generated: 2026-05-23T10:53:05.391Z
 
-## Entities (53)
+## Entities (63)
 
 - `char-0001` (character, primary_canon, weight 110)
 - `char-0002` (character, primary_canon, weight 110)
 - `char-0003` (character, primary_canon, weight 110)
 - `char-0004` (character, primary_canon, weight 110)
+- `char-0005` (character, primary_canon, weight 110)
+- `char-0006` (character, primary_canon, weight 110)
 - `fact-0001` (faction, primary_canon, weight 110)
 - `loc-0001` (location, primary_canon, weight 110)
+- `loc-0002` (location, primary_canon, weight 110)
 - `lore-0001` (lore, working_canon, weight 95)
 - `lore-0002` (lore, working_canon, weight 95)
 - `lore-0003` (lore, working_canon, weight 95)
@@ -37,6 +40,9 @@ Generated: 2026-05-23T00:17:23.894Z
 - `story-0001` (story, primary_canon, weight 110)
 - `story-0002` (story, draft, weight 65)
 - `story-0003` (story, draft, weight 65)
+- `story-0004` (story, draft, weight 65)
+- `story-0004-outline` (story, draft, weight 55)
+- `story-0005` (story, draft, weight 65)
 - `term-0001` (term, primary_canon, weight 110)
 - `term-0002` (term, primary_canon, weight 110)
 - `term-0003` (term, primary_canon, weight 110)
@@ -57,9 +63,17 @@ Generated: 2026-05-23T00:17:23.894Z
 - `term-0018` (term, primary_canon, weight 110)
 - `term-0019` (term, primary_canon, weight 110)
 - `term-0020` (term, primary_canon, weight 110)
+- `term-0021` (term, primary_canon, weight 110)
+- `term-0022` (term, primary_canon, weight 110)
+- `term-0023` (term, primary_canon, weight 110)
+- `term-0024` (term, primary_canon, weight 110)
 
-## Relationships (100)
+## Relationships (133)
 
+- `char-0006` → `char-0005` (characters)
+- `char-0006` → `loc-0002` (locations)
+- `char-0006` → `mech-0001` (mechanics)
+- `char-0006` → `story-0005` (stories)
 - `char-0004` → `char-0001` (characters)
 - `char-0004` → `char-0002` (characters)
 - `char-0004` → `char-0003` (characters)
@@ -75,6 +89,11 @@ Generated: 2026-05-23T00:17:23.894Z
 - `char-0001` → `fact-0001` (factions)
 - `char-0001` → `mech-0001` (mechanics)
 - `char-0001` → `mech-0003` (mechanics)
+- `char-0005` → `loc-0002` (locations)
+- `char-0005` → `fact-0001` (factions)
+- `char-0005` → `mech-0001` (mechanics)
+- `char-0005` → `mech-0003` (mechanics)
+- `char-0005` → `story-0005` (stories)
 - `char-0003` → `char-0001` (characters)
 - `char-0003` → `char-0002` (characters)
 - `char-0003` → `char-0004` (characters)
@@ -88,6 +107,11 @@ Generated: 2026-05-23T00:17:23.894Z
 - `fact-0001` → `mech-0002` (mechanics)
 - `fact-0001` → `mech-0003` (mechanics)
 - `fact-0001` → `story-0001` (stories)
+- `loc-0002` → `char-0005` (characters)
+- `loc-0002` → `char-0006` (characters)
+- `loc-0002` → `fact-0001` (factions)
+- `loc-0002` → `mech-0001` (mechanics)
+- `loc-0002` → `story-0005` (stories)
 - `loc-0001` → `char-0001` (characters)
 - `loc-0001` → `char-0002` (characters)
 - `loc-0001` → `char-0003` (characters)
@@ -107,6 +131,14 @@ Generated: 2026-05-23T00:17:23.894Z
 - `mech-0003` → `loc-0001` (locations)
 - `mech-0003` → `story-0001` (stories)
 - `story-0003` → `mech-0001` (mechanics)
+- `story-0005` → `char-0005` (characters)
+- `story-0005` → `char-0006` (characters)
+- `story-0005` → `loc-0002` (locations)
+- `story-0005` → `fact-0001` (factions)
+- `story-0005` → `mech-0001` (mechanics)
+- `story-0005` → `mech-0003` (mechanics)
+- `story-0004` → `mech-0001` (mechanics)
+- `story-0004` → `story-0003` (stories)
 - `story-0001` → `char-0001` (characters)
 - `story-0001` → `char-0002` (characters)
 - `story-0001` → `char-0003` (characters)
@@ -160,6 +192,17 @@ Generated: 2026-05-23T00:17:23.894Z
 - `term-0019` → `term-0006` (related_terms)
 - `term-0020` → `term-0001` (related_terms)
 - `term-0020` → `term-0013` (related_terms)
+- `term-0021` → `term-0014` (related_terms)
+- `term-0021` → `term-0016` (related_terms)
+- `term-0021` → `term-0004` (related_terms)
+- `term-0022` → `term-0005` (related_terms)
+- `term-0022` → `term-0006` (related_terms)
+- `term-0022` → `term-0004` (related_terms)
+- `term-0023` → `term-0005` (related_terms)
+- `term-0023` → `term-0006` (related_terms)
+- `term-0024` → `term-0006` (related_terms)
+- `term-0024` → `term-0019` (related_terms)
+- `term-0024` → `term-0005` (related_terms)
 
 ## Orphaned Reference Targets (0)
 
@@ -167,10 +210,10 @@ _none_
 
 ## Statistics
 
-- **Total Entities**: 53
-- **Total Relationships**: 100
+- **Total Entities**: 63
+- **Total Relationships**: 133
 - **Orphaned Targets**: 0
 - **Entity Types**: character, faction, location, lore, mechanics, story, term
-- **Primary / Working Canon**: 36
-- **Draft Entities**: 10
+- **Primary / Working Canon**: 43
+- **Draft Entities**: 13
 - **Test / Sandbox / Deprecated Entities**: 7
