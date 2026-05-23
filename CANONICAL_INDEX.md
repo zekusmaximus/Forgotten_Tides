@@ -1,6 +1,6 @@
 # Canonical Index
 
-This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-05-21T18:14:01.439Z
+This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-05-23T00:17:23.894Z
 
 ## Character
 - `char-0001` — Rell (`characters/Rell.md`)
@@ -45,6 +45,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `screenplay_sample` — Screenplay Sample (`stories/screenplay/SCREENPLAY_SAMPLE/manuscript.md`)
 - `story-0001` — The Archivist's Wake (`stories/short_story/the_archivists_wake/manuscript.md`)
 - `story-0002` — Memoir of a Nobody (`stories/short_story/memoir_of_a_nobody/manuscript.md`)
+- `story-0003` — The Tuner of Last Lights (`stories/short_story/the_tuner_of_last_lights/manuscript.md`)
 
 ## Term
 - `term-0001` — Anchor (`data/lexicon/terms.yaml`)
@@ -118,6 +119,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `scene_96a0a49f0f2bca0ee73308e6fd97da80711debbc` - Opening Scene (story, draft, weight 50, `stories/novella/NOVELLA_FIRST_CORRIDOR/scenes/SCENE_96A0A49F0F2BCA0EE73308E6FD97DA80711DEBBC.md`)
 - `scene_d9b9e99cd4cdd7109b0756ce955e9574912e36a6` - Second Scene (story, draft, weight 50, `stories/novella/NOVELLA_FIRST_CORRIDOR/scenes/SCENE_D9B9E99CD4CDD7109B0756CE955E9574912E36A6.md`)
 - `story-0002` - Memoir of a Nobody (story, draft, weight 65, `stories/short_story/memoir_of_a_nobody/manuscript.md`)
+- `story-0003` - The Tuner of Last Lights (story, draft, weight 65, `stories/short_story/the_tuner_of_last_lights/manuscript.md`)
 
 ### Speculative / Sandbox Material
 _none_
