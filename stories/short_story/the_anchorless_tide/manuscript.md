@@ -1,5 +1,5 @@
 ---
-id: story-0005
+id: story-0006
 schema_version: "1.0.0"
 type: story
 title: The Anchorless Tide
@@ -20,8 +20,8 @@ references:
   stories: []
 metadata:
   status: draft
-  created: '2026-05-23T10:02:00.000Z'
-  modified: '2026-05-23T10:02:00.000Z'
+  created: '2026-05-23T10:09:00.000Z'
+  modified: '2026-05-23T10:09:00.000Z'
 tags:
   - anchorless-tide
   - memory-buoy
