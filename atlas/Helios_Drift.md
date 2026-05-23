@@ -1,5 +1,5 @@
 ---
-id: loc-0002
+id: loc-0008
 uuid: 11223344-5566-4778-8990-aabbccddeeff
 schema_version: v1.0.0
 type: location

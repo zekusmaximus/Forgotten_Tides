@@ -1,12 +1,14 @@
 # Canonical Index
 
-This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-05-23T12:05:11.198Z
+This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-05-23T12:10:59.394Z
 
 ## Character
 - `char-0001` — Rell (`characters/Rell.md`)
 - `char-0002` — Sutira (`characters/Sutira.md`)
 - `char-0003` — Estavan (`characters/Estavan.md`)
 - `char-0004` — Tari (`characters/Tari.md`)
+- `char-0005` — Kaelen (`characters/Kaelen.md`)
+- `char-0006` — Vane (`characters/Vane.md`)
 
 ## Faction
 - `fact-0001` — Canticle Fleet (`factions/Canticle_Fleet.md`)
@@ -19,12 +21,13 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 
 ## Location
 - `loc-0001` — Heliodrome (`atlas/Heliodrome.md`)
-- `loc-0002` — Helios Drift (`atlas/Helios_Drift.md`)
+- `loc-0002` — Ostra-Vael (`atlas/Ostra-Vael.md`)
 - `loc-0003` — Lattice Gap (`atlas/Lattice_Gap.md`)
 - `loc-0004` — Remnant Seas (`atlas/Remnant_Seas.md`)
 - `loc-0005` — Mnemosyne Lattice Core (`atlas/Mnemosyne_Lattice_Core.md`)
 - `loc-0006` — Void Regions (`atlas/Void_Regions.md`)
 - `loc-0007` — Black Horizon (`atlas/Black_Horizon.md`)
+- `loc-0008` — Helios Drift (`atlas/Helios_Drift.md`)
 
 ## Lore
 - `lore-0001` — COSMIC REGIONS (`lore/COSMIC_REGIONS.md`)
@@ -60,6 +63,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `story-0003` — The Tuner of Last Lights (`stories/short_story/the_tuner_of_last_lights/manuscript.md`)
 - `story-0004` — The Light Inheritance (`stories/short_story/the_light_inheritance/manuscript.md`)
 - `story-0004-outline` — The Light Inheritance - Outline (`stories/short_story/the_light_inheritance/outline.md`)
+- `story-0005` — The Liturgy of Rust (`stories/short_story/the_liturgy_of_rust/manuscript.md`)
 
 ## Term
 - `term-0001` — Anchor (`data/lexicon/terms.yaml`)
@@ -83,6 +87,9 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `term-0019` — Thinning (`data/lexicon/terms.yaml`)
 - `term-0020` — Zero-Anchoring (`data/lexicon/terms.yaml`)
 - `term-0021` — Light-Bequest (`data/lexicon/terms.yaml`)
+- `term-0022` — Continuity Cleric (`data/lexicon/terms.yaml`)
+- `term-0023` — Liturgy of the Hull (`data/lexicon/terms.yaml`)
+- `term-0024` — Structural Softening (`data/lexicon/terms.yaml`)
 
 ## Canon Views
 
@@ -91,6 +98,8 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `char-0002` - Sutira (character, primary_canon, weight 110, `characters/Sutira.md`)
 - `char-0003` - Estavan (character, primary_canon, weight 110, `characters/Estavan.md`)
 - `char-0004` - Tari (character, primary_canon, weight 110, `characters/Tari.md`)
+- `char-0005` - Kaelen (character, primary_canon, weight 110, `characters/Kaelen.md`)
+- `char-0006` - Vane (character, primary_canon, weight 110, `characters/Vane.md`)
 - `fact-0001` - Canticle Fleet (faction, primary_canon, weight 110, `factions/Canticle_Fleet.md`)
 - `fact-0002` - Archivist Orders (faction, primary_canon, weight 110, `factions/Archivist_Orders.md`)
 - `fact-0003` - Mnemosyne Lattice Consortium (faction, primary_canon, weight 110, `factions/Mnemosyne_Lattice_Consortium.md`)
@@ -99,12 +108,13 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `fact-0006` - Remembrancers of Solace (faction, primary_canon, weight 110, `factions/Remembrancers_of_Solace.md`)
 - `fact-0007` - Heliodrome Authority (faction, primary_canon, weight 110, `factions/Heliodrome_Authority.md`)
 - `loc-0001` - Heliodrome (location, primary_canon, weight 110, `atlas/Heliodrome.md`)
-- `loc-0002` - Helios Drift (location, primary_canon, weight 110, `atlas/Helios_Drift.md`)
+- `loc-0002` - Ostra-Vael (location, primary_canon, weight 110, `atlas/Ostra-Vael.md`)
 - `loc-0003` - Lattice Gap (location, primary_canon, weight 110, `atlas/Lattice_Gap.md`)
 - `loc-0004` - Remnant Seas (location, primary_canon, weight 110, `atlas/Remnant_Seas.md`)
 - `loc-0005` - Mnemosyne Lattice Core (location, primary_canon, weight 110, `atlas/Mnemosyne_Lattice_Core.md`)
 - `loc-0006` - Void Regions (location, primary_canon, weight 110, `atlas/Void_Regions.md`)
 - `loc-0007` - Black Horizon (location, primary_canon, weight 110, `atlas/Black_Horizon.md`)
+- `loc-0008` - Helios Drift (location, primary_canon, weight 110, `atlas/Helios_Drift.md`)
 - `lore-0001` - COSMIC REGIONS (lore, working_canon, weight 95, `lore/COSMIC_REGIONS.md`)
 - `lore-0002` - MEMORY ECONOMY (lore, working_canon, weight 95, `lore/MEMORY_ECONOMY.md`)
 - `lore-0003` - POLITIES AND FACTIONS (lore, working_canon, weight 95, `lore/POLITIES_AND_FACTIONS.md`)
@@ -136,6 +146,9 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `term-0019` - Thinning (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
 - `term-0020` - Zero-Anchoring (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
 - `term-0021` - Light-Bequest (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
+- `term-0022` - Continuity Cleric (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
+- `term-0023` - Liturgy of the Hull (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
+- `term-0024` - Structural Softening (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
 
 ### Active Drafts
 - `novel_forgotten_tides_manuscript` - Forgotten Tides (story, draft, weight 55, `stories/novel/NOVEL_FORGOTTEN_TIDES/manuscript.md`)
@@ -150,6 +163,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `story-0003` - The Tuner of Last Lights (story, draft, weight 65, `stories/short_story/the_tuner_of_last_lights/manuscript.md`)
 - `story-0004` - The Light Inheritance (story, draft, weight 65, `stories/short_story/the_light_inheritance/manuscript.md`)
 - `story-0004-outline` - The Light Inheritance - Outline (story, draft, weight 55, `stories/short_story/the_light_inheritance/outline.md`)
+- `story-0005` - The Liturgy of Rust (story, draft, weight 65, `stories/short_story/the_liturgy_of_rust/manuscript.md`)
 
 ### Speculative / Sandbox Material
 _none_

@@ -251,3 +251,38 @@ terms:
     aliases:
       - Inheritance Stone
       - Inheritance Memory
+
+  - id: term-0022
+    term: Continuity Cleric
+    definition: A specialist of the Archivist Orders trained to maintain the conceptual coherence of stations and structures through daily recitation liturgies. Continuity Clerics use focused institutional memory — projected outward through acoustic baffling and trained concentration — to remind a structure of its own architecture, preventing conceptual drift and structural softening.
+    category: Factions
+    related_terms:
+      - term-0005  # Coherence
+      - term-0006  # Conceptual Drift
+      - term-0004  # Civic Memory
+    first_appearance: The Liturgy of Rust
+    canonical_source: stories/short_story/the_liturgy_of_rust/manuscript.md
+    status: draft
+
+  - id: term-0023
+    term: Liturgy of the Hull
+    definition: The daily recitation performed by a Continuity Cleric to maintain a station's structural coherence. The liturgy names the station's physical properties — hull composition, deck functions, airlock seals — projecting institutional memory outward to counteract conceptual drift. A cleric's doubt or loss of conviction during the liturgy can accelerate the very decay it is meant to prevent.
+    category: Mechanics
+    related_terms:
+      - term-0005  # Coherence
+      - term-0006  # Conceptual Drift
+    first_appearance: The Liturgy of Rust
+    canonical_source: stories/short_story/the_liturgy_of_rust/manuscript.md
+    status: draft
+
+  - id: term-0024
+    term: Structural Softening
+    definition: A localized manifestation of conceptual drift in which physical structures lose definition — edges blur, materials become indistinct, and objects forget their function. Touching a softening object risks transferring the forgetting to the person's own body. Softening is an early-stage symptom that precedes full conceptual collapse.
+    category: Memory Physics
+    related_terms:
+      - term-0006  # Conceptual Drift
+      - term-0019  # Thinning
+      - term-0005  # Coherence
+    first_appearance: The Liturgy of Rust
+    canonical_source: stories/short_story/the_liturgy_of_rust/manuscript.md
+    status: draft
