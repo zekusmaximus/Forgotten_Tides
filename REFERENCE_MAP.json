@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-21T18:14:01.429Z",
+  "generated": "2026-05-23T00:17:23.880Z",
   "nodes": [
     {
       "canonical_id": "char-0004",
@@ -78,6 +78,24 @@
       "type": "mechanics",
       "name": "ANCHOR THEORY",
       "path": "mechanics/ANCHOR_THEORY.md",
+      "canon_tier": "primary_canon",
+      "source_weight": 110,
+      "retrieval_role": "authoritative"
+    },
+    {
+      "canonical_id": "story-0003",
+      "type": "story",
+      "name": "The Tuner of Last Lights",
+      "path": "stories/short_story/the_tuner_of_last_lights/manuscript.md",
+      "canon_tier": "draft",
+      "source_weight": 65,
+      "retrieval_role": "active_draft"
+    },
+    {
+      "canonical_id": "story-0001",
+      "type": "story",
+      "name": "The Archivist's Wake",
+      "path": "stories/short_story/the_archivists_wake/manuscript.md",
       "canon_tier": "primary_canon",
       "source_weight": 110,
       "retrieval_role": "authoritative"
@@ -279,15 +297,6 @@
       "canon_tier": "working_canon",
       "source_weight": 85,
       "retrieval_role": "working_reference"
-    },
-    {
-      "canonical_id": "story-0001",
-      "type": "story",
-      "name": "The Archivist's Wake",
-      "path": "stories/short_story/the_archivists_wake/manuscript.md",
-      "canon_tier": "primary_canon",
-      "source_weight": 110,
-      "retrieval_role": "authoritative"
     },
     {
       "canonical_id": "term-0001",
@@ -702,7 +711,7 @@
       "type": "stories"
     },
     {
-      "from": "story-0002",
+      "from": "story-0003",
       "to": "mech-0001",
       "type": "mechanics"
     },
@@ -749,6 +758,11 @@
     {
       "from": "story-0001",
       "to": "mech-0003",
+      "type": "mechanics"
+    },
+    {
+      "from": "story-0002",
+      "to": "mech-0001",
       "type": "mechanics"
     },
     {

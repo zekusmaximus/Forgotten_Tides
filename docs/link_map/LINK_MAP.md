@@ -1,8 +1,8 @@
 # Link Map - Entity Relationships
 
-Generated: 2026-05-21T18:14:01.439Z
+Generated: 2026-05-23T00:17:23.894Z
 
-## Entities (52)
+## Entities (53)
 
 - `char-0001` (character, primary_canon, weight 110)
 - `char-0002` (character, primary_canon, weight 110)
@@ -36,6 +36,7 @@ Generated: 2026-05-21T18:14:01.439Z
 - `screenplay_sample` (story, test, weight 10)
 - `story-0001` (story, primary_canon, weight 110)
 - `story-0002` (story, draft, weight 65)
+- `story-0003` (story, draft, weight 65)
 - `term-0001` (term, primary_canon, weight 110)
 - `term-0002` (term, primary_canon, weight 110)
 - `term-0003` (term, primary_canon, weight 110)
@@ -57,7 +58,7 @@ Generated: 2026-05-21T18:14:01.439Z
 - `term-0019` (term, primary_canon, weight 110)
 - `term-0020` (term, primary_canon, weight 110)
 
-## Relationships (99)
+## Relationships (100)
 
 - `char-0004` → `char-0001` (characters)
 - `char-0004` → `char-0002` (characters)
@@ -105,7 +106,7 @@ Generated: 2026-05-21T18:14:01.439Z
 - `mech-0003` → `char-0001` (characters)
 - `mech-0003` → `loc-0001` (locations)
 - `mech-0003` → `story-0001` (stories)
-- `story-0002` → `mech-0001` (mechanics)
+- `story-0003` → `mech-0001` (mechanics)
 - `story-0001` → `char-0001` (characters)
 - `story-0001` → `char-0002` (characters)
 - `story-0001` → `char-0003` (characters)
@@ -115,6 +116,7 @@ Generated: 2026-05-21T18:14:01.439Z
 - `story-0001` → `mech-0001` (mechanics)
 - `story-0001` → `mech-0002` (mechanics)
 - `story-0001` → `mech-0003` (mechanics)
+- `story-0002` → `mech-0001` (mechanics)
 - `term-0001` → `term-0002` (related_terms)
 - `term-0001` → `term-0003` (related_terms)
 - `term-0001` → `term-0013` (related_terms)
@@ -165,10 +167,10 @@ _none_
 
 ## Statistics
 
-- **Total Entities**: 52
-- **Total Relationships**: 99
+- **Total Entities**: 53
+- **Total Relationships**: 100
 - **Orphaned Targets**: 0
 - **Entity Types**: character, faction, location, lore, mechanics, story, term
 - **Primary / Working Canon**: 36
-- **Draft Entities**: 9
+- **Draft Entities**: 10
 - **Test / Sandbox / Deprecated Entities**: 7
