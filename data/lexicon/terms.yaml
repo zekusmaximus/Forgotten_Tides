@@ -236,3 +236,18 @@ terms:
     first_appearance: The Archivist's Wake
     canonical_source: mechanics/ANCHOR_THEORY.md
     status: canonical
+
+  - id: term-0021
+    term: Light-Bequest
+    definition: A memory stone willed across one missed generation, in which the donor and the intended hearer never met. When tuned, the stone sings in two registers — the donor's recorded memory and a hearer-shaped absence carved for a listener not yet born at the time of tuning. Light-bequests are unstable in memory drives, unsafe to burn, and honored only by being heard by their intended hearer or released into dark matter; their value lies in the inheritance, not the substance.
+    category: Memory Types
+    related_terms:
+      - term-0014  # Memory Stone
+      - term-0016  # Personal Memory
+      - term-0004  # Civic Memory
+    first_appearance: The Light Inheritance
+    canonical_source: stories/short_story/the_light_inheritance/manuscript.md
+    status: draft
+    aliases:
+      - Inheritance Stone
+      - Inheritance Memory
