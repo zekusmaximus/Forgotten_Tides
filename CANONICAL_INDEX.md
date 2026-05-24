@@ -1,6 +1,6 @@
 # Canonical Index
 
-This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-05-23T12:10:59.394Z
+This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-05-24T13:24:55.753Z
 
 ## Character
 - `char-0001` — Rell (`characters/Rell.md`)
@@ -9,6 +9,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `char-0004` — Tari (`characters/Tari.md`)
 - `char-0005` — Kaelen (`characters/Kaelen.md`)
 - `char-0006` — Vane (`characters/Vane.md`)
+- `char-0007` — Kael Voss (`characters/Kael_Voss.md`)
 
 ## Faction
 - `fact-0001` — Canticle Fleet (`factions/Canticle_Fleet.md`)
@@ -28,6 +29,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `loc-0006` — Void Regions (`atlas/Void_Regions.md`)
 - `loc-0007` — Black Horizon (`atlas/Black_Horizon.md`)
 - `loc-0008` — Helios Drift (`atlas/Helios_Drift.md`)
+- `loc-0009` — Ebbhaven (`atlas/Ebbhaven.md`)
 
 ## Lore
 - `lore-0001` — COSMIC REGIONS (`lore/COSMIC_REGIONS.md`)
@@ -64,6 +66,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `story-0004` — The Light Inheritance (`stories/short_story/the_light_inheritance/manuscript.md`)
 - `story-0004-outline` — The Light Inheritance - Outline (`stories/short_story/the_light_inheritance/outline.md`)
 - `story-0005` — The Liturgy of Rust (`stories/short_story/the_liturgy_of_rust/manuscript.md`)
+- `story-0006` — The Anchorless Tide (`stories/short_story/the_anchorless_tide/manuscript.md`)
 
 ## Term
 - `term-0001` — Anchor (`data/lexicon/terms.yaml`)
@@ -100,6 +103,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `char-0004` - Tari (character, primary_canon, weight 110, `characters/Tari.md`)
 - `char-0005` - Kaelen (character, primary_canon, weight 110, `characters/Kaelen.md`)
 - `char-0006` - Vane (character, primary_canon, weight 110, `characters/Vane.md`)
+- `char-0007` - Kael Voss (character, primary_canon, weight 110, `characters/Kael_Voss.md`)
 - `fact-0001` - Canticle Fleet (faction, primary_canon, weight 110, `factions/Canticle_Fleet.md`)
 - `fact-0002` - Archivist Orders (faction, primary_canon, weight 110, `factions/Archivist_Orders.md`)
 - `fact-0003` - Mnemosyne Lattice Consortium (faction, primary_canon, weight 110, `factions/Mnemosyne_Lattice_Consortium.md`)
@@ -115,6 +119,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `loc-0006` - Void Regions (location, primary_canon, weight 110, `atlas/Void_Regions.md`)
 - `loc-0007` - Black Horizon (location, primary_canon, weight 110, `atlas/Black_Horizon.md`)
 - `loc-0008` - Helios Drift (location, primary_canon, weight 110, `atlas/Helios_Drift.md`)
+- `loc-0009` - Ebbhaven (location, primary_canon, weight 110, `atlas/Ebbhaven.md`)
 - `lore-0001` - COSMIC REGIONS (lore, working_canon, weight 95, `lore/COSMIC_REGIONS.md`)
 - `lore-0002` - MEMORY ECONOMY (lore, working_canon, weight 95, `lore/MEMORY_ECONOMY.md`)
 - `lore-0003` - POLITIES AND FACTIONS (lore, working_canon, weight 95, `lore/POLITIES_AND_FACTIONS.md`)
@@ -164,6 +169,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `story-0004` - The Light Inheritance (story, draft, weight 65, `stories/short_story/the_light_inheritance/manuscript.md`)
 - `story-0004-outline` - The Light Inheritance - Outline (story, draft, weight 55, `stories/short_story/the_light_inheritance/outline.md`)
 - `story-0005` - The Liturgy of Rust (story, draft, weight 65, `stories/short_story/the_liturgy_of_rust/manuscript.md`)
+- `story-0006` - The Anchorless Tide (story, draft, weight 65, `stories/short_story/the_anchorless_tide/manuscript.md`)
 
 ### Speculative / Sandbox Material
 _none_

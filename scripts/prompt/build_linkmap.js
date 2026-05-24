@@ -204,6 +204,15 @@ async function buildLinkMap() {
         }
     }
 
+    // Sort relationships for deterministic output regardless of file discovery order.
+    relationships.sort((a, b) => {
+        const srcCmp = a.source.localeCompare(b.source);
+        if (srcCmp !== 0) return srcCmp;
+        const tgtCmp = a.target.localeCompare(b.target);
+        if (tgtCmp !== 0) return tgtCmp;
+        return a.type.localeCompare(b.type);
+    });
+
     // Strip the internal _refs scratch before serializing.
     for (const entity of Object.values(entities)) {
         delete entity._refs;
