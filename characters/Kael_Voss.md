@@ -18,6 +18,15 @@ references:
   factions: []
   mechanics: []
   stories: ["story-0006"]
+continuity:
+  invariants:
+    - Pragmatic philosophy — releases memories rather than hoarding them
+    - Operates the Quiet Drift solo
+    - Memory physics rules apply
+  watchlist:
+    - Anchor count and usage
+    - Relationship to salvaged memories
+    - Shifts in his release-vs-preserve philosophy
 metadata:
   status: canonical
   created: "2026-05-23T10:13:00.000Z"
