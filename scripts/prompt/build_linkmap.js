@@ -218,8 +218,10 @@ async function buildLinkMap() {
         delete entity._refs;
     }
 
+    const sortedEntityValues = Object.values(entities).sort((a, b) => a.canonical_id.localeCompare(b.canonical_id));
+
     const entitiesOutput = {
-        entities: Object.values(entities),
+        entities: sortedEntityValues,
         relationships,
         orphaned_targets: orphanedTargets,
         generated_at: new Date().toISOString()
@@ -229,7 +231,7 @@ async function buildLinkMap() {
 
     const referenceMap = {
         generated: new Date().toISOString(),
-        nodes: Object.values(entities).map(e => ({
+        nodes: sortedEntityValues.map(e => ({
             canonical_id: e.canonical_id,
             type: e.type,
             name: e.name,
@@ -242,7 +244,7 @@ async function buildLinkMap() {
     };
     fs.writeFileSync(path.join(repoRoot, 'REFERENCE_MAP.json'), JSON.stringify(referenceMap, null, 2));
 
-    const sortedEntities = Object.values(entities).sort((a, b) => a.canonical_id.localeCompare(b.canonical_id));
+    const sortedEntities = sortedEntityValues;
     const types = [...new Set(sortedEntities.map(e => e.type))].sort();
 
     let indexContent = `# Canonical Index\n\nThis index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: ${new Date().toISOString()}\n\n`;

@@ -1,20 +1,11 @@
 {
-  "generated": "2026-05-24T13:24:55.752Z",
+  "generated": "2026-05-24T13:26:55.978Z",
   "nodes": [
     {
-      "canonical_id": "char-0006",
+      "canonical_id": "char-0001",
       "type": "character",
-      "name": "Vane",
-      "path": "characters/Vane.md",
-      "canon_tier": "primary_canon",
-      "source_weight": 110,
-      "retrieval_role": "authoritative"
-    },
-    {
-      "canonical_id": "char-0004",
-      "type": "character",
-      "name": "Tari",
-      "path": "characters/Tari.md",
+      "name": "Rell",
+      "path": "characters/Rell.md",
       "canon_tier": "primary_canon",
       "source_weight": 110,
       "retrieval_role": "authoritative"
@@ -29,19 +20,19 @@
       "retrieval_role": "authoritative"
     },
     {
-      "canonical_id": "char-0001",
+      "canonical_id": "char-0003",
       "type": "character",
-      "name": "Rell",
-      "path": "characters/Rell.md",
+      "name": "Estavan",
+      "path": "characters/Estavan.md",
       "canon_tier": "primary_canon",
       "source_weight": 110,
       "retrieval_role": "authoritative"
     },
     {
-      "canonical_id": "char-0007",
+      "canonical_id": "char-0004",
       "type": "character",
-      "name": "Kael Voss",
-      "path": "characters/Kael_Voss.md",
+      "name": "Tari",
+      "path": "characters/Tari.md",
       "canon_tier": "primary_canon",
       "source_weight": 110,
       "retrieval_role": "authoritative"
@@ -56,55 +47,19 @@
       "retrieval_role": "authoritative"
     },
     {
-      "canonical_id": "char-0003",
+      "canonical_id": "char-0006",
       "type": "character",
-      "name": "Estavan",
-      "path": "characters/Estavan.md",
+      "name": "Vane",
+      "path": "characters/Vane.md",
       "canon_tier": "primary_canon",
       "source_weight": 110,
       "retrieval_role": "authoritative"
     },
     {
-      "canonical_id": "fact-0006",
-      "type": "faction",
-      "name": "Remembrancers of Solace",
-      "path": "factions/Remembrancers_of_Solace.md",
-      "canon_tier": "primary_canon",
-      "source_weight": 110,
-      "retrieval_role": "authoritative"
-    },
-    {
-      "canonical_id": "fact-0005",
-      "type": "faction",
-      "name": "Obsidian Synod",
-      "path": "factions/Obsidian_Synod.md",
-      "canon_tier": "primary_canon",
-      "source_weight": 110,
-      "retrieval_role": "authoritative"
-    },
-    {
-      "canonical_id": "fact-0003",
-      "type": "faction",
-      "name": "Mnemosyne Lattice Consortium",
-      "path": "factions/Mnemosyne_Lattice_Consortium.md",
-      "canon_tier": "primary_canon",
-      "source_weight": 110,
-      "retrieval_role": "authoritative"
-    },
-    {
-      "canonical_id": "fact-0007",
-      "type": "faction",
-      "name": "Heliodrome Authority",
-      "path": "factions/Heliodrome_Authority.md",
-      "canon_tier": "primary_canon",
-      "source_weight": 110,
-      "retrieval_role": "authoritative"
-    },
-    {
-      "canonical_id": "fact-0004",
-      "type": "faction",
-      "name": "Drift Clades",
-      "path": "factions/Drift_Clades.md",
+      "canonical_id": "char-0007",
+      "type": "character",
+      "name": "Kael Voss",
+      "path": "characters/Kael_Voss.md",
       "canon_tier": "primary_canon",
       "source_weight": 110,
       "retrieval_role": "authoritative"
@@ -128,55 +83,46 @@
       "retrieval_role": "authoritative"
     },
     {
-      "canonical_id": "loc-0006",
-      "type": "location",
-      "name": "Void Regions",
-      "path": "atlas/Void_Regions.md",
+      "canonical_id": "fact-0003",
+      "type": "faction",
+      "name": "Mnemosyne Lattice Consortium",
+      "path": "factions/Mnemosyne_Lattice_Consortium.md",
       "canon_tier": "primary_canon",
       "source_weight": 110,
       "retrieval_role": "authoritative"
     },
     {
-      "canonical_id": "loc-0004",
-      "type": "location",
-      "name": "Remnant Seas",
-      "path": "atlas/Remnant_Seas.md",
+      "canonical_id": "fact-0004",
+      "type": "faction",
+      "name": "Drift Clades",
+      "path": "factions/Drift_Clades.md",
       "canon_tier": "primary_canon",
       "source_weight": 110,
       "retrieval_role": "authoritative"
     },
     {
-      "canonical_id": "loc-0002",
-      "type": "location",
-      "name": "Ostra-Vael",
-      "path": "atlas/Ostra-Vael.md",
+      "canonical_id": "fact-0005",
+      "type": "faction",
+      "name": "Obsidian Synod",
+      "path": "factions/Obsidian_Synod.md",
       "canon_tier": "primary_canon",
       "source_weight": 110,
       "retrieval_role": "authoritative"
     },
     {
-      "canonical_id": "loc-0005",
-      "type": "location",
-      "name": "Mnemosyne Lattice Core",
-      "path": "atlas/Mnemosyne_Lattice_Core.md",
+      "canonical_id": "fact-0006",
+      "type": "faction",
+      "name": "Remembrancers of Solace",
+      "path": "factions/Remembrancers_of_Solace.md",
       "canon_tier": "primary_canon",
       "source_weight": 110,
       "retrieval_role": "authoritative"
     },
     {
-      "canonical_id": "loc-0003",
-      "type": "location",
-      "name": "Lattice Gap",
-      "path": "atlas/Lattice_Gap.md",
-      "canon_tier": "primary_canon",
-      "source_weight": 110,
-      "retrieval_role": "authoritative"
-    },
-    {
-      "canonical_id": "loc-0008",
-      "type": "location",
-      "name": "Helios Drift",
-      "path": "atlas/Helios_Drift.md",
+      "canonical_id": "fact-0007",
+      "type": "faction",
+      "name": "Heliodrome Authority",
+      "path": "factions/Heliodrome_Authority.md",
       "canon_tier": "primary_canon",
       "source_weight": 110,
       "retrieval_role": "authoritative"
@@ -191,10 +137,46 @@
       "retrieval_role": "authoritative"
     },
     {
-      "canonical_id": "loc-0009",
+      "canonical_id": "loc-0002",
       "type": "location",
-      "name": "Ebbhaven",
-      "path": "atlas/Ebbhaven.md",
+      "name": "Ostra-Vael",
+      "path": "atlas/Ostra-Vael.md",
+      "canon_tier": "primary_canon",
+      "source_weight": 110,
+      "retrieval_role": "authoritative"
+    },
+    {
+      "canonical_id": "loc-0003",
+      "type": "location",
+      "name": "Lattice Gap",
+      "path": "atlas/Lattice_Gap.md",
+      "canon_tier": "primary_canon",
+      "source_weight": 110,
+      "retrieval_role": "authoritative"
+    },
+    {
+      "canonical_id": "loc-0004",
+      "type": "location",
+      "name": "Remnant Seas",
+      "path": "atlas/Remnant_Seas.md",
+      "canon_tier": "primary_canon",
+      "source_weight": 110,
+      "retrieval_role": "authoritative"
+    },
+    {
+      "canonical_id": "loc-0005",
+      "type": "location",
+      "name": "Mnemosyne Lattice Core",
+      "path": "atlas/Mnemosyne_Lattice_Core.md",
+      "canon_tier": "primary_canon",
+      "source_weight": 110,
+      "retrieval_role": "authoritative"
+    },
+    {
+      "canonical_id": "loc-0006",
+      "type": "location",
+      "name": "Void Regions",
+      "path": "atlas/Void_Regions.md",
       "canon_tier": "primary_canon",
       "source_weight": 110,
       "retrieval_role": "authoritative"
@@ -207,6 +189,60 @@
       "canon_tier": "primary_canon",
       "source_weight": 110,
       "retrieval_role": "authoritative"
+    },
+    {
+      "canonical_id": "loc-0008",
+      "type": "location",
+      "name": "Helios Drift",
+      "path": "atlas/Helios_Drift.md",
+      "canon_tier": "primary_canon",
+      "source_weight": 110,
+      "retrieval_role": "authoritative"
+    },
+    {
+      "canonical_id": "loc-0009",
+      "type": "location",
+      "name": "Ebbhaven",
+      "path": "atlas/Ebbhaven.md",
+      "canon_tier": "primary_canon",
+      "source_weight": 110,
+      "retrieval_role": "authoritative"
+    },
+    {
+      "canonical_id": "lore-0001",
+      "type": "lore",
+      "name": "COSMIC REGIONS",
+      "path": "lore/COSMIC_REGIONS.md",
+      "canon_tier": "working_canon",
+      "source_weight": 95,
+      "retrieval_role": "working_reference"
+    },
+    {
+      "canonical_id": "lore-0002",
+      "type": "lore",
+      "name": "MEMORY ECONOMY",
+      "path": "lore/MEMORY_ECONOMY.md",
+      "canon_tier": "working_canon",
+      "source_weight": 95,
+      "retrieval_role": "working_reference"
+    },
+    {
+      "canonical_id": "lore-0003",
+      "type": "lore",
+      "name": "POLITIES AND FACTIONS",
+      "path": "lore/POLITIES_AND_FACTIONS.md",
+      "canon_tier": "working_canon",
+      "source_weight": 95,
+      "retrieval_role": "working_reference"
+    },
+    {
+      "canonical_id": "lore-0004",
+      "type": "lore",
+      "name": "SPECIES OVERVIEW",
+      "path": "lore/SPECIES_OVERVIEW.md",
+      "canon_tier": "working_canon",
+      "source_weight": 95,
+      "retrieval_role": "working_reference"
     },
     {
       "canonical_id": "mech-0001",
@@ -236,172 +272,28 @@
       "retrieval_role": "authoritative"
     },
     {
-      "canonical_id": "story-0003",
-      "type": "story",
-      "name": "The Tuner of Last Lights",
-      "path": "stories/short_story/the_tuner_of_last_lights/manuscript.md",
-      "canon_tier": "draft",
-      "source_weight": 65,
-      "retrieval_role": "active_draft"
+      "canonical_id": "notes_chat_highlights_1765472978233",
+      "type": "lore",
+      "name": "Chat Highlights",
+      "path": "lore/notes/NOTES_CHAT_HIGHLIGHTS_1765472978233.md",
+      "canon_tier": "working_canon",
+      "source_weight": 85,
+      "retrieval_role": "working_reference"
     },
     {
-      "canonical_id": "story-0005",
-      "type": "story",
-      "name": "The Liturgy of Rust",
-      "path": "stories/short_story/the_liturgy_of_rust/manuscript.md",
-      "canon_tier": "draft",
-      "source_weight": 65,
-      "retrieval_role": "active_draft"
+      "canonical_id": "notes_chat_highlights_1765473539542",
+      "type": "lore",
+      "name": "Chat Highlights",
+      "path": "lore/notes/NOTES_CHAT_HIGHLIGHTS_1765473539542.md",
+      "canon_tier": "working_canon",
+      "source_weight": 85,
+      "retrieval_role": "working_reference"
     },
     {
-      "canonical_id": "story-0004-outline",
+      "canonical_id": "novel_forgotten_tides_manuscript",
       "type": "story",
-      "name": "The Light Inheritance - Outline",
-      "path": "stories/short_story/the_light_inheritance/outline.md",
-      "canon_tier": "draft",
-      "source_weight": 55,
-      "retrieval_role": "active_draft"
-    },
-    {
-      "canonical_id": "story-0004",
-      "type": "story",
-      "name": "The Light Inheritance",
-      "path": "stories/short_story/the_light_inheritance/manuscript.md",
-      "canon_tier": "draft",
-      "source_weight": 65,
-      "retrieval_role": "active_draft"
-    },
-    {
-      "canonical_id": "story-0001",
-      "type": "story",
-      "name": "The Archivist's Wake",
-      "path": "stories/short_story/the_archivists_wake/manuscript.md",
-      "canon_tier": "primary_canon",
-      "source_weight": 110,
-      "retrieval_role": "authoritative"
-    },
-    {
-      "canonical_id": "story-0006",
-      "type": "story",
-      "name": "The Anchorless Tide",
-      "path": "stories/short_story/the_anchorless_tide/manuscript.md",
-      "canon_tier": "draft",
-      "source_weight": 65,
-      "retrieval_role": "active_draft"
-    },
-    {
-      "canonical_id": "story-0002",
-      "type": "story",
-      "name": "Memoir of a Nobody",
-      "path": "stories/short_story/memoir_of_a_nobody/manuscript.md",
-      "canon_tier": "draft",
-      "source_weight": 65,
-      "retrieval_role": "active_draft"
-    },
-    {
-      "canonical_id": "screenplay_sample",
-      "type": "story",
-      "name": "Screenplay Sample",
-      "path": "stories/screenplay/SCREENPLAY_SAMPLE/manuscript.md",
-      "canon_tier": "test",
-      "source_weight": 10,
-      "retrieval_role": "test_fixture"
-    },
-    {
-      "canonical_id": "scene_screenplay_sample_001",
-      "type": "story",
-      "name": "scene_screenplay_sample_001",
-      "path": "stories/screenplay/SCREENPLAY_SAMPLE/scenes/SCENE_SCREENPLAY_SAMPLE_001.md",
-      "canon_tier": "test",
-      "source_weight": 10,
-      "retrieval_role": "test_fixture"
-    },
-    {
-      "canonical_id": "novella_test_novella_outline",
-      "type": "story",
-      "name": "Test Novella - Outline",
-      "path": "stories/novella/NOVELLA_TEST_NOVELLA/outline.md",
-      "canon_tier": "test",
-      "source_weight": 10,
-      "retrieval_role": "test_fixture"
-    },
-    {
-      "canonical_id": "novella_test_novella",
-      "type": "story",
-      "name": "Test Novella",
-      "path": "stories/novella/NOVELLA_TEST_NOVELLA/manuscript.md",
-      "canon_tier": "test",
-      "source_weight": 10,
-      "retrieval_role": "test_fixture"
-    },
-    {
-      "canonical_id": "scene_9fb5cd97d313e440a565fdffc9bc933411b6b453",
-      "type": "story",
-      "name": "Test Scene",
-      "path": "stories/novella/NOVELLA_TEST_NOVELLA/scenes/SCENE_9FB5CD97D313E440A565FDFFC9BC933411B6B453.md",
-      "canon_tier": "test",
-      "source_weight": 5,
-      "retrieval_role": "test_fixture"
-    },
-    {
-      "canonical_id": "novella_test_outline",
-      "type": "story",
-      "name": "Test - Outline",
-      "path": "stories/novella/NOVELLA_TEST/outline.md",
-      "canon_tier": "test",
-      "source_weight": 10,
-      "retrieval_role": "test_fixture"
-    },
-    {
-      "canonical_id": "novella_test",
-      "type": "story",
-      "name": "Test",
-      "path": "stories/novella/NOVELLA_TEST/manuscript.md",
-      "canon_tier": "test",
-      "source_weight": 10,
-      "retrieval_role": "test_fixture"
-    },
-    {
-      "canonical_id": "novella_first_corridor_outline",
-      "type": "story",
-      "name": "First Corridor - Outline",
-      "path": "stories/novella/NOVELLA_FIRST_CORRIDOR/outline.md",
-      "canon_tier": "draft",
-      "source_weight": 55,
-      "retrieval_role": "active_draft"
-    },
-    {
-      "canonical_id": "novella_first_corridor",
-      "type": "story",
-      "name": "First Corridor",
-      "path": "stories/novella/NOVELLA_FIRST_CORRIDOR/manuscript.md",
-      "canon_tier": "draft",
-      "source_weight": 55,
-      "retrieval_role": "active_draft"
-    },
-    {
-      "canonical_id": "scene_d9b9e99cd4cdd7109b0756ce955e9574912e36a6",
-      "type": "story",
-      "name": "Second Scene",
-      "path": "stories/novella/NOVELLA_FIRST_CORRIDOR/scenes/SCENE_D9B9E99CD4CDD7109B0756CE955E9574912E36A6.md",
-      "canon_tier": "draft",
-      "source_weight": 50,
-      "retrieval_role": "active_draft"
-    },
-    {
-      "canonical_id": "scene_96a0a49f0f2bca0ee73308e6fd97da80711debbc",
-      "type": "story",
-      "name": "Opening Scene",
-      "path": "stories/novella/NOVELLA_FIRST_CORRIDOR/scenes/SCENE_96A0A49F0F2BCA0EE73308E6FD97DA80711DEBBC.md",
-      "canon_tier": "draft",
-      "source_weight": 50,
-      "retrieval_role": "active_draft"
-    },
-    {
-      "canonical_id": "novel_forgotten_tides_outline",
-      "type": "story",
-      "name": "Forgotten Tides - Outline",
-      "path": "stories/novel/NOVEL_FORGOTTEN_TIDES/outline.md",
+      "name": "Forgotten Tides",
+      "path": "stories/novel/NOVEL_FORGOTTEN_TIDES/manuscript.md",
       "canon_tier": "draft",
       "source_weight": 55,
       "retrieval_role": "active_draft"
@@ -416,13 +308,67 @@
       "retrieval_role": "active_draft"
     },
     {
-      "canonical_id": "novel_forgotten_tides_manuscript",
+      "canonical_id": "novel_forgotten_tides_outline",
       "type": "story",
-      "name": "Forgotten Tides",
-      "path": "stories/novel/NOVEL_FORGOTTEN_TIDES/manuscript.md",
+      "name": "Forgotten Tides - Outline",
+      "path": "stories/novel/NOVEL_FORGOTTEN_TIDES/outline.md",
       "canon_tier": "draft",
       "source_weight": 55,
       "retrieval_role": "active_draft"
+    },
+    {
+      "canonical_id": "novella_first_corridor",
+      "type": "story",
+      "name": "First Corridor",
+      "path": "stories/novella/NOVELLA_FIRST_CORRIDOR/manuscript.md",
+      "canon_tier": "draft",
+      "source_weight": 55,
+      "retrieval_role": "active_draft"
+    },
+    {
+      "canonical_id": "novella_first_corridor_outline",
+      "type": "story",
+      "name": "First Corridor - Outline",
+      "path": "stories/novella/NOVELLA_FIRST_CORRIDOR/outline.md",
+      "canon_tier": "draft",
+      "source_weight": 55,
+      "retrieval_role": "active_draft"
+    },
+    {
+      "canonical_id": "novella_test",
+      "type": "story",
+      "name": "Test",
+      "path": "stories/novella/NOVELLA_TEST/manuscript.md",
+      "canon_tier": "test",
+      "source_weight": 10,
+      "retrieval_role": "test_fixture"
+    },
+    {
+      "canonical_id": "novella_test_novella",
+      "type": "story",
+      "name": "Test Novella",
+      "path": "stories/novella/NOVELLA_TEST_NOVELLA/manuscript.md",
+      "canon_tier": "test",
+      "source_weight": 10,
+      "retrieval_role": "test_fixture"
+    },
+    {
+      "canonical_id": "novella_test_novella_outline",
+      "type": "story",
+      "name": "Test Novella - Outline",
+      "path": "stories/novella/NOVELLA_TEST_NOVELLA/outline.md",
+      "canon_tier": "test",
+      "source_weight": 10,
+      "retrieval_role": "test_fixture"
+    },
+    {
+      "canonical_id": "novella_test_outline",
+      "type": "story",
+      "name": "Test - Outline",
+      "path": "stories/novella/NOVELLA_TEST/outline.md",
+      "canon_tier": "test",
+      "source_weight": 10,
+      "retrieval_role": "test_fixture"
     },
     {
       "canonical_id": "scene_541938a8fd6140a456619c4030b828ccc5ac4298",
@@ -434,58 +380,112 @@
       "retrieval_role": "active_draft"
     },
     {
-      "canonical_id": "lore-0004",
-      "type": "lore",
-      "name": "SPECIES OVERVIEW",
-      "path": "lore/SPECIES_OVERVIEW.md",
-      "canon_tier": "working_canon",
-      "source_weight": 95,
-      "retrieval_role": "working_reference"
+      "canonical_id": "scene_96a0a49f0f2bca0ee73308e6fd97da80711debbc",
+      "type": "story",
+      "name": "Opening Scene",
+      "path": "stories/novella/NOVELLA_FIRST_CORRIDOR/scenes/SCENE_96A0A49F0F2BCA0EE73308E6FD97DA80711DEBBC.md",
+      "canon_tier": "draft",
+      "source_weight": 50,
+      "retrieval_role": "active_draft"
     },
     {
-      "canonical_id": "lore-0003",
-      "type": "lore",
-      "name": "POLITIES AND FACTIONS",
-      "path": "lore/POLITIES_AND_FACTIONS.md",
-      "canon_tier": "working_canon",
-      "source_weight": 95,
-      "retrieval_role": "working_reference"
+      "canonical_id": "scene_9fb5cd97d313e440a565fdffc9bc933411b6b453",
+      "type": "story",
+      "name": "Test Scene",
+      "path": "stories/novella/NOVELLA_TEST_NOVELLA/scenes/SCENE_9FB5CD97D313E440A565FDFFC9BC933411B6B453.md",
+      "canon_tier": "test",
+      "source_weight": 5,
+      "retrieval_role": "test_fixture"
     },
     {
-      "canonical_id": "lore-0002",
-      "type": "lore",
-      "name": "MEMORY ECONOMY",
-      "path": "lore/MEMORY_ECONOMY.md",
-      "canon_tier": "working_canon",
-      "source_weight": 95,
-      "retrieval_role": "working_reference"
+      "canonical_id": "scene_d9b9e99cd4cdd7109b0756ce955e9574912e36a6",
+      "type": "story",
+      "name": "Second Scene",
+      "path": "stories/novella/NOVELLA_FIRST_CORRIDOR/scenes/SCENE_D9B9E99CD4CDD7109B0756CE955E9574912E36A6.md",
+      "canon_tier": "draft",
+      "source_weight": 50,
+      "retrieval_role": "active_draft"
     },
     {
-      "canonical_id": "lore-0001",
-      "type": "lore",
-      "name": "COSMIC REGIONS",
-      "path": "lore/COSMIC_REGIONS.md",
-      "canon_tier": "working_canon",
-      "source_weight": 95,
-      "retrieval_role": "working_reference"
+      "canonical_id": "scene_screenplay_sample_001",
+      "type": "story",
+      "name": "scene_screenplay_sample_001",
+      "path": "stories/screenplay/SCREENPLAY_SAMPLE/scenes/SCENE_SCREENPLAY_SAMPLE_001.md",
+      "canon_tier": "test",
+      "source_weight": 10,
+      "retrieval_role": "test_fixture"
     },
     {
-      "canonical_id": "notes_chat_highlights_1765473539542",
-      "type": "lore",
-      "name": "Chat Highlights",
-      "path": "lore/notes/NOTES_CHAT_HIGHLIGHTS_1765473539542.md",
-      "canon_tier": "working_canon",
-      "source_weight": 85,
-      "retrieval_role": "working_reference"
+      "canonical_id": "screenplay_sample",
+      "type": "story",
+      "name": "Screenplay Sample",
+      "path": "stories/screenplay/SCREENPLAY_SAMPLE/manuscript.md",
+      "canon_tier": "test",
+      "source_weight": 10,
+      "retrieval_role": "test_fixture"
     },
     {
-      "canonical_id": "notes_chat_highlights_1765472978233",
-      "type": "lore",
-      "name": "Chat Highlights",
-      "path": "lore/notes/NOTES_CHAT_HIGHLIGHTS_1765472978233.md",
-      "canon_tier": "working_canon",
-      "source_weight": 85,
-      "retrieval_role": "working_reference"
+      "canonical_id": "story-0001",
+      "type": "story",
+      "name": "The Archivist's Wake",
+      "path": "stories/short_story/the_archivists_wake/manuscript.md",
+      "canon_tier": "primary_canon",
+      "source_weight": 110,
+      "retrieval_role": "authoritative"
+    },
+    {
+      "canonical_id": "story-0002",
+      "type": "story",
+      "name": "Memoir of a Nobody",
+      "path": "stories/short_story/memoir_of_a_nobody/manuscript.md",
+      "canon_tier": "draft",
+      "source_weight": 65,
+      "retrieval_role": "active_draft"
+    },
+    {
+      "canonical_id": "story-0003",
+      "type": "story",
+      "name": "The Tuner of Last Lights",
+      "path": "stories/short_story/the_tuner_of_last_lights/manuscript.md",
+      "canon_tier": "draft",
+      "source_weight": 65,
+      "retrieval_role": "active_draft"
+    },
+    {
+      "canonical_id": "story-0004",
+      "type": "story",
+      "name": "The Light Inheritance",
+      "path": "stories/short_story/the_light_inheritance/manuscript.md",
+      "canon_tier": "draft",
+      "source_weight": 65,
+      "retrieval_role": "active_draft"
+    },
+    {
+      "canonical_id": "story-0004-outline",
+      "type": "story",
+      "name": "The Light Inheritance - Outline",
+      "path": "stories/short_story/the_light_inheritance/outline.md",
+      "canon_tier": "draft",
+      "source_weight": 55,
+      "retrieval_role": "active_draft"
+    },
+    {
+      "canonical_id": "story-0005",
+      "type": "story",
+      "name": "The Liturgy of Rust",
+      "path": "stories/short_story/the_liturgy_of_rust/manuscript.md",
+      "canon_tier": "draft",
+      "source_weight": 65,
+      "retrieval_role": "active_draft"
+    },
+    {
+      "canonical_id": "story-0006",
+      "type": "story",
+      "name": "The Anchorless Tide",
+      "path": "stories/short_story/the_anchorless_tide/manuscript.md",
+      "canon_tier": "draft",
+      "source_weight": 65,
+      "retrieval_role": "active_draft"
     },
     {
       "canonical_id": "term-0001",
