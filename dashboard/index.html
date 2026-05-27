@@ -3,170 +3,535 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Continuity Dashboard - The Forgotten Tides Universe</title>
+    <title>Continuity Dashboard · The Forgotten Tides</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
+        :root {
+            /* Void scale */
+            --void-0: #05070A;
+            --void-1: #0A0D12;
+            --void-2: #11151B;
+            --void-3: #181D25;
+            --void-4: #20262F;
+            --void-5: #2A313A;
+            --void-6: #3A424D;
+
+            /* Ink scale */
+            --ink-1: #F1ECE0;
+            --ink-2: #D8D2C4;
+            --ink-3: #A8AEB6;
+            --ink-4: #6A727C;
+            --ink-5: #4A525C;
+
+            /* Memory amber */
+            --amber-faint: #3A2A14;
+            --amber-low: #8A6A2E;
+            --amber: #E8A856;
+            --amber-bright: #F6C684;
+
+            /* Entity taxonomy (canonical, do not remap) */
+            --entity-character: #4A9EFF;
+            --entity-location: #FF6B6B;
+            --entity-mechanics: #51CF66;
+            --entity-faction: #FFD93D;
+            --entity-story: #A78BFA;
+            --entity-missing: #6A727C;
+
+            /* Type */
+            --font-display: "Cormorant Garamond", "EB Garamond", Georgia, serif;
+            --font-body: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+            --focus-ring: rgba(74, 158, 255, 0.55);
+            --ease-out-soft: cubic-bezier(0.16, 0.84, 0.32, 1);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html, body {
+            height: 100%;
+            width: 100%;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: #0a0a0a;
-            color: #e0e0e0;
+            font-family: var(--font-body);
+            background: var(--void-1);
+            color: var(--ink-2);
             overflow: hidden;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+            display: grid;
+            grid-template-rows: 64px 1fr 40px;
+            height: 100vh;
         }
 
+        :focus-visible {
+            outline: 2px solid var(--focus-ring);
+            outline-offset: 2px;
+            border-radius: 2px;
+        }
+
+        ::selection {
+            background: var(--amber-faint);
+            color: var(--amber-bright);
+        }
+
+        /* ============ HEADER ============ */
         #header {
-            background: #1a1a1a;
-            padding: 1rem 2rem;
-            border-bottom: 2px solid #2a2a2a;
+            background: var(--void-2);
+            border-bottom: 1px solid var(--void-5);
+            padding: 0 24px;
+            height: 64px;
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            gap: 28px;
+            position: relative;
         }
 
-        h1 {
-            font-size: 1.5rem;
+        .wordmark {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+            flex-shrink: 0;
+        }
+
+        .wordmark-title {
+            font-family: var(--font-display);
+            font-weight: 500;
+            font-size: 22px;
+            color: var(--ink-1);
+            letter-spacing: -0.005em;
+            line-height: 1.05;
+        }
+
+        .wordmark-title .forgotten {
+            font-style: italic;
+            color: var(--amber);
+        }
+
+        .wordmark-sub {
+            font-family: var(--font-mono);
+            font-size: 9px;
+            letter-spacing: 0.24em;
+            color: var(--ink-4);
+            text-transform: uppercase;
+        }
+
+        .divider-v {
+            width: 1px;
+            height: 32px;
+            background: var(--void-5);
+            flex-shrink: 0;
+        }
+
+        /* ============ FILTER CHIPS ============ */
+        #filters {
+            display: flex;
+            gap: 8px;
+            flex: 1;
+            flex-wrap: wrap;
+            min-width: 0;
+        }
+
+        .chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 12px 6px 10px;
+            background: var(--void-2);
+            border: 1px solid var(--void-5);
+            border-radius: 999px;
+            cursor: pointer;
+            font-family: var(--font-body);
+            font-size: 12px;
+            font-weight: 500;
+            color: var(--ink-4);
+            line-height: 1;
+            transition: background 160ms var(--ease-out-soft), border-color 160ms var(--ease-out-soft), color 160ms var(--ease-out-soft);
+            user-select: none;
+        }
+
+        .chip:hover {
+            background: var(--void-4);
+        }
+
+        .chip.active {
+            background: var(--void-3);
+            border-color: var(--void-6);
+            color: var(--ink-1);
+        }
+
+        .chip.active:hover {
+            background: var(--void-4);
+        }
+
+        .chip .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            opacity: 0.35;
+            transition: opacity 160ms var(--ease-out-soft);
+        }
+
+        .chip.active .dot {
+            opacity: 1;
+        }
+
+        .chip .count {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            letter-spacing: 0.05em;
+            color: var(--ink-4);
+            font-variant-numeric: tabular-nums;
+            margin-left: 2px;
+        }
+
+        /* ============ ACTIONS ============ */
+        #actions {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        .stencil {
+            font-family: var(--font-mono);
+            font-size: 10px;
             font-weight: 600;
-            color: #4a9eff;
-        }
-
-        #controls {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
+            letter-spacing: 0.24em;
+            text-transform: uppercase;
+            padding: 3px 9px;
+            border: 1px solid var(--amber-low);
+            color: var(--amber);
+            border-radius: 2px;
+            line-height: 1.4;
         }
 
         .btn {
-            background: #2a2a2a;
-            color: #e0e0e0;
-            border: 1px solid #3a3a3a;
-            padding: 0.5rem 1rem;
+            font-family: var(--font-body);
+            font-weight: 500;
+            font-size: 12px;
+            letter-spacing: 0.02em;
+            line-height: 1;
+            padding: 6px 12px;
             border-radius: 4px;
             cursor: pointer;
-            font-size: 0.9rem;
-            transition: all 0.2s;
+            border: 1px solid var(--void-6);
+            background: transparent;
+            color: var(--ink-2);
+            transition: background 160ms var(--ease-out-soft), border-color 160ms var(--ease-out-soft);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
         }
 
         .btn:hover {
-            background: #3a3a3a;
-            border-color: #4a4a4a;
+            background: var(--void-4);
         }
 
-        .filter-group {
-            display: flex;
-            gap: 0.5rem;
-            align-items: center;
+        .btn--primary {
+            background: var(--amber);
+            color: #1A0E00;
+            border-color: var(--amber);
         }
 
-        .filter-group label {
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 0.25rem;
+        .btn--primary:hover {
+            background: var(--amber-bright);
+            border-color: var(--amber-bright);
         }
 
-        .filter-group input[type="checkbox"] {
-            cursor: pointer;
-        }
-
+        /* ============ GRAPH STAGE ============ */
         #graph-container {
-            width: 100%;
-            height: calc(100vh - 120px);
             position: relative;
-            background: #0f0f0f;
+            background:
+                radial-gradient(ellipse at 30% 40%, rgba(74,158,255,0.03), transparent 60%),
+                radial-gradient(ellipse at 70% 60%, rgba(232,168,86,0.025), transparent 55%),
+                var(--void-1);
+            overflow: hidden;
         }
 
+        #starfield {
+            position: absolute;
+            inset: 0;
+            opacity: 0.5;
+            pointer-events: none;
+            background-image:
+                radial-gradient(1px 1px at 12% 18%, rgba(255,255,255,0.5), transparent),
+                radial-gradient(1px 1px at 38% 72%, rgba(255,255,255,0.4), transparent),
+                radial-gradient(1px 1px at 67% 28%, rgba(255,255,255,0.5), transparent),
+                radial-gradient(1px 1px at 89% 82%, rgba(255,255,255,0.45), transparent),
+                radial-gradient(1px 1px at 21% 88%, rgba(255,255,255,0.35), transparent),
+                radial-gradient(1px 1px at 78% 14%, rgba(255,255,255,0.45), transparent),
+                radial-gradient(1px 1px at 55% 55%, rgba(255,255,255,0.3), transparent),
+                radial-gradient(1px 1px at 8% 48%, rgba(255,255,255,0.35), transparent),
+                radial-gradient(1px 1px at 94% 60%, rgba(255,255,255,0.4), transparent);
+        }
+
+        #network {
+            position: absolute;
+            inset: 0;
+        }
+
+        /* ============ LEGEND ============ */
         #legend {
             position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: rgba(26, 26, 26, 0.95);
-            padding: 1rem;
+            top: 20px;
+            right: 20px;
+            background: rgba(17, 21, 27, 0.92);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            padding: 14px 16px;
             border-radius: 4px;
-            border: 1px solid #2a2a2a;
-            font-size: 0.85rem;
-            z-index: 1000;
+            border: 1px solid var(--void-5);
+            font-family: var(--font-body);
+            font-size: 12px;
+            color: var(--ink-2);
+            z-index: 10;
+            min-width: 180px;
         }
 
-        #legend h3 {
-            margin-bottom: 0.5rem;
-            font-size: 0.9rem;
-            color: #4a9eff;
+        .eyebrow {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--amber);
+            display: inline-block;
+        }
+
+        #legend .rule {
+            height: 1px;
+            background: var(--void-5);
+            margin: 10px 0 12px;
+        }
+
+        .legend-items {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
         }
 
         .legend-item {
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            margin-bottom: 0.25rem;
+            gap: 10px;
         }
 
         .legend-color {
-            width: 16px;
-            height: 16px;
+            width: 12px;
+            height: 12px;
             border-radius: 50%;
-            border: 2px solid rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.15);
         }
 
+        .legend-item.muted .legend-color {
+            opacity: 0.5;
+        }
+
+        .legend-item.muted span {
+            color: var(--ink-4);
+        }
+
+        /* ============ INFO PANEL ============ */
         #info-panel {
             position: absolute;
-            bottom: 1rem;
-            left: 1rem;
-            background: rgba(26, 26, 26, 0.95);
-            padding: 1rem;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(17, 21, 27, 0.95);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            padding: 20px 22px;
             border-radius: 4px;
-            border: 1px solid #2a2a2a;
-            max-width: 300px;
+            border: 1px solid var(--void-5);
+            border-top: 1px solid var(--entity-character);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.65), 0 0 24px rgba(74, 158, 255, 0.13);
+            width: 340px;
+            z-index: 10;
             display: none;
-            z-index: 1000;
+            font-family: var(--font-body);
         }
 
-        #info-panel h3 {
-            margin-bottom: 0.5rem;
-            font-size: 1rem;
-            color: #4a9eff;
+        .info-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 14px;
         }
 
-        #info-panel p {
-            font-size: 0.85rem;
-            margin-bottom: 0.25rem;
+        .info-head-left {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .info-eyebrow-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .info-eyebrow-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--entity-character);
+        }
+
+        #info-type {
+            font-family: var(--font-mono);
+            font-size: 10px;
+            font-weight: 500;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--entity-character);
+        }
+
+        #info-title {
+            font-family: var(--font-display);
+            font-weight: 500;
+            font-size: 24px;
+            color: var(--ink-1);
+            line-height: 1.15;
+            letter-spacing: -0.005em;
+        }
+
+        #info-close {
+            background: transparent;
+            border: none;
+            color: var(--ink-4);
+            cursor: pointer;
+            padding: 0;
+            line-height: 1;
+            font-size: 18px;
+            transition: color 160ms var(--ease-out-soft);
+        }
+
+        #info-close:hover {
+            color: var(--ink-1);
+        }
+
+        #info-stencil-speculative {
+            display: none;
+            font-family: var(--font-mono);
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.24em;
+            text-transform: uppercase;
+            padding: 3px 9px;
+            border: 1px solid rgba(229, 72, 77, 0.35);
+            color: #E5484D;
+            border-radius: 2px;
             line-height: 1.4;
         }
 
-        #info-panel .info-label {
-            color: #888;
+        .info-meta {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            column-gap: 14px;
+            row-gap: 8px;
+            font-size: 12px;
+            margin-bottom: 16px;
         }
 
+        .info-meta dt {
+            color: var(--ink-4);
+            font-family: var(--font-mono);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            font-size: 10px;
+        }
+
+        .info-meta dd {
+            font-family: var(--font-mono);
+            color: var(--ink-2);
+            margin: 0;
+            word-break: break-all;
+        }
+
+        .info-meta dd.path {
+            font-size: 11px;
+            color: var(--ink-3);
+        }
+
+        .info-meta dd.edges {
+            color: var(--ink-1);
+            font-variant-numeric: tabular-nums;
+        }
+
+        .info-actions {
+            display: flex;
+            gap: 8px;
+        }
+
+        /* ============ FOOTER ============ */
         #footer {
-            background: #1a1a1a;
-            padding: 0.75rem 2rem;
-            border-top: 1px solid #2a2a2a;
-            text-align: center;
-            font-size: 0.8rem;
-            color: #666;
+            background: var(--void-2);
+            border-top: 1px solid var(--void-5);
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-family: var(--font-mono);
+            font-size: 10px;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--ink-4);
         }
 
+        .footer-counts {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .footer-count-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .footer-count-item .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        /* ============ LOADING / ERROR ============ */
         #loading {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             text-align: center;
-            font-size: 1.2rem;
-            color: #4a9eff;
+            color: var(--ink-3);
+            z-index: 20;
+        }
+
+        #loading .label {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            letter-spacing: 0.24em;
+            text-transform: uppercase;
+            color: var(--amber);
         }
 
         .spinner {
-            border: 3px solid #2a2a2a;
-            border-top: 3px solid #4a9eff;
+            border: 1px solid var(--void-5);
+            border-top: 1px solid var(--amber);
             border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 1rem;
+            width: 28px;
+            height: 28px;
+            animation: spin 1.4s linear infinite;
+            margin: 0 auto 14px;
         }
 
         @keyframes spin {
@@ -179,105 +544,170 @@
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            text-align: center;
-            color: #ff6b6b;
+            text-align: left;
             display: none;
-            max-width: 600px;
-            padding: 2rem;
-            background: rgba(26, 26, 26, 0.95);
-            border-radius: 8px;
-            border: 2px solid #ff6b6b;
+            max-width: 560px;
+            padding: 24px 28px;
+            background: rgba(17, 21, 27, 0.95);
+            backdrop-filter: blur(8px);
+            border-radius: 4px;
+            border: 1px solid var(--void-5);
+            border-top: 1px solid #E5484D;
+            box-shadow: 0 16px 48px rgba(0, 0, 0, 0.65);
+            z-index: 30;
+        }
+
+        #error .eyebrow {
+            color: #E5484D;
+            margin-bottom: 6px;
         }
 
         #error h2 {
-            margin-bottom: 1rem;
+            font-family: var(--font-display);
+            font-weight: 500;
+            font-size: 22px;
+            color: var(--ink-1);
+            margin-bottom: 12px;
+            line-height: 1.15;
         }
 
         #error p {
+            font-size: 13px;
             line-height: 1.6;
-            margin-bottom: 1rem;
+            color: var(--ink-3);
+            margin-bottom: 10px;
         }
 
         #error code {
-            background: #1a1a1a;
-            padding: 0.25rem 0.5rem;
-            border-radius: 3px;
-            font-family: monospace;
+            background: var(--void-3);
+            padding: 2px 6px;
+            border-radius: 2px;
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--ink-2);
         }
     </style>
 </head>
 <body>
-    <div id="header">
-        <h1>🌊 The Forgotten Tides — Continuity Dashboard</h1>
-        <div id="controls">
-            <div class="filter-group">
-                <label><input type="checkbox" id="filter-character" checked> Characters</label>
-                <label><input type="checkbox" id="filter-location" checked> Locations</label>
-                <label><input type="checkbox" id="filter-mechanics" checked> Mechanics</label>
-                <label><input type="checkbox" id="filter-faction" checked> Factions</label>
-                <label><input type="checkbox" id="filter-story" checked> Stories</label>
-            </div>
-            <button class="btn" id="reset-view">Reset View</button>
-            <button class="btn" id="reload-data">Reload Data</button>
+    <header id="header">
+        <div class="wordmark">
+            <div class="wordmark-title">The <span class="forgotten">Forgotten</span> Tides</div>
+            <div class="wordmark-sub">Continuity Dashboard · v1.0</div>
         </div>
-    </div>
 
-    <div id="graph-container">
+        <div class="divider-v"></div>
+
+        <div id="filters">
+            <button class="chip active" data-filter="character">
+                <span class="dot" style="background: var(--entity-character);"></span>
+                <span>Characters</span>
+                <span class="count" data-count="character">· 0</span>
+            </button>
+            <button class="chip active" data-filter="location">
+                <span class="dot" style="background: var(--entity-location);"></span>
+                <span>Locations</span>
+                <span class="count" data-count="location">· 0</span>
+            </button>
+            <button class="chip active" data-filter="mechanics">
+                <span class="dot" style="background: var(--entity-mechanics);"></span>
+                <span>Mechanics</span>
+                <span class="count" data-count="mechanics">· 0</span>
+            </button>
+            <button class="chip active" data-filter="faction">
+                <span class="dot" style="background: var(--entity-faction);"></span>
+                <span>Factions</span>
+                <span class="count" data-count="faction">· 0</span>
+            </button>
+            <button class="chip active" data-filter="story">
+                <span class="dot" style="background: var(--entity-story);"></span>
+                <span>Stories</span>
+                <span class="count" data-count="story">· 0</span>
+            </button>
+        </div>
+
+        <div id="actions">
+            <span class="stencil">CANON · LOCKED</span>
+            <button class="btn" id="reset-view">Reset view</button>
+            <button class="btn" id="reload-data">Reload data</button>
+        </div>
+    </header>
+
+    <main id="graph-container">
+        <div id="starfield"></div>
+        <div id="network"></div>
+
         <div id="loading">
             <div class="spinner"></div>
-            <div>Loading reference map...</div>
+            <div class="label">Loading reference map</div>
         </div>
 
         <div id="error">
-            <h2>⚠️ Error Loading Dashboard</h2>
+            <div class="eyebrow">Continuity fault</div>
+            <h2 id="error-title">Reference map unreachable</h2>
             <p id="error-message"></p>
         </div>
 
-        <div id="legend">
-            <h3>Entity Types</h3>
-            <div class="legend-item">
-                <div class="legend-color" style="background: #4a9eff;"></div>
-                <span>Character</span>
+        <aside id="legend">
+            <span class="eyebrow">Entity types</span>
+            <div class="rule"></div>
+            <div class="legend-items">
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #4A9EFF;"></div>
+                    <span>Character</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #FF6B6B;"></div>
+                    <span>Location</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #51CF66;"></div>
+                    <span>Mechanics</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #FFD93D;"></div>
+                    <span>Faction</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #A78BFA;"></div>
+                    <span>Story</span>
+                </div>
+                <div class="legend-item muted">
+                    <div class="legend-color" style="background: #6A727C;"></div>
+                    <span>Missing / Speculative</span>
+                </div>
             </div>
-            <div class="legend-item">
-                <div class="legend-color" style="background: #ff6b6b;"></div>
-                <span>Location</span>
-            </div>
-            <div class="legend-item">
-                <div class="legend-color" style="background: #51cf66;"></div>
-                <span>Mechanics</span>
-            </div>
-            <div class="legend-item">
-                <div class="legend-color" style="background: #ffd93d;"></div>
-                <span>Faction</span>
-            </div>
-            <div class="legend-item">
-                <div class="legend-color" style="background: #a78bfa;"></div>
-                <span>Story</span>
-            </div>
-            <div class="legend-item">
-                <div class="legend-color" style="background: #888; opacity: 0.5;"></div>
-                <span>Missing/Speculative</span>
-            </div>
-        </div>
+        </aside>
 
-        <div id="info-panel">
-            <h3 id="info-title"></h3>
-            <p><span class="info-label">Type:</span> <span id="info-type"></span></p>
-            <p><span class="info-label">ID:</span> <span id="info-id"></span></p>
-            <p><span class="info-label">Path:</span> <span id="info-path"></span></p>
-            <p><span class="info-label">Connections:</span> <span id="info-connections"></span></p>
-            <div style="margin-top: 1rem;">
-                <a id="info-vscode-link" href="#" class="btn" style="display: inline-block; text-decoration: none; background: #007acc; color: white; border: none;">Open in VS Code</a>
+        <aside id="info-panel">
+            <div class="info-head">
+                <div class="info-head-left">
+                    <div class="info-eyebrow-row">
+                        <span class="info-eyebrow-dot" id="info-eyebrow-dot"></span>
+                        <span id="info-type">character</span>
+                        <span id="info-stencil-speculative">SPECULATIVE</span>
+                    </div>
+                    <div id="info-title">—</div>
+                </div>
+                <button id="info-close" aria-label="Close">×</button>
             </div>
-        </div>
-    </div>
 
-    <div id="footer">
-        Continuity Dashboard v1.0 — The Forgotten Tides Universe — Use mouse wheel to zoom, drag to pan, click nodes for details
-    </div>
+            <dl class="info-meta">
+                <dt>ID</dt><dd id="info-id">—</dd>
+                <dt>Path</dt><dd class="path" id="info-path">—</dd>
+                <dt>Edges</dt><dd class="edges" id="info-connections">0</dd>
+            </dl>
 
-    <!-- Using vis-network for graph visualization -->
+            <div class="info-actions">
+                <a id="info-vscode-link" class="btn btn--primary" href="#">Open in VS Code</a>
+            </div>
+        </aside>
+    </main>
+
+    <footer id="footer">
+        <div class="footer-counts" id="footer-counts"></div>
+        <div>scroll · zoom · drag · click — corridor stable</div>
+    </footer>
+
     <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
     <script src="dashboard.js"></script>
 </body>
