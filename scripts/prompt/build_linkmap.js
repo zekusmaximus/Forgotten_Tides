@@ -98,6 +98,7 @@ async function buildLinkMap() {
         for (const file of files) {
             if (file.toLowerCase().endsWith('readme.md')) continue;
             if (/_backup_/.test(file)) continue;
+            if (dir === 'stories' && path.basename(file).toLowerCase() === 'meta.yaml') continue;
             const filePath = path.join(dirPath, file);
             const data = parseEntityFile(filePath);
             if (!data) continue;

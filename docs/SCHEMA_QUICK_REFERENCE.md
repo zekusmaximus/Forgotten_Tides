@@ -36,6 +36,7 @@ Both objects accept the same keys. ID pattern constraints:
 |-------|---------------|
 | `type` | `character` |
 | `metadata.status` | `canonical`, `speculative`, `deprecated` |
+| `continuity` | Object with `invariants[]` and `watchlist[]` |
 
 > ⚠️ `metadata.status` for characters does **not** allow `draft`.
 
@@ -105,3 +106,4 @@ Both objects accept the same keys. ID pattern constraints:
 | `Unresolved reference: fact-####` | Faction file not created yet | Create `factions/<Name>.md` with that ID |
 | `Missing required field: schema_version` | Frontmatter missing `schema_version` | Add `schema_version: v1.0.0` |
 | `Missing required field: tags` | Frontmatter missing `tags` array | Add `tags: []` |
+| `must have required property 'continuity'` | Character frontmatter omitted continuity guardrails | Add `continuity.invariants` and `continuity.watchlist` arrays |

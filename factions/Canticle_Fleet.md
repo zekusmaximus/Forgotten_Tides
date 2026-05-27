@@ -18,28 +18,34 @@ cross_refs:
     - char-0002
     - char-0003
     - char-0004
+    - char-0009
   locations:
     - loc-0001
+    - loc-0010
   mechanics:
     - mech-0001
     - mech-0002
     - mech-0003
   stories:
     - story-0001
+    - story-0007
 references:
   characters:
     - char-0001
     - char-0002
     - char-0003
     - char-0004
+    - char-0009
   locations:
     - loc-0001
+    - loc-0010
   mechanics:
     - mech-0001
     - mech-0002
     - mech-0003
   stories:
     - story-0001
+    - story-0007
 doctrine:
   core_beliefs:
     - Memory is mass and must be rationed.

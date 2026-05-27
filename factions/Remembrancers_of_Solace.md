@@ -12,19 +12,25 @@ summary_200: The Remembrancers of Solace operate Memory Hospices for pilots and 
 cross_refs:
   characters:
     - char-0008
+    - char-0009
   locations:
     - loc-0010
-  factions: []
-  mechanics: []
+  factions:
+    - fact-0001
+  mechanics:
+    - mech-0003
   stories:
     - story-0007
 references:
   characters:
     - char-0008
+    - char-0009
   locations:
     - loc-0010
-  factions: []
-  mechanics: []
+  factions:
+    - fact-0001
+  mechanics:
+    - mech-0003
   stories:
     - story-0007
 metadata:

@@ -119,6 +119,9 @@ references:
   factions: []
   mechanics: []
   stories: []
+continuity:
+  invariants: []
+  watchlist: []
 metadata:
   status: canonical         # ONLY: canonical, speculative, deprecated
   created: "2026-05-23T00:00:00.000Z"
@@ -291,6 +294,7 @@ Before submitting, confirm:
 - [ ] I have read `bible/ARCHIVISTS_WAKE_STORY_BIBLE.md` if using its locked characters, locations, or mechanics
 - [ ] My `themes` values are from the allowed enum list
 - [ ] All `metadata.status` values in entity files use `canonical`, `speculative`, or `deprecated`
+- [ ] Character files include `continuity.invariants` and `continuity.watchlist`
 - [ ] All `cross_refs` IDs have corresponding entity files
 - [ ] The Lore Update Matrix has been applied
 - [ ] `npm run validate:ci` exits with 0 errors

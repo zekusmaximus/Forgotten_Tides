@@ -12,19 +12,25 @@ summary_200: A monastic station orbiting the Lattice Gap’s outer sleeve. Solac
 cross_refs:
   characters:
     - char-0008
+    - char-0009
   locations: []
   factions:
+    - fact-0001
     - fact-0006
-  mechanics: []
+  mechanics:
+    - mech-0003
   stories:
     - story-0007
 references:
   characters:
     - char-0008
+    - char-0009
   locations: []
   factions:
+    - fact-0001
     - fact-0006
-  mechanics: []
+  mechanics:
+    - mech-0003
   stories:
     - story-0007
 metadata:

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-27T17:45:52.209Z",
+  "generated": "2026-05-27T18:23:58.934Z",
   "nodes": [
     {
       "canonical_id": "char-0001",
@@ -72,6 +72,15 @@
       "canon_tier": "primary_canon",
       "source_weight": 110,
       "retrieval_role": "authoritative"
+    },
+    {
+      "canonical_id": "char-0009",
+      "type": "character",
+      "name": "Maren Holt",
+      "path": "characters/Maren_Holt.md",
+      "canon_tier": "speculative",
+      "source_weight": 60,
+      "retrieval_role": "exploratory"
     },
     {
       "canonical_id": "fact-0001",
@@ -884,6 +893,16 @@
     },
     {
       "from": "char-0008",
+      "to": "char-0009",
+      "type": "characters"
+    },
+    {
+      "from": "char-0008",
+      "to": "fact-0001",
+      "type": "factions"
+    },
+    {
+      "from": "char-0008",
       "to": "fact-0006",
       "type": "factions"
     },
@@ -894,6 +913,46 @@
     },
     {
       "from": "char-0008",
+      "to": "mech-0003",
+      "type": "mechanics"
+    },
+    {
+      "from": "char-0008",
+      "to": "story-0007",
+      "type": "stories"
+    },
+    {
+      "from": "char-0009",
+      "to": "char-0008",
+      "type": "characters"
+    },
+    {
+      "from": "char-0009",
+      "to": "fact-0001",
+      "type": "factions"
+    },
+    {
+      "from": "char-0009",
+      "to": "fact-0006",
+      "type": "factions"
+    },
+    {
+      "from": "char-0009",
+      "to": "loc-0010",
+      "type": "locations"
+    },
+    {
+      "from": "char-0009",
+      "to": "mech-0002",
+      "type": "mechanics"
+    },
+    {
+      "from": "char-0009",
+      "to": "mech-0003",
+      "type": "mechanics"
+    },
+    {
+      "from": "char-0009",
       "to": "story-0007",
       "type": "stories"
     },
@@ -919,7 +978,17 @@
     },
     {
       "from": "fact-0001",
+      "to": "char-0009",
+      "type": "characters"
+    },
+    {
+      "from": "fact-0001",
       "to": "loc-0001",
+      "type": "locations"
+    },
+    {
+      "from": "fact-0001",
+      "to": "loc-0010",
       "type": "locations"
     },
     {
@@ -940,6 +1009,11 @@
     {
       "from": "fact-0001",
       "to": "story-0001",
+      "type": "stories"
+    },
+    {
+      "from": "fact-0001",
+      "to": "story-0007",
       "type": "stories"
     },
     {
@@ -1024,8 +1098,23 @@
     },
     {
       "from": "fact-0006",
+      "to": "char-0009",
+      "type": "characters"
+    },
+    {
+      "from": "fact-0006",
+      "to": "fact-0001",
+      "type": "factions"
+    },
+    {
+      "from": "fact-0006",
       "to": "loc-0010",
       "type": "locations"
+    },
+    {
+      "from": "fact-0006",
+      "to": "mech-0003",
+      "type": "mechanics"
     },
     {
       "from": "fact-0006",
@@ -1309,8 +1398,23 @@
     },
     {
       "from": "loc-0010",
+      "to": "char-0009",
+      "type": "characters"
+    },
+    {
+      "from": "loc-0010",
+      "to": "fact-0001",
+      "type": "factions"
+    },
+    {
+      "from": "loc-0010",
       "to": "fact-0006",
       "type": "factions"
+    },
+    {
+      "from": "loc-0010",
+      "to": "mech-0003",
+      "type": "mechanics"
     },
     {
       "from": "loc-0010",
@@ -1474,6 +1578,16 @@
     },
     {
       "from": "story-0007",
+      "to": "char-0009",
+      "type": "characters"
+    },
+    {
+      "from": "story-0007",
+      "to": "fact-0001",
+      "type": "factions"
+    },
+    {
+      "from": "story-0007",
       "to": "fact-0006",
       "type": "factions"
     },
@@ -1481,6 +1595,11 @@
       "from": "story-0007",
       "to": "loc-0010",
       "type": "locations"
+    },
+    {
+      "from": "story-0007",
+      "to": "mech-0002",
+      "type": "mechanics"
     },
     {
       "from": "story-0007",

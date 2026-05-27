@@ -1,6 +1,6 @@
 # Canonical Index
 
-This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-05-27T17:45:52.209Z
+This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-05-27T18:23:58.934Z
 
 ## Character
 - `char-0001` — Rell (`characters/Rell.md`)
@@ -11,6 +11,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `char-0006` — Vane (`characters/Vane.md`)
 - `char-0007` — Kael Voss (`characters/Kael_Voss.md`)
 - `char-0008` — Lira Voss (`characters/Lira_Voss.md`)
+- `char-0009` — Maren Holt (`characters/Maren_Holt.md`)
 
 ## Faction
 - `fact-0001` — Canticle Fleet (`factions/Canticle_Fleet.md`)
@@ -178,7 +179,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `story-0007` - The Hospice Knot (story, draft, weight 65, `stories/short_story/the_hospice_knot/manuscript.md`)
 
 ### Speculative / Sandbox Material
-_none_
+- `char-0009` - Maren Holt (character, speculative, weight 60, `characters/Maren_Holt.md`)
 
 ### Test / Dev / Sample Material
 - `novella_test` - Test (story, test, weight 10, `stories/novella/NOVELLA_TEST/manuscript.md`)
