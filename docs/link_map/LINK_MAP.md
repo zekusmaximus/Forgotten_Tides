@@ -1,8 +1,8 @@
 # Link Map - Entity Relationships
 
-Generated: 2026-05-27T18:23:58.934Z
+Generated: 2026-05-27T23:07:40.030Z
 
-## Entities (82)
+## Entities (87)
 
 - `char-0001` (character, primary_canon, weight 110)
 - `char-0002` (character, primary_canon, weight 110)
@@ -13,6 +13,7 @@ Generated: 2026-05-27T18:23:58.934Z
 - `char-0007` (character, primary_canon, weight 110)
 - `char-0008` (character, primary_canon, weight 110)
 - `char-0009` (character, speculative, weight 60)
+- `char-0010` (character, primary_canon, weight 110)
 - `fact-0001` (faction, primary_canon, weight 110)
 - `fact-0002` (faction, primary_canon, weight 110)
 - `fact-0003` (faction, primary_canon, weight 110)
@@ -30,6 +31,7 @@ Generated: 2026-05-27T18:23:58.934Z
 - `loc-0008` (location, primary_canon, weight 110)
 - `loc-0009` (location, primary_canon, weight 110)
 - `loc-0010` (location, primary_canon, weight 110)
+- `loc-0011` (location, primary_canon, weight 110)
 - `lore-0001` (lore, working_canon, weight 95)
 - `lore-0002` (lore, working_canon, weight 95)
 - `lore-0003` (lore, working_canon, weight 95)
@@ -62,6 +64,7 @@ Generated: 2026-05-27T18:23:58.934Z
 - `story-0005` (story, draft, weight 65)
 - `story-0006` (story, draft, weight 65)
 - `story-0007` (story, draft, weight 65)
+- `story-0008` (story, draft, weight 65)
 - `term-0001` (term, primary_canon, weight 110)
 - `term-0002` (term, primary_canon, weight 110)
 - `term-0003` (term, primary_canon, weight 110)
@@ -86,8 +89,10 @@ Generated: 2026-05-27T18:23:58.934Z
 - `term-0022` (term, primary_canon, weight 110)
 - `term-0023` (term, primary_canon, weight 110)
 - `term-0024` (term, primary_canon, weight 110)
+- `term-0025` (term, primary_canon, weight 110)
+- `term-0026` (term, primary_canon, weight 110)
 
-## Relationships (227)
+## Relationships (251)
 
 - `char-0001` → `char-0002` (characters)
 - `char-0001` → `char-0003` (characters)
@@ -132,6 +137,12 @@ Generated: 2026-05-27T18:23:58.934Z
 - `char-0009` → `mech-0002` (mechanics)
 - `char-0009` → `mech-0003` (mechanics)
 - `char-0009` → `story-0007` (stories)
+- `char-0010` → `fact-0002` (factions)
+- `char-0010` → `loc-0008` (locations)
+- `char-0010` → `loc-0011` (locations)
+- `char-0010` → `mech-0001` (mechanics)
+- `char-0010` → `mech-0003` (mechanics)
+- `char-0010` → `story-0008` (stories)
 - `fact-0001` → `char-0001` (characters)
 - `fact-0001` → `char-0002` (characters)
 - `fact-0001` → `char-0003` (characters)
@@ -225,6 +236,12 @@ Generated: 2026-05-27T18:23:58.934Z
 - `loc-0010` → `fact-0006` (factions)
 - `loc-0010` → `mech-0003` (mechanics)
 - `loc-0010` → `story-0007` (stories)
+- `loc-0011` → `char-0010` (characters)
+- `loc-0011` → `fact-0002` (factions)
+- `loc-0011` → `loc-0008` (locations)
+- `loc-0011` → `mech-0001` (mechanics)
+- `loc-0011` → `mech-0003` (mechanics)
+- `loc-0011` → `story-0008` (stories)
 - `mech-0001` → `char-0001` (characters)
 - `mech-0001` → `loc-0001` (locations)
 - `mech-0001` → `story-0001` (stories)
@@ -262,6 +279,12 @@ Generated: 2026-05-27T18:23:58.934Z
 - `story-0007` → `loc-0010` (locations)
 - `story-0007` → `mech-0002` (mechanics)
 - `story-0007` → `mech-0003` (mechanics)
+- `story-0008` → `char-0010` (characters)
+- `story-0008` → `fact-0002` (factions)
+- `story-0008` → `loc-0008` (locations)
+- `story-0008` → `loc-0011` (locations)
+- `story-0008` → `mech-0001` (mechanics)
+- `story-0008` → `mech-0003` (mechanics)
 - `term-0001` → `term-0002` (related_terms)
 - `term-0001` → `term-0003` (related_terms)
 - `term-0001` → `term-0013` (related_terms)
@@ -316,6 +339,12 @@ Generated: 2026-05-27T18:23:58.934Z
 - `term-0024` → `term-0005` (related_terms)
 - `term-0024` → `term-0006` (related_terms)
 - `term-0024` → `term-0019` (related_terms)
+- `term-0025` → `term-0001` (related_terms)
+- `term-0025` → `term-0014` (related_terms)
+- `term-0025` → `term-0022` (related_terms)
+- `term-0026` → `term-0005` (related_terms)
+- `term-0026` → `term-0014` (related_terms)
+- `term-0026` → `term-0025` (related_terms)
 
 ## Orphaned Reference Targets (0)
 
@@ -323,10 +352,10 @@ _none_
 
 ## Statistics
 
-- **Total Entities**: 82
-- **Total Relationships**: 227
+- **Total Entities**: 87
+- **Total Relationships**: 251
 - **Orphaned Targets**: 0
 - **Entity Types**: character, faction, location, lore, mechanics, story, term
-- **Primary / Working Canon**: 59
-- **Draft Entities**: 15
+- **Primary / Working Canon**: 63
+- **Draft Entities**: 16
 - **Test / Sandbox / Deprecated Entities**: 7

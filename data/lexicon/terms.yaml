@@ -286,3 +286,27 @@ terms:
     first_appearance: The Liturgy of Rust
     canonical_source: stories/short_story/the_liturgy_of_rust/manuscript.md
     status: draft
+
+  - id: term-0025
+    term: Reliquarist
+    definition: A specialist of the Archivist Orders trained to craft, tune, and audit memory stones. Reliquarists work in audit halls equipped with tuning cradles, verifying the provenance, viewpoint, and resonance stability of pledged memories before they are sealed for civic, personal, or light-bequest use. Junior Reliquarists are authorized to issue a limited number of junior seals per year, certifying audits at their own anchor cost when the chain of provenance cannot be fully verified.
+    category: Factions
+    related_terms:
+      - term-0014  # Memory Stone
+      - term-0022  # Continuity Cleric
+      - term-0001  # Anchor
+    first_appearance: The Reliquarist's Doubt
+    canonical_source: stories/short_story/the_reliquarists_doubt/manuscript.md
+    status: draft
+
+  - id: term-0026
+    term: Tuning Cradle
+    definition: The two-armed brass apparatus used by Reliquarists to audit memory stones. A stone placed on the cradle's resonance plate sings back its own internal tone; stable memory rings true, drifting memory wobbles, and corrupted memory howls or goes silent. The cradle does not tell a Reliquarist what a memory is — only whether the memory believes itself. The standard sixth-generation cradle pattern was codified at the Tessarine Vault and is named for that site.
+    category: Mechanics
+    related_terms:
+      - term-0014  # Memory Stone
+      - term-0005  # Coherence
+      - term-0025  # Reliquarist
+    first_appearance: The Reliquarist's Doubt
+    canonical_source: stories/short_story/the_reliquarists_doubt/manuscript.md
+    status: draft

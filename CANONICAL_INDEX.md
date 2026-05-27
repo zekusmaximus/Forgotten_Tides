@@ -1,6 +1,6 @@
 # Canonical Index
 
-This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-05-27T18:23:58.934Z
+This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-05-27T23:07:40.030Z
 
 ## Character
 - `char-0001` — Rell (`characters/Rell.md`)
@@ -12,6 +12,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `char-0007` — Kael Voss (`characters/Kael_Voss.md`)
 - `char-0008` — Lira Voss (`characters/Lira_Voss.md`)
 - `char-0009` — Maren Holt (`characters/Maren_Holt.md`)
+- `char-0010` — Inya Solven (`characters/Inya_Solven.md`)
 
 ## Faction
 - `fact-0001` — Canticle Fleet (`factions/Canticle_Fleet.md`)
@@ -33,6 +34,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `loc-0008` — Helios Drift (`atlas/Helios_Drift.md`)
 - `loc-0009` — Ebbhaven (`atlas/Ebbhaven.md`)
 - `loc-0010` — Solace Hospice (`atlas/Solace_Hospice.md`)
+- `loc-0011` — Tessarine Vault (`atlas/Tessarine_Vault.md`)
 
 ## Lore
 - `lore-0001` — COSMIC REGIONS (`lore/COSMIC_REGIONS.md`)
@@ -71,6 +73,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `story-0005` — The Liturgy of Rust (`stories/short_story/the_liturgy_of_rust/manuscript.md`)
 - `story-0006` — The Anchorless Tide (`stories/short_story/the_anchorless_tide/manuscript.md`)
 - `story-0007` — The Hospice Knot (`stories/short_story/the_hospice_knot/manuscript.md`)
+- `story-0008` — The Reliquarist's Doubt (`stories/short_story/the_reliquarists_doubt/manuscript.md`)
 
 ## Term
 - `term-0001` — Anchor (`data/lexicon/terms.yaml`)
@@ -97,6 +100,8 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `term-0022` — Continuity Cleric (`data/lexicon/terms.yaml`)
 - `term-0023` — Liturgy of the Hull (`data/lexicon/terms.yaml`)
 - `term-0024` — Structural Softening (`data/lexicon/terms.yaml`)
+- `term-0025` — Reliquarist (`data/lexicon/terms.yaml`)
+- `term-0026` — Tuning Cradle (`data/lexicon/terms.yaml`)
 
 ## Canon Views
 
@@ -109,6 +114,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `char-0006` - Vane (character, primary_canon, weight 110, `characters/Vane.md`)
 - `char-0007` - Kael Voss (character, primary_canon, weight 110, `characters/Kael_Voss.md`)
 - `char-0008` - Lira Voss (character, primary_canon, weight 110, `characters/Lira_Voss.md`)
+- `char-0010` - Inya Solven (character, primary_canon, weight 110, `characters/Inya_Solven.md`)
 - `fact-0001` - Canticle Fleet (faction, primary_canon, weight 110, `factions/Canticle_Fleet.md`)
 - `fact-0002` - Archivist Orders (faction, primary_canon, weight 110, `factions/Archivist_Orders.md`)
 - `fact-0003` - Mnemosyne Lattice Consortium (faction, primary_canon, weight 110, `factions/Mnemosyne_Lattice_Consortium.md`)
@@ -126,6 +132,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `loc-0008` - Helios Drift (location, primary_canon, weight 110, `atlas/Helios_Drift.md`)
 - `loc-0009` - Ebbhaven (location, primary_canon, weight 110, `atlas/Ebbhaven.md`)
 - `loc-0010` - Solace Hospice (location, primary_canon, weight 110, `atlas/Solace_Hospice.md`)
+- `loc-0011` - Tessarine Vault (location, primary_canon, weight 110, `atlas/Tessarine_Vault.md`)
 - `lore-0001` - COSMIC REGIONS (lore, working_canon, weight 95, `lore/COSMIC_REGIONS.md`)
 - `lore-0002` - MEMORY ECONOMY (lore, working_canon, weight 95, `lore/MEMORY_ECONOMY.md`)
 - `lore-0003` - POLITIES AND FACTIONS (lore, working_canon, weight 95, `lore/POLITIES_AND_FACTIONS.md`)
@@ -160,6 +167,8 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `term-0022` - Continuity Cleric (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
 - `term-0023` - Liturgy of the Hull (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
 - `term-0024` - Structural Softening (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
+- `term-0025` - Reliquarist (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
+- `term-0026` - Tuning Cradle (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
 
 ### Active Drafts
 - `novel_forgotten_tides_manuscript` - Forgotten Tides (story, draft, weight 55, `stories/novel/NOVEL_FORGOTTEN_TIDES/manuscript.md`)
@@ -177,6 +186,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `story-0005` - The Liturgy of Rust (story, draft, weight 65, `stories/short_story/the_liturgy_of_rust/manuscript.md`)
 - `story-0006` - The Anchorless Tide (story, draft, weight 65, `stories/short_story/the_anchorless_tide/manuscript.md`)
 - `story-0007` - The Hospice Knot (story, draft, weight 65, `stories/short_story/the_hospice_knot/manuscript.md`)
+- `story-0008` - The Reliquarist's Doubt (story, draft, weight 65, `stories/short_story/the_reliquarists_doubt/manuscript.md`)
 
 ### Speculative / Sandbox Material
 - `char-0009` - Maren Holt (character, speculative, weight 60, `characters/Maren_Holt.md`)
