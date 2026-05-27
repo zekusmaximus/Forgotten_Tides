@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-24T13:26:55.978Z",
+  "generated": "2026-05-27T17:45:52.209Z",
   "nodes": [
     {
       "canonical_id": "char-0001",
@@ -60,6 +60,15 @@
       "type": "character",
       "name": "Kael Voss",
       "path": "characters/Kael_Voss.md",
+      "canon_tier": "primary_canon",
+      "source_weight": 110,
+      "retrieval_role": "authoritative"
+    },
+    {
+      "canonical_id": "char-0008",
+      "type": "character",
+      "name": "Lira Voss",
+      "path": "characters/Lira_Voss.md",
       "canon_tier": "primary_canon",
       "source_weight": 110,
       "retrieval_role": "authoritative"
@@ -204,6 +213,15 @@
       "type": "location",
       "name": "Ebbhaven",
       "path": "atlas/Ebbhaven.md",
+      "canon_tier": "primary_canon",
+      "source_weight": 110,
+      "retrieval_role": "authoritative"
+    },
+    {
+      "canonical_id": "loc-0010",
+      "type": "location",
+      "name": "Solace Hospice",
+      "path": "atlas/Solace_Hospice.md",
       "canon_tier": "primary_canon",
       "source_weight": 110,
       "retrieval_role": "authoritative"
@@ -483,6 +501,15 @@
       "type": "story",
       "name": "The Anchorless Tide",
       "path": "stories/short_story/the_anchorless_tide/manuscript.md",
+      "canon_tier": "draft",
+      "source_weight": 65,
+      "retrieval_role": "active_draft"
+    },
+    {
+      "canonical_id": "story-0007",
+      "type": "story",
+      "name": "The Hospice Knot",
+      "path": "stories/short_story/the_hospice_knot/manuscript.md",
       "canon_tier": "draft",
       "source_weight": 65,
       "retrieval_role": "active_draft"
@@ -856,6 +883,21 @@
       "type": "stories"
     },
     {
+      "from": "char-0008",
+      "to": "fact-0006",
+      "type": "factions"
+    },
+    {
+      "from": "char-0008",
+      "to": "loc-0010",
+      "type": "locations"
+    },
+    {
+      "from": "char-0008",
+      "to": "story-0007",
+      "type": "stories"
+    },
+    {
       "from": "fact-0001",
       "to": "char-0001",
       "type": "characters"
@@ -977,23 +1019,18 @@
     },
     {
       "from": "fact-0006",
-      "to": "fact-0001",
-      "type": "factions"
+      "to": "char-0008",
+      "type": "characters"
     },
     {
       "from": "fact-0006",
-      "to": "fact-0002",
-      "type": "factions"
+      "to": "loc-0010",
+      "type": "locations"
     },
     {
       "from": "fact-0006",
-      "to": "mech-0001",
-      "type": "mechanics"
-    },
-    {
-      "from": "fact-0006",
-      "to": "mech-0003",
-      "type": "mechanics"
+      "to": "story-0007",
+      "type": "stories"
     },
     {
       "from": "fact-0007",
@@ -1266,6 +1303,21 @@
       "type": "stories"
     },
     {
+      "from": "loc-0010",
+      "to": "char-0008",
+      "type": "characters"
+    },
+    {
+      "from": "loc-0010",
+      "to": "fact-0006",
+      "type": "factions"
+    },
+    {
+      "from": "loc-0010",
+      "to": "story-0007",
+      "type": "stories"
+    },
+    {
       "from": "mech-0001",
       "to": "char-0001",
       "type": "characters"
@@ -1414,6 +1466,26 @@
       "from": "story-0006",
       "to": "loc-0009",
       "type": "locations"
+    },
+    {
+      "from": "story-0007",
+      "to": "char-0008",
+      "type": "characters"
+    },
+    {
+      "from": "story-0007",
+      "to": "fact-0006",
+      "type": "factions"
+    },
+    {
+      "from": "story-0007",
+      "to": "loc-0010",
+      "type": "locations"
+    },
+    {
+      "from": "story-0007",
+      "to": "mech-0003",
+      "type": "mechanics"
     },
     {
       "from": "term-0001",
