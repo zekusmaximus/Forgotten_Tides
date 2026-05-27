@@ -11,10 +11,11 @@ This repository is **continuity-locked**. All additions must comply with:
 ## Rules
 
 1. **No canon expansion** in this repo without an explicit Canon Note.
-2. New fiction must:
-   - live in `/stories/`
-   - pass link checks (`scripts/validate_links.sh`)
-   - pass canon checks (`scripts/check_canon.sh`)
+2. New short fiction must:
+   - live in `/stories/short_story/<snake_case_title>/manuscript.md`
+   - follow `docs/PLAYBOOK_NEW_STORY.md`
+   - apply the Lore Update Matrix in that playbook
+   - pass CI-parity validation (`npm run validate:ci`)
 3. Don’t alter established metaphysics, anchor counts, or Heliodrome status.
 4. Use PRs with a short “Canon Impact” section.
 
@@ -61,9 +62,17 @@ When in doubt: populate both with the same IDs. The linting suite validates form
 
 ---
 
-## Lint Commands
+## Validation Commands
 
-Run these commands before submitting a PR:
+Run this command before submitting a PR:
+
+```bash
+npm run validate:ci
+```
+
+This rebuilds canon graph artifacts, verifies generated files are committed, runs lint and continuity checks, then runs dashboard, system-upgrade, coverage, canon-policy, prompt-pack, and timeline-event tests.
+
+Useful commands while iterating:
 
 ```bash
 # Validate all schemas
@@ -86,15 +95,18 @@ npm run check:timeline
 
 # Run all checks
 npm run check
+
+# Rebuild generated canon artifacts
+npm run linkmap:build
 ```
 
 ## Pull Request Process
 
 1. **Use the PR Template**: Fill out all sections in `.github/pull_request_template.md`
-2. **Run All Checks**: Ensure `npm run lint` and `npm run check` pass
+2. **Run All Checks**: Ensure `npm run validate:ci` passes
 3. **Address Review Feedback**: Respond to CODEOWNERS review requests
 4. **Update Documentation**: Keep docs in sync with code changes
-5. **Maintain Changelog**: Add entries for significant changes
+5. **Commit Generated Artifacts**: Include `CANONICAL_INDEX.md`, `REFERENCE_MAP.json`, and `docs/link_map/LINK_MAP.md` when `npm run linkmap:build` changes them
 
 ## Protected Paths
 
@@ -110,7 +122,7 @@ See `.github/CODEOWNERS` for complete ownership rules.
 1. **Fork the Repository**: Create your own fork for development
 2. **Create Feature Branch**: Use descriptive branch names (e.g., `feat/new-mechanics`)
 3. **Make Atomic Commits**: Small, focused changes with clear messages
-4. **Test Locally**: Run all lint and validation commands
+4. **Test Locally**: Run `npm run validate:ci`
 5. **Submit PR**: Use the template and request appropriate reviews
 6. **Address Feedback**: Iterate based on review comments
 7. **Merge**: After approval and all checks pass

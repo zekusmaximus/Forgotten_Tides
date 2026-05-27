@@ -42,7 +42,8 @@
     "linkmap:build": "node scripts/prompt/build_linkmap.js",
     "dashboard": "npx http-server -p 8080 -o /dashboard/",
     "test:upgrades": "node scripts/tests/test_system_upgrades.js",
-    "validate:work": "node scripts/validate_work.js"
+    "validate:work": "node scripts/validate_work.js",
+    "validate:ci": "node scripts/validate_ci.js"
   },
   "dependencies": {
     "ajv": "^8.17.1",

@@ -6,6 +6,8 @@ The Forgotten Tides CLI provides a structured workflow for worldbuilding, storyt
 
 On Windows PowerShell, use `npm.cmd` for npm commands if execution policy blocks `npm.ps1`.
 
+For short-story contributions, `docs/PLAYBOOK_NEW_STORY.md` is the source of truth. Run `npm run validate:ci` before opening a PR.
+
 ### Basic Usage
 
 ```bash
@@ -251,12 +253,14 @@ npm.cmd run lint:refs
 
 ## Validation Coverage
 
-Continuity and timeline checks recursively scan markdown under `stories/`, including nested novel, novella, screenplay, and short-story scenes. Reports in `out/reports/continuity.json` and `out/reports/timeline_variance.json` include coverage counts for files seen, scanned, and skipped. If story markdown exists but a check scans zero story files, that is a hard failure.
+The short-story PR gate is `npm run validate:ci`. It rebuilds generated canon artifacts, verifies they are committed, runs lint and continuity checks, and executes the same smoke/policy tests used by CI.
+
+`npm run lint:schema` is strict for short-story manuscripts and canonical entity roots. It reports skips and warnings for out-of-scope development material such as novel, novella, screenplay, notes, and unschematized YAML, but those optional skips do not satisfy or weaken the short-story gate.
+
+Continuity and timeline checks recursively scan story markdown and write reports to `out/reports/continuity.json` and `out/reports/timeline_variance.json`.
 
 ```bash
-npm.cmd run lint
-npm.cmd run check
-npm.cmd run test:coverage
+npm.cmd run validate:ci
 ```
 
 ## Canon Discrimination
@@ -342,7 +346,7 @@ node scripts/prompt/context_builder.js "specific entity" --expand none
 - Ensure sufficient disk space
 
 **Issue: Schema validation failures**
-- Run `npm run lint:schema` to identify issues
+- Run `npm run lint:schema` to identify schema issues, or `npm run validate:ci` for the full PR gate
 - Check JSON/YAML syntax in entity files
 - Validate against schemas in `docs/schemas/`
 
@@ -395,8 +399,9 @@ Session state is stored in `out/session/state.json`:
 3. **Carry sessions** for related workflows
 4. **Clear sessions** when switching contexts
 5. **Validate regularly** with `npm run lint:schema`
-6. **Check link maps** with `npm run linkmap:build`
-7. **Monitor token usage** with entity caps
+6. **Run the PR gate** with `npm run validate:ci`
+7. **Check link maps** with `npm run linkmap:build`
+8. **Monitor token usage** with entity caps
 
 ## System Upgrades (V2)
 
@@ -428,9 +433,10 @@ npm run start:draft -- --work "<name>" --mode fast   # init work with draft_unst
 
 ### One-command validation
 ```bash
+npm run validate:ci                              # CI-parity gate for PRs
 npm run validate:work -- --work "<name>"
 ```
-Generates all upgrade reports under `out/reports/` without stopping on warnings.
+`validate:ci` is the PR gate. `validate:work` generates V2 work-level reports under `out/reports/` without stopping on warnings.
 
 ## New Intents & Examples
 
@@ -510,9 +516,10 @@ node scripts/prompt/orchestrate.js "update outline to include new faction confli
 ### Path Structures
 
 **Story Work Types:**
+- `stories/short_story/{snake_case_title}/manuscript.md` - Short-story manuscripts covered by the PR gate
 - `stories/novella/{work_name}/` - Novella projects
-- `stories/novels/{work_name}/` - Novel projects
-- `stories/shorts/{work_name}/` - Short story projects
+- `stories/novel/{work_name}/` - Novel projects
+- `stories/screenplay/{work_name}/` - Screenplay projects
 
 **Scene Organization:**
 - `stories/{work_type}/{work_name}/scenes/{timestamp}_scene.md` - Individual scenes

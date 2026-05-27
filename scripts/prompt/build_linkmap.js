@@ -61,10 +61,29 @@ function parseEntityFile(filePath) {
     try { return yaml.load(fm[1]); } catch { return null; }
 }
 
+function normalizeGeneratedContent(content) {
+    return content
+        .replace(/Generated: [^\r\n]+/g, 'Generated: <timestamp>')
+        .replace(/"generated": "[^"]+"/g, '"generated": "<timestamp>"')
+        .replace(/"generated_at": "[^"]+"/g, '"generated_at": "<timestamp>"');
+}
+
+function writeGeneratedFile(filePath, content) {
+    if (fs.existsSync(filePath)) {
+        const existing = fs.readFileSync(filePath, 'utf8');
+        if (normalizeGeneratedContent(existing) === normalizeGeneratedContent(content)) {
+            return false;
+        }
+    }
+    fs.writeFileSync(filePath, content);
+    return true;
+}
+
 async function buildLinkMap() {
     const repoRoot = path.join(__dirname, '../..');
     const outGraphsDir = path.join(repoRoot, 'out/graphs');
     const docsLinkMapDir = path.join(repoRoot, 'docs/link_map');
+    const generatedAt = new Date().toISOString();
 
     fs.mkdirSync(outGraphsDir, { recursive: true });
     fs.mkdirSync(docsLinkMapDir, { recursive: true });
@@ -88,7 +107,7 @@ async function buildLinkMap() {
 
             const relativePath = path.join(dir, file).replace(/\\/g, '/');
             if (entities[canonicalId]) {
-                console.warn(`Duplicate canonical_id ${canonicalId}: ${entities[canonicalId].path} vs ${relativePath}`);
+                console.log(`WARN Duplicate canonical_id ${canonicalId}: ${entities[canonicalId].path} vs ${relativePath}`);
             }
             const policy = describePolicy(data, relativePath, type);
             entities[canonicalId] = {
@@ -155,7 +174,7 @@ async function buildLinkMap() {
                 }
             }
         } catch (e) {
-            console.warn(`Could not parse lexicon: ${e.message}`);
+            console.log(`WARN Could not parse lexicon: ${e.message}`);
         }
     }
 
@@ -224,13 +243,13 @@ async function buildLinkMap() {
         entities: sortedEntityValues,
         relationships,
         orphaned_targets: orphanedTargets,
-        generated_at: new Date().toISOString()
+        generated_at: generatedAt
     };
     const entitiesJsonPath = path.join(outGraphsDir, 'entities.json');
     fs.writeFileSync(entitiesJsonPath, JSON.stringify(entitiesOutput, null, 2));
 
     const referenceMap = {
-        generated: new Date().toISOString(),
+        generated: generatedAt,
         nodes: sortedEntityValues.map(e => ({
             canonical_id: e.canonical_id,
             type: e.type,
@@ -242,12 +261,12 @@ async function buildLinkMap() {
         })),
         edges: relationships.map(r => ({ from: r.source, to: r.target, type: r.type }))
     };
-    fs.writeFileSync(path.join(repoRoot, 'REFERENCE_MAP.json'), JSON.stringify(referenceMap, null, 2));
+    writeGeneratedFile(path.join(repoRoot, 'REFERENCE_MAP.json'), JSON.stringify(referenceMap, null, 2));
 
     const sortedEntities = sortedEntityValues;
     const types = [...new Set(sortedEntities.map(e => e.type))].sort();
 
-    let indexContent = `# Canonical Index\n\nThis index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: ${new Date().toISOString()}\n\n`;
+    let indexContent = `# Canonical Index\n\nThis index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: ${generatedAt}\n\n`;
     for (const type of types) {
         indexContent += `## ${type.charAt(0).toUpperCase() + type.slice(1)}\n`;
         for (const entity of sortedEntities.filter(e => e.type === type)) {
@@ -269,11 +288,11 @@ async function buildLinkMap() {
             ? `${matches.map(e => `- \`${e.canonical_id}\` - ${e.name} (${e.type}, ${e.canon_tier}, weight ${e.source_weight}, \`${e.path}\`)`).join('\n')}\n\n`
             : `_none_\n\n`;
     }
-    fs.writeFileSync(path.join(repoRoot, 'CANONICAL_INDEX.md'), indexContent);
+    writeGeneratedFile(path.join(repoRoot, 'CANONICAL_INDEX.md'), indexContent);
 
     const linkMapContent = `# Link Map - Entity Relationships
 
-Generated: ${new Date().toISOString()}
+Generated: ${generatedAt}
 
 ## Entities (${Object.keys(entities).length})
 
@@ -299,7 +318,7 @@ ${orphanedTargets.length
 - **Draft Entities**: ${sortedEntities.filter(e => e.canon_tier === 'draft').length}
 - **Test / Sandbox / Deprecated Entities**: ${sortedEntities.filter(e => ['test', 'sandbox', 'deprecated'].includes(e.canon_tier)).length}
 `;
-    fs.writeFileSync(path.join(docsLinkMapDir, 'LINK_MAP.md'), linkMapContent);
+    writeGeneratedFile(path.join(docsLinkMapDir, 'LINK_MAP.md'), linkMapContent);
 
     console.log(`Link map built: ${Object.keys(entities).length} entities, ${relationships.length} edges, ${orphanedTargets.length} orphaned targets.`);
     return { entityCount: Object.keys(entities).length, relationshipCount: relationships.length };

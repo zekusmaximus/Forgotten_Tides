@@ -1,124 +1,92 @@
 # Linting Tools Documentation
 
-This directory contains documentation for the linting scripts that ensure data integrity and consistency across The Forgotten Tides universe.
+This directory documents the validation scripts that protect The Forgotten Tides short-story pipeline.
+
+## CI-Parity Validation
+
+Run this before opening a PR:
+
+```bash
+npm run validate:ci
+```
+
+It performs the same local gate agents are expected to satisfy:
+
+1. `npm run linkmap:build`
+2. Generated artifact cleanliness check for `CANONICAL_INDEX.md`, `REFERENCE_MAP.json`, and `docs/link_map/LINK_MAP.md`
+3. `npm run lint`
+4. `npm run check`
+5. `npm run test:dashboard`
+6. `npm run test:upgrades`
+7. `npm run test:coverage`
+8. `npm run test:canon-policy`
+9. `npm run test:prompt-pack`
+10. `npm run test:timeline-events`
 
 ## Available Commands
 
 ### `npm run lint:schema`
 
-**Purpose**: Validates YAML frontmatter against JSON schemas.
+Validates YAML frontmatter against `docs/schemas/*.schema.json`.
 
-**What it does**:
-- Walks through `characters/`, `stories/`, and `data/` directories
-- Extracts YAML frontmatter from `.md` files
-- Validates against schemas in `docs/schemas/*.schema.json`
-- Reports validation errors with specific field information
+Strict, PR-blocking coverage:
+- `characters/**/*.md`
+- `factions/**/*.md`
+- `atlas/**/*.md`
+- `mechanics/**/*.md`
+- `stories/short_story/*/manuscript.md`
 
-**Exit codes**:
-- `0`: All files pass validation
-- `1`: Validation errors found
+Best-effort coverage:
+- other `stories/**/*.md`
+- `lore/**/*.md`
+- `data/**/*.yaml`
 
-**Example usage**:
-```bash
-npm run lint:schema
-```
+Best-effort files are reported as `PASS`, `SKIP`, or `WARN`, but they do not block the short-story gate unless they are part of the strict coverage set. The summary line reports files seen, validated, skipped, warnings, and failures.
 
 ### `npm run lint:refs`
 
-**Purpose**: Checks for unresolved references between entities.
+Recursively checks canonical references in:
+- `characters/`
+- `factions/`
+- `atlas/`
+- `mechanics/`
+- `stories/short_story/`
+- `lore/`
 
-**What it does**:
-- Builds an in-memory index of all entity IDs by type (characters, locations, factions, mechanics, stories)
-- Checks cross-references in `cross_refs` fields
-- Validates reference fields like `appears_in`, `rules_used`, and `relationships[].target_id`
-- Reports missing references with location information
+It builds an index of `char-####`, `loc-####`, `fact-####`, `mech-####`, `story-####`, and `term-####` IDs, then validates reference-bearing fields such as `cross_refs`, `references`, `appears_in`, `rules_used`, `relationships`, and `related_terms`.
 
-**Exit codes**:
-- `0`: All references resolved
-- `1`: Unresolved references found
+Use `node scripts/lint/unresolved_refs.js --warn-only` only for exploratory audits. PR validation is strict by default.
 
-**Example usage**:
-```bash
-npm run lint:refs
-```
+### `npm run lint:canonical-refs`
+
+Checks that referenced canonical IDs exist in the generated `CANONICAL_INDEX.md`. Run `npm run linkmap:build` first if new entities were added.
 
 ### `npm run lint:glossary`
 
-**Purpose**: Enforces glossary term usage in stories.
+Loads terms from `data/lexicon/terms.yaml` and warns about capitalized story terms not found there. Warnings do not fail the build, but new reusable technical terms should be added to the lexicon rather than ignored.
 
-**What it does**:
-- Loads canonical terms from `data/lexicon/terms.yaml` (legacy fallback at `data/lexicon/legacy/GLOSSARY.md`)
-- Scans `stories/*.md` files for capitalized multiword terms (e.g., "Memory Drive")
-- Warns about terms not found in the glossary
-- Respects ignore list in `docs/lint/glossary_ignore.txt`
+### `npm run lint:canon`
 
-**Exit codes**:
-- `0`: Always exits with 0 (warnings don't fail the build)
-
-**Example usage**:
-```bash
-npm run lint:glossary
-```
+Runs the canon red-line checker for forbidden narrative moves and known continuity hazards.
 
 ### `npm run lint`
 
-**Purpose**: Runs all linting checks in sequence.
+Runs:
 
-**What it does**:
-- Executes `lint:schema`, `lint:refs`, and `lint:glossary` in order
-- Stops on first failure (non-zero exit code)
-
-**Exit codes**:
-- `0`: All linting checks pass
-- `1`: At least one check failed
-
-**Example usage**:
 ```bash
-npm run lint
+npm run lint:schema
+npm run lint:refs
+npm run lint:canonical-refs
+npm run lint:glossary
+npm run lint:canon
 ```
-
-## Configuration Files
-
-### `docs/lint/glossary_ignore.txt`
-
-This optional file contains terms that should be ignored by the glossary enforcer. Each term should be on its own line.
-
-Example:
-```
-The Forgotten Tides
-Memory Corridor
-```
-
-## Schema Files
-
-Schema files are located in `docs/schemas/` and follow JSON Schema Draft 2020-12. Each schema corresponds to a specific entity type:
-
-- `character.schema.json`
-- `faction.schema.json`
-- `location.schema.json`
-- `mechanics_rule.schema.json`
-- `story.schema.json`
-
-## Best Practices
-
-1. **Run linting before commits**: Add `npm run lint` as a pre-commit hook
-2. **Fix schema errors first**: Validation errors often cascade to reference errors
-3. **Update glossary proactively**: Add new terms to `data/lexicon/terms.yaml` as they emerge
-4. **Use ignore list sparingly**: Only ignore terms that are truly exceptions
 
 ## Troubleshooting
 
-**Schema validation fails**:
-- Check that your YAML frontmatter is properly formatted
-- Verify required fields are present
-- Ensure field values match the expected patterns/types
+Schema failures: check YAML frontmatter against the matching schema and `docs/SCHEMA_QUICK_REFERENCE.md`.
 
-**Unresolved references**:
-- Make sure the referenced entity exists
-- Check that the canonical ID format is correct (e.g., `char-0001`)
-- Verify the entity is in the correct directory
+Reference failures: create the missing entity file or remove the stale ID from `cross_refs`/`references`.
 
-**Glossary warnings**:
-- Add missing terms to `data/lexicon/terms.yaml`
-- Or add them to `docs/lint/glossary_ignore.txt` if appropriate
-- Remember that warnings don't fail the build
+Generated artifact failures: run `npm run linkmap:build` and commit any changes to `CANONICAL_INDEX.md`, `REFERENCE_MAP.json`, and `docs/link_map/LINK_MAP.md`.
+
+Glossary warnings: add the term under the existing `terms:` list in `data/lexicon/terms.yaml`, or add a rare exception to `docs/lint/glossary_ignore.txt`.

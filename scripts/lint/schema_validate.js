@@ -8,6 +8,8 @@ const addFormats = require('ajv-formats');
 const ajv = new Ajv({ allErrors: true, strict: false });
 addFormats(ajv);
 
+const ROOT_DIR = path.join(__dirname, '../..');
+
 // Load all schemas
 const schemasDir = path.join(__dirname, '../../docs/schemas');
 const schemas = {};
@@ -28,8 +30,66 @@ try {
   process.exit(1);
 }
 
+const TYPE_TO_SCHEMA = {
+  story: 'story',
+  character: 'character',
+  faction: 'faction',
+  location: 'location',
+  mechanics: 'mechanics_rule',
+  lore: 'lore'
+};
+
+const stats = {
+  files_seen: 0,
+  files_validated: 0,
+  files_skipped: 0,
+  warnings: 0,
+  failures: 0
+};
+
+const visited = new Set();
+
+function relativePath(filePath) {
+  return path.relative(ROOT_DIR, filePath).replace(/\\/g, '/');
+}
+
+function shouldInspectFile(file) {
+  return (
+    (file.endsWith('.md') || file.endsWith('.yaml') || file.endsWith('.yml')) &&
+    !file.endsWith('README.md') &&
+    !/_backup_/.test(file)
+  );
+}
+
+function selectSchema(filePath, schemaName, data) {
+  if (schemaName && schemas[schemaName]) {
+    return schemas[schemaName];
+  }
+
+  const rel = relativePath(filePath);
+  const inScenesDir = rel.includes('/scenes/');
+  const inScreenplayDir = rel.startsWith('stories/screenplay/');
+
+  if (inScreenplayDir && inScenesDir && schemas.screenplay_scene) {
+    return schemas.screenplay_scene;
+  }
+
+  if (inScenesDir && schemas.scene) {
+    return schemas.scene;
+  }
+
+  if (data && data.type) {
+    const schemaKey = TYPE_TO_SCHEMA[data.type] || data.type;
+    return schemas[schemaKey] || schemas[`${schemaKey}_schema`];
+  }
+
+  return null;
+}
+
 // Function to validate YAML frontmatter against schema
-function validateFile(filePath, schemaName) {
+function validateFile(filePath, schemaName, options = {}) {
+  const required = Boolean(options.required);
+
   try {
     const content = fs.readFileSync(filePath, 'utf8');
     const isMarkdown = filePath.endsWith('.md');
@@ -41,27 +101,25 @@ function validateFile(filePath, schemaName) {
       if (filePath.endsWith('.yaml') || filePath.endsWith('.yml')) {
         data = yaml.load(content) || {};
       } else {
-        return { valid: true, warnings: ['Skipped: No YAML frontmatter found'] };
+        const message = 'Missing YAML frontmatter';
+        if (required) {
+          return { valid: false, errors: [message] };
+        }
+        return { valid: true, skipped: true, warnings: [`Skipped: ${message}`] };
       }
     } else {
       const yamlContent = frontmatterMatch[1];
       data = yaml.load(yamlContent) || {};
     }
 
-    // Determine schema based on type field or file location
-    let schemaToUse = schemas[schemaName];
-    if (filePath.includes(`${path.sep}scenes${path.sep}`) && schemas.scene) {
-      schemaToUse = schemas.scene;
-    }
-    if (filePath.includes(`${path.sep}screenplay${path.sep}`) && schemas.screenplay_scene) {
-      schemaToUse = schemas.screenplay_scene;
-    }
-    if (!schemaToUse && data && data.type) {
-      schemaToUse = schemas[data.type] || schemas[`${data.type}_schema`];
-    }
+    const schemaToUse = selectSchema(filePath, schemaName, data);
 
     if (!schemaToUse) {
-      return { valid: true, warnings: [`Skipped: No schema found for type: ${data.type || schemaName}`] };
+      const message = `No schema found for type: ${data.type || schemaName || 'unknown'}`;
+      if (required) {
+        return { valid: false, errors: [message] };
+      }
+      return { valid: true, skipped: true, warnings: [`Skipped: ${message}`] };
     }
 
     const validate = ajv.getSchema(schemaToUse.$id) || ajv.compile(schemaToUse);
@@ -93,12 +151,16 @@ function validateFile(filePath, schemaName) {
       })};
     }
   } catch (error) {
-    return { valid: true, warnings: [`Parse skipped: ${error.message}`] };
+    const message = `Could not parse YAML: ${error.message}`;
+    if (required) {
+      return { valid: false, errors: [message] };
+    }
+    return { valid: true, skipped: true, warnings: [`Parse skipped: ${error.message}`] };
   }
 }
 
 // Walk directories and validate files
-function walkDir(dir, schemaName) {
+function walkDir(dir, schemaName, options = {}) {
   let hasErrors = false;
 
   if (!fs.existsSync(dir)) {
@@ -112,19 +174,39 @@ function walkDir(dir, schemaName) {
     const stat = fs.statSync(filePath);
 
     if (stat.isDirectory()) {
-      if (walkDir(filePath, schemaName)) {
+      if (walkDir(filePath, schemaName, options)) {
         hasErrors = true;
       }
-    } else if ((file.endsWith('.md') || file.endsWith('.yaml') || file.endsWith('.yml')) && !file.endsWith('README.md') && !/_backup_/.test(file)) {
-      const result = validateFile(filePath, schemaName);
+    } else if (shouldInspectFile(file)) {
+      if (options.fileFilter && !options.fileFilter(filePath)) {
+        continue;
+      }
+
+      const rel = relativePath(filePath);
+      if (visited.has(rel)) {
+        continue;
+      }
+
+      visited.add(rel);
+      stats.files_seen += 1;
+
+      const result = validateFile(filePath, schemaName, options);
       if (!result.valid) {
-        console.error(`❌ ${filePath}`);
+        console.error(`FAIL ${filePath}`);
         result.errors.forEach(error => console.error(`  - ${error}`));
+        stats.failures += 1;
         hasErrors = true;
       } else {
-        console.log(`✅ ${filePath}`);
+        if (result.skipped) {
+          stats.files_skipped += 1;
+          console.log(`SKIP ${filePath}`);
+        } else {
+          stats.files_validated += 1;
+          console.log(`PASS ${filePath}`);
+        }
         if (result.warnings && result.warnings.length > 0) {
-          result.warnings.forEach(warning => console.warn(`⚠️  ${filePath}: ${warning}`));
+          stats.warnings += result.warnings.length;
+          result.warnings.forEach(warning => console.log(`WARN ${filePath}: ${warning}`));
         }
       }
     }
@@ -135,56 +217,64 @@ function walkDir(dir, schemaName) {
 
 // Main execution
 function main() {
-  console.log('🔍 Validating YAML frontmatter against schemas...');
+  console.log('Validating YAML frontmatter against schemas...');
 
   let hasErrors = false;
 
-  // Validate characters
-  if (walkDir(path.join(__dirname, '../../characters'), 'character')) {
+  // Required for the short-story pipeline and canonical entity registry.
+  if (walkDir(path.join(ROOT_DIR, 'characters'), 'character', { required: true })) {
     hasErrors = true;
   }
 
-  // Validate stories (schema inferred per file; story schema applied only when type matches)
-  if (walkDir(path.join(__dirname, '../../stories'), null)) {
+  if (walkDir(path.join(ROOT_DIR, 'stories/short_story'), null, {
+    required: true,
+    fileFilter: filePath => path.basename(filePath).toLowerCase() === 'manuscript.md'
+  })) {
     hasErrors = true;
   }
 
-  // Validate mechanics
-  if (walkDir(path.join(__dirname, '../../mechanics'), 'mechanics_rule')) {
+  if (walkDir(path.join(ROOT_DIR, 'mechanics'), 'mechanics_rule', { required: true })) {
     hasErrors = true;
   }
 
-  // Validate factions
-  if (walkDir(path.join(__dirname, '../../factions'), 'faction')) {
+  if (walkDir(path.join(ROOT_DIR, 'factions'), 'faction', { required: true })) {
     hasErrors = true;
   }
 
-  // Validate atlas locations
-  if (walkDir(path.join(__dirname, '../../atlas'), 'location')) {
+  if (walkDir(path.join(ROOT_DIR, 'atlas'), 'location', { required: true })) {
     hasErrors = true;
   }
 
-  // Validate lore documents (null schema name lets each file's type field determine the schema)
-  if (walkDir(path.join(__dirname, '../../lore'), null)) {
+  // Best-effort validation for non-short-story development material. These files
+  // remain visible in output without blocking the short-story gate.
+  if (walkDir(path.join(ROOT_DIR, 'stories'), null, { required: false })) {
     hasErrors = true;
   }
 
-  // Validate data directories if they exist
-  const dataDirs = ['data'];
-  dataDirs.forEach(dir => {
-    const fullPath = path.join(__dirname, `../../${dir}`);
+  if (walkDir(path.join(ROOT_DIR, 'lore'), null, { required: false })) {
+    hasErrors = true;
+  }
+
+  const optionalDirs = ['data'];
+  optionalDirs.forEach(dir => {
+    const fullPath = path.join(ROOT_DIR, dir);
     if (fs.existsSync(fullPath)) {
-      if (walkDir(fullPath, null)) { // Let schema be determined by type field
+      if (walkDir(fullPath, null, { required: false })) {
         hasErrors = true;
       }
     }
   });
 
+  console.log(
+    `Schema coverage: ${stats.files_seen} seen, ${stats.files_validated} validated, ` +
+    `${stats.files_skipped} skipped, ${stats.warnings} warnings, ${stats.failures} failures.`
+  );
+
   if (hasErrors) {
-    console.error('❌ Schema validation failed');
+    console.error('Schema validation failed');
     process.exit(1);
   } else {
-    console.log('✅ All files passed schema validation');
+    console.log('All required schema validations passed');
     process.exit(0);
   }
 }

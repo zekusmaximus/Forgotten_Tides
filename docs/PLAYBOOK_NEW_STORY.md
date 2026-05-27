@@ -1,6 +1,6 @@
 # Playbook: Adding a New Short Story
 
-This is the authoritative step-by-step recipe for contributing a new short story to *The Forgotten Tides*. Follow every step in order. Do not skip steps.
+This is the authoritative step-by-step recipe for contributing a new short story to *The Forgotten Tides*. Follow every step in order. Do not skip steps. Novel and screenplay work are outside this playbook.
 
 ## Prerequisites
 
@@ -10,9 +10,12 @@ Before writing a single word, read the following in this order:
 2. [`docs/STYLE.md`](STYLE.md) — prose voice, register, and sentence-level guidance
 3. [`mechanics/MEMORY_PHYSICS.md`](../mechanics/MEMORY_PHYSICS.md) — the core physics engine
 4. [`mechanics/ANCHOR_THEORY.md`](../mechanics/ANCHOR_THEORY.md) — pilot mechanics
-5. [`lore/POLITIES_AND_FACTIONS.md`](../lore/POLITIES_AND_FACTIONS.md) — political landscape
-6. At least one existing story in [`stories/short_story/`](../stories/short_story/) — the exemplar format
-7. [`docs/SCHEMA_QUICK_REFERENCE.md`](SCHEMA_QUICK_REFERENCE.md) — all allowed enum values at a glance
+5. [`mechanics/CORRIDOR_MECHANICS.md`](../mechanics/CORRIDOR_MECHANICS.md) — corridor costs and failure states
+6. [`lore/POLITIES_AND_FACTIONS.md`](../lore/POLITIES_AND_FACTIONS.md) — political landscape
+7. [`bible/ARCHIVISTS_WAKE_STORY_BIBLE.md`](../bible/ARCHIVISTS_WAKE_STORY_BIBLE.md) — locked canon for Rell, Sutira, Estavan, Tari, Heliodrome, the Lattice Gap, and corridor mechanics
+8. At least one existing story in [`stories/short_story/`](../stories/short_story/) — the exemplar format
+9. [`docs/SCHEMA_QUICK_REFERENCE.md`](SCHEMA_QUICK_REFERENCE.md) — all allowed enum values at a glance
+10. [`agents/short_story_drafting_agent.md`](../agents/short_story_drafting_agent.md) — short-story drafting workflow for AI agents
 
 ---
 
@@ -193,40 +196,71 @@ metadata:
 
 ---
 
-## Step 4: Add Lexicon Terms (if new terminology introduced)
+## Step 4: Apply the Lore Update Matrix
+
+Use this matrix before validation. The goal is that the next agent or human can find every new lore contribution without rereading the story from scratch.
+
+| Change in the story | Required repository updates |
+|---------------------|-----------------------------|
+| New named character | Add `characters/<Name>.md`; add the `char-####` ID to story `cross_refs.characters` and `references.characters`; run `npm run linkmap:build`. |
+| New named location, ship, station, artifact, or region | Add `atlas/<Name>.md`; add the `loc-####` ID to story `cross_refs.locations` and `references.locations`; run `npm run linkmap:build`. |
+| New faction, order, institution, company, cult, or political body | Add `factions/<Name>.md`; add the `fact-####` ID to story refs; update `lore/POLITIES_AND_FACTIONS.md` if the faction changes the political landscape; run `npm run linkmap:build`. |
+| New term or capitalized technical phrase | Add an entry under `terms:` in `data/lexicon/terms.yaml`; use `status: draft` until reviewed; run `npm run linkmap:build`. |
+| Timeline-significant event | Add a story-frontmatter `events` entry. If the event becomes shared canon beyond this story, also add it to `data/timeline/events.yaml`. |
+| Uses Rell, Sutira, Estavan, Tari, Heliodrome, Lattice Gap, eddies, zero-anchoring, or anchor burn | Re-read `bible/ARCHIVISTS_WAKE_STORY_BIBLE.md`; preserve all red lines; cite the relevant IDs in refs. |
+| Introduces or changes metaphysical mechanics | Do not leave the change only in fiction. Add an explicit Canon Note in the PR and update the relevant mechanics or lore file. |
+| Uses only existing canon and introduces no new named entities or terms | Manuscript plus accurate `cross_refs` and `references` may be sufficient. Still run full validation. |
+
+When in doubt, create a draft entity or lexicon entry rather than burying a reusable concept only inside prose.
+
+---
+
+## Step 5: Add Lexicon Terms (if new terminology introduced)
 
 If your story introduces new terminology, add it to `data/lexicon/terms.yaml`:
 
 ```yaml
-- id: term-####
-  term: "New Term"
-  definition: "Definition of the term."
-  status: draft
-  tags: []
+terms:
+  - id: term-####
+    term: "New Term"
+    definition: "Definition of the term."
+    status: draft
+    tags: []
 ```
 
-Use `status: draft` for new terms until they are reviewed.
+The file already has a top-level `terms:` list; add only the new list item under that existing key. Use `status: draft` for new terms until they are reviewed.
 
 ---
 
-## Step 5: Validate
+## Step 6: Validate
 
-Run these commands and fix all errors before committing:
+Run the CI-parity command before opening a PR:
 
 ```bash
-npm run lint          # Must exit with 0 errors
-npm run check         # Must exit with 0 hard failures
-npm run linkmap:build # Regenerates CANONICAL_INDEX.md and LINK_MAP.md
+npm run validate:ci
+```
+
+`npm run validate:ci` rebuilds the link map, verifies generated artifacts are committed, runs lint and continuity checks, then runs the same smoke and policy tests used by CI.
+
+For faster iteration while drafting:
+
+```bash
+npm run lint:schema
+npm run lint:refs
+npm run lint
+npm run check
+npm run linkmap:build
 ```
 
 Common lint failures for new contributors:
 - **Schema error on `themes`** — check the allowed enum values in the table above
 - **Schema error on `metadata.status`** — entity files only allow `canonical`, `speculative`, or `deprecated`
 - **Unresolved ref** — you referenced a `char-####` or `fact-####` that doesn't have an entity file yet
+- **Generated artifact diff** — run `npm run linkmap:build` and commit `CANONICAL_INDEX.md`, `REFERENCE_MAP.json`, and `docs/link_map/LINK_MAP.md`
 
 ---
 
-## Step 6: Commit
+## Step 7: Commit and Pull Request
 
 Use conventional commits with a Canon Impact note:
 
@@ -244,6 +278,8 @@ canon(story): add 'Your Story Title' — introduces Halix Exchange bazaar-ship
 Canon Impact: Establishes Halix Exchange as a named location in the Helios Drift outer sleeve.
 ```
 
+Before opening the PR, fill out `.github/pull_request_template.md`, including the Canon Impact and Lore Update Matrix sections.
+
 ---
 
 ## Pre-Flight Checklist
@@ -252,10 +288,11 @@ Before submitting, confirm:
 
 - [ ] I know the next available IDs and have assigned them
 - [ ] I have read at least one canonical short story
+- [ ] I have read `bible/ARCHIVISTS_WAKE_STORY_BIBLE.md` if using its locked characters, locations, or mechanics
 - [ ] My `themes` values are from the allowed enum list
 - [ ] All `metadata.status` values in entity files use `canonical`, `speculative`, or `deprecated`
 - [ ] All `cross_refs` IDs have corresponding entity files
-- [ ] `npm run lint` exits with 0 errors
-- [ ] `npm run check` exits with 0 hard failures
-- [ ] `npm run linkmap:build` has been run
+- [ ] The Lore Update Matrix has been applied
+- [ ] `npm run validate:ci` exits with 0 errors
+- [ ] Generated artifacts are committed if changed
 - [ ] Commit message includes a Canon Impact note

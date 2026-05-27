@@ -2,56 +2,60 @@
 
 ## Summary
 
-Provide a clear, concise summary of the changes in this PR. Include:
-- What problem this solves or feature this adds
-- Key changes made
-- Any breaking changes or migration requirements
+Describe what changed and why.
+
+- Key changes:
+- Affected short story or canon area:
+- Breaking or migration notes:
+
+## Canon Impact
+
+Choose one and explain.
+
+- [ ] No canon expansion; uses existing entities, terms, and mechanics only
+- [ ] Draft canon expansion; new entities or terms added for review
+- [ ] Material canon expansion; mechanics, timeline, factions, or locked continuity changed
+
+Canon note:
+
+## Lore Update Matrix
+
+Complete every row that applies.
+
+- [ ] New characters have `characters/<Name>.md` files and story refs
+- [ ] New locations, ships, stations, artifacts, or regions have `atlas/<Name>.md` files and story refs
+- [ ] New factions, orders, institutions, companies, cults, or political bodies have `factions/<Name>.md` files and story refs
+- [ ] New technical terms are added under `terms:` in `data/lexicon/terms.yaml`
+- [ ] Timeline-significant events are represented in story `events`, and `data/timeline/events.yaml` if promoted beyond this story
+- [ ] Use of Rell, Sutira, Estavan, Tari, Heliodrome, Lattice Gap, eddies, zero-anchoring, or anchor burn has been checked against `bible/ARCHIVISTS_WAKE_STORY_BIBLE.md`
+- [ ] Metaphysical changes are documented outside the story, not only in prose
+- [ ] `CANONICAL_INDEX.md`, `REFERENCE_MAP.json`, and `docs/link_map/LINK_MAP.md` are updated if generated output changed
+
+Notes for rows marked incomplete or not applicable:
+
+## Validation
+
+Run and report:
+
+```bash
+npm run validate:ci
+```
+
+- [ ] `npm run validate:ci` passes
+- [ ] Warnings are understood and listed below
+- [ ] Failures are fixed before review
+
+Warnings or notable output:
 
 ## Affected Paths
 
-List all major files/directories affected by this change:
-- `path/to/changed/files/**`
-- `another/path/**`
+List major files or directories changed.
 
-## Schema Impact
-
-If this PR affects any schemas:
-- [ ] No schema changes
-- [ ] New schema(s) added
-- [ ] Existing schema(s) modified
-- [ ] Schema validation requirements changed
-
-List specific schema files affected:
-- `docs/schemas/filename.schema.json`
-
-## Lint Status
-
-Run the following lint commands and report results:
-```bash
-npm run lint
-npm run check
-```
-
-- [ ] All lints pass
-- [ ] Warnings present (list below)
-- [ ] Failures present (must be addressed before merge)
-
-## Screenshots/Artifacts
-
-Add any relevant screenshots, logs, or artifacts that demonstrate the changes:
-- Before/after comparisons
-- Error messages resolved
-- New functionality in action
+- `stories/short_story/...`
 
 ## Checklist
 
-- [ ] Code follows project style guidelines
-- [ ] Documentation updated (if applicable)
-- [ ] Tests added/updated (if applicable)
-- [ ] Changelog entry added (if applicable)
-- [ ] Breaking changes documented
-- [ ] Related issues referenced
-
-## Additional Context
-
-Add any other context about the changes here.
+- [ ] Story/frontmatter follows `docs/PLAYBOOK_NEW_STORY.md`
+- [ ] `cross_refs` and `references` are accurate
+- [ ] Canon Impact section is complete
+- [ ] Related issues referenced, if any

@@ -4,7 +4,7 @@ This manual explains the repository structure, canon guardrails, and all availab
 
 ## 1) Setup
 - Requirements: Node.js 18+, npm. Install dependencies with `npm install`.
-- Run commands from the repo root (`c:\Users\zeke\Projects\Forgotten_Tides`).
+- Run commands from the repo root.
 - Writable outputs land in `out/` (reports, chunks, graphs, compiled artifacts).
 - On Windows PowerShell, use `npm.cmd` for npm commands if execution policy blocks `npm.ps1`.
 
@@ -24,8 +24,8 @@ This manual explains the repository structure, canon guardrails, and all availab
 - `out/`: Generated reports (`out/reports`), chunks (`out/chunks`), graphs (`out/graphs`), compiled artifacts.
 
 ## 4) Validation & Linting Suite (npm scripts)
-- `npm run lint:schema` → Validates YAML frontmatter against `docs/schemas/*.schema.json`.
-- `npm run lint:refs` → Flags unresolved cross references between entities.
+- `npm run lint:schema` → Validates required short-story manuscripts and canonical entity files against `docs/schemas/*.schema.json`; reports best-effort skips/warnings for out-of-scope development material.
+- `npm run lint:refs` → Recursively flags unresolved cross references between entities in the short-story pipeline.
 - `npm run lint:canonical-refs` → Ensures references point to canonical IDs from the current index.
 - `npm run lint:glossary` → Warns on glossary terms missing from `data/lexicon/terms.yaml` (ignore list: `docs/lint/glossary_ignore.txt`).
 - `npm run lint:canon` → Red-line checker (`scripts/checks/canon_linter.js`) for forbidden narrative moves.
@@ -34,7 +34,7 @@ This manual explains the repository structure, canon guardrails, and all availab
 ## 5) Continuity & Timeline Checks
 - `npm run check:continuity` → Recursively scans story markdown, including nested work scenes such as `stories/novel/*/scenes/*.md`, for violations of character invariants; writes `out/reports/continuity.json`. Hard failures exit non-zero.
 - `npm run check:timeline` → Recursively scans story markdown and canonical lore timeline sources; writes `out/reports/timeline_variance.json` with hard/soft issues.
-- `npm run check` → Runs both continuity and timeline passes.
+- `npm run check` → Runs continuity, timeline, stakes, knowledge-state, and reader-model checks.
 - Both reports include coverage counts for files seen, files scanned, and skipped files. A check that sees story markdown but scans zero story files is treated as a hard failure.
 
 ## 6) Canon Graph & Index Generation
@@ -79,6 +79,7 @@ This manual explains the repository structure, canon guardrails, and all availab
 - `npm run test:coverage` → Verifies recursive markdown discovery includes nested story scenes and skips README/backup files.
 - `npm run test:canon-policy`, `npm run test:prompt-pack`, and `npm run test:timeline-events` → Verify canon-tier inference, prompt-pack filtering, and structured timeline event parsing.
 - If adding new automation, place additional tests under `scripts/tests/` and wire via `package.json`.
+- `npm run validate:ci` → Rebuilds generated canon artifacts, verifies they are committed, runs `npm run lint`, `npm run check`, and the dashboard/upgrades/coverage/canon-policy/prompt-pack/timeline-event tests.
 
 ## 12) File & Frontmatter Conventions
 - Use YAML frontmatter matching `docs/schemas/*.schema.json`; include `id` (lowercase canonical, e.g. `char-0001`), `uuid` (where applicable), `cross_refs` (canonical IDs), `metadata.status`, and type-specific fields.
@@ -87,12 +88,12 @@ This manual explains the repository structure, canon guardrails, and all availab
 - Glossary terms should be added to `data/lexicon/terms.yaml`; avoid relying on the legacy glossary except as fallback.
 
 ## 13) Standard Workflow Checklist
-- 1) Add/update content with required frontmatter and canonical IDs.
-- 2) Update glossary/lexicon entries as needed.
-- 3) Run `npm run lint` and `npm run check` (ensure reports in `out/reports` are clean).
-- 4) Regenerate link map: `npm run linkmap:build`.
-- 5) (Optional) Rebuild chunks: `npm run context:chunk`.
-- 6) Preview continuity graph: `npm run dashboard` and review.
+- 1) For short stories, follow `docs/PLAYBOOK_NEW_STORY.md`.
+- 2) Add/update content with required frontmatter and canonical IDs.
+- 3) Apply the Lore Update Matrix in the playbook.
+- 4) Update glossary/lexicon entries as needed.
+- 5) Run `npm run validate:ci` before opening a PR.
+- 6) (Optional) Preview continuity graph with `npm run dashboard`.
 - 7) For publication artifacts, run `scripts/compile_stories.sh`.
 
 ## 14) Troubleshooting Pointers

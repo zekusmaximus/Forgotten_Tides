@@ -4,255 +4,225 @@ const fs = require('fs');
 const path = require('path');
 const yaml = require('js-yaml');
 
-const warnOnly = !process.argv.includes('--strict');
+const ROOT_DIR = path.join(__dirname, '../..');
+const warnOnly = process.argv.includes('--warn-only');
 
-// Build in-memory index of all IDs by type
-function buildIdIndex() {
-  const index = {
+const INDEXED_ROOTS = [
+  'characters',
+  'factions',
+  'atlas',
+  'mechanics',
+  'stories/short_story',
+  'lore'
+];
+
+const CHECKED_ROOTS = [
+  'characters',
+  'factions',
+  'atlas',
+  'mechanics',
+  'stories/short_story',
+  'lore'
+];
+
+const REFERENCE_FIELDS = [
+  'cross_refs',
+  'references',
+  'appears_in',
+  'rules_used',
+  'relationships',
+  'related_terms'
+];
+
+const PREFIX_TO_BUCKET = {
+  char: 'characters',
+  loc: 'locations',
+  fact: 'factions',
+  mech: 'mechanics',
+  story: 'stories',
+  term: 'terms'
+};
+
+function emptyIndex() {
+  return {
     characters: new Set(),
     locations: new Set(),
     factions: new Set(),
     mechanics: new Set(),
-    stories: new Set()
+    stories: new Set(),
+    terms: new Set()
   };
+}
 
-  // Add characters
-  const charsDir = path.join(__dirname, '../../characters');
-  if (fs.existsSync(charsDir)) {
-    const charFiles = fs.readdirSync(charsDir);
-    charFiles.forEach(file => {
-      if (file.endsWith('.md')) {
-        const content = fs.readFileSync(path.join(charsDir, file), 'utf8');
-        const match = content.match(/^---\s*([\s\S]*?)\s*---/);
-        if (match) {
-          try {
-            const data = yaml.load(match[1]);
-            if (data.id) {
-              index.characters.add(data.id);
-            }
-          } catch (e) {
-            console.warn(`⚠️  Could not parse ${file}: ${e.message}`);
-          }
-        }
-      }
-    });
-  }
+function relativePath(filePath) {
+  return path.relative(ROOT_DIR, filePath).replace(/\\/g, '/');
+}
 
-  // Add stories
-  const storiesDir = path.join(__dirname, '../../stories');
-  if (fs.existsSync(storiesDir)) {
-    const storyFiles = fs.readdirSync(storiesDir);
-    storyFiles.forEach(file => {
-      if (file.endsWith('.md')) {
-        const content = fs.readFileSync(path.join(storiesDir, file), 'utf8');
-        const match = content.match(/^---\s*([\s\S]*?)\s*---/);
-        if (match) {
-          try {
-            const data = yaml.load(match[1]);
-            if (data.id) {
-              index.stories.add(data.id);
-            }
-          } catch (e) {
-            console.warn(`⚠️  Could not parse ${file}: ${e.message}`);
-          }
-        }
-      }
-    });
-  }
+function shouldInspectFile(filePath) {
+  const file = path.basename(filePath);
+  return (
+    (file.endsWith('.md') || file.endsWith('.yaml') || file.endsWith('.yml')) &&
+    !file.endsWith('README.md') &&
+    !/_backup_/.test(file)
+  );
+}
 
-  // Index every directory that can supply canonical entities. Without this,
-  // characters reference fact-/mech-/loc- IDs that the script never learns about.
-  const entityDirs = ['factions', 'mechanics', 'atlas', 'lore', 'manuals', 'data'];
-  entityDirs.forEach(dir => {
-    const fullPath = path.join(__dirname, `../../${dir}`);
-    if (fs.existsSync(fullPath)) {
-      walkDataDir(fullPath, index);
+function walkFiles(dir, out = []) {
+  if (!fs.existsSync(dir)) return out;
+
+  const entries = fs.readdirSync(dir, { withFileTypes: true });
+  for (const entry of entries) {
+    const fullPath = path.join(dir, entry.name);
+    if (entry.isDirectory()) {
+      walkFiles(fullPath, out);
+    } else if (shouldInspectFile(fullPath)) {
+      out.push(fullPath);
     }
-  });
+  }
 
+  return out;
+}
+
+function parseStructuredFile(filePath) {
+  const content = fs.readFileSync(filePath, 'utf8');
+
+  if (filePath.endsWith('.yaml') || filePath.endsWith('.yml')) {
+    return yaml.load(content) || {};
+  }
+
+  const match = content.match(/^---\s*([\s\S]*?)\s*---/);
+  if (!match) return null;
+  return yaml.load(match[1]) || {};
+}
+
+function bucketForId(id) {
+  if (typeof id !== 'string') return null;
+  const match = id.trim().toLowerCase().match(/^([a-z]+)-\d{4}$/);
+  if (!match) return null;
+  return PREFIX_TO_BUCKET[match[1]] || null;
+}
+
+function addId(index, id) {
+  const bucket = bucketForId(id);
+  if (bucket && index[bucket]) {
+    index[bucket].add(id.trim().toLowerCase());
+  }
+}
+
+function collectIdsFromValue(value, ids) {
+  if (value == null) return;
+
+  if (typeof value === 'string') {
+    if (bucketForId(value)) ids.push(value.trim().toLowerCase());
+    return;
+  }
+
+  if (Array.isArray(value)) {
+    value.forEach(item => collectIdsFromValue(item, ids));
+    return;
+  }
+
+  if (typeof value === 'object') {
+    Object.values(value).forEach(item => collectIdsFromValue(item, ids));
+  }
+}
+
+function collectReferencedIds(frontmatter) {
+  const ids = [];
+  for (const field of REFERENCE_FIELDS) {
+    if (frontmatter && Object.prototype.hasOwnProperty.call(frontmatter, field)) {
+      collectIdsFromValue(frontmatter[field], ids);
+    }
+  }
+  return ids;
+}
+
+function indexLexiconTerms(index) {
+  const lexiconPath = path.join(ROOT_DIR, 'data/lexicon/terms.yaml');
+  if (!fs.existsSync(lexiconPath)) return;
+
+  try {
+    const data = yaml.load(fs.readFileSync(lexiconPath, 'utf8')) || {};
+    for (const term of data.terms || []) {
+      if (term && term.id) addId(index, term.id);
+    }
+  } catch (error) {
+    throw new Error(`${relativePath(lexiconPath)}: ${error.message}`);
+  }
+}
+
+function buildIdIndex() {
+  const index = emptyIndex();
+
+  for (const root of INDEXED_ROOTS) {
+    const files = walkFiles(path.join(ROOT_DIR, root));
+    for (const filePath of files) {
+      try {
+        const data = parseStructuredFile(filePath);
+        if (data && data.id) addId(index, data.id);
+      } catch (error) {
+        throw new Error(`${relativePath(filePath)}: ${error.message}`);
+      }
+    }
+  }
+
+  indexLexiconTerms(index);
   return index;
 }
 
-function walkDataDir(dir, index) {
-  const files = fs.readdirSync(dir);
+function checkReferencesInFile(filePath, index) {
+  const failures = [];
+  const data = parseStructuredFile(filePath);
+  if (!data) return failures;
 
-  files.forEach(file => {
-    const filePath = path.join(dir, file);
-    const stat = fs.statSync(filePath);
-
-    if (stat.isDirectory()) {
-      walkDataDir(filePath, index);
-    } else if ((file.endsWith('.md') || file.endsWith('.yaml') || file.endsWith('.yml')) && !/_backup_/.test(file)) {
-      try {
-        const content = fs.readFileSync(filePath, 'utf8');
-        const match = content.match(/^---\s*([\s\S]*?)\s*---/);
-        if (match) {
-          const data = yaml.load(match[1]);
-          if (data.id) {
-            // Type comes from the ID prefix, not data.type — `data.type + 's'`
-            // mis-pluralizes already-plural types like "mechanics".
-            let type;
-            if (data.id.startsWith('char-')) type = 'characters';
-            else if (data.id.startsWith('loc-')) type = 'locations';
-            else if (data.id.startsWith('fact-')) type = 'factions';
-            else if (data.id.startsWith('mech-')) type = 'mechanics';
-            else if (data.id.startsWith('story-')) type = 'stories';
-
-            if (type && index[type]) {
-              index[type].add(data.id);
-            }
-          }
-        }
-      } catch (e) {
-        console.warn(`⚠️  Could not parse ${filePath}: ${e.message}`);
-      }
+  for (const id of collectReferencedIds(data)) {
+    const bucket = bucketForId(id);
+    if (bucket && (!index[bucket] || !index[bucket].has(id))) {
+      failures.push(`${relativePath(filePath)}: unresolved reference to ${id}`);
     }
-  });
-}
-
-// Check references in a file
-function checkReferences(filePath, index) {
-  let hasErrors = false;
-
-  try {
-    const content = fs.readFileSync(filePath, 'utf8');
-    const match = content.match(/^---\s*([\s\S]*?)\s*---/);
-    if (!match) {
-      return false;
-    }
-
-    const yamlContent = match[1];
-    const data = yaml.load(yamlContent);
-
-    // Check cross_refs
-    if (data.cross_refs) {
-      for (const [type, ids] of Object.entries(data.cross_refs)) {
-        if (Array.isArray(ids)) {
-          for (const id of ids) {
-            if (!index[type] || !index[type].has(id)) {
-              const msg = `${filePath}: Unresolved reference to ${id} in cross_refs.${type}`;
-              warnOnly ? console.warn(`⚠️  ${msg}`) : console.error(`❌ ${msg}`);
-              hasErrors = hasErrors || !warnOnly;
-            }
-          }
-        }
-      }
-    }
-
-    // Check other reference fields that might contain IDs
-    const referenceFields = ['appears_in', 'rules_used', 'relationships'];
-    referenceFields.forEach(field => {
-      if (data[field]) {
-        if (Array.isArray(data[field])) {
-          data[field].forEach(ref => {
-            if (typeof ref === 'string') {
-              // Try to determine type from ID pattern
-              let type;
-              if (ref.startsWith('char-')) type = 'characters';
-              else if (ref.startsWith('loc-')) type = 'locations';
-              else if (ref.startsWith('fact-')) type = 'factions';
-              else if (ref.startsWith('mech-')) type = 'mechanics';
-              else if (ref.startsWith('story-')) type = 'stories';
-
-              if (type && (!index[type] || !index[type].has(ref))) {
-                const msg = `${filePath}: Unresolved reference to ${ref} in ${field}`;
-                warnOnly ? console.warn(`⚠️  ${msg}`) : console.error(`❌ ${msg}`);
-                hasErrors = hasErrors || !warnOnly;
-              }
-            } else if (typeof ref === 'object' && ref.target_id) {
-              // Handle relationships with target_id
-              const targetId = ref.target_id;
-              let type;
-              if (targetId.startsWith('char-')) type = 'characters';
-              else if (targetId.startsWith('loc-')) type = 'locations';
-              else if (targetId.startsWith('fact-')) type = 'factions';
-              else if (targetId.startsWith('mech-')) type = 'mechanics';
-              else if (targetId.startsWith('story-')) type = 'stories';
-
-              if (type && (!index[type] || !index[type].has(targetId))) {
-                const msg = `${filePath}: Unresolved reference to ${targetId} in ${field}.target_id`;
-                warnOnly ? console.warn(`⚠️  ${msg}`) : console.error(`❌ ${msg}`);
-                hasErrors = hasErrors || !warnOnly;
-              }
-            }
-          });
-        }
-      }
-    });
-
-    return hasErrors;
-  } catch (error) {
-    console.error(`❌ Error checking references in ${filePath}: ${error.message}`);
-    return true;
   }
+
+  return failures;
 }
 
-// Main execution
 function main() {
-  console.log('🔍 Checking for unresolved references...');
+  console.log('Checking for unresolved references...');
 
-  const index = buildIdIndex();
-  let hasErrors = false;
-
-  // Check characters
-  const charsDir = path.join(__dirname, '../../characters');
-  if (fs.existsSync(charsDir)) {
-    const charFiles = fs.readdirSync(charsDir);
-    charFiles.forEach(file => {
-      if (file.endsWith('.md')) {
-        const filePath = path.join(charsDir, file);
-        if (checkReferences(filePath, index)) {
-          hasErrors = true;
-        }
-      }
-    });
-  }
-
-  // Check stories
-  const storiesDir = path.join(__dirname, '../../stories');
-  if (fs.existsSync(storiesDir)) {
-    const storyFiles = fs.readdirSync(storiesDir);
-    storyFiles.forEach(file => {
-      if (file.endsWith('.md')) {
-        const filePath = path.join(storiesDir, file);
-        if (checkReferences(filePath, index)) {
-          hasErrors = true;
-        }
-      }
-    });
-  }
-
-  // Check data directories
-  const dataDirs = ['data'];
-  dataDirs.forEach(dir => {
-    const fullPath = path.join(__dirname, `../../${dir}`);
-    if (fs.existsSync(fullPath)) {
-      walkDataDirForRefs(fullPath, index);
-    }
-  });
-
-  if (hasErrors) {
-    console.error('❌ Found unresolved references');
+  let index;
+  try {
+    index = buildIdIndex();
+  } catch (error) {
+    console.error(`FAIL ${error.message}`);
     process.exit(warnOnly ? 0 : 1);
-  } else {
-    console.log('✅ All references resolved');
-    process.exit(0);
   }
-}
 
-function walkDataDirForRefs(dir, index) {
-  const files = fs.readdirSync(dir);
+  const failures = [];
+  let filesChecked = 0;
 
-  files.forEach(file => {
-    const filePath = path.join(dir, file);
-    const stat = fs.statSync(filePath);
-
-    if (stat.isDirectory()) {
-      walkDataDirForRefs(filePath, index);
-    } else if ((file.endsWith('.md') || file.endsWith('.yaml') || file.endsWith('.yml')) && !/_backup_/.test(file)) {
-      checkReferences(filePath, index);
+  for (const root of CHECKED_ROOTS) {
+    const files = walkFiles(path.join(ROOT_DIR, root));
+    for (const filePath of files) {
+      try {
+        const fileFailures = checkReferencesInFile(filePath, index);
+        filesChecked += 1;
+        failures.push(...fileFailures);
+      } catch (error) {
+        failures.push(`${relativePath(filePath)}: could not parse references: ${error.message}`);
+      }
     }
-  });
+  }
+
+  if (failures.length > 0) {
+    failures.forEach(message => {
+      const prefix = warnOnly ? 'WARN' : 'FAIL';
+      console.error(`${prefix} ${message}`);
+    });
+    console.error(`Reference coverage: ${filesChecked} files checked, ${failures.length} failures.`);
+    process.exit(warnOnly ? 0 : 1);
+  }
+
+  console.log(`Reference coverage: ${filesChecked} files checked, 0 failures.`);
+  console.log('All references resolved');
 }
 
 main();
