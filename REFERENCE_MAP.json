@@ -1,5 +1,5 @@
 {
-  "generated": "2026-05-27T18:23:58.934Z",
+  "generated": "2026-05-27T23:07:40.030Z",
   "nodes": [
     {
       "canonical_id": "char-0001",
@@ -81,6 +81,15 @@
       "canon_tier": "speculative",
       "source_weight": 60,
       "retrieval_role": "exploratory"
+    },
+    {
+      "canonical_id": "char-0010",
+      "type": "character",
+      "name": "Inya Solven",
+      "path": "characters/Inya_Solven.md",
+      "canon_tier": "primary_canon",
+      "source_weight": 110,
+      "retrieval_role": "authoritative"
     },
     {
       "canonical_id": "fact-0001",
@@ -231,6 +240,15 @@
       "type": "location",
       "name": "Solace Hospice",
       "path": "atlas/Solace_Hospice.md",
+      "canon_tier": "primary_canon",
+      "source_weight": 110,
+      "retrieval_role": "authoritative"
+    },
+    {
+      "canonical_id": "loc-0011",
+      "type": "location",
+      "name": "Tessarine Vault",
+      "path": "atlas/Tessarine_Vault.md",
       "canon_tier": "primary_canon",
       "source_weight": 110,
       "retrieval_role": "authoritative"
@@ -524,6 +542,15 @@
       "retrieval_role": "active_draft"
     },
     {
+      "canonical_id": "story-0008",
+      "type": "story",
+      "name": "The Reliquarist's Doubt",
+      "path": "stories/short_story/the_reliquarists_doubt/manuscript.md",
+      "canon_tier": "draft",
+      "source_weight": 65,
+      "retrieval_role": "active_draft"
+    },
+    {
       "canonical_id": "term-0001",
       "type": "term",
       "name": "Anchor",
@@ -734,6 +761,24 @@
       "canonical_id": "term-0024",
       "type": "term",
       "name": "Structural Softening",
+      "path": "data/lexicon/terms.yaml",
+      "canon_tier": "primary_canon",
+      "source_weight": 110,
+      "retrieval_role": "authoritative"
+    },
+    {
+      "canonical_id": "term-0025",
+      "type": "term",
+      "name": "Reliquarist",
+      "path": "data/lexicon/terms.yaml",
+      "canon_tier": "primary_canon",
+      "source_weight": 110,
+      "retrieval_role": "authoritative"
+    },
+    {
+      "canonical_id": "term-0026",
+      "type": "term",
+      "name": "Tuning Cradle",
       "path": "data/lexicon/terms.yaml",
       "canon_tier": "primary_canon",
       "source_weight": 110,
@@ -954,6 +999,36 @@
     {
       "from": "char-0009",
       "to": "story-0007",
+      "type": "stories"
+    },
+    {
+      "from": "char-0010",
+      "to": "fact-0002",
+      "type": "factions"
+    },
+    {
+      "from": "char-0010",
+      "to": "loc-0008",
+      "type": "locations"
+    },
+    {
+      "from": "char-0010",
+      "to": "loc-0011",
+      "type": "locations"
+    },
+    {
+      "from": "char-0010",
+      "to": "mech-0001",
+      "type": "mechanics"
+    },
+    {
+      "from": "char-0010",
+      "to": "mech-0003",
+      "type": "mechanics"
+    },
+    {
+      "from": "char-0010",
+      "to": "story-0008",
       "type": "stories"
     },
     {
@@ -1422,6 +1497,36 @@
       "type": "stories"
     },
     {
+      "from": "loc-0011",
+      "to": "char-0010",
+      "type": "characters"
+    },
+    {
+      "from": "loc-0011",
+      "to": "fact-0002",
+      "type": "factions"
+    },
+    {
+      "from": "loc-0011",
+      "to": "loc-0008",
+      "type": "locations"
+    },
+    {
+      "from": "loc-0011",
+      "to": "mech-0001",
+      "type": "mechanics"
+    },
+    {
+      "from": "loc-0011",
+      "to": "mech-0003",
+      "type": "mechanics"
+    },
+    {
+      "from": "loc-0011",
+      "to": "story-0008",
+      "type": "stories"
+    },
+    {
       "from": "mech-0001",
       "to": "char-0001",
       "type": "characters"
@@ -1603,6 +1708,36 @@
     },
     {
       "from": "story-0007",
+      "to": "mech-0003",
+      "type": "mechanics"
+    },
+    {
+      "from": "story-0008",
+      "to": "char-0010",
+      "type": "characters"
+    },
+    {
+      "from": "story-0008",
+      "to": "fact-0002",
+      "type": "factions"
+    },
+    {
+      "from": "story-0008",
+      "to": "loc-0008",
+      "type": "locations"
+    },
+    {
+      "from": "story-0008",
+      "to": "loc-0011",
+      "type": "locations"
+    },
+    {
+      "from": "story-0008",
+      "to": "mech-0001",
+      "type": "mechanics"
+    },
+    {
+      "from": "story-0008",
       "to": "mech-0003",
       "type": "mechanics"
     },
@@ -1874,6 +2009,36 @@
     {
       "from": "term-0024",
       "to": "term-0019",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0025",
+      "to": "term-0001",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0025",
+      "to": "term-0014",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0025",
+      "to": "term-0022",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0026",
+      "to": "term-0005",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0026",
+      "to": "term-0014",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0026",
+      "to": "term-0025",
       "type": "related_terms"
     }
   ]
