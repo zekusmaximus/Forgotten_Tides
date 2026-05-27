@@ -8,6 +8,8 @@ The Continuity Dashboard is a web-based tool that visualizes the `REFERENCE_MAP.
 
 This dashboard implements **Phase 7** of the Structural Audit & Optimization Plan.
 
+The interface uses the Forgotten Tides design system: deep blue-shifted void canvas, warm ink foregrounds, memory-amber selection accent, Cormorant Garamond display serif for the wordmark, IBM Plex Sans for UI, IBM Plex Mono for telemetry and stenciled labels. Entity colors are canonical and inherited from earlier versions — they are part of the universe's vocabulary and are not remapped.
+
 ## Features
 
 - 📊 **Interactive Network Graph**: Visualize all entities and their relationships
