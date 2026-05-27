@@ -1,0 +1,351 @@
+/* ============================================================
+   THE FORGOTTEN TIDES — Foundations
+   ------------------------------------------------------------
+   Memory generates gravity. Forgetting dissolves reality.
+   This file defines color, type and motion tokens for any
+   interface, slide, mock, or printed artifact in the universe.
+   ============================================================ */
+
+/* ---------- Webfonts ---------- */
+/* Display serif: Cormorant Garamond — elegiac, literary, restrained.
+   Body sans:    IBM Plex Sans — diegetic-technical, precise.
+   Mono:         IBM Plex Mono — for telemetry, code, drive readouts.
+   ASK: replace with project-licensed fonts if available. */
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap");
+
+:root {
+  /* ============== COLOR — VOID SCALE ==============
+     The base palette is cold, deep, slightly blue-shifted.
+     Reads as "vacuum at the edge of a station port-light."
+     Use void-1 as canvas; promote surfaces by stepping up. */
+  --void-0:        #05070A;   /* deepest oblivion — beneath the surface */
+  --void-1:        #0A0D12;   /* canvas / page background */
+  --void-2:        #11151B;   /* panel, sidebar, card */
+  --void-3:        #181D25;   /* raised card, modal, hover surface */
+  --void-4:        #20262F;   /* selected, pressed, input fill */
+  --void-5:        #2A313A;   /* border subtle */
+  --void-6:        #3A424D;   /* border emphasized */
+
+  /* ============== COLOR — INK SCALE ==============
+     Text and on-dark foregrounds. Warm-tinted so the page
+     doesn't feel sterile — like aged paper on a console screen. */
+  --ink-1:         #F1ECE0;   /* highest emphasis — "bone" */
+  --ink-2:         #D8D2C4;   /* body copy */
+  --ink-3:         #A8AEB6;   /* secondary, metadata */
+  --ink-4:         #6A727C;   /* tertiary, captions */
+  --ink-5:         #4A525C;   /* disabled, divider labels */
+
+  /* ============== COLOR — MEMORY AMBER ==============
+     The warm pole of the palette. Used for anchors, memory
+     stones, lantern light, the "First Garden: Birch" warmth.
+     One signal color, used sparingly. */
+  --amber-faint:   #3A2A14;   /* low-glow background tint */
+  --amber-low:     #8A6A2E;   /* dim lantern */
+  --amber:         #E8A856;   /* primary warm accent */
+  --amber-bright:  #F6C684;   /* highlight, hover */
+
+  /* ============== COLOR — ENTITY TAXONOMY ==============
+     Canonical to the Continuity Dashboard. Do NOT remap.
+     Each color identifies a class of node in the Memory Web. */
+  --entity-character:   #4A9EFF;   /* pilots, captains, archivists */
+  --entity-location:    #FF6B6B;   /* stations, regions, systems */
+  --entity-mechanics:   #51CF66;   /* physics, rules, processes */
+  --entity-faction:     #FFD93D;   /* orders, fleets, cults */
+  --entity-story:       #A78BFA;   /* manuscripts, scenes, arcs */
+  --entity-missing:     #6A727C;   /* speculative / unanchored */
+
+  /* ============== COLOR — STATE ==============
+     Operational status of corridors, anchors, stations. */
+  --state-stable:    #51CF66;   /* corridor stable, anchor intact */
+  --state-thinning:  #FFD93D;   /* corridor thinning, drift warning */
+  --state-raveling:  #FF8E3C;   /* corridor raveling, anchor at risk */
+  --state-collapse:  #E5484D;   /* collapse, burn, fatal */
+  --state-oblivion:  #2A313A;   /* forgotten / null reference */
+
+  /* ============== COLOR — SEMANTIC ==============
+     For prose, links, focus rings. */
+  --fg-1:          var(--ink-1);
+  --fg-2:          var(--ink-2);
+  --fg-3:          var(--ink-3);
+  --fg-4:          var(--ink-4);
+  --bg-canvas:     var(--void-1);
+  --bg-panel:      var(--void-2);
+  --bg-raised:     var(--void-3);
+  --bg-input:      var(--void-4);
+  --border-subtle: var(--void-5);
+  --border-strong: var(--void-6);
+  --accent:        var(--entity-character);  /* the dashboard's blue */
+  --accent-warm:   var(--amber);
+  --focus-ring:    rgba(74, 158, 255, 0.55);
+  --link:          var(--entity-character);
+  --link-hover:    #7BB8FF;
+
+  /* ============== TYPOGRAPHY — FAMILIES ============== */
+  --font-display:  "Cormorant Garamond", "EB Garamond", Georgia, "Times New Roman", serif;
+  --font-body:     "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono:     "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  /* ============== TYPOGRAPHY — SCALE ==============
+     Modular scale, ratio ≈ 1.25 (major third). All sizes in rem. */
+  --fs-xs:    0.75rem;   /* 12 — labels, captions, telemetry */
+  --fs-sm:    0.875rem;  /* 14 — secondary body, small UI */
+  --fs-base:  1rem;      /* 16 — body */
+  --fs-md:    1.125rem;  /* 18 — lead paragraph */
+  --fs-lg:    1.375rem;  /* 22 — h4 / section sub-titles */
+  --fs-xl:    1.75rem;   /* 28 — h3 */
+  --fs-2xl:   2.25rem;   /* 36 — h2 */
+  --fs-3xl:   3rem;      /* 48 — h1 */
+  --fs-4xl:   4.25rem;   /* 68 — display, title slide */
+  --fs-5xl:   6rem;      /* 96 — hero display */
+
+  /* ============== TYPOGRAPHY — LINE / TRACKING ============== */
+  --lh-tight:    1.08;
+  --lh-snug:     1.2;
+  --lh-normal:   1.45;
+  --lh-relaxed:  1.65;
+  --lh-loose:    1.85;
+
+  --ls-tight:    -0.02em;
+  --ls-snug:     -0.01em;
+  --ls-normal:   0;
+  --ls-wide:     0.06em;
+  --ls-wider:    0.14em;   /* for caps eyebrows: SECTION I */
+  --ls-widest:   0.24em;   /* for stenciled labels */
+
+  --fw-light:    300;
+  --fw-regular:  400;
+  --fw-medium:   500;
+  --fw-semibold: 600;
+  --fw-bold:     700;
+
+  /* ============== SPACING ============== */
+  --space-0:   0;
+  --space-1:   0.25rem;   /*  4 */
+  --space-2:   0.5rem;    /*  8 */
+  --space-3:   0.75rem;   /* 12 */
+  --space-4:   1rem;      /* 16 */
+  --space-5:   1.5rem;    /* 24 */
+  --space-6:   2rem;      /* 32 */
+  --space-7:   2.5rem;    /* 40 */
+  --space-8:   3rem;      /* 48 */
+  --space-10:  4rem;      /* 64 */
+  --space-12:  5rem;      /* 80 */
+  --space-16:  7rem;      /* 112 */
+
+  /* ============== RADIUS ============== */
+  --radius-none:  0;
+  --radius-xs:    2px;    /* default — corridor-precise, not playful */
+  --radius-sm:    4px;
+  --radius-md:    6px;
+  --radius-lg:    10px;
+  --radius-pill:  999px;  /* badges and pill-buttons only */
+
+  /* ============== ELEVATION & GLOW ==============
+     The system prefers GLOW over drop-shadow. A remembered
+     thing emits light; a forgotten thing absorbs it. */
+  --shadow-1:     0 1px 2px rgba(0,0,0,0.4);
+  --shadow-2:     0 4px 16px rgba(0,0,0,0.55);
+  --shadow-3:     0 16px 48px rgba(0,0,0,0.65);
+
+  --glow-amber:   0 0 24px rgba(232,168,86,0.32);
+  --glow-blue:    0 0 24px rgba(74,158,255,0.32);
+  --glow-faint:   0 0 12px rgba(232,168,86,0.18);
+
+  /* Inset for inputs, ports, slots. */
+  --inset-1:      inset 0 1px 0 rgba(255,255,255,0.04), inset 0 0 0 1px var(--border-subtle);
+  --inset-recess: inset 0 2px 8px rgba(0,0,0,0.5);
+
+  /* ============== MOTION ==============
+     Motion is restrained. Things FADE more than they POP.
+     Forgetting is gentle. Remembering is patient. */
+  --ease-out-soft:  cubic-bezier(0.16, 0.84, 0.32, 1);
+  --ease-in-out:    cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-fade:      cubic-bezier(0.4, 0, 0.6, 1);
+
+  --dur-instant:    80ms;
+  --dur-fast:       160ms;
+  --dur-base:       240ms;
+  --dur-slow:       420ms;
+  --dur-elegiac:    900ms;
+
+  /* ============== LAYOUT ============== */
+  --measure-prose:  62ch;    /* optimal line length for body */
+  --measure-narrow: 38ch;    /* pull-quotes, asides */
+  --grid-gutter:    var(--space-5);
+
+  /* ============== TEXTURE ==============
+     Subtle starfield grain. Apply to canvases that risk feeling
+     too flat / dead. Memory has texture; vacuum has grain. */
+  --grain-opacity:  0.04;
+}
+
+/* ============================================================
+   SEMANTIC TYPE STYLES — apply directly with these classes
+   or replicate the rules at element-level in your own CSS.
+   ============================================================ */
+
+body, .ft-body {
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-regular);
+  line-height: var(--lh-relaxed);
+  color: var(--fg-2);
+  background: var(--bg-canvas);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* h1 — Display. Reserved for title slides, hero units, big quotes. */
+.ft-h1, h1.ft {
+  font-family: var(--font-display);
+  font-weight: var(--fw-medium);
+  font-size: var(--fs-3xl);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-snug);
+  color: var(--fg-1);
+  text-wrap: balance;
+}
+
+/* h2 — Section heading. */
+.ft-h2, h2.ft {
+  font-family: var(--font-display);
+  font-weight: var(--fw-regular);
+  font-size: var(--fs-2xl);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-snug);
+  color: var(--fg-1);
+  text-wrap: balance;
+}
+
+/* h3 — Sub-section. Can be sans or serif. Default sans for UI. */
+.ft-h3, h3.ft {
+  font-family: var(--font-body);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-xl);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-snug);
+  color: var(--fg-1);
+}
+
+/* h4 — Small heading. */
+.ft-h4, h4.ft {
+  font-family: var(--font-body);
+  font-weight: var(--fw-semibold);
+  font-size: var(--fs-lg);
+  line-height: var(--lh-snug);
+  color: var(--fg-1);
+}
+
+/* Eyebrow — UPPERCASE label above a heading. Used for section
+   numbers, classification, "I. Mouth of the Corridor" style. */
+.ft-eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-wider);
+  color: var(--amber);
+  display: inline-block;
+}
+
+/* Lead paragraph — the elegiac opener. */
+.ft-lead {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: var(--fw-regular);
+  font-size: var(--fs-md);
+  line-height: var(--lh-relaxed);
+  color: var(--fg-2);
+  max-width: var(--measure-prose);
+}
+
+/* Body prose. */
+.ft-p, p.ft {
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  line-height: var(--lh-relaxed);
+  color: var(--fg-2);
+  max-width: var(--measure-prose);
+}
+
+/* Small / secondary. */
+.ft-small {
+  font-family: var(--font-body);
+  font-size: var(--fs-sm);
+  line-height: var(--lh-normal);
+  color: var(--fg-3);
+}
+
+/* Caption / metadata. */
+.ft-caption {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: var(--ls-wide);
+  color: var(--fg-4);
+  text-transform: uppercase;
+}
+
+/* Pull quote — for canon excerpts, scripture-style. */
+.ft-quote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: var(--fw-regular);
+  font-size: var(--fs-xl);
+  line-height: var(--lh-normal);
+  color: var(--fg-1);
+  border-left: 1px solid var(--amber);
+  padding-left: var(--space-5);
+  max-width: var(--measure-narrow);
+}
+
+/* Mono — for telemetry, code, drive readouts, anchor IDs. */
+.ft-mono, code.ft, kbd.ft {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  color: var(--fg-2);
+}
+
+/* Tabular numeric — for ledgers, counts, coordinates. */
+.ft-tabular {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+/* Display — title-slide / hero. */
+.ft-display {
+  font-family: var(--font-display);
+  font-weight: var(--fw-regular);
+  font-size: var(--fs-5xl);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-tight);
+  color: var(--fg-1);
+  text-wrap: balance;
+}
+
+/* Stenciled / classified label — for canon-tier, in-universe
+   bureaucratic stamps (e.g. CONTINUITY-LOCKED). */
+.ft-stencil {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-widest);
+  color: var(--amber);
+  border: 1px solid var(--amber-low);
+  padding: 2px 8px;
+  border-radius: var(--radius-xs);
+  display: inline-block;
+}
+
+/* Selection — warm amber, in keeping with the lantern motif. */
+::selection {
+  background: var(--amber-faint);
+  color: var(--amber-bright);
+}
+
+/* Focus ring — never harsh; always the void-blue glow. */
+:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+  border-radius: var(--radius-xs);
+}
