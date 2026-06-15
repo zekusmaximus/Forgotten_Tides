@@ -215,6 +215,13 @@
       },
       "description": "Important continuity notes for this story"
     },
+    "bible_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Explicit citations to locked canon documents (e.g. bible/ARCHIVISTS_WAKE_STORY_BIBLE.md or red-line references). Required when the story touches locked elements (Rell, Sutira, Estavan, Tari, Heliodrome, Lattice Gap, zero-anchoring, eddy tracking, etc.). See redline_citation_linter.js and AGENT.md."
+    },
     "metadata": {
       "type": "object",
       "properties": {

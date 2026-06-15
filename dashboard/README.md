@@ -105,7 +105,10 @@ The dashboard reads from `REFERENCE_MAP.json` in the repository root. Expected s
 - `type` (required): Entity type (character, location, mechanics, faction, story)
 - `name` (required): Display name
 - `path` (optional): File path in repository
-- `status` (optional): "canonical", "speculative", or "missing"
+- `canon_tier` (recommended): Retrieval authority tier — one of: `primary_canon`, `working_canon`, `draft`, `speculative`, `sandbox`, `test`, `deprecated`. Used by agents, prompt packs, and reports to prefer authoritative sources.
+- `source_weight` (recommended): Numeric provenance score (higher = stronger signal). Typical ranges: primary_canon ≥ 100, working_canon ~90-95, draft ~50-70, speculative/sandbox ~30-60, test ~5-20. Drives deterministic sort order in context builders and export packs.
+- `retrieval_role` (recommended): Human-readable role hint, e.g. `authoritative`, `working_reference`, `active_draft`, `exploratory`, `test_fixture`. Mirrors `canon_tier` but is more descriptive for LLM prompts.
+- `status` (optional): Legacy / display status ("canonical", "speculative", or "missing"). Newer artifacts prefer the three fields above.
 
 ### Edge Properties
 
@@ -230,6 +233,8 @@ Potential improvements for future versions:
 - [ ] Custom layout algorithms (hierarchical, circular, etc.)
 - [ ] Node grouping by entity type
 - [ ] Edge filtering by relationship type
+- [ ] Visual distinction (opacity, stroke, badges) for `canon_tier` / `retrieval_role` directly in the graph
+- [ ] Filter chips or legend sections driven by `canon_tier` buckets (primary/working/draft/etc.)
 
 ## License
 

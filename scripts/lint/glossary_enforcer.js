@@ -3,6 +3,8 @@
 const fs = require('fs');
 const path = require('path');
 const yaml = require('js-yaml');
+const matter = require('gray-matter');
+const { glob } = require('glob');
 
 /**
  * Updated Glossary Enforcer
@@ -224,6 +226,30 @@ function scanForGlossaryTerms(filePath, glossaryTerms, ignoredTerms, termMap) {
   }
 }
 
+// Collect all story titles from short-story manuscripts to ignore title-derived fragments
+function collectStoryTitles() {
+  const titles = new Set();
+  const shortStoriesDir = path.join(__dirname, '../../stories/short_story');
+  if (!fs.existsSync(shortStoriesDir)) return titles;
+
+  const manuscripts = glob.sync('**/manuscript.md', { cwd: shortStoriesDir, absolute: true });
+  for (const m of manuscripts) {
+    try {
+      const raw = fs.readFileSync(m, 'utf8');
+      const fm = matter(raw);
+      if (fm.data && typeof fm.data.title === 'string' && fm.data.title.trim()) {
+        titles.add(fm.data.title.trim());
+        // Also split on common separators so fragments like "Tuner of Last Lights" are covered
+        const parts = fm.data.title.trim().split(/[:\-–—|]/).map(s => s.trim()).filter(Boolean);
+        parts.forEach(p => titles.add(p));
+      }
+    } catch (_) {
+      // ignore parse errors for title collection
+    }
+  }
+  return titles;
+}
+
 // Walk stories directory and check for glossary terms
 function checkStoriesDirectory(glossaryTerms, ignoredTerms, termMap) {
   const storiesDir = path.join(__dirname, '../../stories');
@@ -233,13 +259,18 @@ function checkStoriesDirectory(glossaryTerms, ignoredTerms, termMap) {
     return false;
   }
 
+  const titleFragments = collectStoryTitles();
+  if (titleFragments.size > 0) {
+    console.log(`📜 Ignoring ${titleFragments.size} title-derived fragments from story frontmatter`);
+  }
+
   const files = fs.readdirSync(storiesDir);
 
   files.forEach(file => {
     if (file.endsWith('.md')) {
       const filePath = path.join(storiesDir, file);
       const directoryIgnored = loadDirectoryIgnoreList(filePath);
-      const combinedIgnored = new Set([...ignoredTerms, ...directoryIgnored]);
+      const combinedIgnored = new Set([...ignoredTerms, ...directoryIgnored, ...titleFragments]);
       const warnings = scanForGlossaryTerms(filePath, glossaryTerms, combinedIgnored, termMap);
 
       if (warnings.length > 0) {

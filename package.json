@@ -5,6 +5,7 @@
     "lint:canonical-refs": "node scripts/lint/canonical_reference_validator.js",
     "lint:glossary": "node scripts/lint/glossary_enforcer.js",
     "lint:canon": "node scripts/checks/canon_linter.js",
+    "lint:redline": "node scripts/lint/redline_citation_linter.js",
     "lint:promise": "node scripts/checks/promise_payoff_linter.js",
     "lint:scene-failure": "node scripts/checks/scene_failure_modes_linter.js",
     "lint:moral": "node scripts/checks/moral_physics_linter.js",
@@ -15,7 +16,7 @@
     "check:knowledge": "node scripts/checks/knowledge_state_check.js",
     "check:reader": "node scripts/checks/reader_model_linter.js",
     "check": "npm run check:continuity && npm run check:timeline && npm run check:stakes && npm run check:knowledge && npm run check:reader",
-    "lint": "npm run lint:schema && npm run lint:refs && npm run lint:canonical-refs && npm run lint:glossary && npm run lint:canon",
+    "lint": "npm run lint:schema && npm run lint:refs && npm run lint:canonical-refs && npm run lint:glossary && npm run lint:canon && npm run lint:redline",
     "report:pov": "node scripts/checks/pov_pressure_report.js",
     "report:canon-tiers": "node scripts/reports/canon_tier_report.js",
     "test:dashboard": "node scripts/tests/test_dashboard.js",
@@ -43,13 +44,17 @@
     "dashboard": "npx http-server -p 8080 -o /dashboard/",
     "test:upgrades": "node scripts/tests/test_system_upgrades.js",
     "validate:work": "node scripts/validate_work.js",
-    "validate:ci": "node scripts/validate_ci.js"
+    "validate:ci": "node scripts/validate_ci.js",
+    "ensure:fresh": "node scripts/ensure_fresh.js",
+    "prepush": "npm run ensure:fresh && npm run validate:ci",
+    "promote:story": "node scripts/promote_story.js"
   },
   "dependencies": {
     "ajv": "^8.17.1",
     "ajv-formats": "^3.0.1",
     "glob": "^11.0.0",
     "gray-matter": "^4.0.3",
+    "glob": "^11.0.0",
     "js-yaml": "^4.1.1",
     "uuid": "^13.0.0"
   },

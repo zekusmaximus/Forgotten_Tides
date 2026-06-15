@@ -260,6 +260,32 @@ Common lint failures for new contributors:
 - **Schema error on `metadata.status`** — entity files only allow `canonical`, `speculative`, or `deprecated`
 - **Unresolved ref** — you referenced a `char-####` or `fact-####` that doesn't have an entity file yet
 - **Generated artifact diff** — run `npm run linkmap:build` and commit `CANONICAL_INDEX.md`, `REFERENCE_MAP.json`, and `docs/link_map/LINK_MAP.md`
+- **Red-line citation error** — story touches locked bible elements (Rell/Sutira/Estavan/Tari/Heliodrome/Lattice Gap/zero-anchoring) but lacks explicit citation in `continuity_notes` or `bible_refs`. See `npm run lint:redline` and `bible/ARCHIVISTS_WAKE_STORY_BIBLE.md`. The originating story (`story-0001`) is exempt.
+
+---
+
+## Step 6b: Promote a Story to Primary Canon (Optional but Recommended)
+
+After `npm run validate:ci` passes and the author has reviewed the story for thematic and metaphysical fidelity, promote it from `draft` / `working_canon` to `primary_canon`:
+
+```bash
+node scripts/promote_story.js --id story-####   # e.g. story-0007
+# or explicitly:
+node scripts/promote_story.js --id story-0007 --tier primary_canon
+```
+
+This helper:
+- Updates the story frontmatter (`canon_tier` → `primary_canon`, `status` → `canonical`)
+- Re-runs `npm run linkmap:build`
+- Prints the exact next steps (review diff, run `validate:ci`, conventional commit)
+
+You can also run it via npm:
+
+```bash
+npm run promote:story -- --id story-0007
+```
+
+After promotion, commit the manuscript change + regenerated artifacts together.
 
 ---
 
@@ -300,3 +326,4 @@ Before submitting, confirm:
 - [ ] `npm run validate:ci` exits with 0 errors
 - [ ] Generated artifacts are committed if changed
 - [ ] Commit message includes a Canon Impact note
+- [ ] If the story touches locked bible elements (Rell, Sutira, Estavan, Tari, Heliodrome, Lattice Gap, zero-anchoring, etc.), explicit citation exists in `continuity_notes` or `bible_refs` (run `npm run lint:redline` to verify)
