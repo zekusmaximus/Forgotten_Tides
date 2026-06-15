@@ -1,6 +1,7 @@
 ---
 id: story-0004
 schema_version: v1.0.0
+contract_version: v1.0.0
 type: story
 title: The Light Inheritance
 story_type: short-story

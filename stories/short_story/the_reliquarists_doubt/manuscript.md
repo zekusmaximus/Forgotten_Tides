@@ -1,6 +1,7 @@
 ---
 id: story-0008
 schema_version: v1.0.0
+contract_version: v1.0.0
 type: story
 title: The Reliquarist's Doubt
 story_type: short-story

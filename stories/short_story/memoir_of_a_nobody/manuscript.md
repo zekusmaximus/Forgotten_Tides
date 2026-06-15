@@ -1,6 +1,7 @@
 ---
 id: story-0002
 schema_version: v1.0.0
+contract_version: v1.0.0
 type: story
 title: Memoir of a Nobody
 story_type: short-story

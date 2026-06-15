@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://forgotten-tides.com/schemas/timeline_events.schema.json",
+  "title": "Timeline Events Schema",
+  "description": "Tolerant schema for data/timeline/events.yaml (root events array).",
+  "type": "object",
+  "properties": {
+    "events": {
+      "type": "array"
+    }
+  },
+  "additionalProperties": true
+}

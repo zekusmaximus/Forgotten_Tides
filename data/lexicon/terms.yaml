@@ -6,6 +6,8 @@
 # docs/CANONICAL_ID_SCHEMA.md. The trailing comment on each related_terms
 # entry names the target term for human readers.
 
+schema_version: v1.0.0
+tags: []
 terms:
   - id: term-0001
     term: Anchor

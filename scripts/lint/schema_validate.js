@@ -78,6 +78,22 @@ function selectSchema(filePath, schemaName, data) {
     return schemas.scene;
   }
 
+  if (rel.includes('data/lexicon/terms.yaml') && schemas.data_lexicon) {
+    return schemas.data_lexicon;
+  }
+  if (rel.includes('data/timeline/events.yaml') && schemas.timeline_events) {
+    return schemas.timeline_events;
+  }
+  if (rel.includes('lore/notes/') && schemas.lore_notes) {
+    return schemas.lore_notes;
+  }
+  if (/stories\/novel\/[^/]+\/meta\.yaml$/.test(rel) && schemas.novel_meta) {
+    return schemas.novel_meta;
+  }
+  if (/stories\/novella\/[^/]+\/meta\.yaml$/.test(rel) && schemas.novella_meta) {
+    return schemas.novella_meta;
+  }
+
   if (data && data.type) {
     const schemaKey = TYPE_TO_SCHEMA[data.type] || data.type;
     return schemas[schemaKey] || schemas[`${schemaKey}_schema`];
@@ -131,11 +147,25 @@ function validateFile(filePath, schemaName, options = {}) {
       if (!isMarkdown && !frontmatterMatch && Object.keys(data || {}).length === 0) {
         warnings.push('Parsed empty document');
       }
+      const schemaId = schemaToUse && schemaToUse.$id ? schemaToUse.$id : '';
+      const isTolerantSchema = /data_lexicon|lore_notes|timeline_events|novel_meta|novella_meta/.test(schemaId);
+      const isStrictStory = schemaToUse && schemaToUse.$id && schemaToUse.$id.includes('story.schema');
       if (!data.schema_version && !(data.metadata && data.metadata.schema_version)) {
-        requiredFieldErrors.push('Missing required field: schema_version');
+        if (isTolerantSchema) {
+          warnings.push('Missing recommended field: schema_version');
+        } else {
+          requiredFieldErrors.push('Missing required field: schema_version');
+        }
       }
       if (!data.tags) {
-        requiredFieldErrors.push('Missing required field: tags');
+        if (isTolerantSchema) {
+          warnings.push('Missing recommended field: tags');
+        } else {
+          requiredFieldErrors.push('Missing required field: tags');
+        }
+      }
+      if (isStrictStory && !data.contract_version) {
+        requiredFieldErrors.push('Missing required field: contract_version');
       }
       if (!data.status && !(data.metadata && data.metadata.status)) {
         warnings.push('Missing recommended field: status (top-level or metadata.status)');

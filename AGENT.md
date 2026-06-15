@@ -1,4 +1,4 @@
-# AGENT.md — AI Continuity & Generation Framework
+# AGENT.md — AI Continuity & Generation Framework (v1.0.0)
 **Purpose:**  
 This document defines the authoritative rules and constraints that all AI assistants must follow when generating fiction, lore, or analytical material for **The Forgotten Tides** universe.
 

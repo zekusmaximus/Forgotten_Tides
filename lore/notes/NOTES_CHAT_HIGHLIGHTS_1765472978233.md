@@ -5,6 +5,8 @@ type: notes
 status: draft
 created: '2025-12-11T17:09:38.234Z'
 word_count: 6
+schema_version: v1.0.0
+tags: []
 ---
 
 These are test notes content

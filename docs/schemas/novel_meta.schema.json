@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://forgotten-tides.com/schemas/novel_meta.schema.json",
+  "title": "Novel Meta Schema",
+  "description": "Tolerant schema for stories/novel/*/meta.yaml (type: novel).",
+  "type": "object",
+  "required": ["id", "type"],
+  "properties": {
+    "id": { "type": "string" },
+    "type": { "enum": ["novel"] },
+    "title": { "type": "string" },
+    "working_title": { "type": "string" },
+    "series": { "type": "string" },
+    "series_position": { "type": "integer" },
+    "status": { "type": "string" },
+    "tags": { "type": "array", "items": { "type": "string" } },
+    "schema_version": { "type": "string" },
+    "protagonist": { "type": "string" },
+    "logline": { "type": "string" },
+    "created": { "type": "string" },
+    "modified": { "type": "string" }
+  },
+  "additionalProperties": true
+}

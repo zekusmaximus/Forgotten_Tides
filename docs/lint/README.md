@@ -43,6 +43,8 @@ Best-effort coverage:
 
 Best-effort files are reported as `PASS`, `SKIP`, or `WARN`, but they do not block the short-story gate unless they are part of the strict coverage set. The summary line reports files seen, validated, skipped, warnings, and failures.
 
+New tolerant schemas (data_lexicon, timeline_events, lore_notes, novel_meta, novella_meta) are routed via path heuristics for non-strict walks only. Post-Ajv checks treat schema_version/tags as warnings for these; strict short-story/character/etc. paths continue to hard-fail on missing required fields including the new `contract_version`.
+
 ### `npm run lint:refs`
 
 Recursively checks canonical references in:

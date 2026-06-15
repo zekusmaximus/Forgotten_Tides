@@ -52,7 +52,7 @@ function parseTimelineEvents() {
     const loreDir = path.join(__dirname, '../../lore');
     let timelineEvents = parseTimelineDataEvents();
     const { files: loreFiles, coverage } = discoverMarkdownFiles(loreDir, {
-        exclude: filePath => filePath.includes(`${path.sep}ideas${path.sep}`) || filePath.includes(`${path.sep}notes${path.sep}`)
+        exclude: filePath => filePath.includes(`${path.sep}ideas${path.sep}`) || filePath.includes(`${path.sep}notes${path.sep}`) || /bible\/ARCHIVISTS_WAKE_STORY_BIBLE\.md$/.test(filePath)
     });
     timelineReport.coverage.lore = coverage;
     timelineReport.summary.lore_files_seen = coverage.files_seen;
@@ -86,8 +86,32 @@ function parseTimelineEvents() {
         }
     }
 
-    // Sort events by date
-    timelineEvents.sort((a, b) => new Date(a.date) - new Date(b.date));
+    // Sort events by a stable relative/Cycle-aware key (preserve original_date intent; do not rely solely on JS Date for Cycle/T forms)
+    function getSortKey(ev) {
+        const od = (ev && ev.original_date) || '';
+        if (/^Cycle\s*(\d+)$/i.test(od)) {
+            const n = parseInt(od.match(/^Cycle\s*(\d+)$/i)[1], 10);
+            return 1000 + n; // Cycle 0 earliest anchor
+        }
+        if (/^T(\d+)([+-].*)?$/i.test(od)) {
+            const n = parseInt(od.match(/^T(\d+)/i)[1], 10);
+            return 2000 + n;
+        }
+        if (ev && ev.date) {
+            const d = new Date(ev.date);
+            if (!isNaN(d.getTime())) return d.getTime();
+        }
+        return 9999999999999; // unknown last
+    }
+    timelineEvents.sort((a, b) => {
+        const ka = getSortKey(a);
+        const kb = getSortKey(b);
+        if (ka !== kb) return ka - kb;
+        // stable: original insertion-ish via source+id lexical
+        const sa = (a.source || '') + '|' + (a.id || a.raw || '');
+        const sb = (b.source || '') + '|' + (b.id || b.raw || '');
+        return sa.localeCompare(sb);
+    });
 
     timelineReport.events = timelineEvents;
     recomputeEventSummary();
@@ -170,6 +194,12 @@ function parseEvent(dateStr, description, source) {
             // Assuming 1 cycle = 100 years for this universe
             const year = 2000 + (cycle * 100);
             dateObj = new Date(year, 0, 1);
+        } else if (/^T(\d+)([+-].*)?$/.test(dateStr)) {
+            // Relative T0, T1, T0+48h, T2-0.5 etc. Anchor to year 2000 + T offset for sorting/span
+            const m = dateStr.match(/^T(\d+)([+-].*)?$/);
+            const t = parseInt(m[1], 10);
+            const year = 2000 + t;
+            dateObj = new Date(year, 0, 1);
         } else {
             // Try to parse as general date
             dateObj = new Date(dateStr);
@@ -183,7 +213,9 @@ function parseEvent(dateStr, description, source) {
             original_date: dateStr,
             description: description,
             source: source,
-            raw: `${dateStr}: ${description}`
+            raw: `${dateStr}: ${description}`,
+            is_relative: !/^\d{4}-\d{2}-\d{2}$/.test(dateStr) && !/^Year \d+$/.test(dateStr),
+            offset: /T\d+[+-]|T\d+/.test(dateStr) ? dateStr : null
         };
     } catch (error) {
         console.warn(`Failed to parse event "${dateStr}": ${error.message}`);
@@ -403,7 +435,44 @@ function writeReport() {
 // Main execution
 try {
     console.log('Parsing timeline events...');
-    const timelineEvents = parseTimelineEvents();
+    let timelineEvents = parseTimelineEvents();
+
+    // Seed origin story and bible events (primary_canon) before story parse
+    const originEvents = parseOriginStoryEvents();
+    const bibleEvents = parseBibleTimeline();
+    if (originEvents.length) {
+        timelineEvents = timelineEvents.concat(originEvents);
+        timelineReport.summary.frontmatter_event_count += originEvents.length;
+    }
+    if (bibleEvents.length) {
+        timelineEvents = timelineEvents.concat(bibleEvents);
+    }
+
+    // Re-sort the combined list (yaml + origin + bible + lore + story events) with stable relative/Cycle-aware key
+    function getSortKey(ev) {
+        const od = (ev && ev.original_date) || '';
+        if (/^Cycle\s*(\d+)$/i.test(od)) {
+            const n = parseInt(od.match(/^Cycle\s*(\d+)$/i)[1], 10);
+            return 1000 + n;
+        }
+        if (/^T(\d+)([+-].*)?$/i.test(od)) {
+            const n = parseInt(od.match(/^T(\d+)/i)[1], 10);
+            return 2000 + n;
+        }
+        if (ev && ev.date) {
+            const d = new Date(ev.date);
+            if (!isNaN(d.getTime())) return d.getTime();
+        }
+        return 9999999999999;
+    }
+    timelineEvents.sort((a, b) => {
+        const ka = getSortKey(a);
+        const kb = getSortKey(b);
+        if (ka !== kb) return ka - kb;
+        const sa = (a.source || '') + '|' + (a.id || a.raw || '');
+        const sb = (b.source || '') + '|' + (b.id || b.raw || '');
+        return sa.localeCompare(sb);
+    });
 
     console.log('Parsing story timelines...');
     const stories = parseStoryTimelines();
@@ -448,6 +517,57 @@ function parseTimelineDataEvents() {
             issue: `Could not parse data/timeline/events.yaml: ${error.message}`,
             location: 'data/timeline/events.yaml'
         });
+        return [];
+    }
+}
+
+function parseOriginStoryEvents() {
+    const storyPath = path.join(__dirname, '../../stories/short_story/the_archivists_wake/manuscript.md');
+    if (!fs.existsSync(storyPath)) return [];
+    try {
+        const content = fs.readFileSync(storyPath, 'utf8');
+        const fmMatch = content.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+        if (!fmMatch) return [];
+        const fm = yaml.load(fmMatch[1]) || {};
+        const events = (fm.events || []).map(e => normalizeStructuredEvent(e, 'stories/short_story/the_archivists_wake/manuscript.md', 'story-0001')).filter(Boolean);
+        events.forEach(e => { e.canon_tier = e.canon_tier || 'primary_canon'; e.source = e.source || 'stories/short_story/the_archivists_wake/manuscript.md'; });
+        return events;
+    } catch (error) {
+        timelineReport.issues.hard.push({ type: 'hard', issue: `Could not parse origin story events: ${error.message}`, location: 'stories/short_story/the_archivists_wake/manuscript.md' });
+        return [];
+    }
+}
+
+function parseBibleTimeline() {
+    const biblePath = path.join(__dirname, '../../bible/ARCHIVISTS_WAKE_STORY_BIBLE.md');
+    if (!fs.existsSync(biblePath)) return [];
+    try {
+        const content = fs.readFileSync(biblePath, 'utf8');
+        const sectionMatch = content.match(/# 1\. Canonical Timeline of Events[\s\S]*?(?=\n# |$)/);
+        if (!sectionMatch) return [];
+        const section = sectionMatch[0];
+        const lines = section.split('\n');
+        const events = [];
+        let current = null;
+        for (const line of lines) {
+            const tMatch = line.match(/###\s*(T\d+)\s*—\s*(.*)/);
+            if (tMatch) {
+                if (current) {
+                    const ev = parseEvent(current.t, current.desc.join(' ').trim(), 'bible/ARCHIVISTS_WAKE_STORY_BIBLE.md');
+                    if (ev) events.push({ ...ev, canon_tier: 'primary_canon', id: `bible-${current.t.toLowerCase()}`, summary: current.desc.join(' ').trim() });
+                }
+                current = { t: tMatch[1], desc: [tMatch[2].trim()] };
+            } else if (current && line.trim().startsWith('-')) {
+                current.desc.push(line.trim().replace(/^- /, ''));
+            }
+        }
+        if (current) {
+            const ev = parseEvent(current.t, current.desc.join(' ').trim(), 'bible/ARCHIVISTS_WAKE_STORY_BIBLE.md');
+            if (ev) events.push({ ...ev, canon_tier: 'primary_canon', id: `bible-${current.t.toLowerCase()}`, summary: current.desc.join(' ').trim() });
+        }
+        return events;
+    } catch (error) {
+        timelineReport.issues.hard.push({ type: 'hard', issue: `Could not parse bible timeline: ${error.message}`, location: 'bible/ARCHIVISTS_WAKE_STORY_BIBLE.md' });
         return [];
     }
 }

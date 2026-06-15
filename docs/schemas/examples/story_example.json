@@ -3,6 +3,7 @@
   "type": "story",
   "title": "The Archivist's Wake",
   "story_type": "short-story",
+  "contract_version": "v1.0.0",
   "summary_50": "A Canticle crew faces memory sacrifice and identity loss during a critical corridor traversal.",
   "summary_200": "The Archivist's Wake follows pilot Rell and the Canticle crew as they navigate a thinning memory corridor to reach the failing Heliodrome station. The story explores themes of sacrifice, identity erosion, and the cost of memory-based FTL travel. Rell's forbidden anchor burn creates permanent consequences that embody the universe's core metaphysics.",
   "cross_refs": {

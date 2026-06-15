@@ -1,6 +1,7 @@
 ---
 id: story-0001
 schema_version: "1.0.0"
+contract_version: v1.0.0
 type: story
 title: The Archivist's Wake
 story_type: short-story
@@ -45,6 +46,49 @@ tags:
   - memory-corridor
   - anchor-burn
   - heliodrome
+events:
+  - id: event-0001
+    timestamp: "Cycle 0"
+    summary: "The Archivist's Wake establishes memory corridor travel, anchor-loss consequences, memory stones, and conceptual decay as primary canon."
+    canon_tier: primary_canon
+    source: stories/short_story/the_archivists_wake/manuscript.md
+    involved_entities:
+      - story-0001
+      - mech-0001
+      - mech-0002
+      - mech-0003
+    causal_note: "Baseline continuity event for later memory-drive and corridor mechanics."
+  - id: event-0002
+    timestamp: "T0"
+    summary: "Corridor instability detected; Tari fades semi-permanent; Rell performs illegal zero-anchoring and burns one anchor to stabilize."
+    canon_tier: primary_canon
+    source: bible/ARCHIVISTS_WAKE_STORY_BIBLE.md
+    causal_note: "First canonical anchor burn; establishes permanence of loss."
+  - id: event-0003
+    timestamp: "T1"
+    summary: "Galley aftermath; Sutira and Estavan confront Rell; Heliodrome telemetry shows conceptual dementia expanding."
+    canon_tier: primary_canon
+    source: bible/ARCHIVISTS_WAKE_STORY_BIBLE.md
+  - id: event-0004
+    timestamp: "T2"
+    summary: "Lattice Gap passage; Tari offers memory copy; Rell uses small personal memory stone; eddy tracks mnemonic wake (new canon)."
+    canon_tier: primary_canon
+    source: bible/ARCHIVISTS_WAKE_STORY_BIBLE.md
+  - id: event-0005
+    timestamp: "T3"
+    summary: "Heliodrome approach under spatial misalignment; Rell burns last forbidden emotional anchor to re-stabilize station."
+    canon_tier: primary_canon
+    source: bible/ARCHIVISTS_WAKE_STORY_BIBLE.md
+  - id: event-0006
+    timestamp: "T4"
+    summary: "Docking and recovery; crew performs manual latch under drift; Rell exhibits identity void; Sutira confronts."
+    canon_tier: primary_canon
+    source: bible/ARCHIVISTS_WAKE_STORY_BIBLE.md
+  - id: event-0007
+    timestamp: "T5"
+    summary: "Departure; Rell declines replacement anchor and walks forward into lighter self; crew registers grief and fear."
+    canon_tier: primary_canon
+    source: bible/ARCHIVISTS_WAKE_STORY_BIBLE.md
 ---
 
 THE ARCHIVIST’S WAKE

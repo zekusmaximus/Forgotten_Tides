@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://forgotten-tides.com/schemas/novella_meta.schema.json",
+  "title": "Novella Meta Schema",
+  "description": "Tolerant schema for stories/novella/*/meta.yaml (kind: novella or minimal id/title/status).",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string" },
+    "title": { "type": "string" },
+    "type": { "type": "string" },
+    "kind": { "type": "string" },
+    "status": { "type": "string" },
+    "tags": { "type": "array", "items": { "type": "string" } },
+    "schema_version": { "type": "string" },
+    "created": { "type": "string" },
+    "modified": { "type": "string" }
+  },
+  "additionalProperties": true
+}

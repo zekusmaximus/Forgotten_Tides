@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://forgotten-tides.com/schemas/data_lexicon.schema.json",
+  "title": "Data Lexicon Schema",
+  "description": "Tolerant schema for data/lexicon/terms.yaml (root terms array).",
+  "type": "object",
+  "properties": {
+    "terms": {
+      "type": "array"
+    }
+  },
+  "additionalProperties": true
+}

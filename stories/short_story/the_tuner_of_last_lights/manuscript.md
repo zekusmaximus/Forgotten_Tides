@@ -1,6 +1,7 @@
 ---
 id: story-0003
 schema_version: v1.0.0
+contract_version: v1.0.0
 type: story
 title: The Tuner of Last Lights
 story_type: short-story

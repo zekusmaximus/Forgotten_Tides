@@ -5,6 +5,8 @@ series: "Forgotten Tides"
 series_position: 1
 type: novel
 status: draft
+schema_version: v1.0.0
+tags: []
 protagonist: Gorgi
 logline: >
   A ship technician from an unremarkable planet discovers his homeworld is being

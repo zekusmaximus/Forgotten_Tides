@@ -2,7 +2,7 @@
 
 This document lists all constrained enum values across every entity schema. Consult this before writing frontmatter to avoid lint failures.
 
-Last updated: May 23, 2026. Source of truth: `docs/schemas/*.schema.json`.
+Last updated: 2026-06-15. Source of truth: `docs/schemas/*.schema.json`. (Added tolerant data/novel/novella/lore schemas + contract_version per foundational plan.)
 
 ---
 
@@ -15,6 +15,7 @@ Last updated: May 23, 2026. Source of truth: `docs/schemas/*.schema.json`.
 | `status` | `canonical`, `speculative`, `deprecated`, `draft` |
 | `canon_tier` | `primary_canon`, `working_canon`, `draft`, `speculative`, `sandbox`, `test`, `deprecated` |
 | `retrieval_role` | Free-form string (e.g. `authoritative`, `working_reference`, `active_draft`, `exploratory`, `test_fixture`). Mirrors `canon_tier` for LLM prompts. |
+| `contract_version` | Version string matching `^v?\d+\.\d+\.\d+$` (e.g. `v1.0.0`). Required for short-story manuscripts. Records the AGENT.md / PLAYBOOK / drafting agent contract version the story was authored against (distinct from `schema_version`). |
 | `themes[]` | `memory-as-cost`, `identity-erosion`, `sacrifice`, `conceptual-fragility`, `quiet-heroism`, `memory-preservation`, `institutional-burden`, `ethical-forgetting`, `inheritance`, `duty-vs-faith` |
 
 ### Story `cross_refs` and `references` sub-fields
@@ -98,6 +99,9 @@ These three fields (primarily on stories, but also surfaced on other entities vi
 - `scripts/lib/canon_policy.js` computes defaults from path + frontmatter, then `build_linkmap.js` writes them into `REFERENCE_MAP.json`.
 - Prompt-pack export, context builders, and resolve-ids logic sort by `source_weight` (desc) then tier.
 - `npm run promote:story -- --id story-####` is the recommended way to move a short story from `draft` → `primary_canon` (it also updates `status` and re-runs the linkmap).
+
+## Tolerant / Best-Effort Schemas (non-blocking)
+Additional permissive schemas exist for data files, novel/novella meta, and lore notes (see `data_lexicon.schema.json`, `timeline_events.schema.json`, `novel_meta.schema.json`, `novella_meta.schema.json`, `lore_notes.schema.json`). These are routed by path heuristics in `schema_validate.js`; they tolerate missing `schema_version`/`tags` as warnings only and do not affect the strict short-story gate.
 - Dashboard and reports surface these fields for human review.
 
 See also:

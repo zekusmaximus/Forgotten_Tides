@@ -16,6 +16,11 @@
       "pattern": "^v?\\d+\\.\\d+\\.\\d+$",
       "description": "Schema version for this frontmatter"
     },
+    "contract_version": {
+      "type": "string",
+      "pattern": "^v?\\d+\\.\\d+\\.\\d+$",
+      "description": "Version of the AGENT.md / PLAYBOOK_NEW_STORY.md / short_story_drafting_agent.md Operating Contract this story was authored against. Separate from schema_version (frontmatter shape)."
+    },
     "uuid": {
       "type": "string",
       "format": "uuid",

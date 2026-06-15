@@ -1,4 +1,4 @@
-# Playbook: Adding a New Short Story
+# Playbook: Adding a New Short Story (v1.0.0)
 
 This is the authoritative step-by-step recipe for contributing a new short story to *The Forgotten Tides*. Follow every step in order. Do not skip steps. Novel and screenplay work are outside this playbook.
 
@@ -44,6 +44,7 @@ The manuscript file **must** have YAML frontmatter that validates against `docs/
 ---
 id: story-####            # from Step 1
 schema_version: v1.0.0
+contract_version: v1.0.0  # Version of AGENT.md / PLAYBOOK / drafting agent contract this story was authored against (required for short stories; distinct from schema_version)
 type: story
 title: "Your Story Title"
 story_type: short-story   # see allowed values below
@@ -79,6 +80,7 @@ See [`docs/SCHEMA_QUICK_REFERENCE.md`](SCHEMA_QUICK_REFERENCE.md) for the comple
 | `story_type` | `short-story`, `novel`, `novella`, `scene`, `fragment` |
 | `status` | `canonical`, `speculative`, `deprecated`, `draft` |
 | `canon_tier` | `primary_canon`, `working_canon`, `draft`, `speculative`, `sandbox`, `test`, `deprecated` |
+| `contract_version` | Version string e.g. `v1.0.0` (required for short-story manuscripts; records the behavioral contract version) |
 | `themes` | `memory-as-cost`, `identity-erosion`, `sacrifice`, `conceptual-fragility`, `quiet-heroism`, `memory-preservation`, `institutional-burden`, `ethical-forgetting`, `inheritance`, `duty-vs-faith` |
 
 ### About `cross_refs` vs `references`
@@ -209,7 +211,7 @@ Use this matrix before validation. The goal is that the next agent or human can 
 | New named location, ship, station, artifact, or region | Add `atlas/<Name>.md`; add the `loc-####` ID to story `cross_refs.locations` and `references.locations`; run `npm run linkmap:build`. |
 | New faction, order, institution, company, cult, or political body | Add `factions/<Name>.md`; add the `fact-####` ID to story refs; update `lore/POLITIES_AND_FACTIONS.md` if the faction changes the political landscape; run `npm run linkmap:build`. |
 | New term or capitalized technical phrase | Add an entry under `terms:` in `data/lexicon/terms.yaml`; use `status: draft` until reviewed; run `npm run linkmap:build`. |
-| Timeline-significant event | Add a story-frontmatter `events` entry. If the event becomes shared canon beyond this story, also add it to `data/timeline/events.yaml`. |
+| Timeline-significant event | Add a story-frontmatter `events` entry (structured: id/timestamp/summary + optional canon_tier/causal_note/involved_entities). If the event becomes shared canon beyond this story, also add it to `data/timeline/events.yaml`. Stories with non-trivial internal chronology (timeline.chronology.length >= 3 or explicit timeline-significant events) must include `events` frontmatter. |
 | Uses Rell, Sutira, Estavan, Tari, Heliodrome, Lattice Gap, eddies, zero-anchoring, or anchor burn | Re-read `bible/ARCHIVISTS_WAKE_STORY_BIBLE.md`; preserve all red lines; cite the relevant IDs in refs. |
 | Introduces or changes metaphysical mechanics | Do not leave the change only in fiction. Add an explicit Canon Note in the PR and update the relevant mechanics or lore file. |
 | Uses only existing canon and introduces no new named entities or terms | Manuscript plus accurate `cross_refs` and `references` may be sufficient. Still run full validation. |

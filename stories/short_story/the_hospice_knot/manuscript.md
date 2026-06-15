@@ -1,6 +1,7 @@
 ---
 id: story-0007
 schema_version: v1.0.0
+contract_version: v1.0.0
 type: story
 title: The Hospice Knot
 story_type: short-story

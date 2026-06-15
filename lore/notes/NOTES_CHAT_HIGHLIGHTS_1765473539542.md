@@ -5,6 +5,8 @@ type: notes
 status: draft
 created: '2025-12-11T17:18:59.542Z'
 word_count: 5
+schema_version: v1.0.0
+tags: []
 ---
 
 Key highlights:\n- X\n- Y\n

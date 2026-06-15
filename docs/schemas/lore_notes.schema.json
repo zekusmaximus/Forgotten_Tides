@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://forgotten-tides.com/schemas/lore_notes.schema.json",
+  "title": "Lore Notes Schema",
+  "description": "Minimal tolerant schema for lore/notes/*.md and similar (type: notes).",
+  "type": "object",
+  "properties": {
+    "id": { "type": "string" },
+    "title": { "type": "string" },
+    "type": { "enum": ["notes", "lore"] },
+    "status": { "type": "string" },
+    "tags": { "type": "array", "items": { "type": "string" } },
+    "schema_version": { "type": "string" },
+    "created": { "type": "string" },
+    "modified": { "type": "string" },
+    "word_count": { "type": "integer" }
+  },
+  "additionalProperties": true
+}

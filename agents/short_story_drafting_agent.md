@@ -37,12 +37,12 @@ The agent must:
 
 - Write only short stories under `stories/short_story/<snake_case_title>/manuscript.md`.
 - Use the next available IDs from `node scripts/ids_next.js --type story`, plus `char`, `loc`, `fact`, or `term` as needed.
-- Use valid story frontmatter from `docs/PLAYBOOK_NEW_STORY.md`.
+- Use valid story frontmatter from `docs/PLAYBOOK_NEW_STORY.md` including `contract_version: v1.0.0` (or current contract version).
 - Keep `cross_refs` and `references` accurate.
 - Apply the Lore Update Matrix in `docs/PLAYBOOK_NEW_STORY.md`.
 - Add entity files for new reusable characters, locations, and factions.
 - Add lexicon entries for new reusable technical terms.
-- Add story `events` for timeline-significant moments.
+- Add story `events` (structured array) for timeline-significant moments. For non-trivial internal chronology (timeline.chronology.length >= 3), include `events` in frontmatter. Seed shared events to data/timeline/events.yaml when promoting beyond one story.
 - Run `npm run validate:ci` before declaring the work PR-ready.
 
 The agent must not:
