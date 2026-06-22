@@ -373,13 +373,13 @@ Sael understood the shape of it before he spoke.
 
 The report.
 
-Proof had cleared the Black Horizon with them. The sealed witness, the physical
-casing, the route record, the dark board, the crew testimony, Sael herself:
-Canticle command would want all of it. The Synod had preserved unwilling fear
-to stabilize a route. Canticle had closed a failed recovery and let its dead be
-misfiled into silence. There would be inquiries. There would be denials. There
-would be people who had loved the lost and would take any instrument handed to
-them if the instrument promised shape for grief.
+What Canticle would call proof had cleared the Black Horizon with them. The
+sealed witness, the physical casing, the route record, the dark board, the crew
+testimony, Sael herself: Canticle command would want all of it. The Synod had
+preserved unwilling fear to stabilize a route. Canticle had closed a failed
+recovery and let its dead be misfiled into silence. There would be inquiries.
+There would be denials. There would be people who had loved the lost and would
+take any instrument handed to them if the instrument promised shape for grief.
 
 Witness could become a second captivity.
 
@@ -526,7 +526,7 @@ Still, something in them held.
 
 Ives looked at the blank emergency ledger clipped beneath the console.
 
-"Not alone."
+"Not alone. Not securely."
 
 The old office in Sael answered before she did. It rose with all its habits:
 intake line, custody mark, donor phrase, burden status, release permission,
@@ -762,11 +762,12 @@ behind her in walls and thresholds.
 
 She remembered.
 
-The galaxy had proof now.
+The galaxy had something it would call proof now.
 
 Sael had once believed proof would make a lie lighter. It did not. Proof was a
-mass. It entered the room and asked every person nearby what they would spend
-to hold it honestly.
+mass before it was justice, and sometimes never became justice at all. It
+entered the room and asked every person nearby what they would spend to hold it
+honestly.
 
 The Pell carried that mass forward: one sealed witness memory, one former Synod
 acolyte, one Canticle captain with a lost first ship, and a ledger whose first

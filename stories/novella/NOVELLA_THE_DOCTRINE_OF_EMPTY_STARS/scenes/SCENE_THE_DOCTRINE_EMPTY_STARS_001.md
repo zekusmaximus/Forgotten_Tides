@@ -279,6 +279,12 @@ by the vanity of record. Sael had written thousands of lines without a single
 proper name after the header. Parent, pilot, witness, donor, clerk. Functions
 were sufficient. Functions were kind. Names gathered mass.
 
+First lines mattered most. Veyr had taught her that a ledger did not merely
+describe a burden; it taught every later hand what the burden was allowed to
+become. Grief recorded first as fuel leaned toward use. Grief recorded first as
+petition leaned toward argument. Grief recorded first as grief might, for a
+little while, resist both.
+
 Voluntary, the form said.
 
 Lio, the memory said.

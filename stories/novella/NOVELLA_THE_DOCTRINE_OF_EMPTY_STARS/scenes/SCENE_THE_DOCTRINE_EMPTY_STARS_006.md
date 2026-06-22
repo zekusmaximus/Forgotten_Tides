@@ -409,6 +409,13 @@ My command closed the recovery when proof got expensive. My Fleet would use that
 memory if we got it out. Hearings. Charges, route revisions, public grief, all
 the machinery. Veyr is not wrong about use."
 
+He opened his eyes. "If we return with it, the first record will not begin as
+mourning unless someone forces the line. It will begin as chain of custody.
+Recovered material. Possible route evidence. Command will call that discipline."
+
+The honesty did not cleanse him. It only showed Sael where the dirt would enter
+the form.
+
 Sael's thumb tightened on the slate edge. Veyr's name in Ives's mouth should
 have felt like trespass. It felt instead like a tool set on a table between
 them.

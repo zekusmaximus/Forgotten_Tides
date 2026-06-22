@@ -432,6 +432,15 @@ being right. Process was where institutions lived. Not in the clean moment of
 finding a body or hearing a name. In custody stamps. In hearings. In orders
 reopened because shame needed a corridor back to usefulness.
 
+"Imagine the first record," Veyr said.
+
+Sael did.
+
+The first record was never only first. It taught the second what it could ask.
+If the casing entered Canticle custody as evidence, mourning would have to
+petition evidence for room. If it entered as route data, every later mercy would
+arrive after use had already named itself necessary.
+
 She imagined the casing aboard a Canticle ship. Stabilized, copied, audited,
 presented. The child-name Lio entered into reports that would not know how to
 hold a child. The hand on the bulkhead replayed for officers who needed the

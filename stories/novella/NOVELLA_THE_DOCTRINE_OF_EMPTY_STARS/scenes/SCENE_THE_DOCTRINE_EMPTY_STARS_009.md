@@ -605,6 +605,11 @@ Of course there was no mark.
 
 The Narthex did not prepare burdens to remain.
 
+But it had trained Sael to know where a first mark would travel. The first mark
+was a threshold. It did not control every hand after it, but it made each later
+hand either pass through or break the line. If she let the route table record
+the witness first as fuel, no later correction would make that innocence again.
+
 Sael heard Veyr's voice as clearly as if he stood beside the table. Witness can
 become a second captivity.
 

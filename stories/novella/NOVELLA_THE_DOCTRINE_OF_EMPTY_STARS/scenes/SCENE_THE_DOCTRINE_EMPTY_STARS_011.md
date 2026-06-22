@@ -610,6 +610,11 @@ room inside her slammed against her ribs.
 
 Lio remained beside her name.
 
+From inside the lock, Rin lunged and caught one runner before the cradle could
+twist fully sideways. The threshold remembered edge against their wrist before
+it remembered floor. Dark blood appeared at the cuff and was immediately less
+important than the fact that they did not let go.
+
 She did not pray. Prayer would have asked someone else to hold the line.
 
 "Now," Ives said.
