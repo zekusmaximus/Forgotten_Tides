@@ -11,8 +11,8 @@ tags:
   - doctrine-empty-stars
   - continuity-brief
   - process
-summary_50: "Rolling continuity brief for drafting The Doctrine of Empty Stars after Scene 10."
-summary_200: "A compact drafting brief for The Doctrine of Empty Stars that summarizes Scenes 1-10, current character states, live moral tensions, established memory and corridor mechanics, open promises, style anchors, and future-chat workflow so new drafting sessions can avoid rereading every scene."
+summary_50: "Rolling continuity brief for drafting The Doctrine of Empty Stars after Scene 11."
+summary_200: "A compact drafting brief for The Doctrine of Empty Stars that summarizes Scenes 1-11, current character states, live moral tensions, established memory and corridor mechanics, open promises, style anchors, and future-chat workflow so new drafting sessions can avoid rereading every scene."
 cross_refs:
   characters:
     - char-0011
@@ -44,7 +44,7 @@ scene or two; it is a compact memory of the novella's current state.
 
 ## Recommended Context Packet
 
-For drafting Scene 11 onward, read:
+For drafting Scene 12 onward, read:
 
 - `AGENT.md`
 - `README.md`
@@ -53,7 +53,7 @@ For drafting Scene 11 onward, read:
 - `stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/meta.yaml`
 - `stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/outline.md`
 - `stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/continuity_brief.md`
-- The two most recent scenes, currently Scenes 9 and 10
+- The two most recent scenes, currently Scenes 10 and 11
 
 Only read earlier full scenes when a specific continuity question requires it.
 
@@ -62,9 +62,10 @@ Only read earlier full scenes when a specific continuity question requires it.
 Sael Orro begins as a sincere keeper of release ledgers, discovers that a
 supposedly voluntary evacuation memory was coerced and edited, becomes a
 name-bearing witness to Lio, is marked for release by Veyr, preserves the
-witness memory unburned in Scene 9, and interrupts the final rite in Scene 10 by
-speaking Lio's name aloud, making the memory heavy enough that the Narthex
-starts thinning around it.
+witness memory unburned in Scene 9, interrupts the final rite in Scene 10 by
+speaking Lio's name aloud, and in Scene 11 carries the sealed witness intact as
+custody through a costed corridor while the Narthex forgets rooms behind her and
+Veyr remains with the station.
 
 ## Scene Summaries
 
@@ -183,25 +184,53 @@ starts thinning around it.
   hold absence at the walls rather than the casing, and tells Ives the corridor
   must be costed now.
 
-## Current State After Scene 10
+### Scene 11 - The Costed Corridor
 
-- The witness memory remains sealed, unburned, and now formally marked for
-  preservation during transit rather than release resonance or memory burn.
-- Lio's name has been spoken aloud inside the release field. The hidden imprint
-  in Sael has become an acknowledged relation: Sael Orro and Lio share a line
-  without becoming the same self.
-- Sael remains custodian of the unburned witness line and is now visibly between
-  Veyr and the casing. She is part of the route field, but still not fuel.
-- The exit corridor is beginning to open, but only as a threadlike, costed line
-  that runs outward through the remembered failure of Tern Gate.
-- The Narthex is thinning in physically legible ways: high panels lose depth,
-  the service stair shows through, floor function pales around acolytes' feet,
-  and thresholds widen incorrectly.
-- Veyr has turned the rite away from direct release for the moment, ordering the
-  acolytes to hold the walls and station functions rather than the witness
-  casing. This is a tactical and doctrinal adjustment, not absolution.
-- Sael's old office remains past tense. Her Synod training still shapes the
-  interruption: she acts from exactness and doctrine as much as revolt.
+- Ives opens only a narrow exit corridor, and it holds because Lio's named
+  weight has made a line through the remembered Tern Gate failure physically
+  legible.
+- The corridor must be walked through station thresholds toward the west
+  maintenance seam; behind the escaping party, the Narthex forgets rooms and
+  functions to pay for the route.
+- Sael refuses zero-anchoring and refuses any burn of the witness memory. She
+  takes the sealed witness inward as intact custody: Lio beside Sael's name,
+  witness status sealed, burn status unburned, term until the ship clears the
+  Black Horizon.
+- The witness memory remains sealed and unburned. It does not speak through
+  Sael, possess her, or fuse with her; it becomes a sealed room inside her anchor
+  sequence.
+- Veyr chooses not to take the last corridor margin. He remains with the Narthex
+  and its remaining acolytes so the station is not reduced only to the evidence
+  Sael carries away.
+- Sael boards the Pell with Ives, Aven, Rin, and the casing, while Tovan and
+  Ilet remain stationside with Veyr holding threshold function.
+- Sael's irreversible cost is not simple anti-Synod conversion. She cannot
+  return to the self that believed release was always mercy.
+
+## Current State After Scene 11
+
+- The witness memory remains sealed, unburned, and physically present in its
+  casing aboard the Pell.
+- Sael also carries the intact witness as sealed custody inside her own anchor
+  sequence: Lio beside Sael Orro, witness status sealed, burn status unburned,
+  term until the ship clears the Black Horizon.
+- Lio's name has acknowledged weight beside Sael's name without fusion,
+  possession, or access to the sealed memory's contents.
+- Ives has opened a narrow, unstable exit corridor through the Tern Gate failure
+  line. It is not a clean rescue route; it is a costed path made legible by
+  named witness weight and held by disciplined anchor checks.
+- The Pell has left the west maintenance seam carrying Sael, Ives, Aven, Rin,
+  the casing, and the unburned witness line into the corridor.
+- The Narthex paid for the route by forgetting rooms and functions behind the
+  escape: release nave, deep chapel access, silence cells, archive access, and
+  service stairs lose meaning as the party passes.
+- Veyr, Tovan, Ilet, and remaining acolytes stay stationside, holding wall,
+  floor, and threshold functions as long as possible.
+- Veyr's choice to remain is sincere and coherent but not redemptive. He would
+  still release the witness if Sael failed, and he remains dangerous in exactly
+  the way his mercy has always been dangerous.
+- Sael's old office remains past tense. Her old self, which believed release was
+  always mercy unless mishandled by people, does not cross the corridor intact.
 
 ## Character State
 
@@ -210,16 +239,22 @@ starts thinning around it.
 - Close third POV remains locked on Sael.
 - She is no longer keeper of release ledgers in the station's record, even
   though the habits of that office still shape her language and choices.
-- She carries Lio inside her anchor sequence beneath her own name.
+- She carries Lio beside her own name in her anchor sequence.
 - She still believes release can be mercy and witness can become captivity.
 - Her rupture is ethical, not ideological conversion; she distinguishes stolen
   release from chosen release.
 - Her new irreversible choice is preservation: she must keep what she was raised
-  to release.
+  to release, at least until the Pell clears the Black Horizon.
 - In Scene 10 she makes Lio's name public in the rite. This preserves the
   witness from false release but forces the Narthex to pay structural coherence.
 - Lio now sits beside Sael's name in her anchor sequence rather than only
   beneath it; this should not be treated as possession or fusion.
+- In Scene 11 she refuses zero-anchoring and refuses witness burn, choosing
+  sealed inward custody as the route cost instead.
+- She is aboard the Pell with the physical casing and the sealed witness burden,
+  no longer housed by the Narthex or by her former office.
+- She cannot return to the self that believed release was always mercy, but she
+  still carries enough Synod doctrine to fear preservation becoming captivity.
 
 ### Ives Mar
 
@@ -234,6 +269,12 @@ starts thinning around it.
 - In Scene 10 he holds the route board under ritual pressure, keeps the first
   ship name marked honestly as lost, and names the return as out, with witness
   unburned.
+- In Scene 11 he opens only a narrow, damaged corridor and keeps the first-ship
+  anchor marked as lost; do not restore it.
+- He offers Veyr the last margin without turning it into heroic rescue, then
+  accepts Veyr's refusal and keeps the route moving.
+- He knows Canticle command will want the surviving witness as proof and likely
+  as leverage; he is not naive about his institution's appetite.
 
 ### Veyr Anik
 
@@ -243,13 +284,18 @@ starts thinning around it.
   prevent endless inherited suffering.
 - He marked Sael for release because she became a name-bearing witness, not
   because he is cartoonishly punitive.
-- He should remain gentle, coherent, merciful, and dangerous when he returns.
+- He should remain gentle, coherent, merciful, and dangerous.
 - In Scene 10 he begins the final rite with full knowledge of the coerced
   witness and warns accurately that speaking a name in the field will become
   gravity.
 - After the Narthex starts thinning, he redirects the acolytes to preserve wall,
   floor, threshold, chapel, and nave rather than continuing to release the
   casing. This makes him responsive to reality, not redeemed or defeated.
+- In Scene 11 he remains with the Narthex rather than take the last corridor
+  margin, partly to hold remaining station functions and partly because leaving
+  would make the Narthex only the crime Sael carries away.
+- His remaining is not absolution. He explicitly still would release the witness
+  if Sael failed, which preserves his danger and coherence.
 
 ### Supporting Acolytes and Canticle Survivors
 
@@ -264,6 +310,10 @@ starts thinning around it.
 - In Scene 10, Tovan leads the shifted station-coherence recitation after Veyr
   turns the acolytes away from direct release. Ilet remains in place even as the
   floor thins around her feet. Aven and Rin hold the route board under pressure.
+- In Scene 11, Aven and Rin board the Pell with Ives and keep ship and hatch
+  functions named under corridor pressure.
+- Tovan and Ilet remain stationside with Veyr, holding threshold and wall
+  functions as the Narthex forgets rooms behind the escape.
 
 ## Established Mechanics In This Draft
 
@@ -289,6 +339,14 @@ starts thinning around it.
 - The final rite's absence recitation strips relation from a burden before
   release. It is merciful when applied to a clean offering or proper custody,
   but procedurally false when it names absence over coerced relation.
+- Scene 11 distinguishes zero-anchoring from sealed witness custody: Sael does
+  not burn herself empty, open the casing, or let the memory speak through her.
+  She holds the intact witness as a sealed room inside her anchor sequence.
+- A costed corridor can be paid partly by station coherence. The Narthex forgets
+  rooms and functions behind the escape, converting released architecture into
+  temporary route stability.
+- The corridor remains bound to attention and naming. The Pell, hatch, seal, and
+  ship functions have to be named under pressure for the exit to hold.
 
 ## Live Moral Tensions
 
@@ -301,25 +359,36 @@ starts thinning around it.
   work as proof, route, and obligation.
 - Sael's naming is not simple rescue; it preserves witness by making the station
   pay structural cost.
+- Veyr's remaining is not redemption; it is an internally coherent mercy that
+  still admits he would release the witness if Sael failed.
+- Sael's sealed custody is time-limited by intention, but the psychological and
+  doctrinal cost may not end when the ship clears.
 - The question is not whether forgetting is evil. The question is whether an
   ethic of release survives coercion.
 
 ## Open Promises And Payoffs
 
-- Lio's name has mattered in the rite as added weight; future scenes must carry
-  the cost rather than soften it into sentiment.
-- Veyr has answered Sael's preservation mark by beginning the rite anyway, then
-  redirecting it when the Narthex thins. His next payoff is the Scene 11 choice
-  to remain with the station.
-- The thin route from Scene 9 should lead into the Act III corridor sequence,
-  not solve escape by itself.
+- Lio's name has mattered as added weight in the rite and as corridor
+  stabilization in Scene 11; Scene 12 must carry that cost rather than soften it
+  into sentiment.
+- Veyr's Scene 11 payoff has occurred: he remains with the Narthex rather than
+  be rescued. Future references should preserve the ambiguity of that choice,
+  not make it clean absolution or simple punishment.
+- The thin route has become a costed corridor, but it has not made escape clean.
+  Scene 12 should show damage from crossing the Black Horizon.
 - Ives's lost first-ship name should remain lost; do not restore it.
 - Sael's office should remain over; do not reinstate her as keeper.
 - The witness memory must not be burned clean.
-- The Narthex thinning must remain physically consequential in Scene 11: rooms,
-  doors, floors, and station functions should fail behind or around the escape.
+- The witness memory must remain sealed. Sael carries custody, not the opened
+  contents of the witness.
+- The Narthex has paid in rooms; do not undo or casually repair the forgotten
+  nave, chapel access, silence cells, archive access, or service stair.
+- Tovan, Ilet, Veyr, and remaining acolytes are stationside when the Pell leaves.
 - The route should not become clean just because Lio is named. It is now more
   legible and more dangerous.
+- Canticle command's future use of the witness remains a live ethical threat.
+  Scene 12 should set up Sael's request that the memory be mourned before it is
+  made useful.
 - The broader Black Horizon mystery remains closed; do not reveal what the Synod
   found or believes it found at the perimeter.
 
@@ -327,6 +396,7 @@ starts thinning around it.
 
 - Do not make Sael simply anti-Synod.
 - Do not make Veyr a villain who enjoys harm or lies about the facts.
+- Do not make Veyr's choice to remain a clean redemption.
 - Do not make Ives a clean hero or the Canticle Fleet innocent.
 - Do not restore burned or lost anchors.
 - Do not expand beyond coerced evacuees, retained fear, and route stabilization
@@ -334,15 +404,17 @@ starts thinning around it.
 - Do not use a painless preservation solution. Every route must cost memory,
   identity, structure, or moral certainty.
 
-## Scene 11 Setup
+## Scene 12 Setup
 
-Scene 11, "The Costed Corridor," should begin from an active crisis rather than
-a clean opening. The final rite has been interrupted, the Narthex is thinning,
-and the route has begun to remember how to open only because Lio's named weight
-forces a line through the Tern Gate failure. Ives should open a narrow exit
-corridor while Sael stabilizes the witness as unburned preserved resonance. The
-station should forget rooms or functions behind them as they move. Veyr's
-expected turn is choosing to remain with the Narthex rather than be rescued.
+Scene 12, "The First Heavy Thing," should begin with the Pell exiting or nearly
+exiting the Black Horizon damaged, carrying Sael, Ives, Aven, Rin, the physical
+casing, and the sealed unburned witness line. Sael is no longer in the Narthex,
+but the station remains inside her as cost: former office past, Lio beside her
+name, witness sealed until clear. The main turn should not be triumph. Sael
+should ask Ives not to turn the memory into a weapon before it has been mourned.
+Ives cannot promise full protection from Canticle use, but he can delay the
+report or shape the first record. The ending should preserve grief rather than
+resolve it, likely through Sael beginning a new ledger entry for Lio's name.
 
 ## Style Anchors
 
