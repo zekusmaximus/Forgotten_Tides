@@ -13,6 +13,7 @@ const INDEXED_ROOTS = [
   'atlas',
   'mechanics',
   'stories/short_story',
+  'stories/novella',
   'lore'
 ];
 
@@ -22,6 +23,7 @@ const CHECKED_ROOTS = [
   'atlas',
   'mechanics',
   'stories/short_story',
+  'stories/novella',
   'lore'
 ];
 

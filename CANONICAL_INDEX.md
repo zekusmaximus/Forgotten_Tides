@@ -1,6 +1,6 @@
 # Canonical Index
 
-This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-06-15T15:45:50.937Z
+This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-06-22T14:31:44.836Z
 
 ## Character
 - `char-0001` — Rell (`characters/Rell.md`)
@@ -13,6 +13,9 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `char-0008` — Lira Voss (`characters/Lira_Voss.md`)
 - `char-0009` — Maren Holt (`characters/Maren_Holt.md`)
 - `char-0010` — Inya Solven (`characters/Inya_Solven.md`)
+- `char-0011` — Sael Orro (`characters/Sael_Orro.md`)
+- `char-0012` — Ives Mar (`characters/Ives_Mar.md`)
+- `char-0013` — Veyr Anik (`characters/Veyr_Anik.md`)
 
 ## Faction
 - `fact-0001` — Canticle Fleet (`factions/Canticle_Fleet.md`)
@@ -35,6 +38,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `loc-0009` — Ebbhaven (`atlas/Ebbhaven.md`)
 - `loc-0010` — Solace Hospice (`atlas/Solace_Hospice.md`)
 - `loc-0011` — Tessarine Vault (`atlas/Tessarine_Vault.md`)
+- `loc-0012` — Narthex of Low Mercy (`atlas/Narthex_of_Low_Mercy.md`)
 
 ## Lore
 - `lore-0001` — COSMIC REGIONS (`lore/COSMIC_REGIONS.md`)
@@ -59,6 +63,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `novella_test_novella` — Test Novella (`stories/novella/NOVELLA_TEST_NOVELLA/manuscript.md`)
 - `novella_test_novella_outline` — Test Novella - Outline (`stories/novella/NOVELLA_TEST_NOVELLA/outline.md`)
 - `novella_test_outline` — Test - Outline (`stories/novella/NOVELLA_TEST/outline.md`)
+- `novella_the_doctrine_of_empty_stars_outline` — The Doctrine of Empty Stars - Outline (`stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/outline.md`)
 - `scene_541938a8fd6140a456619c4030b828ccc5ac4298` — Floaters (`stories/novel/NOVEL_FORGOTTEN_TIDES/scenes/SCENE_541938A8FD6140A456619C4030B828CCC5AC4298.md`)
 - `scene_96a0a49f0f2bca0ee73308e6fd97da80711debbc` — Opening Scene (`stories/novella/NOVELLA_FIRST_CORRIDOR/scenes/SCENE_96A0A49F0F2BCA0EE73308E6FD97DA80711DEBBC.md`)
 - `scene_9fb5cd97d313e440a565fdffc9bc933411b6b453` — Test Scene (`stories/novella/NOVELLA_TEST_NOVELLA/scenes/SCENE_9FB5CD97D313E440A565FDFFC9BC933411B6B453.md`)
@@ -74,6 +79,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `story-0006` — The Anchorless Tide (`stories/short_story/the_anchorless_tide/manuscript.md`)
 - `story-0007` — The Hospice Knot (`stories/short_story/the_hospice_knot/manuscript.md`)
 - `story-0008` — The Reliquarist's Doubt (`stories/short_story/the_reliquarists_doubt/manuscript.md`)
+- `story-0009` — The Doctrine of Empty Stars (`stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/manuscript.md`)
 
 ## Term
 - `term-0001` — Anchor (`data/lexicon/terms.yaml`)
@@ -176,6 +182,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `novel_forgotten_tides_outline` - Forgotten Tides - Outline (story, draft, weight 55, `stories/novel/NOVEL_FORGOTTEN_TIDES/outline.md`)
 - `novella_first_corridor` - First Corridor (story, draft, weight 55, `stories/novella/NOVELLA_FIRST_CORRIDOR/manuscript.md`)
 - `novella_first_corridor_outline` - First Corridor - Outline (story, draft, weight 55, `stories/novella/NOVELLA_FIRST_CORRIDOR/outline.md`)
+- `novella_the_doctrine_of_empty_stars_outline` - The Doctrine of Empty Stars - Outline (story, draft, weight 55, `stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/outline.md`)
 - `scene_541938a8fd6140a456619c4030b828ccc5ac4298` - Floaters (story, draft, weight 55, `stories/novel/NOVEL_FORGOTTEN_TIDES/scenes/SCENE_541938A8FD6140A456619C4030B828CCC5AC4298.md`)
 - `scene_96a0a49f0f2bca0ee73308e6fd97da80711debbc` - Opening Scene (story, draft, weight 50, `stories/novella/NOVELLA_FIRST_CORRIDOR/scenes/SCENE_96A0A49F0F2BCA0EE73308E6FD97DA80711DEBBC.md`)
 - `scene_d9b9e99cd4cdd7109b0756ce955e9574912e36a6` - Second Scene (story, draft, weight 50, `stories/novella/NOVELLA_FIRST_CORRIDOR/scenes/SCENE_D9B9E99CD4CDD7109B0756CE955E9574912E36A6.md`)
@@ -187,9 +194,14 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `story-0006` - The Anchorless Tide (story, draft, weight 65, `stories/short_story/the_anchorless_tide/manuscript.md`)
 - `story-0007` - The Hospice Knot (story, draft, weight 65, `stories/short_story/the_hospice_knot/manuscript.md`)
 - `story-0008` - The Reliquarist's Doubt (story, draft, weight 65, `stories/short_story/the_reliquarists_doubt/manuscript.md`)
+- `story-0009` - The Doctrine of Empty Stars (story, draft, weight 65, `stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/manuscript.md`)
 
 ### Speculative / Sandbox Material
 - `char-0009` - Maren Holt (character, speculative, weight 60, `characters/Maren_Holt.md`)
+- `char-0011` - Sael Orro (character, speculative, weight 60, `characters/Sael_Orro.md`)
+- `char-0012` - Ives Mar (character, speculative, weight 60, `characters/Ives_Mar.md`)
+- `char-0013` - Veyr Anik (character, speculative, weight 60, `characters/Veyr_Anik.md`)
+- `loc-0012` - Narthex of Low Mercy (location, speculative, weight 60, `atlas/Narthex_of_Low_Mercy.md`)
 
 ### Test / Dev / Sample Material
 - `novella_test` - Test (story, test, weight 10, `stories/novella/NOVELLA_TEST/manuscript.md`)
