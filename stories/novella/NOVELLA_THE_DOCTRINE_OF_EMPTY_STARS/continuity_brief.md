@@ -11,8 +11,8 @@ tags:
   - doctrine-empty-stars
   - continuity-brief
   - process
-summary_50: "Rolling continuity brief for drafting The Doctrine of Empty Stars after Scene 11."
-summary_200: "A compact drafting brief for The Doctrine of Empty Stars that summarizes Scenes 1-11, current character states, live moral tensions, established memory and corridor mechanics, open promises, style anchors, and future-chat workflow so new drafting sessions can avoid rereading every scene."
+summary_50: "Rolling continuity brief for The Doctrine of Empty Stars after Scene 12."
+summary_200: "A compact drafting brief for The Doctrine of Empty Stars that summarizes Scenes 1-12, current character states, live moral tensions, established memory and corridor mechanics, open promises, style anchors, and future revision workflow so new drafting sessions can avoid rereading every scene."
 cross_refs:
   characters:
     - char-0011
@@ -44,7 +44,7 @@ scene or two; it is a compact memory of the novella's current state.
 
 ## Recommended Context Packet
 
-For drafting Scene 12 onward, read:
+For revision, full-novella passes, or any continuation work, read:
 
 - `AGENT.md`
 - `README.md`
@@ -53,7 +53,7 @@ For drafting Scene 12 onward, read:
 - `stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/meta.yaml`
 - `stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/outline.md`
 - `stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/continuity_brief.md`
-- The two most recent scenes, currently Scenes 10 and 11
+- The two most recent scenes, currently Scenes 11 and 12
 
 Only read earlier full scenes when a specific continuity question requires it.
 
@@ -63,9 +63,10 @@ Sael Orro begins as a sincere keeper of release ledgers, discovers that a
 supposedly voluntary evacuation memory was coerced and edited, becomes a
 name-bearing witness to Lio, is marked for release by Veyr, preserves the
 witness memory unburned in Scene 9, interrupts the final rite in Scene 10 by
-speaking Lio's name aloud, and in Scene 11 carries the sealed witness intact as
-custody through a costed corridor while the Narthex forgets rooms behind her and
-Veyr remains with the station.
+speaking Lio's name aloud, carries the sealed witness intact as custody through
+a costed corridor in Scene 11 while the Narthex forgets rooms behind her, and
+in Scene 12 records Lio's name in a new ledger after the damaged Pell clears
+the Black Horizon.
 
 ## Scene Summaries
 
@@ -207,30 +208,60 @@ Veyr remains with the station.
 - Sael's irreversible cost is not simple anti-Synod conversion. She cannot
   return to the self that believed release was always mercy.
 
-## Current State After Scene 11
+### Scene 12 - The First Heavy Thing
+
+- The Pell clears the Black Horizon damaged rather than triumphant; ordinary
+  weight returns as loose ship debris falls, systems fail, and the starfield
+  holds its places.
+- The witness memory remains sealed and unburned in its physical casing aboard
+  the Pell. Sael's emergency anchor custody completes after clear, but Lio's
+  name remains known beside her name without opened witness contents, fusion, or
+  possession.
+- Sael asks Ives not to turn Lio into a Canticle weapon before the name has been
+  mourned. Ives admits he cannot promise full protection from command, tribunal,
+  intelligence review, revenge, or route use.
+- Ives can delay the first transmission and shape the first record: sealed and
+  unburned recovery custody, no route testing or drive interface before memorial
+  audit, and a casualty annex attached before command receives the proof.
+- Sael begins a new ledger aboard the Pell by writing Lio's name, witness
+  status, burn status, mourning before use, and the unresolved stationside
+  status of Veyr, Tovan, Ilet, and the remaining acolytes.
+- Ives signs the record and marks his first-ship anchor as lost, preserving that
+  loss rather than repairing it falsely.
+- The ending preserves grief instead of resolving it: the galaxy now has proof,
+  but proof arrives as weight that can still be mishandled.
+
+## Current State After Scene 12
 
 - The witness memory remains sealed, unburned, and physically present in its
   casing aboard the Pell.
-- Sael also carries the intact witness as sealed custody inside her own anchor
-  sequence: Lio beside Sael Orro, witness status sealed, burn status unburned,
-  term until the ship clears the Black Horizon.
-- Lio's name has acknowledged weight beside Sael's name without fusion,
-  possession, or access to the sealed memory's contents.
-- Ives has opened a narrow, unstable exit corridor through the Tern Gate failure
-  line. It is not a clean rescue route; it is a costed path made legible by
-  named witness weight and held by disciplined anchor checks.
-- The Pell has left the west maintenance seam carrying Sael, Ives, Aven, Rin,
-  the casing, and the unburned witness line into the corridor.
+- The Pell has cleared the Black Horizon damaged, with immediate Horizon shear
+  reduced but the ship still not safe or fully repaired.
+- Sael's emergency anchor custody has completed because the ship is clear, but
+  this does not erase responsibility. Lio remains known beside Sael's name
+  without the sealed witness contents being opened, fused, possessed, or burned.
+- The first post-Horizon record exists in the Pell's emergency ledger. It names
+  Lio, marks the witness sealed and unburned, and establishes mourning before
+  use as the first record rather than route testing, drive interface, or
+  reprisal analysis.
+- Ives has delayed automatic transmission and can shape the first report, but
+  he cannot fully protect the witness from later Canticle command, tribunal,
+  intelligence, revenge, or route-use pressure.
+- Ives's first-ship anchor remains lost and is explicitly recorded as lost in
+  his authorization of the first record.
 - The Narthex paid for the route by forgetting rooms and functions behind the
   escape: release nave, deep chapel access, silence cells, archive access, and
   service stairs lose meaning as the party passes.
-- Veyr, Tovan, Ilet, and remaining acolytes stay stationside, holding wall,
-  floor, and threshold functions as long as possible.
+- Veyr, Tovan, Ilet, and remaining acolytes remain stationside. Their status is
+  unresolved; do not mark them cleanly dead, saved, released, or redeemed without
+  a later deliberate story choice.
 - Veyr's choice to remain is sincere and coherent but not redemptive. He would
   still release the witness if Sael failed, and he remains dangerous in exactly
   the way his mercy has always been dangerous.
 - Sael's old office remains past tense. Her old self, which believed release was
   always mercy unless mishandled by people, does not cross the corridor intact.
+- The final state is survival with weight: proof has escaped, but proof now
+  creates moral, political, and memorial gravity.
 
 ## Character State
 
@@ -243,16 +274,21 @@ Veyr remains with the station.
 - She still believes release can be mercy and witness can become captivity.
 - Her rupture is ethical, not ideological conversion; she distinguishes stolen
   release from chosen release.
-- Her new irreversible choice is preservation: she must keep what she was raised
-  to release, at least until the Pell clears the Black Horizon.
+- Her irreversible choice is preservation: she kept what she was raised to
+  release through the Black Horizon and remains responsible for how it is first
+  recorded after emergency custody ends.
 - In Scene 10 she makes Lio's name public in the rite. This preserves the
   witness from false release but forces the Narthex to pay structural coherence.
 - Lio now sits beside Sael's name in her anchor sequence rather than only
   beneath it; this should not be treated as possession or fusion.
 - In Scene 11 she refuses zero-anchoring and refuses witness burn, choosing
   sealed inward custody as the route cost instead.
-- She is aboard the Pell with the physical casing and the sealed witness burden,
-  no longer housed by the Narthex or by her former office.
+- In Scene 12 her emergency anchor custody completes after the Pell clears the
+  Black Horizon, but Lio remains known beside her name without opened witness
+  contents, fusion, possession, or burn.
+- She is aboard the Pell with the physical casing and the first new ledger that
+  names Lio under mourning before use, no longer housed by the Narthex or by her
+  former office.
 - She cannot return to the self that believed release was always mercy, but she
   still carries enough Synod doctrine to fear preservation becoming captivity.
 
@@ -275,6 +311,11 @@ Veyr remains with the station.
   accepts Veyr's refusal and keeps the route moving.
 - He knows Canticle command will want the surviving witness as proof and likely
   as leverage; he is not naive about his institution's appetite.
+- In Scene 12 he admits he cannot fully protect the witness from Canticle use,
+  but he can delay automatic transmission and shape the first record to require
+  mourning, sealed custody, and non-use before later command action.
+- He signs the new ledger and explicitly records his first-ship anchor as lost,
+  preserving that loss rather than letting the first record pretend he is whole.
 
 ### Veyr Anik
 
@@ -296,6 +337,8 @@ Veyr remains with the station.
   would make the Narthex only the crime Sael carries away.
 - His remaining is not absolution. He explicitly still would release the witness
   if Sael failed, which preserves his danger and coherence.
+- After Scene 12, his fate remains unresolved and should not be made cleanly
+  dead, saved, released, or redeemed without a deliberate later revision choice.
 
 ### Supporting Acolytes and Canticle Survivors
 
@@ -314,6 +357,11 @@ Veyr remains with the station.
   functions named under corridor pressure.
 - Tovan and Ilet remain stationside with Veyr, holding threshold and wall
   functions as the Narthex forgets rooms behind the escape.
+- In Scene 12, Aven isolates the recorder and delays automatic transmission
+  under Ives's order, while Rin, injured but functioning, supplies the pen for
+  the first ledger entry.
+- Tovan and Ilet remain unresolved stationside; do not collapse their fate into
+  either heroic rescue or simple death in the current draft.
 
 ## Established Mechanics In This Draft
 
@@ -347,6 +395,11 @@ Veyr remains with the station.
   temporary route stability.
 - The corridor remains bound to attention and naming. The Pell, hatch, seal, and
   ship functions have to be named under pressure for the exit to hold.
+- After the Pell clears the Black Horizon, Sael's emergency anchor custody stops
+  serving route function, but Lio's name remains known and the sealed witness
+  remains physically in the casing.
+- First records carry weight: writing Lio's name in a new ledger bows the page
+  without opening, burning, or extracting the witness memory.
 
 ## Live Moral Tensions
 
@@ -363,32 +416,39 @@ Veyr remains with the station.
   still admits he would release the witness if Sael failed.
 - Sael's sealed custody is time-limited by intention, but the psychological and
   doctrinal cost may not end when the ship clears.
+- The first record can protect the witness only by creating friction. It is not
+  a guarantee against later institutional use.
+- Mourning before use is a moral line, not a solved system. Canticle command can
+  still turn proof into weapon, leverage, or institutional absolution.
 - The question is not whether forgetting is evil. The question is whether an
   ethic of release survives coercion.
 
 ## Open Promises And Payoffs
 
-- Lio's name has mattered as added weight in the rite and as corridor
-  stabilization in Scene 11; Scene 12 must carry that cost rather than soften it
-  into sentiment.
+- Lio's name has paid off as added weight in the rite, corridor stabilization in
+  Scene 11, and the first entry in the new ledger in Scene 12. Future revision
+  should preserve that weight rather than soften it into sentiment.
 - Veyr's Scene 11 payoff has occurred: he remains with the Narthex rather than
   be rescued. Future references should preserve the ambiguity of that choice,
   not make it clean absolution or simple punishment.
-- The thin route has become a costed corridor, but it has not made escape clean.
-  Scene 12 should show damage from crossing the Black Horizon.
+- The thin route became a costed corridor, and escape remains damaged rather
+  than clean after the Pell clears the Black Horizon.
 - Ives's lost first-ship name should remain lost; do not restore it.
 - Sael's office should remain over; do not reinstate her as keeper.
 - The witness memory must not be burned clean.
-- The witness memory must remain sealed. Sael carries custody, not the opened
-  contents of the witness.
+- The witness memory must remain sealed. Sael carried emergency custody through
+  the corridor but never opened the witness contents, and after clear she knows
+  Lio's name rather than carrying an opened memory.
 - The Narthex has paid in rooms; do not undo or casually repair the forgotten
   nave, chapel access, silence cells, archive access, or service stair.
 - Tovan, Ilet, Veyr, and remaining acolytes are stationside when the Pell leaves.
-- The route should not become clean just because Lio is named. It is now more
-  legible and more dangerous.
+- Tovan, Ilet, Veyr, and remaining acolytes remain unresolved after Scene 12;
+  do not mark them cleanly dead, saved, released, or redeemed by summary.
+- The route should not become clean just because Lio is named. It became more
+  legible and more dangerous, and it left physical and moral damage behind.
 - Canticle command's future use of the witness remains a live ethical threat.
-  Scene 12 should set up Sael's request that the memory be mourned before it is
-  made useful.
+  Scene 12 establishes mourning before use as friction in the first record, not
+  as a guarantee of safety.
 - The broader Black Horizon mystery remains closed; do not reveal what the Synod
   found or believes it found at the perimeter.
 
@@ -403,18 +463,24 @@ Veyr remains with the station.
   by unwilling witness.
 - Do not use a painless preservation solution. Every route must cost memory,
   identity, structure, or moral certainty.
+- Do not let the new ledger function as legal absolution. It is a first moral
+  record and a delaying mechanism, not a solved protection system.
+- Do not turn the ending into victory over the Synod or vindication of Canticle
+  Fleet. The ending is survival with proof and grief.
 
-## Scene 12 Setup
+## Revision Notes For Full-Novella Pass
 
-Scene 12, "The First Heavy Thing," should begin with the Pell exiting or nearly
-exiting the Black Horizon damaged, carrying Sael, Ives, Aven, Rin, the physical
-casing, and the sealed unburned witness line. Sael is no longer in the Narthex,
-but the station remains inside her as cost: former office past, Lio beside her
-name, witness sealed until clear. The main turn should not be triumph. Sael
-should ask Ives not to turn the memory into a weapon before it has been mourned.
-Ives cannot promise full protection from Canticle use, but he can delay the
-report or shape the first record. The ending should preserve grief rather than
-resolve it, likely through Sael beginning a new ledger entry for Lio's name.
+- Check the handoff from Scene 11 to Scene 12 for physical continuity: casing,
+  route board, Aven, Rin, Ives, and Sael should land in the Pell lock with the
+  same damage and custody constraints.
+- Seed the danger of first records earlier if needed. Scene 12 should feel like
+  the natural arrival of Sael's ledger training and Ives's Canticle compromise,
+  not a new ethical topic introduced only at the end.
+- Preserve the quiet ending. The final image should remain grief held under
+  ordinary weight, not a victory speech, legal triumph, or clean escape.
+- In a full compilation pass, check whether the manuscript assembly process
+  expects a scene list; do not add one to `manuscript.md` unless the relevant
+  schema supports it.
 
 ## Style Anchors
 

@@ -1,6 +1,6 @@
 # Canonical Index
 
-This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-06-22T21:18:49.304Z
+This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-06-22T21:31:30.464Z
 
 ## Character
 - `char-0001` — Rell (`characters/Rell.md`)
@@ -81,6 +81,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `scene_the_doctrine_empty_stars_009` — Anchor Weather (`stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/scenes/SCENE_THE_DOCTRINE_EMPTY_STARS_009.md`)
 - `scene_the_doctrine_empty_stars_010` — The Rite of Empty Stars (`stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/scenes/SCENE_THE_DOCTRINE_EMPTY_STARS_010.md`)
 - `scene_the_doctrine_empty_stars_011` — The Costed Corridor (`stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/scenes/SCENE_THE_DOCTRINE_EMPTY_STARS_011.md`)
+- `scene_the_doctrine_empty_stars_012` — The First Heavy Thing (`stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/scenes/SCENE_THE_DOCTRINE_EMPTY_STARS_012.md`)
 - `screenplay_sample` — Screenplay Sample (`stories/screenplay/SCREENPLAY_SAMPLE/manuscript.md`)
 - `story-0001` — The Archivist's Wake (`stories/short_story/the_archivists_wake/manuscript.md`)
 - `story-0002` — Memoir of a Nobody (`stories/short_story/memoir_of_a_nobody/manuscript.md`)
@@ -210,6 +211,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `scene_the_doctrine_empty_stars_009` - Anchor Weather (story, draft, weight 55, `stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/scenes/SCENE_THE_DOCTRINE_EMPTY_STARS_009.md`)
 - `scene_the_doctrine_empty_stars_010` - The Rite of Empty Stars (story, draft, weight 55, `stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/scenes/SCENE_THE_DOCTRINE_EMPTY_STARS_010.md`)
 - `scene_the_doctrine_empty_stars_011` - The Costed Corridor (story, draft, weight 55, `stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/scenes/SCENE_THE_DOCTRINE_EMPTY_STARS_011.md`)
+- `scene_the_doctrine_empty_stars_012` - The First Heavy Thing (story, draft, weight 55, `stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/scenes/SCENE_THE_DOCTRINE_EMPTY_STARS_012.md`)
 - `story-0002` - Memoir of a Nobody (story, draft, weight 65, `stories/short_story/memoir_of_a_nobody/manuscript.md`)
 - `story-0003` - The Tuner of Last Lights (story, draft, weight 65, `stories/short_story/the_tuner_of_last_lights/manuscript.md`)
 - `story-0004` - The Light Inheritance (story, draft, weight 65, `stories/short_story/the_light_inheritance/manuscript.md`)
