@@ -1,6 +1,6 @@
 # Canonical Index
 
-This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-06-22T14:52:27.039Z
+This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-06-22T15:21:34.322Z
 
 ## Character
 - `char-0001` — Rell (`characters/Rell.md`)
@@ -70,6 +70,8 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `scene_d9b9e99cd4cdd7109b0756ce955e9574912e36a6` — Second Scene (`stories/novella/NOVELLA_FIRST_CORRIDOR/scenes/SCENE_D9B9E99CD4CDD7109B0756CE955E9574912E36A6.md`)
 - `scene_screenplay_sample_001` — scene_screenplay_sample_001 (`stories/screenplay/SCREENPLAY_SAMPLE/scenes/SCENE_SCREENPLAY_SAMPLE_001.md`)
 - `scene_the_doctrine_empty_stars_001` — The Ledger of Lightness (`stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/scenes/SCENE_THE_DOCTRINE_EMPTY_STARS_001.md`)
+- `scene_the_doctrine_empty_stars_002` — The Outer Narthex Forgets Its Door (`stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/scenes/SCENE_THE_DOCTRINE_EMPTY_STARS_002.md`)
+- `scene_the_doctrine_empty_stars_003` — The Breach Without Trumpets (`stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/scenes/SCENE_THE_DOCTRINE_EMPTY_STARS_003.md`)
 - `screenplay_sample` — Screenplay Sample (`stories/screenplay/SCREENPLAY_SAMPLE/manuscript.md`)
 - `story-0001` — The Archivist's Wake (`stories/short_story/the_archivists_wake/manuscript.md`)
 - `story-0002` — Memoir of a Nobody (`stories/short_story/memoir_of_a_nobody/manuscript.md`)
@@ -188,6 +190,8 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `scene_96a0a49f0f2bca0ee73308e6fd97da80711debbc` - Opening Scene (story, draft, weight 50, `stories/novella/NOVELLA_FIRST_CORRIDOR/scenes/SCENE_96A0A49F0F2BCA0EE73308E6FD97DA80711DEBBC.md`)
 - `scene_d9b9e99cd4cdd7109b0756ce955e9574912e36a6` - Second Scene (story, draft, weight 50, `stories/novella/NOVELLA_FIRST_CORRIDOR/scenes/SCENE_D9B9E99CD4CDD7109B0756CE955E9574912E36A6.md`)
 - `scene_the_doctrine_empty_stars_001` - The Ledger of Lightness (story, draft, weight 55, `stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/scenes/SCENE_THE_DOCTRINE_EMPTY_STARS_001.md`)
+- `scene_the_doctrine_empty_stars_002` - The Outer Narthex Forgets Its Door (story, draft, weight 55, `stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/scenes/SCENE_THE_DOCTRINE_EMPTY_STARS_002.md`)
+- `scene_the_doctrine_empty_stars_003` - The Breach Without Trumpets (story, draft, weight 55, `stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/scenes/SCENE_THE_DOCTRINE_EMPTY_STARS_003.md`)
 - `story-0002` - Memoir of a Nobody (story, draft, weight 65, `stories/short_story/memoir_of_a_nobody/manuscript.md`)
 - `story-0003` - The Tuner of Last Lights (story, draft, weight 65, `stories/short_story/the_tuner_of_last_lights/manuscript.md`)
 - `story-0004` - The Light Inheritance (story, draft, weight 65, `stories/short_story/the_light_inheritance/manuscript.md`)
