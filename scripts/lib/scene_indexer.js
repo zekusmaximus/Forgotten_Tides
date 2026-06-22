@@ -14,7 +14,12 @@ function detectWorkId(filePath, data) {
 }
 
 function collectScenes(filter = {}) {
-  const files = glob.sync('stories/**/scenes/*.md', { cwd: process.cwd(), nodir: true, absolute: true, windowsPathsNoEscape: true });
+  const files = glob.sync('stories/**/scenes/*.md', {
+    cwd: process.cwd(),
+    nodir: true,
+    absolute: true,
+    windowsPathsNoEscape: true
+  }).filter(filePath => path.basename(filePath).toLowerCase() !== 'readme.md');
   const scenes = files.map(filePath => {
     const parsed = loadFrontmatter(filePath);
     const workId = detectWorkId(filePath, parsed.data);

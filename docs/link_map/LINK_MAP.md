@@ -1,8 +1,8 @@
 # Link Map - Entity Relationships
 
-Generated: 2026-06-22T14:31:44.836Z
+Generated: 2026-06-22T14:52:27.039Z
 
-## Entities (93)
+## Entities (94)
 
 - `char-0001` (character, primary_canon, weight 110)
 - `char-0002` (character, primary_canon, weight 110)
@@ -60,6 +60,7 @@ Generated: 2026-06-22T14:31:44.836Z
 - `scene_9fb5cd97d313e440a565fdffc9bc933411b6b453` (story, test, weight 5)
 - `scene_d9b9e99cd4cdd7109b0756ce955e9574912e36a6` (story, draft, weight 50)
 - `scene_screenplay_sample_001` (story, test, weight 10)
+- `scene_the_doctrine_empty_stars_001` (story, draft, weight 55)
 - `screenplay_sample` (story, test, weight 10)
 - `story-0001` (story, primary_canon, weight 110)
 - `story-0002` (story, draft, weight 65)
@@ -401,10 +402,10 @@ _none_
 
 ## Statistics
 
-- **Total Entities**: 93
+- **Total Entities**: 94
 - **Total Relationships**: 294
 - **Orphaned Targets**: 0
 - **Entity Types**: character, faction, location, lore, mechanics, story, term
 - **Primary / Working Canon**: 63
-- **Draft Entities**: 18
+- **Draft Entities**: 19
 - **Test / Sandbox / Deprecated Entities**: 7
