@@ -1,6 +1,6 @@
 # Canonical Index
 
-This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-06-22T15:48:05.616Z
+This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-06-22T16:02:46.236Z
 
 ## Character
 - `char-0001` — Rell (`characters/Rell.md`)
@@ -73,6 +73,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `scene_the_doctrine_empty_stars_002` — The Outer Narthex Forgets Its Door (`stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/scenes/SCENE_THE_DOCTRINE_EMPTY_STARS_002.md`)
 - `scene_the_doctrine_empty_stars_003` — The Breach Without Trumpets (`stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/scenes/SCENE_THE_DOCTRINE_EMPTY_STARS_003.md`)
 - `scene_the_doctrine_empty_stars_004` — Veyr Names Mercy (`stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/scenes/SCENE_THE_DOCTRINE_EMPTY_STARS_004.md`)
+- `scene_the_doctrine_empty_stars_005` — The Deep Chapel (`stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/scenes/SCENE_THE_DOCTRINE_EMPTY_STARS_005.md`)
 - `screenplay_sample` — Screenplay Sample (`stories/screenplay/SCREENPLAY_SAMPLE/manuscript.md`)
 - `story-0001` — The Archivist's Wake (`stories/short_story/the_archivists_wake/manuscript.md`)
 - `story-0002` — Memoir of a Nobody (`stories/short_story/memoir_of_a_nobody/manuscript.md`)
@@ -194,6 +195,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `scene_the_doctrine_empty_stars_002` - The Outer Narthex Forgets Its Door (story, draft, weight 55, `stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/scenes/SCENE_THE_DOCTRINE_EMPTY_STARS_002.md`)
 - `scene_the_doctrine_empty_stars_003` - The Breach Without Trumpets (story, draft, weight 55, `stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/scenes/SCENE_THE_DOCTRINE_EMPTY_STARS_003.md`)
 - `scene_the_doctrine_empty_stars_004` - Veyr Names Mercy (story, draft, weight 55, `stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/scenes/SCENE_THE_DOCTRINE_EMPTY_STARS_004.md`)
+- `scene_the_doctrine_empty_stars_005` - The Deep Chapel (story, draft, weight 55, `stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/scenes/SCENE_THE_DOCTRINE_EMPTY_STARS_005.md`)
 - `story-0002` - Memoir of a Nobody (story, draft, weight 65, `stories/short_story/memoir_of_a_nobody/manuscript.md`)
 - `story-0003` - The Tuner of Last Lights (story, draft, weight 65, `stories/short_story/the_tuner_of_last_lights/manuscript.md`)
 - `story-0004` - The Light Inheritance (story, draft, weight 65, `stories/short_story/the_light_inheritance/manuscript.md`)

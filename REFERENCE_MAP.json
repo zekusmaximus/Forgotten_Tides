@@ -1,5 +1,5 @@
 {
-  "generated": "2026-06-22T15:48:05.616Z",
+  "generated": "2026-06-22T16:02:46.236Z",
   "nodes": [
     {
       "canonical_id": "char-0001",
@@ -537,6 +537,15 @@
       "type": "story",
       "name": "Veyr Names Mercy",
       "path": "stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/scenes/SCENE_THE_DOCTRINE_EMPTY_STARS_004.md",
+      "canon_tier": "draft",
+      "source_weight": 55,
+      "retrieval_role": "active_draft"
+    },
+    {
+      "canonical_id": "scene_the_doctrine_empty_stars_005",
+      "type": "story",
+      "name": "The Deep Chapel",
+      "path": "stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/scenes/SCENE_THE_DOCTRINE_EMPTY_STARS_005.md",
       "canon_tier": "draft",
       "source_weight": 55,
       "retrieval_role": "active_draft"
