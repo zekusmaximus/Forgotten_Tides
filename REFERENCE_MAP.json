@@ -1,5 +1,5 @@
 {
-  "generated": "2026-06-22T18:25:45.370Z",
+  "generated": "2026-06-22T20:19:54.023Z",
   "nodes": [
     {
       "canonical_id": "char-0001",
@@ -573,6 +573,15 @@
       "type": "story",
       "name": "The Elder's Answer",
       "path": "stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/scenes/SCENE_THE_DOCTRINE_EMPTY_STARS_008.md",
+      "canon_tier": "draft",
+      "source_weight": 55,
+      "retrieval_role": "active_draft"
+    },
+    {
+      "canonical_id": "scene_the_doctrine_empty_stars_009",
+      "type": "story",
+      "name": "Anchor Weather",
+      "path": "stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/scenes/SCENE_THE_DOCTRINE_EMPTY_STARS_009.md",
       "canon_tier": "draft",
       "source_weight": 55,
       "retrieval_role": "active_draft"
