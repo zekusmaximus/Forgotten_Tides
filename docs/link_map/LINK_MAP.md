@@ -1,8 +1,8 @@
 # Link Map - Entity Relationships
 
-Generated: 2026-06-22T20:19:54.023Z
+Generated: 2026-06-22T21:02:28.838Z
 
-## Entities (102)
+## Entities (104)
 
 - `char-0001` (character, primary_canon, weight 110)
 - `char-0002` (character, primary_canon, weight 110)
@@ -40,6 +40,7 @@ Generated: 2026-06-22T20:19:54.023Z
 - `lore-0002` (lore, working_canon, weight 95)
 - `lore-0003` (lore, working_canon, weight 95)
 - `lore-0004` (lore, working_canon, weight 95)
+- `lore-doctrine-empty-stars-continuity-brief` (story, draft, weight 65)
 - `mech-0001` (mechanics, primary_canon, weight 110)
 - `mech-0002` (mechanics, primary_canon, weight 110)
 - `mech-0003` (mechanics, primary_canon, weight 110)
@@ -69,6 +70,7 @@ Generated: 2026-06-22T20:19:54.023Z
 - `scene_the_doctrine_empty_stars_007` (story, draft, weight 55)
 - `scene_the_doctrine_empty_stars_008` (story, draft, weight 55)
 - `scene_the_doctrine_empty_stars_009` (story, draft, weight 55)
+- `scene_the_doctrine_empty_stars_010` (story, draft, weight 55)
 - `screenplay_sample` (story, test, weight 10)
 - `story-0001` (story, primary_canon, weight 110)
 - `story-0002` (story, draft, weight 65)
@@ -107,7 +109,7 @@ Generated: 2026-06-22T20:19:54.023Z
 - `term-0025` (term, primary_canon, weight 110)
 - `term-0026` (term, primary_canon, weight 110)
 
-## Relationships (294)
+## Relationships (305)
 
 - `char-0001` → `char-0002` (characters)
 - `char-0001` → `char-0003` (characters)
@@ -290,6 +292,17 @@ Generated: 2026-06-22T20:19:54.023Z
 - `loc-0012` → `mech-0001` (mechanics)
 - `loc-0012` → `mech-0002` (mechanics)
 - `loc-0012` → `story-0009` (stories)
+- `lore-doctrine-empty-stars-continuity-brief` → `char-0011` (characters)
+- `lore-doctrine-empty-stars-continuity-brief` → `char-0012` (characters)
+- `lore-doctrine-empty-stars-continuity-brief` → `char-0013` (characters)
+- `lore-doctrine-empty-stars-continuity-brief` → `fact-0001` (factions)
+- `lore-doctrine-empty-stars-continuity-brief` → `fact-0005` (factions)
+- `lore-doctrine-empty-stars-continuity-brief` → `loc-0007` (locations)
+- `lore-doctrine-empty-stars-continuity-brief` → `loc-0012` (locations)
+- `lore-doctrine-empty-stars-continuity-brief` → `mech-0001` (mechanics)
+- `lore-doctrine-empty-stars-continuity-brief` → `mech-0002` (mechanics)
+- `lore-doctrine-empty-stars-continuity-brief` → `mech-0003` (mechanics)
+- `lore-doctrine-empty-stars-continuity-brief` → `story-0009` (stories)
 - `mech-0001` → `char-0001` (characters)
 - `mech-0001` → `loc-0001` (locations)
 - `mech-0001` → `story-0001` (stories)
@@ -410,10 +423,10 @@ _none_
 
 ## Statistics
 
-- **Total Entities**: 102
-- **Total Relationships**: 294
+- **Total Entities**: 104
+- **Total Relationships**: 305
 - **Orphaned Targets**: 0
 - **Entity Types**: character, faction, location, lore, mechanics, story, term
 - **Primary / Working Canon**: 63
-- **Draft Entities**: 27
+- **Draft Entities**: 29
 - **Test / Sandbox / Deprecated Entities**: 7

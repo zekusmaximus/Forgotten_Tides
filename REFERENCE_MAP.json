@@ -1,5 +1,5 @@
 {
-  "generated": "2026-06-22T20:19:54.023Z",
+  "generated": "2026-06-22T21:02:28.838Z",
   "nodes": [
     {
       "canonical_id": "char-0001",
@@ -326,6 +326,15 @@
       "retrieval_role": "working_reference"
     },
     {
+      "canonical_id": "lore-doctrine-empty-stars-continuity-brief",
+      "type": "story",
+      "name": "The Doctrine of Empty Stars - Continuity Brief",
+      "path": "stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/continuity_brief.md",
+      "canon_tier": "draft",
+      "source_weight": 65,
+      "retrieval_role": "active_draft"
+    },
+    {
       "canonical_id": "mech-0001",
       "type": "mechanics",
       "name": "MEMORY PHYSICS",
@@ -582,6 +591,15 @@
       "type": "story",
       "name": "Anchor Weather",
       "path": "stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/scenes/SCENE_THE_DOCTRINE_EMPTY_STARS_009.md",
+      "canon_tier": "draft",
+      "source_weight": 55,
+      "retrieval_role": "active_draft"
+    },
+    {
+      "canonical_id": "scene_the_doctrine_empty_stars_010",
+      "type": "story",
+      "name": "The Rite of Empty Stars",
+      "path": "stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/scenes/SCENE_THE_DOCTRINE_EMPTY_STARS_010.md",
       "canon_tier": "draft",
       "source_weight": 55,
       "retrieval_role": "active_draft"
@@ -1823,6 +1841,61 @@
     },
     {
       "from": "loc-0012",
+      "to": "story-0009",
+      "type": "stories"
+    },
+    {
+      "from": "lore-doctrine-empty-stars-continuity-brief",
+      "to": "char-0011",
+      "type": "characters"
+    },
+    {
+      "from": "lore-doctrine-empty-stars-continuity-brief",
+      "to": "char-0012",
+      "type": "characters"
+    },
+    {
+      "from": "lore-doctrine-empty-stars-continuity-brief",
+      "to": "char-0013",
+      "type": "characters"
+    },
+    {
+      "from": "lore-doctrine-empty-stars-continuity-brief",
+      "to": "fact-0001",
+      "type": "factions"
+    },
+    {
+      "from": "lore-doctrine-empty-stars-continuity-brief",
+      "to": "fact-0005",
+      "type": "factions"
+    },
+    {
+      "from": "lore-doctrine-empty-stars-continuity-brief",
+      "to": "loc-0007",
+      "type": "locations"
+    },
+    {
+      "from": "lore-doctrine-empty-stars-continuity-brief",
+      "to": "loc-0012",
+      "type": "locations"
+    },
+    {
+      "from": "lore-doctrine-empty-stars-continuity-brief",
+      "to": "mech-0001",
+      "type": "mechanics"
+    },
+    {
+      "from": "lore-doctrine-empty-stars-continuity-brief",
+      "to": "mech-0002",
+      "type": "mechanics"
+    },
+    {
+      "from": "lore-doctrine-empty-stars-continuity-brief",
+      "to": "mech-0003",
+      "type": "mechanics"
+    },
+    {
+      "from": "lore-doctrine-empty-stars-continuity-brief",
       "to": "story-0009",
       "type": "stories"
     },

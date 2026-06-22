@@ -1,6 +1,6 @@
 # Canonical Index
 
-This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-06-22T20:19:54.023Z
+This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-06-22T21:02:28.838Z
 
 ## Character
 - `char-0001` — Rell (`characters/Rell.md`)
@@ -54,6 +54,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `mech-0003` — ANCHOR THEORY (`mechanics/ANCHOR_THEORY.md`)
 
 ## Story
+- `lore-doctrine-empty-stars-continuity-brief` — The Doctrine of Empty Stars - Continuity Brief (`stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/continuity_brief.md`)
 - `novel_forgotten_tides_manuscript` — Forgotten Tides (`stories/novel/NOVEL_FORGOTTEN_TIDES/manuscript.md`)
 - `novel_forgotten_tides_notes` — Forgotten Tides - Development Notes (`stories/novel/NOVEL_FORGOTTEN_TIDES/notes.md`)
 - `novel_forgotten_tides_outline` — Forgotten Tides - Outline (`stories/novel/NOVEL_FORGOTTEN_TIDES/outline.md`)
@@ -78,6 +79,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `scene_the_doctrine_empty_stars_007` — Full Resonance (`stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/scenes/SCENE_THE_DOCTRINE_EMPTY_STARS_007.md`)
 - `scene_the_doctrine_empty_stars_008` — The Elder's Answer (`stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/scenes/SCENE_THE_DOCTRINE_EMPTY_STARS_008.md`)
 - `scene_the_doctrine_empty_stars_009` — Anchor Weather (`stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/scenes/SCENE_THE_DOCTRINE_EMPTY_STARS_009.md`)
+- `scene_the_doctrine_empty_stars_010` — The Rite of Empty Stars (`stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/scenes/SCENE_THE_DOCTRINE_EMPTY_STARS_010.md`)
 - `screenplay_sample` — Screenplay Sample (`stories/screenplay/SCREENPLAY_SAMPLE/manuscript.md`)
 - `story-0001` — The Archivist's Wake (`stories/short_story/the_archivists_wake/manuscript.md`)
 - `story-0002` — Memoir of a Nobody (`stories/short_story/memoir_of_a_nobody/manuscript.md`)
@@ -186,6 +188,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `term-0026` - Tuning Cradle (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
 
 ### Active Drafts
+- `lore-doctrine-empty-stars-continuity-brief` - The Doctrine of Empty Stars - Continuity Brief (story, draft, weight 65, `stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/continuity_brief.md`)
 - `novel_forgotten_tides_manuscript` - Forgotten Tides (story, draft, weight 55, `stories/novel/NOVEL_FORGOTTEN_TIDES/manuscript.md`)
 - `novel_forgotten_tides_notes` - Forgotten Tides - Development Notes (story, draft, weight 55, `stories/novel/NOVEL_FORGOTTEN_TIDES/notes.md`)
 - `novel_forgotten_tides_outline` - Forgotten Tides - Outline (story, draft, weight 55, `stories/novel/NOVEL_FORGOTTEN_TIDES/outline.md`)
@@ -204,6 +207,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `scene_the_doctrine_empty_stars_007` - Full Resonance (story, draft, weight 55, `stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/scenes/SCENE_THE_DOCTRINE_EMPTY_STARS_007.md`)
 - `scene_the_doctrine_empty_stars_008` - The Elder's Answer (story, draft, weight 55, `stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/scenes/SCENE_THE_DOCTRINE_EMPTY_STARS_008.md`)
 - `scene_the_doctrine_empty_stars_009` - Anchor Weather (story, draft, weight 55, `stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/scenes/SCENE_THE_DOCTRINE_EMPTY_STARS_009.md`)
+- `scene_the_doctrine_empty_stars_010` - The Rite of Empty Stars (story, draft, weight 55, `stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/scenes/SCENE_THE_DOCTRINE_EMPTY_STARS_010.md`)
 - `story-0002` - Memoir of a Nobody (story, draft, weight 65, `stories/short_story/memoir_of_a_nobody/manuscript.md`)
 - `story-0003` - The Tuner of Last Lights (story, draft, weight 65, `stories/short_story/the_tuner_of_last_lights/manuscript.md`)
 - `story-0004` - The Light Inheritance (story, draft, weight 65, `stories/short_story/the_light_inheritance/manuscript.md`)

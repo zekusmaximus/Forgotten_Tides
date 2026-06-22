@@ -11,8 +11,8 @@ tags:
   - doctrine-empty-stars
   - continuity-brief
   - process
-summary_50: "Rolling continuity brief for drafting The Doctrine of Empty Stars after Scene 9."
-summary_200: "A compact drafting brief for The Doctrine of Empty Stars that summarizes Scenes 1-9, current character states, live moral tensions, established memory and corridor mechanics, open promises, style anchors, and future-chat workflow so new drafting sessions can avoid rereading every scene."
+summary_50: "Rolling continuity brief for drafting The Doctrine of Empty Stars after Scene 10."
+summary_200: "A compact drafting brief for The Doctrine of Empty Stars that summarizes Scenes 1-10, current character states, live moral tensions, established memory and corridor mechanics, open promises, style anchors, and future-chat workflow so new drafting sessions can avoid rereading every scene."
 cross_refs:
   characters:
     - char-0011
@@ -44,7 +44,7 @@ scene or two; it is a compact memory of the novella's current state.
 
 ## Recommended Context Packet
 
-For drafting Scene 10 onward, read:
+For drafting Scene 11 onward, read:
 
 - `AGENT.md`
 - `README.md`
@@ -53,7 +53,7 @@ For drafting Scene 10 onward, read:
 - `stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/meta.yaml`
 - `stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/outline.md`
 - `stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/continuity_brief.md`
-- The two most recent scenes, currently Scenes 8 and 9
+- The two most recent scenes, currently Scenes 9 and 10
 
 Only read earlier full scenes when a specific continuity question requires it.
 
@@ -61,9 +61,10 @@ Only read earlier full scenes when a specific continuity question requires it.
 
 Sael Orro begins as a sincere keeper of release ledgers, discovers that a
 supposedly voluntary evacuation memory was coerced and edited, becomes a
-name-bearing witness to Lio, is marked for release by Veyr, and chooses in Scene
-9 to preserve the witness memory unburned because the only viable exit corridor
-requires held witness rather than clean fuel.
+name-bearing witness to Lio, is marked for release by Veyr, preserves the
+witness memory unburned in Scene 9, and interrupts the final rite in Scene 10 by
+speaking Lio's name aloud, making the memory heavy enough that the Narthex
+starts thinning around it.
 
 ## Scene Summaries
 
@@ -164,20 +165,43 @@ requires held witness rather than clean fuel.
 - Sael creates a new lower-record category: witness preservation, transit
   resonance; burn status: unburned; custodian: Sael Orro.
 
-## Current State After Scene 9
+### Scene 10 - The Rite of Empty Stars
+
+- The final Synod rite begins in the lower nave around the unburned witness
+  memory while the Canticle survivors maintain disciplined anchor checks.
+- The acolytes recite absence to strip relation from the burden, while Ives,
+  Aven, and Rin hold the exit route without burning the casing or restoring
+  Ives's lost first-ship name.
+- The witness memory pulls the active route away from the near-edge beacon and
+  toward the lost Tern Gate evacuation route because retained fear still points
+  home.
+- Sael identifies the rite as procedurally false at this point: it is naming
+  absence where coerced relation remains.
+- Sael speaks Lio's name aloud, changing the hidden imprint into an acknowledged
+  relation and adding weight the deliberately light Narthex cannot bear cleanly.
+- The Narthex begins thinning around the burden. Veyr redirects the acolytes to
+  hold absence at the walls rather than the casing, and tells Ives the corridor
+  must be costed now.
+
+## Current State After Scene 10
 
 - The witness memory remains sealed, unburned, and now formally marked for
   preservation during transit rather than release resonance or memory burn.
-- Sael is the named custodian of that preservation mark, making her part of the
-  route but explicitly not fuel.
-- Lio's name is no longer only an imprint beneath Sael's name; it is recognized
-  by the route field and tied to the unburned witness line.
-- The exit corridor is not stable, but viable: a thin route toward the near-edge
-  beacon that bends toward Tern Gate and holds between those claims.
-- Veyr has not yet responded to Sael's new preservation mark, but the lower
-  record will carry it to him before the rite.
-- Sael's old office is past tense. Her Synod training still shapes her, and the
-  scene shows that training can stabilize without absolving the institution.
+- Lio's name has been spoken aloud inside the release field. The hidden imprint
+  in Sael has become an acknowledged relation: Sael Orro and Lio share a line
+  without becoming the same self.
+- Sael remains custodian of the unburned witness line and is now visibly between
+  Veyr and the casing. She is part of the route field, but still not fuel.
+- The exit corridor is beginning to open, but only as a threadlike, costed line
+  that runs outward through the remembered failure of Tern Gate.
+- The Narthex is thinning in physically legible ways: high panels lose depth,
+  the service stair shows through, floor function pales around acolytes' feet,
+  and thresholds widen incorrectly.
+- Veyr has turned the rite away from direct release for the moment, ordering the
+  acolytes to hold the walls and station functions rather than the witness
+  casing. This is a tactical and doctrinal adjustment, not absolution.
+- Sael's old office remains past tense. Her Synod training still shapes the
+  interruption: she acts from exactness and doctrine as much as revolt.
 
 ## Character State
 
@@ -192,6 +216,10 @@ requires held witness rather than clean fuel.
   release from chosen release.
 - Her new irreversible choice is preservation: she must keep what she was raised
   to release.
+- In Scene 10 she makes Lio's name public in the rite. This preserves the
+  witness from false release but forces the Narthex to pay structural coherence.
+- Lio now sits beside Sael's name in her anchor sequence rather than only
+  beneath it; this should not be treated as possession or fusion.
 
 ### Ives Mar
 
@@ -203,6 +231,9 @@ requires held witness rather than clean fuel.
 - He refuses to burn the witness memory despite practical pressure, but his goal
   remains recoverable truth and escape, not pure moral rescue.
 - He should never become swaggering or rhetorically triumphant.
+- In Scene 10 he holds the route board under ritual pressure, keeps the first
+  ship name marked honestly as lost, and names the return as out, with witness
+  unburned.
 
 ### Veyr Anik
 
@@ -213,6 +244,12 @@ requires held witness rather than clean fuel.
 - He marked Sael for release because she became a name-bearing witness, not
   because he is cartoonishly punitive.
 - He should remain gentle, coherent, merciful, and dangerous when he returns.
+- In Scene 10 he begins the final rite with full knowledge of the coerced
+  witness and warns accurately that speaking a name in the field will become
+  gravity.
+- After the Narthex starts thinning, he redirects the acolytes to preserve wall,
+  floor, threshold, chapel, and nave rather than continuing to release the
+  casing. This makes him responsive to reality, not redeemed or defeated.
 
 ### Supporting Acolytes and Canticle Survivors
 
@@ -224,6 +261,9 @@ requires held witness rather than clean fuel.
   Ives's lost anchor name and restrained by Ives.
 - Rin: Canticle survivor with unstable full name; speaks the practical fear
   that the casing might need to be burned.
+- In Scene 10, Tovan leads the shifted station-coherence recitation after Veyr
+  turns the acolytes away from direct release. Ilet remains in place even as the
+  floor thins around her feet. Aven and Rin hold the route board under pressure.
 
 ## Established Mechanics In This Draft
 
@@ -243,6 +283,12 @@ requires held witness rather than clean fuel.
 - Preserved transit resonance is newly established in Scene 9 as a costed,
   lower-record exception: using the witness memory as relation-weight without
   burning it clean.
+- Scene 10 establishes that speaking a retained name aloud inside a release
+  field adds real memory weight. In a station built for deliberate lightness,
+  the added burden forces surrounding structure to thin.
+- The final rite's absence recitation strips relation from a burden before
+  release. It is merciful when applied to a clean offering or proper custody,
+  but procedurally false when it names absence over coerced relation.
 
 ## Live Moral Tensions
 
@@ -253,19 +299,27 @@ requires held witness rather than clean fuel.
   of what he says about witness remains true.
 - Sael's preservation is not simple goodness; it risks making Lio continue to
   work as proof, route, and obligation.
+- Sael's naming is not simple rescue; it preserves witness by making the station
+  pay structural cost.
 - The question is not whether forgetting is evil. The question is whether an
   ethic of release survives coercion.
 
 ## Open Promises And Payoffs
 
-- Lio's name must matter in the rite, not as sentimental rescue but as added
-  weight that changes the room.
-- Veyr must answer Sael's preservation mark.
+- Lio's name has mattered in the rite as added weight; future scenes must carry
+  the cost rather than soften it into sentiment.
+- Veyr has answered Sael's preservation mark by beginning the rite anyway, then
+  redirecting it when the Narthex thins. His next payoff is the Scene 11 choice
+  to remain with the station.
 - The thin route from Scene 9 should lead into the Act III corridor sequence,
   not solve escape by itself.
 - Ives's lost first-ship name should remain lost; do not restore it.
 - Sael's office should remain over; do not reinstate her as keeper.
 - The witness memory must not be burned clean.
+- The Narthex thinning must remain physically consequential in Scene 11: rooms,
+  doors, floors, and station functions should fail behind or around the escape.
+- The route should not become clean just because Lio is named. It is now more
+  legible and more dangerous.
 - The broader Black Horizon mystery remains closed; do not reveal what the Synod
   found or believes it found at the perimeter.
 
@@ -280,15 +334,15 @@ requires held witness rather than clean fuel.
 - Do not use a painless preservation solution. Every route must cost memory,
   identity, structure, or moral certainty.
 
-## Scene 10 Setup
+## Scene 11 Setup
 
-The outline expects Scene 10, "The Rite of Empty Stars," to begin the final rite.
-Sael should enter it already marked for release and already custodian of the
-unburned witness memory. The likely turn is Sael speaking Lio's name aloud,
-giving the memory more weight and causing the Narthex to begin thinning around
-that added burden. The rite should make the collision explicit: Synod release
-language, Canticle anchor checks, and the witness route all act on the same
-memory at once.
+Scene 11, "The Costed Corridor," should begin from an active crisis rather than
+a clean opening. The final rite has been interrupted, the Narthex is thinning,
+and the route has begun to remember how to open only because Lio's named weight
+forces a line through the Tern Gate failure. Ives should open a narrow exit
+corridor while Sael stabilizes the witness as unburned preserved resonance. The
+station should forget rooms or functions behind them as they move. Veyr's
+expected turn is choosing to remain with the Narthex rather than be rescued.
 
 ## Style Anchors
 
