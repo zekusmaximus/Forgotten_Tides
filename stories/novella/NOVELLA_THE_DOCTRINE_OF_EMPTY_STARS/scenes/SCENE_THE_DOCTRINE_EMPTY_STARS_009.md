@@ -40,7 +40,7 @@ knowledge_delta:
     note: "Sael records the witness memory as preserved for transit, making herself its active custodian against her Synod training."
 events:
   - id: story-0009-scene-009-event-001
-    timestamp: T0+5 days
+    timestamp: T0+9 days
     summary: "Under guard in the lower route room, Ives Mar and the Canticle survivors attempt to prepare an exit corridor before the Synod rite."
     canon_tier: draft
     involved_entities:
@@ -55,7 +55,7 @@ events:
       - mech-0003
     source: stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/scenes/SCENE_THE_DOCTRINE_EMPTY_STARS_009.md
   - id: story-0009-scene-009-event-002
-    timestamp: T0+5 days
+    timestamp: T0+9 days
     summary: "Black Horizon memory bleed enters the team's anchor checks, and Ives loses the name of his first ship."
     canon_tier: draft
     involved_entities:
@@ -67,7 +67,7 @@ events:
       - mech-0003
     source: stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/scenes/SCENE_THE_DOCTRINE_EMPTY_STARS_009.md
   - id: story-0009-scene-009-event-003
-    timestamp: T0+5 days
+    timestamp: T0+9 days
     summary: "Sael determines the witness memory must be preserved and used as resonance rather than burned clean to make the exit route viable."
     canon_tier: draft
     involved_entities:
@@ -110,7 +110,7 @@ Sael stood beside the witness memory because the memory had learned her shape.
 
 That was Veyr's ruling.
 
-For three dimmings she had slept in a chair outside the deep chapel, woken under
+For five dimmings she had slept in a chair outside the deep chapel, woken under
 watch, run her anchors into a slate that no longer returned office as present
 tense, and eaten broth without salt because the Narthex discouraged the body
 from making appetite into a record. She had not returned to the upper ledger

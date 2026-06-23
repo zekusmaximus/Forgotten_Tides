@@ -39,7 +39,7 @@ knowledge_delta:
     note: "Sael agrees to perform the forbidden check herself, not because she trusts Ives, but because the existing record is no longer honest enough."
 events:
   - id: story-0009-scene-006-event-001
-    timestamp: T0+2 days
+    timestamp: T0+4 days
     summary: "Sael questions Ives Mar in the outer silence cells after marking the preserved evacuation memory as held under irregularity."
     canon_tier: draft
     involved_entities:
@@ -51,7 +51,7 @@ events:
       - fact-0005
     source: stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/scenes/SCENE_THE_DOCTRINE_EMPTY_STARS_006.md
   - id: story-0009-scene-006-event-002
-    timestamp: T0+2 days
+    timestamp: T0+4 days
     summary: "Ives gives Sael the minimal Canticle arithmetic of the failed evacuation without asking her to believe Canticle virtue."
     canon_tier: draft
     involved_entities:
@@ -62,7 +62,7 @@ events:
       - fact-0005
     source: stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/scenes/SCENE_THE_DOCTRINE_EMPTY_STARS_006.md
   - id: story-0009-scene-006-event-003
-    timestamp: T0+2 days
+    timestamp: T0+4 days
     summary: "Sael chooses to initiate a forbidden full resonance check, accepting anchor imprint as the cost of honest audit."
     canon_tier: draft
     involved_entities:
@@ -99,7 +99,8 @@ silence cells had been shaped for people who requested an hour without pleading
 voices before release. Their walls softened sound. Their water slots opened from
 both sides. Their thresholds remembered privacy, not judgment.
 
-Now three Canticle survivors breathed behind them under Synod seal.
+For one dimming, three Canticle survivors had breathed behind them under Synod
+seal.
 
 Sael stood in the lower corridor with the deep chapel record in her hand and
 felt the station try to keep the difference small.
@@ -110,10 +111,10 @@ Cause: edited surface.
 
 The slate had cooled after taking the marks, but it had not become light. It lay
 flat against her palm with the modest weight of an honest thing that did not
-pretend to be finished. Veyr had read it above the lower stair. He had not
-praised her. He had not corrected her. He had looked at the two lines until the
-wall light made its small adjustment across his face, then returned the slate to
-her.
+pretend to be finished. Veyr had read it above the lower stair when Sael
+returned from the deep chapel. He had not praised her. He had not corrected her.
+He had kept the record through one dimming, then returned it to her after the
+wall light made its small adjustment across his face.
 
 "A held burden gathers claims," he had said.
 

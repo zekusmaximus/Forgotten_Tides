@@ -22,7 +22,7 @@ summary: "The Synod begins the final rite as acolytes recite absence and the Can
 stakes:
   summary: "If the rite completes on Synod terms, the witness memory and Sael's imprint will be released before the truth can leave the Black Horizon."
   risk: "Release resonance, Canticle anchor checks, and the witness route may shear the memory apart or turn it into fuel under pressure."
-  cost: "Sael names Lio aloud, preserving the witness from clean release while adding enough memory weight that the Narthex starts to thin."
+  cost: "Sael names Lio aloud, preserving the witness from clean release while recognizing that preservation still makes Lio work as route, proof, and obligation."
   level: high
   irreversibility: true
 knowledge_delta:
@@ -37,10 +37,10 @@ knowledge_delta:
     note: "Sael interrupts the rite by speaking Lio's name aloud as an exact correction against stolen release."
   - entity: narthex_thinning
     change: reveal
-    note: "Naming gives the witness memory added weight, and the deliberately light Narthex begins thinning around the burden."
+    note: "Naming gives the witness memory added weight; the same weight the Narthex cannot bear makes the route legible, and Sael recognizes that Lio remains in use."
 events:
   - id: story-0009-scene-010-event-001
-    timestamp: T0+5 days
+    timestamp: T0+9 days
     summary: "The Synod begins the Rite of Empty Stars around the unburned witness memory while Canticle survivors maintain anchor checks nearby."
     canon_tier: draft
     involved_entities:
@@ -57,7 +57,7 @@ events:
       - mech-0003
     source: stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/scenes/SCENE_THE_DOCTRINE_EMPTY_STARS_010.md
   - id: story-0009-scene-010-event-002
-    timestamp: T0+5 days
+    timestamp: T0+9 days
     summary: "The witness memory pulls the active route field away from the near-edge beacon and toward the lost evacuation route."
     canon_tier: draft
     involved_entities:
@@ -70,8 +70,8 @@ events:
       - mech-0003
     source: stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/scenes/SCENE_THE_DOCTRINE_EMPTY_STARS_010.md
   - id: story-0009-scene-010-event-003
-    timestamp: T0+5 days
-    summary: "Sael speaks Lio's name aloud during the rite, giving the witness memory added weight and causing the Narthex to begin thinning."
+    timestamp: T0+9 days
+    summary: "Sael speaks Lio's name aloud during the rite, giving the witness memory added weight, making the route legible, and causing the Narthex to begin thinning."
     canon_tier: draft
     involved_entities:
       - story-0009
@@ -94,7 +94,7 @@ moral_actions:
     direction: aid
     weight: 3
   - actor: Sael Orro
-    action: "speaks Lio's name aloud to prevent a stolen memory from being treated as cleanly releasable"
+    action: "speaks Lio's name aloud to prevent a stolen memory from being treated as cleanly releasable, while recognizing that preservation still keeps Lio working"
     direction: mixed
     weight: 5
 pov_pressure:
@@ -146,11 +146,11 @@ said, let the room learn it before release.
 If he cannot, he had not needed to finish.
 
 Ives Mar sat at the route board with Aven Tor and Rin. He had not recovered
-during the three dimmings between the lower route check and the rite. Recovery
-would have required stores the Narthex did not keep and anchors the Black
-Horizon had not returned. His face looked made from discipline stretched over
-exhaustion. One hand rested beside the memory-drive key. The other lay flat on
-the board's worn edge, not touching the plate until the sequence required it.
+during the five dimmings of custody before Veyr permitted the lower route check.
+Recovery would have required stores the Narthex did not keep and anchors the
+Black Horizon had not returned. His face looked made from discipline stretched
+over exhaustion. One hand rested beside the memory-drive key. The other lay flat
+on the board's worn edge, not touching the plate until the sequence required it.
 
 He looked once at Sael.
 
@@ -607,9 +607,17 @@ other. Two weights sharing a line the Narthex had no field prepared to hold.
 
 The route board answered.
 
+The same weight the Narthex could not bear was the weight the dying route could
+follow.
+
 The near-edge line flared thin and white. The Tern Gate pull bent through it.
 For one breath the two routes were not opposites but a single injured path:
 outward through the place that still remembered failure.
+
+Sael understood then that she had not taken Lio out of use. Not fully. Not
+cleanly. She had refused fuel, refused false release, refused the neatness of a
+donor phrase laid over a stolen fear. Still the child was working: route, proof,
+obligation, a name holding open what living hands could not.
 
 "Hold," Ives said.
 

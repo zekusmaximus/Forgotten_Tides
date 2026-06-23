@@ -53,15 +53,17 @@ timeline:
   chronology:
     - event: Sael catalogs the witness memory before a release rite
       timestamp: T0
+    - event: The outer threshold repair makes the Narthex easier to find
+      timestamp: T0+1 day
     - event: Ives Mar's Canticle recovery team breaches the outer narthex
       timestamp: T0+2 days
-    - event: Sael confirms the pilgrims were not voluntary
+    - event: Sael confirms the witness memory surface has been edited
       timestamp: T0+3 days
-    - event: Veyr Anik orders the witness memory spent as navigational bait
-      timestamp: T0+5 days
-    - event: Sael preserves the memory long enough to open a costed exit corridor
-      timestamp: T0+8 days
-    - event: The Narthex enters uncontrolled conceptual thinning
+    - event: Sael's full resonance audit reveals coerced witness route pressure
+      timestamp: T0+4 days
+    - event: Veyr marks Sael for release after the rite
+      timestamp: T0+4 days
+    - event: Sael preserves the memory through the costed exit corridor
       timestamp: T0+9 days
 events:
   - id: story-0009-event-001
@@ -75,8 +77,8 @@ events:
       - fact-0005
     source: stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/manuscript.md
   - id: story-0009-event-002
-    timestamp: T0+5 days
-    summary: The Synod attempts to use an unwilling witness memory as Black Horizon navigational bait.
+    timestamp: T0+4 days
+    summary: Sael's audit reveals the Synod retained unwilling witness fear as Black Horizon route pressure.
     canon_tier: draft
     involved_entities:
       - story-0009
@@ -111,7 +113,7 @@ bible_refs:
   - bible/ARCHIVISTS_WAKE_STORY_BIBLE.md
 metadata:
   created: '2026-06-22T00:00:00.000Z'
-  modified: '2026-06-22T00:00:00.000Z'
+  modified: '2026-06-23T00:00:00.000Z'
   word_count: 0
 ---
 
@@ -119,4 +121,3 @@ metadata:
 
 Draft manuscript scaffold. Scenes will be drafted under `scenes/` and integrated here
 after each act pass.
-

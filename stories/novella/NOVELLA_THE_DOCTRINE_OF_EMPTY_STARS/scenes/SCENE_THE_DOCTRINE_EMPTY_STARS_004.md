@@ -548,7 +548,7 @@ Her hand tightened on the ledger stand.
 
 "I will carry it?"
 
-"You will escort the reliquary under my seal before second dimming. Tovan will
+"You will escort the reliquary under my seal before next dimming. Tovan will
 guard the Canticle survivors. Ilet will tend the outer threshold. I will prepare
 the lower record."
 
@@ -742,14 +742,20 @@ been made to remember itself. The west passage carried the shape of the breach
 like a bruise under cloth. Farther below, the lower stair waited in a gray light
 that did not reach its own end.
 
-Sael walked toward it.
+The first stage was not descent. Sael carried the reliquary only to the
+lower-stair threshold, where Veyr's seal could keep it visible to the chapel and
+heavy enough not to hide. She did not walk the stair yet.
 
-With each step, the reliquary asked her arms to become more certain. With each
-step, the question inside the casing remained unspent.
+The witness would remain through one corrected dark under visible seal, held
+enough not to become hidden weight and not yet given to the room that knew how
+to make burdens end. At next dimming, she would carry it down.
+
+Already the reliquary asked her arms to become more certain. Already the
+question inside the casing remained unspent.
 
 Behind one outer silence door, a Canticle captain was being kept alive under a
 Synod roof. Behind the folio clasp, a child's name lay flatter now and no less
 real. Ahead, the deep chapel remembered descent, release, and return.
 
-Sael carried the witness memory toward it because Veyr had named mercy, and
+Sael would carry the witness memory toward it because Veyr had named mercy, and
 because for one terrible breath she had almost believed the name was enough.

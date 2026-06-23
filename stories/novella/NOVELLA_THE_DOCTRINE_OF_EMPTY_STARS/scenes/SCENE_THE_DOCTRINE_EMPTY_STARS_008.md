@@ -39,7 +39,7 @@ knowledge_delta:
     note: "Sael's office as keeper of release ledgers is withdrawn; survival will not restore her former place in the Narthex."
 events:
   - id: story-0009-scene-008-event-001
-    timestamp: T0+2 days
+    timestamp: T0+4 days
     summary: "Veyr enters the deep chapel after Sael's forbidden full resonance audit and reads the coerced-witness result."
     canon_tier: draft
     involved_entities:
@@ -53,7 +53,7 @@ events:
       - mech-0003
     source: stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/scenes/SCENE_THE_DOCTRINE_EMPTY_STARS_008.md
   - id: story-0009-scene-008-event-002
-    timestamp: T0+2 days
+    timestamp: T0+4 days
     summary: "Veyr argues that retained fear and brief coercion can prevent generations from making one collapse into endless institutional remembrance."
     canon_tier: draft
     involved_entities:
@@ -65,7 +65,7 @@ events:
       - mech-0001
     source: stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/scenes/SCENE_THE_DOCTRINE_EMPTY_STARS_008.md
   - id: story-0009-scene-008-event-003
-    timestamp: T0+2 days
+    timestamp: T0+4 days
     summary: "Veyr marks Sael for release after the rite and withdraws her office as keeper of release ledgers."
     canon_tier: draft
     involved_entities:

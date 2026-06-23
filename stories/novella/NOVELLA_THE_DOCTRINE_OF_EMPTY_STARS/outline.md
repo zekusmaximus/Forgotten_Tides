@@ -103,10 +103,10 @@ believes him because she wants to.
 
 ### Scene 5 - The Deep Chapel
 
-Sael brings the reliquary to a chapel near the station's lowest coherence point.
-The place is not evil-looking; it is clean, quiet, and almost kind. The memory
-inside the stone repeats one detail that should not survive: a child's hand on a
-bulkhead.
+On the next dimming, Sael brings the reliquary to a chapel near the station's
+lowest coherence point. The place is not evil-looking; it is clean, quiet, and
+almost kind. The memory surface repeats one detail that should not survive
+clean handling: a child's hand on a bulkhead.
 
 **Turn:** Sael realizes the memory has been edited, not offered.
 
@@ -114,9 +114,10 @@ bulkhead.
 
 ### Scene 6 - Canticle Arithmetic
 
-Ives explains the failed evacuation without exposition sprawl: one station, one
-late corridor, one missing ship, and a recovery order quietly closed. He does not
-ask Sael to believe Canticle virtue. He asks her to audit the memory honestly.
+After another dimming under hold, Ives explains the failed evacuation without
+exposition sprawl: one station, one late corridor, one missing ship, and a
+recovery order quietly closed. He does not ask Sael to believe Canticle virtue.
+He asks her to audit the memory honestly.
 
 **Turn:** Sael agrees to perform a forbidden full resonance check.
 
@@ -125,9 +126,10 @@ sequence.
 
 ### Scene 7 - Full Resonance
 
-Sael performs the audit. The witness memory shows not pilgrims entering the
-Synod willingly, but evacuees taken after a corridor collapse. The Synod did not
-erase them at once. It preserved their fear because fear points home.
+Sael performs the audit. The witness memory now shows what surface resonance
+could not: not pilgrims entering the Synod willingly, but evacuees taken after a
+corridor collapse. The Synod did not erase them at once. It preserved their fear
+because fear points home.
 
 **Turn:** The memory reveals that the Black Horizon route is being stabilized by
 unwilling witness.
@@ -146,10 +148,10 @@ him, Sael's horror is sentimental attachment to pain.
 
 ### Scene 9 - Anchor Weather
 
-The Canticle team tries to prepare an exit corridor, but the Black Horizon
-bleeds memories through their anchor checks. Ives loses the name of his first
-ship. Sael, who was trained to become lighter, is briefly the most stable person
-in the room.
+After five dimmings under watch, the Canticle team tries to prepare an exit
+corridor, but the Black Horizon bleeds memories through their anchor checks.
+Ives loses the name of his first ship. Sael, who was trained to become lighter,
+is briefly the most stable person in the room.
 
 **Turn:** The only viable route out requires using the witness memory without
 burning it clean.
@@ -167,7 +169,8 @@ lost evacuation route.
 **Turn:** Sael interrupts the rite by speaking the child's name aloud.
 
 **Cost:** Naming gives the memory weight, and the Narthex starts to thin around
-the added burden.
+the added burden; Sael sees that preservation still keeps Lio working as route,
+proof, and obligation.
 
 ### Scene 11 - The Costed Corridor
 
@@ -187,8 +190,8 @@ before it has been mourned. He cannot promise fully, but he can delay the report
 
 **Turn:** Sael records the child's name in a new ledger.
 
-**Cost:** The ending preserves grief rather than resolving it; the galaxy now
-has proof, but proof itself has weight.
+**Cost:** The ending preserves grief rather than resolving it; what Canticle
+will call proof remains a weight that can still be mishandled.
 
 ## Revision Targets
 
@@ -198,4 +201,3 @@ has proof, but proof itself has weight.
 - Avoid solving the broader mystery of what the Synod discovered at the
   perimeter. This novella opens a door; it does not empty the room.
 - No restored memories, no free corridor traversal, no painless preservation.
-

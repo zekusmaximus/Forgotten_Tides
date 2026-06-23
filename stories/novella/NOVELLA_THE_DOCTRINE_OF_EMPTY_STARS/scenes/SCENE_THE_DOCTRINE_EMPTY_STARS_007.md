@@ -40,7 +40,7 @@ knowledge_delta:
     note: "Lio's name now answers from inside Sael's own anchor sequence rather than remaining only in the ledger."
 events:
   - id: story-0009-scene-007-event-001
-    timestamp: T0+2 days
+    timestamp: T0+4 days
     summary: "Sael begins the forbidden full resonance audit under assumed cost in the deep chapel."
     canon_tier: draft
     involved_entities:
@@ -53,7 +53,7 @@ events:
       - mech-0003
     source: stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/scenes/SCENE_THE_DOCTRINE_EMPTY_STARS_007.md
   - id: story-0009-scene-007-event-002
-    timestamp: T0+2 days
+    timestamp: T0+4 days
     summary: "The witness memory reveals evacuees taken after the Tern Gate evacuation corridor collapsed rather than voluntary pilgrims offering release."
     canon_tier: draft
     involved_entities:
@@ -65,7 +65,7 @@ events:
       - mech-0002
     source: stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/scenes/SCENE_THE_DOCTRINE_EMPTY_STARS_007.md
   - id: story-0009-scene-007-event-003
-    timestamp: T0+2 days
+    timestamp: T0+4 days
     summary: "Sael learns the Synod retained evacuee fear as navigational pressure for a Black Horizon route and leaves resonance carrying Lio's name in her anchors."
     canon_tier: draft
     involved_entities:
@@ -223,6 +223,9 @@ That was what let the memory enter.
 The edited surface rose first, smooth and obedient.
 
 I set down what no longer carries me.
+
+Surface resonance had shown Sael the seam. Full resonance asked what sequence
+the seam had been made to hide.
 
 The donor phrase spread across Sael's doctrine anchor like a cloth laid over a
 table. It was beautiful in the way a perfectly finished seam could be beautiful

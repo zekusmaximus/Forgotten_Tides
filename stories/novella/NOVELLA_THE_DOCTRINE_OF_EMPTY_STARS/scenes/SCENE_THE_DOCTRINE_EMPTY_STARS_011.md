@@ -40,7 +40,7 @@ knowledge_delta:
     note: "Veyr chooses to stay with the thinning station and its remaining acolytes rather than accept rescue through the corridor."
 events:
   - id: story-0009-scene-011-event-001
-    timestamp: T0+5 days
+    timestamp: T0+9 days
     summary: "Ives opens a narrow exit corridor from the interrupted rite, using the route made legible by Lio's named witness weight."
     canon_tier: draft
     involved_entities:
@@ -54,7 +54,7 @@ events:
       - mech-0003
     source: stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/scenes/SCENE_THE_DOCTRINE_EMPTY_STARS_011.md
   - id: story-0009-scene-011-event-002
-    timestamp: T0+5 days
+    timestamp: T0+9 days
     summary: "Sael rejects zero-anchoring and instead stabilizes the sealed, unburned witness by carrying it intact as preserved custody until the ship clears the Black Horizon."
     canon_tier: draft
     involved_entities:
@@ -68,7 +68,7 @@ events:
       - mech-0003
     source: stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/scenes/SCENE_THE_DOCTRINE_EMPTY_STARS_011.md
   - id: story-0009-scene-011-event-003
-    timestamp: T0+5 days
+    timestamp: T0+9 days
     summary: "Veyr remains with the Narthex as rooms forget behind the escape, while Sael and the Canticle survivors carry the unburned witness toward the exit."
     canon_tier: draft
     involved_entities:

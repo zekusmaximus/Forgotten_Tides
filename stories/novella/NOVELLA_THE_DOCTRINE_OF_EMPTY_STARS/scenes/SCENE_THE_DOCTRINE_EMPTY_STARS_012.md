@@ -18,7 +18,7 @@ tags:
   - witness-memory
   - mourning
   - first-record
-summary: "The damaged Pell clears the Black Horizon with the sealed witness memory unburned, Sael asks Ives to prevent Canticle command from making the witness useful before it is mourned, and she records Lio's name in a new ledger as proof becomes a burden rather than a triumph."
+summary: "The damaged Pell clears the Black Horizon with the sealed witness memory unburned, Sael asks Ives to prevent Canticle command from making the witness useful before it is mourned, and she records Lio's name in a new ledger as proof remains a burden rather than a triumph."
 stakes:
   summary: "The witness has escaped the Black Horizon, but its first record may determine whether it becomes mourning, evidence, route leverage, or another institutional use of the dead."
   risk: "Canticle command may turn the sealed witness into a weapon before anyone mourns Lio, while Sael may mistake completed emergency custody for completed responsibility."
@@ -40,7 +40,7 @@ knowledge_delta:
     note: "Sael records Lio's name in a new ledger as a preserved name and mourned witness, not as route fuel or a weapon."
 events:
   - id: story-0009-scene-012-event-001
-    timestamp: T0+5 days
+    timestamp: T0+9 days
     summary: "The Pell exits the Black Horizon damaged with the sealed witness memory unburned and aboard in its physical casing."
     canon_tier: draft
     involved_entities:
@@ -55,7 +55,7 @@ events:
       - mech-0003
     source: stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/scenes/SCENE_THE_DOCTRINE_EMPTY_STARS_012.md
   - id: story-0009-scene-012-event-002
-    timestamp: T0+5 days
+    timestamp: T0+9 days
     summary: "Sael asks Ives not to let the witness memory become a Canticle weapon before Lio has been mourned."
     canon_tier: draft
     involved_entities:
@@ -67,7 +67,7 @@ events:
       - mech-0001
     source: stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/scenes/SCENE_THE_DOCTRINE_EMPTY_STARS_012.md
   - id: story-0009-scene-012-event-003
-    timestamp: T0+5 days
+    timestamp: T0+9 days
     summary: "Ives agrees to delay transmission and shape the first record, and Sael records Lio's name in a new ledger."
     canon_tier: draft
     involved_entities:
@@ -739,13 +739,9 @@ Sael closed the ledger.
 
 The cover did not lie flat now.
 
-She held it in both hands and felt the first heavy thing the new record had
-made.
+She held it in both hands and felt what the new record had made.
 
-There should have been a rite for this. Not a Synod release rite, not Canticle
-recovery procedure, not a tribunal opening, not a speech over the dead. A rite
-for proof that arrived too late to save anyone it named and too early to be
-trusted with the living. A way to say: this is grief before it is evidence.
+There should have been a rite for this: grief before evidence.
 
 No such rite existed.
 
@@ -762,16 +758,9 @@ behind her in walls and thresholds.
 
 She remembered.
 
-The galaxy had something it would call proof now.
-
-Sael had once believed proof would make a lie lighter. It did not. Proof was a
-mass before it was justice, and sometimes never became justice at all. It
-entered the room and asked every person nearby what they would spend to hold it
-honestly.
-
-The Pell carried that mass forward: one sealed witness memory, one former Synod
-acolyte, one Canticle captain with a lost first ship, and a ledger whose first
-page would not lie flat.
+The Pell carried one sealed witness memory, one former Synod acolyte, one
+Canticle captain with a lost first ship, and a ledger whose first page would
+not lie flat.
 
 Outside, the stars held their old weight.
 

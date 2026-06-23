@@ -33,7 +33,7 @@ cross_refs:
 metadata:
   status: speculative
   created: '2026-06-22T00:00:00.000Z'
-  modified: '2026-06-22T00:00:00.000Z'
+  modified: '2026-06-23T00:00:00.000Z'
 ---
 
 # The Doctrine of Empty Stars - Continuity Brief
@@ -112,10 +112,12 @@ the Black Horizon.
 
 ### Scene 5 - The Deep Chapel
 
-- Sael carries the reliquary into the Narthex's deepest release chamber, a clean
-  and almost kind room near the station's lowest coherence point.
+- After one dimming under visible seal, Sael carries the reliquary into the
+  Narthex's deepest release chamber, a clean and almost kind room near the
+  station's lowest coherence point.
 - Acceptance resonance shows impossible smoothness, a repeated child's hand on
-  bulkhead metal, and a beveled absence in the count.
+  bulkhead metal, and a beveled absence in the count, proving handled surface
+  rather than the full coercive sequence.
 - Sael marks the memory held under irregularity because its surface has been
   edited, not cleanly offered.
 - Her first load-bearing certainty fails: a sincere mercy room could complete
@@ -123,7 +125,8 @@ the Black Horizon.
 
 ### Scene 6 - Canticle Arithmetic
 
-- Sael questions Ives in the outer silence cells under Synod custody.
+- After another dimming under held irregularity, Sael questions Ives in the
+  outer silence cells under Synod custody.
 - Ives gives the stripped-down case: Tern Gate Station, one late evacuation
   corridor, the missing auxiliary Vesper, and a recovery order quietly closed.
 - He does not ask Sael to believe Canticle virtue; Canticle command remains
@@ -133,9 +136,10 @@ the Black Horizon.
 
 ### Scene 7 - Full Resonance
 
-- Sael performs an unauthorized full resonance audit in the deep chapel.
-- The witness memory reveals evacuees taken after a corridor collapse, not
-  voluntary pilgrims entering Synod care.
+- Later the same dimming, Sael performs an unauthorized full resonance audit in
+  the deep chapel.
+- The witness memory reveals what the surface could not: evacuees taken after a
+  corridor collapse, not voluntary pilgrims entering Synod care.
 - The Synod retained their fear because fear pointed home and stabilized a Black
   Horizon route.
 - Sael exits resonance carrying Lio's name inside her own anchor sequence:
@@ -154,8 +158,8 @@ the Black Horizon.
 
 ### Scene 9 - Anchor Weather
 
-- Under guard in the lower route room, Ives and the Canticle survivors attempt
-  to prepare an exit corridor.
+- After five dimmings under watch, Ives and the Canticle survivors attempt to
+  prepare an exit corridor in the lower route room.
 - Black Horizon memory bleed enters their anchor checks as physical weather:
   rain on sealed glass, kitchen steam, frost-lettering, deck vibration, and
   walls remembering other walls.
@@ -181,6 +185,9 @@ the Black Horizon.
   absence where coerced relation remains.
 - Sael speaks Lio's name aloud, changing the hidden imprint into an acknowledged
   relation and adding weight the deliberately light Narthex cannot bear cleanly.
+- The same named weight the Narthex cannot bear is the weight the dying route
+  can follow, and Sael sees that preservation still keeps Lio working as route,
+  proof, and obligation.
 - The Narthex begins thinning around the burden. Veyr redirects the acolytes to
   hold absence at the walls rather than the casing, and tells Ives the corridor
   must be costed now.
@@ -228,8 +235,8 @@ the Black Horizon.
   status of Veyr, Tovan, Ilet, and the remaining acolytes.
 - Ives signs the record and marks his first-ship anchor as lost, preserving that
   loss rather than repairing it falsely.
-- The ending preserves grief instead of resolving it: the galaxy now has proof,
-  but proof arrives as weight that can still be mishandled.
+- The ending preserves grief instead of resolving it: what Canticle will call
+  proof arrives as weight that can still be mishandled.
 
 ## Current State After Scene 12
 
@@ -279,6 +286,9 @@ the Black Horizon.
   recorded after emergency custody ends.
 - In Scene 10 she makes Lio's name public in the rite. This preserves the
   witness from false release but forces the Narthex to pay structural coherence.
+- In Scene 10 she also recognizes that her preservation has not removed Lio
+  from use; it keeps Lio working as route, proof, and obligation under a
+  different custody.
 - Lio now sits beside Sael's name in her anchor sequence rather than only
   beneath it; this should not be treated as possession or fusion.
 - In Scene 11 she refuses zero-anchoring and refuses witness burn, choosing
@@ -383,7 +393,8 @@ the Black Horizon.
   burning it clean.
 - Scene 10 establishes that speaking a retained name aloud inside a release
   field adds real memory weight. In a station built for deliberate lightness,
-  the added burden forces surrounding structure to thin.
+  the added burden forces surrounding structure to thin; the same weight the
+  station cannot bear is what the damaged route can follow.
 - The final rite's absence recitation strips relation from a burden before
   release. It is merciful when applied to a clean offering or proper custody,
   but procedurally false when it names absence over coerced relation.
@@ -408,8 +419,8 @@ the Black Horizon.
 - Synod release can become institutional erasure of inconvenient witness.
 - Veyr is wrong at the point where mercy asks stolen fear to disappear, but much
   of what he says about witness remains true.
-- Sael's preservation is not simple goodness; it risks making Lio continue to
-  work as proof, route, and obligation.
+- Sael's preservation is not simple goodness; by Scene 10 she sees that it has
+  made Lio continue to work as proof, route, and obligation.
 - Sael's naming is not simple rescue; it preserves witness by making the station
   pay structural cost.
 - Veyr's remaining is not redemption; it is an internally coherent mercy that

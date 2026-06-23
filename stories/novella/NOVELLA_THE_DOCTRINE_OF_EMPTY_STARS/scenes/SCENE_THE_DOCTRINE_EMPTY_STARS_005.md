@@ -36,7 +36,7 @@ knowledge_delta:
     note: "Sael's certainty that recorded release can be trusted as mercy fails for the first time at structural depth."
 events:
   - id: story-0009-scene-005-event-001
-    timestamp: T0+2 days
+    timestamp: T0+3 days
     summary: "Sael escorts the preserved evacuation memory to the deep chapel under Veyr's seal."
     canon_tier: draft
     involved_entities:
@@ -49,7 +49,7 @@ events:
       - mech-0001
     source: stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/scenes/SCENE_THE_DOCTRINE_EMPTY_STARS_005.md
   - id: story-0009-scene-005-event-002
-    timestamp: T0+2 days
+    timestamp: T0+3 days
     summary: "The deep chapel's shallow acceptance resonance exposes an edited surface in the preserved evacuation memory."
     canon_tier: draft
     involved_entities:
@@ -60,7 +60,7 @@ events:
       - mech-0001
     source: stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/scenes/SCENE_THE_DOCTRINE_EMPTY_STARS_005.md
   - id: story-0009-scene-005-event-003
-    timestamp: T0+2 days
+    timestamp: T0+3 days
     summary: "Sael withholds clean offering certification and marks the memory as edited rather than offered."
     canon_tier: draft
     involved_entities:
@@ -88,7 +88,7 @@ pov_pressure:
   consequence_density: 4
 ---
 
-The lower stair did not echo.
+The lower stair did not echo on the next dimming.
 
 Sael had expected that the first time she was sent below the ledger cells. Most
 stations kept depth in sound. Footsteps returned from stone. Air thickened
@@ -453,7 +453,8 @@ The edit had not erased the hand.
 
 It had failed to reach it.
 
-Or it had needed the hand to remain.
+Or the hand had survived the smoothing for reasons surface listening could not
+name.
 
 Sael did not know which possibility was worse. She did not know enough to choose
 between them, and the not-knowing steadied her more than certainty would have.
@@ -498,7 +499,7 @@ cracked.
 It proved one smaller, heavier thing.
 
 The memory had been handled before it was offered to release, and the handling
-had tried to make coercion look like peace.
+had tried to make a wound in the record look like peace.
 
 The reliquary pulsed beneath her fingers.
 
@@ -658,7 +659,7 @@ thickened a careful wall around it. It did not vanish. The same palm. The same
 impossible persistence. A detail that should have frayed if the offering were
 clean, or been erased if the editing were complete.
 
-A child had touched a bulkhead hard enough to survive someone's mercy.
+A child had touched a bulkhead hard enough to survive the smoothing.
 
 Sael closed her eyes.
 
