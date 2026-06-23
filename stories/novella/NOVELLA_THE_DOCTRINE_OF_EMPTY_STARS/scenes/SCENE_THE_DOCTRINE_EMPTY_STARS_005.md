@@ -174,25 +174,12 @@ Descent.
 
 Return, if return was given.
 
-The cradle handles cooled under her palms. Sael ran her anchors without slowing.
-
-Name.
-
-Station.
-
-Office.
-
-Doctrine.
-
-Sael Orro.
-
-Narthex of Low Mercy.
-
-Keeper of release ledgers.
+The cradle handles cooled under her palms. Sael ran her first three anchors
+without slowing: name, station, office. The fourth came after.
 
 A burden set down is not betrayal.
 
-The fourth line caught, as it had since the name entered the ledger. Not failure.
+The line caught, as it had since the name entered the ledger. Not failure.
 Not yet. A snag was honest if it was named. She let the snag remain and put her
 foot on the next step.
 
@@ -380,23 +367,8 @@ Palm on bulkhead.
 The deep chapel did nothing. It did not warn. It did not accuse. It held the
 surface open because that was what Sael had asked of it.
 
-Her own breathing tried to match the cycle. She stopped it.
-
-Name.
-
-Station.
-
-Office.
-
-Doctrine.
-
-Sael Orro.
-
-Narthex of Low Mercy.
-
-Keeper of release ledgers.
-
-A burden set down is not betrayal.
+Her own breathing tried to match the cycle. She stopped it by returning to the
+sequence: name, station, office, doctrine.
 
 The fourth line answered with the donor phrase over it.
 
@@ -692,15 +664,7 @@ change physically. Her knees did not weaken. Her chest did not open into grief.
 She simply lost the old permission to stand without checking what stood beneath
 her.
 
-She ran her anchors.
-
-Name.
-
-Station.
-
-Office.
-
-Doctrine.
+She ran the whole sequence once more: name, station, office, doctrine.
 
 Sael Orro.
 

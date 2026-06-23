@@ -383,11 +383,8 @@ take any instrument handed to them if the instrument promised shape for grief.
 
 Witness could become a second captivity.
 
-Veyr's sentence found the new room and sat down inside it.
-
-Sael hated him for being right.
-
-She hated more that hating him changed nothing useful.
+Veyr's sentence found the new room and sat down inside it. Resenting its source
+changed nothing useful.
 
 "What happens now?" she asked.
 
@@ -709,7 +706,7 @@ The ink dried.
 
 The page held its curve.
 
-Not accusation. Not forgiveness. Weight.
+Neither charge nor absolution. Weight.
 
 Ives returned the pen to Rin.
 

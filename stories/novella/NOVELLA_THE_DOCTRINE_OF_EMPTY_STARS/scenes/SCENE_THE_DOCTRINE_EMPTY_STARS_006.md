@@ -152,9 +152,7 @@ Tovan did not ask whose claim. The Canticle captain's presence had made a claim
 the moment he entered through the maintenance seam and recognized the thrum in
 the wall. The edited surface had made another. The station itself had a claim,
 too: not to be loaded with indefinite witness until its lower rooms forgot how
-to return.
-
-Truths did not become lighter because they disliked sharing a line.
+to return. None of those claims canceled another.
 
 Sael pressed the slate against her ribs. "Is he coherent?"
 

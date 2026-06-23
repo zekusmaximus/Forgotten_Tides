@@ -361,9 +361,7 @@ Cold entered her palm. With it came the child's hand on bulkhead metal, the
 adult's arm holding a small body close, the donor phrase laid over refusal, and
 beneath all of it the route pressure Veyr had admitted without flinching.
 
-Fear points home.
-
-She still hated the sentence for being true.
+She still hated Veyr's sentence for being true.
 
 "Sael," Ives said.
 
@@ -767,33 +765,22 @@ Custodian: Sael Orro.
 
 The words looked impossible only because they had become real.
 
-Sael ran her anchors.
-
-Name.
-
-Sael Orro.
-
+Sael ran the altered sequence once. Name answered with two names: Sael Orro and
 Lio.
 
 The child's name no longer merely settled beneath hers. It weighed there,
 recognized by the route field, tied to the unburned line her hand had made.
 
-Station.
+For station, the Narthex of Low Mercy.
 
-Narthex of Low Mercy.
+The answer came slower than before.
 
-The station answered, slower than before.
-
-Office.
-
-Past.
+Office answered: past.
 
 The answer hurt less than it had in the deep chapel. That frightened her. Loss
 could become familiar. Familiarity could become permission.
 
-Doctrine.
-
-The old sentence rose.
+Doctrine came last. The old sentence rose.
 
 A burden set down is not betrayal.
 
