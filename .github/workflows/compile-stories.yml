@@ -36,7 +36,6 @@ jobs:
           name: forgotten-tides-stories
           path: |
             out/compiled/forgotten_tides_stories.md
-            out/compiled/forgotten_tides_stories.pdf
             out/compiled/forgotten_tides_stories.epub
 
       - name: Write workflow summary
@@ -45,6 +44,5 @@ jobs:
             echo "## Story compilation artifacts";
             echo "";
             echo "- out/compiled/forgotten_tides_stories.md";
-            echo "- out/compiled/forgotten_tides_stories.pdf";
             echo "- out/compiled/forgotten_tides_stories.epub";
           } >> "$GITHUB_STEP_SUMMARY"

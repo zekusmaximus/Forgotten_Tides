@@ -4,7 +4,6 @@ set -euo pipefail
 ROOT_DIR=$(git rev-parse --show-toplevel)
 OUTPUT_DIR="${ROOT_DIR}/out/compiled"
 SOURCE_FILE="${OUTPUT_DIR}/forgotten_tides_stories.md"
-PDF_FILE="${OUTPUT_DIR}/forgotten_tides_stories.pdf"
 EPUB_FILE="${OUTPUT_DIR}/forgotten_tides_stories.epub"
 
 mkdir -p "$OUTPUT_DIR"
@@ -31,9 +30,7 @@ if ! command -v pandoc >/dev/null 2>&1; then
   exit 1
 fi
 
-pandoc "$SOURCE_FILE" -o "$PDF_FILE"
 pandoc "$SOURCE_FILE" -o "$EPUB_FILE"
 
 echo "Compiled stories source: $SOURCE_FILE"
-echo "Compiled stories PDF: $PDF_FILE"
 echo "Compiled stories ePub: $EPUB_FILE"
