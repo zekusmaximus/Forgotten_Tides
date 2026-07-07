@@ -4,17 +4,15 @@ on:
   push:
     paths:
       - 'stories/**'
+      - '!stories/README.md'
       - 'scripts/compile_stories.sh'
       - '.github/workflows/compile-stories.yml'
-    paths-ignore:
-      - 'stories/README.md'
   pull_request:
     paths:
       - 'stories/**'
+      - '!stories/README.md'
       - 'scripts/compile_stories.sh'
       - '.github/workflows/compile-stories.yml'
-    paths-ignore:
-      - 'stories/README.md'
   workflow_dispatch:
 
 jobs:
