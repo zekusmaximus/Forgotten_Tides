@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-07T13:41:29.311Z",
+  "generated": "2026-07-07T21:53:24.107Z",
   "nodes": [
     {
       "canonical_id": "char-0001",
@@ -168,6 +168,60 @@
       "type": "character",
       "name": "Tess Vlin",
       "path": "characters/Tess_Vlin.md",
+      "canon_tier": "speculative",
+      "source_weight": 60,
+      "retrieval_role": "exploratory"
+    },
+    {
+      "canonical_id": "char-0020",
+      "type": "character",
+      "name": "Nessa Iral",
+      "path": "characters/Nessa_Iral.md",
+      "canon_tier": "speculative",
+      "source_weight": 60,
+      "retrieval_role": "exploratory"
+    },
+    {
+      "canonical_id": "char-0021",
+      "type": "character",
+      "name": "Corin Tave",
+      "path": "characters/Corin_Tave.md",
+      "canon_tier": "speculative",
+      "source_weight": 60,
+      "retrieval_role": "exploratory"
+    },
+    {
+      "canonical_id": "char-0022",
+      "type": "character",
+      "name": "Lysa Korr",
+      "path": "characters/Lysa_Korr.md",
+      "canon_tier": "speculative",
+      "source_weight": 60,
+      "retrieval_role": "exploratory"
+    },
+    {
+      "canonical_id": "char-0023",
+      "type": "character",
+      "name": "Nim Orra",
+      "path": "characters/Nim_Orra.md",
+      "canon_tier": "speculative",
+      "source_weight": 60,
+      "retrieval_role": "exploratory"
+    },
+    {
+      "canonical_id": "char-0024",
+      "type": "character",
+      "name": "Yaret Ivo-Senn",
+      "path": "characters/Yaret_Ivo-Senn.md",
+      "canon_tier": "speculative",
+      "source_weight": 60,
+      "retrieval_role": "exploratory"
+    },
+    {
+      "canonical_id": "char-0025",
+      "type": "character",
+      "name": "Toma Vey",
+      "path": "characters/Toma_Vey.md",
       "canon_tier": "speculative",
       "source_weight": 60,
       "retrieval_role": "exploratory"
@@ -348,6 +402,15 @@
       "type": "location",
       "name": "Halix Exchange",
       "path": "atlas/Halix_Exchange.md",
+      "canon_tier": "speculative",
+      "source_weight": 60,
+      "retrieval_role": "exploratory"
+    },
+    {
+      "canonical_id": "loc-0014",
+      "type": "location",
+      "name": "Heavonly",
+      "path": "atlas/Heavonly.md",
       "canon_tier": "speculative",
       "source_weight": 60,
       "retrieval_role": "exploratory"
@@ -834,6 +897,51 @@
       "type": "story",
       "name": "The Halix Aftermarket",
       "path": "stories/short_story/the_halix_aftermarket/manuscript.md",
+      "canon_tier": "draft",
+      "source_weight": 65,
+      "retrieval_role": "active_draft"
+    },
+    {
+      "canonical_id": "story-0016",
+      "type": "story",
+      "name": "The Lie That Learned the Hallway",
+      "path": "stories/short_story/the_lie_that_learned_the_hallway/manuscript.md",
+      "canon_tier": "draft",
+      "source_weight": 65,
+      "retrieval_role": "active_draft"
+    },
+    {
+      "canonical_id": "story-0017",
+      "type": "story",
+      "name": "The Loss Ledger",
+      "path": "stories/short_story/the_loss_ledger/manuscript.md",
+      "canon_tier": "draft",
+      "source_weight": 65,
+      "retrieval_role": "active_draft"
+    },
+    {
+      "canonical_id": "story-0018",
+      "type": "story",
+      "name": "The Navigator Who Forgot Enough",
+      "path": "stories/short_story/the_navigator_who_forgot_enough/manuscript.md",
+      "canon_tier": "draft",
+      "source_weight": 65,
+      "retrieval_role": "active_draft"
+    },
+    {
+      "canonical_id": "story-0019",
+      "type": "story",
+      "name": "The Miniaturist's Name",
+      "path": "stories/short_story/the_miniaturists_name/manuscript.md",
+      "canon_tier": "draft",
+      "source_weight": 65,
+      "retrieval_role": "active_draft"
+    },
+    {
+      "canonical_id": "story-0020",
+      "type": "story",
+      "name": "The Inventory of Absence",
+      "path": "stories/short_story/the_inventory_of_absence/manuscript.md",
       "canon_tier": "draft",
       "source_weight": 65,
       "retrieval_role": "active_draft"
@@ -1615,6 +1723,231 @@
       "type": "stories"
     },
     {
+      "from": "char-0020",
+      "to": "char-0018",
+      "type": "characters"
+    },
+    {
+      "from": "char-0020",
+      "to": "fact-0002",
+      "type": "factions"
+    },
+    {
+      "from": "char-0020",
+      "to": "fact-0007",
+      "type": "factions"
+    },
+    {
+      "from": "char-0020",
+      "to": "loc-0001",
+      "type": "locations"
+    },
+    {
+      "from": "char-0020",
+      "to": "mech-0001",
+      "type": "mechanics"
+    },
+    {
+      "from": "char-0020",
+      "to": "mech-0002",
+      "type": "mechanics"
+    },
+    {
+      "from": "char-0020",
+      "to": "story-0014",
+      "type": "stories"
+    },
+    {
+      "from": "char-0020",
+      "to": "story-0016",
+      "type": "stories"
+    },
+    {
+      "from": "char-0021",
+      "to": "char-0022",
+      "type": "characters"
+    },
+    {
+      "from": "char-0021",
+      "to": "fact-0001",
+      "type": "factions"
+    },
+    {
+      "from": "char-0021",
+      "to": "fact-0002",
+      "type": "factions"
+    },
+    {
+      "from": "char-0021",
+      "to": "loc-0008",
+      "type": "locations"
+    },
+    {
+      "from": "char-0021",
+      "to": "mech-0001",
+      "type": "mechanics"
+    },
+    {
+      "from": "char-0021",
+      "to": "mech-0002",
+      "type": "mechanics"
+    },
+    {
+      "from": "char-0021",
+      "to": "mech-0003",
+      "type": "mechanics"
+    },
+    {
+      "from": "char-0021",
+      "to": "story-0001",
+      "type": "stories"
+    },
+    {
+      "from": "char-0021",
+      "to": "story-0017",
+      "type": "stories"
+    },
+    {
+      "from": "char-0022",
+      "to": "char-0021",
+      "type": "characters"
+    },
+    {
+      "from": "char-0022",
+      "to": "fact-0001",
+      "type": "factions"
+    },
+    {
+      "from": "char-0022",
+      "to": "fact-0002",
+      "type": "factions"
+    },
+    {
+      "from": "char-0022",
+      "to": "loc-0008",
+      "type": "locations"
+    },
+    {
+      "from": "char-0022",
+      "to": "mech-0001",
+      "type": "mechanics"
+    },
+    {
+      "from": "char-0022",
+      "to": "mech-0002",
+      "type": "mechanics"
+    },
+    {
+      "from": "char-0022",
+      "to": "mech-0003",
+      "type": "mechanics"
+    },
+    {
+      "from": "char-0022",
+      "to": "story-0001",
+      "type": "stories"
+    },
+    {
+      "from": "char-0022",
+      "to": "story-0017",
+      "type": "stories"
+    },
+    {
+      "from": "char-0023",
+      "to": "char-0008",
+      "type": "characters"
+    },
+    {
+      "from": "char-0023",
+      "to": "fact-0001",
+      "type": "factions"
+    },
+    {
+      "from": "char-0023",
+      "to": "fact-0006",
+      "type": "factions"
+    },
+    {
+      "from": "char-0023",
+      "to": "loc-0006",
+      "type": "locations"
+    },
+    {
+      "from": "char-0023",
+      "to": "loc-0010",
+      "type": "locations"
+    },
+    {
+      "from": "char-0023",
+      "to": "mech-0001",
+      "type": "mechanics"
+    },
+    {
+      "from": "char-0023",
+      "to": "mech-0002",
+      "type": "mechanics"
+    },
+    {
+      "from": "char-0023",
+      "to": "mech-0003",
+      "type": "mechanics"
+    },
+    {
+      "from": "char-0023",
+      "to": "story-0018",
+      "type": "stories"
+    },
+    {
+      "from": "char-0024",
+      "to": "fact-0003",
+      "type": "factions"
+    },
+    {
+      "from": "char-0024",
+      "to": "fact-0004",
+      "type": "factions"
+    },
+    {
+      "from": "char-0024",
+      "to": "loc-0005",
+      "type": "locations"
+    },
+    {
+      "from": "char-0024",
+      "to": "mech-0001",
+      "type": "mechanics"
+    },
+    {
+      "from": "char-0024",
+      "to": "story-0019",
+      "type": "stories"
+    },
+    {
+      "from": "char-0025",
+      "to": "fact-0002",
+      "type": "factions"
+    },
+    {
+      "from": "char-0025",
+      "to": "fact-0003",
+      "type": "factions"
+    },
+    {
+      "from": "char-0025",
+      "to": "loc-0014",
+      "type": "locations"
+    },
+    {
+      "from": "char-0025",
+      "to": "mech-0001",
+      "type": "mechanics"
+    },
+    {
+      "from": "char-0025",
+      "to": "story-0020",
+      "type": "stories"
+    },
+    {
       "from": "fact-0001",
       "to": "char-0001",
       "type": "characters"
@@ -2190,6 +2523,31 @@
       "type": "stories"
     },
     {
+      "from": "loc-0014",
+      "to": "char-0025",
+      "type": "characters"
+    },
+    {
+      "from": "loc-0014",
+      "to": "fact-0002",
+      "type": "factions"
+    },
+    {
+      "from": "loc-0014",
+      "to": "fact-0003",
+      "type": "factions"
+    },
+    {
+      "from": "loc-0014",
+      "to": "mech-0001",
+      "type": "mechanics"
+    },
+    {
+      "from": "loc-0014",
+      "to": "story-0020",
+      "type": "stories"
+    },
+    {
       "from": "lore-doctrine-empty-stars-continuity-brief",
       "to": "char-0011",
       "type": "characters"
@@ -2678,6 +3036,201 @@
       "from": "story-0015",
       "to": "story-0004",
       "type": "stories"
+    },
+    {
+      "from": "story-0016",
+      "to": "char-0018",
+      "type": "characters"
+    },
+    {
+      "from": "story-0016",
+      "to": "char-0020",
+      "type": "characters"
+    },
+    {
+      "from": "story-0016",
+      "to": "fact-0002",
+      "type": "factions"
+    },
+    {
+      "from": "story-0016",
+      "to": "fact-0007",
+      "type": "factions"
+    },
+    {
+      "from": "story-0016",
+      "to": "loc-0001",
+      "type": "locations"
+    },
+    {
+      "from": "story-0016",
+      "to": "mech-0001",
+      "type": "mechanics"
+    },
+    {
+      "from": "story-0016",
+      "to": "mech-0002",
+      "type": "mechanics"
+    },
+    {
+      "from": "story-0016",
+      "to": "story-0001",
+      "type": "stories"
+    },
+    {
+      "from": "story-0016",
+      "to": "story-0014",
+      "type": "stories"
+    },
+    {
+      "from": "story-0017",
+      "to": "char-0021",
+      "type": "characters"
+    },
+    {
+      "from": "story-0017",
+      "to": "char-0022",
+      "type": "characters"
+    },
+    {
+      "from": "story-0017",
+      "to": "fact-0001",
+      "type": "factions"
+    },
+    {
+      "from": "story-0017",
+      "to": "fact-0002",
+      "type": "factions"
+    },
+    {
+      "from": "story-0017",
+      "to": "loc-0008",
+      "type": "locations"
+    },
+    {
+      "from": "story-0017",
+      "to": "mech-0001",
+      "type": "mechanics"
+    },
+    {
+      "from": "story-0017",
+      "to": "mech-0002",
+      "type": "mechanics"
+    },
+    {
+      "from": "story-0017",
+      "to": "mech-0003",
+      "type": "mechanics"
+    },
+    {
+      "from": "story-0017",
+      "to": "story-0001",
+      "type": "stories"
+    },
+    {
+      "from": "story-0018",
+      "to": "char-0008",
+      "type": "characters"
+    },
+    {
+      "from": "story-0018",
+      "to": "char-0023",
+      "type": "characters"
+    },
+    {
+      "from": "story-0018",
+      "to": "fact-0001",
+      "type": "factions"
+    },
+    {
+      "from": "story-0018",
+      "to": "fact-0006",
+      "type": "factions"
+    },
+    {
+      "from": "story-0018",
+      "to": "loc-0006",
+      "type": "locations"
+    },
+    {
+      "from": "story-0018",
+      "to": "loc-0010",
+      "type": "locations"
+    },
+    {
+      "from": "story-0018",
+      "to": "mech-0001",
+      "type": "mechanics"
+    },
+    {
+      "from": "story-0018",
+      "to": "mech-0002",
+      "type": "mechanics"
+    },
+    {
+      "from": "story-0018",
+      "to": "mech-0003",
+      "type": "mechanics"
+    },
+    {
+      "from": "story-0018",
+      "to": "story-0001",
+      "type": "stories"
+    },
+    {
+      "from": "story-0018",
+      "to": "story-0007",
+      "type": "stories"
+    },
+    {
+      "from": "story-0019",
+      "to": "char-0024",
+      "type": "characters"
+    },
+    {
+      "from": "story-0019",
+      "to": "fact-0003",
+      "type": "factions"
+    },
+    {
+      "from": "story-0019",
+      "to": "fact-0004",
+      "type": "factions"
+    },
+    {
+      "from": "story-0019",
+      "to": "loc-0005",
+      "type": "locations"
+    },
+    {
+      "from": "story-0019",
+      "to": "mech-0001",
+      "type": "mechanics"
+    },
+    {
+      "from": "story-0020",
+      "to": "char-0025",
+      "type": "characters"
+    },
+    {
+      "from": "story-0020",
+      "to": "fact-0002",
+      "type": "factions"
+    },
+    {
+      "from": "story-0020",
+      "to": "fact-0003",
+      "type": "factions"
+    },
+    {
+      "from": "story-0020",
+      "to": "loc-0014",
+      "type": "locations"
+    },
+    {
+      "from": "story-0020",
+      "to": "mech-0001",
+      "type": "mechanics"
     },
     {
       "from": "term-0001",

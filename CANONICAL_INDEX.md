@@ -1,6 +1,6 @@
 # Canonical Index
 
-This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-07-07T13:41:29.311Z
+This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-07-07T21:53:24.107Z
 
 ## Character
 - `char-0001` — Rell (`characters/Rell.md`)
@@ -22,6 +22,12 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `char-0017` — Elior Ren (`characters/Elior_Ren.md`)
 - `char-0018` — Mael Ivar (`characters/Mael_Ivar.md`)
 - `char-0019` — Tess Vlin (`characters/Tess_Vlin.md`)
+- `char-0020` — Nessa Iral (`characters/Nessa_Iral.md`)
+- `char-0021` — Corin Tave (`characters/Corin_Tave.md`)
+- `char-0022` — Lysa Korr (`characters/Lysa_Korr.md`)
+- `char-0023` — Nim Orra (`characters/Nim_Orra.md`)
+- `char-0024` — Yaret Ivo-Senn (`characters/Yaret_Ivo-Senn.md`)
+- `char-0025` — Toma Vey (`characters/Toma_Vey.md`)
 
 ## Faction
 - `fact-0001` — Canticle Fleet (`factions/Canticle_Fleet.md`)
@@ -46,6 +52,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `loc-0011` — Tessarine Vault (`atlas/Tessarine_Vault.md`)
 - `loc-0012` — Narthex of Low Mercy (`atlas/Narthex_of_Low_Mercy.md`)
 - `loc-0013` — Halix Exchange (`atlas/Halix_Exchange.md`)
+- `loc-0014` — Heavonly (`atlas/Heavonly.md`)
 
 ## Lore
 - `lore-0001` — COSMIC REGIONS (`lore/COSMIC_REGIONS.md`)
@@ -106,6 +113,11 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `story-0013` — The Smallest Burn (`stories/short_story/the_smallest_burn/manuscript.md`)
 - `story-0014` — The Public Weight of a Private Lie (`stories/short_story/the_public_weight_of_a_private_lie/manuscript.md`)
 - `story-0015` — The Halix Aftermarket (`stories/short_story/the_halix_aftermarket/manuscript.md`)
+- `story-0016` — The Lie That Learned the Hallway (`stories/short_story/the_lie_that_learned_the_hallway/manuscript.md`)
+- `story-0017` — The Loss Ledger (`stories/short_story/the_loss_ledger/manuscript.md`)
+- `story-0018` — The Navigator Who Forgot Enough (`stories/short_story/the_navigator_who_forgot_enough/manuscript.md`)
+- `story-0019` — The Miniaturist's Name (`stories/short_story/the_miniaturists_name/manuscript.md`)
+- `story-0020` — The Inventory of Absence (`stories/short_story/the_inventory_of_absence/manuscript.md`)
 
 ## Term
 - `term-0001` — Anchor (`data/lexicon/terms.yaml`)
@@ -240,6 +252,11 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `story-0013` - The Smallest Burn (story, draft, weight 65, `stories/short_story/the_smallest_burn/manuscript.md`)
 - `story-0014` - The Public Weight of a Private Lie (story, draft, weight 65, `stories/short_story/the_public_weight_of_a_private_lie/manuscript.md`)
 - `story-0015` - The Halix Aftermarket (story, draft, weight 65, `stories/short_story/the_halix_aftermarket/manuscript.md`)
+- `story-0016` - The Lie That Learned the Hallway (story, draft, weight 65, `stories/short_story/the_lie_that_learned_the_hallway/manuscript.md`)
+- `story-0017` - The Loss Ledger (story, draft, weight 65, `stories/short_story/the_loss_ledger/manuscript.md`)
+- `story-0018` - The Navigator Who Forgot Enough (story, draft, weight 65, `stories/short_story/the_navigator_who_forgot_enough/manuscript.md`)
+- `story-0019` - The Miniaturist's Name (story, draft, weight 65, `stories/short_story/the_miniaturists_name/manuscript.md`)
+- `story-0020` - The Inventory of Absence (story, draft, weight 65, `stories/short_story/the_inventory_of_absence/manuscript.md`)
 
 ### Speculative / Sandbox Material
 - `char-0009` - Maren Holt (character, speculative, weight 60, `characters/Maren_Holt.md`)
@@ -252,8 +269,15 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `char-0017` - Elior Ren (character, speculative, weight 60, `characters/Elior_Ren.md`)
 - `char-0018` - Mael Ivar (character, speculative, weight 60, `characters/Mael_Ivar.md`)
 - `char-0019` - Tess Vlin (character, speculative, weight 60, `characters/Tess_Vlin.md`)
+- `char-0020` - Nessa Iral (character, speculative, weight 60, `characters/Nessa_Iral.md`)
+- `char-0021` - Corin Tave (character, speculative, weight 60, `characters/Corin_Tave.md`)
+- `char-0022` - Lysa Korr (character, speculative, weight 60, `characters/Lysa_Korr.md`)
+- `char-0023` - Nim Orra (character, speculative, weight 60, `characters/Nim_Orra.md`)
+- `char-0024` - Yaret Ivo-Senn (character, speculative, weight 60, `characters/Yaret_Ivo-Senn.md`)
+- `char-0025` - Toma Vey (character, speculative, weight 60, `characters/Toma_Vey.md`)
 - `loc-0012` - Narthex of Low Mercy (location, speculative, weight 60, `atlas/Narthex_of_Low_Mercy.md`)
 - `loc-0013` - Halix Exchange (location, speculative, weight 60, `atlas/Halix_Exchange.md`)
+- `loc-0014` - Heavonly (location, speculative, weight 60, `atlas/Heavonly.md`)
 
 ### Test / Dev / Sample Material
 - `novella_test` - Test (story, test, weight 10, `stories/novella/NOVELLA_TEST/manuscript.md`)
