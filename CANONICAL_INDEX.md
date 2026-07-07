@@ -1,6 +1,6 @@
 # Canonical Index
 
-This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-06-22T21:31:30.464Z
+This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-07-07T13:41:29.311Z
 
 ## Character
 - `char-0001` — Rell (`characters/Rell.md`)
@@ -16,6 +16,12 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `char-0011` — Sael Orro (`characters/Sael_Orro.md`)
 - `char-0012` — Ives Mar (`characters/Ives_Mar.md`)
 - `char-0013` — Veyr Anik (`characters/Veyr_Anik.md`)
+- `char-0014` — Sera Venn (`characters/Sera_Venn.md`)
+- `char-0015` — Oren Vale (`characters/Oren_Vale.md`)
+- `char-0016` — Nara Oss (`characters/Nara_Oss.md`)
+- `char-0017` — Elior Ren (`characters/Elior_Ren.md`)
+- `char-0018` — Mael Ivar (`characters/Mael_Ivar.md`)
+- `char-0019` — Tess Vlin (`characters/Tess_Vlin.md`)
 
 ## Faction
 - `fact-0001` — Canticle Fleet (`factions/Canticle_Fleet.md`)
@@ -39,6 +45,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `loc-0010` — Solace Hospice (`atlas/Solace_Hospice.md`)
 - `loc-0011` — Tessarine Vault (`atlas/Tessarine_Vault.md`)
 - `loc-0012` — Narthex of Low Mercy (`atlas/Narthex_of_Low_Mercy.md`)
+- `loc-0013` — Halix Exchange (`atlas/Halix_Exchange.md`)
 
 ## Lore
 - `lore-0001` — COSMIC REGIONS (`lore/COSMIC_REGIONS.md`)
@@ -93,6 +100,12 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `story-0007` — The Hospice Knot (`stories/short_story/the_hospice_knot/manuscript.md`)
 - `story-0008` — The Reliquarist's Doubt (`stories/short_story/the_reliquarists_doubt/manuscript.md`)
 - `story-0009` — The Doctrine of Empty Stars (`stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/manuscript.md`)
+- `story-0010` — The Error That Remembered Itself (`stories/short_story/the_error_that_remembered_itself/manuscript.md`)
+- `story-0011` — The Quiet Census (`stories/short_story/the_quiet_census/manuscript.md`)
+- `story-0012` — The Mercy Doctrine (`stories/short_story/the_mercy_doctrine/manuscript.md`)
+- `story-0013` — The Smallest Burn (`stories/short_story/the_smallest_burn/manuscript.md`)
+- `story-0014` — The Public Weight of a Private Lie (`stories/short_story/the_public_weight_of_a_private_lie/manuscript.md`)
+- `story-0015` — The Halix Aftermarket (`stories/short_story/the_halix_aftermarket/manuscript.md`)
 
 ## Term
 - `term-0001` — Anchor (`data/lexicon/terms.yaml`)
@@ -221,13 +234,26 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `story-0007` - The Hospice Knot (story, draft, weight 65, `stories/short_story/the_hospice_knot/manuscript.md`)
 - `story-0008` - The Reliquarist's Doubt (story, draft, weight 65, `stories/short_story/the_reliquarists_doubt/manuscript.md`)
 - `story-0009` - The Doctrine of Empty Stars (story, draft, weight 65, `stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/manuscript.md`)
+- `story-0010` - The Error That Remembered Itself (story, draft, weight 65, `stories/short_story/the_error_that_remembered_itself/manuscript.md`)
+- `story-0011` - The Quiet Census (story, draft, weight 65, `stories/short_story/the_quiet_census/manuscript.md`)
+- `story-0012` - The Mercy Doctrine (story, draft, weight 65, `stories/short_story/the_mercy_doctrine/manuscript.md`)
+- `story-0013` - The Smallest Burn (story, draft, weight 65, `stories/short_story/the_smallest_burn/manuscript.md`)
+- `story-0014` - The Public Weight of a Private Lie (story, draft, weight 65, `stories/short_story/the_public_weight_of_a_private_lie/manuscript.md`)
+- `story-0015` - The Halix Aftermarket (story, draft, weight 65, `stories/short_story/the_halix_aftermarket/manuscript.md`)
 
 ### Speculative / Sandbox Material
 - `char-0009` - Maren Holt (character, speculative, weight 60, `characters/Maren_Holt.md`)
 - `char-0011` - Sael Orro (character, speculative, weight 60, `characters/Sael_Orro.md`)
 - `char-0012` - Ives Mar (character, speculative, weight 60, `characters/Ives_Mar.md`)
 - `char-0013` - Veyr Anik (character, speculative, weight 60, `characters/Veyr_Anik.md`)
+- `char-0014` - Sera Venn (character, speculative, weight 60, `characters/Sera_Venn.md`)
+- `char-0015` - Oren Vale (character, speculative, weight 60, `characters/Oren_Vale.md`)
+- `char-0016` - Nara Oss (character, speculative, weight 60, `characters/Nara_Oss.md`)
+- `char-0017` - Elior Ren (character, speculative, weight 60, `characters/Elior_Ren.md`)
+- `char-0018` - Mael Ivar (character, speculative, weight 60, `characters/Mael_Ivar.md`)
+- `char-0019` - Tess Vlin (character, speculative, weight 60, `characters/Tess_Vlin.md`)
 - `loc-0012` - Narthex of Low Mercy (location, speculative, weight 60, `atlas/Narthex_of_Low_Mercy.md`)
+- `loc-0013` - Halix Exchange (location, speculative, weight 60, `atlas/Halix_Exchange.md`)
 
 ### Test / Dev / Sample Material
 - `novella_test` - Test (story, test, weight 10, `stories/novella/NOVELLA_TEST/manuscript.md`)

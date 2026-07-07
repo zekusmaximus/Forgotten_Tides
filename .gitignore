@@ -6,9 +6,42 @@ Thumbs.db
 .idea/
 .vscode/
 
-# build artifacts
+# dependencies
 node_modules/
+tools/**/node_modules/
+.kilo/node_modules/
+
+# build artifacts and generated reports
 dist/
 .out/
 out/
-node_modules/
+reports/
+coverage/
+.nyc_output/
+
+# generated backup snapshots
+.backups/
+metadata-backups/
+tools/**/.backups/
+tools/**/metadata-backups/
+*_backup_*.md
+*_backup_*.json
+*_backup_*.tmp
+
+# local agent/runtime state
+.kilo/worktrees/
+.kilo/agent-manager.json
+.kilo/package.json
+.kilo/package-lock.json
+.kilo/pnpm-lock.yaml
+.kilo/bun.lock
+.kilo/yarn.lock
+
+# transient diagnostics
+*.log
+*.tmp
+*.temp
+*.orig
+*.rej
+lint-errors.txt
+typescript-errors.txt
