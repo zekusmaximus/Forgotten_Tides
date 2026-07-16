@@ -102,12 +102,14 @@ function scanStories(characters) {
         const relativePath = toPosixPath(path.relative(path.join(__dirname, '../..'), filePath));
         const storyName = relativePath.replace(/\.md$/i, '');
 
+        const contentLower = content.toLowerCase();
+
         // Check each character's invariants against story content
         for (const [charName, charData] of Object.entries(characters)) {
             const charIssues = [];
 
             // Check if character is referenced in this story
-            const charMentioned = content.toLowerCase().includes(charName.toLowerCase());
+            const charMentioned = contentLower.includes(charName.toLowerCase());
 
             if (charMentioned) {
                 // Check each invariant
