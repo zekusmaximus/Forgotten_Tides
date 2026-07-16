@@ -45,3 +45,4 @@ tools/**/metadata-backups/
 *.rej
 lint-errors.txt
 typescript-errors.txt
+stories/test_perf/
