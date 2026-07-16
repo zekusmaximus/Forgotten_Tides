@@ -5,7 +5,7 @@
 const fs = require("fs");
 const path = require("path");
 const yaml = require("js-yaml");
-const { execSync } = require("child_process");
+const { execFileSync } = require("child_process");
 const { discoverMarkdownFiles } = require("../lib/content_discovery");
 const { describePolicy, shouldInclude } = require("../lib/canon_policy");
 
@@ -124,9 +124,9 @@ function getIntent(query) {
     const routeIntent = require("./route_intent.js");
     return routeIntent.classify(query);
   } catch (e) {
-    // Fallback to shell execution
+    // Fallback to subprocess execution (argv array, no shell interpretation)
     try {
-      const intent = execSync(`node scripts/prompt/route_intent.js "${query}"`, { encoding: "utf8" }).trim();
+      const intent = execFileSync(process.execPath, ["scripts/prompt/route_intent.js", query], { encoding: "utf8" }).trim();
       return intent;
     } catch (e) {
       console.warn("Warning: Could not get intent classification, using default");
@@ -142,9 +142,9 @@ function getResolvedIDs(query) {
     const resolveIds = require("./resolve_ids.js");
     return resolveIds.resolve(query);
   } catch (e) {
-    // Fallback to shell execution
+    // Fallback to subprocess execution (argv array, no shell interpretation)
     try {
-      const ids = execSync(`node scripts/prompt/resolve_ids.js "${query}"`, { encoding: "utf8" }).trim();
+      const ids = execFileSync(process.execPath, ["scripts/prompt/resolve_ids.js", query], { encoding: "utf8" }).trim();
       return ids.split("\n").filter(id => id.trim());
     } catch (e) {
       console.warn("Warning: Could not resolve IDs");

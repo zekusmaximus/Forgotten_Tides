@@ -1,7 +1,7 @@
 // scripts/prompt/orchestrate.js
 // NL request → intent → IDs → prompt pack → action → lints (if available) → report.
 
-const { execSync } = require("child_process");
+const { execSync, execFileSync } = require("child_process");
 const fs = require("fs");
 const path = require("path");
 const { classify } = require("./route_intent.js");
@@ -20,6 +20,18 @@ function sh(cmd) {
   }
 }
 
+// Run a Node script with arguments passed as an argv array (no shell).
+// Prevents command injection from user-controlled values such as `query`.
+function runNode(script, args = []) {
+  try {
+    return execFileSync(process.execPath, [script, ...args.map(String)], { stdio: "pipe" })
+      .toString()
+      .trim();
+  } catch (e) {
+    return { error: String(e.stderr || e.message || e) };
+  }
+}
+
 function ensureDirs() {
   ["out/prompts","out/reports","lore/ideas","docs/session"].forEach(d=>{
     if (!fs.existsSync(d)) fs.mkdirSync(d,{recursive:true});
@@ -28,7 +40,7 @@ function ensureDirs() {
 
 function exportPack(ids) {
   if (!ids?.length) return null;
-  const out = sh(`node scripts/prompt/export_prompt_pack.js ${ids.join(" ")}`);
+  const out = runNode("scripts/prompt/export_prompt_pack.js", ids);
   const files = fs.readdirSync("out/prompts").filter(f=>f.endsWith("_pack.json"))
     .map(f=>({ f, t: fs.statSync(path.join("out/prompts", f)).mtimeMs }))
     .sort((a,b)=>b.t-a.t);
@@ -291,8 +303,9 @@ async function orchestrate(query, options = {}) {
   }
 
   // Step 1: Build context first using context_builder.js
-  const contextBuilderCmd = `node scripts/prompt/context_builder.js "${query}" --profile ${profile}`;
-  const contextOutputPath = sh(contextBuilderCmd);
+  // Pass query/profile as argv entries instead of interpolating into a shell
+  // string, so shell metacharacters in user input cannot execute commands.
+  const contextOutputPath = runNode("scripts/prompt/context_builder.js", [query, "--profile", profile]);
 
   // Read the context JSON to get the canonical IDs list
   let contextOrder = [];
