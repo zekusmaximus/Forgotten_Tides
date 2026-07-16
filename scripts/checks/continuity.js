@@ -43,7 +43,7 @@ const continuityReport = {
 /**
  * Load all character files and extract their continuity invariants
  */
-function loadCharacterContinuity() {
+async function loadCharacterContinuity() {
     const charactersDir = path.join(__dirname, '../../characters');
     const { files: characterFiles, coverage } = discoverMarkdownFiles(charactersDir);
 
@@ -51,13 +51,13 @@ function loadCharacterContinuity() {
     continuityReport.coverage.characters = coverage;
     continuityReport.summary.character_files_seen = coverage.files_seen;
 
-    for (const filePath of characterFiles) {
-        const content = fs.readFileSync(filePath, 'utf8');
+    await Promise.all(characterFiles.map(async (filePath) => {
+        const content = await fs.promises.readFile(filePath, 'utf8');
         const file = toPosixPath(path.relative(path.join(__dirname, '../..'), filePath));
 
         // Extract YAML frontmatter
         const match = content.match(/^---\r?\n([\s\S]*?)\r?\n---/);
-        if (!match) continue;
+        if (!match) return;
 
         try {
             const frontmatter = yaml.load(match[1]);
@@ -77,7 +77,7 @@ function loadCharacterContinuity() {
         } catch (error) {
             console.error(`Error parsing character file ${file}:`, error.message);
         }
-    }
+    }));
 
     continuityReport.summary.total_characters = Object.keys(characters).length;
     continuityReport.summary.character_files_scanned = characterFiles.length;
@@ -87,7 +87,7 @@ function loadCharacterContinuity() {
 /**
  * Scan stories directory for character references
  */
-function scanStories(characters) {
+async function scanStories(characters) {
     const storiesDir = path.join(__dirname, '../../stories');
     const { files: storyFiles, coverage } = discoverMarkdownFiles(storiesDir);
     continuityReport.coverage.stories = coverage;
@@ -97,8 +97,8 @@ function scanStories(characters) {
 
     continuityReport.summary.total_stories = storyFiles.length;
 
-    for (const filePath of storyFiles) {
-        const content = fs.readFileSync(filePath, 'utf8');
+    await Promise.all(storyFiles.map(async (filePath) => {
+        const content = await fs.promises.readFile(filePath, 'utf8');
         const relativePath = toPosixPath(path.relative(path.join(__dirname, '../..'), filePath));
         const storyName = relativePath.replace(/\.md$/i, '');
 
@@ -156,10 +156,14 @@ function scanStories(characters) {
             }
 
             if (charIssues.length > 0) {
-                continuityReport.characters[charName].issues = charIssues;
+                // Assuming characters object is already initialized for charName
+                if (!continuityReport.characters[charName].issues) {
+                    continuityReport.characters[charName].issues = [];
+                }
+                continuityReport.characters[charName].issues.push(...charIssues);
             }
         }
-    }
+    }));
 }
 
 /**
@@ -213,31 +217,33 @@ function writeReport() {
 }
 
 // Main execution
-try {
-    console.log('Loading character continuity data...');
-    const characters = loadCharacterContinuity();
+(async () => {
+    try {
+        console.log('Loading character continuity data...');
+        const characters = await loadCharacterContinuity();
 
-    console.log('Scanning stories for continuity issues...');
-    scanStories(characters);
+        console.log('Scanning stories for continuity issues...');
+        await scanStories(characters);
 
-    if (continuityReport.summary.total_characters === 0) {
-        continuityReport.issues.hard.push({
-            type: 'hard',
-            issue: 'Continuity check found no character files with valid frontmatter.',
-            location: 'characters/'
-        });
+        if (continuityReport.summary.total_characters === 0) {
+            continuityReport.issues.hard.push({
+                type: 'hard',
+                issue: 'Continuity check found no character files with valid frontmatter.',
+                location: 'characters/'
+            });
+        }
+        if (continuityReport.summary.story_files_seen > 0 && continuityReport.summary.total_stories === 0) {
+            continuityReport.issues.hard.push({
+                type: 'hard',
+                issue: 'Continuity check saw story markdown files but scanned none.',
+                location: 'stories/'
+            });
+        }
+
+        console.log('Generating continuity report...');
+        writeReport();
+    } catch (error) {
+        console.error('Error running continuity check:', error);
+        process.exit(1);
     }
-    if (continuityReport.summary.story_files_seen > 0 && continuityReport.summary.total_stories === 0) {
-        continuityReport.issues.hard.push({
-            type: 'hard',
-            issue: 'Continuity check saw story markdown files but scanned none.',
-            location: 'stories/'
-        });
-    }
-
-    console.log('Generating continuity report...');
-    writeReport();
-} catch (error) {
-    console.error('Error running continuity check:', error);
-    process.exit(1);
-}
+})();
