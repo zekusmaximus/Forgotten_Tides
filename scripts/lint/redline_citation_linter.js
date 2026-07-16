@@ -39,6 +39,8 @@ const LOCKED_IDS = [
   'loc-0003'   // Lattice Gap
 ];
 
+const LOCKED_IDS_SET = new Set(LOCKED_IDS.map(id => id.toLowerCase()));
+
 const ORIGINATING_STORY_ID = 'story-0001';
 
 function hasLockedReference(data) {
@@ -53,7 +55,7 @@ function hasLockedReference(data) {
       if (Array.isArray(data.references[k])) refs.push(...data.references[k]);
     });
   }
-  return refs.some(r => LOCKED_IDS.includes(String(r).toLowerCase()));
+  return refs.some(r => LOCKED_IDS_SET.has(String(r).toLowerCase()));
 }
 
 function citesBible(data) {
