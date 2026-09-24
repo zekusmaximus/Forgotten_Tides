@@ -1,6 +1,6 @@
 # Canonical Index
 
-This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-07-07T21:53:24.107Z
+This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-09-24T00:41:01.782Z
 
 ## Character
 - `char-0001` — Rell (`characters/Rell.md`)
@@ -28,6 +28,8 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `char-0023` — Nim Orra (`characters/Nim_Orra.md`)
 - `char-0024` — Yaret Ivo-Senn (`characters/Yaret_Ivo-Senn.md`)
 - `char-0025` — Toma Vey (`characters/Toma_Vey.md`)
+- `char-0026` — Yenu Skather-Ait (`characters/Yenu_Skather-Ait.md`)
+- `char-0027` — Hol-Vren (`characters/Hol-Vren.md`)
 
 ## Faction
 - `fact-0001` — Canticle Fleet (`factions/Canticle_Fleet.md`)
@@ -53,6 +55,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `loc-0012` — Narthex of Low Mercy (`atlas/Narthex_of_Low_Mercy.md`)
 - `loc-0013` — Halix Exchange (`atlas/Halix_Exchange.md`)
 - `loc-0014` — Heavonly (`atlas/Heavonly.md`)
+- `loc-0015` — Skather-Ait pod (`atlas/Skather-Ait_Pod.md`)
 
 ## Lore
 - `lore-0001` — COSMIC REGIONS (`lore/COSMIC_REGIONS.md`)
@@ -118,6 +121,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `story-0018` — The Navigator Who Forgot Enough (`stories/short_story/the_navigator_who_forgot_enough/manuscript.md`)
 - `story-0019` — The Miniaturist's Name (`stories/short_story/the_miniaturists_name/manuscript.md`)
 - `story-0020` — The Inventory of Absence (`stories/short_story/the_inventory_of_absence/manuscript.md`)
+- `story-0021` — Receipt for a Voice (`stories/short_story/receipt_for_a_voice/manuscript.md`)
 
 ## Term
 - `term-0001` — Anchor (`data/lexicon/terms.yaml`)
@@ -257,6 +261,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `story-0018` - The Navigator Who Forgot Enough (story, draft, weight 65, `stories/short_story/the_navigator_who_forgot_enough/manuscript.md`)
 - `story-0019` - The Miniaturist's Name (story, draft, weight 65, `stories/short_story/the_miniaturists_name/manuscript.md`)
 - `story-0020` - The Inventory of Absence (story, draft, weight 65, `stories/short_story/the_inventory_of_absence/manuscript.md`)
+- `story-0021` - Receipt for a Voice (story, draft, weight 65, `stories/short_story/receipt_for_a_voice/manuscript.md`)
 
 ### Speculative / Sandbox Material
 - `char-0009` - Maren Holt (character, speculative, weight 60, `characters/Maren_Holt.md`)
@@ -275,9 +280,12 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `char-0023` - Nim Orra (character, speculative, weight 60, `characters/Nim_Orra.md`)
 - `char-0024` - Yaret Ivo-Senn (character, speculative, weight 60, `characters/Yaret_Ivo-Senn.md`)
 - `char-0025` - Toma Vey (character, speculative, weight 60, `characters/Toma_Vey.md`)
+- `char-0026` - Yenu Skather-Ait (character, speculative, weight 60, `characters/Yenu_Skather-Ait.md`)
+- `char-0027` - Hol-Vren (character, speculative, weight 60, `characters/Hol-Vren.md`)
 - `loc-0012` - Narthex of Low Mercy (location, speculative, weight 60, `atlas/Narthex_of_Low_Mercy.md`)
 - `loc-0013` - Halix Exchange (location, speculative, weight 60, `atlas/Halix_Exchange.md`)
 - `loc-0014` - Heavonly (location, speculative, weight 60, `atlas/Heavonly.md`)
+- `loc-0015` - Skather-Ait pod (location, speculative, weight 60, `atlas/Skather-Ait_Pod.md`)
 
 ### Test / Dev / Sample Material
 - `novella_test` - Test (story, test, weight 10, `stories/novella/NOVELLA_TEST/manuscript.md`)
