@@ -1,8 +1,8 @@
 # Link Map - Entity Relationships
 
-Generated: 2026-07-07T21:53:24.107Z
+Generated: 2026-09-24T00:41:01.782Z
 
-## Entities (131)
+## Entities (135)
 
 - `char-0001` (character, primary_canon, weight 110)
 - `char-0002` (character, primary_canon, weight 110)
@@ -29,6 +29,8 @@ Generated: 2026-07-07T21:53:24.107Z
 - `char-0023` (character, speculative, weight 60)
 - `char-0024` (character, speculative, weight 60)
 - `char-0025` (character, speculative, weight 60)
+- `char-0026` (character, speculative, weight 60)
+- `char-0027` (character, speculative, weight 60)
 - `fact-0001` (faction, primary_canon, weight 110)
 - `fact-0002` (faction, primary_canon, weight 110)
 - `fact-0003` (faction, primary_canon, weight 110)
@@ -50,6 +52,7 @@ Generated: 2026-07-07T21:53:24.107Z
 - `loc-0012` (location, speculative, weight 60)
 - `loc-0013` (location, speculative, weight 60)
 - `loc-0014` (location, speculative, weight 60)
+- `loc-0015` (location, speculative, weight 60)
 - `lore-0001` (lore, working_canon, weight 95)
 - `lore-0002` (lore, working_canon, weight 95)
 - `lore-0003` (lore, working_canon, weight 95)
@@ -109,6 +112,7 @@ Generated: 2026-07-07T21:53:24.107Z
 - `story-0018` (story, draft, weight 65)
 - `story-0019` (story, draft, weight 65)
 - `story-0020` (story, draft, weight 65)
+- `story-0021` (story, draft, weight 65)
 - `term-0001` (term, primary_canon, weight 110)
 - `term-0002` (term, primary_canon, weight 110)
 - `term-0003` (term, primary_canon, weight 110)
@@ -136,7 +140,7 @@ Generated: 2026-07-07T21:53:24.107Z
 - `term-0025` (term, primary_canon, weight 110)
 - `term-0026` (term, primary_canon, weight 110)
 
-## Relationships (470)
+## Relationships (514)
 
 - `char-0001` → `char-0002` (characters)
 - `char-0001` → `char-0003` (characters)
@@ -291,6 +295,22 @@ Generated: 2026-07-07T21:53:24.107Z
 - `char-0025` → `loc-0014` (locations)
 - `char-0025` → `mech-0001` (mechanics)
 - `char-0025` → `story-0020` (stories)
+- `char-0026` → `char-0019` (characters)
+- `char-0026` → `char-0027` (characters)
+- `char-0026` → `fact-0004` (factions)
+- `char-0026` → `loc-0008` (locations)
+- `char-0026` → `loc-0013` (locations)
+- `char-0026` → `loc-0015` (locations)
+- `char-0026` → `mech-0001` (mechanics)
+- `char-0026` → `story-0004` (stories)
+- `char-0026` → `story-0021` (stories)
+- `char-0027` → `char-0026` (characters)
+- `char-0027` → `fact-0004` (factions)
+- `char-0027` → `loc-0008` (locations)
+- `char-0027` → `loc-0015` (locations)
+- `char-0027` → `mech-0001` (mechanics)
+- `char-0027` → `story-0004` (stories)
+- `char-0027` → `story-0021` (stories)
 - `fact-0001` → `char-0001` (characters)
 - `fact-0001` → `char-0002` (characters)
 - `fact-0001` → `char-0003` (characters)
@@ -411,6 +431,14 @@ Generated: 2026-07-07T21:53:24.107Z
 - `loc-0014` → `fact-0003` (factions)
 - `loc-0014` → `mech-0001` (mechanics)
 - `loc-0014` → `story-0020` (stories)
+- `loc-0015` → `char-0026` (characters)
+- `loc-0015` → `char-0027` (characters)
+- `loc-0015` → `fact-0004` (factions)
+- `loc-0015` → `loc-0008` (locations)
+- `loc-0015` → `loc-0013` (locations)
+- `loc-0015` → `mech-0001` (mechanics)
+- `loc-0015` → `story-0004` (stories)
+- `loc-0015` → `story-0021` (stories)
 - `lore-doctrine-empty-stars-continuity-brief` → `char-0011` (characters)
 - `lore-doctrine-empty-stars-continuity-brief` → `char-0012` (characters)
 - `lore-doctrine-empty-stars-continuity-brief` → `char-0013` (characters)
@@ -548,6 +576,26 @@ Generated: 2026-07-07T21:53:24.107Z
 - `story-0020` → `fact-0003` (factions)
 - `story-0020` → `loc-0014` (locations)
 - `story-0020` → `mech-0001` (mechanics)
+- `story-0021` → `char-0017` (characters)
+- `story-0021` → `char-0019` (characters)
+- `story-0021` → `char-0021` (characters)
+- `story-0021` → `char-0022` (characters)
+- `story-0021` → `char-0026` (characters)
+- `story-0021` → `char-0027` (characters)
+- `story-0021` → `fact-0001` (factions)
+- `story-0021` → `fact-0003` (factions)
+- `story-0021` → `fact-0004` (factions)
+- `story-0021` → `loc-0008` (locations)
+- `story-0021` → `loc-0013` (locations)
+- `story-0021` → `loc-0015` (locations)
+- `story-0021` → `mech-0001` (mechanics)
+- `story-0021` → `mech-0002` (mechanics)
+- `story-0021` → `mech-0003` (mechanics)
+- `story-0021` → `story-0001` (stories)
+- `story-0021` → `story-0004` (stories)
+- `story-0021` → `story-0013` (stories)
+- `story-0021` → `story-0015` (stories)
+- `story-0021` → `story-0017` (stories)
 - `term-0001` → `term-0002` (related_terms)
 - `term-0001` → `term-0003` (related_terms)
 - `term-0001` → `term-0013` (related_terms)
@@ -615,10 +663,10 @@ _none_
 
 ## Statistics
 
-- **Total Entities**: 131
-- **Total Relationships**: 470
+- **Total Entities**: 135
+- **Total Relationships**: 514
 - **Orphaned Targets**: 0
 - **Entity Types**: character, faction, location, lore, mechanics, story, term
 - **Primary / Working Canon**: 63
-- **Draft Entities**: 42
+- **Draft Entities**: 43
 - **Test / Sandbox / Deprecated Entities**: 7

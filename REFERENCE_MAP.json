@@ -1,5 +1,5 @@
 {
-  "generated": "2026-07-07T21:53:24.107Z",
+  "generated": "2026-09-24T00:41:01.782Z",
   "nodes": [
     {
       "canonical_id": "char-0001",
@@ -227,6 +227,24 @@
       "retrieval_role": "exploratory"
     },
     {
+      "canonical_id": "char-0026",
+      "type": "character",
+      "name": "Yenu Skather-Ait",
+      "path": "characters/Yenu_Skather-Ait.md",
+      "canon_tier": "speculative",
+      "source_weight": 60,
+      "retrieval_role": "exploratory"
+    },
+    {
+      "canonical_id": "char-0027",
+      "type": "character",
+      "name": "Hol-Vren",
+      "path": "characters/Hol-Vren.md",
+      "canon_tier": "speculative",
+      "source_weight": 60,
+      "retrieval_role": "exploratory"
+    },
+    {
       "canonical_id": "fact-0001",
       "type": "faction",
       "name": "Canticle Fleet",
@@ -411,6 +429,15 @@
       "type": "location",
       "name": "Heavonly",
       "path": "atlas/Heavonly.md",
+      "canon_tier": "speculative",
+      "source_weight": 60,
+      "retrieval_role": "exploratory"
+    },
+    {
+      "canonical_id": "loc-0015",
+      "type": "location",
+      "name": "Skather-Ait pod",
+      "path": "atlas/Skather-Ait_Pod.md",
       "canon_tier": "speculative",
       "source_weight": 60,
       "retrieval_role": "exploratory"
@@ -942,6 +969,15 @@
       "type": "story",
       "name": "The Inventory of Absence",
       "path": "stories/short_story/the_inventory_of_absence/manuscript.md",
+      "canon_tier": "draft",
+      "source_weight": 65,
+      "retrieval_role": "active_draft"
+    },
+    {
+      "canonical_id": "story-0021",
+      "type": "story",
+      "name": "Receipt for a Voice",
+      "path": "stories/short_story/receipt_for_a_voice/manuscript.md",
       "canon_tier": "draft",
       "source_weight": 65,
       "retrieval_role": "active_draft"
@@ -1948,6 +1984,86 @@
       "type": "stories"
     },
     {
+      "from": "char-0026",
+      "to": "char-0019",
+      "type": "characters"
+    },
+    {
+      "from": "char-0026",
+      "to": "char-0027",
+      "type": "characters"
+    },
+    {
+      "from": "char-0026",
+      "to": "fact-0004",
+      "type": "factions"
+    },
+    {
+      "from": "char-0026",
+      "to": "loc-0008",
+      "type": "locations"
+    },
+    {
+      "from": "char-0026",
+      "to": "loc-0013",
+      "type": "locations"
+    },
+    {
+      "from": "char-0026",
+      "to": "loc-0015",
+      "type": "locations"
+    },
+    {
+      "from": "char-0026",
+      "to": "mech-0001",
+      "type": "mechanics"
+    },
+    {
+      "from": "char-0026",
+      "to": "story-0004",
+      "type": "stories"
+    },
+    {
+      "from": "char-0026",
+      "to": "story-0021",
+      "type": "stories"
+    },
+    {
+      "from": "char-0027",
+      "to": "char-0026",
+      "type": "characters"
+    },
+    {
+      "from": "char-0027",
+      "to": "fact-0004",
+      "type": "factions"
+    },
+    {
+      "from": "char-0027",
+      "to": "loc-0008",
+      "type": "locations"
+    },
+    {
+      "from": "char-0027",
+      "to": "loc-0015",
+      "type": "locations"
+    },
+    {
+      "from": "char-0027",
+      "to": "mech-0001",
+      "type": "mechanics"
+    },
+    {
+      "from": "char-0027",
+      "to": "story-0004",
+      "type": "stories"
+    },
+    {
+      "from": "char-0027",
+      "to": "story-0021",
+      "type": "stories"
+    },
+    {
       "from": "fact-0001",
       "to": "char-0001",
       "type": "characters"
@@ -2545,6 +2661,46 @@
     {
       "from": "loc-0014",
       "to": "story-0020",
+      "type": "stories"
+    },
+    {
+      "from": "loc-0015",
+      "to": "char-0026",
+      "type": "characters"
+    },
+    {
+      "from": "loc-0015",
+      "to": "char-0027",
+      "type": "characters"
+    },
+    {
+      "from": "loc-0015",
+      "to": "fact-0004",
+      "type": "factions"
+    },
+    {
+      "from": "loc-0015",
+      "to": "loc-0008",
+      "type": "locations"
+    },
+    {
+      "from": "loc-0015",
+      "to": "loc-0013",
+      "type": "locations"
+    },
+    {
+      "from": "loc-0015",
+      "to": "mech-0001",
+      "type": "mechanics"
+    },
+    {
+      "from": "loc-0015",
+      "to": "story-0004",
+      "type": "stories"
+    },
+    {
+      "from": "loc-0015",
+      "to": "story-0021",
       "type": "stories"
     },
     {
@@ -3231,6 +3387,106 @@
       "from": "story-0020",
       "to": "mech-0001",
       "type": "mechanics"
+    },
+    {
+      "from": "story-0021",
+      "to": "char-0017",
+      "type": "characters"
+    },
+    {
+      "from": "story-0021",
+      "to": "char-0019",
+      "type": "characters"
+    },
+    {
+      "from": "story-0021",
+      "to": "char-0021",
+      "type": "characters"
+    },
+    {
+      "from": "story-0021",
+      "to": "char-0022",
+      "type": "characters"
+    },
+    {
+      "from": "story-0021",
+      "to": "char-0026",
+      "type": "characters"
+    },
+    {
+      "from": "story-0021",
+      "to": "char-0027",
+      "type": "characters"
+    },
+    {
+      "from": "story-0021",
+      "to": "fact-0001",
+      "type": "factions"
+    },
+    {
+      "from": "story-0021",
+      "to": "fact-0003",
+      "type": "factions"
+    },
+    {
+      "from": "story-0021",
+      "to": "fact-0004",
+      "type": "factions"
+    },
+    {
+      "from": "story-0021",
+      "to": "loc-0008",
+      "type": "locations"
+    },
+    {
+      "from": "story-0021",
+      "to": "loc-0013",
+      "type": "locations"
+    },
+    {
+      "from": "story-0021",
+      "to": "loc-0015",
+      "type": "locations"
+    },
+    {
+      "from": "story-0021",
+      "to": "mech-0001",
+      "type": "mechanics"
+    },
+    {
+      "from": "story-0021",
+      "to": "mech-0002",
+      "type": "mechanics"
+    },
+    {
+      "from": "story-0021",
+      "to": "mech-0003",
+      "type": "mechanics"
+    },
+    {
+      "from": "story-0021",
+      "to": "story-0001",
+      "type": "stories"
+    },
+    {
+      "from": "story-0021",
+      "to": "story-0004",
+      "type": "stories"
+    },
+    {
+      "from": "story-0021",
+      "to": "story-0013",
+      "type": "stories"
+    },
+    {
+      "from": "story-0021",
+      "to": "story-0015",
+      "type": "stories"
+    },
+    {
+      "from": "story-0021",
+      "to": "story-0017",
+      "type": "stories"
     },
     {
       "from": "term-0001",
