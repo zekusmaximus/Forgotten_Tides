@@ -5,11 +5,11 @@ contract_version: v1.0.0
 type: story
 title: The Public Weight of a Private Lie
 story_type: short-story
-status: draft
-canon_tier: draft
-retrieval_role: active_draft
+status: canonical
+canon_tier: primary_canon
+retrieval_role: authoritative
 summary_50: A Heliodrome communications officer chooses what public lie the station can survive.
-summary_200: "After the intervention that kept the Heliodrome from unraveling, Authority communications officer Mael Ivar reads private reports proving the station's conceptual dementia is worse than any public bulletin admits. A full truth could panic residents and weaken civic coherence; an official lie could become civic memory and teach the station to ignore its wounds. Mael crafts a controlled reassurance, seals the fuller truth with an Archivist witness, and accepts that the lie will hold weight without healing anything."
+summary_200: 'After the intervention that kept the Heliodrome from unraveling, Authority communications officer Mael Ivar reads private reports proving the station''s conceptual dementia is worse than any public bulletin admits. A full truth could panic residents and weaken civic coherence; an official lie could become civic memory and teach the station to ignore its wounds. Mael crafts a controlled reassurance, seals the fuller truth with an Archivist witness, and accepts that the lie will hold weight without healing anything.'
 cross_refs:
   characters:
     - char-0018
@@ -36,7 +36,7 @@ references:
     - story-0001
 timeline:
   setting: Heliodrome public communications office during the station's post-intervention aftermath
-  duration: One station day, from first bulletin review to the following dawn queue
+  duration: 'One station day, from first bulletin review to the following dawn queue'
   chronology:
     - event: Mael receives private drift reports showing the station's conceptual dementia is widening
       timestamp: T0
@@ -48,15 +48,15 @@ timeline:
       timestamp: T0+3h
     - event: The bulletin's phrasing begins to harden into station records and public behavior
       timestamp: T0+7h
-    - event: Mael seals a private corrective record, knowing it weighs less than the public message
+    - event: 'Mael seals a private corrective record, knowing it weighs less than the public message'
       timestamp: T0+11h
     - event: Mael enters the next dawn cycle still bound to the compromised public line
       timestamp: T0+22h
 events:
   - id: event-story-0014-001
     timestamp: T0
-    summary: "Mael Ivar receives restricted Heliodrome drift reports showing wider conceptual dementia than public messaging admits."
-    canon_tier: draft
+    summary: Mael Ivar receives restricted Heliodrome drift reports showing wider conceptual dementia than public messaging admits.
+    canon_tier: primary_canon
     source: stories/short_story/the_public_weight_of_a_private_lie/manuscript.md
     involved_entities:
       - story-0014
@@ -64,11 +64,11 @@ events:
       - loc-0001
       - fact-0007
       - mech-0001
-    causal_note: "Establishes the story's private knowledge burden without curing or reversing Heliodrome's condition."
+    causal_note: Establishes the story's private knowledge burden without curing or reversing Heliodrome's condition.
   - id: event-story-0014-002
     timestamp: T0+3h
-    summary: "Mael broadcasts a controlled reassurance that gains civic memory weight and helps avoid immediate panic."
-    canon_tier: draft
+    summary: Mael broadcasts a controlled reassurance that gains civic memory weight and helps avoid immediate panic.
+    canon_tier: primary_canon
     source: stories/short_story/the_public_weight_of_a_private_lie/manuscript.md
     involved_entities:
       - story-0014
@@ -77,11 +77,11 @@ events:
       - fact-0007
       - fact-0002
       - mech-0001
-    causal_note: "Shows public information functioning as institutional and civic memory under existing memory physics."
+    causal_note: Shows public information functioning as institutional and civic memory under existing memory physics.
   - id: event-story-0014-003
     timestamp: T0+11h
-    summary: "Mael seals a private corrective record with an Archivist witness, preserving truth without making it public."
-    canon_tier: draft
+    summary: 'Mael seals a private corrective record with an Archivist witness, preserving truth without making it public.'
+    canon_tier: primary_canon
     source: stories/short_story/the_public_weight_of_a_private_lie/manuscript.md
     involved_entities:
       - story-0014
@@ -90,7 +90,7 @@ events:
       - fact-0007
       - fact-0002
       - mech-0001
-    causal_note: "Keeps the truth available as weak institutional memory while leaving the heavier public lie in place."
+    causal_note: Keeps the truth available as weak institutional memory while leaving the heavier public lie in place.
 themes:
   - memory-as-cost
   - conceptual-fragility
@@ -98,21 +98,21 @@ themes:
   - ethical-forgetting
   - memory-preservation
 continuity_notes:
-  - Heliodrome's conceptual dementia is not cured, reversed, or solved; the station remains held by ongoing work and public memory pressure.
-  - Preserves all relevant red lines from bible/ARCHIVISTS_WAKE_STORY_BIBLE.md, especially the Heliodrome rule that any stabilization requires cost or memory-density injection.
+  - 'Heliodrome''s conceptual dementia is not cured, reversed, or solved; the station remains held by ongoing work and public memory pressure.'
+  - 'Preserves all relevant red lines from bible/ARCHIVISTS_WAKE_STORY_BIBLE.md, especially the Heliodrome rule that any stabilization requires cost or memory-density injection.'
   - No named locked characters from story-0001 appear directly; this story depends only on the public aftermath of that Heliodrome intervention.
-  - Public messaging is treated as institutional and civic memory under MEMORY_PHYSICS.md, not as a new metaphysical law or reusable technical system.
-  - The Archivist Orders appear only as an existing continuity witness and do not gain new doctrine, hierarchy, or named subfaction.
+  - 'Public messaging is treated as institutional and civic memory under MEMORY_PHYSICS.md, not as a new metaphysical law or reusable technical system.'
+  - 'The Archivist Orders appear only as an existing continuity witness and do not gain new doctrine, hierarchy, or named subfaction.'
 bible_refs:
   - bible/ARCHIVISTS_WAKE_STORY_BIBLE.md#33-conceptual-dementia-structures
   - bible/ARCHIVISTS_WAKE_STORY_BIBLE.md#77-heliodrome-rules
   - bible/ARCHIVISTS_WAKE_STORY_BIBLE.md#canonical-timeline-of-events
 metadata:
-  status: draft
+  status: canonical
   word_count: 4480
   author: AI Generated (Codex)
   created: '2026-07-07T00:00:00.000Z'
-  modified: '2026-07-07T00:00:00.000Z'
+  modified: '2026-10-20T22:19:20.515Z'
 tags:
   - heliodrome
   - heliodrome-authority

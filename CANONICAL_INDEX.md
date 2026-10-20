@@ -1,6 +1,6 @@
 # Canonical Index
 
-This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-10-20T22:18:43.167Z
+This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-10-20T22:19:20.779Z
 
 ## Character
 - `char-0001` — Rell (`characters/Rell.md`)
@@ -173,6 +173,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `char-0015` - Oren Vale (character, primary_canon, weight 110, `characters/Oren_Vale.md`)
 - `char-0016` - Nara Oss (character, primary_canon, weight 110, `characters/Nara_Oss.md`)
 - `char-0017` - Elior Ren (character, primary_canon, weight 110, `characters/Elior_Ren.md`)
+- `char-0018` - Mael Ivar (character, primary_canon, weight 110, `characters/Mael_Ivar.md`)
 - `char-0028` - Ilka Marsk (character, primary_canon, weight 110, `characters/Ilka_Marsk.md`)
 - `char-0029` - Hael (character, primary_canon, weight 110, `characters/Hael.md`)
 - `char-0030` - Jory Fenn (character, primary_canon, weight 110, `characters/Jory_Fenn.md`)
@@ -208,6 +209,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `story-0011` - The Quiet Census (story, primary_canon, weight 110, `stories/short_story/the_quiet_census/manuscript.md`)
 - `story-0012` - The Mercy Doctrine (story, primary_canon, weight 110, `stories/short_story/the_mercy_doctrine/manuscript.md`)
 - `story-0013` - The Smallest Burn (story, primary_canon, weight 110, `stories/short_story/the_smallest_burn/manuscript.md`)
+- `story-0014` - The Public Weight of a Private Lie (story, primary_canon, weight 110, `stories/short_story/the_public_weight_of_a_private_lie/manuscript.md`)
 - `story-0022` - Spend What You Can Afford (story, primary_canon, weight 110, `stories/short_story/spend_what_you_can_afford/manuscript.md`)
 - `term-0001` - Anchor (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
 - `term-0002` - Anchor Burn (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
@@ -271,7 +273,6 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `story-0007` - The Hospice Knot (story, draft, weight 65, `stories/short_story/the_hospice_knot/manuscript.md`)
 - `story-0009` - The Doctrine of Empty Stars (story, draft, weight 65, `stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/manuscript.md`)
 - `story-0010` - The Error That Remembered Itself (story, draft, weight 65, `stories/short_story/the_error_that_remembered_itself/manuscript.md`)
-- `story-0014` - The Public Weight of a Private Lie (story, draft, weight 65, `stories/short_story/the_public_weight_of_a_private_lie/manuscript.md`)
 - `story-0015` - The Halix Aftermarket (story, draft, weight 65, `stories/short_story/the_halix_aftermarket/manuscript.md`)
 - `story-0016` - The Lie That Learned the Hallway (story, draft, weight 65, `stories/short_story/the_lie_that_learned_the_hallway/manuscript.md`)
 - `story-0017` - The Loss Ledger (story, draft, weight 65, `stories/short_story/the_loss_ledger/manuscript.md`)
@@ -286,7 +287,6 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `char-0012` - Ives Mar (character, speculative, weight 60, `characters/Ives_Mar.md`)
 - `char-0013` - Veyr Anik (character, speculative, weight 60, `characters/Veyr_Anik.md`)
 - `char-0014` - Sera Venn (character, speculative, weight 60, `characters/Sera_Venn.md`)
-- `char-0018` - Mael Ivar (character, speculative, weight 60, `characters/Mael_Ivar.md`)
 - `char-0019` - Tess Vlin (character, speculative, weight 60, `characters/Tess_Vlin.md`)
 - `char-0020` - Nessa Iral (character, speculative, weight 60, `characters/Nessa_Iral.md`)
 - `char-0021` - Corin Tave (character, speculative, weight 60, `characters/Corin_Tave.md`)

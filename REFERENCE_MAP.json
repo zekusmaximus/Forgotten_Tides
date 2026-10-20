@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-20T22:18:43.167Z",
+  "generated": "2026-10-20T22:19:20.779Z",
   "nodes": [
     {
       "canonical_id": "char-0001",
@@ -159,9 +159,9 @@
       "type": "character",
       "name": "Mael Ivar",
       "path": "characters/Mael_Ivar.md",
-      "canon_tier": "speculative",
-      "source_weight": 60,
-      "retrieval_role": "exploratory"
+      "canon_tier": "primary_canon",
+      "source_weight": 110,
+      "retrieval_role": "authoritative"
     },
     {
       "canonical_id": "char-0019",
@@ -942,9 +942,9 @@
       "type": "story",
       "name": "The Public Weight of a Private Lie",
       "path": "stories/short_story/the_public_weight_of_a_private_lie/manuscript.md",
-      "canon_tier": "draft",
-      "source_weight": 65,
-      "retrieval_role": "active_draft"
+      "canon_tier": "primary_canon",
+      "source_weight": 110,
+      "retrieval_role": "authoritative"
     },
     {
       "canonical_id": "story-0015",

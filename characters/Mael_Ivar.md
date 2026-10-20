@@ -47,7 +47,7 @@ continuity:
     - Avoid placing Mael in direct control of locked story-0001 characters or events.
     - Track any future consequences of his sealed corrective record and his public role in Heliodrome messaging.
 metadata:
-  status: speculative
+  status: canonical
   created: '2026-07-07T00:00:00.000Z'
   modified: '2026-07-07T00:00:00.000Z'
 ---
