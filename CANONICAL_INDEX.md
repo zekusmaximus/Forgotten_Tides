@@ -1,6 +1,6 @@
 # Canonical Index
 
-This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-10-20T22:21:05.999Z
+This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-10-20T22:23:37.912Z
 
 ## Character
 - `char-0001` — Rell (`characters/Rell.md`)
@@ -157,6 +157,8 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `term-0027` — Null Stone (`data/lexicon/terms.yaml`)
 - `term-0028` — Civic Silo (`data/lexicon/terms.yaml`)
 - `term-0029` — Conceptual Ghost (`data/lexicon/terms.yaml`)
+- `term-0030` — Witness Socket (`data/lexicon/terms.yaml`)
+- `term-0031` — Lineage Registration (`data/lexicon/terms.yaml`)
 
 ## Canon Views
 
@@ -246,6 +248,8 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `term-0027` - Null Stone (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
 - `term-0028` - Civic Silo (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
 - `term-0029` - Conceptual Ghost (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
+- `term-0030` - Witness Socket (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
+- `term-0031` - Lineage Registration (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
 
 ### Active Drafts
 - `lore-doctrine-empty-stars-continuity-brief` - The Doctrine of Empty Stars - Continuity Brief (story, draft, weight 65, `stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/continuity_brief.md`)

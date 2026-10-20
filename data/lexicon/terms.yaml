@@ -355,3 +355,25 @@ terms:
     first_appearance: Spend What You Can Afford
     canonical_source: mechanics/ANCHOR_THEORY.md
     status: canonical
+
+  - id: term-0030
+    term: Witness Socket
+    definition: A receptacle on a Heliodrome route table that accepts a personal memory stone. A stone seated in the socket lets a witnessed local record outweigh the public shorthand at that table only; the table recognizes the stone, displays the local correction, and holds it against the pressure of civic memory. The memory in the stone is rendered and lost to its donor, and the correction does not repair the damage it records. Authority systems left the sockets unused for years in favor of dynamic ledgers.
+    category: Technology
+    related_terms:
+      - term-0014  # Memory Stone
+      - term-0004  # Civic Memory
+    first_appearance: The Lie That Learned the Hallway
+    canonical_source: stories/short_story/the_lie_that_learned_the_hallway/manuscript.md
+    status: canonical
+
+  - id: term-0031
+    term: Lineage Registration
+    definition: A record in the Mnemosyne Lattice Core's recognition archive that binds a maker's line, with its work samples, witness marks, repair consequences, and a living bearer's attestation, into one claimant body. It is the only record heavy enough for the archive to weigh a family line against a Consortium patent and correct attribution without voiding the patent. Registration makes the registrant's name durable, searchable, citable, and legally continuous, with the credit, liability, and summons that follow. A registered lineage can be deprecated but not thinned in Core systems, so the name can no longer be altered the way a Drift Clade name otherwise is.
+    category: Mechanics
+    related_terms:
+      - term-0001  # Anchor
+      - term-0014  # Memory Stone
+    first_appearance: The Miniaturist's Name
+    canonical_source: stories/short_story/the_miniaturists_name/manuscript.md
+    status: canonical
