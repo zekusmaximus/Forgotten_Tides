@@ -72,15 +72,16 @@ node scripts/ids_next.js --type fact
 
 ## What Exists
 
-**Short Stories (indexed):**
-- `story-0001` — The Archivist's Wake
-- `story-0002` — Memoir of a Nobody
-- `story-0003` — The Tuner of Last Lights
-- `story-0004` — The Light Inheritance
-- `story-0005` — The Liturgy of Rust
-- `story-0006` — The Anchorless Tide
+Do not work from a hand-written list of stories; they go stale. The generated index is the source of truth:
 
-**Core Characters:** Rell (`char-0001`), Sutira (`char-0002`), Estavan (`char-0003`), Tari (`char-0004`)
+- **Every story, with its path:** the "Story" section of [`CANONICAL_INDEX.md`](CANONICAL_INDEX.md).
+- **Which stories are locked canon:** the "Authoritative Canon" view in the same file lists every `primary_canon` entry. Everything under "Active Drafts" is reference material and a promotion candidate, not locked canon.
+- **Orientation table by tier:** [`stories/README.md`](stories/README.md).
+- **Per-file tier report:** `npm run report:canon-tiers` writes `out/reports/canon_tier_report.md`.
+
+Read every `primary_canon` story before drafting. Read any draft whose characters, locations, or factions your story touches, and treat its facts as prior claims to reconcile with, not canon to obey.
+
+**Core Characters:** Rell (`char-0001`), Sutira (`char-0002`), Estavan (`char-0003`), Tari (`char-0004`). Every other character has a file under `characters/`; the index lists them all.
 
 **Entity registry:** [`CANONICAL_INDEX.md`](CANONICAL_INDEX.md)
 

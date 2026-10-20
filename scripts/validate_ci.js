@@ -39,6 +39,8 @@ function main() {
   runNpmScript('test:canon-policy');
   runNpmScript('test:prompt-pack');
   runNpmScript('test:timeline-events');
+  runNpmScript('test:promote');
+  runNpmScript('test:continuity');
   console.log('CI-parity validation passed.');
 }
 

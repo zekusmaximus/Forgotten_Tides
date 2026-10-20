@@ -98,7 +98,7 @@ These three fields (primarily on stories, but also surfaced on other entities vi
 **How they are used**
 - `scripts/lib/canon_policy.js` computes defaults from path + frontmatter, then `build_linkmap.js` writes them into `REFERENCE_MAP.json`.
 - Prompt-pack export, context builders, and resolve-ids logic sort by `source_weight` (desc) then tier.
-- `npm run promote:story -- --id story-####` is the recommended way to move a short story from `draft` → `primary_canon` (it also updates `status` and re-runs the linkmap).
+- `npm run promote:story -- --id story-####` is the recommended way to move a short story from `draft` → `primary_canon`. It aligns `status`, `metadata.status`, `retrieval_role`, every `events[].canon_tier`, and the story's `data/timeline/events.yaml` entries, re-runs the linkmap, and prints a checklist of entity and lexicon statuses it leaves to you. Add `--dry-run` to preview. See `docs/PLAYBOOK_NEW_STORY.md`, Step 6b.
 
 ## Tolerant / Best-Effort Schemas (non-blocking)
 Additional permissive schemas exist for data files, novel/novella meta, and lore notes (see `data_lexicon.schema.json`, `timeline_events.schema.json`, `novel_meta.schema.json`, `novella_meta.schema.json`, `lore_notes.schema.json`). These are routed by path heuristics in `schema_validate.js`; they tolerate missing `schema_version`/`tags` as warnings only and do not affect the strict short-story gate.

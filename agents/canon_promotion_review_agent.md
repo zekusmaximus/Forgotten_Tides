@@ -252,16 +252,21 @@ Sections, in order:
 
 ## 9. Promotion Checklist (only when authorized)
 
-`npm run promote:story -- --id story-####` changes exactly two fields
-(`canon_tier` and top-level `status`) and rebuilds the link map. It
-re-serializes the frontmatter, which is harmless but means you must confirm
-the body is byte-identical afterward. Everything below is left to you:
+`npm run promote:story -- --id story-#### --dry-run` prints the plan; without
+the flag it applies it. The tool aligns the manuscript's `canon_tier`,
+`status`, `metadata.status`, `retrieval_role`, every `events[].canon_tier`,
+and `metadata.modified`; sets `canon_tier` on the story's events in
+`data/timeline/events.yaml`; rebuilds the link map; and prints a manual
+checklist of referenced entity files and introduced lexicon terms whose
+status is not `canonical`, plus any line in entity, lore, or docs files that
+names the story next to the word "draft". It re-serializes the manuscript
+frontmatter, which is harmless but means you must confirm the body is
+byte-identical afterward. Everything below is left to you:
 
-1. In the manuscript: `metadata.status: canonical`; `retrieval_role:
-   authoritative`; every `events[].canon_tier` to `primary_canon`; any
-   `continuity_notes` wording that calls the story or its consequences "draft".
-2. In `data/timeline/events.yaml`: the story's shared events to
-   `primary_canon`; remove "draft" from their summaries and causal notes.
+1. In the manuscript: any `continuity_notes` wording that calls the story or
+   its consequences "draft".
+2. In `data/timeline/events.yaml`: remove "draft" from the story's event
+   summaries and causal notes (the tool changes only `canon_tier`).
 3. Entity files that exist only because of this story: `metadata.status:
    canonical`. Entity files that predate the story: leave their status alone
    unless the author has set a rule.
