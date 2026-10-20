@@ -287,6 +287,7 @@ It then prints a **manual checklist** of what it will not decide for you:
 - Referenced entity files (`characters/`, `atlas/`, `factions/`) whose `metadata.status` is not `canonical`. Set it for entities that exist only because of this story; leave entities that predate the story alone unless the author has set a rule.
 - Lexicon terms the story introduced (`first_appearance` matches the title) whose `status` is not `canonical`.
 - Lines in entity, lore, and docs files that name the story next to the word "draft". Read each and reword the ones that describe the story's tier.
+- Manuscript `events[]` ids with no entry in `data/timeline/events.yaml`. The tool edits existing timeline entries only; add shared events by hand (see `data/timeline/events.yaml` for the shape).
 
 Then:
 1. Review the diff. The tool re-serializes the manuscript frontmatter; confirm the body after the closing `---` is byte-identical.

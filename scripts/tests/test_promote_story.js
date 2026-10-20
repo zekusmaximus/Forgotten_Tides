@@ -330,6 +330,38 @@ test('manual checklist names non-canonical entities, introduced terms, and draft
   });
 });
 
+test('manual checklist reports manuscript events missing from the timeline', () => {
+  withFixture(root => {
+    const result = promote.promoteStory({ root, id: STORY_ID, skipBuild: true, now: FIXED_NOW });
+    // event-001 has a timeline entry with the same id; event-002 is only matched
+    // by source under a legacy id, which does not count as a timeline entry.
+    assert.deepStrictEqual(result.checklist.timelineGaps, [`event-${STORY_ID}-002`], 'only the id with no timeline entry is listed');
+
+    const dry = promote.promoteStory({ root, id: STORY_ID, dryRun: true, skipBuild: true, now: FIXED_NOW });
+    assert.deepStrictEqual(dry.checklist.timelineGaps, [`event-${STORY_ID}-002`], 'dry run reports the same gap');
+
+    const lines = [];
+    const original = console.log;
+    console.log = (...args) => lines.push(args.join(' '));
+    try {
+      promote.printResult(dry);
+    } finally {
+      console.log = original;
+    }
+    const heading = lines.findIndex(line => line.includes('Manuscript events with no data/timeline/events.yaml entry (add by hand if shared)'));
+    assert(heading >= 0, 'checklist prints the timeline gap heading');
+    assert(lines[heading + 1].trim() === `event-${STORY_ID}-002`, 'gap id printed under the heading');
+  });
+});
+
+test('every manuscript event is a timeline gap when the timeline file is missing', () => {
+  withFixture(root => {
+    fs.unlinkSync(path.join(root, 'data/timeline/events.yaml'));
+    const result = promote.promoteStory({ root, id: STORY_ID, skipBuild: true, now: FIXED_NOW });
+    assert.deepStrictEqual(result.checklist.timelineGaps, [`event-${STORY_ID}-001`, `event-${STORY_ID}-002`]);
+  });
+});
+
 test('missing entity files are reported rather than ignored', () => {
   withFixture(root => {
     fs.unlinkSync(path.join(root, 'characters/Fixture_Character.md'));
@@ -361,7 +393,7 @@ test('promoting to working_canon sets canonical status but leaves retrieval_role
     assert.strictEqual(data.metadata.status, 'canonical');
     assert.strictEqual(data.retrieval_role, 'active_draft', 'no retrieval_role mapping for working_canon');
     assert.deepStrictEqual(data.events.map(e => e.canon_tier), ['working_canon', 'working_canon']);
-    assert.deepStrictEqual(result.checklist, { entities: [], terms: [], draftMentions: [] }, 'entity checklist only applies to primary_canon');
+    assert.deepStrictEqual(result.checklist, { entities: [], terms: [], draftMentions: [], timelineGaps: [`event-${STORY_ID}-002`] }, 'entity checklist only applies to primary_canon; timeline gaps are reported for every tier');
   });
 });
 
