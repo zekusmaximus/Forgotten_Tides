@@ -262,7 +262,7 @@ Common lint failures for new contributors:
 - **Schema error on `metadata.status`** — entity files only allow `canonical`, `speculative`, or `deprecated`
 - **Unresolved ref** — you referenced a `char-####` or `fact-####` that doesn't have an entity file yet
 - **Generated artifact diff** — run `npm run linkmap:build` and commit `CANONICAL_INDEX.md`, `REFERENCE_MAP.json`, and `docs/link_map/LINK_MAP.md`
-- **Red-line citation error** — story touches locked bible elements (Rell/Sutira/Estavan/Tari/Heliodrome/Lattice Gap/zero-anchoring) but lacks explicit citation in `continuity_notes` or `bible_refs`. See `npm run lint:redline` and `bible/ARCHIVISTS_WAKE_STORY_BIBLE.md`. The originating story (`story-0001`) is exempt.
+- **Red-line citation error** — story touches locked bible elements (Rell/Sutira/Estavan/Tari/Heliodrome/Lattice Gap/zero-anchoring), in frontmatter ids or in the prose itself, but lacks explicit citation in `continuity_notes` or `bible_refs`. A prose-only hit is an error on `primary_canon` and `working_canon` manuscripts and a warning on drafts. See `npm run lint:redline` and `bible/ARCHIVISTS_WAKE_STORY_BIBLE.md`. The originating story (`story-0001`) is exempt.
 - **Continuity hard failure** — a paragraph that names a character (or an alias) also declares a property that contradicts that character's `continuity.invariants`, e.g. `species is Vossari` against `Species: Human (Mid-Gravity)`. Names match on whole words only, and only explicit declarations (`species: X`, `species = X`, `species is X`) count; ordinary use of the word is ignored. Run `npm run check:continuity`; the report in `out/reports/continuity.json` lists which stories mention each character.
 
 ---
