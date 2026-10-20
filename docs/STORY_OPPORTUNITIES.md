@@ -90,7 +90,7 @@ Tari is a locked bible character; read `bible/ARCHIVISTS_WAKE_STORY_BIBLE.md` be
 ---
 
 ### A Pilot's First Anchor Burn
-*The Smallest Burn* (story-0013, draft) depicts Elior Ren's first burn in real time: routine, audited, a mild sensory loss that still changes him. Still open:
+*The Smallest Burn* (story-0013, primary canon) depicts Elior Ren's first burn in real time: routine, audited, a mild sensory loss that still changes him. Still open:
 - A first burn that is not mild, in a corridor that is actually failing
 - The training and ritual around a first burn; story-0013 shows the moment, not the preparation
 - A pilot who refuses the first burn and what the Fleet does with them

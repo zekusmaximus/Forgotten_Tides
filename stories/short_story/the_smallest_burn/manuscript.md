@@ -5,11 +5,11 @@ contract_version: v1.0.0
 type: story
 title: The Smallest Burn
 story_type: short-story
-status: draft
-canon_tier: draft
-retrieval_role: active_draft
+status: canonical
+canon_tier: primary_canon
+retrieval_role: authoritative
 summary_50: A new Canticle pilot spends one small sensory anchor during a routine Helios Drift corridor correction and learns that mild loss still changes the self.
-summary_200: "During his first correction from the pilot cradle in the Helios Drift, Canticle pilot Elior Ren performs a routine corridor correction under Archivist audit. The corridor is not collapsing, no passengers need rescue, and the burn is logged as a mild sensory loss: the smell of his first classroom after rain. The correction succeeds cleanly. Afterward, Elior remains coherent, cleared, and useful, but the absence changes how his earliest lessons, route songs, and sense of vocation feel inside him."
+summary_200: 'During his first correction from the pilot cradle in the Helios Drift, Canticle pilot Elior Ren performs a routine corridor correction under Archivist audit. The corridor is not collapsing, no passengers need rescue, and the burn is logged as a mild sensory loss: the smell of his first classroom after rain. The correction succeeds cleanly. Afterward, Elior remains coherent, cleared, and useful, but the absence changes how his earliest lessons, route songs, and sense of vocation feel inside him.'
 cross_refs:
   characters:
     - char-0017
@@ -40,7 +40,7 @@ references:
     - story-0001
 timeline:
   setting: A Canticle Fleet training rotation through a routine Memory Corridor in the Helios Drift
-  duration: One watch, from pre-run audit through post-run anchor assessment
+  duration: 'One watch, from pre-run audit through post-run anchor assessment'
   chronology:
     - event: Elior Ren completes his pre-run anchor audit before his first supervised correction
       timestamp: T0
@@ -56,7 +56,7 @@ events:
   - id: event-story-0013-001
     timestamp: T0
     summary: Elior Ren completes a pre-run anchor audit for his first supervised Canticle correction in the Helios Drift.
-    canon_tier: draft
+    canon_tier: primary_canon
     source: stories/short_story/the_smallest_burn/manuscript.md
     involved_entities:
       - story-0013
@@ -68,10 +68,10 @@ events:
       - mech-0003
   - id: event-story-0013-002
     timestamp: T0+2 pulls
-    summary: During a non-emergency corridor correction, Elior performs a controlled anchor burn of one childhood sensory memory.
-    canon_tier: draft
+    summary: 'During a non-emergency corridor correction, Elior performs a controlled anchor burn of one childhood sensory memory.'
+    canon_tier: primary_canon
     source: stories/short_story/the_smallest_burn/manuscript.md
-    causal_note: Establishes Elior's first anchor loss as a mild, legal, routine-cost burn rather than zero-anchoring or emergency sacrifice.
+    causal_note: 'Establishes Elior''s first anchor loss as a mild, legal, routine-cost burn rather than zero-anchoring or emergency sacrifice.'
     involved_entities:
       - story-0013
       - char-0017
@@ -81,7 +81,7 @@ events:
   - id: event-story-0013-003
     timestamp: T0+1 watch
     summary: The post-run audit confirms Elior remains coherent with eleven anchors; the burned classroom smell is permanently gone.
-    canon_tier: draft
+    canon_tier: primary_canon
     source: stories/short_story/the_smallest_burn/manuscript.md
     causal_note: Preserves anchor-burn irrevocability from locked canon while keeping the narrative stakes deliberately small.
     involved_entities:
@@ -94,21 +94,21 @@ themes:
   - sacrifice
   - quiet-heroism
 continuity_notes:
-  - Anchor burn is permanent; Elior's lost childhood classroom smell is not restored, reconstructed, or replaced.
+  - 'Anchor burn is permanent; Elior''s lost childhood classroom smell is not restored, reconstructed, or replaced.'
   - No zero-anchoring occurs; the burn is a controlled personal anchor expenditure during a routine corridor correction.
-  - "The correction is deliberately non-spectacular: no eddy, no rescue crisis, no station collapse, and no forbidden emotional anchor use."
-  - Corridor behavior, attention requirements, and anchor-loss consequences derive from MEMORY_PHYSICS.md, CORRIDOR_MECHANICS.md, ANCHOR_THEORY.md, and the locked anchor-burn precedent in story-0001.
+  - 'The correction is deliberately non-spectacular: no eddy, no rescue crisis, no station collapse, and no forbidden emotional anchor use.'
+  - 'Corridor behavior, attention requirements, and anchor-loss consequences derive from MEMORY_PHYSICS.md, CORRIDOR_MECHANICS.md, ANCHOR_THEORY.md, and the locked anchor-burn precedent in story-0001.'
 bible_refs:
   - bible/ARCHIVISTS_WAKE_STORY_BIBLE.md#31-corridors-respond-to-attention
   - bible/ARCHIVISTS_WAKE_STORY_BIBLE.md#32-zero-anchoring
   - bible/ARCHIVISTS_WAKE_STORY_BIBLE.md#36-anchor-burn-consequence
   - bible/ARCHIVISTS_WAKE_STORY_BIBLE.md#71-anchor-rules
 metadata:
-  status: draft
+  status: canonical
   word_count: 3330
   author: AI Generated (Writing Agent 4)
   created: '2026-07-07T00:00:00.000Z'
-  modified: '2026-07-07T00:00:00.000Z'
+  modified: '2026-10-20T16:47:06.774Z'
 tags:
   - canticle-fleet
   - anchor-burn

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-20T16:46:33.518Z",
+  "generated": "2026-10-20T16:47:28.054Z",
   "nodes": [
     {
       "canonical_id": "char-0001",
@@ -150,9 +150,9 @@
       "type": "character",
       "name": "Elior Ren",
       "path": "characters/Elior_Ren.md",
-      "canon_tier": "speculative",
-      "source_weight": 60,
-      "retrieval_role": "exploratory"
+      "canon_tier": "primary_canon",
+      "source_weight": 110,
+      "retrieval_role": "authoritative"
     },
     {
       "canonical_id": "char-0018",
@@ -933,9 +933,9 @@
       "type": "story",
       "name": "The Smallest Burn",
       "path": "stories/short_story/the_smallest_burn/manuscript.md",
-      "canon_tier": "draft",
-      "source_weight": 65,
-      "retrieval_role": "active_draft"
+      "canon_tier": "primary_canon",
+      "source_weight": 110,
+      "retrieval_role": "authoritative"
     },
     {
       "canonical_id": "story-0014",
