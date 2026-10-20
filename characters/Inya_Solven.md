@@ -99,7 +99,7 @@ Inya embodies the *duty-vs-faith* axis of the Archivist Orders' interior life. S
 ## Post-Story Status
 Three anchors remaining. One junior seal of three spent. The anomalous pledge stone is logged in the quarterly review queue for Navigant Sect attention twelve weeks hence; she does not know what they will do with it, and the story closes before she finds out. Her arc is open for continuation.
 
-## Draft Continuation: Spend What You Can Afford (story-0022)
+## Continuation: Spend What You Can Afford (story-0022)
 
 Twelve weeks after the Tellis Aru audit, on the quarterly pass, the Obsidian Synod detonates
 null stones in the Tessarine audit hall. Inya carries the middle ring's pledged stones up to

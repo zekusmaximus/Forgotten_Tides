@@ -5,11 +5,11 @@ contract_version: v1.0.0
 type: story
 title: Spend What You Can Afford
 story_type: short-story
-status: draft
-canon_tier: draft
-retrieval_role: active_draft
-summary_50: "A Synod strike turns the Tessarine Vault's own cradles against it; a Navigant spends pledged memories and permits a forbidden sacrifice to hold the Helios Drift's silos."
-summary_200: "On the day of the Tessarine Vault's quarterly review, Navigant Ilka Marsk arrives to judge a junior's irregular seal and instead watches four audit booths forget themselves: the Obsidian Synod has slotted null stones into the review trays, and the Vault's tuning cradles amplify absence into the hall. The hall is the detonation. The target is the silo bank above it, where three generations of the Helios Drift's outer sleeve are held. With one hand given to a Synod lamp, Ilka drives the defense upward, orders the middle ring's pledged memories spent into the housings without donor consent, releases one sleeve by triage, and does not stop Brother Hael when he feeds the Second Sleeve his entire anchor sequence. Two silos are lost to oblivion. Seven hold. The Vault's audit hall is sealed with the stones inside, pledges stop across the outer sleeve, a Synod agent waits for the Inquisition, and the lintel over the hall has forgotten one word of its own doctrine."
+status: canonical
+canon_tier: primary_canon
+retrieval_role: authoritative
+summary_50: A Synod strike turns the Tessarine Vault's own cradles against it; a Navigant spends pledged memories and permits a forbidden sacrifice to hold the Helios Drift's silos.
+summary_200: 'On the day of the Tessarine Vault''s quarterly review, Navigant Ilka Marsk arrives to judge a junior''s irregular seal and instead watches four audit booths forget themselves: the Obsidian Synod has slotted null stones into the review trays, and the Vault''s tuning cradles amplify absence into the hall. The hall is the detonation. The target is the silo bank above it, where three generations of the Helios Drift''s outer sleeve are held. With one hand given to a Synod lamp, Ilka drives the defense upward, orders the middle ring''s pledged memories spent into the housings without donor consent, releases one sleeve by triage, and does not stop Brother Hael when he feeds the Second Sleeve his entire anchor sequence. Two silos are lost to oblivion. Seven hold. The Vault''s audit hall is sealed with the stones inside, pledges stop across the outer sleeve, a Synod agent waits for the Inquisition, and the lintel over the hall has forgotten one word of its own doctrine.'
 cross_refs:
   characters:
     - char-0028
@@ -59,8 +59,8 @@ references:
     - story-0012
     - story-0001
 timeline:
-  setting: The Tessarine Vault in the Helios Drift outer sleeve, on the quarterly review twelve weeks after the events of story-0008
-  duration: Roughly three hours, from the first bell of the quarterly pass to the Navigant's report
+  setting: 'The Tessarine Vault in the Helios Drift outer sleeve, on the quarterly review twelve weeks after the events of story-0008'
+  duration: 'Roughly three hours, from the first bell of the quarterly pass to the Navigant''s report'
   chronology:
     - event: Navigant Ilka Marsk opens the seal ledger at the provenance station; the night porter brings up sixteen review trays
       timestamp: T0
@@ -80,38 +80,74 @@ events:
   - id: event-story-0022-001
     timestamp: T0+1h
     summary: Four Tessarine Vault review trays carry Obsidian Synod null stones; lowered cradles amplify absence and four of sixteen audit booths are lost to forgetting.
-    canon_tier: draft
+    canon_tier: primary_canon
     source: stories/short_story/spend_what_you_can_afford/manuscript.md
-    causal_note: First on-page Synod operation inside the Helios Drift proper and first fictional use of null stones from lore/theology/OBLIVION_HERESIES.md; the cradle's established amplification function is the mechanism, not a new law.
-    involved_entities: [story-0022, char-0028, char-0029, char-0030, loc-0011, fact-0002, fact-0005, mech-0001]
+    causal_note: 'First on-page Synod operation inside the Helios Drift proper and first fictional use of null stones from lore/theology/OBLIVION_HERESIES.md; the cradle''s established amplification function is the mechanism, not a new law.'
+    involved_entities:
+      - story-0022
+      - char-0028
+      - char-0029
+      - char-0030
+      - loc-0011
+      - fact-0002
+      - fact-0005
+      - mech-0001
   - id: event-story-0022-002
     timestamp: T0+1h25m
     summary: The Fourth Sleeve civic silo is lost to null pressure before the defense reaches the silo bank; one Synod acolyte dies when the deck under him forgets to hold.
-    canon_tier: draft
+    canon_tier: primary_canon
     source: stories/short_story/spend_what_you_can_afford/manuscript.md
-    causal_note: Three generations of Drift Sleeve Four civic memory enter oblivion; Tellis Aru's granddaughters (story-0008) live in that sleeve. Drift logic order (meaning, orientation, matter) governs the death.
-    involved_entities: [story-0022, story-0008, loc-0011, loc-0008, fact-0005, mech-0001]
+    causal_note: 'Three generations of Drift Sleeve Four civic memory enter oblivion; Tellis Aru''s granddaughters (story-0008) live in that sleeve. Drift logic order (meaning, orientation, matter) governs the death.'
+    involved_entities:
+      - story-0022
+      - story-0008
+      - loc-0011
+      - loc-0008
+      - fact-0005
+      - mech-0001
   - id: event-story-0022-003
     timestamp: T0+1h45m
-    summary: Navigant Marsk releases the Ninth Sleeve silo by triage (nine hundred living) and orders approximately one hundred sixty pledged middle-ring stones spent into the Second, Fifth, and Seventh housings without donor consent.
-    canon_tier: draft
+    summary: 'Navigant Marsk releases the Ninth Sleeve silo by triage (nine hundred living) and orders approximately one hundred sixty pledged middle-ring stones spent into the Second, Fifth, and Seventh housings without donor consent.'
+    canon_tier: primary_canon
     source: stories/short_story/spend_what_you_can_afford/manuscript.md
     causal_note: Memory density injection per the bible's stabilization rule; personal pledges thicken a civic silo but do not bind it. The expenditure is an institutional breach the Orders must now carry.
-    involved_entities: [story-0022, char-0028, char-0010, loc-0011, fact-0002, mech-0001]
+    involved_entities:
+      - story-0022
+      - char-0028
+      - char-0010
+      - loc-0011
+      - fact-0002
+      - mech-0001
   - id: event-story-0022-004
     timestamp: T0+2h10m
     summary: Brother Hael binds the Second Sleeve silo by feeding it his complete anchor sequence; the final expenditure is classified as zero-anchoring and is not prevented; Hael enters catastrophic anchor loss and the room stops holding him.
-    canon_tier: draft
+    canon_tier: primary_canon
     source: stories/short_story/spend_what_you_can_afford/manuscript.md
-    causal_note: First on-page dramatization of the catastrophic loss state in mechanics/ANCHOR_THEORY.md section 3.4. No anchor is regrown, replaced, or given back. Inya Solven's knot of his voice remains hers and intact.
-    involved_entities: [story-0022, char-0029, char-0028, char-0010, loc-0011, mech-0003, story-0001]
+    causal_note: 'First on-page dramatization of the catastrophic loss state in mechanics/ANCHOR_THEORY.md section 3.4. No anchor is regrown, replaced, or given back. Inya Solven''s knot of his voice remains hers and intact.'
+    involved_entities:
+      - story-0022
+      - char-0029
+      - char-0028
+      - char-0010
+      - loc-0011
+      - mech-0003
+      - story-0001
   - id: event-story-0022-005
     timestamp: T0+3h
     summary: The Tessarine audit hall is sealed with four null stones inside and pledge audit is suspended across the outer sleeve; five null stones pass to Canticle pilot Elior Ren under a manifest naming an expected cost; Jory Fenn is held for the Archivist Inquisition.
-    canon_tier: draft
+    canon_tier: primary_canon
     source: stories/short_story/spend_what_you_can_afford/manuscript.md
-    causal_note: Leaves the Helios Drift outer sleeve with two lost silos, a stopped pledge system, and live institutional consequences for the Archivist Orders, the Canticle Fleet, and the Synod.
-    involved_entities: [story-0022, char-0028, char-0017, char-0030, loc-0011, loc-0008, fact-0001, fact-0002, fact-0005]
+    causal_note: 'Leaves the Helios Drift outer sleeve with two lost silos, a stopped pledge system, and live institutional consequences for the Archivist Orders, the Canticle Fleet, and the Synod.'
+    involved_entities:
+      - story-0022
+      - char-0028
+      - char-0017
+      - char-0030
+      - loc-0011
+      - loc-0008
+      - fact-0001
+      - fact-0002
+      - fact-0005
 themes:
   - conceptual-fragility
   - sacrifice
@@ -119,17 +155,17 @@ themes:
   - duty-vs-faith
   - memory-as-cost
 continuity_notes:
-  - "Follows story-0008 by twelve weeks: Inya Solven begins and ends with three anchor knots (first teacher; resin in the seventh-week chapel; the shape of Hael's voice calling her hands). She burns nothing here. Her knot of Hael's voice remains intact and answers; it now points at a man the room will not hold. This story does not introduce external hollowing of anchors as a law."
-  - "Brother Hael's expenditure is a sequence of consensual anchor burns ending in what the Navigant classifies as zero-anchoring. Catastrophic anchor loss is dramatized exactly as mechanics/ANCHOR_THEORY.md section 3.4 describes it: present in body, not held by the room. No anchor is regrown, replaced, or given back, per bible/ARCHIVISTS_WAKE_STORY_BIBLE.md red lines."
-  - "Null stones are taken from lore/theology/OBLIVION_HERESIES.md section 2 (artificial anti-memories that induce local conceptual thinning). The Synod's dull lamps from story-0012 are treated as housings for null cores. The cradle amplifying a null stone follows directly from the Tuning Cradle's established function (term-0026): it gives a stone its own tone back, amplified."
-  - "Attention binding suppressing a null stone's local effect follows bible section 3.1 (attention binds coherence; neglect loosens). The transfer of forgetting into the hand that holds a null core follows the established Structural Softening term (term-0024). Ilka Marsk's left-hand loss is permanent."
-  - "Drift logic order is preserved throughout: meaning fails first, then orientation, then material integrity, for booths, stair, deck, and the acolyte who falls."
-  - "The Fourth Sleeve and Ninth Sleeve silos are lost to oblivion and cannot be rebuilt; the Fifth and Seventh hold at reduced pitch; the Second holds. The Helios Drift outer sleeve's regional coherence is reduced as draft continuity; no locked location numbers are changed by this story."
-  - "Pledged stone TES-N3-44217 (Tellis Aru, story-0008) is withheld from expenditure by Inya and held its pitch under null pressure. The provenance question from story-0008 is deepened, not answered."
-  - "Elior Ren begins and ends the story with eleven responsive anchors; his classroom smell (story-0013) is not restored. His run carrying the null stones to the Navigant house happens after the story closes; its cost is named as expected but not recorded."
-  - "The Vault-Master, the junior pulled from Booth Nine, the two Synod acolytes, and the pledge donors Inya reads aloud are story-local and have no entity files, following the precedent of unnamed or minor figures in story-0005, story-0008, and story-0012."
-  - "The Obsidian Synod remains sincere, methodical, and dangerous per fact-0005 and story-0012; Jory Fenn is not written as a cartoon. The Black Horizon perimeter mystery is not touched."
-  - "This story uses the Archivist Inquisition from lore/theology/OBLIVION_HERESIES.md section 6 as an existing institution; no new faction, sect, or doctrine is introduced."
+  - 'Follows story-0008 by twelve weeks: Inya Solven begins and ends with three anchor knots (first teacher; resin in the seventh-week chapel; the shape of Hael''s voice calling her hands). She burns nothing here. Her knot of Hael''s voice remains intact and answers; it now points at a man the room will not hold. This story does not introduce external hollowing of anchors as a law.'
+  - 'Brother Hael''s expenditure is a sequence of consensual anchor burns ending in what the Navigant classifies as zero-anchoring. Catastrophic anchor loss is dramatized exactly as mechanics/ANCHOR_THEORY.md section 3.4 describes it: present in body, not held by the room. No anchor is regrown, replaced, or given back, per bible/ARCHIVISTS_WAKE_STORY_BIBLE.md red lines.'
+  - 'Null stones are taken from lore/theology/OBLIVION_HERESIES.md section 2 (artificial anti-memories that induce local conceptual thinning). The Synod''s dull lamps from story-0012 are treated as housings for null cores. The cradle amplifying a null stone follows directly from the Tuning Cradle''s established function (term-0026): it gives a stone its own tone back, amplified.'
+  - Attention binding suppressing a null stone's local effect follows bible section 3.1 (attention binds coherence; neglect loosens). The transfer of forgetting into the hand that holds a null core follows the established Structural Softening term (term-0024). Ilka Marsk's left-hand loss is permanent.
+  - 'Drift logic order is preserved throughout: meaning fails first, then orientation, then material integrity, for booths, stair, deck, and the acolyte who falls.'
+  - The Fourth Sleeve and Ninth Sleeve silos are lost to oblivion and cannot be rebuilt; the Fifth and Seventh hold at reduced pitch; the Second holds. The Helios Drift outer sleeve's regional coherence is reduced as canon continuity; no locked location numbers are changed by this story.
+  - 'Pledged stone TES-N3-44217 (Tellis Aru, story-0008) is withheld from expenditure by Inya and held its pitch under null pressure. The provenance question from story-0008 is deepened, not answered.'
+  - Elior Ren begins and ends the story with eleven responsive anchors; his classroom smell (story-0013) is not restored. His run carrying the null stones to the Navigant house happens after the story closes; its cost is named as expected but not recorded.
+  - 'The Vault-Master, the junior pulled from Booth Nine, the two Synod acolytes, and the pledge donors Inya reads aloud are story-local and have no entity files, following the precedent of unnamed or minor figures in story-0005, story-0008, and story-0012.'
+  - 'The Obsidian Synod remains sincere, methodical, and dangerous per fact-0005 and story-0012; Jory Fenn is not written as a cartoon. The Black Horizon perimeter mystery is not touched.'
+  - 'This story uses the Archivist Inquisition from lore/theology/OBLIVION_HERESIES.md section 6 as an existing institution; no new faction, sect, or doctrine is introduced.'
 bible_refs:
   - bible/ARCHIVISTS_WAKE_STORY_BIBLE.md#31-corridors-respond-to-attention
   - bible/ARCHIVISTS_WAKE_STORY_BIBLE.md#32-zero-anchoring
@@ -137,7 +173,7 @@ bible_refs:
   - bible/ARCHIVISTS_WAKE_STORY_BIBLE.md#71-anchor-rules
   - bible/ARCHIVISTS_WAKE_STORY_BIBLE.md#83-drift-logic-test
 metadata:
-  status: draft
+  status: canonical
   word_count: 6450
   author: AI-assisted draft
   created: '2026-10-20T00:00:00.000Z'

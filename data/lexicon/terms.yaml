@@ -325,7 +325,7 @@ terms:
       - term-0015  # Oblivion
     first_appearance: Spend What You Can Afford
     canonical_source: lore/theology/OBLIVION_HERESIES.md
-    status: draft
+    status: canonical
     aliases:
       - Null Core
 
@@ -340,7 +340,7 @@ terms:
       - term-0027  # Null Stone
     first_appearance: The Reliquarist's Doubt
     canonical_source: atlas/Tessarine_Vault.md
-    status: draft
+    status: canonical
 
   - id: term-0029
     term: Conceptual Ghost
@@ -353,4 +353,4 @@ terms:
       - term-0015  # Oblivion
     first_appearance: Spend What You Can Afford
     canonical_source: mechanics/ANCHOR_THEORY.md
-    status: draft
+    status: canonical

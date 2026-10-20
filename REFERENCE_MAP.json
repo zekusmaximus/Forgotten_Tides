@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-20T03:51:24.035Z",
+  "generated": "2026-10-20T14:32:41.000Z",
   "nodes": [
     {
       "canonical_id": "char-0001",
@@ -249,27 +249,27 @@
       "type": "character",
       "name": "Ilka Marsk",
       "path": "characters/Ilka_Marsk.md",
-      "canon_tier": "speculative",
-      "source_weight": 60,
-      "retrieval_role": "exploratory"
+      "canon_tier": "primary_canon",
+      "source_weight": 110,
+      "retrieval_role": "authoritative"
     },
     {
       "canonical_id": "char-0029",
       "type": "character",
       "name": "Hael",
       "path": "characters/Hael.md",
-      "canon_tier": "speculative",
-      "source_weight": 60,
-      "retrieval_role": "exploratory"
+      "canon_tier": "primary_canon",
+      "source_weight": 110,
+      "retrieval_role": "authoritative"
     },
     {
       "canonical_id": "char-0030",
       "type": "character",
       "name": "Jory Fenn",
       "path": "characters/Jory_Fenn.md",
-      "canon_tier": "speculative",
-      "source_weight": 60,
-      "retrieval_role": "exploratory"
+      "canon_tier": "primary_canon",
+      "source_weight": 110,
+      "retrieval_role": "authoritative"
     },
     {
       "canonical_id": "fact-0001",
@@ -1014,9 +1014,9 @@
       "type": "story",
       "name": "Spend What You Can Afford",
       "path": "stories/short_story/spend_what_you_can_afford/manuscript.md",
-      "canon_tier": "draft",
-      "source_weight": 65,
-      "retrieval_role": "active_draft"
+      "canon_tier": "primary_canon",
+      "source_weight": 110,
+      "retrieval_role": "authoritative"
     },
     {
       "canonical_id": "term-0001",

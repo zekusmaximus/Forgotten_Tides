@@ -64,10 +64,10 @@ The Helios Drift is the most inhabited and politically active region in the know
 
 The Drift is also where most of the galaxy's political conflicts play out. The Canticle Fleets patrol its corridors. The Archivist monasteries anchor its moral architecture. And at its outer sleeve, where memory density thins and void margins begin to press inward, smaller Drift Clade habitats cling to coherence by increasingly tenuous means.
 
-## Draft Continuity: After the Tessarine Breach (story-0022)
+## Continuity: After the Tessarine Breach (story-0022)
 
 The outer sleeve's civic coherence depends in part on the civic silos of the Tessarine
-Vault (loc-0011). In draft story-0022 two of those silos were lost to oblivion: the Fourth
+Vault (loc-0011). In story-0022 two of those silos were lost to oblivion: the Fourth
 Sleeve and the Ninth Sleeve. The Fifth and Seventh hold at reduced pitch; the Second holds.
 During the breach, Drift control called thinning on every outer-sleeve corridor mouth, the
 Halix Exchange went to full recitation on two decks, and pods on the tether lines reported

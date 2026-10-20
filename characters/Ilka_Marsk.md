@@ -66,7 +66,7 @@ continuity:
     - Keep her mode procedural (counts, not arguments); she is an auditor, not a soldier, and her violence is decision
     - She has not yet heard pledged stone TES-N3-44217 herself; its review is deferred
 metadata:
-  status: speculative
+  status: canonical
   created: '2026-10-20T00:00:00.000Z'
   modified: '2026-10-20T00:00:00.000Z'
 ---
