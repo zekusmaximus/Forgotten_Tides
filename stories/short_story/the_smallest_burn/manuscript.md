@@ -99,10 +99,13 @@ continuity_notes:
   - "The correction is deliberately non-spectacular: no eddy, no rescue crisis, no station collapse, and no forbidden emotional anchor use."
   - Corridor behavior, attention requirements, and anchor-loss consequences derive from MEMORY_PHYSICS.md, CORRIDOR_MECHANICS.md, ANCHOR_THEORY.md, and the locked anchor-burn precedent in story-0001.
 bible_refs:
-  - bible/ARCHIVISTS_WAKE_STORY_BIBLE.md
+  - bible/ARCHIVISTS_WAKE_STORY_BIBLE.md#31-corridors-respond-to-attention
+  - bible/ARCHIVISTS_WAKE_STORY_BIBLE.md#32-zero-anchoring
+  - bible/ARCHIVISTS_WAKE_STORY_BIBLE.md#36-anchor-burn-consequence
+  - bible/ARCHIVISTS_WAKE_STORY_BIBLE.md#71-anchor-rules
 metadata:
   status: draft
-  word_count: 3880
+  word_count: 3330
   author: AI Generated (Writing Agent 4)
   created: '2026-07-07T00:00:00.000Z'
   modified: '2026-07-07T00:00:00.000Z'

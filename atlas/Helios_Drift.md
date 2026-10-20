@@ -19,6 +19,7 @@ cross_refs:
     - char-0002
     - char-0003
     - char-0004
+    - char-0017
   locations:
     - loc-0011
   factions:
@@ -30,6 +31,8 @@ cross_refs:
     - mech-0002
   stories:
     - story-0004
+    - story-0008
+    - story-0013
     - story-0022
 references:
   characters:
@@ -37,6 +40,7 @@ references:
     - char-0002
     - char-0003
     - char-0004
+    - char-0017
   locations:
     - loc-0011
   factions:
@@ -48,6 +52,8 @@ references:
     - mech-0002
   stories:
     - story-0004
+    - story-0008
+    - story-0013
     - story-0022
 coordinates:
   region: Helios Drift

@@ -30,6 +30,7 @@ cross_refs:
   stories:
     - story-0001
     - story-0008
+    - story-0013
     - story-0022
 references:
   characters:
@@ -49,6 +50,7 @@ references:
   stories:
     - story-0001
     - story-0008
+    - story-0013
     - story-0022
 doctrine:
   core_beliefs:

@@ -13,6 +13,7 @@ summary_200: "At the Tessarine Vault, junior Reliquarist Inya Solven performs th
 cross_refs:
   characters:
     - char-0010
+    - char-0029
   locations:
     - loc-0008
     - loc-0011
@@ -25,6 +26,7 @@ cross_refs:
 references:
   characters:
     - char-0010
+    - char-0029
   locations:
     - loc-0008
     - loc-0011
@@ -46,6 +48,53 @@ timeline:
       timestamp: T0+4h
     - event: Inya makes her ledger entry and burns a personal anchor to seal the work
       timestamp: T0+6h
+events:
+  - id: event-story-0008-001
+    timestamp: T0
+    summary: Inya Solven receives a freshly pledged personal memory stone at the Tessarine Vault for routine clean-audit.
+    canon_tier: draft
+    source: stories/short_story/the_reliquarists_doubt/manuscript.md
+    involved_entities:
+      - story-0008
+      - char-0010
+      - loc-0011
+      - loc-0008
+      - fact-0002
+  - id: event-story-0008-002
+    timestamp: T0+2h
+    summary: First cradle pass; the pledged stone sings true on the cradle but its memory is wrong for the donor.
+    canon_tier: draft
+    source: stories/short_story/the_reliquarists_doubt/manuscript.md
+    involved_entities:
+      - story-0008
+      - char-0010
+      - char-0029
+      - loc-0011
+      - fact-0002
+  - id: event-story-0008-003
+    timestamp: T0+4h
+    summary: Inya verifies the donor's birth records against the terrain held in the memory.
+    canon_tier: draft
+    source: stories/short_story/the_reliquarists_doubt/manuscript.md
+    involved_entities:
+      - story-0008
+      - char-0010
+      - loc-0011
+      - loc-0008
+      - fact-0002
+  - id: event-story-0008-004
+    timestamp: T0+6h
+    summary: Inya makes her ledger entry and burns one personal anchor to seal the audit.
+    canon_tier: draft
+    source: stories/short_story/the_reliquarists_doubt/manuscript.md
+    causal_note: Inya's junior seal and burned anchor are permanent; the provenance question is left unresolved.
+    involved_entities:
+      - story-0008
+      - char-0010
+      - char-0029
+      - loc-0011
+      - fact-0002
+      - mech-0003
 themes:
   - duty-vs-faith
   - institutional-burden
@@ -57,9 +106,15 @@ continuity_notes:
   - Introduces the Tuning Cradle as the standard reliquary audit apparatus; consistent with reliquary engineering as named in Archivist_Orders.md.
   - The story does not restore, copy, or reconstruct any anchors; one personal anchor is permanently burned by Inya at the close.
   - The provenance question — a memory predating its donor — is raised but not resolved; the answer is deliberately withheld so that future stories may pick it up without contradiction.
+  - "'Born Sleeve Four, year 2244' in the donor record is a Drift Sleeve Four civic-registry date. No universal calendar is implied; later stories must not treat it as an absolute epoch."
+bible_refs:
+  - bible/ARCHIVISTS_WAKE_STORY_BIBLE.md#34-memory-stones-reliquaries
+  - bible/ARCHIVISTS_WAKE_STORY_BIBLE.md#36-anchor-burn-consequence
+  - bible/ARCHIVISTS_WAKE_STORY_BIBLE.md#41-the-lattice-gap
+  - bible/ARCHIVISTS_WAKE_STORY_BIBLE.md#71-anchor-rules
 metadata:
   status: draft
-  word_count: 3450
+  word_count: 2703
   author: AI Generated (Claude)
   created: '2026-05-27T00:00:00.000Z'
   modified: '2026-05-27T00:00:00.000Z'

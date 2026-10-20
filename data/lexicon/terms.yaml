@@ -328,6 +328,7 @@ terms:
     status: canonical
     aliases:
       - Null Core
+      - Synod lamp
 
   - id: term-0028
     term: Civic Silo

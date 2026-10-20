@@ -14,23 +14,27 @@ tags:
 summary_50: Galactic perimeter where dark energy dominates; unstable timeflow, memory bleeding, and Obsidian Synod cult territories.
 summary_200: The Black Horizon is the galactic perimeter where dark energy dominates memory-mass, producing unstable timeflow, memory bleeding, and black-hole superclustering. It is the primary territory of the Obsidian Synod. The universal forgetting that characterizes the Black Horizon is, to mainstream civilization, an existential threat; to the Synod, it is the most sacred geography in the universe — a preview of oblivion's promised mercy.
 cross_refs:
-  characters: []
+  characters:
+    - char-0016
   locations:
     - loc-0006
   factions:
     - fact-0005
   mechanics:
     - mech-0001
-  stories: []
+  stories:
+    - story-0012
 references:
-  characters: []
+  characters:
+    - char-0016
   locations:
     - loc-0006
   factions:
     - fact-0005
   mechanics:
     - mech-0001
-  stories: []
+  stories:
+    - story-0012
 coordinates:
   region: Black Horizon
   memory_density: 0.01

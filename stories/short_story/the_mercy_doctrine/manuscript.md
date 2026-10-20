@@ -102,7 +102,7 @@ continuity_notes:
   - "The story does not depend on story-0009 and does not cite or alter its novella-specific Synod material."
 metadata:
   status: draft
-  word_count: 4228
+  word_count: 4226
   author: AI Generated
   created: '2026-07-07T00:00:00.000Z'
   modified: '2026-07-07T00:00:00.000Z'
