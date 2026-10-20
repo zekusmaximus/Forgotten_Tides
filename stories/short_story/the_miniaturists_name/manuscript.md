@@ -5,11 +5,11 @@ contract_version: v1.0.0
 type: story
 title: The Miniaturist's Name
 story_type: short-story
-status: draft
-canon_tier: draft
-retrieval_role: active_draft
-summary_50: "A Drift Clade miniaturist registers her family line in Core records to reclaim work absorbed into Consortium patents."
-summary_200: "Yaret Ivo-Senn, a Drift Clade memory-drive miniaturist, discovers that her family's compact drive work has been folded into Mnemosyne Lattice Consortium patents without attribution. The Core will correct the record only if her fluid clade lineage becomes heavy enough to survive in its registry. Yaret wins recognition for the Ivo-Senn hand, but the permanent record alters the physical and cultural weight of a family built around impermanence."
+status: canonical
+canon_tier: primary_canon
+retrieval_role: authoritative
+summary_50: A Drift Clade miniaturist registers her family line in Core records to reclaim work absorbed into Consortium patents.
+summary_200: 'Yaret Ivo-Senn, a Drift Clade memory-drive miniaturist, discovers that her family''s compact drive work has been folded into Mnemosyne Lattice Consortium patents without attribution. The Core will correct the record only if her fluid clade lineage becomes heavy enough to survive in its registry. Yaret wins recognition for the Ivo-Senn hand, but the permanent record alters the physical and cultural weight of a family built around impermanence.'
 cross_refs:
   characters:
     - char-0024
@@ -33,8 +33,8 @@ references:
     - mech-0001
   stories: []
 timeline:
-  setting: Mnemosyne Lattice Core, inside a Consortium patent ledger and recognition archive
-  duration: Two Core shifts, from patent discovery through lineage registration and departure
+  setting: 'Mnemosyne Lattice Core, inside a Consortium patent ledger and recognition archive'
+  duration: 'Two Core shifts, from patent discovery through lineage registration and departure'
   chronology:
     - event: Yaret identifies the Ivo-Senn miniature drive hand inside a Consortium compact-drive patent
       timestamp: T0
@@ -49,8 +49,8 @@ timeline:
 events:
   - id: event-story-0019-001
     timestamp: T0
-    summary: "Yaret Ivo-Senn recognizes her family's miniaturization work inside a Consortium compact-drive patent."
-    canon_tier: draft
+    summary: Yaret Ivo-Senn recognizes her family's miniaturization work inside a Consortium compact-drive patent.
+    canon_tier: primary_canon
     source: stories/short_story/the_miniaturists_name/manuscript.md
     involved_entities:
       - story-0019
@@ -58,11 +58,11 @@ events:
       - fact-0003
       - fact-0004
       - mech-0001
-    causal_note: "Begins an attribution conflict around existing Drift Clade miniaturization skill, not a new technical breakthrough."
+    causal_note: 'Begins an attribution conflict around existing Drift Clade miniaturization skill, not a new technical breakthrough.'
   - id: event-story-0019-002
     timestamp: T0+3h
-    summary: "The Core patent ledger refuses Yaret's claim because the Ivo-Senn line has insufficient permanent record weight."
-    canon_tier: draft
+    summary: The Core patent ledger refuses Yaret's claim because the Ivo-Senn line has insufficient permanent record weight.
+    canon_tier: primary_canon
     source: stories/short_story/the_miniaturists_name/manuscript.md
     involved_entities:
       - story-0019
@@ -71,8 +71,8 @@ events:
       - fact-0003
   - id: event-story-0019-003
     timestamp: T0+1 shift
-    summary: "Yaret registers the Ivo-Senn lineage in heavy Core records to make the family claim admissible."
-    canon_tier: draft
+    summary: Yaret registers the Ivo-Senn lineage in heavy Core records to make the family claim admissible.
+    canon_tier: primary_canon
     source: stories/short_story/the_miniaturists_name/manuscript.md
     involved_entities:
       - story-0019
@@ -81,11 +81,11 @@ events:
       - fact-0003
       - fact-0004
       - mech-0001
-    causal_note: "Recognition has physical and cultural memory weight, stabilizing the name at a permanent cost."
+    causal_note: 'Recognition has physical and cultural memory weight, stabilizing the name at a permanent cost.'
   - id: event-story-0019-004
     timestamp: T0+2 shifts
-    summary: "The corrected patent recognizes the Ivo-Senn hand while giving the Consortium a durable handle on the clade lineage."
-    canon_tier: draft
+    summary: The corrected patent recognizes the Ivo-Senn hand while giving the Consortium a durable handle on the clade lineage.
+    canon_tier: primary_canon
     source: stories/short_story/the_miniaturists_name/manuscript.md
     involved_entities:
       - story-0019
@@ -99,16 +99,16 @@ themes:
   - identity-erosion
   - memory-as-cost
 continuity_notes:
-  - "Introduces no new memory-drive breakthrough; the disputed work relies on established Drift Clade memory-drive miniaturization skill."
-  - "Recognition operates through existing MEMORY_PHYSICS.md rules: institutional memory creates physical coherence and weight."
-  - "The Mnemosyne Lattice Consortium's appropriation pressure stays consistent with fact-0003's centralization agenda and concealed institutional control."
-  - "Yaret's cost is cultural and gravitational record-weight, not corridor travel, anchor burn, zero-anchoring, or recoverable memory loss."
+  - Introduces no new memory-drive breakthrough; the disputed work relies on established Drift Clade memory-drive miniaturization skill.
+  - 'Recognition operates through existing MEMORY_PHYSICS.md rules: institutional memory creates physical coherence and weight.'
+  - The Mnemosyne Lattice Consortium's appropriation pressure stays consistent with fact-0003's centralization agenda and concealed institutional control.
+  - 'Yaret''s cost is cultural and gravitational record-weight, not corridor travel, anchor burn, zero-anchoring, or recoverable memory loss.'
 metadata:
-  status: draft
+  status: canonical
   word_count: 5251
   author: AI Generated (Codex)
   created: '2026-07-07T00:00:00.000Z'
-  modified: '2026-07-07T00:00:00.000Z'
+  modified: '2026-10-20T22:21:05.741Z'
 tags:
   - drift-clades
   - mnemosyne-lattice-consortium

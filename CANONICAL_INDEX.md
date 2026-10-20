@@ -1,6 +1,6 @@
 # Canonical Index
 
-This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-10-20T22:20:26.696Z
+This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-10-20T22:21:05.999Z
 
 ## Character
 - `char-0001` — Rell (`characters/Rell.md`)
@@ -176,6 +176,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `char-0017` - Elior Ren (character, primary_canon, weight 110, `characters/Elior_Ren.md`)
 - `char-0018` - Mael Ivar (character, primary_canon, weight 110, `characters/Mael_Ivar.md`)
 - `char-0020` - Nessa Iral (character, primary_canon, weight 110, `characters/Nessa_Iral.md`)
+- `char-0024` - Yaret Ivo-Senn (character, primary_canon, weight 110, `characters/Yaret_Ivo-Senn.md`)
 - `char-0028` - Ilka Marsk (character, primary_canon, weight 110, `characters/Ilka_Marsk.md`)
 - `char-0029` - Hael (character, primary_canon, weight 110, `characters/Hael.md`)
 - `char-0030` - Jory Fenn (character, primary_canon, weight 110, `characters/Jory_Fenn.md`)
@@ -214,6 +215,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `story-0013` - The Smallest Burn (story, primary_canon, weight 110, `stories/short_story/the_smallest_burn/manuscript.md`)
 - `story-0014` - The Public Weight of a Private Lie (story, primary_canon, weight 110, `stories/short_story/the_public_weight_of_a_private_lie/manuscript.md`)
 - `story-0016` - The Lie That Learned the Hallway (story, primary_canon, weight 110, `stories/short_story/the_lie_that_learned_the_hallway/manuscript.md`)
+- `story-0019` - The Miniaturist's Name (story, primary_canon, weight 110, `stories/short_story/the_miniaturists_name/manuscript.md`)
 - `story-0022` - Spend What You Can Afford (story, primary_canon, weight 110, `stories/short_story/spend_what_you_can_afford/manuscript.md`)
 - `term-0001` - Anchor (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
 - `term-0002` - Anchor Burn (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
@@ -279,7 +281,6 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `story-0015` - The Halix Aftermarket (story, draft, weight 65, `stories/short_story/the_halix_aftermarket/manuscript.md`)
 - `story-0017` - The Loss Ledger (story, draft, weight 65, `stories/short_story/the_loss_ledger/manuscript.md`)
 - `story-0018` - The Navigator Who Forgot Enough (story, draft, weight 65, `stories/short_story/the_navigator_who_forgot_enough/manuscript.md`)
-- `story-0019` - The Miniaturist's Name (story, draft, weight 65, `stories/short_story/the_miniaturists_name/manuscript.md`)
 - `story-0020` - The Inventory of Absence (story, draft, weight 65, `stories/short_story/the_inventory_of_absence/manuscript.md`)
 - `story-0021` - Receipt for a Voice (story, draft, weight 65, `stories/short_story/receipt_for_a_voice/manuscript.md`)
 
@@ -292,7 +293,6 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `char-0021` - Corin Tave (character, speculative, weight 60, `characters/Corin_Tave.md`)
 - `char-0022` - Lysa Korr (character, speculative, weight 60, `characters/Lysa_Korr.md`)
 - `char-0023` - Nim Orra (character, speculative, weight 60, `characters/Nim_Orra.md`)
-- `char-0024` - Yaret Ivo-Senn (character, speculative, weight 60, `characters/Yaret_Ivo-Senn.md`)
 - `char-0025` - Toma Vey (character, speculative, weight 60, `characters/Toma_Vey.md`)
 - `char-0026` - Yenu Skather-Ait (character, speculative, weight 60, `characters/Yenu_Skather-Ait.md`)
 - `char-0027` - Hol-Vren (character, speculative, weight 60, `characters/Hol-Vren.md`)

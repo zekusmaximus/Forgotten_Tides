@@ -22,7 +22,7 @@ Last updated: October 20, 2026.
 ---
 
 ### The Mnemosyne Lattice Core
-*The Error That Remembered Itself* (story-0010, primary canon) and *The Miniaturist's Name* (story-0019, draft) are set in the Core and show the Consortium's machinery from the clerk's level. Still open:
+*The Error That Remembered Itself* (story-0010, primary canon) and *The Miniaturist's Name* (story-0019, primary canon) are set in the Core and show the Consortium's machinery from the clerk's level. Still open:
 - The concealed drift crisis at the level of the Consortium's leadership, not its auditors
 - A whistleblower who goes past the ledger: story-0010 saves one report; nobody has tried to surface the pattern
 - The contrast between apparent stability and hidden collapse, seen by someone who has the authority to act
@@ -68,7 +68,7 @@ Lira Voss (char-0008) carries two drafts, *The Hospice Knot* (story-0007) and *T
 ---
 
 ### The Drift Clades (beyond story-0004)
-*The Light Inheritance* (story-0004) introduced Drift Clade culture; *The Halix Aftermarket* (story-0015), *The Miniaturist's Name* (story-0019), and *Receipt for a Voice* (story-0021) extend it. All four are drafts. Still open:
+*The Light Inheritance* (story-0004) introduced Drift Clade culture; *The Halix Aftermarket* (story-0015), *The Miniaturist's Name* (story-0019), and *Receipt for a Voice* (story-0021) extend it. story-0019 is primary canon; the other three are drafts. Still open:
 - A Drift Clade world undergoing literal void drift, the community deciding what to preserve versus release
 - Intergenerational memory: a Drift Clade elder passing down a tradition that contradicts the tradition they received
 - The Clades' relation to the Tessarine Vault after story-0022, where pledges from the outer sleeve have stopped

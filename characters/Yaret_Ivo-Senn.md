@@ -44,7 +44,7 @@ continuity:
     - Preserve Yaret's Drift Clade relationship to names as temporary obligations rather than stable property.
     - Avoid naming additional Ivo-Senn relatives in future references unless corresponding entity decisions are made.
 metadata:
-  status: speculative
+  status: canonical
   created: '2026-07-07T00:00:00.000Z'
   modified: '2026-07-07T00:00:00.000Z'
 ---
