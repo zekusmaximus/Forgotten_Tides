@@ -33,7 +33,7 @@ Last updated: October 20, 2026.
 ---
 
 ### The Black Horizon
-*The Mercy Doctrine* (story-0012, draft) is set inside the Black Horizon; the novella *The Doctrine of Empty Stars* (story-0009, draft) crosses into it; *Spend What You Can Afford* (story-0022, primary canon) shows the Synod operating inside the Helios Drift. Still open:
+*The Mercy Doctrine* (story-0012, primary canon) is set inside the Black Horizon; the novella *The Doctrine of Empty Stars* (story-0009, draft) crosses into it; *Spend What You Can Afford* (story-0022, primary canon) shows the Synod operating inside the Helios Drift. Still open:
 - A Canticle Fleet pursuit mission into Synod-controlled space
 - A Synod member whose faith is tested by what they find in the superclusters, beyond the single station of story-0012
 - First contact with whatever the Synod discovered at the perimeter. Jory Fenn (char-0030) must not be the one to reveal it; see his watchlist

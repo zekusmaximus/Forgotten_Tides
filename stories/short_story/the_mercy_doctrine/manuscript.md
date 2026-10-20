@@ -5,11 +5,11 @@ contract_version: v1.0.0
 type: story
 title: The Mercy Doctrine
 story_type: short-story
-status: draft
-canon_tier: draft
-retrieval_role: active_draft
-summary_50: "A Synod novice preparing an abandoned station for ritual forgetting finds a survivor who asks that pain remain as warning."
-summary_200: "Inside the Black Horizon, Obsidian Synod novice Nara Oss helps prepare an abandoned station for ritual forgetting. The rite seems merciful until she finds one living inhabitant who has stayed behind to preserve the station's injuries as a warning. Nara must choose whether sacred oblivion can remain mercy when the last witness refuses release."
+status: canonical
+canon_tier: primary_canon
+retrieval_role: authoritative
+summary_50: A Synod novice preparing an abandoned station for ritual forgetting finds a survivor who asks that pain remain as warning.
+summary_200: 'Inside the Black Horizon, Obsidian Synod novice Nara Oss helps prepare an abandoned station for ritual forgetting. The rite seems merciful until she finds one living inhabitant who has stayed behind to preserve the station''s injuries as a warning. Nara must choose whether sacred oblivion can remain mercy when the last witness refuses release.'
 cross_refs:
   characters:
     - char-0016
@@ -31,24 +31,24 @@ references:
     - mech-0001
   stories: []
 timeline:
-  setting: "An unnamed abandoned station in the Black Horizon"
-  duration: "One Synod release rite"
+  setting: An unnamed abandoned station in the Black Horizon
+  duration: One Synod release rite
   chronology:
-    - event: "Nara Oss arrives with a Synod release team to prepare the abandoned station for ritual forgetting."
+    - event: Nara Oss arrives with a Synod release team to prepare the abandoned station for ritual forgetting.
       timestamp: T0
-    - event: "The team strips civic records and reduces the station's remaining memory weight."
+    - event: The team strips civic records and reduces the station's remaining memory weight.
       timestamp: T1
-    - event: "Nara finds one living inhabitant in a maintenance room beneath the pressure doors."
+    - event: Nara finds one living inhabitant in a maintenance room beneath the pressure doors.
       timestamp: T2
-    - event: "The inhabitant refuses release and asks that the station's pain remain as warning."
+    - event: The inhabitant refuses release and asks that the station's pain remain as warning.
       timestamp: T3
-    - event: "Nara records the testimony and leaves the station not fully released, carrying the warning as burden."
+    - event: 'Nara records the testimony and leaves the station not fully released, carrying the warning as burden.'
       timestamp: T4
 events:
   - id: event-story-0012-001
     timestamp: T0
-    summary: "Nara Oss enters an abandoned Black Horizon station as part of an Obsidian Synod release rite."
-    canon_tier: draft
+    summary: Nara Oss enters an abandoned Black Horizon station as part of an Obsidian Synod release rite.
+    canon_tier: primary_canon
     source: stories/short_story/the_mercy_doctrine/manuscript.md
     involved_entities:
       - story-0012
@@ -58,8 +58,8 @@ events:
       - mech-0001
   - id: event-story-0012-002
     timestamp: T2
-    summary: "Nara discovers one living inhabitant who has remained to preserve the station's injuries as testimony."
-    canon_tier: draft
+    summary: Nara discovers one living inhabitant who has remained to preserve the station's injuries as testimony.
+    canon_tier: primary_canon
     source: stories/short_story/the_mercy_doctrine/manuscript.md
     involved_entities:
       - story-0012
@@ -69,8 +69,8 @@ events:
       - mech-0001
   - id: event-story-0012-003
     timestamp: T3
-    summary: "The inhabitant refuses Synod release and asks that pain be remembered because it is the only warning left."
-    canon_tier: draft
+    summary: The inhabitant refuses Synod release and asks that pain be remembered because it is the only warning left.
+    canon_tier: primary_canon
     source: stories/short_story/the_mercy_doctrine/manuscript.md
     involved_entities:
       - story-0012
@@ -79,8 +79,8 @@ events:
       - mech-0001
   - id: event-story-0012-004
     timestamp: T4
-    summary: "Nara preserves the testimony in a ledger and leaves with an unresolved burden rather than completing total ritual forgetting."
-    canon_tier: draft
+    summary: Nara preserves the testimony in a ledger and leaves with an unresolved burden rather than completing total ritual forgetting.
+    canon_tier: primary_canon
     source: stories/short_story/the_mercy_doctrine/manuscript.md
     involved_entities:
       - story-0012
@@ -95,17 +95,17 @@ themes:
   - institutional-burden
   - conceptual-fragility
 continuity_notes:
-  - "This story uses the Obsidian Synod's established belief in oblivion as mercy without superseding or revising existing Synod doctrine."
-  - "The unnamed station and unnamed survivor are story-local; no reusable location or character entity is introduced beyond Nara Oss."
-  - "No new metaphysical mechanics are introduced; station decay, memory weight, and forgetting follow MEMORY_PHYSICS.md."
-  - "The Black Horizon perimeter mystery remains unrevealed; the setting is used only as established Synod territory with memory bleeding pressure."
-  - "The story does not depend on story-0009 and does not cite or alter its novella-specific Synod material."
+  - This story uses the Obsidian Synod's established belief in oblivion as mercy without superseding or revising existing Synod doctrine.
+  - The unnamed station and unnamed survivor are story-local; no reusable location or character entity is introduced beyond Nara Oss.
+  - 'No new metaphysical mechanics are introduced; station decay, memory weight, and forgetting follow MEMORY_PHYSICS.md.'
+  - The Black Horizon perimeter mystery remains unrevealed; the setting is used only as established Synod territory with memory bleeding pressure.
+  - The story does not depend on story-0009 and does not cite or alter its novella-specific Synod material.
 metadata:
-  status: draft
+  status: canonical
   word_count: 4226
   author: AI Generated
   created: '2026-07-07T00:00:00.000Z'
-  modified: '2026-07-07T00:00:00.000Z'
+  modified: '2026-10-20T16:48:30.773Z'
 tags:
   - obsidian-synod
   - black-horizon

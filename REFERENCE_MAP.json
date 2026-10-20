@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-20T16:48:05.403Z",
+  "generated": "2026-10-20T16:48:37.604Z",
   "nodes": [
     {
       "canonical_id": "char-0001",
@@ -141,9 +141,9 @@
       "type": "character",
       "name": "Nara Oss",
       "path": "characters/Nara_Oss.md",
-      "canon_tier": "speculative",
-      "source_weight": 60,
-      "retrieval_role": "exploratory"
+      "canon_tier": "primary_canon",
+      "source_weight": 110,
+      "retrieval_role": "authoritative"
     },
     {
       "canonical_id": "char-0017",
@@ -924,9 +924,9 @@
       "type": "story",
       "name": "The Mercy Doctrine",
       "path": "stories/short_story/the_mercy_doctrine/manuscript.md",
-      "canon_tier": "draft",
-      "source_weight": 65,
-      "retrieval_role": "active_draft"
+      "canon_tier": "primary_canon",
+      "source_weight": 110,
+      "retrieval_role": "authoritative"
     },
     {
       "canonical_id": "story-0013",

@@ -26,7 +26,7 @@ candidates for promotion (see `docs/PLAYBOOK_NEW_STORY.md`, Step 6b).
 | `story-0008` | The Reliquarist's Doubt | primary_canon | canonical | [manuscript](./short_story/the_reliquarists_doubt/manuscript.md) |
 | `story-0010` | The Error That Remembered Itself | draft | draft | [manuscript](./short_story/the_error_that_remembered_itself/manuscript.md) |
 | `story-0011` | The Quiet Census | draft | draft | [manuscript](./short_story/the_quiet_census/manuscript.md) |
-| `story-0012` | The Mercy Doctrine | draft | draft | [manuscript](./short_story/the_mercy_doctrine/manuscript.md) |
+| `story-0012` | The Mercy Doctrine | primary_canon | canonical | [manuscript](./short_story/the_mercy_doctrine/manuscript.md) |
 | `story-0013` | The Smallest Burn | primary_canon | canonical | [manuscript](./short_story/the_smallest_burn/manuscript.md) |
 | `story-0014` | The Public Weight of a Private Lie | draft | draft | [manuscript](./short_story/the_public_weight_of_a_private_lie/manuscript.md) |
 | `story-0015` | The Halix Aftermarket | draft | draft | [manuscript](./short_story/the_halix_aftermarket/manuscript.md) |

@@ -42,7 +42,7 @@ continuity:
     - "Do not use Nara to reveal the Black Horizon perimeter mystery."
     - "Future appearances should account for her ledger entry: total oblivion denied, burden accepted by Nara Oss."
 metadata:
-  status: speculative
+  status: canonical
   created: '2026-07-07T00:00:00.000Z'
   modified: '2026-07-07T00:00:00.000Z'
 ---
