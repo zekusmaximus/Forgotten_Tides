@@ -39,8 +39,8 @@ candidates for promotion (see `docs/PLAYBOOK_NEW_STORY.md`, Step 6b).
 | `story-0022` | Spend What You Can Afford | primary_canon | canonical | [manuscript](./short_story/spend_what_you_can_afford/manuscript.md) |
 
 `story-0009` is the novella below; the short-story sequence skips it. `story-0001`
-predates the `canon_tier` field; it carries `metadata.status: canonical` and the
-index lists it as primary canon.
+predates the `canon_tier` field but now declares `canon_tier: primary_canon`
+explicitly, matching what the index inferred from its path.
 
 ## Novellas
 
