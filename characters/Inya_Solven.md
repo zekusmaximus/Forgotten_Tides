@@ -11,7 +11,9 @@ tags:
 summary_50: Junior Reliquarist at the Tessarine Vault who issues a junior seal at her own anchor cost rather than escalate an anomalous pledge stone.
 summary_200: Inya Solven is a junior Reliquarist of the Archivist Orders, stationed at the Tessarine Vault in the Helios Drift outer sleeve. Eleven months into her vows, she audits a pledged personal memory stone whose interior terrain predates the donor by more than a century. Rather than escalate up the chain and void the pledge — costing a dying woman the light-bequest she has paid an anchor for — Inya issues a junior seal under doctrine, burning one of her own four anchor knots to log the audit at her own weight. She has not solved the anomaly; she has passed it forward, and she has done so honestly.
 cross_refs:
-  characters: []
+  characters:
+    - char-0029
+    - char-0028
   locations:
     - loc-0008
     - loc-0011
@@ -22,8 +24,11 @@ cross_refs:
     - mech-0003
   stories:
     - story-0008
+    - story-0022
 references:
-  characters: []
+  characters:
+    - char-0029
+    - char-0028
   locations:
     - loc-0008
     - loc-0011
@@ -34,6 +39,7 @@ references:
     - mech-0003
   stories:
     - story-0008
+    - story-0022
 continuity:
   invariants:
     - 'Species: Human (Mid-Gravity)'
@@ -41,15 +47,19 @@ continuity:
     - Anchor burn consequences are permanent
     - Ordained junior of the Reliquarist sect, Archivist Orders
     - Started story-0008 with four anchor knots; finished with three
+    - Begins and ends story-0022 with three anchor knots; burns none
+    - In story-0022 withholds pledged stone TES-N3-44217 from expenditure; it held its pitch under null pressure and its Navigant review is deferred
   watchlist:
     - Anchor count and the specific knot burned ("the cold harbor where my mother worked")
     - Junior seal allotment (three per year by doctrine, one used in story-0008)
-    - Relationship to Brother Hael, her senior reliquarist mentor
-    - Any future contact with the anomalous Tellis Aru pledge stone or its recipients
+    - Her knot of Brother Hael's voice calling her "hands" remains intact after his catastrophic loss in story-0022; it answers, and it points at a man rooms will not hold
+    - The anomalous Tellis Aru pledge stone is now the only pledge left in the Tessarine middle ring and is in her custody; its provenance question remains open
+    - Sleeve Four, where Tellis Aru's granddaughters live, lost its civic silo in story-0022
+    - Brother Hael's transfer to Solace has not happened on-page; she is the one keeping his name dark on the Second Sleeve housing
 metadata:
   status: canonical
   created: '2026-05-27T00:00:00.000Z'
-  modified: '2026-05-27T00:00:00.000Z'
+  modified: '2026-10-20T00:00:00.000Z'
 ---
 
 # Inya Solven
@@ -88,3 +98,17 @@ Inya embodies the *duty-vs-faith* axis of the Archivist Orders' interior life. S
 
 ## Post-Story Status
 Three anchors remaining. One junior seal of three spent. The anomalous pledge stone is logged in the quarterly review queue for Navigant Sect attention twelve weeks hence; she does not know what they will do with it, and the story closes before she finds out. Her arc is open for continuation.
+
+## Draft Continuation: Spend What You Can Afford (story-0022)
+
+Twelve weeks after the Tellis Aru audit, on the quarterly pass, the Obsidian Synod detonates
+null stones in the Tessarine audit hall. Inya carries the middle ring's pledged stones up to
+the silo bank and reads each donor's name aloud as it is spent, making a Loss Ledger with
+her mouth because no slate in the room has a field for it. She withholds one stone,
+TES-N3-44217, which alone on the trays still gives back its clean pitch under null pressure;
+Navigant Marsk orders her to log it rather than surrender it. She watches Brother Hael feed
+the Second Sleeve housing his anchor sequence and cannot stop him. Afterward she sits beside
+the housing and says his name every few breaths, deepening the letters scored into the
+brass. She burns nothing. Her three knots are intact. The knot that is Hael's voice calling
+her *hands* still answers; it points at a man the room will not hold. The Fourth Sleeve,
+where Tellis Aru's granddaughters live, lost its civic silo in the breach.

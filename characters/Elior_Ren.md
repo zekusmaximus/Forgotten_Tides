@@ -11,9 +11,11 @@ tags:
 summary_50: New Canticle Fleet pilot whose first routine corridor correction costs him one childhood sensory anchor.
 summary_200: "Elior Ren is a new Canticle Fleet pilot assigned to training rotation in the Helios Drift. In story-0013, he enters his first correction from the pilot cradle with twelve training anchor-knots and performs a controlled, non-emergency anchor burn to stabilize a routine Memory Corridor. He loses the smell of his first classroom after rain: wet stone, carbon dust, and bitter peel oil on wood. The burn is mild on the ledger but permanent, leaving him coherent with eleven responsive anchors and a changed relationship to his earliest route-learning memory."
 cross_refs:
-  characters: []
+  characters:
+    - char-0028
   locations:
     - loc-0008
+    - loc-0011
   factions:
     - fact-0001
     - fact-0002
@@ -23,10 +25,14 @@ cross_refs:
     - mech-0003
   stories:
     - story-0013
+    - story-0021
+    - story-0022
 references:
-  characters: []
+  characters:
+    - char-0028
   locations:
     - loc-0008
+    - loc-0011
   factions:
     - fact-0001
     - fact-0002
@@ -37,6 +43,8 @@ references:
   stories:
     - story-0001
     - story-0013
+    - story-0021
+    - story-0022
 continuity:
   invariants:
     - Canticle Fleet pilot operating in the Helios Drift during story-0013
@@ -45,15 +53,18 @@ continuity:
     - The burned sensory anchor is permanent and cannot be restored, reconstructed, or replaced
     - No zero-anchoring occurs in story-0013; the burn is controlled personal anchor expenditure
     - Memory Corridor and anchor-loss rules from MEMORY_PHYSICS.md, CORRIDOR_MECHANICS.md, and ANCHOR_THEORY.md apply
+    - Begins and ends story-0022 with eleven responsive anchors; does not touch the null stones; accepts custody of seven under a manifest naming an expected, unfiled cost
   watchlist:
     - Future stories should track Elior's post-story anchor count as eleven unless a later canon event changes it
     - Do not restore the lost classroom smell through therapy, memory stones, ritual, or outside testimony
     - Keep the first burn small in external stakes but meaningful in Elior's self-continuity
     - The first route song remains intact, but its earliest classroom memory is emotionally thinner after the burn
+    - His run from the Tessarine Vault to the Navigant house at the inner relay with seven null stones in the reliquary hold happens after story-0022 closes; its cost is expected and unfiled. A later story may name it; do not make it free
+    - He insists on named manifests and named costs (story-0021, story-0022); keep that discipline
 metadata:
   status: speculative
   created: '2026-07-07T00:00:00.000Z'
-  modified: '2026-07-07T00:00:00.000Z'
+  modified: '2026-10-20T00:00:00.000Z'
 ---
 
 # Elior Ren
@@ -105,3 +116,14 @@ to describe the change in a person.
 
 Alive, coherent, and cleared for continued duty after rest-cycle and Solace
 consult offer. Eleven responsive anchors. First burn documented as permanent.
+
+## Draft Continuation: Spend What You Can Afford (story-0022)
+
+Docked at the Tessarine Vault for a routine reliquary transfer when the Synod null-stone
+strike begins, Elior holds the cutter at the lower dock on Navigant Marsk's order, relays
+Drift control's thinning calls across the outer sleeve, and keeps the clamps on thrust when
+they forget what they are for. He takes custody of seven null stones only under a manifest
+that names them and names his expected cost: *not negligible, to be named post-run*. He does
+not touch the stones; the porters and the Vault-Master carry them into the hold. He begins
+and ends the story with eleven responsive anchors. His run to the Navigant house at the
+inner relay happens after the story closes; what it costs him is unfiled.

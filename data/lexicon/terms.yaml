@@ -312,3 +312,45 @@ terms:
     first_appearance: The Reliquarist's Doubt
     canonical_source: stories/short_story/the_reliquarists_doubt/manuscript.md
     status: draft
+
+  - id: term-0027
+    term: Null Stone
+    definition: An artificial anti-memory core manufactured by the Obsidian Synod. Where a memory stone gives back a tone, a null stone gives back absence. Left unattended it induces local conceptual thinning in whatever surrounds it; placed on a tuning cradle it is amplified exactly as a true stone would be, so that a cradle becomes a detonator. Sustained attention suppresses a null stone's local effect at the attender's cost, and the forgetting transfers into whatever touches it, most often the hands that hold it. The Synod carries null stones in dull housings called lamps.
+    category: Hazards
+    related_terms:
+      - term-0014  # Memory Stone
+      - term-0019  # Thinning
+      - term-0024  # Structural Softening
+      - term-0026  # Tuning Cradle
+      - term-0015  # Oblivion
+    first_appearance: Spend What You Can Afford
+    canonical_source: lore/theology/OBLIVION_HERESIES.md
+    status: draft
+    aliases:
+      - Null Core
+
+  - id: term-0028
+    term: Civic Silo
+    definition: A tuned housing in a Reliquarist vault that holds a long civic memory stone contributing to a region's macrogravitational coherence. Silos are tuned annually and audited on the quarterly pass behind doors that otherwise stay closed. A silo accepts additional stones through its tuning aperture as memory density injection. Personal memory thickens a civic silo but does not bind it; binding a silo under null pressure has required a living Reliquarist's attended anchor sequence. A silo lost to oblivion cannot be rebuilt.
+    category: Technology
+    related_terms:
+      - term-0004  # Civic Memory
+      - term-0014  # Memory Stone
+      - term-0005  # Coherence
+      - term-0027  # Null Stone
+    first_appearance: The Reliquarist's Doubt
+    canonical_source: atlas/Tessarine_Vault.md
+    status: draft
+
+  - id: term-0029
+    term: Conceptual Ghost
+    definition: The catastrophic anchor-loss state in which a person has spent or lost the last memory binding the self. The body remains alive and present, but rooms and people cannot hold the person in attention; a name spoken toward them falls and does not land, and only written or recited record gives a room anything to hold. The state is irreversible. No anchor is regrown, replaced, or reconstructed. Memories of the person held by others before the loss are not erased by it.
+    category: Memory Physics
+    related_terms:
+      - term-0001  # Anchor
+      - term-0002  # Anchor Burn
+      - term-0020  # Zero-Anchoring
+      - term-0015  # Oblivion
+    first_appearance: Spend What You Can Afford
+    canonical_source: mechanics/ANCHOR_THEORY.md
+    status: draft
