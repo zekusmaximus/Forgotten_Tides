@@ -95,6 +95,9 @@ recommended fix with a rough effort.
 - **Fix remaining:** add `scripts/tests/test_promote_story.js` that runs the
   script against a fixture manuscript in a temporary directory and asserts the
   frontmatter changes. Effort: small.
+- **Resolved (same day):** `scripts/tests/test_promote_story.js` exists, checks
+  that the default root resolves to the repository, and runs under
+  `npm run validate:ci`.
 
 ### 3.2 The promotion tool changes two fields; a promotion needs about eight
 
@@ -112,6 +115,11 @@ recommended fix with a rough effort.
   story's `data/timeline/events.yaml` entries; print a checklist of the
   entity, lexicon, and prose items it cannot safely automate; document the
   full checklist in the playbook's Step 6b. Effort: small to medium.
+- **Resolved (same day):** the tool now aligns every manuscript field listed
+  above and the story's timeline entries, supports `--dry-run` and
+  `--skip-build`, prints the entity, lexicon, and draft-wording checklist, and
+  is documented in Step 6b. Entity and lexicon statuses remain manual by
+  design; see section 7, decision 1.
 
 ### 3.3 `validate:ci` fails on a correct uncommitted tree
 
@@ -161,6 +169,12 @@ recommended fix with a rough effort.
 - **Fix:** match names on word boundaries and compare property values rather
   than regex-testing for any non-matching word. Add the rule to the drafting
   checklist until then. Effort: small.
+- **Resolved (same day):** names and aliases match on whole words; only
+  explicit declarations (`species: X`, `species is X`) in a paragraph that
+  names the character are compared, by value, against the invariant's core
+  value. `scripts/tests/test_continuity_check.js` covers the cases above and
+  runs under `npm run validate:ci`. The playbook's lint-failure list and
+  Pre-Flight Checklist now describe the check.
 
 ### 3.6 The canon linter's red-line patterns fire on negations
 
@@ -251,6 +265,10 @@ recommended fix with a rough effort.
 - **Fix:** generate "What Exists" from `CANONICAL_INDEX.md` at
   `linkmap:build` time, or delete the hand-maintained lists and point at the
   index. Correct the opportunities menu. Effort: small.
+- **Resolved (same day):** the quickstart now points at the index instead of
+  listing stories; `stories/README.md` is a tier table that matches each
+  manuscript's frontmatter; the opportunities menu was corrected against the
+  index and the `themes` frontmatter (five "no story has" claims were false).
 
 ### 3.13 `docs/reports/` is silently ignored
 
@@ -383,9 +401,9 @@ Checklist in `docs/PLAYBOOK_NEW_STORY.md`.
 
 | Priority | Change | Files | Effort |
 |----------|--------|-------|--------|
-| P0 | Add a smoke test for `promote_story.js`; extend it to align `metadata.status`, `retrieval_role`, story `events[].canon_tier`, and the story's `data/timeline/events.yaml` entries; print the remaining manual checklist | `scripts/promote_story.js`, `scripts/tests/`, `docs/PLAYBOOK_NEW_STORY.md` | Small to medium |
+| P0 | Add a smoke test for `promote_story.js`; extend it to align `metadata.status`, `retrieval_role`, story `events[].canon_tier`, and the story's `data/timeline/events.yaml` entries; print the remaining manual checklist. **Done.** | `scripts/promote_story.js`, `scripts/tests/`, `docs/PLAYBOOK_NEW_STORY.md` | Small to medium |
 | P0 | Fold section 5 of this review into the playbook's Pre-Flight Checklist, including the linter phrase traps | `docs/PLAYBOOK_NEW_STORY.md`, `QUICKSTART_AGENT.md` | Small |
-| P1 | Word-boundary name matching and value comparison in the continuity checker | `scripts/checks/continuity.js` | Small |
+| P1 | Word-boundary name matching and value comparison in the continuity checker. **Done.** | `scripts/checks/continuity.js` | Small |
 | P1 | Run content gates before the artifact freshness diff, or add a local flag | `scripts/validate_ci.js`, `docs/STATUS.md` | Small |
 | P1 | State an entity-status rule and apply it once | `docs/PLAYBOOK_NEW_STORY.md`, `characters/*.md` | Small |
 | P1 | Narrow the `reports/` ignore pattern | `.gitignore` | Trivial |
@@ -393,7 +411,7 @@ Checklist in `docs/PLAYBOOK_NEW_STORY.md`.
 | P2 | Decide the glossary enforcer's purpose; make it recursive with a synonym deny-list or mark it advisory | `scripts/lint/glossary_enforcer.js`, `docs/governance/lexicon.md` | Medium |
 | P2 | Relative-anchor convention for shared timeline events; skip null dates in ordering | `scripts/checks/timeline_variance.js`, `data/timeline/events.yaml`, playbook | Medium |
 | P2 | Resolve `bible_refs` anchors against bible headings | `scripts/lint/redline_citation_linter.js` | Small |
-| P2 | Generate "What Exists" from the index; correct `stories/README.md` and the opportunities menu | `QUICKSTART_AGENT.md`, `stories/README.md`, `docs/STORY_OPPORTUNITIES.md` | Small |
+| P2 | Generate "What Exists" from the index; correct `stories/README.md` and the opportunities menu. **Done** (the quickstart points at the index rather than generating a list). | `QUICKSTART_AGENT.md`, `stories/README.md`, `docs/STORY_OPPORTUNITIES.md` | Small |
 | P2 | Enforce `events` when chronology has three or more entries | `scripts/lint/schema_validate.js` | Trivial |
 | P2 | Note that scene-level quality checks do not apply to short stories, or extend the story schema | `docs/PLAYBOOK_NEW_STORY.md` or `docs/schemas/story.schema.json` | Small |
 | P2 | One-sentence dependency policy for novella and novel drafts | `docs/PLAYBOOK_NEW_STORY.md` | Trivial |

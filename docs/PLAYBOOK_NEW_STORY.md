@@ -263,31 +263,38 @@ Common lint failures for new contributors:
 - **Unresolved ref** — you referenced a `char-####` or `fact-####` that doesn't have an entity file yet
 - **Generated artifact diff** — run `npm run linkmap:build` and commit `CANONICAL_INDEX.md`, `REFERENCE_MAP.json`, and `docs/link_map/LINK_MAP.md`
 - **Red-line citation error** — story touches locked bible elements (Rell/Sutira/Estavan/Tari/Heliodrome/Lattice Gap/zero-anchoring) but lacks explicit citation in `continuity_notes` or `bible_refs`. See `npm run lint:redline` and `bible/ARCHIVISTS_WAKE_STORY_BIBLE.md`. The originating story (`story-0001`) is exempt.
+- **Continuity hard failure** — a paragraph that names a character (or an alias) also declares a property that contradicts that character's `continuity.invariants`, e.g. `species is Vossari` against `Species: Human (Mid-Gravity)`. Names match on whole words only, and only explicit declarations (`species: X`, `species = X`, `species is X`) count; ordinary use of the word is ignored. Run `npm run check:continuity`; the report in `out/reports/continuity.json` lists which stories mention each character.
 
 ---
 
 ## Step 6b: Promote a Story to Primary Canon (Optional but Recommended)
 
-After `npm run validate:ci` passes and the author has reviewed the story for thematic and metaphysical fidelity, promote it from `draft` / `working_canon` to `primary_canon`:
+After `npm run validate:ci` passes and the author has reviewed the story for thematic and metaphysical fidelity, promote it from `draft` / `working_canon` to `primary_canon`. Preview first, then apply:
 
 ```bash
-node scripts/promote_story.js --id story-####   # e.g. story-0007
-# or explicitly:
-node scripts/promote_story.js --id story-0007 --tier primary_canon
+node scripts/promote_story.js --id story-#### --dry-run   # e.g. story-0007; prints the plan, writes nothing
+node scripts/promote_story.js --id story-####             # applies it and rebuilds the link map
+# or via npm:
+npm run promote:story -- --id story-0007 --dry-run
 ```
 
-This helper:
-- Updates the story frontmatter (`canon_tier` → `primary_canon`, `status` → `canonical`)
-- Re-runs `npm run linkmap:build`
-- Prints the exact next steps (review diff, run `validate:ci`, conventional commit)
+The tool changes, in one pass:
+- Manuscript frontmatter: `canon_tier` → `primary_canon`, `status` → `canonical`, `metadata.status` → `canonical`, `retrieval_role` → `authoritative`, every `events[].canon_tier` → `primary_canon`, and `metadata.modified` (only if that field already exists)
+- `data/timeline/events.yaml`: `canon_tier` on every event whose id starts with `event-<story-id>-` or whose `source` is the manuscript path (a line-level edit; formatting and ordering are preserved)
+- Generated artifacts, via `npm run linkmap:build` (skip with `--skip-build`)
 
-You can also run it via npm:
+It then prints a **manual checklist** of what it will not decide for you:
+- Referenced entity files (`characters/`, `atlas/`, `factions/`) whose `metadata.status` is not `canonical`. Set it for entities that exist only because of this story; leave entities that predate the story alone unless the author has set a rule.
+- Lexicon terms the story introduced (`first_appearance` matches the title) whose `status` is not `canonical`.
+- Lines in entity, lore, and docs files that name the story next to the word "draft". Read each and reword the ones that describe the story's tier.
 
-```bash
-npm run promote:story -- --id story-0007
-```
+Then:
+1. Review the diff. The tool re-serializes the manuscript frontmatter; confirm the body after the closing `---` is byte-identical.
+2. Work through the checklist.
+3. Commit everything together, **then** run `npm run validate:ci`. It diffs the regenerated artifacts against the last commit and fails on an uncommitted tree even when the content is correct. Use `npm run lint` and `npm run check` for pre-commit confidence.
+4. Commit message: `canon(story): promote story-#### to primary_canon`, with a Canon Impact note.
 
-After promotion, commit the manuscript change + regenerated artifacts together.
+Novellas and the novel are outside this tool. `scripts/tests/test_promote_story.js` (run by `validate:ci`) exercises the tool against a fixture, so a regression in it fails CI.
 
 ---
 
@@ -323,6 +330,7 @@ Before submitting, confirm:
 - [ ] My `themes` values are from the allowed enum list
 - [ ] All `metadata.status` values in entity files use `canonical`, `speculative`, or `deprecated`
 - [ ] Character files include `continuity.invariants` and `continuity.watchlist`
+- [ ] No paragraph that names a character declares a property (`Species: ...`, `... is ...`) that contradicts that character's `continuity.invariants` (`npm run check:continuity`)
 - [ ] All `cross_refs` IDs have corresponding entity files
 - [ ] The Lore Update Matrix has been applied
 - [ ] `npm run validate:ci` exits with 0 errors

@@ -1,29 +1,31 @@
 # Story Opportunities
 
-A living document listing unexplored territory in *The Forgotten Tides* universe. Use this as a menu when deciding what to write next. Each entry describes a narrative gap, an open character arc, or thematic territory not yet covered.
+A living document listing underexplored territory in *The Forgotten Tides* universe. Use this as a menu when deciding what to write next. Each entry describes a narrative gap, an open character arc, or thematic territory that is thin. Where a draft already touches an area, it is named so you can read it first and build on it rather than reinvent it.
+
+Only `story-0001` and `story-0022` are primary canon. Every other story cited below is a draft: a prior claim to reconcile with, not locked canon. Check `CANONICAL_INDEX.md` before trusting any coverage statement here.
 
 Last updated: October 20, 2026.
 
 ---
 
-## Unexplored Regions
+## Underexplored Regions
 
 ### The Remnant Seas
-No story has been set here. The region offers:
-- Pre-sentient memory structures older than civilization
+*The Quiet Census* (story-0011, draft) is set here: a field researcher finds an anomalous shard that may carry pre-sentient memory and hides it from institutional claim. Still open:
+- The pre-sentient memory structures themselves; story-0011 shows one shard, never the structures
 - Voidborne scavengers with unknown ecology
-- A researcher discovering something that rewrites the origin of the Memory Web
-- The tension between scientific value and absolute physical danger
+- What the Archivist Orders and the Consortium do once the shard from story-0011 surfaces
+- The tension between scientific value and absolute physical danger, at the scale of an expedition rather than one researcher
 
 **Suggested themes:** `memory-preservation`, `conceptual-fragility`, `sacrifice`
 
 ---
 
 ### The Mnemosyne Lattice Core
-No story has ventured into the Consortium's capital. The region offers:
-- The Consortium's concealed drift crisis from the inside
-- A whistleblower trying to surface inconvenient facts through institutional machinery designed to erase them
-- The contrast between apparent stability and hidden collapse
+*The Error That Remembered Itself* (story-0010) and *The Miniaturist's Name* (story-0019), both drafts, are set in the Core and show the Consortium's machinery from the clerk's level. Still open:
+- The concealed drift crisis at the level of the Consortium's leadership, not its auditors
+- A whistleblower who goes past the ledger: story-0010 saves one report; nobody has tried to surface the pattern
+- The contrast between apparent stability and hidden collapse, seen by someone who has the authority to act
 - Political intrigue in the most information-controlled environment in the galaxy
 
 **Suggested themes:** `institutional-burden`, `memory-as-cost`, `identity-erosion`
@@ -31,11 +33,11 @@ No story has ventured into the Consortium's capital. The region offers:
 ---
 
 ### The Black Horizon
-No story has entered Obsidian Synod territory. The region offers:
+*The Mercy Doctrine* (story-0012, draft) is set inside the Black Horizon; the novella *The Doctrine of Empty Stars* (story-0009, draft) crosses into it; *Spend What You Can Afford* (story-0022, primary canon) shows the Synod operating inside the Helios Drift. Still open:
 - A Canticle Fleet pursuit mission into Synod-controlled space
-- A Synod member whose faith is tested by what they find in the superclusters
-- First contact with whatever the Synod discovered at the perimeter
-- The question of whether universal forgetting is mercy or annihilation
+- A Synod member whose faith is tested by what they find in the superclusters, beyond the single station of story-0012
+- First contact with whatever the Synod discovered at the perimeter. Jory Fenn (char-0030) must not be the one to reveal it; see his watchlist
+- Whether universal forgetting is mercy or annihilation is now argued on-page in story-0012 and story-0022. A story that lets the Synod win the argument remains unwritten
 
 **Suggested themes:** `ethical-forgetting`, `duty-vs-faith`, `sacrifice`
 
@@ -44,10 +46,10 @@ No story has entered Obsidian Synod territory. The region offers:
 ## Underexplored Factions
 
 ### The Remembrancers of Solace
-The only faction with no story appearances. Possible angles:
-- A Remembrancer running a Memory Hospice for a pilot facing dementia cascade
+Lira Voss (char-0008) carries two drafts, *The Hospice Knot* (story-0007) and *The Navigator Who Forgot Enough* (story-0018), both at Solace Hospice. Still open:
+- Hael (char-0029) after story-0022: a man with no knots whom rooms forget. Who consents for him, and what does Solace do with a patient it cannot hold in attention?
 - A Remembrancer called to mediate between the Archivist Orders and the Consortium
-- The internal ethics of deciding what a dying person's memories are worth
+- The order's own doctrine and training; story-0007 and story-0018 show one practitioner's ethics, never the institution's
 - A Remembrancer who discovers their patient holds a secret that would destabilize a faction
 
 **Suggested themes:** `ethical-forgetting`, `quiet-heroism`, `sacrifice`
@@ -55,21 +57,21 @@ The only faction with no story appearances. Possible angles:
 ---
 
 ### The Archivist Orders (internal)
-Existing stories reference the Orders from the outside. Unexplored:
-- The Navigant Sect's deliberations about a new zero-anchoring prohibition
-- A Reliquarist who discovers a corrupted memory stone that shouldn't exist
+*The Reliquarist's Doubt* (story-0008, draft) and *Spend What You Can Afford* (story-0022, primary canon) are told from inside the Orders: a junior Reliquarist, then a Navigant reviewer. Still open:
+- The Navigant Sect's deliberations, now with Ilka Marsk's self-indicting report (story-0022) on their table
+- The pledged stone that predates its donor (TES-N3-44217, story-0008); its review is deferred as of story-0022 and nobody has heard it
 - Tension between the Orders' three sects over doctrine
-- The Orders as an institution that is itself beginning to forget its own founding principles
+- The Orders beginning to forget their own founding principles. The Tessarine lintel has literally lost a word (story-0022); what a sect does with a doctrine line that no longer restrains is unwritten
 
 **Suggested themes:** `institutional-burden`, `memory-preservation`, `duty-vs-faith`
 
 ---
 
 ### The Drift Clades (beyond story-0004)
-*The Light Inheritance* introduced Drift Clade culture. Unexplored:
-- A Drift Clade world undergoing literal void drift — the community deciding what to preserve versus release
-- A Drift Clade engineer whose miniaturization breakthrough is appropriated by the Consortium
+*The Light Inheritance* (story-0004) introduced Drift Clade culture; *The Halix Aftermarket* (story-0015), *The Miniaturist's Name* (story-0019), and *Receipt for a Voice* (story-0021) extend it. All four are drafts. Still open:
+- A Drift Clade world undergoing literal void drift, the community deciding what to preserve versus release
 - Intergenerational memory: a Drift Clade elder passing down a tradition that contradicts the tradition they received
+- The Clades' relation to the Tessarine Vault after story-0022, where pledges from the outer sleeve have stopped
 
 **Suggested themes:** `inheritance`, `memory-as-cost`, `identity-erosion`
 
@@ -83,51 +85,55 @@ Tari has appeared in story-0001 but their arc is not fully developed. Open quest
 - What does Tari want that the Canticle Fleet cannot give them?
 - What would Tari do if the fleet's mission conflicted with their personal continuity?
 
+Tari is a locked bible character; read `bible/ARCHIVISTS_WAKE_STORY_BIBLE.md` before writing them.
+
 ---
 
-### A New Pilot (first anchor burn)
-No story has depicted a pilot's first anchor burn in real time. This is a foundational ritual of the universe that remains implicit. A story focused on this moment would:
-- Ground the physics in lived experience
-- Establish the psychological cost before it becomes abstraction
-- Give readers a point of entry for understanding what experienced pilots carry
+### A Pilot's First Anchor Burn
+*The Smallest Burn* (story-0013, draft) depicts Elior Ren's first burn in real time: routine, audited, a mild sensory loss that still changes him. Still open:
+- A first burn that is not mild, in a corridor that is actually failing
+- The training and ritual around a first burn; story-0013 shows the moment, not the preparation
+- A pilot who refuses the first burn and what the Fleet does with them
 
 **Suggested themes:** `memory-as-cost`, `sacrifice`, `identity-erosion`
 
 ---
 
-## Thematic Territory Not Yet Covered
+## Thematic Coverage
 
-| Theme | Coverage | Notes |
-|-------|----------|-------|
-| `memory-as-cost` | Strong | Multiple stories; well established |
-| `identity-erosion` | Strong | Core to several arcs |
-| `sacrifice` | Strong | Present in most stories |
-| `conceptual-fragility` | Moderate | Heliodrome stories; could go deeper |
-| `quiet-heroism` | Moderate | Present but could be more explicit |
-| `memory-preservation` | Moderate | Mostly institutional; needs personal angle |
-| `institutional-burden` | Weak | Barely touched; major gap |
-| `ethical-forgetting` | Weak | Only gestured at in theology docs |
-| `inheritance` | Weak | Introduced in story-0004; much more to explore |
-| `duty-vs-faith` | Weak | Entirely unexplored in fiction |
+Counts are from the `themes` frontmatter of the twenty-two short stories as of the date above. `story-0001` predates the field and is not counted. Recompute before relying on these; the agent brief in `agents/canon_promotion_review_agent.md` shows how.
+
+| Theme | Coverage | Stories | Notes |
+|-------|----------|---------|-------|
+| `memory-as-cost` | Strong | 15 | Well established; hard to add to without repeating |
+| `institutional-burden` | Strong | 14 | The dominant mode since story-0010; the gap is now personal, not institutional |
+| `memory-preservation` | Strong | 11 | Mostly institutional; the personal angle is still thin |
+| `conceptual-fragility` | Moderate | 10 | Heliodrome stories and story-0022; a slow, domestic decay story is missing |
+| `ethical-forgetting` | Moderate | 10 | Argued on-page from the Synod side (story-0012) and the Remembrancer side (story-0007, story-0018) |
+| `quiet-heroism` | Moderate | 9 | Present but rarely the spine of a story |
+| `sacrifice` | Moderate | 8 | Strong where it appears; story-0022 sets the ceiling |
+| `identity-erosion` | Moderate | 7 | Core to several arcs; no story has stayed with one person through the whole slope |
+| `inheritance` | Weak | 3 | story-0015, story-0019, story-0021; all Drift Clade |
+| `duty-vs-faith` | Weak | 3 | story-0008, story-0012, story-0022; never from the Canticle Fleet's side |
 
 ---
 
 ## Specific Scenarios
 
-### The Halix Exchange (from story-0004)
-The Mnemosyne Consortium fixer introduced in *The Light Inheritance* is a named but underdeveloped character. A follow-up story set on the Halix Exchange bazaar-ship could:
-- Show the memory economy from the buyer/seller side
-- Develop the Consortium's ground-level operations
-- Explore what happens to memory stones that are sold rather than burned or released
+### The Halix Exchange
+Introduced in *The Light Inheritance* (story-0004); used since in *The Halix Aftermarket* (story-0015) and *Receipt for a Voice* (story-0021), and referenced in story-0022. All but story-0022 are drafts. Still open:
+- The Consortium fixer from story-0004 himself, who has not reappeared
+- The memory economy from the seller's side at scale, not one transaction
+- What happens to memory stones that are sold rather than burned or released, once they leave the Exchange
 
 ### The Corrupted Reliquary
-A memory stone that contains something that shouldn't be there — a memory that predates the civilization that created it, or a memory from someone who was definitively confirmed dead before the stone was made. The investigation of this object could touch every faction and destabilize major canonical certainties.
+A memory stone that contains something that shouldn't be there: a memory that predates the civilization that created it, or a memory from someone definitively dead before the stone was made. *The Reliquarist's Doubt* (story-0008) opened this door with a pledged stone older than its donor, and story-0022 left that stone unreviewed. The investigation itself is unwritten and could touch every faction.
 
 ### The Last Station
-A station at the point of complete conceptual dementia — not failing like the Heliodrome, but in its final days. A crew sent to archive whatever can still be recovered before the station ceases to be anything. What do you save when everything is dissolving?
+A station at the point of complete conceptual dementia, in its final days rather than failing like the Heliodrome. *The Mercy Doctrine* (story-0012) shows a station being ritually forgotten by the Synod; the Archivist version, a crew sent to recover whatever can still be recovered, has not been written. What do you save when everything is dissolving?
 
 ### The Corridor That Remembers Wrong
-A memory corridor that has begun to misremember its own route — not randomly, but consistently, in the same direction, toward the same destination, which should not exist. Pilots who use it arrive somewhere they recognize but cannot explain.
+A memory corridor that has begun to misremember its own route, consistently, toward a destination that should not exist. *The Lie That Learned the Hallway* (story-0016) and *Receipt for a Voice* (story-0021) show route charts learning wrong things; the corridor itself misremembering is still open.
 
 ---
 

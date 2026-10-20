@@ -24,6 +24,8 @@
     "test:canon-policy": "node scripts/tests/test_canon_policy.js",
     "test:prompt-pack": "node scripts/tests/test_prompt_pack_policy.js",
     "test:timeline-events": "node scripts/tests/test_timeline_events.js",
+    "test:promote": "node scripts/tests/test_promote_story.js",
+    "test:continuity": "node scripts/tests/test_continuity_check.js",
     "author:apply": "node scripts/prompt/authoring.js",
     "compile:edit": "node scripts/compile_edit_packet.js",
     "compile:screenplay": "node scripts/compile_screenplay.js",
