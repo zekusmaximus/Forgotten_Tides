@@ -43,6 +43,83 @@ events:
     summary: "Departure; Rell declines replacement anchor and walks forward into lighter self; crew registers grief and fear."
     canon_tier: primary_canon
     source: bible/ARCHIVISTS_WAKE_STORY_BIBLE.md
+  - id: event-story-0014-001
+    timestamp: "T0"
+    summary: "Mael Ivar receives restricted Heliodrome drift reports showing wider conceptual dementia than public messaging admits."
+    canon_tier: primary_canon
+    source: stories/short_story/the_public_weight_of_a_private_lie/manuscript.md
+    involved_entities:
+      - story-0014
+      - char-0018
+      - loc-0001
+      - fact-0007
+      - mech-0001
+    causal_note: "Shared event: follows the story-0001 intervention (event-0001 through event-0007); the station held, not healed. Establishes the Heliodrome's day-after state for story-0016 and every later Heliodrome story."
+  - id: event-story-0014-002
+    timestamp: "T0+3h"
+    summary: "Mael broadcasts a controlled reassurance that gains civic memory weight and helps avoid immediate panic."
+    canon_tier: primary_canon
+    source: stories/short_story/the_public_weight_of_a_private_lie/manuscript.md
+    involved_entities:
+      - story-0014
+      - char-0018
+      - loc-0001
+      - fact-0007
+      - fact-0002
+      - mech-0001
+    causal_note: "Shared event: the bulletin line 'Critical systems are being held by active work' enters Heliodrome civic memory and begins migrating into walls and transit boards."
+  - id: event-story-0014-003
+    timestamp: "T0+11h"
+    summary: "Mael seals a private corrective record with an Archivist witness, preserving truth without making it public."
+    canon_tier: primary_canon
+    source: stories/short_story/the_public_weight_of_a_private_lie/manuscript.md
+    involved_entities:
+      - story-0014
+      - char-0018
+      - loc-0001
+      - fact-0007
+      - fact-0002
+      - mech-0001
+    causal_note: "Shared event: the sealed corrective record exists as weak institutional memory beneath the heavier public lie; story-0016 opens after this."
+  - id: event-story-0016-001
+    timestamp: "T0"
+    summary: "Nessa Iral detects Heliodrome safe-route maps simplifying real damage into Mael Ivar's public reassurance."
+    canon_tier: primary_canon
+    source: stories/short_story/the_lie_that_learned_the_hallway/manuscript.md
+    involved_entities:
+      - story-0016
+      - char-0020
+      - char-0018
+      - loc-0001
+      - fact-0007
+      - mech-0001
+    causal_note: "Shared event: follows event-story-0014-003; the bulletin is later revised to 'Held does not mean whole.' The route board generates safe routes from the bulletin spine and drops clerk warnings."
+  - id: event-story-0016-002
+    timestamp: "T0+6h"
+    summary: "Nessa weights a corrective Heliodrome route record with a personal memory so the damaged hallway remains visible to live clerks."
+    canon_tier: primary_canon
+    source: stories/short_story/the_lie_that_learned_the_hallway/manuscript.md
+    involved_entities:
+      - story-0016
+      - char-0020
+      - loc-0001
+      - fact-0002
+      - mech-0001
+      - mech-0002
+    causal_note: "Shared event: a personal memory stone seated in a route table's witness socket outweighs public shorthand at that table only; the memory is rendered and lost, and the hallway is not repaired."
+  - id: event-story-0016-003
+    timestamp: "T0+8h"
+    summary: "The corrective route saves stranded residents but erodes public trust in Heliodrome Authority signs."
+    canon_tier: primary_canon
+    source: stories/short_story/the_lie_that_learned_the_hallway/manuscript.md
+    involved_entities:
+      - story-0016
+      - char-0020
+      - loc-0001
+      - fact-0007
+      - fact-0002
+      - mech-0001
+    causal_note: "Shared event: one resident is lost behind a duplicated door; the Authority's night bulletin is revised to 'Held does not mean whole.' The Heliodrome remains in ongoing crisis."
   - id: event-story-0008-001
     timestamp: "T0"
     summary: "Inya Solven receives a freshly pledged personal memory stone at the Tessarine Vault for routine clean-audit."
