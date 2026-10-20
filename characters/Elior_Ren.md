@@ -62,7 +62,7 @@ continuity:
     - His run from the Tessarine Vault to the Navigant house at the inner relay with seven null stones in the reliquary hold happens after story-0022 closes; its cost is expected and unfiled. A later story may name it; do not make it free
     - He insists on named manifests and named costs (story-0021, story-0022); keep that discipline
 metadata:
-  status: speculative
+  status: canonical
   created: '2026-07-07T00:00:00.000Z'
   modified: '2026-10-20T00:00:00.000Z'
 ---

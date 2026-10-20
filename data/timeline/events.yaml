@@ -43,6 +43,136 @@ events:
     summary: "Departure; Rell declines replacement anchor and walks forward into lighter self; crew registers grief and fear."
     canon_tier: primary_canon
     source: bible/ARCHIVISTS_WAKE_STORY_BIBLE.md
+  - id: event-story-0008-001
+    timestamp: "T0"
+    summary: "Inya Solven receives a freshly pledged personal memory stone at the Tessarine Vault for routine clean-audit."
+    canon_tier: primary_canon
+    source: stories/short_story/the_reliquarists_doubt/manuscript.md
+    involved_entities:
+      - story-0008
+      - char-0010
+      - loc-0011
+      - loc-0008
+      - fact-0002
+    causal_note: "Shared event: opens the audit night at the Tessarine Vault that story-0022 later refers back to."
+  - id: event-story-0008-002
+    timestamp: "T0+2h"
+    summary: "First cradle pass; the pledged stone sings true on the cradle but its memory is wrong for the donor."
+    canon_tier: primary_canon
+    source: stories/short_story/the_reliquarists_doubt/manuscript.md
+    involved_entities:
+      - story-0008
+      - char-0010
+      - char-0029
+      - loc-0011
+      - fact-0002
+    causal_note: "Establishes the Tuning Cradle audit as practiced at the Tessarine Vault under senior Reliquarist Hael."
+  - id: event-story-0008-003
+    timestamp: "T0+4h"
+    summary: "Inya verifies the donor's birth records against the terrain held in the memory."
+    canon_tier: primary_canon
+    source: stories/short_story/the_reliquarists_doubt/manuscript.md
+    involved_entities:
+      - story-0008
+      - char-0010
+      - loc-0011
+      - loc-0008
+      - fact-0002
+    causal_note: "The provenance question (a memory predating its donor) is raised and left unresolved; story-0022 deepens it without answering it."
+  - id: event-story-0008-004
+    timestamp: "T0+6h"
+    summary: "Inya makes her ledger entry and burns one personal anchor to seal the audit."
+    canon_tier: primary_canon
+    source: stories/short_story/the_reliquarists_doubt/manuscript.md
+    involved_entities:
+      - story-0008
+      - char-0010
+      - char-0029
+      - loc-0011
+      - fact-0002
+      - mech-0003
+    causal_note: "Twelve weeks before event-story-0022-001; Inya's junior seal is the audit record the Breach disrupts."
+  - id: event-story-0013-001
+    timestamp: "T0"
+    summary: "Elior Ren completes a pre-run anchor audit for his first supervised Canticle correction in the Helios Drift."
+    canon_tier: primary_canon
+    source: stories/short_story/the_smallest_burn/manuscript.md
+    involved_entities:
+      - story-0013
+      - char-0017
+      - fact-0001
+      - fact-0002
+      - loc-0008
+      - mech-0002
+      - mech-0003
+    causal_note: "Shared event: Elior Ren enters Canticle service with twelve training anchor-knots."
+  - id: event-story-0013-002
+    timestamp: "T0+2 pulls"
+    summary: "During a non-emergency corridor correction, Elior performs a controlled anchor burn of one childhood sensory memory."
+    canon_tier: primary_canon
+    source: stories/short_story/the_smallest_burn/manuscript.md
+    involved_entities:
+      - story-0013
+      - char-0017
+      - mech-0002
+      - mech-0003
+      - story-0001
+    causal_note: "Establishes Elior's first anchor loss as a mild, legal, routine-cost burn rather than zero-anchoring or emergency sacrifice."
+  - id: event-story-0013-003
+    timestamp: "T0+1 watch"
+    summary: "The post-run audit confirms Elior remains coherent with eleven anchors; the burned classroom smell is permanently gone."
+    canon_tier: primary_canon
+    source: stories/short_story/the_smallest_burn/manuscript.md
+    involved_entities:
+      - story-0013
+      - char-0017
+      - mech-0003
+    causal_note: "Preserves anchor-burn irrevocability from locked canon. Elior Ren reappears in story-0021 and story-0022 with eleven responsive anchors; the classroom smell is not restored."
+  - id: event-story-0012-001
+    timestamp: "T0"
+    summary: "Nara Oss enters an abandoned Black Horizon station as part of an Obsidian Synod release rite."
+    canon_tier: primary_canon
+    source: stories/short_story/the_mercy_doctrine/manuscript.md
+    involved_entities:
+      - story-0012
+      - char-0016
+      - loc-0007
+      - fact-0005
+      - mech-0001
+    causal_note: "Shared event: establishes the Synod release rite that story-0022 treats as standard Synod practice."
+  - id: event-story-0012-002
+    timestamp: "T2"
+    summary: "Nara discovers one living inhabitant who has remained to preserve the station's injuries as testimony."
+    canon_tier: primary_canon
+    source: stories/short_story/the_mercy_doctrine/manuscript.md
+    involved_entities:
+      - story-0012
+      - char-0016
+      - loc-0007
+      - fact-0005
+      - mech-0001
+  - id: event-story-0012-003
+    timestamp: "T3"
+    summary: "The inhabitant refuses Synod release and asks that pain be remembered because it is the only warning left."
+    canon_tier: primary_canon
+    source: stories/short_story/the_mercy_doctrine/manuscript.md
+    involved_entities:
+      - story-0012
+      - char-0016
+      - fact-0005
+      - mech-0001
+  - id: event-story-0012-004
+    timestamp: "T4"
+    summary: "Nara preserves the testimony in a ledger and leaves with an unresolved burden rather than completing total ritual forgetting."
+    canon_tier: primary_canon
+    source: stories/short_story/the_mercy_doctrine/manuscript.md
+    involved_entities:
+      - story-0012
+      - char-0016
+      - loc-0007
+      - fact-0005
+      - mech-0001
+    causal_note: "Nara Oss's ledger entry (total oblivion denied, burden accepted) is locked continuity; her standing inside the Synod remains unresolved."
   - id: event-story-0022-001
     timestamp: "T0+1h"
     summary: "The Tessarine Breach: Obsidian Synod null stones slotted into the Tessarine Vault's quarterly review trays are amplified by the audit hall's cradles; four booths are lost and the hall is sealed. First on-page Synod operation inside the Helios Drift proper."

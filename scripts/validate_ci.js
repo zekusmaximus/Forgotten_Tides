@@ -40,6 +40,7 @@ function main() {
   runNpmScript('test:prompt-pack');
   runNpmScript('test:timeline-events');
   runNpmScript('test:promote');
+  runNpmScript('test:redline');
   runNpmScript('test:continuity');
   console.log('CI-parity validation passed.');
 }

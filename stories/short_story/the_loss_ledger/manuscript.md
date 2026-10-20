@@ -123,7 +123,7 @@ bible_refs:
   - bible/ARCHIVISTS_WAKE_STORY_BIBLE.md#72-corridor-rules
 metadata:
   status: draft
-  word_count: 5200
+  word_count: 4610
   author: AI Generated (Writing Agent 2)
   created: '2026-07-07T00:00:00.000Z'
   modified: '2026-07-07T00:00:00.000Z'

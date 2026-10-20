@@ -25,6 +25,9 @@
  *   - metadata.status on entity files the story references
  *   - status on lexicon terms the story introduced
  *   - prose in entity, lore, and docs files that still calls the story a draft
+ *   - manuscript events[] ids with no entry in data/timeline/events.yaml
+ *     (the tool edits existing timeline entries only; shared events are
+ *     added by hand)
  *
  * The module exports its functions so scripts/tests/test_promote_story.js can
  * exercise them against a fixture repository.
@@ -300,6 +303,34 @@ function loadLexiconTerms(root) {
   }
 }
 
+/**
+ * Ids of the manuscript's events[] entries that have no entry with the same id
+ * in data/timeline/events.yaml. The tool never adds timeline entries, so these
+ * are the author's to add by hand when other stories depend on them. A missing
+ * or unparsable timeline file leaves every manuscript event unmatched.
+ */
+function findTimelineGaps(root, data) {
+  if (!Array.isArray(data.events)) return [];
+  const manuscriptIds = data.events
+    .filter(event => event && typeof event === 'object' && typeof event.id === 'string')
+    .map(event => event.id);
+  if (manuscriptIds.length === 0) return [];
+
+  const timelineIds = new Set();
+  const timelinePath = path.join(root, 'data', 'timeline', 'events.yaml');
+  if (fs.existsSync(timelinePath)) {
+    try {
+      const parsed = yaml.load(fs.readFileSync(timelinePath, 'utf8'));
+      for (const event of (parsed && Array.isArray(parsed.events)) ? parsed.events : []) {
+        if (event && typeof event.id === 'string') timelineIds.add(event.id);
+      }
+    } catch (_) {
+      // Unparsable timeline: report every manuscript event as a gap.
+    }
+  }
+  return manuscriptIds.filter(id => !timelineIds.has(id));
+}
+
 function findDraftMentions(root, storyId) {
   const hits = [];
   const idPattern = new RegExp(storyId.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i');
@@ -330,7 +361,7 @@ function findDraftMentions(root, storyId) {
  */
 function collectManualChecklist(root, data, manuscriptRelPath, tier) {
   const expectedStatus = STATUS_FOR_TIER[tier];
-  const checklist = { entities: [], terms: [], draftMentions: [] };
+  const checklist = { entities: [], terms: [], draftMentions: [], timelineGaps: findTimelineGaps(root, data) };
   if (tier !== 'primary_canon') return checklist;
 
   const index = loadEntityIndex(root);
@@ -432,10 +463,10 @@ function printResult(result) {
     }
   }
 
-  const { entities, terms, draftMentions } = result.checklist;
+  const { entities, terms, draftMentions, timelineGaps } = result.checklist;
   console.log('\nManual checklist (the tool does not decide these):');
-  if (entities.length === 0 && terms.length === 0 && draftMentions.length === 0) {
-    console.log('  - Referenced entities and introduced lexicon terms already match the target status; no draft wording found next to the story id.');
+  if (entities.length === 0 && terms.length === 0 && draftMentions.length === 0 && timelineGaps.length === 0) {
+    console.log('  - Referenced entities and introduced lexicon terms already match the target status; no draft wording found next to the story id; every manuscript event has a timeline entry.');
   }
   if (entities.length > 0) {
     console.log(`  - Referenced entity files whose metadata.status is not "${entities[0].expected}" (set it, or decide deliberately to leave it):`);
@@ -453,6 +484,12 @@ function printResult(result) {
     console.log('  - Lines that name this story next to the word "draft"; read each and reword if it describes the story\'s tier:');
     for (const hit of draftMentions) {
       console.log(`      ${hit.path}:${hit.line}  ${hit.text}`);
+    }
+  }
+  if (timelineGaps.length > 0) {
+    console.log('  - Manuscript events with no data/timeline/events.yaml entry (add by hand if shared):');
+    for (const id of timelineGaps) {
+      console.log(`      ${id}`);
     }
   }
 
@@ -510,6 +547,7 @@ module.exports = {
   updateManuscript,
   updateTimelineEvents,
   collectManualChecklist,
+  findTimelineGaps,
   promoteStory,
   printResult
 };

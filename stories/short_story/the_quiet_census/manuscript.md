@@ -104,7 +104,7 @@ continuity_notes:
   - Mentions Mnemosyne Lattice Consortium claim pressure only as political risk, consistent with factions/Mnemosyne_Lattice_Consortium.md; no new claim is made about Consortium technology.
 metadata:
   status: draft
-  word_count: 4200
+  word_count: 3085
   author: AI Generated
   created: '2026-07-07T00:00:00.000Z'
   modified: '2026-07-07T00:00:00.000Z'

@@ -46,7 +46,7 @@ A loosely federated network of memory-keepers, corridor specialists, reliquary e
 
 ## Structure
 - **Reliquarists:** craft and tune memory stones.  
-- **Continuity Clerics:** maintain memory liturgies for entire stations.  
+- **Continuity Clerics:** maintain memory liturgies for entire stations. Their daily recitation is the Liturgy of the Hull, which names a station's hull, decks, and seals to hold it against conceptual drift.  
 - **Navigant Sect:** oversees Memory Corridor theory and zero-anchoring prohibitions.  
 
 ## Philosophy

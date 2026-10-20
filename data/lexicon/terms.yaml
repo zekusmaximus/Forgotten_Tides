@@ -263,8 +263,8 @@ terms:
       - term-0006  # Conceptual Drift
       - term-0004  # Civic Memory
     first_appearance: The Liturgy of Rust
-    canonical_source: stories/short_story/the_liturgy_of_rust/manuscript.md
-    status: draft
+    canonical_source: lore/POLITIES_AND_FACTIONS.md
+    status: canonical
 
   - id: term-0023
     term: Liturgy of the Hull
@@ -274,8 +274,8 @@ terms:
       - term-0005  # Coherence
       - term-0006  # Conceptual Drift
     first_appearance: The Liturgy of Rust
-    canonical_source: stories/short_story/the_liturgy_of_rust/manuscript.md
-    status: draft
+    canonical_source: lore/POLITIES_AND_FACTIONS.md
+    status: canonical
 
   - id: term-0024
     term: Structural Softening
@@ -286,8 +286,8 @@ terms:
       - term-0019  # Thinning
       - term-0005  # Coherence
     first_appearance: The Liturgy of Rust
-    canonical_source: stories/short_story/the_liturgy_of_rust/manuscript.md
-    status: draft
+    canonical_source: stories/short_story/spend_what_you_can_afford/manuscript.md
+    status: canonical
 
   - id: term-0025
     term: Reliquarist
@@ -299,7 +299,7 @@ terms:
       - term-0001  # Anchor
     first_appearance: The Reliquarist's Doubt
     canonical_source: stories/short_story/the_reliquarists_doubt/manuscript.md
-    status: draft
+    status: canonical
 
   - id: term-0026
     term: Tuning Cradle
@@ -311,7 +311,7 @@ terms:
       - term-0025  # Reliquarist
     first_appearance: The Reliquarist's Doubt
     canonical_source: stories/short_story/the_reliquarists_doubt/manuscript.md
-    status: draft
+    status: canonical
 
   - id: term-0027
     term: Null Stone
@@ -328,6 +328,7 @@ terms:
     status: canonical
     aliases:
       - Null Core
+      - Synod lamp
 
   - id: term-0028
     term: Civic Silo

@@ -33,7 +33,7 @@ Last updated: October 20, 2026.
 ---
 
 ### The Black Horizon
-*The Mercy Doctrine* (story-0012, draft) is set inside the Black Horizon; the novella *The Doctrine of Empty Stars* (story-0009, draft) crosses into it; *Spend What You Can Afford* (story-0022, primary canon) shows the Synod operating inside the Helios Drift. Still open:
+*The Mercy Doctrine* (story-0012, primary canon) is set inside the Black Horizon; the novella *The Doctrine of Empty Stars* (story-0009, draft) crosses into it; *Spend What You Can Afford* (story-0022, primary canon) shows the Synod operating inside the Helios Drift. Still open:
 - A Canticle Fleet pursuit mission into Synod-controlled space
 - A Synod member whose faith is tested by what they find in the superclusters, beyond the single station of story-0012
 - First contact with whatever the Synod discovered at the perimeter. Jory Fenn (char-0030) must not be the one to reveal it; see his watchlist
@@ -57,7 +57,7 @@ Lira Voss (char-0008) carries two drafts, *The Hospice Knot* (story-0007) and *T
 ---
 
 ### The Archivist Orders (internal)
-*The Reliquarist's Doubt* (story-0008, draft) and *Spend What You Can Afford* (story-0022, primary canon) are told from inside the Orders: a junior Reliquarist, then a Navigant reviewer. Still open:
+*The Reliquarist's Doubt* (story-0008, primary canon) and *Spend What You Can Afford* (story-0022, primary canon) are told from inside the Orders: a junior Reliquarist, then a Navigant reviewer. Still open:
 - The Navigant Sect's deliberations, now with Ilka Marsk's self-indicting report (story-0022) on their table
 - The pledged stone that predates its donor (TES-N3-44217, story-0008); its review is deferred as of story-0022 and nobody has heard it
 - Tension between the Orders' three sects over doctrine
@@ -90,7 +90,7 @@ Tari is a locked bible character; read `bible/ARCHIVISTS_WAKE_STORY_BIBLE.md` be
 ---
 
 ### A Pilot's First Anchor Burn
-*The Smallest Burn* (story-0013, draft) depicts Elior Ren's first burn in real time: routine, audited, a mild sensory loss that still changes him. Still open:
+*The Smallest Burn* (story-0013, primary canon) depicts Elior Ren's first burn in real time: routine, audited, a mild sensory loss that still changes him. Still open:
 - A first burn that is not mild, in a corridor that is actually failing
 - The training and ritual around a first burn; story-0013 shows the moment, not the preparation
 - A pilot who refuses the first burn and what the Fleet does with them

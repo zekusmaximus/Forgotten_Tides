@@ -23,11 +23,11 @@ candidates for promotion (see `docs/PLAYBOOK_NEW_STORY.md`, Step 6b).
 | `story-0005` | The Liturgy of Rust | draft | draft | [manuscript](./short_story/the_liturgy_of_rust/manuscript.md) |
 | `story-0006` | The Anchorless Tide | draft | draft | [manuscript](./short_story/the_anchorless_tide/manuscript.md) |
 | `story-0007` | The Hospice Knot | draft | draft | [manuscript](./short_story/the_hospice_knot/manuscript.md) |
-| `story-0008` | The Reliquarist's Doubt | draft | draft | [manuscript](./short_story/the_reliquarists_doubt/manuscript.md) |
+| `story-0008` | The Reliquarist's Doubt | primary_canon | canonical | [manuscript](./short_story/the_reliquarists_doubt/manuscript.md) |
 | `story-0010` | The Error That Remembered Itself | draft | draft | [manuscript](./short_story/the_error_that_remembered_itself/manuscript.md) |
 | `story-0011` | The Quiet Census | draft | draft | [manuscript](./short_story/the_quiet_census/manuscript.md) |
-| `story-0012` | The Mercy Doctrine | draft | draft | [manuscript](./short_story/the_mercy_doctrine/manuscript.md) |
-| `story-0013` | The Smallest Burn | draft | draft | [manuscript](./short_story/the_smallest_burn/manuscript.md) |
+| `story-0012` | The Mercy Doctrine | primary_canon | canonical | [manuscript](./short_story/the_mercy_doctrine/manuscript.md) |
+| `story-0013` | The Smallest Burn | primary_canon | canonical | [manuscript](./short_story/the_smallest_burn/manuscript.md) |
 | `story-0014` | The Public Weight of a Private Lie | draft | draft | [manuscript](./short_story/the_public_weight_of_a_private_lie/manuscript.md) |
 | `story-0015` | The Halix Aftermarket | draft | draft | [manuscript](./short_story/the_halix_aftermarket/manuscript.md) |
 | `story-0016` | The Lie That Learned the Hallway | draft | draft | [manuscript](./short_story/the_lie_that_learned_the_hallway/manuscript.md) |
@@ -39,8 +39,8 @@ candidates for promotion (see `docs/PLAYBOOK_NEW_STORY.md`, Step 6b).
 | `story-0022` | Spend What You Can Afford | primary_canon | canonical | [manuscript](./short_story/spend_what_you_can_afford/manuscript.md) |
 
 `story-0009` is the novella below; the short-story sequence skips it. `story-0001`
-predates the `canon_tier` field; it carries `metadata.status: canonical` and the
-index lists it as primary canon.
+predates the `canon_tier` field but now declares `canon_tier: primary_canon`
+explicitly, matching what the index inferred from its path.
 
 ## Novellas
 

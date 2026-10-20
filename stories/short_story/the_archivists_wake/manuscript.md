@@ -5,6 +5,9 @@ contract_version: v1.0.0
 type: story
 title: The Archivist's Wake
 story_type: short-story
+status: canonical
+canon_tier: primary_canon
+retrieval_role: authoritative
 summary_50: Canticle crew endures corridor thinning to reach the failing Heliodrome.
 summary_200: The Archivist's Wake follows Rell, Sutira, Estavan, and Tari during a corridor failure en route to the Heliodrome. The story establishes anchor burn permanence, memory-gravity physics, and the ethical cost of survival.
 cross_refs:
