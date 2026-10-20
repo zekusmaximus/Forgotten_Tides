@@ -18,6 +18,8 @@ cross_refs:
     - char-0002
     - char-0003
     - char-0004
+    - char-0018
+    - char-0020
   factions:
     - fact-0001
   mechanics:
@@ -26,12 +28,16 @@ cross_refs:
     - mech-0003
   stories:
     - story-0001
+    - story-0014
+    - story-0016
 references:
   characters:
     - char-0001
     - char-0002
     - char-0003
     - char-0004
+    - char-0018
+    - char-0020
   factions:
     - fact-0001
   mechanics:
@@ -40,6 +46,8 @@ references:
     - mech-0003
   stories:
     - story-0001
+    - story-0014
+    - story-0016
 coordinates:
   region: Lattice Gap
   memory_density: 0.31
@@ -51,4 +59,4 @@ metadata:
 
 # Heliodrome
 
-The Heliodrome is a station whose structure is failing in slow, uneven steps: corridors forget their purpose, decks lose their alignment, and the station’s song goes off key. It remains habitable only through constant reinforcement by archivists and Canticle support crews, making it both a refuge and a warning of what forgetting does to architecture.
+The Heliodrome is a station whose structure is failing in slow, uneven steps: corridors forget their purpose, decks lose their alignment, and the station’s song goes off key. It remains habitable only through constant reinforcement by archivists and Canticle support crews, making it both a refuge and a warning of what forgetting does to architecture. As of the post-intervention period the station holds roughly eighty thousand residents (story-0014).

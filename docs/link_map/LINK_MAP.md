@@ -1,6 +1,6 @@
 # Link Map - Entity Relationships
 
-Generated: 2026-10-20T16:48:37.604Z
+Generated: 2026-10-20T22:18:05.337Z
 
 ## Entities (142)
 
@@ -147,7 +147,7 @@ Generated: 2026-10-20T16:48:37.604Z
 - `term-0028` (term, primary_canon, weight 110)
 - `term-0029` (term, primary_canon, weight 110)
 
-## Relationships (624)
+## Relationships (642)
 
 - `char-0001` → `char-0002` (characters)
 - `char-0001` → `char-0003` (characters)
@@ -389,14 +389,18 @@ Generated: 2026-10-20T16:48:37.604Z
 - `fact-0002` → `story-0008` (stories)
 - `fact-0002` → `story-0013` (stories)
 - `fact-0002` → `story-0022` (stories)
+- `fact-0003` → `char-0014` (characters)
 - `fact-0003` → `fact-0001` (factions)
 - `fact-0003` → `fact-0002` (factions)
 - `fact-0003` → `mech-0001` (mechanics)
 - `fact-0003` → `mech-0002` (mechanics)
 - `fact-0003` → `story-0004` (stories)
+- `fact-0003` → `story-0010` (stories)
+- `fact-0004` → `char-0024` (characters)
 - `fact-0004` → `mech-0001` (mechanics)
 - `fact-0004` → `mech-0003` (mechanics)
 - `fact-0004` → `story-0004` (stories)
+- `fact-0004` → `story-0019` (stories)
 - `fact-0005` → `char-0030` (characters)
 - `fact-0005` → `loc-0011` (locations)
 - `fact-0005` → `mech-0001` (mechanics)
@@ -412,19 +416,27 @@ Generated: 2026-10-20T16:48:37.604Z
 - `fact-0007` → `char-0002` (characters)
 - `fact-0007` → `char-0003` (characters)
 - `fact-0007` → `char-0004` (characters)
+- `fact-0007` → `char-0018` (characters)
+- `fact-0007` → `char-0020` (characters)
 - `fact-0007` → `fact-0001` (factions)
 - `fact-0007` → `loc-0001` (locations)
 - `fact-0007` → `mech-0001` (mechanics)
 - `fact-0007` → `story-0001` (stories)
+- `fact-0007` → `story-0014` (stories)
+- `fact-0007` → `story-0016` (stories)
 - `loc-0001` → `char-0001` (characters)
 - `loc-0001` → `char-0002` (characters)
 - `loc-0001` → `char-0003` (characters)
 - `loc-0001` → `char-0004` (characters)
+- `loc-0001` → `char-0018` (characters)
+- `loc-0001` → `char-0020` (characters)
 - `loc-0001` → `fact-0001` (factions)
 - `loc-0001` → `mech-0001` (mechanics)
 - `loc-0001` → `mech-0002` (mechanics)
 - `loc-0001` → `mech-0003` (mechanics)
 - `loc-0001` → `story-0001` (stories)
+- `loc-0001` → `story-0014` (stories)
+- `loc-0001` → `story-0016` (stories)
 - `loc-0002` → `char-0005` (characters)
 - `loc-0002` → `char-0006` (characters)
 - `loc-0002` → `fact-0001` (factions)
@@ -441,11 +453,17 @@ Generated: 2026-10-20T16:48:37.604Z
 - `loc-0003` → `mech-0002` (mechanics)
 - `loc-0003` → `mech-0003` (mechanics)
 - `loc-0003` → `story-0001` (stories)
+- `loc-0004` → `char-0015` (characters)
 - `loc-0004` → `fact-0002` (factions)
 - `loc-0004` → `mech-0001` (mechanics)
+- `loc-0004` → `story-0011` (stories)
+- `loc-0005` → `char-0014` (characters)
+- `loc-0005` → `char-0024` (characters)
 - `loc-0005` → `fact-0003` (factions)
 - `loc-0005` → `mech-0001` (mechanics)
 - `loc-0005` → `mech-0002` (mechanics)
+- `loc-0005` → `story-0010` (stories)
+- `loc-0005` → `story-0019` (stories)
 - `loc-0006` → `fact-0005` (factions)
 - `loc-0006` → `mech-0001` (mechanics)
 - `loc-0007` → `char-0016` (characters)
@@ -781,7 +799,7 @@ _none_
 ## Statistics
 
 - **Total Entities**: 142
-- **Total Relationships**: 624
+- **Total Relationships**: 642
 - **Orphaned Targets**: 0
 - **Entity Types**: character, faction, location, lore, mechanics, story, term
 - **Primary / Working Canon**: 75

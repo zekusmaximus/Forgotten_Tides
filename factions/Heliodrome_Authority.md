@@ -19,6 +19,8 @@ cross_refs:
     - char-0002
     - char-0003
     - char-0004
+    - char-0018
+    - char-0020
   locations:
     - loc-0001
   factions:
@@ -27,12 +29,16 @@ cross_refs:
     - mech-0001
   stories:
     - story-0001
+    - story-0014
+    - story-0016
 references:
   characters:
     - char-0001
     - char-0002
     - char-0003
     - char-0004
+    - char-0018
+    - char-0020
   locations:
     - loc-0001
   factions:
@@ -41,6 +47,8 @@ references:
     - mech-0001
   stories:
     - story-0001
+    - story-0014
+    - story-0016
 doctrine:
   core_beliefs:
     - Maintain the appearance of stability at all costs.

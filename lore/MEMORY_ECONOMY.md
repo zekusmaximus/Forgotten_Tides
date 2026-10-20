@@ -62,6 +62,7 @@ The primary standard of value across most civilizations.
 
 ### Ethical Extraction  
 Rendering from volunteers for corridor use.
+The apparatus varies by practice and site, from Archivist field rendering through a plate and sensorium band to direct attention into a blank stone at a prepared socket; the cost to the donor is the same in every form.
 
 ### Coercive Extraction  
 Outlawed.  

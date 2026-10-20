@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-20T16:48:37.604Z",
+  "generated": "2026-10-20T22:18:05.337Z",
   "nodes": [
     {
       "canonical_id": "char-0001",
@@ -2483,6 +2483,11 @@
     },
     {
       "from": "fact-0003",
+      "to": "char-0014",
+      "type": "characters"
+    },
+    {
+      "from": "fact-0003",
       "to": "fact-0001",
       "type": "factions"
     },
@@ -2507,6 +2512,16 @@
       "type": "stories"
     },
     {
+      "from": "fact-0003",
+      "to": "story-0010",
+      "type": "stories"
+    },
+    {
+      "from": "fact-0004",
+      "to": "char-0024",
+      "type": "characters"
+    },
+    {
       "from": "fact-0004",
       "to": "mech-0001",
       "type": "mechanics"
@@ -2519,6 +2534,11 @@
     {
       "from": "fact-0004",
       "to": "story-0004",
+      "type": "stories"
+    },
+    {
+      "from": "fact-0004",
+      "to": "story-0019",
       "type": "stories"
     },
     {
@@ -2598,6 +2618,16 @@
     },
     {
       "from": "fact-0007",
+      "to": "char-0018",
+      "type": "characters"
+    },
+    {
+      "from": "fact-0007",
+      "to": "char-0020",
+      "type": "characters"
+    },
+    {
+      "from": "fact-0007",
       "to": "fact-0001",
       "type": "factions"
     },
@@ -2614,6 +2644,16 @@
     {
       "from": "fact-0007",
       "to": "story-0001",
+      "type": "stories"
+    },
+    {
+      "from": "fact-0007",
+      "to": "story-0014",
+      "type": "stories"
+    },
+    {
+      "from": "fact-0007",
+      "to": "story-0016",
       "type": "stories"
     },
     {
@@ -2634,6 +2674,16 @@
     {
       "from": "loc-0001",
       "to": "char-0004",
+      "type": "characters"
+    },
+    {
+      "from": "loc-0001",
+      "to": "char-0018",
+      "type": "characters"
+    },
+    {
+      "from": "loc-0001",
+      "to": "char-0020",
       "type": "characters"
     },
     {
@@ -2659,6 +2709,16 @@
     {
       "from": "loc-0001",
       "to": "story-0001",
+      "type": "stories"
+    },
+    {
+      "from": "loc-0001",
+      "to": "story-0014",
+      "type": "stories"
+    },
+    {
+      "from": "loc-0001",
+      "to": "story-0016",
       "type": "stories"
     },
     {
@@ -2743,6 +2803,11 @@
     },
     {
       "from": "loc-0004",
+      "to": "char-0015",
+      "type": "characters"
+    },
+    {
+      "from": "loc-0004",
       "to": "fact-0002",
       "type": "factions"
     },
@@ -2750,6 +2815,21 @@
       "from": "loc-0004",
       "to": "mech-0001",
       "type": "mechanics"
+    },
+    {
+      "from": "loc-0004",
+      "to": "story-0011",
+      "type": "stories"
+    },
+    {
+      "from": "loc-0005",
+      "to": "char-0014",
+      "type": "characters"
+    },
+    {
+      "from": "loc-0005",
+      "to": "char-0024",
+      "type": "characters"
     },
     {
       "from": "loc-0005",
@@ -2765,6 +2845,16 @@
       "from": "loc-0005",
       "to": "mech-0002",
       "type": "mechanics"
+    },
+    {
+      "from": "loc-0005",
+      "to": "story-0010",
+      "type": "stories"
+    },
+    {
+      "from": "loc-0005",
+      "to": "story-0019",
+      "type": "stories"
     },
     {
       "from": "loc-0006",

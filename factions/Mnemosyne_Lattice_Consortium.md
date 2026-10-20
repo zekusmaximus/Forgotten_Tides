@@ -13,7 +13,8 @@ tags:
 summary_50: Technocratic megafaction managing the galaxy's densest memory infrastructure, pursuing centralized governance of all memory drives.
 summary_200: The Mnemosyne Lattice Consortium is a technocratic megafaction managing the densest region of memory infrastructure in known space. They build and operate engineered memory scaffolds inside stations, cultural reinforcement fields, and memory-gravity harmonizers. Their agenda is to centralize memory governance, regulate memory drive usage, and eliminate rogue corridor operations—while privately concealing conceptual drift in several of their own lattice nodes.
 cross_refs:
-  characters: []
+  characters:
+    - char-0014
   locations: []
   factions:
     - fact-0001
@@ -23,8 +24,10 @@ cross_refs:
     - mech-0002
   stories:
     - story-0004
+    - story-0010
 references:
-  characters: []
+  characters:
+    - char-0014
   locations: []
   factions:
     - fact-0001
@@ -34,6 +37,7 @@ references:
     - mech-0002
   stories:
     - story-0004
+    - story-0010
 doctrine:
   core_beliefs:
     - Memory governance must be centralized to prevent catastrophic drift.

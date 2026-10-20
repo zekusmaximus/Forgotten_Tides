@@ -14,21 +14,25 @@ tags:
 summary_50: Graveyards of collapsed stars whose memories were forgotten; drifting reliquary shards and memory-scar tissue in spacetime.
 summary_200: The Remnant Seas are graveyards of collapsed stars whose memories were forgotten before they could be preserved. The region is filled with drifting reliquary shards, voidborne scavengers, and memory-scar tissue embedded in spacetime itself. Used primarily by researchers seeking pre-sentient memory structures, the Remnant Seas offer extraordinary scientific value at extreme personal risk. Risk level is extreme.
 cross_refs:
-  characters: []
+  characters:
+    - char-0015
   locations: []
   factions:
     - fact-0002
   mechanics:
     - mech-0001
-  stories: []
+  stories:
+    - story-0011
 references:
-  characters: []
+  characters:
+    - char-0015
   locations: []
   factions:
     - fact-0002
   mechanics:
     - mech-0001
-  stories: []
+  stories:
+    - story-0011
 coordinates:
   region: Remnant Seas
   memory_density: 0.04

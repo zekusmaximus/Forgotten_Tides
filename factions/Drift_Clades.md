@@ -14,7 +14,8 @@ tags:
 summary_50: Low-gravity civilizations with rapidly cycling identities; brilliant innovators regarded as unreliable by more stable factions.
 summary_200: The Drift Clades are civilizations born on low-gravity, memory-fragile worlds. Their lightweight frames and rapidly cycling identities produce social structures built around impermanence. Highly decentralized and adaptable, they are at constant risk of literal drift into void margins. Despite their reputation for unreliability, they produce the galaxy's best memory-drive miniaturization experts and have contributed critical innovations in compact reliquary technology.
 cross_refs:
-  characters: []
+  characters:
+    - char-0024
   locations: []
   factions: []
   mechanics:
@@ -22,8 +23,10 @@ cross_refs:
     - mech-0003
   stories:
     - story-0004
+    - story-0019
 references:
-  characters: []
+  characters:
+    - char-0024
   locations: []
   factions: []
   mechanics:
@@ -31,6 +34,7 @@ references:
     - mech-0003
   stories:
     - story-0004
+    - story-0019
 doctrine:
   core_beliefs:
     - Impermanence is survival, not failure.

@@ -103,7 +103,7 @@ continuity_notes:
   - "Respects Mnemosyne Lattice Core canon by treating the Core as physically dense and publicly ultra-stable while allowing a private node anomaly consistent with existing Consortium concealment."
 metadata:
   status: draft
-  word_count: 5200
+  word_count: 5226
   author: AI Generated
   created: '2026-07-07T00:00:00.000Z'
   modified: '2026-07-07T00:00:00.000Z'

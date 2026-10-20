@@ -14,23 +14,31 @@ tags:
 summary_50: Highest-density memory region in known space; ultra-stable corridors and the Mnemosyne Lattice Consortium's capital territory.
 summary_200: The Mnemosyne Lattice Core is the highest-density memory region in known space, characterized by heavy gravitational pull, ultra-stable corridors, and architecture resistant to conceptual drift. It is the capital territory of the Mnemosyne Lattice Consortium and the most politically contested region in the galaxy. Low external risk, but extremely high political and institutional risk given the Consortium's concealed internal crises.
 cross_refs:
-  characters: []
+  characters:
+    - char-0014
+    - char-0024
   locations: []
   factions:
     - fact-0003
   mechanics:
     - mech-0001
     - mech-0002
-  stories: []
+  stories:
+    - story-0010
+    - story-0019
 references:
-  characters: []
+  characters:
+    - char-0014
+    - char-0024
   locations: []
   factions:
     - fact-0003
   mechanics:
     - mech-0001
     - mech-0002
-  stories: []
+  stories:
+    - story-0010
+    - story-0019
 coordinates:
   region: Mnemosyne Lattice Core
   memory_density: 0.97
