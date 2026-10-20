@@ -22,7 +22,7 @@ Last updated: October 20, 2026.
 ---
 
 ### The Mnemosyne Lattice Core
-*The Error That Remembered Itself* (story-0010) and *The Miniaturist's Name* (story-0019), both drafts, are set in the Core and show the Consortium's machinery from the clerk's level. Still open:
+*The Error That Remembered Itself* (story-0010, primary canon) and *The Miniaturist's Name* (story-0019, draft) are set in the Core and show the Consortium's machinery from the clerk's level. Still open:
 - The concealed drift crisis at the level of the Consortium's leadership, not its auditors
 - A whistleblower who goes past the ledger: story-0010 saves one report; nobody has tried to surface the pattern
 - The contrast between apparent stability and hidden collapse, seen by someone who has the authority to act

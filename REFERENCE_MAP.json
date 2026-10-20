@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-20T22:19:54.366Z",
+  "generated": "2026-10-20T22:20:26.696Z",
   "nodes": [
     {
       "canonical_id": "char-0001",
@@ -123,9 +123,9 @@
       "type": "character",
       "name": "Sera Venn",
       "path": "characters/Sera_Venn.md",
-      "canon_tier": "speculative",
-      "source_weight": 60,
-      "retrieval_role": "exploratory"
+      "canon_tier": "primary_canon",
+      "source_weight": 110,
+      "retrieval_role": "authoritative"
     },
     {
       "canonical_id": "char-0015",
@@ -906,9 +906,9 @@
       "type": "story",
       "name": "The Error That Remembered Itself",
       "path": "stories/short_story/the_error_that_remembered_itself/manuscript.md",
-      "canon_tier": "draft",
-      "source_weight": 65,
-      "retrieval_role": "active_draft"
+      "canon_tier": "primary_canon",
+      "source_weight": 110,
+      "retrieval_role": "authoritative"
     },
     {
       "canonical_id": "story-0011",

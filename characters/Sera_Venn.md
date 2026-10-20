@@ -41,7 +41,7 @@ continuity:
     - Do not turn her ledger tactic into a universal bypass for institutional erasure; it depends on existing maintenance redundancy and personal cost.
     - 'Keep her relationship to the Consortium ambivalent: she understands its duty and is harmed by its denial.'
 metadata:
-  status: speculative
+  status: canonical
   created: '2026-07-07T00:00:00.000Z'
   modified: '2026-07-07T00:00:00.000Z'
 ---

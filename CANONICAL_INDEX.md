@@ -1,6 +1,6 @@
 # Canonical Index
 
-This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-10-20T22:19:54.366Z
+This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-10-20T22:20:26.696Z
 
 ## Character
 - `char-0001` — Rell (`characters/Rell.md`)
@@ -170,6 +170,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `char-0007` - Kael Voss (character, primary_canon, weight 110, `characters/Kael_Voss.md`)
 - `char-0008` - Lira Voss (character, primary_canon, weight 110, `characters/Lira_Voss.md`)
 - `char-0010` - Inya Solven (character, primary_canon, weight 110, `characters/Inya_Solven.md`)
+- `char-0014` - Sera Venn (character, primary_canon, weight 110, `characters/Sera_Venn.md`)
 - `char-0015` - Oren Vale (character, primary_canon, weight 110, `characters/Oren_Vale.md`)
 - `char-0016` - Nara Oss (character, primary_canon, weight 110, `characters/Nara_Oss.md`)
 - `char-0017` - Elior Ren (character, primary_canon, weight 110, `characters/Elior_Ren.md`)
@@ -207,6 +208,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `notes_chat_highlights_1765473539542` - Chat Highlights (lore, working_canon, weight 85, `lore/notes/NOTES_CHAT_HIGHLIGHTS_1765473539542.md`)
 - `story-0001` - The Archivist's Wake (story, primary_canon, weight 110, `stories/short_story/the_archivists_wake/manuscript.md`)
 - `story-0008` - The Reliquarist's Doubt (story, primary_canon, weight 110, `stories/short_story/the_reliquarists_doubt/manuscript.md`)
+- `story-0010` - The Error That Remembered Itself (story, primary_canon, weight 110, `stories/short_story/the_error_that_remembered_itself/manuscript.md`)
 - `story-0011` - The Quiet Census (story, primary_canon, weight 110, `stories/short_story/the_quiet_census/manuscript.md`)
 - `story-0012` - The Mercy Doctrine (story, primary_canon, weight 110, `stories/short_story/the_mercy_doctrine/manuscript.md`)
 - `story-0013` - The Smallest Burn (story, primary_canon, weight 110, `stories/short_story/the_smallest_burn/manuscript.md`)
@@ -274,7 +276,6 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `story-0006` - The Anchorless Tide (story, draft, weight 65, `stories/short_story/the_anchorless_tide/manuscript.md`)
 - `story-0007` - The Hospice Knot (story, draft, weight 65, `stories/short_story/the_hospice_knot/manuscript.md`)
 - `story-0009` - The Doctrine of Empty Stars (story, draft, weight 65, `stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/manuscript.md`)
-- `story-0010` - The Error That Remembered Itself (story, draft, weight 65, `stories/short_story/the_error_that_remembered_itself/manuscript.md`)
 - `story-0015` - The Halix Aftermarket (story, draft, weight 65, `stories/short_story/the_halix_aftermarket/manuscript.md`)
 - `story-0017` - The Loss Ledger (story, draft, weight 65, `stories/short_story/the_loss_ledger/manuscript.md`)
 - `story-0018` - The Navigator Who Forgot Enough (story, draft, weight 65, `stories/short_story/the_navigator_who_forgot_enough/manuscript.md`)
@@ -287,7 +288,6 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `char-0011` - Sael Orro (character, speculative, weight 60, `characters/Sael_Orro.md`)
 - `char-0012` - Ives Mar (character, speculative, weight 60, `characters/Ives_Mar.md`)
 - `char-0013` - Veyr Anik (character, speculative, weight 60, `characters/Veyr_Anik.md`)
-- `char-0014` - Sera Venn (character, speculative, weight 60, `characters/Sera_Venn.md`)
 - `char-0019` - Tess Vlin (character, speculative, weight 60, `characters/Tess_Vlin.md`)
 - `char-0021` - Corin Tave (character, speculative, weight 60, `characters/Corin_Tave.md`)
 - `char-0022` - Lysa Korr (character, speculative, weight 60, `characters/Lysa_Korr.md`)

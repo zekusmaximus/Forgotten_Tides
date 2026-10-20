@@ -5,11 +5,11 @@ contract_version: v1.0.0
 type: story
 title: The Error That Remembered Itself
 story_type: short-story
-status: draft
-canon_tier: draft
-retrieval_role: active_draft
+status: canonical
+canon_tier: primary_canon
+retrieval_role: authoritative
 summary_50: A junior Consortium auditor makes a disappearing drift report survive by tying it to her own institutional record.
-summary_200: "In the Mnemosyne Lattice Core, junior auditor Sera Venn finds a drift report the Consortium's systems cannot accept because core node drift is treated as impossible. Each official filing disappears or returns as an auditor fault. To make the truth heavy enough to survive, Sera encodes the evidence into the maintenance ledger and her own personnel record, forcing the institution either to preserve the report or erase her career around it."
+summary_200: 'In the Mnemosyne Lattice Core, junior auditor Sera Venn finds a drift report the Consortium''s systems cannot accept because core node drift is treated as impossible. Each official filing disappears or returns as an auditor fault. To make the truth heavy enough to survive, Sera encodes the evidence into the maintenance ledger and her own personnel record, forcing the institution either to preserve the report or erase her career around it.'
 cross_refs:
   characters:
     - char-0014
@@ -31,7 +31,7 @@ references:
     - mech-0001
   stories: []
 timeline:
-  setting: Mnemosyne Lattice Core, inside a Consortium audit office and maintenance archive
+  setting: 'Mnemosyne Lattice Core, inside a Consortium audit office and maintenance archive'
   duration: Approximately two shifts and one disciplinary morning
   chronology:
     - event: Sera Venn opens a node drift report that the audit system erases as impossible
@@ -48,7 +48,7 @@ events:
   - id: event-story-0010-001
     timestamp: T0
     summary: Sera Venn encounters a core node drift report that disappears because the audit system has no allowed category for it.
-    canon_tier: draft
+    canon_tier: primary_canon
     source: stories/short_story/the_error_that_remembered_itself/manuscript.md
     involved_entities:
       - story-0010
@@ -59,8 +59,8 @@ events:
     causal_note: Establishes the story's institutional conflict without changing memory physics.
   - id: event-story-0010-002
     timestamp: T0+1 shift
-    summary: The same evidence returns as an auditor fault, teaching Sera that the Consortium can remember an employee error more easily than a Core failure.
-    canon_tier: draft
+    summary: 'The same evidence returns as an auditor fault, teaching Sera that the Consortium can remember an employee error more easily than a Core failure.'
+    canon_tier: primary_canon
     source: stories/short_story/the_error_that_remembered_itself/manuscript.md
     involved_entities:
       - story-0010
@@ -70,7 +70,7 @@ events:
   - id: event-story-0010-003
     timestamp: T0+2 shifts
     summary: Sera signs the drift evidence into both the maintenance ledger and her personnel record.
-    canon_tier: draft
+    canon_tier: primary_canon
     source: stories/short_story/the_error_that_remembered_itself/manuscript.md
     involved_entities:
       - story-0010
@@ -82,7 +82,7 @@ events:
   - id: event-story-0010-004
     timestamp: T0+2 shifts+morning
     summary: The Consortium removes Sera's authority while maintenance practice preserves the anomaly as work that must be performed.
-    canon_tier: draft
+    canon_tier: primary_canon
     source: stories/short_story/the_error_that_remembered_itself/manuscript.md
     involved_entities:
       - story-0010
@@ -97,16 +97,16 @@ themes:
   - quiet-heroism
   - identity-erosion
 continuity_notes:
-  - "Introduces no new mechanics; the persistence of records follows MEMORY_PHYSICS.md on institutional and cultural memory stabilizing structures."
-  - "No Memory Corridor traversal, anchor burn, zero-anchoring, or anchor restoration occurs; Sera loses institutional standing, not pilot anchors."
-  - "Respects Mnemosyne Lattice Consortium canon by showing concealed node drift and truth-hostile machinery without resolving the underlying crisis."
-  - "Respects Mnemosyne Lattice Core canon by treating the Core as physically dense and publicly ultra-stable while allowing a private node anomaly consistent with existing Consortium concealment."
+  - Introduces no new mechanics; the persistence of records follows MEMORY_PHYSICS.md on institutional and cultural memory stabilizing structures.
+  - 'No Memory Corridor traversal, anchor burn, zero-anchoring, or anchor restoration occurs; Sera loses institutional standing, not pilot anchors.'
+  - Respects Mnemosyne Lattice Consortium canon by showing concealed node drift and truth-hostile machinery without resolving the underlying crisis.
+  - Respects Mnemosyne Lattice Core canon by treating the Core as physically dense and publicly ultra-stable while allowing a private node anomaly consistent with existing Consortium concealment.
 metadata:
-  status: draft
+  status: canonical
   word_count: 5226
   author: AI Generated
   created: '2026-07-07T00:00:00.000Z'
-  modified: '2026-07-07T00:00:00.000Z'
+  modified: '2026-10-20T22:20:26.393Z'
 tags:
   - mnemosyne-lattice-consortium
   - mnemosyne-lattice-core
