@@ -52,7 +52,7 @@ continuity:
     - His disposition under the Inquisition (memory rehabilitation, sequestration, anchor reconstruction therapy, or ethical erasure per lore/theology/OBLIVION_HERESIES.md section 6) is open and should cost whoever decides it
     - He is lighter than the people around him; null stones take little from him because he has already put most of it down
 metadata:
-  status: speculative
+  status: canonical
   created: '2026-10-20T00:00:00.000Z'
   modified: '2026-10-20T00:00:00.000Z'
 ---

@@ -20,7 +20,7 @@ const path = require('path');
 const matter = require('gray-matter');
 const { execFileSync } = require('child_process');
 
-const ROOT = path.join(__dirname, '..', '..');
+const ROOT = path.join(__dirname, '..');
 const STORIES_DIR = path.join(ROOT, 'stories', 'short_story');
 
 function parseArgs() {
