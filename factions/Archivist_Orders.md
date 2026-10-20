@@ -13,29 +13,43 @@ tags:
 summary_50: Federated network of memory-keepers, corridor specialists, and identity-preservation clergy who maintain the Memory Web.
 summary_200: The Archivist Orders are a loosely federated network of memory-keepers, corridor specialists, reliquary engineers, and identity-preservation clergy. They maintain the Memory Web linking stations and inhabited systems, train and oversee pilots who risk anchor degradation, and preserve cultural coherence across the galaxy. Their highest doctrine holds that memory is sacred but not all memory is equal—spend only what you can afford.
 cross_refs:
-  characters: []
+  characters:
+    - char-0010
+    - char-0028
+    - char-0029
   locations:
     - loc-0001
+    - loc-0011
   factions:
     - fact-0001
+    - fact-0005
   mechanics:
     - mech-0001
     - mech-0002
     - mech-0003
   stories:
     - story-0001
+    - story-0008
+    - story-0022
 references:
-  characters: []
+  characters:
+    - char-0010
+    - char-0028
+    - char-0029
   locations:
     - loc-0001
+    - loc-0011
   factions:
     - fact-0001
+    - fact-0005
   mechanics:
     - mech-0001
     - mech-0002
     - mech-0003
   stories:
     - story-0001
+    - story-0008
+    - story-0022
 doctrine:
   core_beliefs:
     - Memory is sacred, but not all memory is equal.
@@ -48,7 +62,7 @@ doctrine:
 metadata:
   status: canonical
   created: '2026-05-23T00:00:00.000Z'
-  modified: '2026-05-23T00:00:00.000Z'
+  modified: '2026-10-20T00:00:00.000Z'
 ---
 
 # Archivist Orders
@@ -56,3 +70,16 @@ metadata:
 The Archivist Orders are the backbone of interstellar civilization — feared, revered, and quietly resented. Their three internal sects divide the labor of remembrance: the **Reliquarists** craft and tune memory stones; the **Continuity Clerics** maintain memory liturgies for entire stations; and the **Navigant Sect** oversees Memory Corridor theory and enforces zero-anchoring prohibitions.
 
 The Orders are not a single monolithic church but a loose federation of monasteries, academies, and operational cells distributed across the Helios Drift and beyond. They train the pilots who risk anchor degradation on every corridor run and certify the reliquary vaults that hold a civilization's irreplaceable memories. Without the Orders, the Memory Web would collapse within a generation.
+
+## Draft Continuity: The Tessarine Breach (story-0022)
+
+In draft story-0022 the Reliquarist sect lost an audit hall, a senior, and two civic silos
+at the Tessarine Vault to an Obsidian Synod null-stone strike that used the Vault's own
+cradles. A Navigant Sect reviewer, Ilka Marsk (char-0028), ordered pledged stones spent
+into silo housings without donor consent, released one silo by triage, and did not prevent
+Brother Hael's (char-0029) final zero-anchoring; her report records every breach under her
+own name and awaits the Sect's judgment. The Archivist Inquisition holds the surviving
+Synod agents. Pledge audit is suspended across the Helios Drift outer sleeve. The doctrine
+lintel at Tessarine has forgotten the word *only*. How the Orders answer an attack that used
+their own instruments, and whether anything is owed to donors whose stones were spent to
+hold a sleeve, are open questions for later stories.

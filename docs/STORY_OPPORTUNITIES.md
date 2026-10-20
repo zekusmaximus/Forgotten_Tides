@@ -2,7 +2,7 @@
 
 A living document listing unexplored territory in *The Forgotten Tides* universe. Use this as a menu when deciding what to write next. Each entry describes a narrative gap, an open character arc, or thematic territory not yet covered.
 
-Last updated: May 23, 2026.
+Last updated: October 20, 2026.
 
 ---
 
@@ -128,3 +128,40 @@ A station at the point of complete conceptual dementia — not failing like the 
 
 ### The Corridor That Remembers Wrong
 A memory corridor that has begun to misremember its own route — not randomly, but consistently, in the same direction, toward the same destination, which should not exist. Pilots who use it arrive somewhere they recognize but cannot explain.
+
+---
+
+## After the Tessarine Breach (story-0022)
+
+*Spend What You Can Afford* (draft) leaves the Helios Drift outer sleeve with live
+consequences. Each is a story.
+
+- **The Ninth Sleeve.** Four stations, nine hundred people, mostly old, whose civic silo was
+  released by a Navigant's triage. They were not told. Their floors are beginning to lose
+  their reasons. What does a Continuity Cleric do with a sleeve that was chosen against?
+- **Sleeve Four without its generations.** Tellis Aru's granddaughters (story-0008) live in a
+  sleeve whose three generations of civic memory entered oblivion. The light-bequest their
+  grandmother paid an anchor for is now the only pledge left in the Tessarine middle ring, in
+  Inya Solven's custody, and it is a memory older than its donor.
+- **Elior Ren's run.** Seven null stones in a cutter's reliquary hold, two pulls to the
+  Navigant house at the inner relay, a manifest that says the cost is *not negligible, to be
+  named post-run*. Name it.
+- **Jory Fenn before the Inquisition.** The first Synod agent taken alive on-page in the
+  Drift. `lore/theology/OBLIVION_HERESIES.md` lists the penalties: memory rehabilitation,
+  sequestration, anchor reconstruction therapy, ethical erasure. Someone has to choose one,
+  and the Inquisition has never been seen working.
+- **Hael at Solace.** A man with no knots, present in body, whom rooms forget. Lira Voss
+  (story-0007, story-0018) has witnessed consent from the thinning before. Who consents for a
+  man the room cannot hold?
+- **The sealed hall.** Four null stones sit on four things that are not cradles. No pledge in
+  the outer sleeve can be audited until someone walks into a place that has forgotten it is a
+  place. Forty families a week are waiting. Some do not have the time.
+- **The Navigant Sect's judgment.** Ilka Marsk spent what was not hers, released nine
+  hundred people, and let a zero-anchor run. Her report is accurate. What does a sect built to
+  say *no* do with a reviewer who said *name them as they go*?
+- **The missing word.** The Tessarine lintel reads *Spend what you can afford*. Doctrine lines
+  are civic memory. What happens to a sect whose founding inscription has forgotten its
+  restraint?
+
+**Suggested themes:** `institutional-burden`, `conceptual-fragility`, `duty-vs-faith`,
+`ethical-forgetting`, `inheritance`

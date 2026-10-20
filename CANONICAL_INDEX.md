@@ -1,6 +1,6 @@
 # Canonical Index
 
-This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-09-24T00:41:01.782Z
+This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-10-20T03:51:24.035Z
 
 ## Character
 - `char-0001` — Rell (`characters/Rell.md`)
@@ -30,6 +30,9 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `char-0025` — Toma Vey (`characters/Toma_Vey.md`)
 - `char-0026` — Yenu Skather-Ait (`characters/Yenu_Skather-Ait.md`)
 - `char-0027` — Hol-Vren (`characters/Hol-Vren.md`)
+- `char-0028` — Ilka Marsk (`characters/Ilka_Marsk.md`)
+- `char-0029` — Hael (`characters/Hael.md`)
+- `char-0030` — Jory Fenn (`characters/Jory_Fenn.md`)
 
 ## Faction
 - `fact-0001` — Canticle Fleet (`factions/Canticle_Fleet.md`)
@@ -122,6 +125,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `story-0019` — The Miniaturist's Name (`stories/short_story/the_miniaturists_name/manuscript.md`)
 - `story-0020` — The Inventory of Absence (`stories/short_story/the_inventory_of_absence/manuscript.md`)
 - `story-0021` — Receipt for a Voice (`stories/short_story/receipt_for_a_voice/manuscript.md`)
+- `story-0022` — Spend What You Can Afford (`stories/short_story/spend_what_you_can_afford/manuscript.md`)
 
 ## Term
 - `term-0001` — Anchor (`data/lexicon/terms.yaml`)
@@ -150,6 +154,9 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `term-0024` — Structural Softening (`data/lexicon/terms.yaml`)
 - `term-0025` — Reliquarist (`data/lexicon/terms.yaml`)
 - `term-0026` — Tuning Cradle (`data/lexicon/terms.yaml`)
+- `term-0027` — Null Stone (`data/lexicon/terms.yaml`)
+- `term-0028` — Civic Silo (`data/lexicon/terms.yaml`)
+- `term-0029` — Conceptual Ghost (`data/lexicon/terms.yaml`)
 
 ## Canon Views
 
@@ -217,6 +224,9 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `term-0024` - Structural Softening (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
 - `term-0025` - Reliquarist (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
 - `term-0026` - Tuning Cradle (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
+- `term-0027` - Null Stone (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
+- `term-0028` - Civic Silo (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
+- `term-0029` - Conceptual Ghost (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
 
 ### Active Drafts
 - `lore-doctrine-empty-stars-continuity-brief` - The Doctrine of Empty Stars - Continuity Brief (story, draft, weight 65, `stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/continuity_brief.md`)
@@ -262,6 +272,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `story-0019` - The Miniaturist's Name (story, draft, weight 65, `stories/short_story/the_miniaturists_name/manuscript.md`)
 - `story-0020` - The Inventory of Absence (story, draft, weight 65, `stories/short_story/the_inventory_of_absence/manuscript.md`)
 - `story-0021` - Receipt for a Voice (story, draft, weight 65, `stories/short_story/receipt_for_a_voice/manuscript.md`)
+- `story-0022` - Spend What You Can Afford (story, draft, weight 65, `stories/short_story/spend_what_you_can_afford/manuscript.md`)
 
 ### Speculative / Sandbox Material
 - `char-0009` - Maren Holt (character, speculative, weight 60, `characters/Maren_Holt.md`)
@@ -282,6 +293,9 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `char-0025` - Toma Vey (character, speculative, weight 60, `characters/Toma_Vey.md`)
 - `char-0026` - Yenu Skather-Ait (character, speculative, weight 60, `characters/Yenu_Skather-Ait.md`)
 - `char-0027` - Hol-Vren (character, speculative, weight 60, `characters/Hol-Vren.md`)
+- `char-0028` - Ilka Marsk (character, speculative, weight 60, `characters/Ilka_Marsk.md`)
+- `char-0029` - Hael (character, speculative, weight 60, `characters/Hael.md`)
+- `char-0030` - Jory Fenn (character, speculative, weight 60, `characters/Jory_Fenn.md`)
 - `loc-0012` - Narthex of Low Mercy (location, speculative, weight 60, `atlas/Narthex_of_Low_Mercy.md`)
 - `loc-0013` - Halix Exchange (location, speculative, weight 60, `atlas/Halix_Exchange.md`)
 - `loc-0014` - Heavonly (location, speculative, weight 60, `atlas/Heavonly.md`)

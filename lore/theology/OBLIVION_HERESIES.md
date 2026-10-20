@@ -37,6 +37,8 @@ They attempt to:
 
 Agents often carry “null stones”: artificial anti-memories that induce local conceptual thinning.
 
+*Observed use (draft, story-0022):* null stones bedded in Reliquarist pledge trays and amplified by tuning cradles at the Tessarine Vault, and carried in dull lamp housings to civic silos. Sustained attention suppresses a null stone's local effect at the attender's cost; the forgetting transfers into the hands that hold it. See `data/lexicon/terms.yaml` (term-0027).
+
 ---
 
 # 3. The Conceptual Ascetics

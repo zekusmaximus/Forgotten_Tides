@@ -12,14 +12,18 @@ summary_50: Civilizations in this universe do not compete for territory or resou
 summary_200: 'POLITIES AND FACTIONS is a lore document in The Forgotten Tides universe. Civilizations in this universe do not compete for territory or resources alone—they compete for **memory stability**, **cultural survivability**, and **gravitational influence**.  '
 cross_refs:
   characters: []
-  locations: []
-  factions: []
+  locations:
+    - loc-0011
+  factions:
+    - fact-0002
+    - fact-0005
   mechanics: []
-  stories: []
+  stories:
+    - story-0022
 metadata:
   status: canonical
   created: '2025-12-11T00:55:01.581Z'
-  modified: '2025-12-11T00:55:01.581Z'
+  modified: '2026-10-20T00:00:00.000Z'
 ---
 
 # Polities and Factions of The Forgotten Tides
@@ -52,6 +56,9 @@ Their highest doctrine:
 
 ## Role in Stories
 The Order is the backbone of interstellar civilization—feared, revered, and quietly resented.
+
+## Draft Continuity (story-0022)
+In *Spend What You Can Afford* (draft), the Orders lose an audit hall, a senior Reliquarist, and two civic silos at the Tessarine Vault to a Synod null-stone strike that used the Vault's own cradles. A Navigant spends pledged stones without donor consent to hold the remaining silos and does not prevent a zero-anchoring. The Sect's judgment of her, and the Inquisition's handling of the captured agents, are open.
 
 ---
 
@@ -129,6 +136,9 @@ Memory is a burden prolonging suffering.
 
 ## Threat
 Their operations have collapsed multiple outpost-stations, creating predatory eddies.
+
+## Draft Continuity (story-0022)
+The Synod has operated inside the Helios Drift proper: null stones slotted into a Reliquarist vault's pledge trays by a five-month infiltrator, amplified by the vault's tuning cradles, and carried to its civic silos in lamps. Two sleeves lost their civic memory. The method is documented in *Spend What You Can Afford* (draft) and in `data/lexicon/terms.yaml` (Null Stone, term-0027).
 
 ---
 
