@@ -76,7 +76,7 @@ metadata:
 
 The Canticle Fleet treats every corridor run as a balance sheet of remembered lives. Its crews memorize routes as liturgy, weighing which anchors to burn and which to preserve, and it keeps the Heliodrome from slipping into oblivion through disciplined memory triage.
 
-In draft story-0022, a Canticle cutter under pilot Elior Ren (char-0017), docked at the
+In story-0022, a Canticle cutter under pilot Elior Ren (char-0017), docked at the
 Tessarine Vault for a routine reliquary transfer, holds the Vault's only corridor mouth
 through the Synod null-stone strike and takes custody of seven null stones under a manifest
 that names an expected, unfiled cost. The Fleet's posture toward Synod activity inside the

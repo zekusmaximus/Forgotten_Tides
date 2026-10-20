@@ -59,9 +59,9 @@ The stations they have collapsed are not, in their theology, disasters. They are
 
 The Archivist Orders regard them as the single greatest existential threat to the Memory Web. The Canticle Fleet hunts them when they can find them. The Black Horizon makes them almost impossible to root out entirely.
 
-## Draft Continuity: Operations in the Helios Drift (story-0022)
+## Continuity: Operations in the Helios Drift (story-0022)
 
-*Spend What You Can Afford* (story-0022, draft) is the first on-page Synod operation inside
+*Spend What You Can Afford* (story-0022, primary canon) is the first on-page Synod operation inside
 the Helios Drift proper and the first fictional use of null stones, the anti-memory cores
 named in `lore/theology/OBLIVION_HERESIES.md`. The method: an agent (Jory Fenn, char-0030)
 served five months as the Tessarine Vault's night porter and slotted null stones into the

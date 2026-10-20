@@ -117,7 +117,7 @@ to describe the change in a person.
 Alive, coherent, and cleared for continued duty after rest-cycle and Solace
 consult offer. Eleven responsive anchors. First burn documented as permanent.
 
-## Draft Continuation: Spend What You Can Afford (story-0022)
+## Continuation: Spend What You Can Afford (story-0022)
 
 Docked at the Tessarine Vault for a routine reliquary transfer when the Synod null-stone
 strike begins, Elior holds the cutter at the lower dock on Navigant Marsk's order, relays

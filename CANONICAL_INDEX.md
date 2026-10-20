@@ -1,6 +1,6 @@
 # Canonical Index
 
-This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-10-20T03:51:24.035Z
+This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-10-20T14:32:41.000Z
 
 ## Character
 - `char-0001` — Rell (`characters/Rell.md`)
@@ -170,6 +170,9 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `char-0007` - Kael Voss (character, primary_canon, weight 110, `characters/Kael_Voss.md`)
 - `char-0008` - Lira Voss (character, primary_canon, weight 110, `characters/Lira_Voss.md`)
 - `char-0010` - Inya Solven (character, primary_canon, weight 110, `characters/Inya_Solven.md`)
+- `char-0028` - Ilka Marsk (character, primary_canon, weight 110, `characters/Ilka_Marsk.md`)
+- `char-0029` - Hael (character, primary_canon, weight 110, `characters/Hael.md`)
+- `char-0030` - Jory Fenn (character, primary_canon, weight 110, `characters/Jory_Fenn.md`)
 - `fact-0001` - Canticle Fleet (faction, primary_canon, weight 110, `factions/Canticle_Fleet.md`)
 - `fact-0002` - Archivist Orders (faction, primary_canon, weight 110, `factions/Archivist_Orders.md`)
 - `fact-0003` - Mnemosyne Lattice Consortium (faction, primary_canon, weight 110, `factions/Mnemosyne_Lattice_Consortium.md`)
@@ -198,6 +201,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `notes_chat_highlights_1765472978233` - Chat Highlights (lore, working_canon, weight 85, `lore/notes/NOTES_CHAT_HIGHLIGHTS_1765472978233.md`)
 - `notes_chat_highlights_1765473539542` - Chat Highlights (lore, working_canon, weight 85, `lore/notes/NOTES_CHAT_HIGHLIGHTS_1765473539542.md`)
 - `story-0001` - The Archivist's Wake (story, primary_canon, weight 110, `stories/short_story/the_archivists_wake/manuscript.md`)
+- `story-0022` - Spend What You Can Afford (story, primary_canon, weight 110, `stories/short_story/spend_what_you_can_afford/manuscript.md`)
 - `term-0001` - Anchor (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
 - `term-0002` - Anchor Burn (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
 - `term-0003` - Anchor Knot (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
@@ -272,7 +276,6 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `story-0019` - The Miniaturist's Name (story, draft, weight 65, `stories/short_story/the_miniaturists_name/manuscript.md`)
 - `story-0020` - The Inventory of Absence (story, draft, weight 65, `stories/short_story/the_inventory_of_absence/manuscript.md`)
 - `story-0021` - Receipt for a Voice (story, draft, weight 65, `stories/short_story/receipt_for_a_voice/manuscript.md`)
-- `story-0022` - Spend What You Can Afford (story, draft, weight 65, `stories/short_story/spend_what_you_can_afford/manuscript.md`)
 
 ### Speculative / Sandbox Material
 - `char-0009` - Maren Holt (character, speculative, weight 60, `characters/Maren_Holt.md`)
@@ -293,9 +296,6 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `char-0025` - Toma Vey (character, speculative, weight 60, `characters/Toma_Vey.md`)
 - `char-0026` - Yenu Skather-Ait (character, speculative, weight 60, `characters/Yenu_Skather-Ait.md`)
 - `char-0027` - Hol-Vren (character, speculative, weight 60, `characters/Hol-Vren.md`)
-- `char-0028` - Ilka Marsk (character, speculative, weight 60, `characters/Ilka_Marsk.md`)
-- `char-0029` - Hael (character, speculative, weight 60, `characters/Hael.md`)
-- `char-0030` - Jory Fenn (character, speculative, weight 60, `characters/Jory_Fenn.md`)
 - `loc-0012` - Narthex of Low Mercy (location, speculative, weight 60, `atlas/Narthex_of_Low_Mercy.md`)
 - `loc-0013` - Halix Exchange (location, speculative, weight 60, `atlas/Halix_Exchange.md`)
 - `loc-0014` - Heavonly (location, speculative, weight 60, `atlas/Heavonly.md`)

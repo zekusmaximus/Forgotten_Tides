@@ -89,11 +89,11 @@ The Tessarine Vault handles forty to fifty pledged personal stones per week from
 
 The Reliquarist sect's procedural reading of the doctrine line is operational: *audit what you can audit, report what you cannot, never seal a stone past your own honest read.* The **junior seal** is a doctrinal exception that allows a junior Reliquarist to certify a stone they cannot fully audit by burning one of their own anchors to log the audit at their personal weight, with the anomaly carried forward for sect review on the next quarterly pass. Junior seals are limited to three per Reliquarist per year and are tracked in the Vault's seal ledger.
 
-## Draft Continuity: The Tessarine Breach (story-0022)
+## Continuity: The Tessarine Breach (story-0022)
 
-*Spend What You Can Afford* (story-0022, draft) records an Obsidian Synod strike on the
-Vault during the quarterly pass. The state below is draft continuity pending author review
-and should be treated as the Vault's current condition by later drafts.
+*Spend What You Can Afford* (story-0022, primary canon) records an Obsidian Synod strike on
+the Vault during the quarterly pass. The state below is the Vault's current condition and
+binds later stories.
 
 - **Audit hall:** four of sixteen booths (Three, Nine, Eleven, Fourteen) were lost to
   forgetting when the quarterly review trays carried null stones and the cradles amplified

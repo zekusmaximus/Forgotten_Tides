@@ -71,9 +71,9 @@ The Archivist Orders are the backbone of interstellar civilization — feared, r
 
 The Orders are not a single monolithic church but a loose federation of monasteries, academies, and operational cells distributed across the Helios Drift and beyond. They train the pilots who risk anchor degradation on every corridor run and certify the reliquary vaults that hold a civilization's irreplaceable memories. Without the Orders, the Memory Web would collapse within a generation.
 
-## Draft Continuity: The Tessarine Breach (story-0022)
+## Continuity: The Tessarine Breach (story-0022)
 
-In draft story-0022 the Reliquarist sect lost an audit hall, a senior, and two civic silos
+In story-0022 the Reliquarist sect lost an audit hall, a senior, and two civic silos
 at the Tessarine Vault to an Obsidian Synod null-stone strike that used the Vault's own
 cradles. A Navigant Sect reviewer, Ilka Marsk (char-0028), ordered pledged stones spent
 into silo housings without donor consent, released one silo by triage, and did not prevent

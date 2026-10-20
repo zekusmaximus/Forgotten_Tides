@@ -133,7 +133,7 @@ A memory corridor that has begun to misremember its own route — not randomly, 
 
 ## After the Tessarine Breach (story-0022)
 
-*Spend What You Can Afford* (draft) leaves the Helios Drift outer sleeve with live
+*Spend What You Can Afford* (story-0022, primary canon) leaves the Helios Drift outer sleeve with live
 consequences. Each is a story.
 
 - **The Ninth Sleeve.** Four stations, nine hundred people, mostly old, whose civic silo was

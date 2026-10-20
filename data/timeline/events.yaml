@@ -46,7 +46,7 @@ events:
   - id: event-story-0022-001
     timestamp: "T0+1h"
     summary: "The Tessarine Breach: Obsidian Synod null stones slotted into the Tessarine Vault's quarterly review trays are amplified by the audit hall's cradles; four booths are lost and the hall is sealed. First on-page Synod operation inside the Helios Drift proper."
-    canon_tier: draft
+    canon_tier: primary_canon
     source: stories/short_story/spend_what_you_can_afford/manuscript.md
     involved_entities:
       - story-0022
@@ -56,11 +56,11 @@ events:
       - fact-0002
       - char-0028
       - char-0030
-    causal_note: "Shared draft event: pledge audit is suspended across the Helios Drift outer sleeve; four null stones remain sealed in the hall. Twelve weeks after story-0008."
+    causal_note: "Shared event: pledge audit is suspended across the Helios Drift outer sleeve; four null stones remain sealed in the hall. Twelve weeks after story-0008."
   - id: event-story-0022-002
     timestamp: "T0+2h"
     summary: "Two Tessarine civic silos enter oblivion (Fourth Sleeve lost to null pressure; Ninth Sleeve released by Navigant triage). The Second Sleeve silo is bound by senior Reliquarist Hael's complete anchor sequence; he enters catastrophic anchor loss."
-    canon_tier: draft
+    canon_tier: primary_canon
     source: stories/short_story/spend_what_you_can_afford/manuscript.md
     involved_entities:
       - story-0022
@@ -71,11 +71,11 @@ events:
       - char-0010
       - mech-0001
       - mech-0003
-    causal_note: "Shared draft event: the Helios Drift outer sleeve's civic coherence is reduced; the Fourth and Ninth Sleeves begin to soften; approximately one hundred sixty pledged stones were spent without donor consent."
+    causal_note: "Shared event: the Helios Drift outer sleeve's civic coherence is reduced; the Fourth and Ninth Sleeves begin to soften; approximately one hundred sixty pledged stones were spent without donor consent."
   - id: event-story-0022-003
     timestamp: "T0+3h"
     summary: "Seven Synod null stones pass to Canticle custody under pilot Elior Ren with an expected, unfiled cost; Jory Fenn and one acolyte are held for the Archivist Inquisition; the Tessarine doctrine lintel has forgotten the word 'only'."
-    canon_tier: draft
+    canon_tier: primary_canon
     source: stories/short_story/spend_what_you_can_afford/manuscript.md
     involved_entities:
       - story-0022
@@ -84,4 +84,4 @@ events:
       - fact-0001
       - fact-0002
       - fact-0005
-    causal_note: "Shared draft event with open consequences for the Canticle Fleet's posture in the Drift, the Inquisition, and the Navigant Sect's judgment of Ilka Marsk."
+    causal_note: "Shared event with open consequences for the Canticle Fleet's posture in the Drift, the Inquisition, and the Navigant Sect's judgment of Ilka Marsk."

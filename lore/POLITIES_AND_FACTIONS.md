@@ -57,8 +57,8 @@ Their highest doctrine:
 ## Role in Stories
 The Order is the backbone of interstellar civilization—feared, revered, and quietly resented.
 
-## Draft Continuity (story-0022)
-In *Spend What You Can Afford* (draft), the Orders lose an audit hall, a senior Reliquarist, and two civic silos at the Tessarine Vault to a Synod null-stone strike that used the Vault's own cradles. A Navigant spends pledged stones without donor consent to hold the remaining silos and does not prevent a zero-anchoring. The Sect's judgment of her, and the Inquisition's handling of the captured agents, are open.
+## Continuity (story-0022)
+In *Spend What You Can Afford* (primary canon), the Orders lose an audit hall, a senior Reliquarist, and two civic silos at the Tessarine Vault to a Synod null-stone strike that used the Vault's own cradles. A Navigant spends pledged stones without donor consent to hold the remaining silos and does not prevent a zero-anchoring. The Sect's judgment of her, and the Inquisition's handling of the captured agents, are open.
 
 ---
 
@@ -137,8 +137,8 @@ Memory is a burden prolonging suffering.
 ## Threat
 Their operations have collapsed multiple outpost-stations, creating predatory eddies.
 
-## Draft Continuity (story-0022)
-The Synod has operated inside the Helios Drift proper: null stones slotted into a Reliquarist vault's pledge trays by a five-month infiltrator, amplified by the vault's tuning cradles, and carried to its civic silos in lamps. Two sleeves lost their civic memory. The method is documented in *Spend What You Can Afford* (draft) and in `data/lexicon/terms.yaml` (Null Stone, term-0027).
+## Continuity (story-0022)
+The Synod has operated inside the Helios Drift proper: null stones slotted into a Reliquarist vault's pledge trays by a five-month infiltrator, amplified by the vault's tuning cradles, and carried to its civic silos in lamps. Two sleeves lost their civic memory. The method is documented in *Spend What You Can Afford* (primary canon) and in `data/lexicon/terms.yaml` (Null Stone, term-0027).
 
 ---
 

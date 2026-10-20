@@ -59,7 +59,7 @@ continuity:
     - His name scored into the Second Sleeve housing is the only record the silo bank holds of him; Inya recites it
     - Recommended to Solace in Ilka Marsk's report; his transfer to Solace Hospice has not happened on-page
 metadata:
-  status: speculative
+  status: canonical
   created: '2026-10-20T00:00:00.000Z'
   modified: '2026-10-20T00:00:00.000Z'
 ---
