@@ -299,7 +299,7 @@ terms:
       - term-0001  # Anchor
     first_appearance: The Reliquarist's Doubt
     canonical_source: stories/short_story/the_reliquarists_doubt/manuscript.md
-    status: draft
+    status: canonical
 
   - id: term-0026
     term: Tuning Cradle
@@ -311,7 +311,7 @@ terms:
       - term-0025  # Reliquarist
     first_appearance: The Reliquarist's Doubt
     canonical_source: stories/short_story/the_reliquarists_doubt/manuscript.md
-    status: draft
+    status: canonical
 
   - id: term-0027
     term: Null Stone

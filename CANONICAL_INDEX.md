@@ -1,6 +1,6 @@
 # Canonical Index
 
-This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-10-20T16:47:28.054Z
+This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-10-20T16:48:05.403Z
 
 ## Character
 - `char-0001` — Rell (`characters/Rell.md`)
@@ -202,6 +202,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `notes_chat_highlights_1765472978233` - Chat Highlights (lore, working_canon, weight 85, `lore/notes/NOTES_CHAT_HIGHLIGHTS_1765472978233.md`)
 - `notes_chat_highlights_1765473539542` - Chat Highlights (lore, working_canon, weight 85, `lore/notes/NOTES_CHAT_HIGHLIGHTS_1765473539542.md`)
 - `story-0001` - The Archivist's Wake (story, primary_canon, weight 110, `stories/short_story/the_archivists_wake/manuscript.md`)
+- `story-0008` - The Reliquarist's Doubt (story, primary_canon, weight 110, `stories/short_story/the_reliquarists_doubt/manuscript.md`)
 - `story-0013` - The Smallest Burn (story, primary_canon, weight 110, `stories/short_story/the_smallest_burn/manuscript.md`)
 - `story-0022` - Spend What You Can Afford (story, primary_canon, weight 110, `stories/short_story/spend_what_you_can_afford/manuscript.md`)
 - `term-0001` - Anchor (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
@@ -264,7 +265,6 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `story-0005` - The Liturgy of Rust (story, draft, weight 65, `stories/short_story/the_liturgy_of_rust/manuscript.md`)
 - `story-0006` - The Anchorless Tide (story, draft, weight 65, `stories/short_story/the_anchorless_tide/manuscript.md`)
 - `story-0007` - The Hospice Knot (story, draft, weight 65, `stories/short_story/the_hospice_knot/manuscript.md`)
-- `story-0008` - The Reliquarist's Doubt (story, draft, weight 65, `stories/short_story/the_reliquarists_doubt/manuscript.md`)
 - `story-0009` - The Doctrine of Empty Stars (story, draft, weight 65, `stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/manuscript.md`)
 - `story-0010` - The Error That Remembered Itself (story, draft, weight 65, `stories/short_story/the_error_that_remembered_itself/manuscript.md`)
 - `story-0011` - The Quiet Census (story, draft, weight 65, `stories/short_story/the_quiet_census/manuscript.md`)

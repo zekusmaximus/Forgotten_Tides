@@ -23,7 +23,7 @@ candidates for promotion (see `docs/PLAYBOOK_NEW_STORY.md`, Step 6b).
 | `story-0005` | The Liturgy of Rust | draft | draft | [manuscript](./short_story/the_liturgy_of_rust/manuscript.md) |
 | `story-0006` | The Anchorless Tide | draft | draft | [manuscript](./short_story/the_anchorless_tide/manuscript.md) |
 | `story-0007` | The Hospice Knot | draft | draft | [manuscript](./short_story/the_hospice_knot/manuscript.md) |
-| `story-0008` | The Reliquarist's Doubt | draft | draft | [manuscript](./short_story/the_reliquarists_doubt/manuscript.md) |
+| `story-0008` | The Reliquarist's Doubt | primary_canon | canonical | [manuscript](./short_story/the_reliquarists_doubt/manuscript.md) |
 | `story-0010` | The Error That Remembered Itself | draft | draft | [manuscript](./short_story/the_error_that_remembered_itself/manuscript.md) |
 | `story-0011` | The Quiet Census | draft | draft | [manuscript](./short_story/the_quiet_census/manuscript.md) |
 | `story-0012` | The Mercy Doctrine | draft | draft | [manuscript](./short_story/the_mercy_doctrine/manuscript.md) |

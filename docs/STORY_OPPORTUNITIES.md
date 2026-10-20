@@ -57,7 +57,7 @@ Lira Voss (char-0008) carries two drafts, *The Hospice Knot* (story-0007) and *T
 ---
 
 ### The Archivist Orders (internal)
-*The Reliquarist's Doubt* (story-0008, draft) and *Spend What You Can Afford* (story-0022, primary canon) are told from inside the Orders: a junior Reliquarist, then a Navigant reviewer. Still open:
+*The Reliquarist's Doubt* (story-0008, primary canon) and *Spend What You Can Afford* (story-0022, primary canon) are told from inside the Orders: a junior Reliquarist, then a Navigant reviewer. Still open:
 - The Navigant Sect's deliberations, now with Ilka Marsk's self-indicting report (story-0022) on their table
 - The pledged stone that predates its donor (TES-N3-44217, story-0008); its review is deferred as of story-0022 and nobody has heard it
 - Tension between the Orders' three sects over doctrine
