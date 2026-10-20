@@ -5,11 +5,11 @@ contract_version: v1.0.0
 type: story
 title: The Quiet Census
 story_type: short-story
-status: draft
-canon_tier: draft
-retrieval_role: active_draft
+status: canonical
+canon_tier: primary_canon
+retrieval_role: authoritative
 summary_50: A field researcher in the Remnant Seas finds an anomalous shard that may carry pre-sentient memory and hides it from institutional claim.
-summary_200: "In the Remnant Seas, Archivist field researcher Oren Vale catalogs relics from forgotten stars. A routine count turns dangerous when one shard sings with stable memory but no viewpoint, no culture, and no donor. The evidence suggests, without proving, that memory may exist before civilization can witness or preserve it. Publishing the full assay would trigger Archivist custody and Mnemosyne Lattice Consortium extraction claims. To preserve the shard from use, Oren returns it to the Seas and renders away the only memory that can locate it again."
+summary_200: 'In the Remnant Seas, Archivist field researcher Oren Vale catalogs relics from forgotten stars. A routine count turns dangerous when one shard sings with stable memory but no viewpoint, no culture, and no donor. The evidence suggests, without proving, that memory may exist before civilization can witness or preserve it. Publishing the full assay would trigger Archivist custody and Mnemosyne Lattice Consortium extraction claims. To preserve the shard from use, Oren returns it to the Seas and renders away the only memory that can locate it again.'
 cross_refs:
   characters:
     - char-0015
@@ -34,23 +34,23 @@ references:
   stories: []
 timeline:
   setting: An unnamed Archivist survey hull working a shard field in the Remnant Seas
-  duration: One field watch, from routine census to final report
+  duration: 'One field watch, from routine census to final report'
   chronology:
     - event: Oren begins a routine census of relic fragments recovered from memory-scar tissue
       timestamp: T0
-    - event: An anomalous shard produces stable resonance without donor, viewpoint, or civic layer
+    - event: 'An anomalous shard produces stable resonance without donor, viewpoint, or civic layer'
       timestamp: T0+2h
     - event: A preliminary classification triggers Archivist custody and Mnemosyne claim pathways
       timestamp: T0+4h
     - event: Oren renders away the coordinate-memory and returns the shard to the Remnant Seas
       timestamp: T0+6h
-    - event: Oren files a limited non-extractive report, preserving the question without the usable location
+    - event: 'Oren files a limited non-extractive report, preserving the question without the usable location'
       timestamp: T0+7h
 events:
   - id: event-story-0011-001
     timestamp: T0
     summary: Oren Vale begins a routine Remnant Seas census of relic fragments in an unnamed Archivist survey hull.
-    canon_tier: draft
+    canon_tier: primary_canon
     source: stories/short_story/the_quiet_census/manuscript.md
     involved_entities:
       - story-0011
@@ -61,18 +61,18 @@ events:
   - id: event-story-0011-002
     timestamp: T0+2h
     summary: Oren identifies an anomalous shard whose resonance suggests pre-sentient memory without proving a new metaphysical law.
-    canon_tier: draft
+    canon_tier: primary_canon
     source: stories/short_story/the_quiet_census/manuscript.md
     involved_entities:
       - story-0011
       - char-0015
       - loc-0004
       - mech-0001
-    causal_note: The anomaly is explicitly framed as evidence with several possible explanations, not as settled canon.
+    causal_note: 'The anomaly is explicitly framed as evidence with several possible explanations, not as settled canon.'
   - id: event-story-0011-003
     timestamp: T0+4h
     summary: The preliminary assay activates institutional claim paths from the Archivist Orders and the Mnemosyne Lattice Consortium.
-    canon_tier: draft
+    canon_tier: primary_canon
     source: stories/short_story/the_quiet_census/manuscript.md
     involved_entities:
       - story-0011
@@ -82,7 +82,7 @@ events:
   - id: event-story-0011-004
     timestamp: T0+6h
     summary: Oren voluntarily renders away the memory carrying the shard's coordinates and returns the shard to the Remnant Seas.
-    canon_tier: draft
+    canon_tier: primary_canon
     source: stories/short_story/the_quiet_census/manuscript.md
     involved_entities:
       - story-0011
@@ -96,18 +96,18 @@ themes:
   - institutional-burden
   - memory-as-cost
 continuity_notes:
-  - The shard is suggestive evidence only; it does not establish a new governing law for memory, civilization, dark matter, or reliquary behavior.
-  - "Plausible explanations remain open: a dark matter echo, a fragment of a forgotten civilization too thoroughly erased to leave records, an assay artifact, or an actual pre-sentient memory structure."
-  - "No mechanics are changed. The story uses existing MEMORY_PHYSICS.md principles: memory has physical coherence, forgotten matter loses definition, and dark matter carries forgotten-but-not-erased memory."
-  - Oren's self-rendering is a voluntary personal memory cost consistent with MEMORY_ECONOMY.md ethical extraction; it is not anchor burn, zero-anchoring, or corridor stabilization.
-  - The Remnant Seas remain an extreme-risk region of drifting reliquary shards and memory-scar tissue, consistent with atlas/Remnant_Seas.md and lore/COSMIC_REGIONS.md.
-  - Mentions Mnemosyne Lattice Consortium claim pressure only as political risk, consistent with factions/Mnemosyne_Lattice_Consortium.md; no new claim is made about Consortium technology.
+  - 'The shard is suggestive evidence only; it does not establish a new governing law for memory, civilization, dark matter, or reliquary behavior.'
+  - 'Plausible explanations remain open: a dark matter echo, a fragment of a forgotten civilization too thoroughly erased to leave records, an assay artifact, or an actual pre-sentient memory structure.'
+  - 'No mechanics are changed. The story uses existing MEMORY_PHYSICS.md principles: memory has physical coherence, forgotten matter loses definition, and dark matter carries forgotten-but-not-erased memory.'
+  - 'Oren''s self-rendering is a voluntary personal memory cost consistent with MEMORY_ECONOMY.md ethical extraction; it is not anchor burn, zero-anchoring, or corridor stabilization.'
+  - 'The Remnant Seas remain an extreme-risk region of drifting reliquary shards and memory-scar tissue, consistent with atlas/Remnant_Seas.md and lore/COSMIC_REGIONS.md.'
+  - 'Mentions Mnemosyne Lattice Consortium claim pressure only as political risk, consistent with factions/Mnemosyne_Lattice_Consortium.md; no new claim is made about Consortium technology.'
 metadata:
-  status: draft
+  status: canonical
   word_count: 3085
   author: AI Generated
   created: '2026-07-07T00:00:00.000Z'
-  modified: '2026-07-07T00:00:00.000Z'
+  modified: '2026-10-20T22:18:33.125Z'
 tags:
   - remnant-seas
   - archivist-orders

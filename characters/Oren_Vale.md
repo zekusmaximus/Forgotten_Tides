@@ -45,7 +45,7 @@ continuity:
     - Oren's relationship with the Archivist Orders may be strained by the limited report, but no formal disciplinary outcome is established in story-0011
     - The public record from story-0011 is intentionally incomplete and non-extractive
 metadata:
-  status: speculative
+  status: canonical
   created: '2026-07-07T00:00:00.000Z'
   modified: '2026-07-07T00:00:00.000Z'
 ---

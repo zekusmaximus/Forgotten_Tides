@@ -11,7 +11,7 @@ Last updated: October 20, 2026.
 ## Underexplored Regions
 
 ### The Remnant Seas
-*The Quiet Census* (story-0011, draft) is set here: a field researcher finds an anomalous shard that may carry pre-sentient memory and hides it from institutional claim. Still open:
+*The Quiet Census* (story-0011, primary canon) is set here: a field researcher finds an anomalous shard that may carry pre-sentient memory and hides it from institutional claim. Still open:
 - The pre-sentient memory structures themselves; story-0011 shows one shard, never the structures
 - Voidborne scavengers with unknown ecology
 - What the Archivist Orders and the Consortium do once the shard from story-0011 surfaces
