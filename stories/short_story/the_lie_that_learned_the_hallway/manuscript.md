@@ -5,11 +5,11 @@ contract_version: v1.0.0
 type: story
 title: The Lie That Learned the Hallway
 story_type: short-story
-status: draft
-canon_tier: draft
-retrieval_role: active_draft
+status: canonical
+canon_tier: primary_canon
+retrieval_role: authoritative
 summary_50: Nessa Iral finds Mael's reassurance teaching Heliodrome route maps to ignore real damage.
-summary_200: "After Mael Ivar's public reassurance steadies the Heliodrome, junior continuity cartographer Nessa Iral notices the station's route maps simplifying danger into safe routes. To make the maps remember a damaged hallway without triggering station-wide panic, she weights a corrective route with a personal memory and accepts the loss of trust that follows. The Heliodrome remains held, not healed."
+summary_200: 'After Mael Ivar''s public reassurance steadies the Heliodrome, junior continuity cartographer Nessa Iral notices the station''s route maps simplifying danger into safe routes. To make the maps remember a damaged hallway without triggering station-wide panic, she weights a corrective route with a personal memory and accepts the loss of trust that follows. The Heliodrome remains held, not healed.'
 cross_refs:
   characters:
     - char-0020
@@ -42,7 +42,7 @@ references:
     - story-0014
 timeline:
   setting: Heliodrome route office and damaged residential corridors after Mael Ivar's first public reassurance
-  duration: One station day, from the first route anomaly to the corrective night bulletin
+  duration: 'One station day, from the first route anomaly to the corrective night bulletin'
   chronology:
     - event: Nessa Iral detects safe-route maps replacing local damage warnings with Mael's reassurance
       timestamp: T0
@@ -59,8 +59,8 @@ timeline:
 events:
   - id: event-story-0016-001
     timestamp: T0
-    summary: "Nessa Iral detects Heliodrome safe-route maps simplifying real damage into Mael Ivar's public reassurance."
-    canon_tier: draft
+    summary: Nessa Iral detects Heliodrome safe-route maps simplifying real damage into Mael Ivar's public reassurance.
+    canon_tier: primary_canon
     source: stories/short_story/the_lie_that_learned_the_hallway/manuscript.md
     involved_entities:
       - story-0016
@@ -69,11 +69,11 @@ events:
       - loc-0001
       - fact-0007
       - mech-0001
-    causal_note: "Extends story-0014 by showing civic memory pressure altering operational route records without healing the station."
+    causal_note: Extends story-0014 by showing civic memory pressure altering operational route records without healing the station.
   - id: event-story-0016-002
     timestamp: T0+6h
-    summary: "Nessa weights a corrective Heliodrome route record with a personal memory so the damaged hallway remains visible to live clerks."
-    canon_tier: draft
+    summary: Nessa weights a corrective Heliodrome route record with a personal memory so the damaged hallway remains visible to live clerks.
+    canon_tier: primary_canon
     source: stories/short_story/the_lie_that_learned_the_hallway/manuscript.md
     involved_entities:
       - story-0016
@@ -82,11 +82,11 @@ events:
       - fact-0002
       - mech-0001
       - mech-0002
-    causal_note: "Uses existing memory-stone and civic-memory principles at local scale; the correction costs memory and does not repair the damage."
+    causal_note: Uses existing memory-stone and civic-memory principles at local scale; the correction costs memory and does not repair the damage.
   - id: event-story-0016-003
     timestamp: T0+8h
-    summary: "The corrective route saves stranded residents but erodes public trust in Heliodrome Authority signs."
-    canon_tier: draft
+    summary: The corrective route saves stranded residents but erodes public trust in Heliodrome Authority signs.
+    canon_tier: primary_canon
     source: stories/short_story/the_lie_that_learned_the_hallway/manuscript.md
     involved_entities:
       - story-0016
@@ -95,7 +95,7 @@ events:
       - fact-0007
       - fact-0002
       - mech-0001
-    causal_note: "Keeps Heliodrome in ongoing crisis; truth has civic cost rather than functioning as a cure."
+    causal_note: Keeps Heliodrome in ongoing crisis; truth has civic cost rather than functioning as a cure.
 themes:
   - conceptual-fragility
   - institutional-burden
@@ -103,21 +103,21 @@ themes:
   - quiet-heroism
   - memory-as-cost
 continuity_notes:
-  - Follows story-0014 directly; Mael Ivar's public reassurance remains useful and dangerous, not a magical stabilization.
+  - 'Follows story-0014 directly; Mael Ivar''s public reassurance remains useful and dangerous, not a magical stabilization.'
   - Heliodrome's conceptual dementia is neither cured nor reversed; Nessa's work preserves a local warning at personal and institutional cost.
-  - The damaged hallway behavior relies on established memory physics and corridor attention principles, not on a new metaphysical system.
-  - The Archivist Orders and Heliodrome Authority remain existing institutions under pressure; no new faction, doctrine, or hierarchy is introduced.
+  - 'The damaged hallway behavior relies on established memory physics and corridor attention principles, not on a new metaphysical system.'
+  - 'The Archivist Orders and Heliodrome Authority remain existing institutions under pressure; no new faction, doctrine, or hierarchy is introduced.'
   - Nessa Iral's personal memory loss should remain consequential if referenced later.
 bible_refs:
   - bible/ARCHIVISTS_WAKE_STORY_BIBLE.md#33-conceptual-dementia-structures
   - bible/ARCHIVISTS_WAKE_STORY_BIBLE.md#77-heliodrome-rules
   - bible/ARCHIVISTS_WAKE_STORY_BIBLE.md#83-drift-logic-test
 metadata:
-  status: draft
+  status: canonical
   word_count: 4701
   author: AI Generated (Codex)
   created: '2026-07-07T00:00:00.000Z'
-  modified: '2026-07-07T00:00:00.000Z'
+  modified: '2026-10-20T22:19:54.099Z'
 tags:
   - heliodrome
   - civic-memory

@@ -51,7 +51,7 @@ continuity:
     - Track the trust cost caused by her correction of Mael Ivar's reassurance.
     - Keep her work procedural, local, and physically costly rather than heroic in a spectacle-driven way.
 metadata:
-  status: speculative
+  status: canonical
   created: '2026-07-07T00:00:00.000Z'
   modified: '2026-07-07T00:00:00.000Z'
 ---
