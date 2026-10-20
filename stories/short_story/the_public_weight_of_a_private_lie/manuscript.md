@@ -109,7 +109,7 @@ bible_refs:
   - bible/ARCHIVISTS_WAKE_STORY_BIBLE.md#canonical-timeline-of-events
 metadata:
   status: draft
-  word_count: 4870
+  word_count: 4480
   author: AI Generated (Codex)
   created: '2026-07-07T00:00:00.000Z'
   modified: '2026-07-07T00:00:00.000Z'

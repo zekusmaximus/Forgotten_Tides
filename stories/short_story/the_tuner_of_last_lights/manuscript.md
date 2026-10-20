@@ -52,7 +52,7 @@ continuity_notes:
   - Adds no new factions or species; the Obsidian Synod is referenced only as a known black-market sink
 metadata:
   status: draft
-  word_count: 4100
+  word_count: 3662
   author: AI Generated (Claude)
   created: '2026-05-23T00:00:00Z'
   modified: '2026-05-23T00:00:00Z'

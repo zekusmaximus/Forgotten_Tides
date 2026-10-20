@@ -57,7 +57,7 @@ continuity_notes:
   - Shows how doubt and loss of purpose accelerate conceptual decay
 metadata:
   status: draft
-  word_count: 3200
+  word_count: 2574
   author: AI Generated (Manus)
   created: '2026-05-23T00:00:00Z'
   modified: '2026-05-23T00:00:00Z'

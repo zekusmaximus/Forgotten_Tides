@@ -54,7 +54,7 @@ continuity_notes:
   - Canon-safe expansion of eddy mechanics
 metadata:
   status: draft
-  word_count: 5100
+  word_count: 3930
   author: AI Generated (Claude)
   created: '2025-12-30T00:00:00Z'
   modified: '2025-12-30T00:00:00Z'
