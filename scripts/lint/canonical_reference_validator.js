@@ -9,6 +9,10 @@ const REPORT_DIR = path.join(ROOT_DIR, 'out', 'reports');
 const REPORT_PATH = path.join(REPORT_DIR, 'canonical_reference_report.json');
 const INDEX_PATH = path.join(ROOT_DIR, 'CANONICAL_INDEX.md');
 
+function reportPath(rootDir, filePath) {
+  return path.relative(rootDir, filePath).split(path.sep).join('/');
+}
+
 function loadCanonicalIds(indexPath = INDEX_PATH) {
   const ids = new Set();
 
@@ -75,7 +79,7 @@ function scanFile(filePath, canonicalIds, report, rootDir) {
     data = yaml.load(match[1]);
   } catch (error) {
     report.errors.push({
-      file: path.relative(rootDir, filePath),
+      file: reportPath(rootDir, filePath),
       error: `Failed to parse YAML: ${error.message}`
     });
     return;
@@ -87,7 +91,7 @@ function scanFile(filePath, canonicalIds, report, rootDir) {
     const normalized = id.trim().toLowerCase();
     if (!canonicalIds.has(normalized)) {
       report.missing.push({
-        file: path.relative(rootDir, filePath),
+        file: reportPath(rootDir, filePath),
         id
       });
     }
