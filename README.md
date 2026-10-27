@@ -71,14 +71,14 @@ Canon-aware retrieval is also supported: generated indexes and prompt packs labe
 
 ### 🌐 Continuity Dashboard
 
-An interactive web-based tool for visualizing canonical relationships between entities in the universe. The dashboard reads `REFERENCE_MAP.json` and renders an interactive network graph showing how characters, locations, mechanics, factions, and stories are interconnected.
+An interactive web-based tool for visualizing canonical relationships between entities in the universe. The dashboard reads `REFERENCE_MAP.json` and renders an interactive network graph showing how characters, locations, mechanics, factions, stories, lore, and terms are interconnected.
 
 **Quick Start:**
 ```bash
-npm.cmd run dashboard
+npm run dashboard
 ```
 
-Then open your browser to `http://localhost:8080/dashboard/`
+Then open your browser to `http://127.0.0.1:8080/dashboard/`
 
 See [dashboard/README.md](./dashboard/README.md) for full documentation.
 

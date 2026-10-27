@@ -20,6 +20,8 @@
  *     manuscript). Edited line by line so formatting is preserved.
  *   - Regenerated link map artifacts via `npm run linkmap:build`
  *     (skipped with --skip-build or --dry-run)
+ *   - On failure, restores the manuscript, timeline, and tracked link-map
+ *     artifacts to their pre-promotion bytes.
  *
  * What it does not change, and prints as a manual checklist instead:
  *   - metadata.status on entity files the story references
@@ -35,6 +37,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 const matter = require('gray-matter');
 const yaml = require('js-yaml');
 const { execFileSync } = require('child_process');
@@ -91,12 +94,35 @@ function parseArgs(argv) {
   return out;
 }
 
-function listMarkdownFiles(dir) {
+function assertNoSymlinkPath(root, filePath) {
+  const relative = path.relative(path.resolve(root), path.resolve(filePath));
+  if (relative === '..' || relative.startsWith(`..${path.sep}`) || path.isAbsolute(relative)) {
+    throw new Error(`Path escapes repository: ${filePath}`);
+  }
+  let current = path.resolve(root);
+  for (const part of relative.split(path.sep).filter(Boolean)) {
+    current = path.join(current, part);
+    let stat;
+    try {
+      stat = fs.lstatSync(current);
+    } catch (error) {
+      if (error.code === 'ENOENT') continue;
+      throw error;
+    }
+    if (stat.isSymbolicLink()) throw new Error(`Unsafe symlink in promotion path: ${current}`);
+  }
+}
+
+function listMarkdownFiles(dir, root) {
   const out = [];
+  assertNoSymlinkPath(root, dir);
   if (!fs.existsSync(dir)) return out;
   const walk = (current) => {
     for (const entry of fs.readdirSync(current, { withFileTypes: true })) {
       const full = path.join(current, entry.name);
+      if (entry.isSymbolicLink()) {
+        throw new Error(`Unsafe symlink in promotion path: ${full}`);
+      }
       if (entry.isDirectory()) {
         if (entry.name === 'node_modules' || entry.name === '.git' || entry.name === 'out') continue;
         walk(full);
@@ -131,7 +157,7 @@ function findManuscriptById(root, id) {
   if (!fs.existsSync(storiesDir)) {
     throw new Error(`Short story directory not found: ${storiesDir}`);
   }
-  for (const file of listMarkdownFiles(storiesDir)) {
+  for (const file of listMarkdownFiles(storiesDir, root)) {
     if (path.basename(file).toLowerCase() !== 'manuscript.md') continue;
     const data = readFrontmatter(file);
     if (data && data.id === id) return file;
@@ -185,14 +211,35 @@ function applyManuscriptChanges(data, tier, options = {}) {
   return changes;
 }
 
-function updateManuscript(filePath, tier, options = {}) {
+function prepareManuscript(filePath, tier, options = {}) {
   const raw = fs.readFileSync(filePath, 'utf8');
   const parsed = matter(raw, MATTER_OPTIONS);
   const data = parsed.data || {};
   const changes = applyManuscriptChanges(data, tier, options);
-  if (!options.dryRun && changes.length > 0) {
-    fs.writeFileSync(filePath, matter.stringify(parsed.content, data, { lineWidth: -1 }), 'utf8');
+  const updated = changes.length > 0
+    ? matter.stringify(parsed.content, data, { lineWidth: -1 })
+    : raw;
+  if (changes.length > 0 && matter(updated, MATTER_OPTIONS).content !== parsed.content) {
+    throw new Error(`Manuscript body changed while preparing ${filePath}; nothing was written.`);
   }
+  return { filePath, original: raw, updated, data, changes };
+}
+
+function writeAtomically(filePath, content) {
+  const tempPath = `${filePath}.promote-${process.pid}-${crypto.randomBytes(8).toString('hex')}.tmp`;
+  const mode = fs.existsSync(filePath) ? fs.statSync(filePath).mode & 0o777 : undefined;
+  try {
+    fs.writeFileSync(tempPath, content, { flag: 'wx', mode });
+    fs.renameSync(tempPath, filePath);
+  } finally {
+    fs.rmSync(tempPath, { force: true });
+  }
+}
+
+function updateManuscript(filePath, tier, options = {}) {
+  const plan = prepareManuscript(filePath, tier, options);
+  if (!options.dryRun && plan.changes.length > 0) writeAtomically(filePath, plan.updated);
+  const { data, changes } = plan;
   return { data, changes };
 }
 
@@ -206,12 +253,17 @@ function stripYamlScalar(value) {
  * belongs to the story when its id starts with `event-<story-id>-` or its
  * source is the manuscript path.
  */
-function updateTimelineEvents(root, storyId, manuscriptRelPath, tier, options = {}) {
+function prepareTimelineEvents(root, storyId, manuscriptRelPath, tier) {
   const timelinePath = path.join(root, 'data', 'timeline', 'events.yaml');
+  assertNoSymlinkPath(root, timelinePath);
   if (!fs.existsSync(timelinePath)) {
-    return { path: null, changes: [] };
+    return { path: null, filePath: null, original: null, updated: null, changes: [] };
   }
   const raw = fs.readFileSync(timelinePath, 'utf8');
+  const input = yaml.load(raw);
+  if (!input || !Array.isArray(input.events)) {
+    throw new Error('data/timeline/events.yaml must contain an events array; nothing was written.');
+  }
   const eol = raw.includes('\r\n') ? '\r\n' : '\n';
   const lines = raw.split(/\r?\n/);
 
@@ -247,8 +299,8 @@ function updateTimelineEvents(root, storyId, manuscriptRelPath, tier, options = 
   }
   changes.reverse();
 
+  const updated = changes.length > 0 ? lines.join(eol) : raw;
   if (changes.length > 0) {
-    const updated = lines.join(eol);
     const parsed = yaml.load(updated);
     const events = (parsed && Array.isArray(parsed.events)) ? parsed.events : [];
     for (const change of changes) {
@@ -257,18 +309,21 @@ function updateTimelineEvents(root, storyId, manuscriptRelPath, tier, options = 
         throw new Error(`Timeline rewrite failed verification for ${change.id}; data/timeline/events.yaml was not written.`);
       }
     }
-    if (!options.dryRun) {
-      fs.writeFileSync(timelinePath, updated, 'utf8');
-    }
   }
 
-  return { path: toPosix(path.relative(root, timelinePath)), changes };
+  return { path: toPosix(path.relative(root, timelinePath)), filePath: timelinePath, original: raw, updated, changes };
+}
+
+function updateTimelineEvents(root, storyId, manuscriptRelPath, tier, options = {}) {
+  const plan = prepareTimelineEvents(root, storyId, manuscriptRelPath, tier);
+  if (!options.dryRun && plan.changes.length > 0) writeAtomically(plan.filePath, plan.updated);
+  return { path: plan.path, changes: plan.changes };
 }
 
 function loadEntityIndex(root) {
   const index = new Map();
   for (const dir of ENTITY_DIRS) {
-    for (const file of listMarkdownFiles(path.join(root, dir))) {
+    for (const file of listMarkdownFiles(path.join(root, dir), root)) {
       if (path.basename(file).toLowerCase() === 'readme.md') continue;
       const data = readFrontmatter(file);
       if (!data || !data.id) continue;
@@ -294,6 +349,7 @@ function collectReferencedEntityIds(data) {
 
 function loadLexiconTerms(root) {
   const lexiconPath = path.join(root, 'data', 'lexicon', 'terms.yaml');
+  assertNoSymlinkPath(root, lexiconPath);
   if (!fs.existsSync(lexiconPath)) return [];
   try {
     const parsed = yaml.load(fs.readFileSync(lexiconPath, 'utf8'));
@@ -318,6 +374,7 @@ function findTimelineGaps(root, data) {
 
   const timelineIds = new Set();
   const timelinePath = path.join(root, 'data', 'timeline', 'events.yaml');
+  assertNoSymlinkPath(root, timelinePath);
   if (fs.existsSync(timelinePath)) {
     try {
       const parsed = yaml.load(fs.readFileSync(timelinePath, 'utf8'));
@@ -335,7 +392,7 @@ function findDraftMentions(root, storyId) {
   const hits = [];
   const idPattern = new RegExp(storyId.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'i');
   for (const dir of DRAFT_MENTION_DIRS) {
-    for (const file of listMarkdownFiles(path.join(root, dir))) {
+    for (const file of listMarkdownFiles(path.join(root, dir), root)) {
       const rel = toPosix(path.relative(root, file));
       if (DRAFT_MENTION_EXCLUDE.some(pattern => pattern.test(rel))) continue;
       let content;
@@ -393,6 +450,97 @@ function runBuild(root, log) {
   execFileSync('npm', ['run', 'linkmap:build'], { cwd: root, stdio: 'inherit', shell: process.platform === 'win32' });
 }
 
+function preflightLinkMap(root) {
+  const builder = path.join(__dirname, 'prompt', 'build_linkmap.js');
+  try {
+    execFileSync(process.execPath, [builder, '--dry-run', '--root', root], {
+      cwd: root,
+      encoding: 'utf8',
+      stdio: 'pipe'
+    });
+  } catch (error) {
+    const detail = String(error.stderr || error.message).trim();
+    throw new Error(`Link-map preflight failed: ${detail}`);
+  }
+}
+
+const GENERATED_ARTIFACTS = [
+  'CANONICAL_INDEX.md',
+  'REFERENCE_MAP.json',
+  'docs/link_map/LINK_MAP.md',
+  'out/graphs/entities.json'
+];
+
+function snapshotFile(filePath) {
+  return fs.existsSync(filePath)
+    ? { filePath, exists: true, content: fs.readFileSync(filePath) }
+    : { filePath, exists: false, content: null };
+}
+
+function restoreFile(snapshot) {
+  if (snapshot.exists) {
+    if (!fs.existsSync(snapshot.filePath) || !fs.readFileSync(snapshot.filePath).equals(snapshot.content)) {
+      fs.mkdirSync(path.dirname(snapshot.filePath), { recursive: true });
+      writeAtomically(snapshot.filePath, snapshot.content);
+    }
+  } else {
+    fs.rmSync(snapshot.filePath, { force: true });
+  }
+}
+
+function applyPromotion(root, plans, build, log) {
+  const changed = plans.filter(plan => plan.filePath && plan.updated !== plan.original);
+  // Check all inputs before the first write. Recheck each file immediately
+  // before replacing it so edits made during preflight are not overwritten.
+  for (const plan of changed) {
+    assertNoSymlinkPath(root, plan.filePath);
+    if (fs.readFileSync(plan.filePath, 'utf8') !== plan.original) {
+      throw new Error(`${plan.filePath} changed during promotion preflight; nothing was written.`);
+    }
+  }
+
+  const snapshots = new Map(changed.map(plan => [plan.filePath, snapshotFile(plan.filePath)]));
+  const generated = build
+    ? GENERATED_ARTIFACTS.map(relative => {
+      const filePath = path.join(root, relative);
+      assertNoSymlinkPath(root, filePath);
+      return snapshotFile(filePath);
+    })
+    : [];
+  const applied = [];
+  let buildStarted = false;
+  try {
+    for (const plan of changed) {
+      if (fs.readFileSync(plan.filePath, 'utf8') !== plan.original) {
+        throw new Error(`${plan.filePath} changed during promotion; applied changes will be restored.`);
+      }
+      writeAtomically(plan.filePath, plan.updated);
+      applied.push(plan.filePath);
+    }
+    if (build) {
+      buildStarted = true;
+      build(root, log);
+    }
+  } catch (error) {
+    const rollbackErrors = [];
+    const toRestore = [
+      ...(buildStarted ? generated : []),
+      ...applied.slice().reverse().map(filePath => snapshots.get(filePath))
+    ];
+    for (const snapshot of toRestore) {
+      try {
+        restoreFile(snapshot);
+      } catch (rollbackError) {
+        rollbackErrors.push(`${snapshot.filePath}: ${rollbackError.message}`);
+      }
+    }
+    if (rollbackErrors.length > 0) {
+      throw new Error(`Promotion failed: ${error.message}. Rollback incomplete: ${rollbackErrors.join('; ')}`);
+    }
+    throw error;
+  }
+}
+
 /**
  * Promote one story. Returns a result object describing every change made or
  * planned, plus the manual checklist.
@@ -416,15 +564,20 @@ function promoteStory(options = {}) {
   }
   const manuscriptRelPath = toPosix(path.relative(root, manuscript));
 
-  const { data, changes: manuscriptChanges } = updateManuscript(manuscript, tier, { dryRun, now: options.now });
-  const timeline = updateTimelineEvents(root, id, manuscriptRelPath, tier, { dryRun });
+  const manuscriptPlan = prepareManuscript(manuscript, tier, { now: options.now });
+  const timelinePlan = prepareTimelineEvents(root, id, manuscriptRelPath, tier);
+  const { data, changes: manuscriptChanges } = manuscriptPlan;
+  const timeline = { path: timelinePlan.path, changes: timelinePlan.changes };
   const checklist = collectManualChecklist(root, data, manuscriptRelPath, tier);
+
+  if (!skipBuild) preflightLinkMap(root);
 
   let built = false;
   const changedSomething = manuscriptChanges.length > 0 || timeline.changes.length > 0;
-  if (!dryRun && !skipBuild && changedSomething) {
-    runBuild(root, log);
-    built = true;
+  if (!dryRun && changedSomething) {
+    const build = skipBuild ? null : options.build || runBuild;
+    applyPromotion(root, [manuscriptPlan, timelinePlan], build, log);
+    built = Boolean(build);
   }
 
   return {
@@ -435,6 +588,7 @@ function promoteStory(options = {}) {
     manuscriptChanges,
     timeline,
     checklist,
+    linkMapPreflight: !skipBuild,
     built
   };
 }
@@ -462,6 +616,8 @@ function printResult(result) {
       console.log(`  - ${change.id}: canon_tier ${change.from} -> ${change.to}`);
     }
   }
+
+  if (result.linkMapPreflight) console.log('Link-map input preflight passed.');
 
   const { entities, terms, draftMentions, timelineGaps } = result.checklist;
   console.log('\nManual checklist (the tool does not decide these):');

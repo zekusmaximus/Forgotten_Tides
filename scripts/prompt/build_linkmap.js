@@ -15,12 +15,25 @@ const TYPE_BY_DIR = {
 };
 
 const REFERENCE_FIELDS = ['cross_refs', 'references'];
+// The index includes scene and note IDs as well as numbered canonical IDs.
+// Require a named prefix and a separator while allowing those existing forms.
+const CANONICAL_ID_PATTERN = /^[a-z][a-z0-9]*(?:[-_][a-z0-9]+)+$/i;
 
-function pickCanonicalId(entityData) {
-    if (entityData && typeof entityData.id === 'string' && entityData.id.trim()) {
-        return entityData.id.trim().toLowerCase();
+function pickCanonicalId(entityData, sourcePath) {
+    if (!entityData || !Object.prototype.hasOwnProperty.call(entityData, 'id')) return null;
+    const id = entityData.id;
+    if (typeof id !== 'string' || !CANONICAL_ID_PATTERN.test(id)) {
+        throw new Error(`Invalid canonical_id ${JSON.stringify(id)} in ${sourcePath}`);
     }
-    return null;
+    // Older authoring commands emitted uppercase scene, outline, and notes IDs.
+    // Keep those readable while using one case for lookup and duplicate checks.
+    return id.toLowerCase();
+}
+
+function assertUniqueId(entities, id, sourcePath) {
+    if (Object.prototype.hasOwnProperty.call(entities, id)) {
+        throw new Error(`Duplicate canonical_id ${id}: ${entities[id].path} vs ${sourcePath}`);
+    }
 }
 
 function collectTargetIds(value, into) {
@@ -51,14 +64,25 @@ function collectTargetIds(value, into) {
 function parseEntityFile(filePath) {
     const content = fs.readFileSync(filePath, 'utf8');
     if (filePath.endsWith('.json')) {
-        try { return JSON.parse(content); } catch { return null; }
+        try { return JSON.parse(content); } catch (error) {
+            throw new Error(`Could not parse ${filePath}: ${error.message}`);
+        }
     }
     if (filePath.endsWith('.yaml') || filePath.endsWith('.yml')) {
-        try { return yaml.load(content); } catch { return null; }
+        try { return yaml.load(content); } catch (error) {
+            throw new Error(`Could not parse ${filePath}: ${error.message}`);
+        }
     }
-    const fm = content.match(/^---\r?\n([\s\S]*?)\r?\n---/);
-    if (!fm) return null;
-    try { return yaml.load(fm[1]); } catch { return null; }
+    const fm = content.match(/^---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/);
+    if (!fm) {
+        if (/^---\r?\n/.test(content)) {
+            throw new Error(`Could not parse ${filePath}: missing frontmatter closing delimiter`);
+        }
+        return null;
+    }
+    try { return yaml.load(fm[1]); } catch (error) {
+        throw new Error(`Could not parse ${filePath}: ${error.message}`);
+    }
 }
 
 function normalizeGeneratedContent(content) {
@@ -79,16 +103,15 @@ function writeGeneratedFile(filePath, content) {
     return true;
 }
 
-async function buildLinkMap() {
-    const repoRoot = path.join(__dirname, '../..');
+async function buildLinkMap(options = {}) {
+    const repoRoot = options.repoRoot || path.join(__dirname, '../..');
     const outGraphsDir = path.join(repoRoot, 'out/graphs');
     const docsLinkMapDir = path.join(repoRoot, 'docs/link_map');
     const generatedAt = new Date().toISOString();
 
-    fs.mkdirSync(outGraphsDir, { recursive: true });
-    fs.mkdirSync(docsLinkMapDir, { recursive: true });
-
-    const entities = {};
+    // A null prototype avoids special keys changing lookup behavior. All IDs are
+    // validated before any generated directory or file is written.
+    const entities = Object.create(null);
 
     for (const [dir, type] of Object.entries(TYPE_BY_DIR)) {
         const dirPath = path.join(repoRoot, dir);
@@ -103,13 +126,11 @@ async function buildLinkMap() {
             const data = parseEntityFile(filePath);
             if (!data) continue;
 
-            const canonicalId = pickCanonicalId(data);
+            const relativePath = path.join(dir, file).replace(/\\/g, '/');
+            const canonicalId = pickCanonicalId(data, relativePath);
             if (!canonicalId) continue;
 
-            const relativePath = path.join(dir, file).replace(/\\/g, '/');
-            if (entities[canonicalId]) {
-                console.log(`WARN Duplicate canonical_id ${canonicalId}: ${entities[canonicalId].path} vs ${relativePath}`);
-            }
+            assertUniqueId(entities, canonicalId, relativePath);
             const policy = describePolicy(data, relativePath, type);
             entities[canonicalId] = {
                 canonical_id: canonicalId,
@@ -133,9 +154,9 @@ async function buildLinkMap() {
         const filePath = path.join(repoRoot, file);
         const data = parseEntityFile(filePath);
         if (!data) continue;
-        const canonicalId = pickCanonicalId(data);
+        const canonicalId = pickCanonicalId(data, file);
         if (!canonicalId) continue;
-        if (entities[canonicalId]) continue;
+        assertUniqueId(entities, canonicalId, file);
         const policy = describePolicy(data, file, 'story');
         entities[canonicalId] = {
             canonical_id: canonicalId,
@@ -154,28 +175,25 @@ async function buildLinkMap() {
     // Lexicon terms contribute term nodes plus related_terms edges.
     const lexiconPath = path.join(repoRoot, 'data/lexicon/terms.yaml');
     if (fs.existsSync(lexiconPath)) {
-        try {
-            const lex = yaml.load(fs.readFileSync(lexiconPath, 'utf8'));
-            if (lex && Array.isArray(lex.terms)) {
-                for (const term of lex.terms) {
-                    if (!term || !term.id) continue;
-                    const tid = String(term.id).toLowerCase();
-                    if (!entities[tid]) {
-                        const policy = describePolicy(term, 'data/lexicon/terms.yaml', 'term');
-                        entities[tid] = {
-                            canonical_id: tid,
-                            display_id: term.id,
-                            type: 'term',
-                            name: term.term || term.name || tid,
-                            path: 'data/lexicon/terms.yaml',
-                            ...policy,
-                            _refs: term.related_terms ? { related_terms: term.related_terms } : {}
-                        };
-                    }
-                }
+        const lex = yaml.load(fs.readFileSync(lexiconPath, 'utf8'));
+        if (lex && Array.isArray(lex.terms)) {
+            for (const [index, term] of lex.terms.entries()) {
+                if (!term) continue;
+                const sourcePath = `data/lexicon/terms.yaml#terms[${index}]`;
+                const tid = pickCanonicalId(term, sourcePath);
+                if (!tid) continue;
+                assertUniqueId(entities, tid, sourcePath);
+                const policy = describePolicy(term, 'data/lexicon/terms.yaml', 'term');
+                entities[tid] = {
+                    canonical_id: tid,
+                    display_id: term.id,
+                    type: 'term',
+                    name: term.term || term.name || tid,
+                    path: 'data/lexicon/terms.yaml',
+                    ...policy,
+                    _refs: term.related_terms ? { related_terms: term.related_terms } : {}
+                };
             }
-        } catch (e) {
-            console.log(`WARN Could not parse lexicon: ${e.message}`);
         }
     }
 
@@ -246,8 +264,6 @@ async function buildLinkMap() {
         orphaned_targets: orphanedTargets,
         generated_at: generatedAt
     };
-    const entitiesJsonPath = path.join(outGraphsDir, 'entities.json');
-    fs.writeFileSync(entitiesJsonPath, JSON.stringify(entitiesOutput, null, 2));
 
     const referenceMap = {
         generated: generatedAt,
@@ -262,7 +278,6 @@ async function buildLinkMap() {
         })),
         edges: relationships.map(r => ({ from: r.source, to: r.target, type: r.type }))
     };
-    writeGeneratedFile(path.join(repoRoot, 'REFERENCE_MAP.json'), JSON.stringify(referenceMap, null, 2));
 
     const sortedEntities = sortedEntityValues;
     const types = [...new Set(sortedEntities.map(e => e.type))].sort();
@@ -289,7 +304,6 @@ async function buildLinkMap() {
             ? `${matches.map(e => `- \`${e.canonical_id}\` - ${e.name} (${e.type}, ${e.canon_tier}, weight ${e.source_weight}, \`${e.path}\`)`).join('\n')}\n\n`
             : `_none_\n\n`;
     }
-    writeGeneratedFile(path.join(repoRoot, 'CANONICAL_INDEX.md'), indexContent);
 
     const linkMapContent = `# Link Map - Entity Relationships
 
@@ -319,15 +333,49 @@ ${orphanedTargets.length
 - **Draft Entities**: ${sortedEntities.filter(e => e.canon_tier === 'draft').length}
 - **Test / Sandbox / Deprecated Entities**: ${sortedEntities.filter(e => ['test', 'sandbox', 'deprecated'].includes(e.canon_tier)).length}
 `;
-    writeGeneratedFile(path.join(docsLinkMapDir, 'LINK_MAP.md'), linkMapContent);
+    if (!options.dryRun) {
+        fs.mkdirSync(outGraphsDir, { recursive: true });
+        fs.mkdirSync(docsLinkMapDir, { recursive: true });
+        fs.writeFileSync(path.join(outGraphsDir, 'entities.json'), JSON.stringify(entitiesOutput, null, 2));
+        writeGeneratedFile(path.join(repoRoot, 'REFERENCE_MAP.json'), JSON.stringify(referenceMap, null, 2));
+        writeGeneratedFile(path.join(repoRoot, 'CANONICAL_INDEX.md'), indexContent);
+        writeGeneratedFile(path.join(docsLinkMapDir, 'LINK_MAP.md'), linkMapContent);
+    }
 
-    console.log(`Link map built: ${Object.keys(entities).length} entities, ${relationships.length} edges, ${orphanedTargets.length} orphaned targets.`);
+    console.log(`Link map ${options.dryRun ? 'preflight passed' : 'built'}: ${Object.keys(entities).length} entities, ${relationships.length} edges, ${orphanedTargets.length} orphaned targets.`);
     return { entityCount: Object.keys(entities).length, relationshipCount: relationships.length };
 }
 
-buildLinkMap()
-    .then(() => process.exit(0))
-    .catch(err => {
-        console.error('Error building link map:', err);
+function parseCliArgs(args) {
+    const options = {};
+    for (let i = 0; i < args.length; i++) {
+        if (args[i] === '--dry-run') {
+            options.dryRun = true;
+        } else if (args[i] === '--root' && args[i + 1]) {
+            options.repoRoot = args[++i];
+        } else {
+            throw new Error(`Unknown link-map argument: ${args[i]}`);
+        }
+    }
+    // An alternate root is used only by read-only promotion preflight.
+    if (options.repoRoot && !options.dryRun) throw new Error('--root requires --dry-run');
+    return options;
+}
+
+if (require.main === module) {
+    let options;
+    try {
+        options = parseCliArgs(process.argv.slice(2));
+    } catch (error) {
+        console.error(error.message);
         process.exit(1);
-    });
+    }
+    buildLinkMap(options)
+        .then(() => process.exit(0))
+        .catch(err => {
+            console.error('Error building link map:', err);
+            process.exit(1);
+        });
+}
+
+module.exports = { buildLinkMap, parseCliArgs };

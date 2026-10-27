@@ -5,6 +5,7 @@ const path = require('path');
 const yaml = require('js-yaml');
 const matter = require('gray-matter');
 const { glob } = require('glob');
+const ROOT = path.join(__dirname, '../..');
 
 /**
  * Updated Glossary Enforcer
@@ -12,14 +13,14 @@ const { glob } = require('glob');
  */
 
 // Load glossary terms from structured YAML
-function loadGlossaryTerms() {
-  const glossaryPath = path.join(__dirname, '../../data/lexicon/terms.yaml');
+function loadGlossaryTerms(root = ROOT) {
+  const glossaryPath = path.join(root, 'data/lexicon/terms.yaml');
   const terms = new Set();
   const termMap = new Map(); // For additional metadata
 
   if (!fs.existsSync(glossaryPath)) {
     console.warn('⚠️  No terms.yaml found, falling back to legacy GLOSSARY.md');
-    return loadLegacyGlossaryTerms();
+    return loadLegacyGlossaryTerms(root);
   }
 
   try {
@@ -46,13 +47,13 @@ function loadGlossaryTerms() {
     return { terms, termMap };
   } catch (error) {
     console.error(`❌ Error loading terms.yaml: ${error.message}`);
-    return loadLegacyGlossaryTerms();
+    return loadLegacyGlossaryTerms(root);
   }
 }
 
 // Fallback to legacy GLOSSARY.md if YAML not available
-function loadLegacyGlossaryTerms() {
-  const glossaryPath = path.join(__dirname, '../../lexicon/GLOSSARY.md');
+function loadLegacyGlossaryTerms(root = ROOT) {
+  const glossaryPath = path.join(root, 'lexicon/GLOSSARY.md');
   const terms = new Set();
 
   if (!fs.existsSync(glossaryPath)) {
@@ -98,17 +99,17 @@ function loadIgnoreList(ignorePath) {
   return ignored;
 }
 
-function loadGlobalIgnoreList() {
-  const ignorePath = path.join(__dirname, '../../docs/lint/glossary_ignore.txt');
+function loadGlobalIgnoreList(root = ROOT) {
+  const ignorePath = path.join(root, 'docs/lint/glossary_ignore.txt');
   return loadIgnoreList(ignorePath);
 }
 
-function loadDirectoryIgnoreList(filePath) {
+function loadDirectoryIgnoreList(filePath, repoRoot = ROOT) {
   const ignored = new Set();
   let currentDir = path.dirname(filePath);
-  const repoRoot = path.resolve(__dirname, '../..');
+  repoRoot = path.resolve(repoRoot);
 
-  while (currentDir.startsWith(repoRoot)) {
+  while (currentDir === repoRoot || currentDir.startsWith(`${repoRoot}${path.sep}`)) {
     const ignorePath = path.join(currentDir, '.glossary_ignore.txt');
     const localIgnored = loadIgnoreList(ignorePath);
     localIgnored.forEach(term => ignored.add(term));
@@ -221,20 +222,20 @@ function scanForGlossaryTerms(filePath, glossaryTerms, ignoredTerms, termMap) {
 
     return warnings;
   } catch (error) {
-    console.error(`❌ Error scanning ${filePath}: ${error.message}`);
-    return warnings;
+    throw new Error(`Error scanning ${filePath}: ${error.message}`);
   }
 }
 
-// Collect all story titles from short-story manuscripts to ignore title-derived fragments
-function collectStoryTitles() {
+// Collect titles from all story manuscripts to ignore title-derived fragments.
+function collectStoryTitles(root = ROOT) {
   const titles = new Set();
-  const shortStoriesDir = path.join(__dirname, '../../stories/short_story');
-  if (!fs.existsSync(shortStoriesDir)) return titles;
+  const storiesDir = path.join(root, 'stories');
+  if (!fs.existsSync(storiesDir)) return titles;
 
-  const manuscripts = glob.sync('**/manuscript.md', { cwd: shortStoriesDir, absolute: true });
+  const manuscripts = glob.sync('**/manuscript.md', { cwd: storiesDir, absolute: true, nodir: true });
   for (const m of manuscripts) {
     try {
+      if (fs.lstatSync(m).isSymbolicLink()) continue;
       const raw = fs.readFileSync(m, 'utf8');
       const fm = matter(raw);
       if (fm.data && typeof fm.data.title === 'string' && fm.data.title.trim()) {
@@ -250,51 +251,98 @@ function collectStoryTitles() {
   return titles;
 }
 
-// Walk stories directory and check for glossary terms
-function checkStoriesDirectory(glossaryTerms, ignoredTerms, termMap) {
-  const storiesDir = path.join(__dirname, '../../stories');
-  let hasWarnings = false;
-
-  if (!fs.existsSync(storiesDir)) {
-    return false;
-  }
-
-  const titleFragments = collectStoryTitles();
-  if (titleFragments.size > 0) {
-    console.log(`📜 Ignoring ${titleFragments.size} title-derived fragments from story frontmatter`);
-  }
-
-  const files = fs.readdirSync(storiesDir);
-
-  files.forEach(file => {
-    if (file.endsWith('.md')) {
-      const filePath = path.join(storiesDir, file);
-      const directoryIgnored = loadDirectoryIgnoreList(filePath);
-      const combinedIgnored = new Set([...ignoredTerms, ...directoryIgnored, ...titleFragments]);
-      const warnings = scanForGlossaryTerms(filePath, glossaryTerms, combinedIgnored, termMap);
-
-      if (warnings.length > 0) {
-        warnings.forEach(warning => {
-          console.log(JSON.stringify({
-            level: 'warn',
-            file: path.relative(process.cwd(), warning.file),
-            line: warning.line,
-            term: warning.term,
-            suggestions: warning.suggestions
-          }));
-        });
-        hasWarnings = true;
-      } else {
-        console.log(JSON.stringify({
-          level: 'info',
-          file: path.relative(process.cwd(), filePath),
-          status: 'ok'
-        }));
+function collectStoryMarkdown(storiesDir) {
+  const files = [];
+  let skippedDirectories = 0;
+  function walk(dir) {
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      const filePath = path.join(dir, entry.name);
+      if (entry.isSymbolicLink()) {
+        if (entry.name.toLowerCase().endsWith('.md')) files.push({ filePath, skip: 'symlink' });
+        else skippedDirectories += 1;
+      } else if (entry.isDirectory()) {
+        if (entry.name === '.backups' || entry.name === 'node_modules') skippedDirectories += 1;
+        else walk(filePath);
+      } else if (entry.name.toLowerCase().endsWith('.md')) {
+        files.push({ filePath, skip: /_backup_/i.test(entry.name) ? 'backup' : null });
       }
     }
-  });
+  }
+  if (fs.existsSync(storiesDir)) walk(storiesDir);
+  return { files, skippedDirectories };
+}
 
-  return hasWarnings;
+// Scan nested story manuscripts, scenes, and other Markdown. Findings remain
+// advisory, but coverage counts make an empty or partial scan visible.
+function checkStoriesDirectory(glossaryTerms, ignoredTerms, termMap, options = {}) {
+  const root = options.root || ROOT;
+  const emit = options.emit || (entry => console.log(JSON.stringify(entry)));
+  const warningLimit = options.warningLimit ?? 50;
+  if (!Number.isInteger(warningLimit) || warningLimit < 0) {
+    throw new Error('warningLimit must be a non-negative integer');
+  }
+  const storiesDir = path.join(root, 'stories');
+  const { files, skippedDirectories } = collectStoryMarkdown(storiesDir);
+  const titleFragments = collectStoryTitles(root);
+  const coverage = {
+    files_seen: files.length,
+    files_scanned: 0,
+    files_skipped: 0,
+    skipped_directories: skippedDirectories,
+    warnings: 0
+  };
+  const warnings = [];
+  const skipped = [];
+  let emittedWarnings = 0;
+
+  for (const { filePath, skip } of files) {
+    const relativeFile = path.relative(root, filePath).replace(/\\/g, '/');
+    if (skip) {
+      coverage.files_skipped += 1;
+      skipped.push({ file: relativeFile, reason: skip });
+      emit({ level: 'info', file: relativeFile, status: 'skipped', reason: skip });
+      continue;
+    }
+    try {
+      const directoryIgnored = loadDirectoryIgnoreList(filePath, root);
+      const combinedIgnored = new Set([...ignoredTerms, ...directoryIgnored, ...titleFragments]);
+      const findings = scanForGlossaryTerms(filePath, glossaryTerms, combinedIgnored, termMap);
+      coverage.files_scanned += 1;
+      coverage.warnings += findings.length;
+      warnings.push(...findings.map(finding => ({ ...finding, file: relativeFile })));
+      if (findings.length) {
+        for (const finding of findings) {
+          if (emittedWarnings < warningLimit) {
+            emit({ level: 'warn', file: relativeFile, line: finding.line,
+              term: finding.term, suggestions: finding.suggestions });
+            emittedWarnings += 1;
+          }
+        }
+      } else {
+        emit({ level: 'info', file: relativeFile, status: 'ok' });
+      }
+    } catch (error) {
+      coverage.files_skipped += 1;
+      skipped.push({ file: relativeFile, reason: error.message });
+      emit({ level: 'warn', file: relativeFile, status: 'skipped', reason: error.message });
+    }
+  }
+  const warningsOmitted = Math.max(0, coverage.warnings - emittedWarnings);
+  emit({ level: 'info', coverage, warnings_omitted: warningsOmitted });
+  return { hasWarnings: coverage.warnings > 0, warnings, skipped, coverage,
+    warningsOmitted, titleFragments: titleFragments.size };
+}
+
+function writeGlossaryReport(result, root = ROOT) {
+  const reportPath = path.join(root, 'out', 'reports', 'glossary_coverage.json');
+  fs.mkdirSync(path.dirname(reportPath), { recursive: true });
+  fs.writeFileSync(reportPath, JSON.stringify({
+    generated_at: new Date().toISOString(),
+    coverage: result.coverage,
+    skipped: result.skipped,
+    warnings: result.warnings
+  }, null, 2));
+  return reportPath;
 }
 
 // Main execution
@@ -314,9 +362,20 @@ function main() {
     console.log(`🚫 Ignoring ${ignoredTerms.size} terms from ignore list`);
   }
 
-  const hasWarnings = checkStoriesDirectory(glossaryTerms, ignoredTerms, termMap);
+  const result = checkStoriesDirectory(glossaryTerms, ignoredTerms, termMap);
+  const reportPath = writeGlossaryReport(result);
+  if (result.titleFragments) {
+    console.log(`📜 Ignoring ${result.titleFragments} title-derived fragments from story frontmatter`);
+  }
+  console.log(`Glossary coverage: ${result.coverage.files_seen} Markdown files seen, ` +
+    `${result.coverage.files_scanned} scanned, ${result.coverage.files_skipped} skipped; ` +
+    `${result.coverage.skipped_directories} directories skipped.`);
+  if (result.warningsOmitted > 0) {
+    console.log(`${result.warningsOmitted} additional glossary warnings omitted from console output.`);
+  }
+  console.log(`Full glossary report: ${path.relative(ROOT, reportPath)}`);
 
-  if (hasWarnings) {
+  if (result.hasWarnings) {
     console.log('\n⚠️  Found terms not in glossary (warnings only, exit code 0)');
     process.exit(0); // Warnings don't fail the build
   } else {
@@ -325,4 +384,15 @@ function main() {
   }
 }
 
-main();
+if (require.main === module) main();
+
+module.exports = {
+  loadGlossaryTerms,
+  loadGlobalIgnoreList,
+  loadDirectoryIgnoreList,
+  collectStoryTitles,
+  collectStoryMarkdown,
+  scanForGlossaryTerms,
+  checkStoriesDirectory,
+  writeGlossaryReport
+};

@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 const fs = require('fs');
-const path = require('path');
 const { collectScenes } = require('./lib/scene_indexer');
 const { ensureDir, loadFrontmatter } = require('./lib/file_loader');
 const { modeTag } = require('./lib/mode');
+const { resolveExistingWork, resolveWithin } = require('./lib/path_safety');
 
 function parseArgs() {
   const args = process.argv.slice(2);
@@ -15,20 +15,9 @@ function parseArgs() {
   return out;
 }
 
-function findWorkNotes(workId) {
-  const candidates = [
-    path.join(process.cwd(), 'stories', 'novel', workId, 'notes.md'),
-    path.join(process.cwd(), 'stories', 'novella', workId, 'notes.md'),
-    path.join(process.cwd(), 'stories', 'short', workId, 'notes.md'),
-    path.join(process.cwd(), 'stories', 'screenplay', workId, 'notes.md')
-  ];
-  for (const candidate of candidates) {
-    if (fs.existsSync(candidate)) {
-      const parsed = loadFrontmatter(candidate);
-      return parsed;
-    }
-  }
-  return null;
+function findWorkNotes(workPath) {
+  const candidate = resolveWithin(workPath, 'notes.md');
+  return fs.existsSync(candidate) ? loadFrontmatter(candidate) : null;
 }
 
 function buildTable(scenes) {
@@ -48,13 +37,15 @@ function main() {
     console.error('Usage: npm run compile:edit -- --work "<name>"');
     process.exit(1);
   }
+  const root = process.cwd();
+  const work = resolveExistingWork(root, args.work);
   const scenes = collectScenes({ work: args.work });
-  const compiledDir = path.join(process.cwd(), 'out', 'compiled');
+  const compiledDir = resolveWithin(root, 'out', 'compiled');
+  const target = resolveWithin(root, 'out', 'compiled', `${args.work}_edit_packet.md`);
   ensureDir(compiledDir);
-  const target = path.join(compiledDir, `${args.work}_edit_packet.md`);
   const lines = [`# Edit Packet — ${args.work}`, '', `Mode: ${args.mode || modeTag()}`, ''];
   lines.push(...buildTable(scenes));
-  const notes = findWorkNotes(args.work);
+  const notes = findWorkNotes(work.path);
   if (notes) {
     lines.push('', '## Notes', '', notes.content.trim());
   }

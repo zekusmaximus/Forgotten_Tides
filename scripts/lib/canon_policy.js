@@ -98,10 +98,12 @@ function describePolicy(meta = {}, filePath = '', entityType = '') {
 function shouldInclude(policy = {}, options = {}) {
   const tier = policy.canon_tier || 'working_canon';
   if (tier === 'deprecated') return false;
-  if (options.canonOnly && !['primary_canon', 'working_canon'].includes(tier)) return false;
+  if (options.canonOnly) {
+    return tier === 'primary_canon' || tier === 'working_canon' ||
+      (tier === 'draft' && Boolean(options.includeDrafts));
+  }
   if (tier === 'sandbox' && !options.includeSandbox) return false;
   if (tier === 'test' && !options.includeTest) return false;
-  if (tier === 'draft' && options.canonOnly && !options.includeDrafts) return false;
   return true;
 }
 

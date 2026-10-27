@@ -30,10 +30,11 @@ function verifyGeneratedArtifacts() {
 
 function main() {
   runNpmScript('linkmap:build');
-  verifyGeneratedArtifacts();
   runNpmScript('lint');
   runNpmScript('check');
+  verifyGeneratedArtifacts();
   runNpmScript('test:dashboard');
+  runNpmScript('test:tooling');
   runNpmScript('test:upgrades');
   runNpmScript('test:coverage');
   runNpmScript('test:canon-policy');

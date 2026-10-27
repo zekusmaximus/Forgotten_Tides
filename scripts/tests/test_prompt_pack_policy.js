@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 const assert = require('assert');
-const { pack } = require('../prompt/export_prompt_pack');
+const { pack, parseArgs } = require('../prompt/export_prompt_pack');
 
 function test(name, fn) {
   try {
@@ -40,4 +40,19 @@ test('canon-only excludes draft scenes', () => {
   const ids = payload.entries.map(e => e.id);
   assert(ids.includes('char-0001'));
   assert(!ids.includes('scene_541938a8fd6140a456619c4030b828ccc5ac4298'));
+});
+
+test('canon-only with include-drafts admits active drafts but still excludes test scenes', () => {
+  const { ids, options } = parseArgs([
+    '--canon-only', '--include-drafts',
+    'scene_541938a8fd6140a456619c4030b828ccc5ac4298',
+    'scene_screenplay_sample_001', 'char-0001'
+  ]);
+  const payload = pack(ids, options);
+  const included = payload.entries.map(entry => entry.id);
+  assert(included.includes('char-0001'));
+  assert(included.includes('scene_541938a8fd6140a456619c4030b828ccc5ac4298'));
+  assert(!included.includes('scene_screenplay_sample_001'));
+  assert(payload.entries.find(entry => entry.canon_tier === 'draft').source_weight <
+    payload.entries.find(entry => entry.canon_tier === 'primary_canon').source_weight);
 });

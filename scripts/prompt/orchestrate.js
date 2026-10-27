@@ -1,68 +1,79 @@
 // scripts/prompt/orchestrate.js
 // NL request → intent → IDs → prompt pack → action → lints (if available) → report.
 
-const { execSync, execFileSync } = require("child_process");
+const { execFileSync } = require("child_process");
 const fs = require("fs");
 const path = require("path");
+const crypto = require("crypto");
 const { classify } = require("./route_intent.js");
-const { resolve: resolveIDs } = require("./resolve_ids.js");
 const { spawn } = require("child_process");
 const { autotagScene } = require("./scene_autotag.js");
 const { extract } = require("./extract_metadata.js");
 const OrderingEngine = require("./ordering.js");
-const { touchModified } = require("./work_meta.js");
+const { resolveWithin } = require("../lib/path_safety.js");
+const { buildCompilation } = require("../compile_stories.js");
 
-function sh(cmd) {
-  try {
-    return execSync(cmd, { stdio: "pipe" }).toString().trim();
-  } catch (e) {
-    return { error: String(e.stderr || e.message || e) };
-  }
-}
+const ROOT = path.join(__dirname, '../..');
 
 // Run a Node script with arguments passed as an argv array (no shell).
 // Prevents command injection from user-controlled values such as `query`.
-function runNode(script, args = []) {
+function runNode(script, args = [], options = {}) {
+  const root = options.root || ROOT;
   try {
-    return execFileSync(process.execPath, [script, ...args.map(String)], { stdio: "pipe" })
+    return execFileSync(process.execPath, [path.join(root, script), ...args.map(String)], { stdio: "pipe", cwd: root })
       .toString()
       .trim();
   } catch (e) {
-    return { error: String(e.stderr || e.message || e) };
+    const detail = String(e.stderr || e.message || e).trim();
+    throw new Error(`${script} failed${e.status != null ? ` (exit ${e.status})` : ''}: ${detail}`);
   }
 }
 
-function ensureDirs() {
-  ["out/prompts","out/reports","lore/ideas","docs/session"].forEach(d=>{
-    if (!fs.existsSync(d)) fs.mkdirSync(d,{recursive:true});
+function ensureDirs(root = ROOT) {
+  ["out/prompts","out/reports","out/session/reports","lore/ideas"].forEach(d=>{
+    fs.mkdirSync(path.join(root, d), { recursive: true });
   });
 }
 
-function exportPack(ids) {
+function exportPack(ids, options = {}) {
   if (!ids?.length) return null;
-  const out = runNode("scripts/prompt/export_prompt_pack.js", ids);
-  const files = fs.readdirSync("out/prompts").filter(f=>f.endsWith("_pack.json"))
-    .map(f=>({ f, t: fs.statSync(path.join("out/prompts", f)).mtimeMs }))
-    .sort((a,b)=>b.t-a.t);
-  return files.length ? path.join("out/prompts", files[0].f) : null;
+  const root = options.root || ROOT;
+  const execute = options.execute || runNode;
+  const exported = execute("scripts/prompt/export_prompt_pack.js", ids, { root });
+  const normalized = typeof exported === 'string' ? exported.trim().replace(/\\/g, '/') : '';
+  const match = normalized.match(/^out\/prompts\/([^/]+_pack\.json)$/);
+  if (!match) throw new Error(`Prompt exporter returned an invalid path: ${String(exported)}`);
+  const target = resolveWithin(root, 'out', 'prompts', match[1]);
+  const markdown = resolveWithin(root, 'out', 'prompts', match[1].replace(/\.json$/, '.md'));
+  if (!fs.existsSync(target) || !fs.existsSync(markdown)) {
+    throw new Error(`Prompt exporter did not create the reported JSON and Markdown files: ${normalized}`);
+  }
+  return normalized;
 }
 
-function runLints() {
+function runLints(options = {}) {
+  const root = options.root || ROOT;
+  const execute = options.execute || execFileSync;
   const results = [];
   const steps = [
-    { name: "schema", cmd: "npm run lint:schema", optional: true },
-    { name: "refs", cmd: "npm run lint:refs", optional: true },
-    { name: "glossary", cmd: "npm run lint:glossary || true", optional: true },
-    { name: "continuity", cmd: "node scripts/checks/continuity.js || true", optional: true }
+    { name: "schema", script: "scripts/lint/schema_validate.js", required: true },
+    { name: "refs", script: "scripts/lint/unresolved_refs.js", required: true },
+    { name: "glossary", script: "scripts/lint/glossary_enforcer.js", required: false },
+    { name: "continuity", script: "scripts/checks/continuity.js", required: true }
   ];
   for (const s of steps) {
-    const out = sh(s.cmd);
-    results.push({ step: s.name, output: typeof out === "string" ? out : out.error || "" });
+    try {
+      const output = execute(process.execPath, [path.join(root, s.script)], { cwd: root, encoding: 'utf8', stdio: 'pipe' });
+      results.push({ step: s.name, status: 0, required: s.required, output: String(output).trim() });
+    } catch (error) {
+      results.push({ step: s.name, status: error.status ?? 1, required: s.required,
+        output: String(error.stderr || error.message || error).trim() });
+    }
   }
   return results;
 }
 
-function runAuthoringOperation(intent, query, bodyContent, params = null) {
+function runAuthoringOperation(intent, query, bodyContent, params = null, options = {}) {
   return new Promise((resolve, reject) => {
     // Use provided params or extract from query
     const finalParams = params || extractAuthoringParams(query, intent);
@@ -80,12 +91,14 @@ function runAuthoringOperation(intent, query, bodyContent, params = null) {
     if (finalParams.outline) args.push('--outline', finalParams.outline);
 
     // Spawn authoring process
-    const authoringProcess = spawn('node', ['scripts/prompt/authoring.js', ...args]);
+    const root = options.root || ROOT;
+    const authoringProcess = spawn(process.execPath, [path.join(root, 'scripts/prompt/authoring.js'), ...args], { cwd: root });
 
     let stdout = '';
     let stderr = '';
 
     // Pipe body content to authoring process
+    authoringProcess.stdin.on('error', reject);
     if (bodyContent) {
       authoringProcess.stdin.write(bodyContent);
     }
@@ -99,6 +112,7 @@ function runAuthoringOperation(intent, query, bodyContent, params = null) {
       stderr += data.toString();
     });
 
+    authoringProcess.on('error', reject);
     authoringProcess.on('close', (code) => {
       if (code !== 0) {
         reject(new Error(`Authoring failed: ${stderr || 'unknown error'}`));
@@ -120,12 +134,14 @@ function convertOrderToAuthoringFormat(extractedOrder) {
   const { mode, value } = extractedOrder;
 
   switch (mode) {
-    case 'first': return 'first';
-    case 'last': return 'last';
-    case 'before': return `before:${value}`;
-    case 'after': return `after:${value}`;
-    case 'index': return `at:${value}`;
-    case 'midpoint': return 'midpoint';
+    case 'index': return String(value);
+    // The authoring command requires a numeric initial order. The ordering
+    // engine applies the requested relative placement after the scene exists.
+    case 'first':
+    case 'last':
+    case 'before':
+    case 'after':
+    case 'midpoint': return '0';
     default: return null;
   }
 }
@@ -151,9 +167,11 @@ function extractAuthoringParams(query, intent) {
     params.work = workIdMatch[1];
   } else {
     // Try to extract title from quotes or after "titled"
-    const titleMatch = query.match(/titled "([^"]+)"|titled '([^']+)'|titled (.+?)(?= |$)|"([^"]+)"/i);
+    const titleMatch = intent === 'start_work'
+      ? query.match(/titled "([^"]+)"|titled '([^']+)'|titled (.+?)(?= |$)|"([^"]+)"/i)
+      : null;
     if (titleMatch) {
-      params.work = titleMatch[1] || titleMatch[2] || titleMatch[3];
+      params.work = titleMatch[1] || titleMatch[2] || titleMatch[3] || titleMatch[4];
       params.title = params.work;
     } else {
       // Try to extract work title from "in [title]" pattern
@@ -225,26 +243,26 @@ function extractAuthoringParams(query, intent) {
   return params;
 }
 
-function getBodyContentForAuthoring() {
-  return new Promise((resolve) => {
+function getBodyContentForAuthoring(stream = process.stdin) {
+  if (stream.isTTY) return Promise.resolve('');
+  return new Promise((resolve, reject) => {
     let stdin = '';
-    process.stdin.setEncoding('utf8');
-    process.stdin.on('data', (chunk) => {
+    stream.setEncoding('utf8');
+    stream.on('data', (chunk) => {
       stdin += chunk;
     });
-    process.stdin.on('end', () => {
+    stream.once('end', () => {
       resolve(stdin);
     });
-    // If no stdin data is coming, resolve with empty string
-    setTimeout(() => {
-      if (stdin === '') resolve('');
-    }, 100);
+    stream.once('error', reject);
+    if (stream.readableEnded) resolve(stdin);
   });
 }
 
-function writeSessionReport({query, intent, ids, packPath, packMdPath, artifacts, lintResults, contextPath, stickyIds}) {
+function writeSessionReport({query, intent, ids, packPath, packMdPath, artifacts, lintResults, contextPath, stickyIds}, root = ROOT) {
   const stamp = new Date().toISOString().replace(/[:.]/g,"-");
-  const p = `docs/session/${stamp}_${intent}.md`;
+  const relative = `out/session/reports/${stamp}_${intent}.md`;
+  const p = path.join(root, relative);
   const lines = [
     `# Session Report — ${intent}`,
     `- **Query:** ${query}`,
@@ -258,20 +276,21 @@ function writeSessionReport({query, intent, ids, packPath, packMdPath, artifacts
     `\n## Lint/Checks`,
   ];
   for (const r of (lintResults||[])) {
-    lines.push(`- ${r.step}: ${r.output ? "ok/ran" : "skipped"}`);
+    lines.push(`- ${r.step}: exit ${r.status}${r.required ? ' (required)' : ' (advisory)'}`);
   }
+  fs.mkdirSync(path.dirname(p), { recursive: true });
   fs.writeFileSync(p, lines.join("\n"));
-  return p;
+  return relative;
 }
 
-function loadSessionState() {
-  try {
-    const sessionFile = "out/session/state.json";
-    if (fs.existsSync(sessionFile)) {
-      return JSON.parse(fs.readFileSync(sessionFile, "utf8"));
+function loadSessionState(root = ROOT) {
+  const sessionFile = path.join(root, "out/session/state.json");
+  if (fs.existsSync(sessionFile)) {
+    const state = JSON.parse(fs.readFileSync(sessionFile, "utf8"));
+    if (!state || typeof state !== 'object' || !Array.isArray(state.history) || !Array.isArray(state.sticky_ids)) {
+      throw new Error(`Invalid session state: ${sessionFile}`);
     }
-  } catch (e) {
-    // Ignore errors and return default state
+    return state;
   }
   return {
     last_intent: null,
@@ -281,48 +300,52 @@ function loadSessionState() {
   };
 }
 
-function saveSessionState(state) {
-  const sessionFile = "out/session/state.json";
+function saveSessionState(state, root = ROOT) {
+  const sessionFile = path.join(root, "out/session/state.json");
+  fs.mkdirSync(path.dirname(sessionFile), { recursive: true });
   fs.writeFileSync(sessionFile, JSON.stringify(state, null, 2));
 }
 
 async function orchestrate(query, options = {}) {
   const { profile = "default", carry = false, clear = false } = options;
-  ensureDirs();
+  const root = options.root || ROOT;
+  const services = options.services || {};
+  const runNodeStep = services.runNode || runNode;
+  const authoringStep = services.runAuthoringOperation || runAuthoringOperation;
+  const bodyStep = services.getBodyContentForAuthoring || getBodyContentForAuthoring;
+  const lintStep = services.runLints || runLints;
+  const extractStep = services.extract || extract;
+  ensureDirs(root);
 
   // Load and manage session state
-  let sessionState = loadSessionState();
+  let sessionState = clear ? null : loadSessionState(root);
 
   if (clear) {
     // Reset session state to defaults
     sessionState = {
       history: [],
       sticky_ids: [],
-      last_intent: null
+      last_intent: null,
+      active_work: null
     };
   }
 
   // Step 1: Build context first using context_builder.js
   // Pass query/profile as argv entries instead of interpolating into a shell
   // string, so shell metacharacters in user input cannot execute commands.
-  const contextOutputPath = runNode("scripts/prompt/context_builder.js", [query, "--profile", profile]);
+  const contextOutputPath = runNodeStep("scripts/prompt/context_builder.js", [query, "--profile", profile], { root });
 
   // Read the context JSON to get the canonical IDs list
-  let contextOrder = [];
-  let contextPath = null;
-  if (contextOutputPath && !contextOutputPath.error) {
-    contextPath = contextOutputPath;
-    try {
-      const contextData = JSON.parse(fs.readFileSync(contextOutputPath, "utf8"));
-      contextOrder = contextData.order || [];
-    } catch (e) {
-      console.warn("Warning: Could not read context builder output");
-    }
-  }
+  const contextPath = String(contextOutputPath).trim().replace(/\\/g, '/');
+  const contextMatch = contextPath.match(/^out\/prompts\/([^/]+_context\.json)$/);
+  if (!contextMatch) throw new Error(`Context builder returned an invalid path: ${contextPath}`);
+  const contextFile = resolveWithin(root, 'out', 'prompts', contextMatch[1]);
+  const contextData = JSON.parse(fs.readFileSync(contextFile, "utf8"));
+  if (!Array.isArray(contextData.order)) throw new Error(`Context builder output has no order array: ${contextPath}`);
+  const contextOrder = contextData.order;
 
   // Get intent and resolve IDs (for session management)
   const intent = classify(query);
-  const resolvedIds = resolveIDs(query);
 
   // Merge sticky_ids if --carry flag is set
   let finalIds = [...contextOrder];
@@ -339,7 +362,7 @@ async function orchestrate(query, options = {}) {
   finalIds = finalIds.slice(0, 50);
 
   // Export pack with final IDs
-  const packPath = exportPack(finalIds);
+  const packPath = exportPack(finalIds, { root, execute: runNodeStep });
   const packMdPath = packPath ? packPath.replace(".json", ".md") : null;
   const artifacts = [];
 
@@ -352,28 +375,28 @@ async function orchestrate(query, options = {}) {
       // Authoring operations take precedence
       try {
         // Perform NL extraction for authoring operations
-        const extractedData = extract(query);
+        // A creation request names a new work. Looking up existing titles can
+        // mistake "First Corridor" for "First Corridor Revisited".
+        const extractedData = intent === 'start_work' ? {} : extractStep(query, root);
 
         // Handle clarification cases
         if (extractedData.needs_clarification) {
-          console.log(extractedData.needs_clarification.question);
-          if (extractedData.needs_clarification.options && extractedData.needs_clarification.options.length > 0) {
-            extractedData.needs_clarification.options.forEach((option, index) => {
-              console.log(`${index + 1}. ${option.label}`);
-            });
-          }
-          process.exit(0);
+          throw new Error(`Clarification needed: ${extractedData.needs_clarification.question}`);
         }
 
         // Get body content from stdin only for operations that need it
         const bodyContent = (intent === 'save_scene' || intent === 'replace_scene' || intent === 'save_notes' || intent === 'update_outline')
-          ? await getBodyContentForAuthoring()
+          ? await bodyStep()
           : '';
+        if (intent !== 'start_work' && !bodyContent.trim()) {
+          throw new Error(`${intent} requires non-empty body content on stdin`);
+        }
 
         // Map extracted data to authoring parameters
         const params = {
           work: extractedData.work?.id || null,
           kind: extractedData.work?.kind || null,
+          title: extractedData.work?.title || null,
           scene: extractedData.scene?.id || null,
           order: extractedData.order ? convertOrderToAuthoringFormat(extractedData.order) : null,
           notes: extractedData.outline_section || null,
@@ -385,13 +408,17 @@ async function orchestrate(query, options = {}) {
         const finalParams = {
           work: params.work || fallbackParams.work,
           kind: params.kind || fallbackParams.kind,
-          scene: params.scene || fallbackParams.scene,
+          title: params.title || fallbackParams.title || (intent === 'start_work' ? fallbackParams.work : null),
+          scene: fallbackParams.scene || (intent === 'replace_scene' ? params.scene : null),
           order: params.order || fallbackParams.order,
           notes: params.notes || fallbackParams.notes,
           outline: params.outline || fallbackParams.outline
         };
 
-        const authoringResult = await runAuthoringOperation(intent, query, bodyContent, finalParams);
+        if (intent === 'start_work' && (!finalParams.work || !finalParams.kind || !finalParams.title)) {
+          throw new Error('start_work requires a work title and kind');
+        }
+        const authoringResult = await authoringStep(intent, query, bodyContent, finalParams, { root });
         // Add created files to artifacts
         if (authoringResult.files_created) {
           authoringResult.files_created.forEach(file => {
@@ -409,7 +436,7 @@ async function orchestrate(query, options = {}) {
         // Auto-tag scenes after save_scene and replace_scene operations
         if ((intent === 'save_scene' || intent === 'replace_scene') && authoringResult.scene_file) {
           try {
-            const scenePath = authoringResult.scene_file;
+            const scenePath = path.join(root, authoringResult.scene_file);
             if (fs.existsSync(scenePath)) {
               autotagScene(scenePath, packPath, contextPath);
               console.log(`Auto-tagged scene: ${scenePath}`);
@@ -423,8 +450,9 @@ async function orchestrate(query, options = {}) {
         // Apply ordering after save_scene operations
         if (intent === 'save_scene' && authoringResult.scene_file && extractedData.order) {
           try {
-            const workDir = path.dirname(path.dirname(authoringResult.scene_file));
-            const sceneRelPath = path.relative(workDir, authoringResult.scene_file);
+            const sceneFile = path.join(root, authoringResult.scene_file);
+            const workDir = path.dirname(path.dirname(sceneFile));
+            const sceneRelPath = path.relative(workDir, sceneFile);
 
             // Load current include list
             const includeList = OrderingEngine.load(workDir);
@@ -436,29 +464,14 @@ async function orchestrate(query, options = {}) {
             OrderingEngine.save(workDir, newIncludeList);
             console.log(`Applied ordering: ${extractedData.order.mode} ${extractedData.order.value || ''}`);
           } catch (orderingError) {
-            console.warn(`Warning: Ordering failed: ${orderingError.message}`);
-            // Continue pipeline - don't fail on ordering errors
-          }
-        }
-
-        // Call work_meta.touchModified after any authoring op that touches a work
-        if (authoringResult.work_id) {
-          try {
-            const workDir = path.join('stories', authoringResult.work_kind || 'novels', authoringResult.work_id);
-            touchModified(workDir);
-            console.log(`Updated work metadata for: ${authoringResult.work_id}`);
-          } catch (metaError) {
-            console.warn(`Warning: Failed to update work metadata: ${metaError.message}`);
-            // Continue pipeline - don't fail on metadata errors
+            throw new Error(`Ordering failed: ${orderingError.message}`);
           }
         }
 
         // Include authoring result in session report
         sessionState.authoring_result = authoringResult;
       } catch (error) {
-        console.error(`Authoring operation failed: ${error.message}`);
-        // Fall back to regular pack export
-        if (packPath) artifacts.push(packPath);
+        throw new Error(`Authoring operation failed: ${error.message}`);
       }
       break;
     }
@@ -466,40 +479,48 @@ async function orchestrate(query, options = {}) {
       const stamp = new Date().toISOString().replace(/[:.]/g,"-");
       const outp = `lore/ideas/${stamp}_brainstorm.md`;
       const header = `---\nintent: brainstorm\nsource_query: "${query.replace(/"/g,'\\"')}"\nids: ${JSON.stringify(finalIds)}\npack: ${JSON.stringify(packPath)}\n---\n\n# Brainstorm Notes\n\n- Generate 5–8 options consistent with canon.\n- Label non-canon ideas as 'speculative'.\n`;
-      fs.writeFileSync(outp, header);
+      fs.writeFileSync(path.join(root, outp), header);
       artifacts.push(outp);
       break;
     }
     case "outline": {
       const stamp = new Date().toISOString().replace(/[:.]/g,"-");
       const outp = `lore/ideas/${stamp}_outline.md`;
-      fs.writeFileSync(outp, `---\nintent: outline\nsource_query: "${query.replace(/"/g,'\\"')}"\nids: ${JSON.stringify(finalIds)}\npack: ${JSON.stringify(packPath)}\n---\n\n# Outline Draft\n\nAct I:\nAct II:\nAct III:\n`);
+      fs.writeFileSync(path.join(root, outp), `---\nintent: outline\nsource_query: "${query.replace(/"/g,'\\"')}"\nids: ${JSON.stringify(finalIds)}\npack: ${JSON.stringify(packPath)}\n---\n\n# Outline Draft\n\nAct I:\nAct II:\nAct III:\n`);
       artifacts.push(outp);
       break;
     }
     case "revise_scene": {
       const stamp = new Date().toISOString().replace(/[:.]/g,"-");
       const outp = `lore/ideas/${stamp}_revision_plan.md`;
-      fs.writeFileSync(outp, `---\nintent: revise_scene\nsource_query: "${query.replace(/"/g,'\\"')}"\nids: ${JSON.stringify(finalIds)}\npack: ${JSON.stringify(packPath)}\n---\n\n## Revision Plan\n- Target scene(s): (add file paths / IDs)\n- Change: (describe insertion/modification)\n- Constraints: continuity invariants, rules used\n`);
+      fs.writeFileSync(path.join(root, outp), `---\nintent: revise_scene\nsource_query: "${query.replace(/"/g,'\\"')}"\nids: ${JSON.stringify(finalIds)}\npack: ${JSON.stringify(packPath)}\n---\n\n## Revision Plan\n- Target scene(s): (add file paths / IDs)\n- Change: (describe insertion/modification)\n- Constraints: continuity invariants, rules used\n`);
       artifacts.push(outp);
       break;
     }
     case "worldbuild_mechanics": {
       const stamp = new Date().toISOString().replace(/[:.]/g,"-");
       const outp = `lore/ideas/${stamp}_mechanics_notes.md`;
-      fs.writeFileSync(outp, `---\nintent: worldbuild_mechanics\nsource_query: "${query.replace(/"/g,'\\"')}"\nids: ${JSON.stringify(finalIds)}\npack: ${JSON.stringify(packPath)}\n---\n\n## Mechanics Exploration\n- Hypotheses (speculative)\n- Tests/examples\n- Candidate canonical changes (PR into data/mechanics)\n`);
+      fs.writeFileSync(path.join(root, outp), `---\nintent: worldbuild_mechanics\nsource_query: "${query.replace(/"/g,'\\"')}"\nids: ${JSON.stringify(finalIds)}\npack: ${JSON.stringify(packPath)}\n---\n\n## Mechanics Exploration\n- Hypotheses (speculative)\n- Tests/examples\n- Candidate canonical changes (PR into data/mechanics)\n`);
       artifacts.push(outp);
       break;
     }
     case "compile_artifacts": {
-      if (fs.existsSync("scripts/build/build_bible.js")) {
-        sh("node scripts/build/build_bible.js");
-        artifacts.push("bible/Series_Bible.epub","bible/Series_Bible.pdf");
+      if (/\b(?:bible|rag|pdf|epub)\b/i.test(query)) {
+        throw new Error('This command compiles story Markdown only. Use scripts/compile_stories.sh for ePub; Bible, PDF, and RAG builds are not configured.');
       }
-      if (fs.existsSync("scripts/rag/export_chunks.js")) {
-        sh("node scripts/rag/export_chunks.js");
-        artifacts.push("out/rag/chunks.jsonl");
+      const markdown = buildCompilation(root);
+      const artifact = 'out/compiled/forgotten_tides_stories.md';
+      const output = resolveWithin(root, 'out', 'compiled', 'forgotten_tides_stories.md');
+      fs.mkdirSync(path.dirname(output), { recursive: true });
+      const temporary = resolveWithin(root, 'out', 'compiled',
+        `.stories-${process.pid}-${crypto.randomBytes(8).toString('hex')}.tmp`);
+      try {
+        fs.writeFileSync(temporary, markdown, { flag: 'wx' });
+        fs.renameSync(temporary, output);
+      } finally {
+        fs.rmSync(temporary, { force: true });
       }
+      artifacts.push(artifact);
       break;
     }
     case "export_pack_only":
@@ -509,13 +530,12 @@ async function orchestrate(query, options = {}) {
     }
   }
 
-  const lintResults = runLints();
-  const report = writeSessionReport({ query, intent, ids: finalIds, packPath, packMdPath, artifacts, lintResults, contextPath, stickyIds: sessionState.sticky_ids });
-
-  console.log(`\n--- Orchestration Complete ---`);
-  console.log(`Intent: ${intent}`);
-  console.log(`Report: ${report}`);
-  if (packMdPath) console.log(`Pack (MD): ${packMdPath}`);
+  const lintResults = lintStep({ root });
+  const report = writeSessionReport({ query, intent, ids: finalIds, packPath, packMdPath, artifacts, lintResults, contextPath, stickyIds: sessionState.sticky_ids }, root);
+  const failedRequired = lintResults.filter(result => result.required && result.status !== 0);
+  if (failedRequired.length) {
+    throw new Error(`Required checks failed: ${failedRequired.map(result => `${result.step} (exit ${result.status})`).join(', ')}. Report: ${report}`);
+  }
 
   // Update session state
   sessionState.last_intent = intent;
@@ -537,11 +557,17 @@ async function orchestrate(query, options = {}) {
     sessionState.sticky_ids = uniqueOrderedIds.slice(0, 8); // Cap at 8 most recent
   }
 
-  saveSessionState(sessionState);
+  saveSessionState(sessionState, root);
 
-  const summary = { intent, ids: finalIds, packPath, artifacts, report, context: contextPath };
+  const summary = { intent, ids: finalIds, packPath, artifacts, report, context: contextPath,
+    checks: lintResults.map(result => ({ step: result.step, status: result.status })) };
 
+  console.log(`\n--- Orchestration Complete ---`);
+  console.log(`Intent: ${intent}`);
+  console.log(`Report: ${report}`);
+  if (packMdPath) console.log(`Pack (MD): ${packMdPath}`);
   process.stdout.write(JSON.stringify(summary, null, 2));
+  return summary;
 }
 
 function parseArgs() {
@@ -581,9 +607,9 @@ FLAGS
   --help, -h         Show this help message
 
 ENVIRONMENT
-  Requires Node.js 18+
+  Requires Node.js 20+
   Assumes project root contains: out/, lore/, docs/, data/
-  Writes to: out/prompts/, out/reports/, lore/ideas/, docs/session/
+  Writes to: out/prompts/, out/reports/, out/session/, lore/ideas/
   Reads from: characters/, data/, stories/, data/lexicon/
 
 INTENTS SUPPORTED
@@ -624,7 +650,11 @@ INTENTS SUPPORTED
 
 if (require.main === module) {
   const { query, profile, carry, clear } = parseArgs();
-  orchestrate(query, { profile, carry, clear });
+  orchestrate(query, { profile, carry, clear }).catch(error => {
+    console.error(`Orchestration failed: ${error.message}`);
+    process.exitCode = 1;
+  });
 }
 
-module.exports = { orchestrate };
+module.exports = { orchestrate, exportPack, getBodyContentForAuthoring, runLints, runAuthoringOperation,
+  convertOrderToAuthoringFormat, writeSessionReport };

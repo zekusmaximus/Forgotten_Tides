@@ -1,6 +1,6 @@
 # Repository Status
 
-**Last updated:** 2026-06-26
+**Last updated:** 2026-10-27
 
 This is the canonical status page for repository structure, hygiene, and cleanup
 planning. Historical audits and implementation plans belong in
@@ -48,9 +48,13 @@ npm run test:dashboard
   `package.json`.
 - Verified in this checkout: no tracked `tools/node_modules`,
   `tools/conversion/node_modules`, `.backups/`, or `metadata-backups/` entries.
-- Still pending beyond Phase 1: shared script-library extraction, stricter
-  content boundaries, documentation consolidation, and dashboard hardening
-  described in `docs/CODEBASE_REVIEW_2026_06_26.md`.
+- Code and tooling remediation is tracked in
+  `docs/CODE_TOOLING_REMEDIATION_PLAN_2026_10_26.md`. Initial CLI path safety,
+  dashboard server isolation, dependency updates, work discovery, scene
+  ordering, coverage checks, story compilation, dashboard behavior, and
+  documentation cleanup are implemented. Prompt-pack source lookup now indexes
+  files once per invocation. Hosted Linux and Windows CI passed on the tooling
+  branch, and the story compilation workflow produced its Markdown/ePub artifact.
 
 ## Generated File Boundaries
 

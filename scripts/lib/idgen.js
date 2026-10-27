@@ -28,13 +28,13 @@ function makeSceneId(title, seedISO) {
 }
 
 /**
- * Generate work ID based on kind (short/novella/novel)
- * @param {string} kind - Work kind (short, novella, novel)
+ * Generate work ID based on kind (short/novella/novel/screenplay)
+ * @param {string} kind - Work kind (short, novella, novel, screenplay)
  * @param {string} title - Work title
  * @returns {string} Work ID in format [KIND]_[slugified_title]
  */
 function makeWorkId(kind, title) {
-    const validKinds = ['short', 'novella', 'novel'];
+    const validKinds = ['short', 'novella', 'novel', 'screenplay'];
     if (!validKinds.includes(kind.toLowerCase())) {
         throw new Error(`Invalid work kind: ${kind}. Must be one of: ${validKinds.join(', ')}`);
     }
