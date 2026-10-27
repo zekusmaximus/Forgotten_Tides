@@ -72,6 +72,7 @@ async function main() {
   const outside = fs.mkdtempSync(path.join(os.tmpdir(), 'dashboard-server-outside-'));
   const dashboardDir = path.join(root, 'dashboard');
   const assetPath = path.join(dashboardDir, 'index.html');
+  const linkedParentDir = path.join(root, 'linked-dashboard');
   const secretPath = path.join(outside, 'secret.html');
   fs.mkdirSync(dashboardDir);
   fs.writeFileSync(assetPath, 'Fixture dashboard');
@@ -79,7 +80,10 @@ async function main() {
   fs.writeFileSync(path.join(outside, 'index.html'), 'OUTSIDE SECRET');
   const fixtureServer = createDashboardServer({
     root,
-    routes: new Map([['/dashboard/', { file: assetPath, type: 'text/html; charset=utf-8' }]])
+    routes: new Map([
+      ['/dashboard/', { file: assetPath, type: 'text/html; charset=utf-8' }],
+      ['/linked-parent/', { file: path.join(linkedParentDir, 'index.html'), type: 'text/html; charset=utf-8' }]
+    ])
   });
   try {
     await new Promise((resolve, reject) => {
@@ -90,21 +94,24 @@ async function main() {
     assert.equal((await request(port, '/dashboard/')).status, 200);
 
     fs.unlinkSync(assetPath);
+    let fileLinkAvailable = true;
     try {
       fs.symlinkSync(secretPath, assetPath, 'file');
+    } catch (error) {
+      if (!['EPERM', 'EACCES', 'ENOTSUP'].includes(error.code)) throw error;
+      fileLinkAvailable = false;
+      console.log('SKIP: file symlinks are unavailable on this platform');
+    }
+    if (fileLinkAvailable) {
       const linkedFile = await request(port, '/dashboard/');
       assert.equal(linkedFile.status, 404, 'symlinked asset must be denied');
       assert(!linkedFile.body.includes('OUTSIDE SECRET'));
       fs.unlinkSync(assetPath);
-    } catch (error) {
-      if (!['EPERM', 'EACCES', 'ENOTSUP'].includes(error.code)) throw error;
-      console.log('SKIP: file symlinks are unavailable on this platform');
     }
 
-    fs.rmdirSync(dashboardDir);
     try {
-      fs.symlinkSync(outside, dashboardDir, 'junction');
-      const linkedParent = await request(port, '/dashboard/');
+      fs.symlinkSync(outside, linkedParentDir, 'junction');
+      const linkedParent = await request(port, '/linked-parent/');
       assert.equal(linkedParent.status, 404, 'symlinked asset parent must be denied');
       assert(!linkedParent.body.includes('OUTSIDE SECRET'));
     } catch (error) {
