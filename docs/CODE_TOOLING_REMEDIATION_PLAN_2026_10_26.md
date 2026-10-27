@@ -30,8 +30,9 @@ verify behavior. Keep canon decisions and manuscript prose out of these changes.
   remaining advisory glossary findings and three timeline definition conflicts
   are reported without changing source content.
 - `npm run validate:ci` passes locally on Node 20 and Node 24. Both npm audits
-  report zero vulnerabilities. Linux and Windows are now in the CI matrix;
-  the hosted Windows result is pending.
+  report zero vulnerabilities. The hosted Linux and Windows CI jobs passed on
+  commit `cd33509`; the story compilation workflow passed on commit `53c5f4e`
+  and uploaded its Markdown/ePub artifact.
 - Steps 9–10 have initial implementations: story compilation selects manuscripts
   and expands referenced scenes once, dashboard filters and counts all seven
   map types with runtime tests, and prompt-pack lookup indexes source files

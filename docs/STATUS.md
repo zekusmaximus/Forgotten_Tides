@@ -53,7 +53,8 @@ npm run test:dashboard
   dashboard server isolation, dependency updates, work discovery, scene
   ordering, coverage checks, story compilation, dashboard behavior, and
   documentation cleanup are implemented. Prompt-pack source lookup now indexes
-  files once per invocation. The hosted Windows CI result remains to be verified.
+  files once per invocation. Hosted Linux and Windows CI passed on the tooling
+  branch, and the story compilation workflow produced its Markdown/ePub artifact.
 
 ## Generated File Boundaries
 
