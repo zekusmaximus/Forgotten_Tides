@@ -37,6 +37,8 @@
             --entity-mechanics: #51CF66;
             --entity-faction: #FFD93D;
             --entity-story: #A78BFA;
+            --entity-lore: #42C9C0;
+            --entity-term: #E49B6B;
             --entity-missing: #6A727C;
 
             /* Type */
@@ -67,7 +69,7 @@
             -webkit-font-smoothing: antialiased;
             text-rendering: optimizeLegibility;
             display: grid;
-            grid-template-rows: 64px 1fr 40px;
+            grid-template-rows: auto minmax(0, 1fr) auto;
             height: 100vh;
         }
 
@@ -87,11 +89,14 @@
             background: var(--void-2);
             border-bottom: 1px solid var(--void-5);
             padding: 0 24px;
-            height: 64px;
+            min-height: 64px;
             display: flex;
             align-items: center;
             gap: 28px;
             position: relative;
+            flex-wrap: wrap;
+            padding-top: 8px;
+            padding-bottom: 8px;
         }
 
         .wordmark {
@@ -469,6 +474,14 @@
         .info-actions {
             display: flex;
             gap: 8px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        #path-feedback {
+            font-size: 11px;
+            color: var(--ink-3);
+            line-height: 1.4;
         }
 
         /* ============ FOOTER ============ */
@@ -539,7 +552,7 @@
             100% { transform: rotate(360deg); }
         }
 
-        #error {
+        #error, #empty {
             position: absolute;
             top: 50%;
             left: 50%;
@@ -562,7 +575,7 @@
             margin-bottom: 6px;
         }
 
-        #error h2 {
+        #error h2, #empty h2 {
             font-family: var(--font-display);
             font-weight: 500;
             font-size: 22px;
@@ -571,7 +584,7 @@
             line-height: 1.15;
         }
 
-        #error p {
+        #error p, #empty p {
             font-size: 13px;
             line-height: 1.6;
             color: var(--ink-3);
@@ -586,6 +599,20 @@
             font-size: 12px;
             color: var(--ink-2);
         }
+
+        #empty {
+            border-top-color: var(--amber);
+        }
+
+        @media (max-width: 700px) {
+            #header { gap: 12px; padding: 12px; }
+            #filters { order: 3; flex-basis: 100%; }
+            #actions { margin-left: auto; }
+            .divider-v { display: none; }
+            #legend { top: 10px; right: 10px; }
+            #info-panel { left: 10px; bottom: 10px; width: min(340px, calc(100% - 20px)); }
+            #footer { padding: 8px 12px; min-height: 40px; gap: 12px; }
+        }
     </style>
 </head>
 <body>
@@ -597,54 +624,71 @@
 
         <div class="divider-v"></div>
 
-        <div id="filters">
-            <button class="chip active" data-filter="character">
+        <div id="filters" role="group" aria-label="Filter entity types">
+            <button class="chip active" type="button" data-filter="character" aria-pressed="true">
                 <span class="dot" style="background: var(--entity-character);"></span>
                 <span>Characters</span>
                 <span class="count" data-count="character">· 0</span>
             </button>
-            <button class="chip active" data-filter="location">
+            <button class="chip active" type="button" data-filter="location" aria-pressed="true">
                 <span class="dot" style="background: var(--entity-location);"></span>
                 <span>Locations</span>
                 <span class="count" data-count="location">· 0</span>
             </button>
-            <button class="chip active" data-filter="mechanics">
+            <button class="chip active" type="button" data-filter="mechanics" aria-pressed="true">
                 <span class="dot" style="background: var(--entity-mechanics);"></span>
                 <span>Mechanics</span>
                 <span class="count" data-count="mechanics">· 0</span>
             </button>
-            <button class="chip active" data-filter="faction">
+            <button class="chip active" type="button" data-filter="faction" aria-pressed="true">
                 <span class="dot" style="background: var(--entity-faction);"></span>
                 <span>Factions</span>
                 <span class="count" data-count="faction">· 0</span>
             </button>
-            <button class="chip active" data-filter="story">
+            <button class="chip active" type="button" data-filter="story" aria-pressed="true">
                 <span class="dot" style="background: var(--entity-story);"></span>
                 <span>Stories</span>
                 <span class="count" data-count="story">· 0</span>
+            </button>
+            <button class="chip active" type="button" data-filter="lore" aria-pressed="true">
+                <span class="dot" style="background: var(--entity-lore);"></span>
+                <span>Lore</span>
+                <span class="count" data-count="lore">· 0</span>
+            </button>
+            <button class="chip active" type="button" data-filter="term" aria-pressed="true">
+                <span class="dot" style="background: var(--entity-term);"></span>
+                <span>Terms</span>
+                <span class="count" data-count="term">· 0</span>
             </button>
         </div>
 
         <div id="actions">
             <span class="stencil">CANON · LOCKED</span>
-            <button class="btn" id="reset-view">Reset view</button>
-            <button class="btn" id="reload-data">Reload data</button>
+            <button class="btn" type="button" id="reset-view">Reset view</button>
+            <button class="btn" type="button" id="reload-data">Reload data</button>
         </div>
     </header>
 
     <main id="graph-container">
         <div id="starfield"></div>
-        <div id="network"></div>
+        <div id="network" role="region" aria-label="Continuity graph. Use arrow keys to pan and plus or minus to zoom." tabindex="0"></div>
 
-        <div id="loading">
-            <div class="spinner"></div>
+        <div id="loading" role="status" aria-live="polite">
+            <div class="spinner" aria-hidden="true"></div>
             <div class="label">Loading reference map</div>
         </div>
 
-        <div id="error">
+        <div id="error" role="alert">
             <div class="eyebrow">Continuity fault</div>
             <h2 id="error-title">Reference map unreachable</h2>
             <p id="error-message"></p>
+            <p>Run <code>npm run dashboard</code> from the repository root, check <code>REFERENCE_MAP.json</code>, then reload.</p>
+        </div>
+
+        <div id="empty" role="status" aria-live="polite">
+            <div class="eyebrow">No graph nodes</div>
+            <h2 id="empty-title">Reference map is empty</h2>
+            <p id="empty-message"></p>
         </div>
 
         <aside id="legend">
@@ -671,9 +715,21 @@
                     <div class="legend-color" style="background: #A78BFA;"></div>
                     <span>Story</span>
                 </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #42C9C0;"></div>
+                    <span>Lore</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #E49B6B;"></div>
+                    <span>Term</span>
+                </div>
                 <div class="legend-item muted">
                     <div class="legend-color" style="background: #6A727C;"></div>
-                    <span>Missing / Speculative</span>
+                    <span>Dashed · missing / speculative</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: transparent; border: 2px solid #E5484D;"></div>
+                    <span>Red border · no connections</span>
                 </div>
             </div>
         </aside>
@@ -688,17 +744,18 @@
                     </div>
                     <div id="info-title">—</div>
                 </div>
-                <button id="info-close" aria-label="Close">×</button>
+                <button id="info-close" type="button" aria-label="Close node details">×</button>
             </div>
 
             <dl class="info-meta">
                 <dt>ID</dt><dd id="info-id">—</dd>
-                <dt>Path</dt><dd class="path" id="info-path">—</dd>
+                <dt>Path</dt><dd class="path" id="info-path" tabindex="0" aria-label="Repository path">—</dd>
                 <dt>Edges</dt><dd class="edges" id="info-connections">0</dd>
             </dl>
 
             <div class="info-actions">
-                <a id="info-vscode-link" class="btn btn--primary" href="#">Open in VS Code</a>
+                <button id="info-copy-path" class="btn btn--primary" type="button">Copy path</button>
+                <span id="path-feedback" role="status" aria-live="polite"></span>
             </div>
         </aside>
     </main>
@@ -708,7 +765,7 @@
         <div>scroll · zoom · drag · click — corridor stable</div>
     </footer>
 
-    <script type="text/javascript" src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/vis-network@10.1.3/standalone/umd/vis-network.min.js" integrity="sha384-SCaI4C7bGVVmvoL6+G+fxA7Y7qmBB5cqLmXKG35zEF0zNWl+3keQG7Rp5NGvrSbN" crossorigin="anonymous"></script>
     <script src="dashboard.js"></script>
 </body>
 </html>

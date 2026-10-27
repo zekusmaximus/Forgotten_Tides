@@ -50,7 +50,7 @@ FLAGS
   --help, -h         Show this help message
 
 ENVIRONMENT
-  Requires Node.js 18+
+  Requires Node.js 20+
   Assumes project root contains: characters/, data/, stories/, data/lexicon/
   Writes to: out/prompts/
   Reads context profiles from: docs/agents/context_profiles.json

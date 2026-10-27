@@ -22,13 +22,14 @@ function levelToNumber(level) {
 
 function analyzeStakes(scenes) {
   const findings = [];
-  const byWork = {};
+  const byWork = new Map();
   scenes.forEach(scene => {
-    if (!byWork[scene.workId || 'unknown']) byWork[scene.workId || 'unknown'] = [];
-    byWork[scene.workId || 'unknown'].push(scene);
+    const key = `${scene.workKind || '(unknown kind)'}\0${scene.workId || '(unknown work)'}`;
+    if (!byWork.has(key)) byWork.set(key, []);
+    byWork.get(key).push(scene);
   });
 
-  Object.entries(byWork).forEach(([workId, workScenes]) => {
+  for (const workScenes of byWork.values()) {
     let previousLevel = null;
     workScenes.forEach(scene => {
       const stakes = scene.data.stakes || {};
@@ -49,7 +50,7 @@ function analyzeStakes(scenes) {
       }
       previousLevel = level || previousLevel;
     });
-  });
+  }
 
   return findings;
 }
@@ -78,4 +79,6 @@ function main() {
   }
 }
 
-main();
+if (require.main === module) main();
+
+module.exports = { analyzeStakes };

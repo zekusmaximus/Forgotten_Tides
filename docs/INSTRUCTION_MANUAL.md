@@ -3,7 +3,7 @@
 This manual explains the repository structure, canon guardrails, and all available tooling so contributors can ship changes without breaking continuity.
 
 ## 1) Setup
-- Requirements: Node.js 18+, npm. Install dependencies with `npm install`.
+- Requirements: Node.js 20+, npm. Install dependencies with `npm install`.
 - Run commands from the repo root.
 - Writable outputs land in `out/` (reports, chunks, graphs, compiled artifacts).
 - On Windows PowerShell, use `npm.cmd` for npm commands if execution policy blocks `npm.ps1`.
@@ -47,7 +47,7 @@ This manual explains the repository structure, canon guardrails, and all availab
 
 ## 7) Dashboard
 - Start local server: `npm run dashboard` (serves on port 8080).
-- Open `http://localhost:8080/dashboard/` to explore the Continuity Dashboard (`dashboard/README.md` for controls).
+- Open `http://127.0.0.1:8080/dashboard/` to explore the Continuity Dashboard (`dashboard/README.md` for controls).
 - Reads the current `REFERENCE_MAP.json`; use the Reload button after regenerating maps.
 
 ## 8) Chunking & Context (RAG support)
@@ -63,7 +63,7 @@ This manual explains the repository structure, canon guardrails, and all availab
 - Entry point: `node scripts/prompt/orchestrate.js "<natural language request>"` (see `docs/USAGE.md` for intents).
   - Intents include `brainstorm`, `outline`, `revise_scene`, `worldbuild_mechanics`, `compile_artifacts`, `save_scene`, `start_work`, `replace_scene`, `save_notes`, `update_outline`, `export_pack_only`.
   - Outputs land in `lore/ideas/`, `lore/notes/`, `stories/<type>/<work>/`, and `out/prompts/` depending on intent.
-- Scene utilities: `npm run scenes:list|graph|open -- --work "<name>"` (script: `scripts/prompt/scenes_cli.js`) for listing, DOT graphs, or opening scenes.
+- Scene utilities: `npm run scenes:list -- --work "<name>"`, `npm run scenes:graph -- --work "<name>"`, and `npm run scenes:open -- --scene "<ID>"` (script: `scripts/prompt/scenes_cli.js`) for listing, Mermaid graphs, or locating a scene.
 - Authoring helper: `npm run author:apply` (`scripts/prompt/authoring.js`) can save scenes/notes using flags (`--intent`, `--work`, `--scene`, `--order`, `--body_file` or stdin).
 - Export packs: `npm run pack:export` (`scripts/prompt/export_prompt_pack.js`) to build prompt packs for agents.
 - Canon filters: context and prompt-pack tools support `--canon-only`, `--include-test`, and `--include-sandbox`. Default retrieval excludes test/sandbox material and down-ranks draft sources.

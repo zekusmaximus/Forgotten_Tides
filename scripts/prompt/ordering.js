@@ -1,7 +1,8 @@
 const fs = require('fs');
 const path = require('path');
-const matter = require('gray-matter');
+const crypto = require('crypto');
 const jsyaml = require('js-yaml');
+const { normalizeSceneReference, parseManuscriptSceneReferences } = require('../lib/scene_indexer');
 
 /**
  * Manuscript Ordering Engine
@@ -25,12 +26,7 @@ class OrderingEngine {
     }
 
     try {
-      const fileContent = fs.readFileSync(manuscriptPath, 'utf8');
-      const { data: frontmatter } = matter(fileContent);
-
-      // Handle both 'scenes' and 'include' fields for backward compatibility
-      const includeList = frontmatter.scenes || frontmatter.include || [];
-      return Array.isArray(includeList) ? includeList : [];
+      return parseManuscriptSceneReferences(fs.readFileSync(manuscriptPath, 'utf8'));
     } catch (error) {
       throw new Error(`Failed to parse manuscript frontmatter: ${error.message}`);
     }
@@ -51,30 +47,75 @@ class OrderingEngine {
 
     try {
       const fileContent = fs.readFileSync(manuscriptPath, 'utf8');
-      const { data: frontmatter, content } = matter(fileContent);
-
-      // Update the frontmatter with the new include list
-      const updatedFrontmatter = {
-        ...frontmatter,
-        scenes: includeList
-      };
-
-      // Convert to YAML and write back
-      const newContent = matter.stringify(content, updatedFrontmatter);
-      fs.writeFileSync(manuscriptPath, newContent, 'utf8');
+      const header = fileContent.match(/^---\r?\n([\s\S]*?)\r?\n---(?:\r?\n|$)/);
+      const frontmatter = header ? jsyaml.load(header[1]) || {} : {};
+      if (!frontmatter || typeof frontmatter !== 'object' || Array.isArray(frontmatter)) {
+        throw new Error('Manuscript frontmatter must be a YAML object');
+      }
+      const references = OrderingEngine.normalizeList(includeList);
+      const priorEntries = Array.isArray(frontmatter.scenes) ? frontmatter.scenes
+        : Array.isArray(frontmatter.include) ? frontmatter.include : [];
+      const previousByFile = new Map();
+      for (const entry of priorEntries) {
+        const reference = normalizeSceneReference(entry);
+        if (reference && !previousByFile.has(reference.toLowerCase())) {
+          previousByFile.set(reference.toLowerCase(), entry);
+        }
+      }
+      // A single object representation retains existing title/order metadata.
+      const scenes = references.map(reference => {
+        const prior = previousByFile.get(reference.toLowerCase());
+        const id = path.posix.basename(reference, '.md');
+        return prior && typeof prior === 'object'
+          ? { ...prior, id: prior.id || id, file: reference }
+          : { id, file: reference };
+      });
+      const updatedFrontmatter = { ...frontmatter, scenes };
+      delete updatedFrontmatter.include;
+      const eol = fileContent.includes('\r\n') ? '\r\n' : '\n';
+      const frontmatterYaml = jsyaml.dump(updatedFrontmatter, { lineWidth: -1 }).replace(/\n/g, eol);
+      const body = header ? fileContent.slice(header[0].length) : fileContent;
+      const newContent = `---${eol}${frontmatterYaml}---${eol}${body}`;
+      const tempPath = `${manuscriptPath}.${process.pid}.${crypto.randomUUID()}.tmp`;
+      try {
+        fs.writeFileSync(tempPath, newContent, {
+          encoding: 'utf8', flag: 'wx', mode: fs.statSync(manuscriptPath).mode & 0o777
+        });
+        fs.renameSync(tempPath, manuscriptPath);
+      } finally {
+        if (fs.existsSync(tempPath)) fs.unlinkSync(tempPath);
+      }
     } catch (error) {
       throw new Error(`Failed to save manuscript frontmatter: ${error.message}`);
     }
   }
 
   /**
-   * Extract SC-ID from scene path (e.g., "scenes/SC-0001.md" -> "SC-0001")
+   * Extract a scene ID from a scene path (SC-0001 or SCENE_* forms)
    * @param {string} scenePath - Scene file path
    * @returns {string} SC-ID
    */
   static extractSceneId(scenePath) {
-    const match = scenePath.match(/SC-(\d{4})/);
-    return match ? match[0] : null;
+    const reference = normalizeSceneReference(scenePath);
+    if (!reference) return null;
+    const id = path.posix.basename(reference, '.md');
+    return /^(SC-\d{4,}|SCENE_[A-Z0-9_-]+)$/i.test(id) ? id : null;
+  }
+
+  static normalizeList(includeList) {
+    if (!Array.isArray(includeList)) throw new Error('includeList must be an array');
+    const seen = new Set();
+    const list = [];
+    for (const entry of includeList) {
+      const reference = normalizeSceneReference(entry);
+      if (!reference) throw new Error(`Invalid scene reference: ${JSON.stringify(entry)}`);
+      const key = reference.toLowerCase();
+      if (!seen.has(key)) {
+        seen.add(key);
+        list.push(reference);
+      }
+    }
+    return list;
   }
 
   /**
@@ -101,45 +142,48 @@ class OrderingEngine {
       throw new Error(`Invalid mode: ${mode}. Must be one of: first, last, before, after, index, midpoint`);
     }
 
-    // Deduplicate - remove existing entry if present
-    const dedupedList = includeList.filter(item => item !== sceneRelPath);
-    const newList = [...dedupedList];
+    const sceneReference = normalizeSceneReference(sceneRelPath);
+    if (!sceneReference) throw new Error(`Invalid scene reference: ${sceneRelPath}`);
+    const original = OrderingEngine.normalizeList(includeList);
+    const sceneKey = sceneReference.toLowerCase();
+    const newList = original.filter(reference => reference.toLowerCase() !== sceneKey);
+
+    if ((mode === 'before' || mode === 'after') &&
+        normalizeSceneReference(value)?.toLowerCase() === sceneKey &&
+        original.some(reference => reference.toLowerCase() === sceneKey)) {
+      return original;
+    }
+
+    const findTarget = () => {
+      if (typeof value !== 'string') {
+        throw new Error(`For "${mode}" mode, value must be a scene reference`);
+      }
+      const target = normalizeSceneReference(value);
+      if (!target) throw new Error(`Invalid reference scene: ${value}`);
+      const index = newList.findIndex(reference => reference.toLowerCase() === target.toLowerCase());
+      if (index === -1) throw new Error(`Reference scene ${value} not found in include list`);
+      return index;
+    };
 
     // Handle each insertion mode
     switch (mode) {
       case 'first':
-        newList.unshift(sceneRelPath);
+        newList.unshift(sceneReference);
         break;
 
       case 'last':
-        newList.push(sceneRelPath);
+        newList.push(sceneReference);
         break;
 
       case 'before': {
-        if (typeof value !== 'string') {
-          throw new Error('For "before" mode, value must be a scene reference (SC-ID)');
-        }
-
-        const targetIndex = includeList.findIndex(item => item.includes(value));
-        if (targetIndex === -1) {
-          throw new Error(`Reference scene ${value} not found in include list`);
-        }
-
-        newList.splice(targetIndex, 0, sceneRelPath);
+        const targetIndex = findTarget();
+        newList.splice(targetIndex, 0, sceneReference);
         break;
       }
 
       case 'after': {
-        if (typeof value !== 'string') {
-          throw new Error('For "after" mode, value must be a scene reference (SC-ID)');
-        }
-
-        const targetIndex = includeList.findIndex(item => item.includes(value));
-        if (targetIndex === -1) {
-          throw new Error(`Reference scene ${value} not found in include list`);
-        }
-
-        newList.splice(targetIndex + 1, 0, sceneRelPath);
+        const targetIndex = findTarget();
+        newList.splice(targetIndex + 1, 0, sceneReference);
         break;
       }
 
@@ -148,17 +192,17 @@ class OrderingEngine {
           throw new Error('For "index" mode, value must be a non-negative integer');
         }
 
-        if (value > includeList.length) {
-          throw new Error(`Index ${value} is out of bounds for list of length ${includeList.length}`);
+        if (value > original.length) {
+          throw new Error(`Index ${value} is out of bounds for list of length ${original.length}`);
         }
 
-        newList.splice(value, 0, sceneRelPath);
+        newList.splice(Math.min(value, newList.length), 0, sceneReference);
         break;
       }
 
       case 'midpoint': {
-        const midpoint = Math.floor(includeList.length / 2);
-        newList.splice(midpoint, 0, sceneRelPath);
+        const midpoint = Math.floor(newList.length / 2);
+        newList.splice(midpoint, 0, sceneReference);
         break;
       }
 

@@ -7,8 +7,26 @@
 
 const fs = require('fs');
 const path = require('path');
-const matter = require('gray-matter');
+const crypto = require('crypto');
 const yaml = require('js-yaml');
+
+function loadMetadata(metaPath) {
+  const data = yaml.load(fs.readFileSync(metaPath, 'utf8')) || {};
+  if (typeof data !== 'object' || Array.isArray(data)) {
+    throw new Error(`Invalid metadata object in ${metaPath}`);
+  }
+  return data;
+}
+
+function writeMetadata(metaPath, data) {
+  const tempPath = `${metaPath}.${process.pid}.${crypto.randomUUID()}.tmp`;
+  try {
+    fs.writeFileSync(tempPath, yaml.dump(data, { lineWidth: -1, noCompatMode: true }), { flag: 'wx' });
+    fs.renameSync(tempPath, metaPath);
+  } finally {
+    if (fs.existsSync(tempPath)) fs.unlinkSync(tempPath);
+  }
+}
 
 /**
  * Get current ISO timestamp
@@ -39,21 +57,12 @@ function ensureMeta(workDir, options = {}) {
     created: getCurrentISO(),
     modified: getCurrentISO()
   };
+  if (options.type) defaults.type = options.type;
 
-  // Load existing meta if it exists
+  // Preserve existing metadata on parse failure instead of replacing it.
   if (fs.existsSync(metaPath)) {
-    try {
-      const fileContent = fs.readFileSync(metaPath, 'utf8');
-      metaData = yaml.load(fileContent) || {};
-
-      // Preserve existing created date if present
-      if (metaData.created) {
-        defaults.created = metaData.created;
-      }
-    } catch (error) {
-      console.error(`Error reading existing meta.yaml: ${error.message}`);
-      // Continue with defaults if reading fails
-    }
+    metaData = loadMetadata(metaPath);
+    if (metaData.created) defaults.created = metaData.created;
   }
 
   // Merge with defaults (defaults take precedence for required fields)
@@ -62,23 +71,8 @@ function ensureMeta(workDir, options = {}) {
   // Ensure modified timestamp is updated
   metaData.modified = getCurrentISO();
 
-  // Write the meta file atomically
-  try {
-    const yamlContent = yaml.dump(metaData, {
-      lineWidth: -1, // Disable line wrapping
-      noCompatMode: true
-    });
-
-    // Write to temporary file first, then rename for atomicity
-    const tempPath = `${metaPath}.tmp`;
-    fs.writeFileSync(tempPath, yamlContent);
-    fs.renameSync(tempPath, metaPath);
-
-    return metaData;
-  } catch (error) {
-    console.error(`Error writing meta.yaml: ${error.message}`);
-    throw error;
-  }
+  writeMetadata(metaPath, metaData);
+  return metaData;
 }
 
 /**
@@ -96,21 +90,12 @@ function touchModified(workDir) {
 
   try {
     // Read existing meta
-    const fileContent = fs.readFileSync(metaPath, 'utf8');
-    const metaData = yaml.load(fileContent) || {};
+    const metaData = loadMetadata(metaPath);
 
     // Update modified timestamp
     metaData.modified = getCurrentISO();
 
-    // Write back atomically
-    const yamlContent = yaml.dump(metaData, {
-      lineWidth: -1,
-      noCompatMode: true
-    });
-
-    const tempPath = `${metaPath}.tmp`;
-    fs.writeFileSync(tempPath, yamlContent);
-    fs.renameSync(tempPath, metaPath);
+    writeMetadata(metaPath, metaData);
 
     return metaData;
   } catch (error) {
@@ -132,8 +117,7 @@ function getMeta(workDir) {
   }
 
   try {
-    const fileContent = fs.readFileSync(metaPath, 'utf8');
-    return yaml.load(fileContent) || null;
+    return loadMetadata(metaPath);
   } catch (error) {
     console.error(`Error reading meta.yaml: ${error.message}`);
     return null;

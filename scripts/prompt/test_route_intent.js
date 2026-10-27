@@ -29,7 +29,12 @@ const testCases = [
   // Existing intents should still work
   { input: "revise the scene", expected: "revise_scene" },
   { input: "create outline", expected: "outline" },
-  { input: "brainstorm ideas", expected: "brainstorm" }
+  { input: "brainstorm ideas", expected: "brainstorm" },
+  { input: "brainstorm memory corridor physics", expected: "brainstorm" },
+  { input: "worldbuild ideas about memory physics", expected: "worldbuild_mechanics" },
+  { input: "export pack for memory physics", expected: "export_pack_only" },
+  { input: "outline memory corridor mechanics", expected: "outline" },
+  { input: "compile stories for review", expected: "compile_artifacts" }
 ];
 
 let passed = 0;

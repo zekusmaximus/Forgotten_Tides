@@ -1,444 +1,133 @@
 #!/usr/bin/env node
 
-const fs = require('fs');
 const path = require('path');
-const { extract } = require('./extract_metadata');
+const { normalizeWorkKind } = require('../lib/path_safety');
+const {
+  DEFAULT_ROOT,
+  discoverWorks,
+  discoverScenes,
+  resolveWork: resolveStoredWork,
+  orderedWorkScenes
+} = require('../lib/work_resolver');
+const { parseManuscriptSceneReferences } = require('../lib/scene_indexer');
 
-// Parse frontmatter from markdown files
-function parseFrontmatter(content) {
-    const frontmatterMatch = content.match(/^---\n([\s\S]*?)\n---/);
-    if (!frontmatterMatch) return null;
-
-    const frontmatter = {};
-    const lines = frontmatterMatch[1].split('\n');
-
-    let currentKey = null;
-    let currentValue = [];
-
-    for (const line of lines) {
-        const trimmedLine = line.trim();
-        if (trimmedLine === '') continue;
-
-        // Check if this is a new key-value pair
-        const match = line.match(/^(\w+):\s*(.*)$/);
-        if (match) {
-            // Save previous key if we were collecting multi-line value
-            if (currentKey !== null) {
-                frontmatter[currentKey] = currentValue.join('\n').trim();
-            }
-
-            currentKey = match[1];
-            currentValue = [match[2].trim()];
-        } else if (currentKey !== null) {
-            // Continue collecting multi-line value
-            currentValue.push(trimmedLine);
-        }
-    }
-
-    // Save the last key-value pair
-    if (currentKey !== null) {
-        frontmatter[currentKey] = currentValue.join('\n').trim();
-    }
-
-    return frontmatter;
+function findAllWorks(root = DEFAULT_ROOT) {
+  return discoverWorks(root);
 }
 
-// Find all works in the stories directory
-function findAllWorks() {
-    // Resolve stories directory from this script's location
-    const storiesDir = path.join(__dirname, '../..', 'stories');
-    const works = [];
-
-    // Check both standard categories and the novella directory
-    const categories = ['shorts', 'novellas', 'novels', 'novella'];
-    for (const category of categories) {
-        const categoryPath = path.join(storiesDir, category);
-        if (!fs.existsSync(categoryPath)) continue;
-
-        const items = fs.readdirSync(categoryPath);
-        for (const item of items) {
-            const itemPath = path.join(categoryPath, item);
-            if (!fs.statSync(itemPath).isDirectory()) continue;
-
-            const manuscriptPath = path.join(itemPath, 'manuscript.md');
-            if (!fs.existsSync(manuscriptPath)) continue;
-
-            try {
-                const content = fs.readFileSync(manuscriptPath, 'utf8');
-                const frontmatter = parseFrontmatter(content);
-
-                if (frontmatter && frontmatter.id && frontmatter.title) {
-                    works.push({
-                        id: frontmatter.id,
-                        title: frontmatter.title,
-                        kind: frontmatter.kind || category,
-                        path: itemPath,
-                        manuscriptPath: manuscriptPath,
-                        frontmatter: frontmatter
-                    });
-                }
-            } catch (error) {
-                console.error(`Error reading ${manuscriptPath}:`, error.message);
-            }
-        }
-    }
-
-    return works;
+function resolveWork(identifier, root = DEFAULT_ROOT, kind = null) {
+  return resolveStoredWork(identifier, { root, kind });
 }
 
-// Find scenes in a specific work directory
-function findScenesInWork(workPath) {
-    const scenes = [];
-    const scenesDir = path.join(workPath, 'scenes');
-
-    if (fs.existsSync(scenesDir)) {
-        const sceneFiles = fs.readdirSync(scenesDir);
-        for (const sceneFile of sceneFiles) {
-            if (sceneFile.endsWith('.md')) {
-                const scenePath = path.join(scenesDir, sceneFile);
-                try {
-                    const content = fs.readFileSync(scenePath, 'utf8');
-                    const frontmatter = parseFrontmatter(content);
-                    const sceneId = path.basename(sceneFile, '.md');
-
-                    scenes.push({
-                        id: sceneId,
-                        title: frontmatter?.title || sceneId,
-                        path: scenePath,
-                        frontmatter: frontmatter
-                    });
-                } catch (error) {
-                    console.error(`Error reading ${scenePath}:`, error.message);
-                }
-            }
-        }
-    }
-
-    return scenes;
+function findScenesInWork(workPath, root = DEFAULT_ROOT) {
+  const work = discoverWorks(root).find(candidate => candidate.path === path.resolve(workPath));
+  if (!work) throw new Error(`Work not found: ${workPath}`);
+  return discoverScenes(root, { work });
 }
 
-// Parse manuscript scenes from both formats
-function parseManuscriptScenes(manuscriptContent) {
-    const frontmatter = parseFrontmatter(manuscriptContent);
-    if (!frontmatter || !frontmatter.scenes) {
-        return [];
-    }
-
-    const scenes = [];
-    const scenesText = frontmatter.scenes;
-
-    // Handle simple array format: scenes: [file1, file2, ...]
-    if (scenesText.startsWith('[') && scenesText.endsWith(']')) {
-        // Try to parse as simple array
-        const simpleItems = scenesText.slice(1, -1).split(',').map(item => item.trim());
-        return simpleItems.filter(item => item);
-    }
-
-    // Handle complex YAML format with nested objects
-    const lines = scenesText.split('\n');
-    let currentScene = null;
-
-    for (const line of lines) {
-        const trimmedLine = line.trim();
-        if (trimmedLine === '') continue;
-
-        if (trimmedLine.startsWith('- ')) {
-            // New scene entry
-            if (currentScene !== null) {
-                scenes.push(currentScene);
-            }
-            currentScene = {};
-        } else if (currentScene !== null) {
-            // Parse scene properties
-            const parts = trimmedLine.split(':').map(part => part.trim());
-            if (parts.length === 2) {
-                const key = parts[0];
-                const value = parts[1];
-                currentScene[key] = value;
-            }
-        }
-    }
-
-    // Add the last scene
-    if (currentScene !== null) {
-        scenes.push(currentScene);
-    }
-
-    // Convert to file paths
-    return scenes.map(scene => {
-        if (scene.file) {
-            return scene.file;
-        } else if (scene.id) {
-            return `scenes/${scene.id}.md`;
-        }
-        return '';
-    }).filter(file => file);
+function parseManuscriptScenes(content) {
+  return parseManuscriptSceneReferences(content);
 }
 
-// Resolve work by ID or title
-function resolveWork(workIdentifier) {
-    const works = findAllWorks();
-
-    // Try exact ID match first
-    const exactIdMatch = works.find(w => w.id === workIdentifier);
-    if (exactIdMatch) {
-        return exactIdMatch;
-    }
-
-    // Try fuzzy title matching
-    const titleMatches = works.filter(work =>
-        work.title.toLowerCase().includes(workIdentifier.toLowerCase())
-    );
-
-    if (titleMatches.length === 1) {
-        return titleMatches[0];
-    } else if (titleMatches.length > 1) {
-        console.error(`Multiple works match "${workIdentifier}":`);
-        titleMatches.forEach(match => {
-            console.error(`  - ${match.title} (${match.id})`);
-        });
-        return null;
-    }
-
-    console.error(`Work not found: ${workIdentifier}`);
-    return null;
+function resolveScene(identifier, root = DEFAULT_ROOT, workIdentifier = null) {
+  if (typeof identifier !== 'string' || !identifier.trim()) throw new Error('Scene ID or path is required');
+  const work = workIdentifier ? resolveWork(workIdentifier, root) : null;
+  const scenes = work ? discoverScenes(root, { work }) : discoverScenes(root, { includeShared: true });
+  const value = identifier.trim().toLowerCase().replace(/\\/g, '/');
+  const exact = scenes.filter(scene => [scene.id, scene.fileId, scene.path,
+    path.relative(root, scene.path).replace(/\\/g, '/'), scene.relativePath]
+    .some(candidate => candidate.toLowerCase().replace(/\\/g, '/') === value));
+  if (exact.length === 1) return exact[0];
+  if (exact.length > 1) throw new Error(`Ambiguous scene "${identifier}"; pass --work`);
+  const partial = scenes.filter(scene => scene.title.toLowerCase().includes(value));
+  if (partial.length === 1) return partial[0];
+  if (partial.length > 1) throw new Error(`Ambiguous scene "${identifier}"; pass --work or a full scene ID`);
+  throw new Error(`Scene not found: ${identifier}`);
 }
 
-// Resolve scene by ID or path
-function resolveScene(sceneIdentifier) {
-    const storiesDir = path.join(__dirname, '../..', 'stories');
-    const categories = ['shorts', 'novellas', 'novels', 'novella'];
-    const allScenes = [];
-
-    // Search in all work directories
-    for (const category of categories) {
-        const categoryPath = path.join(storiesDir, category);
-        if (!fs.existsSync(categoryPath)) continue;
-
-        const items = fs.readdirSync(categoryPath);
-        for (const item of items) {
-            const itemPath = path.join(categoryPath, item);
-            if (!fs.statSync(itemPath).isDirectory()) continue;
-
-            const scenesDir = path.join(itemPath, 'scenes');
-            if (fs.existsSync(scenesDir)) {
-                const sceneFiles = fs.readdirSync(scenesDir);
-                for (const sceneFile of sceneFiles) {
-                    if (sceneFile.endsWith('.md')) {
-                        const scenePath = path.join(scenesDir, sceneFile);
-                        const sceneId = path.basename(sceneFile, '.md');
-                        allScenes.push({
-                            id: sceneId,
-                            path: scenePath
-                        });
-                    }
-                }
-            }
-        }
-    }
-
-    // Try exact ID match first
-    const exactIdMatch = allScenes.find(s => s.id === sceneIdentifier);
-    if (exactIdMatch) {
-        return exactIdMatch;
-    }
-
-    // Try exact path match
-    const exactPathMatch = allScenes.find(s => s.path === sceneIdentifier || s.path === path.resolve(sceneIdentifier));
-    if (exactPathMatch) {
-        return exactPathMatch;
-    }
-
-    // Try fuzzy path matching
-    const pathMatches = allScenes.filter(scene =>
-        scene.path.toLowerCase().includes(sceneIdentifier.toLowerCase())
-    );
-
-    if (pathMatches.length === 1) {
-        return pathMatches[0];
-    } else if (pathMatches.length > 1) {
-        console.error(`Multiple scenes match "${sceneIdentifier}":`);
-        pathMatches.forEach(match => {
-            console.error(`  - ${match.id}: ${match.path}`);
-        });
-        return null;
-    }
-
-    console.error(`Scene not found: ${sceneIdentifier}`);
-    return null;
+function listCommand(workIdentifier, options = {}) {
+  const root = options.root || DEFAULT_ROOT;
+  const work = resolveWork(workIdentifier, root, options.kind);
+  if (!work.manuscriptPath) throw new Error(`Manuscript not found for ${work.directoryId}`);
+  const scenes = orderedWorkScenes(work);
+  console.log('index | SC-ID       | title                          | path');
+  console.log('------|------------|--------------------------------|-------------------------------');
+  scenes.forEach((scene, index) => {
+    const relative = path.relative(root, scene.path);
+    console.log(`${String(index).padEnd(5)} | ${scene.fileId.padEnd(10)} | ${scene.title.padEnd(30)} | ${relative}`);
+  });
+  return scenes;
 }
 
-// List command
-function listCommand(workIdentifier) {
-    const work = resolveWork(workIdentifier);
-    if (!work) {
-        process.exit(1);
-    }
-
-    try {
-        // Read manuscript to get scene order
-        const manuscriptContent = fs.readFileSync(work.manuscriptPath, 'utf8');
-        const scenePaths = parseManuscriptScenes(manuscriptContent);
-
-        // Get all scenes with their metadata
-        const allScenes = findScenesInWork(work.path);
-
-        // Create a map of scene files to their metadata
-        const sceneMap = {};
-        allScenes.forEach(scene => {
-            const sceneFilename = path.basename(scene.path);
-            sceneMap[sceneFilename] = scene;
-        });
-
-        // Output table header
-        console.log('index | SC-ID       | title                          | path');
-        console.log('------|------------|--------------------------------|-------------------------------');
-
-        // Output scenes in manuscript order
-        scenePaths.forEach((scenePath, index) => {
-            const sceneFilename = path.basename(scenePath);
-            const scene = sceneMap[sceneFilename];
-
-            if (scene) {
-                const relativePath = path.relative(process.cwd(), scene.path);
-                console.log(`${index.toString().padEnd(5)} | ${scene.id.padEnd(10)} | ${(scene.title || '').padEnd(30)} | ${relativePath}`);
-            } else {
-                console.log(`${index.toString().padEnd(5)} | ${sceneFilename.padEnd(10)} | ${'MISSING'.padEnd(30)} | ${scenePath}`);
-            }
-        });
-
-    } catch (error) {
-        console.error(`Error listing scenes: ${error.message}`);
-        process.exit(1);
-    }
+function graphCommand(workIdentifier, options = {}) {
+  const root = options.root || DEFAULT_ROOT;
+  const work = resolveWork(workIdentifier, root, options.kind);
+  if (!work.manuscriptPath) throw new Error(`Manuscript not found for ${work.directoryId}`);
+  const scenes = orderedWorkScenes(work);
+  console.log('graph TD');
+  scenes.forEach((scene, index) => {
+    const label = `${scene.fileId}: ${scene.title}`.replace(/[\r\n]/g, ' ').replace(/["\\]/g, '\\$&');
+    console.log(`  n${index}["${label}"]`);
+    if (index > 0) console.log(`  n${index - 1} --> n${index}`);
+  });
+  return scenes;
 }
 
-// Graph command
-function graphCommand(workIdentifier) {
-    const work = resolveWork(workIdentifier);
-    if (!work) {
-        process.exit(1);
-    }
-
-    try {
-        // Read manuscript to get scene order
-        const manuscriptContent = fs.readFileSync(work.manuscriptPath, 'utf8');
-        const scenePaths = parseManuscriptScenes(manuscriptContent);
-
-        if (scenePaths.length === 0) {
-            console.log('graph TD');
-            return;
-        }
-
-        // Get all scenes with their metadata
-        const allScenes = findScenesInWork(work.path);
-
-        // Create a map of scene files to their metadata
-        const sceneMap = {};
-        allScenes.forEach(scene => {
-            const sceneFilename = path.basename(scene.path);
-            sceneMap[sceneFilename] = scene;
-        });
-
-        // Generate Mermaid graph
-        console.log('graph TD');
-
-        // Generate scene linkages
-        const sceneIds = scenePaths.map(scenePath => {
-            const sceneFilename = path.basename(scenePath);
-            const scene = sceneMap[sceneFilename];
-            return scene ? scene.id : path.basename(scenePath, '.md');
-        });
-
-        // Output linkages
-        for (let i = 0; i < sceneIds.length - 1; i++) {
-            console.log(`  ${sceneIds[i]} --> ${sceneIds[i + 1]}`);
-        }
-
-        // Output scene labels with titles if available
-        sceneIds.forEach(sceneId => {
-            const scene = allScenes.find(s => s.id === sceneId);
-            if (scene && scene.title && scene.title !== scene.id) {
-                console.log(`  ${sceneId}["${scene.title}"]`);
-            }
-        });
-
-    } catch (error) {
-        console.error(`Error generating graph: ${error.message}`);
-        process.exit(1);
-    }
+function openCommand(sceneIdentifier, options = {}) {
+  const scene = resolveScene(sceneIdentifier, options.root || DEFAULT_ROOT, options.work || null);
+  console.log(scene.path);
+  return scene;
 }
 
-// Open command
-function openCommand(sceneIdentifier) {
-    const scene = resolveScene(sceneIdentifier);
-    if (!scene) {
-        process.exit(1);
+function parseOptions(argv) {
+  const [command, ...rest] = argv;
+  if (!['list', 'graph', 'open'].includes(command)) {
+    throw new Error('Usage: scenes_cli.js <list|graph|open> --work <ID_or_Title> | --scene <ID_or_path>');
+  }
+  const options = {};
+  for (let index = 0; index < rest.length; index += 2) {
+    const flag = rest[index];
+    const value = rest[index + 1];
+    if (!['--work', '--scene', '--kind'].includes(flag) || !value || value.startsWith('--')) {
+      throw new Error(`Unsupported or incomplete option: ${flag || '(none)'}`);
     }
-
-    // Output absolute path
-    const absolutePath = path.resolve(scene.path);
-    console.log(absolutePath);
+    const key = flag.slice(2);
+    if (options[key]) throw new Error(`Duplicate option: ${flag}`);
+    options[key] = value;
+  }
+  if (options.kind) options.kind = normalizeWorkKind(options.kind);
+  if ((command === 'list' || command === 'graph') && (!options.work || options.scene)) {
+    throw new Error(`Usage: scenes_cli.js ${command} --work <ID_or_Title> [--kind <kind>]`);
+  }
+  if (command === 'open' && (!options.scene || options.kind)) {
+    throw new Error('Usage: scenes_cli.js open --scene <ID_or_path> [--work <ID_or_Title>]');
+  }
+  return { command, options };
 }
 
-// Main CLI function
-function main() {
-    const args = process.argv.slice(2);
-
-    if (args.length === 0) {
-        console.error('Usage: scenes_cli.js <command> [options]');
-        console.error('');
-        console.error('Commands:');
-        console.error('  list    --work <ID_or_Title>    List scenes in a work');
-        console.error('  graph   --work <ID_or_Title>    Generate Mermaid graph of scene linkages');
-        console.error('  open    --scene <SC-ID_or_path> Print absolute path to scene');
-        process.exit(1);
-    }
-
-    const command = args[0];
-
-    switch (command) {
-        case 'list':
-            if (args.length < 3 || args[1] !== '--work') {
-                console.error('Usage: scenes_cli.js list --work <ID_or_Title>');
-                process.exit(1);
-            }
-            listCommand(args[2]);
-            break;
-
-        case 'graph':
-            if (args.length < 3 || args[1] !== '--work') {
-                console.error('Usage: scenes_cli.js graph --work <ID_or_Title>');
-                process.exit(1);
-            }
-            graphCommand(args[2]);
-            break;
-
-        case 'open':
-            if (args.length < 3 || args[1] !== '--scene') {
-                console.error('Usage: scenes_cli.js open --scene <SC-ID_or_path>');
-                process.exit(1);
-            }
-            openCommand(args[2]);
-            break;
-
-        default:
-            console.error(`Unknown command: ${command}`);
-            console.error('Available commands: list, graph, open');
-            process.exit(1);
-    }
+function main(argv = process.argv.slice(2)) {
+  try {
+    const { command, options } = parseOptions(argv);
+    if (command === 'list') listCommand(options.work, options);
+    else if (command === 'graph') graphCommand(options.work, options);
+    else openCommand(options.scene, options);
+  } catch (error) {
+    console.error(error.message);
+    process.exitCode = 1;
+  }
 }
 
-// Run main function
-if (require.main === module) {
-    main();
-}
+if (require.main === module) main();
 
 module.exports = {
-    listCommand,
-    graphCommand,
-    openCommand,
-    resolveWork,
-    resolveScene,
-    findAllWorks
+  findAllWorks,
+  findScenesInWork,
+  parseManuscriptScenes,
+  resolveWork,
+  resolveScene,
+  listCommand,
+  graphCommand,
+  openCommand,
+  parseOptions,
+  main
 };

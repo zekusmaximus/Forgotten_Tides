@@ -16,14 +16,14 @@ function parseArgs() {
 
 function lintKnowledge(scenes) {
   const findings = [];
-  const byWork = {};
+  const byWork = new Map();
   scenes.forEach(scene => {
-    const key = scene.workId || 'unknown';
-    if (!byWork[key]) byWork[key] = [];
-    byWork[key].push(scene);
+    const key = `${scene.workKind || '(unknown kind)'}\0${scene.workId || '(unknown work)'}`;
+    if (!byWork.has(key)) byWork.set(key, []);
+    byWork.get(key).push(scene);
   });
 
-  Object.values(byWork).forEach(workScenes => {
+  for (const workScenes of byWork.values()) {
     const state = {};
     workScenes.forEach(scene => {
       const deltas = scene.data.knowledge_delta || [];
@@ -60,7 +60,7 @@ function lintKnowledge(scenes) {
         }
       });
     });
-  });
+  }
   return findings;
 }
 
@@ -87,4 +87,6 @@ function main() {
   }
 }
 
-main();
+if (require.main === module) main();
+
+module.exports = { lintKnowledge };

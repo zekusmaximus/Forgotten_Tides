@@ -10,11 +10,7 @@ const { discoverMarkdownFiles, toPosixPath } = require('../lib/content_discovery
  * Parses timeline events and story dates to detect inconsistencies
  */
 
-// Ensure output directory exists
 const outputDir = path.join(__dirname, '../../out/reports');
-if (!fs.existsSync(outputDir)) {
-    fs.mkdirSync(outputDir, { recursive: true });
-}
 
 const timelineReport = {
     timestamp: new Date().toISOString(),
@@ -35,6 +31,8 @@ const timelineReport = {
         canonical_event_count: 0,
         draft_event_count: 0,
         frontmatter_event_count: 0,
+        duplicate_event_count: 0,
+        event_conflicts: 0,
         hard_failures: 0,
         soft_warnings: 0,
         timeline_span: null
@@ -116,18 +114,6 @@ function parseTimelineEvents() {
     timelineReport.events = timelineEvents;
     recomputeEventSummary();
 
-    // Calculate timeline span if we have events
-    if (timelineEvents.some(e => e.date)) {
-        const dates = timelineEvents.filter(e => e.date).map(e => new Date(e.date));
-        const minDate = new Date(Math.min(...dates));
-        const maxDate = new Date(Math.max(...dates));
-        timelineReport.summary.timeline_span = {
-            start: minDate.toISOString(),
-            end: maxDate.toISOString(),
-            duration_days: Math.floor((maxDate - minDate) / (1000 * 60 * 60 * 24))
-        };
-    }
-
     return timelineEvents;
 }
 
@@ -174,32 +160,48 @@ function parseTimelineSection(section, source = 'timeline') {
 /**
  * Parse individual event
  */
+function parseRelativeT(dateStr) {
+    const base = dateStr.match(/^T(\d+)(.*)$/i);
+    if (!base) return null;
+    const stage = Number(base[1]);
+    if (!Number.isSafeInteger(stage)) return { stage: null, offsetMs: null };
+    if (!base[2].trim()) return { stage, offsetMs: 0 };
+    const offset = base[2].match(/^\s*([+-])\s*(\d+(?:\.\d+)?)\s*(m|min|mins|minute|minutes|h|hr|hrs|hour|hours|d|day|days)\s*$/i);
+    if (!offset) return { stage, offsetMs: null };
+    const amount = Number(offset[2]);
+    const unit = offset[3].toLowerCase();
+    const multiplier = unit.startsWith('m') ? 60_000 : unit.startsWith('h') ? 3_600_000 : 86_400_000;
+    return { stage, offsetMs: (offset[1] === '-' ? -1 : 1) * amount * multiplier };
+}
+
 function parseEvent(dateStr, description, source) {
     try {
+        dateStr = dateStr instanceof Date ? dateStr.toISOString() : String(dateStr);
         // Try to parse different date formats
         let dateObj;
+        const relativeT = parseRelativeT(dateStr);
 
         // ISO date format
         if (/^\d{4}-\d{2}-\d{2}$/.test(dateStr)) {
-            dateObj = new Date(dateStr);
+            dateObj = new Date(`${dateStr}T00:00:00.000Z`);
         }
         // Year format
         else if (/^Year (\d+)$/.test(dateStr)) {
             const year = parseInt(dateStr.match(/^Year (\d+)$/)[1]);
-            dateObj = new Date(year, 0, 1); // January 1st of that year
+            dateObj = new Date(Date.UTC(year, 0, 1));
         }
         // Cycle format
         else if (/^Cycle (\d+)$/.test(dateStr)) {
             const cycle = parseInt(dateStr.match(/^Cycle (\d+)$/)[1]);
             // Assuming 1 cycle = 100 years for this universe
             const year = 2000 + (cycle * 100);
-            dateObj = new Date(year, 0, 1);
-        } else if (/^T(\d+)([+-].*)?$/.test(dateStr)) {
-            // Relative T0, T1, T0+48h, T2-0.5 etc. Anchor to year 2000 + T offset for sorting/span
-            const m = dateStr.match(/^T(\d+)([+-].*)?$/);
-            const t = parseInt(m[1], 10);
-            const year = 2000 + t;
-            dateObj = new Date(year, 0, 1);
+            dateObj = new Date(Date.UTC(year, 0, 1));
+        } else if (relativeT) {
+            // T labels are local to a story. The synthetic date is only a
+            // display value; consistency checks compare local offsets below.
+            dateObj = relativeT.stage !== null && relativeT.offsetMs !== null
+                ? new Date(Date.UTC(2000 + relativeT.stage, 0, 1) + relativeT.offsetMs)
+                : null;
         } else {
             // Try to parse as general date
             dateObj = new Date(dateStr);
@@ -209,13 +211,16 @@ function parseEvent(dateStr, description, source) {
         }
 
         return {
-            date: dateObj.toISOString(),
+            date: dateObj ? dateObj.toISOString() : null,
             original_date: dateStr,
             description: description,
             source: source,
             raw: `${dateStr}: ${description}`,
-            is_relative: !/^\d{4}-\d{2}-\d{2}$/.test(dateStr) && !/^Year \d+$/.test(dateStr),
-            offset: /T\d+[+-]|T\d+/.test(dateStr) ? dateStr : null
+            is_relative: !/^\d{4}-\d{2}-\d{2}$/.test(dateStr) && !/^Year \d+$/.test(dateStr) &&
+                !/^\d{4}-\d{2}-\d{2}T/.test(dateStr),
+            relative_base: relativeT?.stage ?? null,
+            relative_offset_ms: relativeT?.offsetMs ?? null,
+            offset: relativeT ? dateStr : null
         };
     } catch (error) {
         console.warn(`Failed to parse event "${dateStr}": ${error.message}`);
@@ -300,104 +305,138 @@ function parseStoryTimelines() {
     return stories;
 }
 
-/**
- * Check for timeline inconsistencies
- */
-function checkTimelineConsistency(timelineEvents, stories) {
-    // Check stories against timeline events
-    for (const story of stories) {
-        if (story.date) {
-            const storyDate = new Date(story.date);
-
-            // Check if story date conflicts with known timeline events
-            for (const event of timelineEvents) {
-                const eventDate = new Date(event.date);
-
-                // If dates are exactly the same, that's fine (story might be about the event)
-                if (Math.abs(storyDate - eventDate) < 1000) {
-                    continue;
-                }
-
-                // Check for impossible sequences (e.g., story set before earliest timeline event)
-                if (timelineReport.summary.timeline_span) {
-                    const timelineStart = new Date(timelineReport.summary.timeline_span.start);
-                    const timelineEnd = new Date(timelineReport.summary.timeline_span.end);
-
-                    if (storyDate < timelineStart) {
-                        const issue = {
-                            type: 'hard',
-                            story: story.name,
-                            issue: `Story date ${story.date} is before earliest timeline event ${timelineReport.summary.timeline_span.start}`,
-                            story_date: story.date,
-                            timeline_start: timelineReport.summary.timeline_span.start
-                        };
-                        timelineReport.issues.hard.push(issue);
-                    } else if (storyDate > timelineEnd) {
-                        const issue = {
-                            type: 'soft', // Could be future story
-                            story: story.name,
-                            issue: `Story date ${story.date} is after latest timeline event ${timelineReport.summary.timeline_span.end}`,
-                            story_date: story.date,
-                            timeline_end: timelineReport.summary.timeline_span.end
-                        };
-                        timelineReport.issues.soft.push(issue);
-                    }
-                }
-            }
+function deduplicateEvents(events, report = timelineReport) {
+    const byId = new Map();
+    const conflicts = new Map();
+    const unique = [];
+    report.summary.duplicate_event_count = 0;
+    report.summary.event_conflicts = 0;
+    for (const event of events) {
+        if (!event.id) {
+            unique.push(event);
+            continue;
+        }
+        const original = byId.get(event.id);
+        if (!original) {
+            const kept = { ...event, sources: [event.source] };
+            byId.set(event.id, kept);
+            unique.push(kept);
+            continue;
         }
 
-        // Check story events against timeline
-        for (const event of story.events) {
-            if (event.date) {
-                const eventDate = new Date(event.date);
-
-                // Check against other story events for consistency
-                for (const otherEvent of story.events) {
-                    if (otherEvent === event) continue;
-
-                    if (otherEvent.date && new Date(otherEvent.date) < eventDate) {
-                        // This is fine, events should be in order
-                        continue;
-                    }
-
-                    // If we have before/after relationships, check them
-                    if (event.relationships) {
-                        for (const rel of event.relationships) {
-                            if (rel.type === 'before' && rel.target) {
-                                const targetEvent = story.events.find(e => e.id === rel.target);
-                                if (targetEvent && targetEvent.date && new Date(targetEvent.date) <= eventDate) {
-                                    const issue = {
-                                        type: 'hard',
-                                        story: story.name,
-                                        issue: `Event ${event.id} is supposed to be before ${rel.target} but dates show otherwise`,
-                                        event1: event.id,
-                                        event2: rel.target,
-                                        date1: event.date,
-                                        date2: targetEvent.date
-                                    };
-                                    timelineReport.issues.hard.push(issue);
-                                }
-                            }
-                        }
-                    }
-                }
+        report.summary.duplicate_event_count += 1;
+        if (!original.sources.includes(event.source)) original.sources.push(event.source);
+        const existingRelationships = new Set((original.relationships || []).map(rel => JSON.stringify(rel)));
+        for (const rel of event.relationships || []) {
+            const key = JSON.stringify(rel);
+            if (!existingRelationships.has(key)) {
+                original.relationships = [...(original.relationships || []), rel];
+                existingRelationships.add(key);
+            }
+        }
+        for (const field of ['original_date', 'summary', 'canon_tier']) {
+            if (String(original[field] || '').trim() !== String(event[field] || '').trim()) {
+                if (!conflicts.has(event.id)) conflicts.set(event.id, new Set());
+                conflicts.get(event.id).add(field);
             }
         }
     }
+    for (const [id, fields] of conflicts) {
+        const kept = byId.get(id);
+        report.issues.soft.push({
+            type: 'soft',
+            event_id: id,
+            issue: `Conflicting definitions for event ${id}`,
+            fields: [...fields].sort(),
+            sources: kept.sources
+        });
+    }
+    report.summary.event_conflicts = conflicts.size;
+    return unique;
+}
 
-    // Check timeline events for internal consistency
-    for (let i = 1; i < timelineEvents.length; i++) {
-        const prevEvent = timelineEvents[i - 1];
-        const currEvent = timelineEvents[i];
+function updateTimelineSpan(events, report = timelineReport) {
+    // T/Cycle labels have local meaning. Do not treat their display dates as a
+    // shared calendar anchor when checking whether a story lies outside the span.
+    const absolute = events.filter(event => event.date && event.is_relative === false)
+        .map(event => new Date(event.date).getTime()).filter(Number.isFinite);
+    if (!absolute.length) {
+        report.summary.timeline_span = null;
+        return null;
+    }
+    const start = new Date(Math.min(...absolute));
+    const end = new Date(Math.max(...absolute));
+    report.summary.timeline_span = {
+        start: start.toISOString(),
+        end: end.toISOString(),
+        duration_days: Math.floor((end - start) / 86_400_000)
+    };
+    return report.summary.timeline_span;
+}
 
-        if (new Date(currEvent.date) < new Date(prevEvent.date)) {
-            const issue = {
-                type: 'hard',
-                issue: `Timeline events out of order: ${prevEvent.original_date} comes after ${currEvent.original_date}`,
-                event1: prevEvent.raw,
-                event2: currEvent.raw
-            };
-            timelineReport.issues.hard.push(issue);
+function compareEventDates(a, b) {
+    if (a.relative_base !== null && a.relative_base !== undefined &&
+        b.relative_base !== null && b.relative_base !== undefined) {
+        if (a.relative_base === b.relative_base && a.relative_offset_ms !== null && b.relative_offset_ms !== null) {
+            return Math.sign(a.relative_offset_ms - b.relative_offset_ms);
+        }
+        if (a.relative_offset_ms === 0 && b.relative_offset_ms === 0) {
+            return Math.sign(a.relative_base - b.relative_base);
+        }
+        return null;
+    }
+    if (a.is_relative || b.is_relative || !a.date || !b.date) return null;
+    const left = new Date(a.date).getTime();
+    const right = new Date(b.date).getTime();
+    return Number.isFinite(left) && Number.isFinite(right) ? Math.sign(left - right) : null;
+}
+
+/** Check absolute timeline bounds and relationships within each story. */
+function checkTimelineConsistency(timelineEvents, stories, report = timelineReport) {
+    const span = report.summary.timeline_span;
+    for (const story of stories) {
+        if (span && story.date) {
+            const parsed = parseEvent(story.date, `Story ${story.name}`, story.file);
+            if (parsed && parsed.date && !parsed.is_relative) {
+                const storyDate = new Date(parsed.date).getTime();
+                if (storyDate < new Date(span.start).getTime()) {
+                    report.issues.hard.push({
+                        type: 'hard', story: story.name,
+                        issue: `Story date ${story.date} is before earliest timeline event ${span.start}`,
+                        story_date: story.date, timeline_start: span.start
+                    });
+                } else if (storyDate > new Date(span.end).getTime()) {
+                    report.issues.soft.push({
+                        type: 'soft', story: story.name,
+                        issue: `Story date ${story.date} is after latest timeline event ${span.end}`,
+                        story_date: story.date, timeline_end: span.end
+                    });
+                }
+            }
+        }
+
+        const byId = new Map(story.events.map(event => [event.id, event]));
+        const seen = new Set();
+        for (const event of story.events) {
+            for (const rel of event.relationships || []) {
+                if (!rel || !['before', 'after'].includes(rel.type) || !rel.target) continue;
+                const key = `${event.id}\0${rel.type}\0${rel.target}`;
+                if (seen.has(key)) continue;
+                seen.add(key);
+                const target = byId.get(rel.target);
+                if (!target) continue;
+                const comparison = compareEventDates(event, target);
+                const invalid = comparison !== null &&
+                    (rel.type === 'before' ? comparison >= 0 : comparison <= 0);
+                if (invalid) {
+                    report.issues.hard.push({
+                        type: 'hard', story: story.name,
+                        issue: `Event ${event.id} is supposed to be ${rel.type} ${rel.target} but dates show otherwise`,
+                        event1: event.id, event2: rel.target,
+                        date1: event.original_date, date2: target.original_date
+                    });
+                }
+            }
         }
     }
 }
@@ -410,6 +449,7 @@ function writeReport() {
     timelineReport.summary.soft_warnings = timelineReport.issues.soft.length;
 
     const reportPath = path.join(outputDir, 'timeline_variance.json');
+    fs.mkdirSync(outputDir, { recursive: true });
     fs.writeFileSync(reportPath, JSON.stringify(timelineReport, null, 2));
 
     console.log(`Timeline variance report written to: ${reportPath}`);
@@ -432,7 +472,7 @@ function writeReport() {
     }
 }
 
-// Main execution
+function main() {
 try {
     console.log('Parsing timeline events...');
     let timelineEvents = parseTimelineEvents();
@@ -474,8 +514,13 @@ try {
         return sa.localeCompare(sb);
     });
 
+    timelineReport.events = timelineEvents;
     console.log('Parsing story timelines...');
     const stories = parseStoryTimelines();
+    timelineEvents = deduplicateEvents(timelineReport.events);
+    timelineReport.events = timelineEvents;
+    recomputeEventSummary();
+    updateTimelineSpan(timelineEvents);
 
     if (timelineReport.summary.story_files_seen > 0 && timelineReport.summary.total_stories === 0) {
         timelineReport.issues.hard.push({
@@ -501,6 +546,9 @@ try {
     console.error('Error running timeline variance check:', error);
     process.exit(1);
 }
+}
+
+if (require.main === module) main();
 
 function parseTimelineDataEvents() {
     const timelinePath = path.join(__dirname, '../../data/timeline/events.yaml');
@@ -580,12 +628,17 @@ function normalizeStructuredEvent(event, source, storyName = null) {
         id: event.id,
         date: parsed?.date || null,
         original_date: timestamp || null,
+        is_relative: parsed?.is_relative ?? null,
+        relative_base: parsed?.relative_base ?? null,
+        relative_offset_ms: parsed?.relative_offset_ms ?? null,
         description: event.summary || event.description || event.event || '',
         summary: event.summary || event.description || event.event || '',
         canon_tier: event.canon_tier || 'draft',
         source,
+        declared_source: event.source || null,
         story: storyName || event.story || null,
         involved_entities: event.involved_entities || event.entities || [],
+        relationships: Array.isArray(event.relationships) ? event.relationships : [],
         causal_note: event.causal_note || '',
         raw: parsed?.raw || `${timestamp || 'undated'}: ${event.summary || event.description || event.event || event.id}`
     };
@@ -596,3 +649,12 @@ function recomputeEventSummary() {
     timelineReport.summary.canonical_event_count = timelineReport.events.filter(event => ['primary_canon', 'working_canon'].includes(event.canon_tier)).length;
     timelineReport.summary.draft_event_count = timelineReport.events.filter(event => event.canon_tier === 'draft').length;
 }
+
+module.exports = {
+    parseEvent,
+    normalizeStructuredEvent,
+    deduplicateEvents,
+    updateTimelineSpan,
+    compareEventDates,
+    checkTimelineConsistency
+};

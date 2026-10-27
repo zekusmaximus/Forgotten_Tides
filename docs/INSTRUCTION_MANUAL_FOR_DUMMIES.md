@@ -135,7 +135,7 @@ This is optional if you’re writing manually.
 
 ## 9) The dashboard (visual sanity check)
 ### `npm run dashboard`
-Starts a local server at `http://localhost:8080/dashboard/`.  
+Starts a local server at `http://127.0.0.1:8080/dashboard/`.
 Use this to **visualize relationships** and check for missing links.
 
 If nothing shows up, run `npm run linkmap:build` first.

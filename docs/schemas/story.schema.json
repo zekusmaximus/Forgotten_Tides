@@ -8,7 +8,7 @@
   "properties": {
     "id": {
       "type": "string",
-      "pattern": "^story-\\d{4}$",
+      "pattern": "^story-\\d{4,}$",
       "description": "Story ID in format story-####"
     },
     "schema_version": {
@@ -58,7 +58,7 @@
     },
     "story_type": {
       "type": "string",
-      "enum": ["short-story", "novel", "novella", "scene", "fragment"],
+      "enum": ["short-story", "novel", "novella", "screenplay", "scene", "fragment"],
       "description": "Type of story"
     },
     "summary_50": {
@@ -107,7 +107,7 @@
           "type": "array",
           "items": {
             "type": "string",
-            "pattern": "^story-\\d{4}$"
+            "pattern": "^story-\\d{4,}$"
           }
         }
       },
@@ -149,11 +149,30 @@
           "type": "array",
           "items": {
             "type": "string",
-            "pattern": "^story-\\d{4}$"
+            "pattern": "^story-\\d{4,}$"
           }
         }
       },
       "additionalProperties": false
+    },
+    "scenes": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          { "type": "string" },
+          {
+            "type": "object",
+            "required": ["id", "file"],
+            "properties": {
+              "id": { "type": "string" },
+              "title": { "type": "string" },
+              "order": { "type": "integer", "minimum": 0 },
+              "file": { "type": "string" }
+            },
+            "additionalProperties": true
+          }
+        ]
+      }
     },
     "timeline": {
       "type": "object",

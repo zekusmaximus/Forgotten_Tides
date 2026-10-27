@@ -85,46 +85,70 @@ function parseMatter(raw) {
 function readFM(p) {
   const raw = fs.readFileSync(p, "utf8");
   const fm = parseMatter(raw);
-  return { meta: fm.data || {}, body: fm.content || "" };
+  return fm.data || {};
 }
 
-function findById(id, options = {}) {
+function buildEntityIndex(ids, options) {
+  const byId = new Map();
+  const unresolved = new Set(ids);
   const dirs = ['characters', 'factions', 'atlas', 'mechanics', 'stories', 'lore', 'data'];
   const files = globFiles(`{${dirs.join(',')}}/**/*.md`, { nodir: true });
   for (const f of files) {
+    if (!unresolved.size) break;
     if (/readme\.md$/i.test(f) || /_backup_/i.test(f)) continue;
-    const { meta, body } = readFM(f);
-    if (meta && meta.id === id) {
-      const policy = describePolicy(meta, f, meta.type || "entity");
-      if (!shouldInclude(policy, options)) continue;
-      return { path: f, meta, body, policy };
+    const meta = readFM(f);
+    if (!unresolved.has(meta.id)) continue;
+    const candidates = byId.get(meta.id) || [];
+    candidates.push({ path: f, meta });
+    byId.set(meta.id, candidates);
+    if (shouldInclude(describePolicy(meta, f, meta.type || 'entity'), options)) {
+      unresolved.delete(meta.id);
     }
   }
 
   const lexiconPath = 'data/lexicon/terms.yaml';
-  if (fs.existsSync(lexiconPath)) {
+  if (unresolved.size && fs.existsSync(lexiconPath)) {
     try {
       const lexicon = yaml.load(fs.readFileSync(lexiconPath, 'utf8')) || {};
-      const term = (lexicon.terms || []).find(t => t.id === id);
-      if (term) {
-        const policy = describePolicy(term, lexiconPath, 'term');
-        if (!shouldInclude(policy, options)) return null;
-        return {
-          path: lexiconPath,
-          meta: {
-            id: term.id,
-            type: 'term',
-            name: term.term,
-            summary_50: term.definition,
-            summary_200: term.definition,
-            ...term
-          },
-          body: term.definition || '',
-          policy
-        };
+      for (const term of lexicon.terms || []) {
+        if (!unresolved.size) break;
+        // A lexicon lookup historically picked the first matching term.
+        if (!unresolved.has(term.id)) continue;
+        const candidates = byId.get(term.id) || [];
+        candidates.push({ path: lexiconPath, term, lexicon: true });
+        byId.set(term.id, candidates);
+        unresolved.delete(term.id);
       }
     } catch (e) {
-      return null;
+      // Markdown entries remain available when the optional lexicon is invalid.
+    }
+  }
+  return byId;
+}
+
+function findById(index, id, options = {}) {
+  for (const candidate of index.get(id) || []) {
+    if (candidate.lexicon) {
+      const { term, path: lexiconPath } = candidate;
+      const policy = describePolicy(term, lexiconPath, 'term');
+      if (!shouldInclude(policy, options)) return null;
+      return {
+        path: lexiconPath,
+        meta: {
+          id: term.id,
+          type: 'term',
+          name: term.term,
+          summary_50: term.definition,
+          summary_200: term.definition,
+          ...term
+        },
+        policy
+      };
+    }
+    const { path: filePath, meta } = candidate;
+    const policy = describePolicy(meta, filePath, meta.type || 'entity');
+    if (shouldInclude(policy, options)) {
+      return { path: filePath, meta, policy };
     }
   }
   return null;
@@ -132,8 +156,9 @@ function findById(id, options = {}) {
 
 function pack(ids, options = {}) {
   const entries = [];
+  const index = ids.length ? buildEntityIndex(ids, options) : new Map();
   for (const id of ids) {
-    const hit = findById(id, options);
+    const hit = findById(index, id, options);
     if (!hit) continue;
     const { path: p, meta, policy } = hit;
     const entry = {
@@ -187,7 +212,7 @@ function parseArgs(argv) {
 if (require.main === module) {
   const { ids, options } = parseArgs(process.argv.slice(2).filter(Boolean));
   if (!ids.length) {
-    console.error("Usage: node scripts/prompt/export_prompt_pack.js [--canon-only] [--include-test] [--include-sandbox] ID [ID ...]");
+    console.error("Usage: node scripts/prompt/export_prompt_pack.js [--canon-only] [--include-drafts] [--include-test] [--include-sandbox] ID [ID ...]");
     process.exit(2);
   }
   if (!fs.existsSync("out/prompts")) fs.mkdirSync("out/prompts", { recursive: true });

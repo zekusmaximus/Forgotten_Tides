@@ -17,52 +17,68 @@ function parseArgs() {
 }
 
 function buildPromiseIndex(scenes) {
-  const promises = {};
-  scenes.forEach((scene, idx) => {
-    const links = scene.data.promise_links || [];
+  const promisesByWork = new Map();
+  scenes.forEach(scene => {
+    const workId = scene.workId || '(unknown work)';
+    const workKind = scene.workKind || null;
+    const workKey = workKind ? `${workKind}\0${workId}` : workId;
+    if (!promisesByWork.has(workKey)) {
+      promisesByWork.set(workKey, { workId, workKind, promises: new Map(), position: 0 });
+    }
+    const group = promisesByWork.get(workKey);
+    const promises = group.promises;
+    const index = group.position++;
+    const links = Array.isArray(scene.data.promise_links) ? scene.data.promise_links : [];
     links.forEach(link => {
-      if (!promises[link.id]) {
-        promises[link.id] = { setups: [], payoffs: [], reminders: [] };
-      }
+      if (!link || typeof link.id !== 'string' || !link.id) return;
+      if (!promises.has(link.id)) promises.set(link.id, { setups: [], payoffs: [], reminders: [] });
       const bucket = link.role === 'payoff' ? 'payoffs' : link.role === 'reminder' ? 'reminders' : 'setups';
-      promises[link.id][bucket].push({ scene, index: idx, status: link.status || 'open' });
+      promises.get(link.id)[bucket].push({ scene, index, status: link.status || 'open' });
     });
   });
-  return promises;
+  return promisesByWork;
 }
 
-function lintPromises(promises) {
+function lintPromises(promisesByWork) {
   const findings = [];
-  Object.entries(promises).forEach(([id, data]) => {
-    if (data.setups.length === 0 && data.payoffs.length > 0) {
-      data.payoffs.forEach(entry => {
-        findings.push({
-          severity: 'warning',
-          file: path.relative(process.cwd(), entry.scene.path),
-          message: `Payoff for promise "${id}" has no recorded setup`
-        });
-      });
-    }
-    if (data.setups.length > 0 && data.payoffs.length === 0) {
-      const lastSetup = data.setups[data.setups.length - 1];
-      findings.push({
-        severity: 'warning',
-        file: path.relative(process.cwd(), lastSetup.scene.path),
-        message: `Promise "${id}" is set up but never paid off`
-      });
-    }
-    if (data.setups.length > 0 && data.payoffs.length > 0) {
-      const firstPayoff = data.payoffs[0];
-      const lastSetup = data.setups[data.setups.length - 1];
-      if (firstPayoff.index <= lastSetup.index) {
-        findings.push({
-          severity: 'warning',
-          file: path.relative(process.cwd(), firstPayoff.scene.path),
-          message: `Promise "${id}" payoff appears before its final setup`
+  for (const { workId, workKind, promises } of promisesByWork.values()) {
+    for (const [id, data] of promises) {
+      if (data.setups.length === 0 && data.payoffs.length > 0) {
+        data.payoffs.forEach(entry => {
+          findings.push({
+            severity: 'warning',
+            work_id: workId,
+            work_kind: workKind,
+            file: path.relative(process.cwd(), entry.scene.path),
+            message: `Payoff for promise "${id}" has no recorded setup`
+          });
         });
       }
+      if (data.setups.length > 0 && data.payoffs.length === 0) {
+        const lastSetup = data.setups[data.setups.length - 1];
+        findings.push({
+          severity: 'warning',
+          work_id: workId,
+          work_kind: workKind,
+          file: path.relative(process.cwd(), lastSetup.scene.path),
+          message: `Promise "${id}" is set up but never paid off`
+        });
+      }
+      if (data.setups.length > 0 && data.payoffs.length > 0) {
+        const firstPayoff = data.payoffs[0];
+        const lastSetup = data.setups[data.setups.length - 1];
+        if (firstPayoff.index <= lastSetup.index) {
+          findings.push({
+            severity: 'warning',
+            work_id: workId,
+            work_kind: workKind,
+            file: path.relative(process.cwd(), firstPayoff.scene.path),
+            message: `Promise "${id}" payoff appears before its final setup`
+          });
+        }
+      }
     }
-  });
+  }
   return findings;
 }
 
@@ -99,4 +115,6 @@ function main() {
   }
 }
 
-main();
+if (require.main === module) main();
+
+module.exports = { buildPromiseIndex, lintPromises };

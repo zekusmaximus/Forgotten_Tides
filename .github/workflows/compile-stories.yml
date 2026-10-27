@@ -6,12 +6,24 @@ on:
       - 'stories/**'
       - '!stories/README.md'
       - 'scripts/compile_stories.sh'
+      - 'scripts/compile_stories.js'
+      - 'scripts/lib/scene_indexer.js'
+      - 'scripts/lib/path_safety.js'
+      - 'scripts/tests/test_compile_stories.js'
+      - 'package.json'
+      - 'package-lock.json'
       - '.github/workflows/compile-stories.yml'
   pull_request:
     paths:
       - 'stories/**'
       - '!stories/README.md'
       - 'scripts/compile_stories.sh'
+      - 'scripts/compile_stories.js'
+      - 'scripts/lib/scene_indexer.js'
+      - 'scripts/lib/path_safety.js'
+      - 'scripts/tests/test_compile_stories.js'
+      - 'package.json'
+      - 'package-lock.json'
       - '.github/workflows/compile-stories.yml'
   workflow_dispatch:
 
@@ -22,10 +34,22 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install Node.js dependencies
+        run: npm ci
+
       - name: Install pandoc
         run: |
           sudo apt-get update
           sudo apt-get install -y pandoc
+
+      - name: Test story compilation
+        run: node scripts/tests/test_compile_stories.js
 
       - name: Compile stories
         run: scripts/compile_stories.sh

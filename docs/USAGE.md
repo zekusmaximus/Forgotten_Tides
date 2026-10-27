@@ -30,7 +30,7 @@ node scripts/prompt/context_builder.js --help
 The system supports several intents that determine the workflow and output:
 
 ### `brainstorm`
-Generates creative ideas and options consistent with canon.
+Creates a brainstorming template with the query, selected IDs, and a prompt-pack link. Fill in the ideas after reviewing the referenced material.
 
 **Example:**
 ```bash
@@ -39,11 +39,10 @@ node scripts/prompt/orchestrate.js "brainstorm ways memory loss affects starship
 
 **Output:**
 - Creates `lore/ideas/{timestamp}_brainstorm.md`
-- Generates 5-8 options with canonical consistency
-- Labels non-canon ideas as 'speculative'
+- Includes prompts to develop 5–8 options and label speculative ideas
 
 ### `outline`
-Creates structured story outlines.
+Creates a three-act outline template.
 
 **Example:**
 ```bash
@@ -52,11 +51,10 @@ node scripts/prompt/orchestrate.js "outline a story about the Archivist discover
 
 **Output:**
 - Creates `lore/ideas/{timestamp}_outline.md`
-- Provides Act I, II, III structure
-- Includes canonical references
+- Provides empty Act I, II, and III sections and links the prompt pack
 
 ### `revise_scene`
-Plans revisions to existing scenes.
+Creates a revision-plan template for an existing scene.
 
 **Example:**
 ```bash
@@ -65,12 +63,10 @@ node scripts/prompt/orchestrate.js "revise the memory corridor collapse scene to
 
 **Output:**
 - Creates `lore/ideas/{timestamp}_revision_plan.md`
-- Target scene identification
-- Change descriptions
-- Continuity constraints
+- Leaves fields for target scenes, changes, and continuity constraints
 
 ### `worldbuild_mechanics`
-Explores and documents new mechanics.
+Creates a speculative mechanics template for later review.
 
 **Example:**
 ```bash
@@ -79,36 +75,35 @@ node scripts/prompt/orchestrate.js "worldbuild how memory gravity affects black 
 
 **Output:**
 - Creates `lore/ideas/{timestamp}_mechanics_notes.md`
-- Hypotheses and tests
-- Candidate canonical changes
-- Potential PR content for `data/mechanics`
+- Leaves prompts for hypotheses, tests, and candidate changes
 
 ### `compile_artifacts`
-Compiles project artifacts.
 
-**Example:**
+Compiles publishable story manuscripts and their referenced scenes into
+`out/compiled/forgotten_tides_stories.md`. Missing scene references stop the
+command without replacing a prior compilation. Use `scripts/compile_stories.sh`
+below when an ePub is also needed.
+
 ```bash
-node scripts/prompt/orchestrate.js "compile all artifacts for review"
+node scripts/prompt/orchestrate.js "compile stories for review"
 ```
-
-**Output:**
-- Builds series bible (EPUB/PDF)
-- Exports RAG chunks
-- Validates all schemas
 
 ## Continuity Dashboard
 
 Visualize canonical relationships between entities in the universe using an interactive network graph.
 
 ```bash
-npm.cmd run dashboard
+npm run dashboard
 ```
 
-Then open your browser to `http://localhost:8080/dashboard/`
+On Windows PowerShell, use `npm.cmd run dashboard` if execution policy blocks
+`npm.ps1`.
+
+Then open your browser to `http://127.0.0.1:8080/dashboard/`
 
 **Features:**
 - Interactive network graph visualization of all entities
-- Color-coded nodes by entity type (characters, locations, mechanics, factions, stories)
+- Color-coded nodes for characters, locations, mechanics, factions, stories, lore, and terms
 - Click nodes to view detailed information
 - Filter by entity type to focus on specific relationships
 - Zoom, pan, and navigate large relationship graphs
@@ -126,7 +121,11 @@ See [dashboard/README.md](../dashboard/README.md) for detailed documentation.
 
 ## Story Compilation (Local)
 
-Compile all story markdown into a single source file plus PDF and ePub outputs.
+Compile story manuscripts into a single Markdown source and an ePub. Manuscript
+scene references are expanded once, in place; scene files that are not referenced
+are omitted. Outlines, notes, backups, and work directories marked `TEST`,
+`SAMPLE`, or `SANDBOX` are excluded. Requires Node.js,
+installed npm dependencies, and Pandoc.
 
 ```bash
 scripts/compile_stories.sh
@@ -134,7 +133,6 @@ scripts/compile_stories.sh
 
 **Output:**
 - `out/compiled/forgotten_tides_stories.md`
-- `out/compiled/forgotten_tides_stories.pdf`
 - `out/compiled/forgotten_tides_stories.epub`
 
 ## Chunking & Summaries (RAG)
@@ -156,7 +154,7 @@ npm run context:chunk
 - `CHUNK_ROOT_DIR` (default: repo root)
 
 ### `export_pack_only`
-Exports only the prompt pack without additional processing.
+Exports a prompt pack and records the context and session report.
 
 **Example:**
 ```bash
@@ -165,7 +163,7 @@ node scripts/prompt/orchestrate.js "export pack for memory physics" --profile te
 
 **Output:**
 - Creates JSON prompt pack in `out/prompts/`
-- No additional artifacts generated
+- Creates its Markdown companion, a context JSON file, and an ignored session report
 
 ## Profiles and Caps
 
@@ -181,7 +179,7 @@ Context profiles define entity ordering and maximum entity counts. Profiles are 
 - `default`: Balanced approach for general use
 - `storytelling`: Prioritizes characters and narrative elements
 - `technical`: Focuses on mechanics and rules
-- `lore`: Emphasizes factions and cosmic regions
+- `worldbuilding`: Prioritizes rules and mechanics
 
 **Usage:**
 ```bash
@@ -194,7 +192,8 @@ node scripts/prompt/orchestrate.js "worldbuild memory physics" --profile technic
 
 ### Entity Caps
 
-- **Maximum entities per context pack**: 50 (hard cap)
+- **Orchestrator prompt-pack limit**: 50 entities after context selection
+- **Direct context builder**: Uses the selected profile's cap unless `--max` is set
 - **Sticky IDs (session carry)**: Maximum 8 entities
 - **History entries**: Maximum 50 sessions
 
@@ -239,10 +238,10 @@ Generate and validate link maps for canon consistency:
 
 ```bash
 # Build link map
-npm.cmd run linkmap:build
+npm run linkmap:build
 
 # Validate links
-npm.cmd run lint:refs
+npm run lint:refs
 ```
 
 **Link Map Components:**
@@ -253,14 +252,14 @@ npm.cmd run lint:refs
 
 ## Validation Coverage
 
-The short-story PR gate is `npm run validate:ci`. It rebuilds generated canon artifacts, verifies they are committed, runs lint and continuity checks, and executes the same smoke/policy tests used by CI.
+The short-story PR gate is `npm run validate:ci`. It rebuilds generated canon artifacts, checks the tracked outputs for drift, runs lint and continuity checks, and executes the same smoke/policy tests used by CI.
 
 `npm run lint:schema` is strict for short-story manuscripts and canonical entity roots. It reports skips and warnings for out-of-scope development material such as novel, novella, screenplay, notes, and unschematized YAML, but those optional skips do not satisfy or weaken the short-story gate.
 
 Continuity and timeline checks recursively scan story markdown and write reports to `out/reports/continuity.json` and `out/reports/timeline_variance.json`.
 
 ```bash
-npm.cmd run validate:ci
+npm run validate:ci
 ```
 
 ## Canon Discrimination
@@ -275,13 +274,15 @@ Canonical tiers:
 
 Useful commands:
 ```bash
-npm.cmd run report:canon-tiers
+npm run report:canon-tiers
 node scripts/prompt/context_builder.js "memory corridor physics" --canon-only
 node scripts/prompt/export_prompt_pack.js --canon-only mech-0001 term-0007
 node scripts/prompt/export_prompt_pack.js --include-test scene_screenplay_sample_001
 ```
 
 Default prompt-pack behavior excludes test and sandbox material while allowing active drafts with lower source weight. Use `--canon-only` for LLM conversations that should only cite authoritative or working canon.
+Add `--include-drafts` with `--canon-only` to include active drafts as well;
+speculative, sandbox, test, and deprecated material remains excluded.
 
 ## Determinism & Token Discipline
 
@@ -293,7 +294,7 @@ Default prompt-pack behavior excludes test and sandbox material while allowing a
 
 ### Token Discipline
 
-- **Hard cap**: 50 entities per prompt pack
+- **Orchestrator hard cap**: 50 selected entities per prompt pack
 - **Context expansion**: 1-hop relationships only
 - **Session history**: Limited to 50 entries
 - **Sticky IDs**: Maximum 8 entities carried forward
@@ -385,12 +386,14 @@ Session state is stored in `out/session/state.json`:
 }
 ```
 
+Session reports are written to the ignored `out/session/reports/` directory.
+
 ### Environment Requirements
 
-- **Node.js**: Version 18+
-- **Dependencies**: Install with `npm.cmd install` on Windows PowerShell, or `npm install` in shells where npm scripts are allowed
+- **Node.js**: Version 20+
+- **Dependencies**: Install with `npm install` (or `npm.cmd install` on Windows PowerShell when required)
 - **Directory Structure**: Must maintain standard layout
-- **File Permissions**: Write access to `out/`, `lore/`, `docs/`
+- **File Permissions**: Write access to `out/`, `lore/`, and the selected work directory
 
 ## Best Practices
 
@@ -440,49 +443,58 @@ npm run validate:work -- --work "<name>"
 
 ## New Intents & Examples
 
+Authoring commands that write scene, note, or outline content read the body from
+standard input until EOF. The examples below use a Markdown file as input; on
+PowerShell, use `Get-Content -Raw draft.md | node ...` instead of `< draft.md`.
+Name an existing work for scene and outline changes. Run `start_work` first for
+a new work.
+
 ### `save_scene`
 Saves scene content to the appropriate location.
 
 **Example:**
 ```bash
-node scripts/prompt/orchestrate.js "save scene where Archivist encounters memory eddy"
+node scripts/prompt/orchestrate.js 'save this as a scene "A New Passage" in "First Corridor"' < draft.md
 ```
 
 **Output:**
-- Creates scene file in `stories/{work_type}/{work_name}/scenes/{timestamp}_scene.md`
-- Includes proper frontmatter with scene metadata
-- Places content in appropriate manuscript position
+- Creates `stories/{kind}/{work_id}/scenes/SCENE_<hash>.md`
+- Adds a scene entry to the manuscript frontmatter and updates work metadata
+- Uses order 1 unless the request specifies a supported position
 
 ### `start_work`
 Initializes a new work project with outline and structure.
 
 **Example:**
 ```bash
-node scripts/prompt/orchestrate.js "start work on novella about the Outer Veil expedition"
+node scripts/prompt/orchestrate.js 'start a new novella titled "Outer Veil Expedition"'
 ```
 
 **Output:**
-- Creates work directory in `stories/novella/{work_name}/`
+- Creates `stories/novella/NOVELLA_OUTER_VEIL_EXPEDITION/`
 - Generates initial outline file
 - Sets up scenes directory
-- Creates manuscript.md with include structure
+- Creates a draft `manuscript.md` with story frontmatter
 
 **Place scene examples:**
 ```bash
-node scripts/prompt/orchestrate.js "place scene memory_corridor_collapse in act 2 position 3"
+node scripts/prompt/orchestrate.js 'place this as a scene "Crossing" after SCENE_ABC123 in "First Corridor"' < draft.md
 ```
+
+Use a real scene ID from `npm run scenes:list -- --work "First Corridor"` in place
+of `SCENE_ABC123`.
 
 ### `replace_scene`
 Replaces existing scene content while maintaining structure.
 
 **Example:**
 ```bash
-node scripts/prompt/orchestrate.js "replace scene where Sutira discovers the memory stone"
+node scripts/prompt/orchestrate.js 'replace the scene "Existing Scene" in "First Corridor"' < revision.md
 ```
 
 **Output:**
 - Updates existing scene file
-- Maintains frontmatter and metadata
+- Preserves scene frontmatter and writes a backup under the work's `.backups/scenes/` directory
 - Preserves manuscript include order
 
 ### `save_notes`
@@ -490,276 +502,68 @@ Saves general notes and ideas for future reference.
 
 **Example:**
 ```bash
-node scripts/prompt/orchestrate.js "save notes about memory physics implications"
+node scripts/prompt/orchestrate.js 'save notes "Research Log"' < notes.md
 ```
 
 **Output:**
-- Creates note file in `lore/notes/{timestamp}_notes.md`
-- Includes categorized content
-- Cross-references related entities
+- Creates `lore/notes/NOTES_<slug>_<uuid>.md` with draft frontmatter
 
 ### `update_outline`
 Updates existing outline with new structure or content.
 
 **Example:**
 ```bash
-node scripts/prompt/orchestrate.js "update outline to include new faction conflict in act 3"
+node scripts/prompt/orchestrate.js 'update outline for "First Corridor"' < outline.md
 ```
 
 **Output:**
-- Modifies existing outline file
-- Maintains canonical consistency
-- Updates scene references
+- Replaces the body of the existing work's `outline.md`, preserving its frontmatter when present
 
-## File Conventions
+## File conventions
 
-### Path Structures
+New works use `stories/{kind}/{KIND_SLUG}/`, where `kind` is `short_story`, `novella`, `novel`, or `screenplay`. Existing work directories may use older IDs. Work resolution accepts an unambiguous title or directory ID. Each work has `manuscript.md` and `meta.yaml`; authoring may also create `outline.md` and `scenes/`. General notes live under `lore/notes/`. Session state, reports, prompt packs, and compiled output live under ignored `out/` paths.
 
-**Story Work Types:**
-- `stories/short_story/{snake_case_title}/manuscript.md` - Short-story manuscripts covered by the PR gate
-- `stories/novella/{work_name}/` - Novella projects
-- `stories/novel/{work_name}/` - Novel projects
-- `stories/screenplay/{work_name}/` - Screenplay projects
+`meta.yaml` starts with `id`, `title`, `status`, `created`, and `modified`. Novel metadata also has `type`. The file may contain additional author-maintained fields. A parse error stops an update; the CLI preserves the existing file.
 
-**Scene Organization:**
-- `stories/{work_type}/{work_name}/scenes/{timestamp}_scene.md` - Individual scenes
-- `stories/{work_type}/{work_name}/manuscript.md` - Main manuscript file
-- `stories/{work_type}/{work_name}/outline.md` - Work outline
+A new scene is stored as `scenes/SCENE_<hash>.md`. Its frontmatter contains a lowercase `id`, `schema_version`, `title`, `work_id`, `order`, `status`, `tags`, `created`, and `word_count`. The manuscript frontmatter stores ordered scene objects:
 
-**Support Files:**
-- `lore/ideas/{timestamp}_{intent}.md` - Brainstorming and idea files
-- `lore/notes/{timestamp}_notes.md` - General notes and references
-- `data/{entity_type}/` - Canonical entity definitions
-
-### Frontmatter Specifications
-
-**Required Fields:**
 ```yaml
----
-id: unique_identifier
-title: "Human Readable Title"
-type: entity_type
-date: ISO_8601_timestamp
-related: [entity_id1, entity_id2]
----
+scenes:
+  - id: scene_example
+    title: Example
+    order: 1
+    file: scenes/SCENE_EXAMPLE.md
 ```
 
-**Scene-Specific Fields:**
-```yaml
----
-id: scene_identifier
-title: "Scene Title"
-type: scene
-date: ISO_8601_timestamp
-work: work_identifier
-act: act_number
-position: scene_position
-characters: [character_id1, character_id2]
-locations: [location_id1]
-themes: [theme1, theme2]
----
-```
+Older manuscripts can contain string scene entries or `<!-- include: scenes/SCENE_EXAMPLE.md -->` comments. The scene indexer and compiler read these forms. New authoring writes scene objects and preserves the manuscript body when it updates the list. Replaced scenes are backed up under the work's `.backups/scenes/` directory, outside the live scene list.
 
-**Note Fields:**
-```yaml
----
-id: note_identifier
-title: "Note Title"
-type: note
-date: ISO_8601_timestamp
-category: [mechanics|lore|characters|plot]
-tags: [tag1, tag2]
----
-```
+## Context builder
 
-### Manuscript Include Order
+`context_builder.js` accepts `--profile`, `--max`, `--expand one|none`, `--canon-only`, `--include-drafts`, `--include-test`, and `--include-sandbox`. Profiles come from `docs/agents/context_profiles.json`; the configured names are `default`, `storytelling`, `technical`, and `worldbuilding`. `--include-drafts` adds drafts to `--canon-only` output.
 
-Manuscript files use include directives to assemble content:
-
-```markdown
-# {Work Title}
-
-## Act 1: {Act Title}
-
-<!-- include: scenes/2025-12-11T16-41-45-733Z_scene.md -->
-<!-- include: scenes/2025-12-11T16-42-17-950Z_scene.md -->
-
-## Act 2: {Act Title}
-
-<!-- include: scenes/2025-12-11T16-42-48-032Z_scene.md -->
-<!-- include: scenes/2025-12-11T16-58-41-320Z_scene.md -->
-```
-
-**Include Rules:**
-1. Scenes must be ordered by act and position
-2. Include comments use format: `<!-- include: relative/path/to/file.md -->`
-3. Each include should be on its own line
-4. Maintain chronological order within acts
-5. Update outline when changing scene order
-
-## Phase 2.5 Features
-
-### Natural Language Extraction
-
-The system supports natural language commands for scene placement and organization:
-
-**Examples:**
 ```bash
-# Save as opening scene in a specific work
-node scripts/prompt/orchestrate.js "save this as the opening scene in First Corridor"
-
-# Save as specific scene number
-node scripts/prompt/orchestrate.js "save this as scene 3"
-
-# Place relative to existing scene
-node scripts/prompt/orchestrate.js "place this after SC-014"
-
-# Update outline sections
-node scripts/prompt/orchestrate.js "update the outline for the second act"
-```
-
-**Behavior:**
-- Extracts work names, scene identifiers, and positional information
-- Handles relative positioning ("before", "after", "between")
-- Supports act-based placement ("opening scene", "act 2 finale")
-- Maintains canonical consistency in scene ordering
-
-### Ordering System
-
-The ordering system provides deterministic entity sequencing for consistent output:
-
-**Flags:**
-- `--order`: Specify ordering profile (default, storytelling, technical, lore)
-- `--expand`: Control relationship expansion (none, one, all)
-- `--max`: Set maximum entity count
-
-**Examples:**
-```bash
-# Use storytelling ordering
-node scripts/prompt/context_builder.js "character development" --order storytelling
-
-# Limit to 10 entities with no expansion
+node scripts/prompt/context_builder.js "character development" --profile storytelling
 node scripts/prompt/context_builder.js "memory physics" --max 10 --expand none
-
-# Custom ordering with expansion
-node scripts/prompt/context_builder.js "faction politics" --order lore --expand one
 ```
 
-**Ordering Profiles:**
-- `default`: Rules → Characters → Locations → Mechanics → Factions → Terms → Stories
-- `storytelling`: Characters → Stories → Locations → Themes → Factions
-- `technical`: Rules → Mechanics → Locations → Factions → Characters
-- `lore`: Factions → Cosmic Regions → Mechanics → Characters → Stories
+The command writes a context JSON file under `out/prompts/` and prints its path. See `node scripts/prompt/context_builder.js --help` for current flags.
 
-### Work Metadata (meta.yaml)
+## Auto-tagging
 
-Each work project includes a `meta.yaml` file that defines project metadata and structure:
+After a scene is saved or replaced through the orchestrator, auto-tagging updates the scene's `entities` frontmatter. It collects entity IDs from the body, context, prompt pack, and lexicon, then writes up to eight IDs in each of `characters`, `locations`, `factions`, and `rules_used`. It does not infer theme tags. Auto-tagging is advisory; inspect the generated metadata before relying on it.
 
-**Purpose:**
-- Tracks work status, themes, and relationships
-- Defines scene ordering and act structure
-- Stores work-specific configuration
+## Scene navigator
 
-**Fields:**
-```yaml
----
-id: work_identifier
-title: "Work Title"
-type: novella|novel|short
-date: ISO_8601_timestamp
-status: planning|draft|review|final
-acts:
-  - number: 1
-    title: "Act Title"
-    scenes: [scene_id1, scene_id2]
-  - number: 2
-    title: "Act Title"
-    scenes: [scene_id3, scene_id4]
-themes: [theme1, theme2]
-characters: [character_id1, character_id2]
-locations: [location_id1]
-related_works: [work_id1, work_id2]
----
-
-**Usage:**
-- Automatically created with `start_work` intent
-- Updated when scenes are added or reordered
-- Used by scene navigator for work visualization
-
-### Auto-tagging System
-
-The auto-tagging system automatically applies tags to scenes based on content analysis:
-
-**Behavior:**
-- Analyzes scene content for key themes and entities
-- Applies relevant tags from canonical taxonomy
-- Respects manual tagging precedence
-- Limits to 5 auto-generated tags per scene
-
-**Precedence Rules:**
-1. Manual tags (explicitly set) take highest priority
-2. Auto-tags from content analysis
-3. Inherited tags from work metadata
-4. Default tags from entity relationships
-
-**Examples:**
-```bash
-# Scene with memory physics content
-# Auto-tags: memory_physics, corridor_mechanics, gravity_theory
-
-# Scene with character conflict
-# Auto-tags: character_conflict, emotional_tension, dialogue_heavy
-
-# Scene with faction politics
-# Auto-tags: political_intrigue, faction_dynamics, power_struggle
-```
-
-**Limits:**
-- Maximum 5 auto-tags per scene
-- Maximum 10 total tags (manual + auto)
-- Tag conflicts resolved by precedence rules
-
-### Scene Navigator
-
-The scene navigator provides CLI tools for managing and visualizing scene structures:
-
-**Commands:**
+The navigator lists or graphs scenes in manuscript order and resolves a scene to a path. `graph` prints Mermaid text. `open` prints the path; it does not launch an editor.
 
 ```bash
-# List all scenes in a work
 npm run scenes:list -- --work "First Corridor"
-
-# Generate scene dependency graph
-npm run scenes:graph -- --work "First Corridor"
-
-# Open specific scene in editor
-npm run scenes:open -- --scene SC-0001
+npm run scenes:graph -- --work "First Corridor" > scenes.mmd
+npm run scenes:open -- --scene SCENE_EXAMPLE --work "First Corridor"
 ```
 
-**Usage Examples:**
+`list` and `graph` accept `--work` and optional `--kind`. `open` accepts `--scene` and optional `--work`. Unsupported flags return an error. Use the actual scene ID from `scenes:list` in place of `SCENE_EXAMPLE`.
 
-```bash
-# List scenes with detailed information
-npm run scenes:list -- --work "First Corridor" --verbose
+## Advisory checks and reports
 
-# Generate graph visualization (DOT format)
-npm run scenes:graph -- --work "First Corridor" --format dot > graph.dot
-
-# Open scene by ID
-npm run scenes:open -- --scene SC-0001 --editor vscode
-
-# List scenes by act
-npm run scenes:list -- --work "First Corridor" --act 2
-```
-
-**Output Formats:**
-- `list`: Tabular scene listing with metadata
-- `graph`: Dependency graph in DOT format
-- `json`: Machine-readable scene data
-- `markdown`: Formatted scene summary
-
-**Features:**
-- Filter by act, character, or location
-- Visualize scene dependencies and relationships
-- Navigate complex work structures
-- Export for external analysis tools
+`validate:ci` runs the repository's enforced lint, continuity checks, and test suites. The optional promise, scene-failure, moral, screenplay, and POV commands under “System Upgrades” can be run for focused review; they are not all CI gates. Some scene checks require scene files and report only the scenes they inspected. Work-level reports are written under `out/reports/`. Review the report scope and findings before treating an empty result as coverage of a manuscript.

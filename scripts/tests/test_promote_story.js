@@ -210,6 +210,43 @@ test('unknown story id and unknown tier are rejected', () => {
   });
 });
 
+test('promotion rejects symlinked manuscript and timeline inputs without reading or replacing them', () => {
+  withFixture(root => {
+    const outside = fs.mkdtempSync(path.join(os.tmpdir(), 'promote-story-outside-'));
+    try {
+      const secret = path.join(outside, 'secret.md');
+      fs.writeFileSync(secret, MANUSCRIPT, 'utf8');
+      const manuscript = path.join(root, MANUSCRIPT_REL);
+      fs.rmSync(manuscript);
+      try {
+        fs.symlinkSync(secret, manuscript, 'file');
+      } catch (error) {
+        if (['EPERM', 'EACCES', 'ENOTSUP'].includes(error.code)) {
+          console.log('SKIP: file symlinks are unavailable on this platform');
+          return;
+        }
+        throw error;
+      }
+      assert.throws(() => promote.promoteStory({ root, id: STORY_ID, skipBuild: true }), /Unsafe symlink/);
+      assert.strictEqual(fs.readFileSync(secret, 'utf8'), MANUSCRIPT);
+      assert(fs.lstatSync(manuscript).isSymbolicLink());
+
+      fs.rmSync(manuscript);
+      fs.writeFileSync(manuscript, MANUSCRIPT, 'utf8');
+      const externalTimeline = path.join(outside, 'events.yaml');
+      fs.writeFileSync(externalTimeline, TIMELINE, 'utf8');
+      const timeline = path.join(root, 'data/timeline/events.yaml');
+      fs.rmSync(timeline);
+      fs.symlinkSync(externalTimeline, timeline, 'file');
+      assert.throws(() => promote.promoteStory({ root, id: STORY_ID, skipBuild: true }), /Unsafe symlink/);
+      assert.strictEqual(fs.readFileSync(externalTimeline, 'utf8'), TIMELINE);
+      assert(fs.lstatSync(timeline).isSymbolicLink());
+    } finally {
+      fs.rmSync(outside, { recursive: true, force: true });
+    }
+  });
+});
+
 test('dry run reports every planned change and writes nothing', () => {
   withFixture(root => {
     const before = {
@@ -219,9 +256,14 @@ test('dry run reports every planned change and writes nothing', () => {
     const result = promote.promoteStory({ root, id: STORY_ID, dryRun: true, now: FIXED_NOW });
 
     assert.strictEqual(result.dryRun, true);
+    assert.strictEqual(result.linkMapPreflight, true);
     assert.strictEqual(result.built, false);
     assert.strictEqual(read(root, MANUSCRIPT_REL), before.manuscript, 'manuscript untouched by dry run');
     assert.strictEqual(read(root, 'data/timeline/events.yaml'), before.timeline, 'timeline untouched by dry run');
+    assert.strictEqual(fs.existsSync(path.join(root, 'out/graphs/entities.json')), false);
+    assert.strictEqual(fs.existsSync(path.join(root, 'docs/link_map/LINK_MAP.md')), false);
+    assert.strictEqual(fs.existsSync(path.join(root, 'REFERENCE_MAP.json')), false);
+    assert.strictEqual(fs.existsSync(path.join(root, 'CANONICAL_INDEX.md')), false);
 
     const fields = result.manuscriptChanges.map(c => c.field).sort();
     assert.deepStrictEqual(fields, [
@@ -234,6 +276,33 @@ test('dry run reports every planned change and writes nothing', () => {
       'status'
     ].sort());
     assert.deepStrictEqual(result.timeline.changes.map(c => c.id), [`event-${STORY_ID}-001`, 'event-legacy-0042']);
+  });
+});
+
+test('dry run rejects malformed link-map source without writing any files', () => {
+  withFixture(root => {
+    write(root, 'characters/Bad.md', '---\nid: char-9902\nreferences: [unterminated\n---\n');
+    const manuscriptBefore = read(root, MANUSCRIPT_REL);
+    const timelineBefore = read(root, 'data/timeline/events.yaml');
+    assert.throws(() => promote.promoteStory({ root, id: STORY_ID, dryRun: true, now: FIXED_NOW }),
+      /Link-map preflight failed:[\s\S]*Could not parse/);
+    assert.strictEqual(read(root, MANUSCRIPT_REL), manuscriptBefore);
+    assert.strictEqual(read(root, 'data/timeline/events.yaml'), timelineBefore);
+    for (const relative of ['out/graphs', 'docs/link_map', 'REFERENCE_MAP.json', 'CANONICAL_INDEX.md']) {
+      assert.strictEqual(fs.existsSync(path.join(root, relative)), false, `${relative} was created by preflight`);
+    }
+  });
+});
+
+test('promotion rejects malformed link-map source before changing the manuscript', () => {
+  withFixture(root => {
+    write(root, 'characters/Bad.md', '---\nid: char-9902\nreferences: [unterminated\n---\n');
+    const manuscriptBefore = read(root, MANUSCRIPT_REL);
+    const timelineBefore = read(root, 'data/timeline/events.yaml');
+    assert.throws(() => promote.promoteStory({ root, id: STORY_ID, now: FIXED_NOW }),
+      /Link-map preflight failed:[\s\S]*Could not parse/);
+    assert.strictEqual(read(root, MANUSCRIPT_REL), manuscriptBefore);
+    assert.strictEqual(read(root, 'data/timeline/events.yaml'), timelineBefore);
   });
 });
 
@@ -408,6 +477,98 @@ test('a manuscript without a metadata block gains one instead of crashing', () =
     const data = matter(read(root, MANUSCRIPT_REL)).data;
     assert.deepStrictEqual(data.metadata, { status: 'canonical' });
     assert(!result.manuscriptChanges.some(c => c.field === 'metadata.modified'), 'no modified stamp invented');
+  });
+});
+
+test('malformed timeline fails preflight without changing the manuscript', () => {
+  withFixture(root => {
+    const timelinePath = 'data/timeline/events.yaml';
+    write(root, timelinePath, read(root, timelinePath).replace('events:\n', 'events: [\n'));
+    const manuscriptBefore = read(root, MANUSCRIPT_REL);
+    const timelineBefore = read(root, timelinePath);
+
+    assert.throws(
+      () => promote.promoteStory({ root, id: STORY_ID, skipBuild: true, now: FIXED_NOW }),
+      error => error.name === 'YAMLException'
+    );
+    assert.strictEqual(read(root, MANUSCRIPT_REL), manuscriptBefore);
+    assert.strictEqual(read(root, timelinePath), timelineBefore);
+  });
+});
+
+test('a timeline write failure restores the manuscript and removes temporary files', () => {
+  withFixture(root => {
+    const timelinePath = path.join(root, 'data/timeline/events.yaml');
+    const manuscriptBefore = read(root, MANUSCRIPT_REL);
+    const timelineBefore = fs.readFileSync(timelinePath, 'utf8');
+    const rename = fs.renameSync;
+    fs.renameSync = (source, target) => {
+      if (target === timelinePath) throw new Error('injected timeline write failure');
+      return rename(source, target);
+    };
+    try {
+      assert.throws(
+        () => promote.promoteStory({ root, id: STORY_ID, skipBuild: true, now: FIXED_NOW }),
+        /injected timeline write failure/
+      );
+    } finally {
+      fs.renameSync = rename;
+    }
+    assert.strictEqual(read(root, MANUSCRIPT_REL), manuscriptBefore);
+    assert.strictEqual(fs.readFileSync(timelinePath, 'utf8'), timelineBefore);
+    assert.deepStrictEqual(fs.readdirSync(path.dirname(timelinePath)).filter(file => file.includes('.promote-')), []);
+    assert.deepStrictEqual(fs.readdirSync(path.dirname(path.join(root, MANUSCRIPT_REL))).filter(file => file.includes('.promote-')), []);
+  });
+});
+
+test('a failed link-map build restores both source files and generated artifacts', () => {
+  withFixture(root => {
+    write(root, 'CANONICAL_INDEX.md', 'original index\n');
+    write(root, 'REFERENCE_MAP.json', '{"original":true}\n');
+    write(root, 'out/graphs/entities.json', '{"original":true}\n');
+    const before = {
+      manuscript: read(root, MANUSCRIPT_REL),
+      timeline: read(root, 'data/timeline/events.yaml'),
+      index: read(root, 'CANONICAL_INDEX.md'),
+      map: read(root, 'REFERENCE_MAP.json'),
+      entities: read(root, 'out/graphs/entities.json')
+    };
+    assert.throws(() => promote.promoteStory({
+      root,
+      id: STORY_ID,
+      now: FIXED_NOW,
+      build: buildRoot => {
+        write(buildRoot, 'CANONICAL_INDEX.md', 'partial index\n');
+        write(buildRoot, 'REFERENCE_MAP.json', '{"partial":true}\n');
+        write(buildRoot, 'docs/link_map/LINK_MAP.md', 'new partial artifact\n');
+        write(buildRoot, 'out/graphs/entities.json', '{"partial":true}\n');
+        throw new Error('injected link-map build failure');
+      }
+    }), /injected link-map build failure/);
+
+    assert.strictEqual(read(root, MANUSCRIPT_REL), before.manuscript);
+    assert.strictEqual(read(root, 'data/timeline/events.yaml'), before.timeline);
+    assert.strictEqual(read(root, 'CANONICAL_INDEX.md'), before.index);
+    assert.strictEqual(read(root, 'REFERENCE_MAP.json'), before.map);
+    assert.strictEqual(read(root, 'out/graphs/entities.json'), before.entities);
+    assert.strictEqual(fs.existsSync(path.join(root, 'docs/link_map/LINK_MAP.md')), false, 'new generated artifact removed');
+  });
+});
+
+test('a successful link-map build is reported after source files are committed', () => {
+  withFixture(root => {
+    const result = promote.promoteStory({
+      root,
+      id: STORY_ID,
+      now: FIXED_NOW,
+      build: buildRoot => {
+        assert.strictEqual(matter(read(buildRoot, MANUSCRIPT_REL)).data.canon_tier, 'primary_canon');
+        assert.strictEqual(yaml.load(read(buildRoot, 'data/timeline/events.yaml')).events.find(e => e.id === `event-${STORY_ID}-001`).canon_tier, 'primary_canon');
+        write(buildRoot, 'CANONICAL_INDEX.md', 'fresh index\n');
+      }
+    });
+    assert.strictEqual(result.built, true);
+    assert.strictEqual(read(root, 'CANONICAL_INDEX.md'), 'fresh index\n');
   });
 });
 

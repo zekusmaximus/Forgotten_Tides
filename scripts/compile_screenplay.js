@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 const fs = require('fs');
-const path = require('path');
 const { loadFrontmatter, ensureDir } = require('./lib/file_loader');
+const { resolveExistingWork, resolveWithin } = require('./lib/path_safety');
 
 function parseArgs() {
   const args = process.argv.slice(2);
@@ -12,12 +12,12 @@ function parseArgs() {
   return out;
 }
 
-function collectScreenplayScenes(workId) {
-  const base = path.join(process.cwd(), 'stories', 'screenplay', workId, 'scenes');
+function collectScreenplayScenes(workPath) {
+  const base = resolveWithin(workPath, 'scenes');
   if (!fs.existsSync(base)) return [];
   return fs.readdirSync(base)
-    .filter(file => file.endsWith('.md'))
-    .map(file => path.join(base, file))
+    .filter(file => file.endsWith('.md') && !/_backup_/i.test(file))
+    .map(file => resolveWithin(base, file))
     .sort()
     .map(file => loadFrontmatter(file));
 }
@@ -28,7 +28,9 @@ function main() {
     console.error('Usage: npm run compile:screenplay -- --work "<name>"');
     process.exit(1);
   }
-  const scenes = collectScreenplayScenes(args.work);
+  const root = process.cwd();
+  const work = resolveExistingWork(root, args.work, 'screenplay');
+  const scenes = collectScreenplayScenes(work.path);
   if (scenes.length === 0) {
     console.error(`No screenplay scenes found for work "${args.work}".`);
     process.exit(1);
@@ -41,9 +43,9 @@ function main() {
     lines.push(scene.content.trim());
     lines.push('');
   });
-  const outDir = path.join(process.cwd(), 'out', 'compiled');
+  const outDir = resolveWithin(root, 'out', 'compiled');
+  const target = resolveWithin(root, 'out', 'compiled', `${args.work}.fountain`);
   ensureDir(outDir);
-  const target = path.join(outDir, `${args.work}.fountain`);
   fs.writeFileSync(target, lines.join('\n'), 'utf8');
   console.log(`Screenplay compiled to ${target}`);
 }

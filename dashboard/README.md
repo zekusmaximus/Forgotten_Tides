@@ -1,256 +1,57 @@
 # Continuity Dashboard
 
-A visual network graph interface for exploring canonical relationships in The Forgotten Tides Universe.
+The Continuity Dashboard displays the repository's `REFERENCE_MAP.json` as a graph. It shows characters, locations, mechanics, factions, stories, lore, and terms, with counts and filters for every type present in the map. This page describes the dashboard code and data contract.
 
-## Overview
+## Run
 
-The Continuity Dashboard is a web-based tool that visualizes the `REFERENCE_MAP.json` file as an interactive network graph. It provides a high-level view of how characters, locations, mechanics, factions, and stories are interconnected within the universe.
+From the repository root:
 
-This dashboard implements **Phase 7** of the Structural Audit & Optimization Plan.
-
-The interface uses the Forgotten Tides design system: deep blue-shifted void canvas, warm ink foregrounds, memory-amber selection accent, Cormorant Garamond display serif for the wordmark, IBM Plex Sans for UI, IBM Plex Mono for telemetry and stenciled labels. Entity colors are canonical and inherited from earlier versions — they are part of the universe's vocabulary and are not remapped.
-
-## Features
-
-- 📊 **Interactive Network Graph**: Visualize all entities and their relationships
-- 🎨 **Color-Coded Nodes**: Different colors for each entity type
-- 🔍 **Filtering**: Show/hide entity types to focus on specific relationships
-- 📝 **Node Details**: Click on any node to see detailed information
-- 🔎 **Zoom & Pan**: Navigate large graphs with mouse controls
-- 🔄 **Live Updates**: Reload button to refresh data without page reload
-- ⚠️ **Missing Node Detection**: Highlights speculative or missing entities
-
-## Entity Types & Colors
-
-| Type | Color | Description |
-|------|-------|-------------|
-| **Character** | 🔵 Blue (#4a9eff) | Character entities |
-| **Location** | 🔴 Red (#ff6b6b) | Physical locations |
-| **Mechanics** | 🟢 Green (#51cf66) | Physics/mechanics rules |
-| **Faction** | 🟡 Yellow (#ffd93d) | Political/cultural groups |
-| **Story** | 🟣 Purple (#a78bfa) | Published stories |
-| **Missing** | ⚪ Gray (50% opacity) | Speculative or missing nodes |
-
-## Usage
-
-### Quick Start
-
-1. **From the repository root**, start a local web server:
-   ```bash
-   npx http-server -p 8080
-   ```
-
-2. Open your browser and navigate to:
-   ```
-   http://localhost:8080/dashboard/
-   ```
-
-3. The dashboard will automatically load `REFERENCE_MAP.json` from the repository root.
-
-### Alternative: Using npm scripts
-
-Add this to your workflow by adding an npm script in `package.json`:
-
-```json
-{
-  "scripts": {
-    "dashboard": "npx http-server -p 8080 -o /dashboard/"
-  }
-}
-```
-
-Then run:
 ```bash
 npm run dashboard
 ```
 
-### Controls
+Open `http://127.0.0.1:8080/dashboard/`. The server binds to loopback and serves only the dashboard page, its JavaScript, and `REFERENCE_MAP.json`. Open the URL through the server, since browser `file:` pages cannot reliably fetch the map. Use **Reload data** after regenerating the map; it refreshes the page.
 
-- **Mouse Wheel**: Zoom in/out
-- **Click & Drag**: Pan the view
-- **Click Node**: Show node details in the info panel
-- **Filter Checkboxes**: Toggle visibility of entity types
-- **Reset View**: Fit all visible nodes into the viewport
-- **Reload Data**: Refresh the dashboard with latest REFERENCE_MAP.json
+The page uses vis-network 10.1.3 from a pinned CDN URL with subresource integrity. Graph rendering requires that library to load. Fonts are also fetched from Google Fonts; fallback fonts are available.
 
-## Data Structure
+## Controls and visual signals
 
-The dashboard reads from `REFERENCE_MAP.json` in the repository root. Expected structure:
+- The seven filter buttons toggle entity types. Their counts show totals in the full map. Hidden types and edges disappear from the current view.
+- **Reset view** fits the visible graph. Mouse wheel and dragging zoom and pan. Focus the graph to use vis-network's keyboard navigation.
+- Select a node to see its ID, path, and full-map connection count. **Copy path** copies its repository-relative path for use in an editor or terminal. If clipboard access is unavailable, the displayed path remains selectable. Nodes without a path have no copy button.
+- A dashed, faded node has `canon_tier: "speculative"` or legacy `status: "speculative"` / `"missing"`. The detail badge distinguishes speculative from missing. A red border indicates zero incident edges in the complete map, regardless of active filters.
+- Empty data, filters hiding every node, malformed data, failed fetches, and a missing graph library have separate visible states. The reload button remains available.
+
+Existing entity colors remain unchanged. Lore uses teal (`#42C9C0`) and terms use copper (`#E49B6B`).
+
+## `REFERENCE_MAP.json` contract
+
+The dashboard accepts a JSON object with `nodes` and `edges` arrays. Both arrays may be empty. It validates the structure before rendering and displays an error when it cannot use the map.
 
 ```json
 {
-  "generated": "2025-12-12T00:00:00Z",
+  "generated": "2026-10-27T00:00:00Z",
   "nodes": [
     {
       "canonical_id": "char-0001",
       "type": "character",
-      "name": "Rell",
-      "path": "characters/Rell.md",
-      "status": "canonical"
+      "name": "Example character",
+      "path": "characters/Example.md",
+      "canon_tier": "primary_canon"
     }
   ],
   "edges": [
-    {
-      "from": "char-0001",
-      "to": "char-0002",
-      "type": "characters"
-    }
+    { "from": "char-0001", "to": "char-0001", "type": "related" }
   ]
 }
 ```
 
-### Node Properties
+Each node requires a unique, nonempty string `canonical_id`, a nonempty string `name`, and one of these exact `type` values: `character`, `location`, `mechanics`, `faction`, `story`, `lore`, `term`. `path` is optional, but must be a string when present. It is displayed and copied as given; the dashboard server does not expose source files. The dashboard reads `canon_tier` to style `speculative` nodes. If available, legacy `status` values `speculative` and `missing` are also recognized. Other metadata such as `source_weight` and `retrieval_role` may be present but does not affect this graph.
 
-- `canonical_id` (required): Unique identifier
-- `type` (required): Entity type (character, location, mechanics, faction, story)
-- `name` (required): Display name
-- `path` (optional): File path in repository
-- `canon_tier` (recommended): Retrieval authority tier — one of: `primary_canon`, `working_canon`, `draft`, `speculative`, `sandbox`, `test`, `deprecated`. Used by agents, prompt packs, and reports to prefer authoritative sources.
-- `source_weight` (recommended): Numeric provenance score (higher = stronger signal). Typical ranges: primary_canon ≥ 100, working_canon ~90-95, draft ~50-70, speculative/sandbox ~30-60, test ~5-20. Drives deterministic sort order in context builders and export packs.
-- `retrieval_role` (recommended): Human-readable role hint, e.g. `authoritative`, `working_reference`, `active_draft`, `exploratory`, `test_fixture`. Mirrors `canon_tier` but is more descriptive for LLM prompts.
-- `status` (optional): Legacy / display status ("canonical", "speculative", or "missing"). Newer artifacts prefer the three fields above.
+Each edge requires string `from` and `to` IDs that match existing nodes and a nonempty string `type`. An edge counts once for each endpoint, including when it connects a node to itself. Edges render only when both endpoints are visible. A node's orphan state and detail-panel edge count always use the complete map.
 
-### Edge Properties
+The dashboard treats unsupported node types, duplicate IDs, unresolved endpoints, and incorrectly shaped data as malformed. Generate a compatible map before using the dashboard. No content file is read by the browser.
 
-- `from` (required): Source canonical_id
-- `to` (required): Target canonical_id
-- `type` (required): Relationship type
+## Development and checks
 
-## Technical Details
-
-### Dependencies
-
-- **vis-network**: Network graph visualization library (loaded via CDN)
-- No build process required - pure HTML/CSS/JavaScript
-
-### Browser Requirements
-
-- Modern browsers with ES6+ support
-- JavaScript must be enabled
-- Fetch API support (all modern browsers)
-
-### File Structure
-
-```
-dashboard/
-├── index.html      # Main HTML file with styles
-├── dashboard.js    # Dashboard logic and graph rendering
-└── README.md       # This file
-```
-
-### Physics Simulation
-
-The graph uses a force-directed layout with the following parameters:
-- **Gravitational Constant**: -50 (nodes repel each other)
-- **Spring Length**: 150px (preferred distance between connected nodes)
-- **Spring Constant**: 0.08 (edge stiffness)
-- **Damping**: 0.4 (motion decay)
-
-The physics simulation runs for 200 iterations on initial load, then disables for better performance.
-
-## Troubleshooting
-
-### "Failed to load REFERENCE_MAP.json"
-
-**Problem**: The dashboard can't find or load the reference map file.
-
-**Solutions**:
-1. Make sure you're running a local web server (not opening `index.html` directly)
-2. Verify `REFERENCE_MAP.json` exists in the repository root
-3. Check browser console for detailed error messages
-
-### Graph is Empty
-
-**Problem**: No nodes or edges are visible.
-
-**Solutions**:
-1. Check that all filter checkboxes are enabled
-2. Verify `REFERENCE_MAP.json` has valid `nodes` and `edges` arrays
-3. Click "Reset View" to fit the graph in the viewport
-
-### Graph is Too Crowded
-
-**Problem**: Too many nodes make the graph difficult to read.
-
-**Solutions**:
-1. Use filter checkboxes to hide entity types you're not interested in
-2. Zoom in on specific clusters
-3. Click individual nodes to see their details
-
-### Performance Issues
-
-**Problem**: Graph is slow or unresponsive with many nodes.
-
-**Solutions**:
-1. Filter out entity types to reduce visible nodes
-2. Disable physics after initial layout (done automatically)
-3. Close the browser's developer tools
-4. Use a modern browser with hardware acceleration
-
-## Development
-
-### Adding New Features
-
-To extend the dashboard:
-
-1. **Add new entity types**: Update `typeColors` object in `dashboard.js`
-2. **Modify physics**: Adjust parameters in the `options.physics` section
-3. **Change styling**: Edit the `<style>` section in `index.html`
-4. **Add new controls**: Add HTML elements and wire up event listeners
-
-### Updating the Reference Map
-
-The dashboard automatically reflects changes to `REFERENCE_MAP.json`. To update:
-
-1. Modify `REFERENCE_MAP.json` in the repository root
-2. Click "Reload Data" button in the dashboard
-3. Or refresh the page
-
-### Integration with CI/CD
-
-The dashboard can be integrated into GitHub Actions or other CI/CD pipelines:
-
-```yaml
-# Example: Deploy dashboard to GitHub Pages
-- name: Deploy Dashboard
-  uses: peaceiris/actions-gh-pages@v3
-  with:
-    github_token: ${{ secrets.GITHUB_TOKEN }}
-    publish_dir: ./dashboard
-    keep_files: true
-```
-
-## Future Enhancements
-
-Potential improvements for future versions:
-
-- [ ] Search functionality to find specific entities
-- [ ] Path highlighting to show connections between two nodes
-- [ ] Export graph as image (PNG/SVG)
-- [ ] Timeline view for temporal relationships
-- [ ] Diff view to compare reference maps over time
-- [ ] Integration with validation reports
-- [ ] Custom layout algorithms (hierarchical, circular, etc.)
-- [ ] Node grouping by entity type
-- [ ] Edge filtering by relationship type
-- [ ] Visual distinction (opacity, stroke, badges) for `canon_tier` / `retrieval_role` directly in the graph
-- [ ] Filter chips or legend sections driven by `canon_tier` buckets (primary/working/draft/etc.)
-
-## License
-
-Part of The Forgotten Tides Universe repository.  
-© 2025 Jeffrey A. Zyjeski. All rights reserved.
-
-## Related Documentation
-
-- [STRUCTURAL_AUDIT_AND_OPTIMIZATION_PLAN.md](../archive/project-history/STRUCTURAL_AUDIT_AND_OPTIMIZATION_PLAN.md) - Historical Phase 7 requirements
-- [CANONICAL_INDEX.md](../CANONICAL_INDEX.md) - Entity index
-- [REFERENCE_MAP.json](../REFERENCE_MAP.json) - Data source
-
-## Support
-
-For issues or questions about the dashboard:
-1. Check this README for common solutions
-2. Review the browser console for error messages
-3. Verify `REFERENCE_MAP.json` structure
-4. Open an issue in the repository
+The page is `dashboard/index.html`; behavior is in `dashboard/dashboard.js`. The local HTTP server is `scripts/serve_dashboard.js`. Run `npm run test:dashboard` for the dashboard checks. If the page shows an error, confirm the map exists and is valid, the server is running, and the browser can load the pinned vis-network script. If the graph is empty, inspect the message in the graph area and the filter buttons.

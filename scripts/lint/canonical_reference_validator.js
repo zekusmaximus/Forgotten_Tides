@@ -9,15 +9,14 @@ const REPORT_DIR = path.join(ROOT_DIR, 'out', 'reports');
 const REPORT_PATH = path.join(REPORT_DIR, 'canonical_reference_report.json');
 const INDEX_PATH = path.join(ROOT_DIR, 'CANONICAL_INDEX.md');
 
-function loadCanonicalIds() {
+function loadCanonicalIds(indexPath = INDEX_PATH) {
   const ids = new Set();
 
-  if (!fs.existsSync(INDEX_PATH)) {
-    console.warn(`⚠️  Canonical index not found at ${INDEX_PATH}`);
+  if (!fs.existsSync(indexPath)) {
     return ids;
   }
 
-  const content = fs.readFileSync(INDEX_PATH, 'utf8');
+  const content = fs.readFileSync(indexPath, 'utf8');
   // Match the leading backticked identifier on each list line:
   // `- \`<id>\` — Name (\`path\`)`. We use the line anchor and the ` — ` suffix
   // so the path token (also backticked) is not picked up as an ID.
@@ -64,7 +63,7 @@ function extractReferencedIds(frontmatter) {
   return ids;
 }
 
-function scanFile(filePath, canonicalIds, report) {
+function scanFile(filePath, canonicalIds, report, rootDir) {
   const content = fs.readFileSync(filePath, 'utf8');
   const match = content.match(/^---\s*([\s\S]*?)\s*---/);
   if (!match) {
@@ -76,25 +75,26 @@ function scanFile(filePath, canonicalIds, report) {
     data = yaml.load(match[1]);
   } catch (error) {
     report.errors.push({
-      file: path.relative(ROOT_DIR, filePath),
+      file: path.relative(rootDir, filePath),
       error: `Failed to parse YAML: ${error.message}`
     });
     return;
   }
 
+  if (!data || typeof data !== 'object') return;
   const referencedIds = extractReferencedIds(data);
   referencedIds.forEach(id => {
     const normalized = id.trim().toLowerCase();
     if (!canonicalIds.has(normalized)) {
       report.missing.push({
-        file: path.relative(ROOT_DIR, filePath),
+        file: path.relative(rootDir, filePath),
         id
       });
     }
   });
 }
 
-function walkDir(dir, canonicalIds, report) {
+function walkDir(dir, canonicalIds, report, rootDir) {
   const entries = fs.readdirSync(dir);
 
   entries.forEach(entry => {
@@ -105,9 +105,9 @@ function walkDir(dir, canonicalIds, report) {
       if (shouldSkipDir(entry)) {
         return;
       }
-      walkDir(entryPath, canonicalIds, report);
+      walkDir(entryPath, canonicalIds, report, rootDir);
     } else if (entry.endsWith('.md') && entry !== 'README.md') {
-      scanFile(entryPath, canonicalIds, report);
+      scanFile(entryPath, canonicalIds, report, rootDir);
     }
   });
 }
@@ -116,15 +116,13 @@ function shouldSkipDir(dirName) {
   return ['.git', 'node_modules', 'out', 'scripts'].includes(dirName);
 }
 
-function writeReport(report) {
-  fs.mkdirSync(REPORT_DIR, { recursive: true });
-  fs.writeFileSync(REPORT_PATH, JSON.stringify(report, null, 2));
+function writeReport(report, reportPath = REPORT_PATH) {
+  fs.mkdirSync(path.dirname(reportPath), { recursive: true });
+  fs.writeFileSync(reportPath, JSON.stringify(report, null, 2));
 }
 
-function main() {
-  console.log('🔍 Validating canonical references...');
-
-  const canonicalIds = loadCanonicalIds();
+function validateReferences(rootDir = ROOT_DIR) {
+  const canonicalIds = loadCanonicalIds(path.join(rootDir, 'CANONICAL_INDEX.md'));
   const report = {
     generated_at: new Date().toISOString(),
     canonical_ids_loaded: canonicalIds.size,
@@ -132,14 +130,25 @@ function main() {
     errors: []
   };
 
-  if (canonicalIds.size === 0) {
-    console.warn('⚠️  No canonical IDs loaded; skipping reference validation.');
-    writeReport(report);
-    process.exit(0);
+  if (canonicalIds.size > 0) {
+    walkDir(rootDir, canonicalIds, report, rootDir);
   }
+  return report;
+}
 
-  walkDir(ROOT_DIR, canonicalIds, report);
+function hasFailures(report) {
+  return report.canonical_ids_loaded === 0 || report.errors.length > 0 || report.missing.length > 0;
+}
+
+function main() {
+  console.log('🔍 Validating canonical references...');
+
+  const report = validateReferences();
   writeReport(report);
+
+  if (report.canonical_ids_loaded === 0) {
+    console.error(`❌ No canonical IDs loaded from ${INDEX_PATH}; reference validation cannot run.`);
+  }
 
   if (report.errors.length > 0) {
     console.error('❌ YAML parsing errors detected in reference validation.');
@@ -153,13 +162,18 @@ function main() {
     report.missing.forEach(entry => {
       console.error(`  - ${entry.file}: ${entry.id}`);
     });
+  }
+
+  if (hasFailures(report)) {
     console.log(`📄 Report written to ${path.relative(ROOT_DIR, REPORT_PATH)}`);
-    process.exit(1);
+    process.exitCode = 1;
+    return;
   }
 
   console.log('✅ All canonical references resolved.');
   console.log(`📄 Report written to ${path.relative(ROOT_DIR, REPORT_PATH)}`);
-  process.exit(0);
 }
 
-main();
+if (require.main === module) main();
+
+module.exports = { loadCanonicalIds, validateReferences, hasFailures, writeReport };

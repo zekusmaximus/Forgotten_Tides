@@ -182,10 +182,7 @@ function validateFile(filePath, schemaName, options = {}) {
     }
   } catch (error) {
     const message = `Could not parse YAML: ${error.message}`;
-    if (required) {
-      return { valid: false, errors: [message] };
-    }
-    return { valid: true, skipped: true, warnings: [`Parse skipped: ${error.message}`] };
+    return { valid: false, errors: [message] };
   }
 }
 
@@ -309,4 +306,6 @@ function main() {
   }
 }
 
-main();
+if (require.main === module) main();
+
+module.exports = { validateFile };

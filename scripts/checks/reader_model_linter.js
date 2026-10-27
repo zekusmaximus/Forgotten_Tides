@@ -3,7 +3,13 @@ const path = require('path');
 const fs = require('fs');
 const { collectScenes } = require('../lib/scene_indexer');
 const { writeJsonReport, writeMarkdownReport, renderFindings } = require('../lib/reporters');
-const { safeJsonParse } = require('../lib/file_loader');
+
+const DEFAULT_CONFIG = {
+  recall_half_life_scenes: 3,
+  entity_confusion_threshold: 5,
+  reinforcement_window: 2,
+  max_new_entities_per_scene: 4
+};
 
 function parseArgs() {
   const args = process.argv.slice(2);
@@ -14,25 +20,40 @@ function parseArgs() {
   };
 }
 
-function loadConfig() {
-  const configPath = path.join(process.cwd(), 'docs', 'reader_model.json');
+function loadConfig(rootDir = process.cwd()) {
+  const configPath = path.join(rootDir, 'docs', 'reader_model.json');
   if (!fs.existsSync(configPath)) {
-    return { recall_half_life_scenes: 3, entity_confusion_threshold: 5, reinforcement_window: 2, max_new_entities_per_scene: 4 };
+    return { ...DEFAULT_CONFIG };
   }
   const raw = fs.readFileSync(configPath, 'utf8');
-  return safeJsonParse(raw) || {};
+  let parsed;
+  try {
+    parsed = JSON.parse(raw);
+  } catch (error) {
+    throw new Error(`Could not parse ${configPath}: ${error.message}`);
+  }
+  if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) {
+    throw new Error(`Invalid ${configPath}: expected a JSON object`);
+  }
+  const config = { ...DEFAULT_CONFIG, ...parsed };
+  for (const key of Object.keys(DEFAULT_CONFIG)) {
+    if (!Number.isInteger(config[key]) || config[key] < 0) {
+      throw new Error(`Invalid ${configPath}: ${key} must be a non-negative integer`);
+    }
+  }
+  return config;
 }
 
 function readerLint(scenes, config) {
   const findings = [];
-  const byWork = {};
+  const byWork = new Map();
   scenes.forEach(scene => {
-    const key = scene.workId || 'unknown';
-    if (!byWork[key]) byWork[key] = [];
-    byWork[key].push(scene);
+    const key = `${scene.workKind || '(unknown kind)'}\0${scene.workId || '(unknown work)'}`;
+    if (!byWork.has(key)) byWork.set(key, []);
+    byWork.get(key).push(scene);
   });
 
-  Object.entries(byWork).forEach(([workId, workScenes]) => {
+  for (const workScenes of byWork.values()) {
     const introduced = {};
     workScenes.forEach((scene, idx) => {
       const deltas = scene.data.knowledge_delta || [];
@@ -59,7 +80,7 @@ function readerLint(scenes, config) {
         }
       });
     });
-  });
+  }
   return findings;
 }
 
@@ -83,4 +104,13 @@ function main() {
   // Warnings only; do not fail by default.
 }
 
-main();
+if (require.main === module) {
+  try {
+    main();
+  } catch (error) {
+    console.error(error.message);
+    process.exitCode = 1;
+  }
+}
+
+module.exports = { loadConfig, readerLint };

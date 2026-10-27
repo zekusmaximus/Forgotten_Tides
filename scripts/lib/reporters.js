@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 const { ensureDir } = require('./file_loader');
+const { resolveWithin } = require('./path_safety');
 
 function defaultOutDir() {
   return path.join(process.cwd(), 'out', 'reports');
@@ -8,16 +9,16 @@ function defaultOutDir() {
 
 function writeJsonReport(fileName, payload) {
   const outDir = defaultOutDir();
+  const target = resolveWithin(process.cwd(), 'out', 'reports', fileName);
   ensureDir(outDir);
-  const target = path.join(outDir, fileName);
   fs.writeFileSync(target, JSON.stringify(payload, null, 2), 'utf8');
   return target;
 }
 
 function writeMarkdownReport(fileName, lines) {
   const outDir = defaultOutDir();
+  const target = resolveWithin(process.cwd(), 'out', 'reports', fileName);
   ensureDir(outDir);
-  const target = path.join(outDir, fileName);
   const body = Array.isArray(lines) ? lines.join('\n') : lines;
   fs.writeFileSync(target, body, 'utf8');
   return target;

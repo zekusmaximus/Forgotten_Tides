@@ -53,3 +53,18 @@ test('canon-only excludes draft material', () => {
   assert.strictEqual(policy.canon_tier, 'draft');
   assert.strictEqual(shouldInclude(policy, { canonOnly: true }), false);
 });
+
+test('include-drafts explicitly widens canon-only without admitting other tiers', () => {
+  const options = { canonOnly: true, includeDrafts: true, includeTest: true, includeSandbox: true };
+  assert.strictEqual(shouldInclude({ canon_tier: 'primary_canon' }, options), true);
+  assert.strictEqual(shouldInclude({ canon_tier: 'working_canon' }, options), true);
+  assert.strictEqual(shouldInclude({ canon_tier: 'draft' }, options), true);
+  for (const tier of ['speculative', 'sandbox', 'test', 'deprecated']) {
+    assert.strictEqual(shouldInclude({ canon_tier: tier }, options), false, tier);
+  }
+});
+
+test('include-drafts alone retains the default filter', () => {
+  assert.strictEqual(shouldInclude({ canon_tier: 'draft' }, { includeDrafts: true }), true);
+  assert.strictEqual(shouldInclude({ canon_tier: 'test' }, { includeDrafts: true }), false);
+});
