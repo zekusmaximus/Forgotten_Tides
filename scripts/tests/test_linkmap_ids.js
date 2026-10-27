@@ -89,6 +89,18 @@ async function main() {
     assert.deepStrictEqual(map.nodes.map(node => node.canonical_id), ['char-0001', 'term-0001']);
   });
 
+  await withFixture(async root => {
+    write(root, 'data/timeline/events.yaml',
+      'events:\n  - id: event-story-0001-001\n    timestamp: T0\n    summary: First beat.\n    canon_tier: primary_canon\n');
+    write(root, 'stories/short_story/WORK/manuscript.md',
+      '---\nid: story-0002\ntype: story\nreferences:\n  events: [event-story-0001-001]\n---\n');
+    const result = await buildLinkMap({ repoRoot: root });
+    assert.strictEqual(result.entityCount, 2);
+    const map = JSON.parse(fs.readFileSync(path.join(root, 'REFERENCE_MAP.json'), 'utf8'));
+    assert.deepStrictEqual(map.nodes.map(node => node.canonical_id), ['event-story-0001-001', 'story-0002']);
+    assert(map.edges.some(edge => edge.from === 'story-0002' && edge.to === 'event-story-0001-001'));
+  });
+
   for (const [relativePath, content] of [
     ['characters/Broken.md', '---\nid: [unterminated\n---\n'],
     ['characters/Broken.md', '---\nid: char-0002\n'],

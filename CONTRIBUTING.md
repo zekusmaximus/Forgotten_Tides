@@ -56,9 +56,14 @@ Every entity file (stories, characters, locations, factions) contains two siblin
 | `cross_refs` | Entities that **appear in or are mentioned by** this entity — narrative presence. A character who walks through a scene goes in `cross_refs`. |
 | `references` | Entities that this entity **depends on for continuity** — causal dependency. A character whose arc is built on the existence of another character or location goes in `references`. |
 
-**In most short stories these two lists are identical.** Populate both with the same IDs unless you have a specific reason to diverge (e.g., a story that mentions a faction in passing but whose plot does not depend on that faction's continuity).
-
-When in doubt: populate both with the same IDs. The linting suite validates format only; it does not enforce the semantic distinction.
+Record the lists independently. A mention belongs in `cross_refs`; a causal
+prerequisite belongs in `references`. For a specific established beat, a short
+story may use `references.events` with an ID from `data/timeline/events.yaml`
+instead of depending on the whole source work through `references.stories`.
+Draft short stories may depend on draft events. A primary-canon short story may
+depend only on `primary_canon` shared events; lint checks both existence and
+tier. An event from a draft source requires separate author approval before
+its tier can be raised. Neither field should be filled by copying the other.
 
 ---
 

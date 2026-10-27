@@ -6,6 +6,7 @@ const os = require('node:os');
 const path = require('node:path');
 const { spawnSync } = require('node:child_process');
 const { analyzeReferences } = require('../lint/unresolved_refs');
+const { validateReferences } = require('../lint/canonical_reference_validator');
 
 const script = path.join(__dirname, '..', 'lint', 'unresolved_refs.js');
 
@@ -65,5 +66,38 @@ fixture(root => {
   assert.equal(report.termsChecked, 2);
   assert.equal(run(root).status, 0);
 });
+
+{
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'ft-event-reference-'));
+  try {
+    write(root, 'data/timeline/events.yaml',
+      'events:\n  - id: event-story-0001-001\n    canon_tier: primary_canon\n' +
+      '  - id: event-story-0002-001\n    canon_tier: draft\n');
+    const draft = 'stories/short_story/DRAFT/manuscript.md';
+    const canon = 'stories/short_story/CANON/manuscript.md';
+    write(root, draft,
+      '---\nid: story-0002\ntype: story\nstory_type: short-story\ncanon_tier: draft\nreferences:\n  events: [event-story-0002-001]\n---\n');
+    write(root, canon,
+      '---\nid: story-0001\ntype: story\nstory_type: short-story\ncanon_tier: primary_canon\nreferences:\n  events: [event-story-0001-001, event-story-0002-001]\n---\n');
+    const blocked = analyzeReferences(root);
+    assert.equal(blocked.failures.length, 1);
+    assert.match(blocked.failures[0], /primary-canon story depends on non-primary event event-story-0002-001/);
+    write(root, canon,
+      '---\nid: story-0001\ntype: story\nstory_type: short-story\ncanon_tier: primary_canon\nreferences:\n  events: [event-story-0001-001]\n---\n');
+    assert.deepEqual(analyzeReferences(root).failures, []);
+    write(root, canon,
+      '---\nid: story-0001\ntype: story\nstory_type: short-story\ncanon_tier: primary_canon\nreferences:\n  events: [event-story-9999-001]\n---\n');
+    assert.match(analyzeReferences(root).failures[0], /unresolved reference to event-story-9999-001/);
+    write(root, 'CANONICAL_INDEX.md',
+      '# Canonical Index\n- `event-story-0001-001` — First beat (`data/timeline/events.yaml`)\n' +
+      '- `event-story-0002-001` — Draft beat (`data/timeline/events.yaml`)\n');
+    assert(validateReferences(root).missing.some(item => item.id === 'event-story-9999-001'));
+    write(root, canon,
+      '---\nid: story-0001\ntype: story\nstory_type: short-story\ncanon_tier: primary_canon\nreferences:\n  events: [event-story-0001-001]\n---\n');
+    assert.deepEqual(validateReferences(root).missing, []);
+  } finally {
+    fs.rmSync(root, { recursive: true, force: true });
+  }
+}
 
 console.log('Reference coverage includes novel, screenplay, and lexicon terms.');

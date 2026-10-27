@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 const assert = require('assert');
 const { pack, parseArgs } = require('../prompt/export_prompt_pack');
+const { applyOrderingAndCapping } = require('../prompt/context_builder');
 
 function test(name, fn) {
   try {
@@ -55,4 +56,21 @@ test('canon-only with include-drafts admits active drafts but still excludes tes
   assert(!included.includes('scene_screenplay_sample_001'));
   assert(payload.entries.find(entry => entry.canon_tier === 'draft').source_weight <
     payload.entries.find(entry => entry.canon_tier === 'primary_canon').source_weight);
+});
+
+test('directly resolved event keeps priority over an expanded event of equal quality', () => {
+  const entities = {
+    'event-story-0022-002': { type: 'event', source_weight: 105 },
+    'event-story-0008-004': { type: 'event', source_weight: 105 }
+  };
+  const order = applyOrderingAndCapping(
+    ['event-story-0022-002'],
+    [{ id: 'event-story-0008-004', reason: 'prerequisite' }],
+    'default', 1, entities
+  );
+  assert.deepStrictEqual(order, ['event-story-0022-002']);
+  assert.deepStrictEqual(applyOrderingAndCapping(
+    ['event-story-0002-001', 'event-story-0022-002'], [],
+    'default', 1, entities
+  ), ['event-story-0022-002'], 'filtered event IDs do not occupy context slots');
 });

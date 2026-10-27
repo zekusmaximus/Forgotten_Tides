@@ -328,7 +328,6 @@ terms:
     status: canonical
     aliases:
       - Null Core
-      - Synod lamp
 
   - id: term-0028
     term: Civic Silo
@@ -354,4 +353,38 @@ terms:
       - term-0015  # Oblivion
     first_appearance: Spend What You Can Afford
     canonical_source: mechanics/ANCHOR_THEORY.md
+    status: canonical
+
+  - id: term-0030
+    term: Memory Density
+    definition: The concentration of preserved memory in an object or region; it contributes to coherence and forms navigable gradients in memory corridors.
+    category: Memory Physics
+    related_terms:
+      - term-0005  # Coherence
+      - term-0007  # Corridor
+      - term-0004  # Civic Memory
+    first_appearance: The Archivist's Wake
+    canonical_source: mechanics/MEMORY_PHYSICS.md
+    status: canonical
+
+  - id: term-0031
+    term: Junior Seal
+    definition: A junior Reliquarist's audit seal issued at their own anchor cost when a pledged stone's provenance cannot be fully verified. It lets the pledge proceed while recording the anomaly for review by the senior chain on the next quarterly pass; a junior may issue no more than three per year.
+    category: Mechanics
+    related_terms:
+      - term-0025  # Reliquarist
+      - term-0014  # Memory Stone
+      - term-0002  # Anchor Burn
+    first_appearance: The Reliquarist's Doubt
+    canonical_source: stories/short_story/the_reliquarists_doubt/manuscript.md
+    status: canonical
+
+  - id: term-0032
+    term: Synod Lamp
+    definition: A dull, shuttered housing used by Obsidian Synod agents to carry a null stone. The lamp is the housing; its null core can be removed or exposed.
+    category: Technology
+    related_terms:
+      - term-0027  # Null Stone
+    first_appearance: The Mercy Doctrine
+    canonical_source: stories/short_story/spend_what_you_can_afford/manuscript.md
     status: canonical

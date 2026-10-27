@@ -193,19 +193,21 @@ async function main() {
     };
     const manuscript = path.join(root, 'stories', 'short_story', 'FIXTURE', 'manuscript.md');
     fs.mkdirSync(path.dirname(manuscript), { recursive: true });
-    fs.writeFileSync(manuscript, '# Fixture\n\nPublishable fixture text.\n');
+    fs.writeFileSync(manuscript,
+      '---\ncanon_tier: primary_canon\n---\n\n# Fixture\n\nCanonical fixture text.\n');
     const result = await orchestrate('compile all artifacts', {
       root, services: { runNode, runLints: goodChecks }
     });
     const output = path.join(root, 'out', 'compiled', 'forgotten_tides_stories.md');
     assert.deepEqual(result.artifacts, ['out/compiled/forgotten_tides_stories.md']);
-    assert.match(fs.readFileSync(output, 'utf8'), /Publishable fixture text\./);
+    assert.match(fs.readFileSync(output, 'utf8'), /Canonical fixture text\./);
 
     await assert.rejects(orchestrate('build bible pdf', {
       root, services: { runNode, runLints: goodChecks }
     }), /compiles story Markdown only/);
 
-    fs.writeFileSync(manuscript, '# Fixture\n\n<!-- include: scenes/MISSING.md -->\n');
+    fs.writeFileSync(manuscript,
+      '---\ncanon_tier: primary_canon\n---\n\n# Fixture\n\n<!-- include: scenes/MISSING.md -->\n');
     const prior = fs.readFileSync(output, 'utf8');
     await assert.rejects(orchestrate('compile all artifacts', {
       root, services: { runNode, runLints: goodChecks }

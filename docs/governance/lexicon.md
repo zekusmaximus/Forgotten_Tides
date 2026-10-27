@@ -4,12 +4,26 @@
 
 This document defines the change control process for the structured lexicon in `data/lexicon/terms.yaml`. The lexicon is a critical component of The Forgotten Tides universe, ensuring consistency across all narrative and technical documentation.
 
+## Editorial Scope
+
+The structured lexicon is the curated list of approved concepts and terminology.
+Add a reusable mechanic, institution, procedure, or device only when its
+definition and source can be verified. Record genuine alternative names in
+`aliases`. Keep distinct objects separate: a Synod Lamp is the housing for a
+Null Stone, so it is a term of its own rather than an alias of Null Stone.
+
+Names, story titles, incidental title-case phrases, and ordinary prose do not
+become lexicon terms merely because the scanner flags them. A draft-only
+concept should remain `draft` until its definition is approved or an
+authoritative source establishes it.
+
 ## Change Control Process
 
 ### 1. Term Addition
 
 **Requirements:**
-- New terms must be canonical to the universe
+- New terms must name a reusable concept and cite its current source
+- Use `status: draft` until an authoritative definition is approved
 - Must include proper categorization and cross-references
 - Must specify canonical source and first appearance
 - Must be reviewed by at least one OWNER
@@ -76,16 +90,18 @@ All terms in `data/lexicon/terms.yaml` must include:
   related_terms: [...]   # Array of related terms
   first_appearance: "..." # Source of first canonical mention
   canonical_source: "..." # Authoritative reference
-  status: "..."          # canonical/speculative/deprecated
+  status: "..."          # canonical/draft/speculative/deprecated
   aliases: [...]         # Optional alternative names
 ```
 
 ## Validation
 
-The glossary enforcer script (`scripts/lint/glossary_enforcer.js`) runs automatically to:
-- Validate term usage in stories
-- Check for undefined terms
-- Ensure consistency with structured data
+The glossary enforcer script (`scripts/lint/glossary_enforcer.js`) scans story
+Markdown recursively for title-case multiword phrases and compares them with
+terms and aliases. Its findings are **advisory**; they do not fail lint. They
+are candidates for editorial review, not evidence that every phrase needs a
+term. Review the full coverage and warning list in
+`out/reports/glossary_coverage.json` before proposing additions.
 
 ## Legacy Migration
 

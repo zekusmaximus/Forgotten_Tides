@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-20T16:48:37.604Z",
+  "generated": "2026-10-27T19:57:46.090Z",
   "nodes": [
     {
       "canonical_id": "char-0001",
@@ -269,6 +269,240 @@
       "path": "characters/Jory_Fenn.md",
       "canon_tier": "primary_canon",
       "source_weight": 110,
+      "retrieval_role": "authoritative"
+    },
+    {
+      "canonical_id": "event-0001",
+      "type": "event",
+      "name": "The Archivist's Wake establishes memory corridor travel, anchor-loss consequences, memory stones, and conceptual decay as primary canon.",
+      "path": "data/timeline/events.yaml",
+      "canon_tier": "primary_canon",
+      "source_weight": 105,
+      "retrieval_role": "authoritative"
+    },
+    {
+      "canonical_id": "event-0002",
+      "type": "event",
+      "name": "Corridor instability detected; Tari fades semi-permanent; Rell performs illegal zero-anchoring and burns one anchor to stabilize.",
+      "path": "data/timeline/events.yaml",
+      "canon_tier": "primary_canon",
+      "source_weight": 105,
+      "retrieval_role": "authoritative"
+    },
+    {
+      "canonical_id": "event-0003",
+      "type": "event",
+      "name": "Galley aftermath; Sutira and Estavan confront Rell; Heliodrome telemetry shows conceptual dementia expanding.",
+      "path": "data/timeline/events.yaml",
+      "canon_tier": "primary_canon",
+      "source_weight": 105,
+      "retrieval_role": "authoritative"
+    },
+    {
+      "canonical_id": "event-0004",
+      "type": "event",
+      "name": "Lattice Gap passage; Tari offers memory copy; Rell uses small personal memory stone; eddy tracks mnemonic wake (new canon).",
+      "path": "data/timeline/events.yaml",
+      "canon_tier": "primary_canon",
+      "source_weight": 105,
+      "retrieval_role": "authoritative"
+    },
+    {
+      "canonical_id": "event-0005",
+      "type": "event",
+      "name": "Heliodrome approach under spatial misalignment; Rell burns last forbidden emotional anchor to re-stabilize station.",
+      "path": "data/timeline/events.yaml",
+      "canon_tier": "primary_canon",
+      "source_weight": 105,
+      "retrieval_role": "authoritative"
+    },
+    {
+      "canonical_id": "event-0006",
+      "type": "event",
+      "name": "Docking and recovery; crew performs manual latch under drift; Rell exhibits identity void; Sutira confronts.",
+      "path": "data/timeline/events.yaml",
+      "canon_tier": "primary_canon",
+      "source_weight": 105,
+      "retrieval_role": "authoritative"
+    },
+    {
+      "canonical_id": "event-0007",
+      "type": "event",
+      "name": "Departure; Rell declines replacement anchor and walks forward into lighter self; crew registers grief and fear.",
+      "path": "data/timeline/events.yaml",
+      "canon_tier": "primary_canon",
+      "source_weight": 105,
+      "retrieval_role": "authoritative"
+    },
+    {
+      "canonical_id": "event-story-0008-001",
+      "type": "event",
+      "name": "Inya Solven receives a freshly pledged personal memory stone at the Tessarine Vault for routine clean-audit.",
+      "path": "data/timeline/events.yaml",
+      "canon_tier": "primary_canon",
+      "source_weight": 105,
+      "retrieval_role": "authoritative"
+    },
+    {
+      "canonical_id": "event-story-0008-002",
+      "type": "event",
+      "name": "First cradle pass; the pledged stone sings true on the cradle but its memory is wrong for the donor.",
+      "path": "data/timeline/events.yaml",
+      "canon_tier": "primary_canon",
+      "source_weight": 105,
+      "retrieval_role": "authoritative"
+    },
+    {
+      "canonical_id": "event-story-0008-003",
+      "type": "event",
+      "name": "Inya verifies the donor's birth records against the terrain held in the memory.",
+      "path": "data/timeline/events.yaml",
+      "canon_tier": "primary_canon",
+      "source_weight": 105,
+      "retrieval_role": "authoritative"
+    },
+    {
+      "canonical_id": "event-story-0008-004",
+      "type": "event",
+      "name": "Inya makes her ledger entry and burns one personal anchor to seal the audit.",
+      "path": "data/timeline/events.yaml",
+      "canon_tier": "primary_canon",
+      "source_weight": 105,
+      "retrieval_role": "authoritative"
+    },
+    {
+      "canonical_id": "event-story-0012-001",
+      "type": "event",
+      "name": "Nara Oss enters an abandoned Black Horizon station as part of an Obsidian Synod release rite.",
+      "path": "data/timeline/events.yaml",
+      "canon_tier": "primary_canon",
+      "source_weight": 105,
+      "retrieval_role": "authoritative"
+    },
+    {
+      "canonical_id": "event-story-0012-002",
+      "type": "event",
+      "name": "Nara discovers one living inhabitant who has remained to preserve the station's injuries as testimony.",
+      "path": "data/timeline/events.yaml",
+      "canon_tier": "primary_canon",
+      "source_weight": 105,
+      "retrieval_role": "authoritative"
+    },
+    {
+      "canonical_id": "event-story-0012-003",
+      "type": "event",
+      "name": "The inhabitant refuses Synod release and asks that pain be remembered because it is the only warning left.",
+      "path": "data/timeline/events.yaml",
+      "canon_tier": "primary_canon",
+      "source_weight": 105,
+      "retrieval_role": "authoritative"
+    },
+    {
+      "canonical_id": "event-story-0012-004",
+      "type": "event",
+      "name": "Nara preserves the testimony in a ledger and leaves with an unresolved burden rather than completing total ritual forgetting.",
+      "path": "data/timeline/events.yaml",
+      "canon_tier": "primary_canon",
+      "source_weight": 105,
+      "retrieval_role": "authoritative"
+    },
+    {
+      "canonical_id": "event-story-0013-001",
+      "type": "event",
+      "name": "Elior Ren completes a pre-run anchor audit for his first supervised Canticle correction in the Helios Drift.",
+      "path": "data/timeline/events.yaml",
+      "canon_tier": "primary_canon",
+      "source_weight": 105,
+      "retrieval_role": "authoritative"
+    },
+    {
+      "canonical_id": "event-story-0013-002",
+      "type": "event",
+      "name": "During a non-emergency corridor correction, Elior performs a controlled anchor burn of one childhood sensory memory.",
+      "path": "data/timeline/events.yaml",
+      "canon_tier": "primary_canon",
+      "source_weight": 105,
+      "retrieval_role": "authoritative"
+    },
+    {
+      "canonical_id": "event-story-0013-003",
+      "type": "event",
+      "name": "The post-run audit confirms Elior remains coherent with eleven anchors; the burned classroom smell is permanently gone.",
+      "path": "data/timeline/events.yaml",
+      "canon_tier": "primary_canon",
+      "source_weight": 105,
+      "retrieval_role": "authoritative"
+    },
+    {
+      "canonical_id": "event-story-0022-001",
+      "type": "event",
+      "name": "Four Tessarine Vault review trays carry Obsidian Synod null stones; lowered cradles amplify absence and four of sixteen audit booths are lost to forgetting.",
+      "path": "data/timeline/events.yaml",
+      "canon_tier": "primary_canon",
+      "source_weight": 105,
+      "retrieval_role": "authoritative"
+    },
+    {
+      "canonical_id": "event-story-0022-002",
+      "type": "event",
+      "name": "The Fourth Sleeve civic silo is lost to null pressure before the defense reaches the silo bank.",
+      "path": "data/timeline/events.yaml",
+      "canon_tier": "primary_canon",
+      "source_weight": 105,
+      "retrieval_role": "authoritative"
+    },
+    {
+      "canonical_id": "event-story-0022-003",
+      "type": "event",
+      "name": "A Synod acolyte dies when the deck beneath him forgets to hold.",
+      "path": "data/timeline/events.yaml",
+      "canon_tier": "primary_canon",
+      "source_weight": 105,
+      "retrieval_role": "authoritative"
+    },
+    {
+      "canonical_id": "event-story-0022-004",
+      "type": "event",
+      "name": "Navigant Marsk orders the Ninth Sleeve silo released by triage to prioritize three more populous threatened sleeves.",
+      "path": "data/timeline/events.yaml",
+      "canon_tier": "primary_canon",
+      "source_weight": 105,
+      "retrieval_role": "authoritative"
+    },
+    {
+      "canonical_id": "event-story-0022-005",
+      "type": "event",
+      "name": "Approximately one hundred sixty pledged middle-ring memory stones are spent into the Second, Fifth, and Seventh housings on Navigant Marsk's order, without donor consent.",
+      "path": "data/timeline/events.yaml",
+      "canon_tier": "primary_canon",
+      "source_weight": 105,
+      "retrieval_role": "authoritative"
+    },
+    {
+      "canonical_id": "event-story-0022-006",
+      "type": "event",
+      "name": "The Ninth Sleeve silo loses its pitch and is lost to oblivion after Navigant Marsk's triage decision.",
+      "path": "data/timeline/events.yaml",
+      "canon_tier": "primary_canon",
+      "source_weight": 105,
+      "retrieval_role": "authoritative"
+    },
+    {
+      "canonical_id": "event-story-0022-007",
+      "type": "event",
+      "name": "Brother Hael binds the Second Sleeve silo by feeding it his complete anchor sequence and enters catastrophic anchor loss.",
+      "path": "data/timeline/events.yaml",
+      "canon_tier": "primary_canon",
+      "source_weight": 105,
+      "retrieval_role": "authoritative"
+    },
+    {
+      "canonical_id": "event-story-0022-008",
+      "type": "event",
+      "name": "Seven Synod null stones pass to Canticle pilot Elior Ren under a manifest naming an expected pilot cost.",
+      "path": "data/timeline/events.yaml",
+      "canon_tier": "primary_canon",
+      "source_weight": 105,
       "retrieval_role": "authoritative"
     },
     {
@@ -546,18 +780,18 @@
       "type": "lore",
       "name": "Chat Highlights",
       "path": "lore/notes/NOTES_CHAT_HIGHLIGHTS_1765472978233.md",
-      "canon_tier": "working_canon",
-      "source_weight": 85,
-      "retrieval_role": "working_reference"
+      "canon_tier": "draft",
+      "source_weight": 55,
+      "retrieval_role": "active_draft"
     },
     {
       "canonical_id": "notes_chat_highlights_1765473539542",
       "type": "lore",
       "name": "Chat Highlights",
       "path": "lore/notes/NOTES_CHAT_HIGHLIGHTS_1765473539542.md",
-      "canon_tier": "working_canon",
-      "source_weight": 85,
-      "retrieval_role": "working_reference"
+      "canon_tier": "draft",
+      "source_weight": 55,
+      "retrieval_role": "active_draft"
     },
     {
       "canonical_id": "novel_forgotten_tides_manuscript",
@@ -1203,9 +1437,9 @@
       "type": "term",
       "name": "Light-Bequest",
       "path": "data/lexicon/terms.yaml",
-      "canon_tier": "primary_canon",
-      "source_weight": 110,
-      "retrieval_role": "authoritative"
+      "canon_tier": "draft",
+      "source_weight": 65,
+      "retrieval_role": "active_draft"
     },
     {
       "canonical_id": "term-0022",
@@ -1274,6 +1508,33 @@
       "canonical_id": "term-0029",
       "type": "term",
       "name": "Conceptual Ghost",
+      "path": "data/lexicon/terms.yaml",
+      "canon_tier": "primary_canon",
+      "source_weight": 110,
+      "retrieval_role": "authoritative"
+    },
+    {
+      "canonical_id": "term-0030",
+      "type": "term",
+      "name": "Memory Density",
+      "path": "data/lexicon/terms.yaml",
+      "canon_tier": "primary_canon",
+      "source_weight": 110,
+      "retrieval_role": "authoritative"
+    },
+    {
+      "canonical_id": "term-0031",
+      "type": "term",
+      "name": "Junior Seal",
+      "path": "data/lexicon/terms.yaml",
+      "canon_tier": "primary_canon",
+      "source_weight": 110,
+      "retrieval_role": "authoritative"
+    },
+    {
+      "canonical_id": "term-0032",
+      "type": "term",
+      "name": "Synod Lamp",
       "path": "data/lexicon/terms.yaml",
       "canon_tier": "primary_canon",
       "source_weight": 110,
@@ -2320,6 +2581,546 @@
       "from": "char-0030",
       "to": "story-0022",
       "type": "stories"
+    },
+    {
+      "from": "event-0001",
+      "to": "mech-0001",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-0001",
+      "to": "mech-0002",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-0001",
+      "to": "mech-0003",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-0001",
+      "to": "story-0001",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0008-001",
+      "to": "char-0010",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0008-001",
+      "to": "fact-0002",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0008-001",
+      "to": "loc-0008",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0008-001",
+      "to": "loc-0011",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0008-001",
+      "to": "story-0008",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0008-002",
+      "to": "char-0010",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0008-002",
+      "to": "char-0029",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0008-002",
+      "to": "fact-0002",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0008-002",
+      "to": "loc-0011",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0008-002",
+      "to": "story-0008",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0008-003",
+      "to": "char-0010",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0008-003",
+      "to": "fact-0002",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0008-003",
+      "to": "loc-0008",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0008-003",
+      "to": "loc-0011",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0008-003",
+      "to": "story-0008",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0008-004",
+      "to": "char-0010",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0008-004",
+      "to": "char-0029",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0008-004",
+      "to": "fact-0002",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0008-004",
+      "to": "loc-0011",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0008-004",
+      "to": "mech-0003",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0008-004",
+      "to": "story-0008",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0012-001",
+      "to": "char-0016",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0012-001",
+      "to": "fact-0005",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0012-001",
+      "to": "loc-0007",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0012-001",
+      "to": "mech-0001",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0012-001",
+      "to": "story-0012",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0012-002",
+      "to": "char-0016",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0012-002",
+      "to": "fact-0005",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0012-002",
+      "to": "loc-0007",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0012-002",
+      "to": "mech-0001",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0012-002",
+      "to": "story-0012",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0012-003",
+      "to": "char-0016",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0012-003",
+      "to": "fact-0005",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0012-003",
+      "to": "mech-0001",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0012-003",
+      "to": "story-0012",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0012-004",
+      "to": "char-0016",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0012-004",
+      "to": "fact-0005",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0012-004",
+      "to": "loc-0007",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0012-004",
+      "to": "mech-0001",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0012-004",
+      "to": "story-0012",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0013-001",
+      "to": "char-0017",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0013-001",
+      "to": "fact-0001",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0013-001",
+      "to": "fact-0002",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0013-001",
+      "to": "loc-0008",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0013-001",
+      "to": "mech-0002",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0013-001",
+      "to": "mech-0003",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0013-001",
+      "to": "story-0013",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0013-002",
+      "to": "char-0017",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0013-002",
+      "to": "mech-0002",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0013-002",
+      "to": "mech-0003",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0013-002",
+      "to": "story-0001",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0013-002",
+      "to": "story-0013",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0013-003",
+      "to": "char-0017",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0013-003",
+      "to": "mech-0003",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0013-003",
+      "to": "story-0013",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0022-001",
+      "to": "char-0028",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0022-001",
+      "to": "char-0030",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0022-001",
+      "to": "event-story-0008-004",
+      "type": "temporal"
+    },
+    {
+      "from": "event-story-0022-001",
+      "to": "event-story-0013-003",
+      "type": "temporal"
+    },
+    {
+      "from": "event-story-0022-001",
+      "to": "fact-0002",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0022-001",
+      "to": "fact-0005",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0022-001",
+      "to": "loc-0008",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0022-001",
+      "to": "loc-0011",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0022-001",
+      "to": "story-0022",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0022-002",
+      "to": "fact-0005",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0022-002",
+      "to": "loc-0008",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0022-002",
+      "to": "loc-0011",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0022-002",
+      "to": "mech-0001",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0022-002",
+      "to": "story-0008",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0022-002",
+      "to": "story-0022",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0022-003",
+      "to": "fact-0005",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0022-003",
+      "to": "loc-0011",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0022-003",
+      "to": "mech-0001",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0022-003",
+      "to": "story-0022",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0022-004",
+      "to": "char-0010",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0022-004",
+      "to": "char-0028",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0022-004",
+      "to": "fact-0002",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0022-004",
+      "to": "loc-0011",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0022-004",
+      "to": "mech-0001",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0022-004",
+      "to": "story-0022",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0022-005",
+      "to": "char-0010",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0022-005",
+      "to": "char-0028",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0022-005",
+      "to": "fact-0002",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0022-005",
+      "to": "loc-0011",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0022-005",
+      "to": "mech-0001",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0022-005",
+      "to": "story-0022",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0022-006",
+      "to": "char-0028",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0022-006",
+      "to": "loc-0008",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0022-006",
+      "to": "loc-0011",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0022-006",
+      "to": "mech-0001",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0022-006",
+      "to": "story-0022",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0022-007",
+      "to": "char-0010",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0022-007",
+      "to": "char-0028",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0022-007",
+      "to": "char-0029",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0022-007",
+      "to": "loc-0011",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0022-007",
+      "to": "mech-0003",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0022-007",
+      "to": "story-0001",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0022-007",
+      "to": "story-0022",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0022-008",
+      "to": "char-0017",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0022-008",
+      "to": "char-0030",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0022-008",
+      "to": "fact-0001",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0022-008",
+      "to": "fact-0002",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0022-008",
+      "to": "fact-0005",
+      "type": "involved_entities"
+    },
+    {
+      "from": "event-story-0022-008",
+      "to": "story-0022",
+      "type": "involved_entities"
     },
     {
       "from": "fact-0001",
@@ -3968,6 +4769,16 @@
     },
     {
       "from": "story-0022",
+      "to": "event-story-0008-004",
+      "type": "events"
+    },
+    {
+      "from": "story-0022",
+      "to": "event-story-0013-003",
+      "type": "events"
+    },
+    {
+      "from": "story-0022",
       "to": "fact-0001",
       "type": "factions"
     },
@@ -4029,11 +4840,6 @@
     {
       "from": "story-0022",
       "to": "story-0013",
-      "type": "stories"
-    },
-    {
-      "from": "story-0022",
-      "to": "story-0021",
       "type": "stories"
     },
     {
@@ -4399,6 +5205,41 @@
     {
       "from": "term-0029",
       "to": "term-0020",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0030",
+      "to": "term-0004",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0030",
+      "to": "term-0005",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0030",
+      "to": "term-0007",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0031",
+      "to": "term-0002",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0031",
+      "to": "term-0014",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0031",
+      "to": "term-0025",
+      "type": "related_terms"
+    },
+    {
+      "from": "term-0032",
+      "to": "term-0027",
       "type": "related_terms"
     }
   ]

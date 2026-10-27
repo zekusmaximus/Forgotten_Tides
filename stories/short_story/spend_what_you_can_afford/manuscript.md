@@ -32,7 +32,6 @@ cross_refs:
   stories:
     - story-0008
     - story-0013
-    - story-0021
     - story-0012
 references:
   characters:
@@ -53,11 +52,11 @@ references:
     - mech-0002
     - mech-0003
   stories:
-    - story-0008
-    - story-0013
-    - story-0021
     - story-0012
     - story-0001
+  events:
+    - event-story-0008-004
+    - event-story-0013-003
 timeline:
   setting: 'The Tessarine Vault in the Helios Drift outer sleeve, on the quarterly review twelve weeks after the events of story-0008'
   duration: 'Roughly three hours, from the first bell of the quarterly pass to the Navigant''s report'
@@ -68,13 +67,21 @@ timeline:
       timestamp: T0+1h
     - event: Ilka carries a Synod lamp off the service stair under full attention and loses the sense of her left hand
       timestamp: T0+1h10m
-    - event: The silo bank is reached; the Fourth Sleeve silo is already lost; one acolyte dies through a forgotten deck; Jory Fenn is taken
+    - event: The silo bank is reached; the Fourth Sleeve silo is already lost
       timestamp: T0+1h25m
-    - event: Ilka releases the Ninth Sleeve by triage and orders the middle ring's pledged stones spent into the remaining housings
+    - event: A Synod acolyte dies when the deck beneath him forgets to hold; Jory Fenn is taken
+      timestamp: T0+1h25m
+    - event: Ilka releases the Ninth Sleeve by triage
       timestamp: T0+1h45m
+    - event: Ilka orders approximately one hundred sixty pledged middle-ring stones spent into the Second, Fifth, and Seventh housings without donor consent
+      timestamp: T0+1h45m
+    - event: The Ninth Sleeve silo loses its pitch and is lost to oblivion
+      timestamp: T0+2h
     - event: Brother Hael feeds the Second Sleeve housing his complete anchor sequence; the silo binds; the room stops holding him
       timestamp: T0+2h10m
-    - event: Five null stones pass to Canticle custody under a named manifest; Ilka writes the report under the lintel
+    - event: Seven null stones pass to Canticle custody under a named manifest
+      timestamp: T0+3h
+    - event: Ilka writes the report under the lintel
       timestamp: T0+3h
 events:
   - id: event-story-0022-001
@@ -83,6 +90,11 @@ events:
     canon_tier: primary_canon
     source: stories/short_story/spend_what_you_can_afford/manuscript.md
     causal_note: 'First on-page Synod operation inside the Helios Drift proper and first fictional use of null stones from lore/theology/OBLIVION_HERESIES.md; the cradle''s established amplification function is the mechanism, not a new law.'
+    relationships:
+      - type: after
+        target: event-story-0008-004
+      - type: after
+        target: event-story-0013-003
     involved_entities:
       - story-0022
       - char-0028
@@ -94,10 +106,10 @@ events:
       - mech-0001
   - id: event-story-0022-002
     timestamp: T0+1h25m
-    summary: The Fourth Sleeve civic silo is lost to null pressure before the defense reaches the silo bank; one Synod acolyte dies when the deck under him forgets to hold.
+    summary: The Fourth Sleeve civic silo is lost to null pressure before the defense reaches the silo bank.
     canon_tier: primary_canon
     source: stories/short_story/spend_what_you_can_afford/manuscript.md
-    causal_note: 'Three generations of Drift Sleeve Four civic memory enter oblivion; Tellis Aru''s granddaughters (story-0008) live in that sleeve. Drift logic order (meaning, orientation, matter) governs the death.'
+    causal_note: 'Three generations of Drift Sleeve Four civic memory enter oblivion; Tellis Aru''s granddaughters (story-0008) live in that sleeve.'
     involved_entities:
       - story-0022
       - story-0008
@@ -106,8 +118,32 @@ events:
       - fact-0005
       - mech-0001
   - id: event-story-0022-003
+    timestamp: T0+1h25m
+    summary: A Synod acolyte dies when the deck beneath him forgets to hold.
+    canon_tier: primary_canon
+    source: stories/short_story/spend_what_you_can_afford/manuscript.md
+    causal_note: 'Drift logic order (meaning, orientation, matter) governs the death.'
+    involved_entities:
+      - story-0022
+      - loc-0011
+      - fact-0005
+      - mech-0001
+  - id: event-story-0022-004
     timestamp: T0+1h45m
-    summary: 'Navigant Marsk releases the Ninth Sleeve silo by triage (nine hundred living) and orders approximately one hundred sixty pledged middle-ring stones spent into the Second, Fifth, and Seventh housings without donor consent.'
+    summary: Navigant Marsk orders the Ninth Sleeve silo released by triage to prioritize three more populous threatened sleeves.
+    canon_tier: primary_canon
+    source: stories/short_story/spend_what_you_can_afford/manuscript.md
+    causal_note: 'The Ninth Sleeve has four stations and nine hundred living; Ilka takes responsibility for the decision.'
+    involved_entities:
+      - story-0022
+      - char-0028
+      - char-0010
+      - loc-0011
+      - fact-0002
+      - mech-0001
+  - id: event-story-0022-005
+    timestamp: T0+1h45m
+    summary: Approximately one hundred sixty pledged middle-ring memory stones are spent into the Second, Fifth, and Seventh housings on Navigant Marsk's order, without donor consent.
     canon_tier: primary_canon
     source: stories/short_story/spend_what_you_can_afford/manuscript.md
     causal_note: Memory density injection per the bible's stabilization rule; personal pledges thicken a civic silo but do not bind it. The expenditure is an institutional breach the Orders must now carry.
@@ -118,12 +154,24 @@ events:
       - loc-0011
       - fact-0002
       - mech-0001
-  - id: event-story-0022-004
-    timestamp: T0+2h10m
-    summary: Brother Hael binds the Second Sleeve silo by feeding it his complete anchor sequence; the final expenditure is classified as zero-anchoring and is not prevented; Hael enters catastrophic anchor loss and the room stops holding him.
+  - id: event-story-0022-006
+    timestamp: T0+2h
+    summary: The Ninth Sleeve silo loses its pitch and is lost to oblivion after Navigant Marsk's triage decision.
     canon_tier: primary_canon
     source: stories/short_story/spend_what_you_can_afford/manuscript.md
-    causal_note: 'First on-page dramatization of the catastrophic loss state in mechanics/ANCHOR_THEORY.md section 3.4. No anchor is regrown, replaced, or given back. Inya Solven''s knot of his voice remains hers and intact.'
+    causal_note: 'Four Ninth Sleeve stations and nine hundred living begin to lose their civic coherence.'
+    involved_entities:
+      - story-0022
+      - char-0028
+      - loc-0011
+      - loc-0008
+      - mech-0001
+  - id: event-story-0022-007
+    timestamp: T0+2h10m
+    summary: Brother Hael binds the Second Sleeve silo by feeding it his complete anchor sequence and enters catastrophic anchor loss.
+    canon_tier: primary_canon
+    source: stories/short_story/spend_what_you_can_afford/manuscript.md
+    causal_note: 'The final expenditure is classified as zero-anchoring and is not prevented. The room stops holding Hael. First on-page dramatization of the catastrophic loss state in mechanics/ANCHOR_THEORY.md section 3.4. No anchor is regrown, replaced, or given back. Inya Solven''s knot of his voice remains hers and intact.'
     involved_entities:
       - story-0022
       - char-0029
@@ -132,12 +180,12 @@ events:
       - loc-0011
       - mech-0003
       - story-0001
-  - id: event-story-0022-005
+  - id: event-story-0022-008
     timestamp: T0+3h
-    summary: The Tessarine audit hall is sealed with four null stones inside and pledge audit is suspended across the outer sleeve; five null stones pass to Canticle pilot Elior Ren under a manifest naming an expected cost; Jory Fenn is held for the Archivist Inquisition.
+    summary: Seven Synod null stones pass to Canticle pilot Elior Ren under a manifest naming an expected pilot cost.
     canon_tier: primary_canon
     source: stories/short_story/spend_what_you_can_afford/manuscript.md
-    causal_note: 'Leaves the Helios Drift outer sleeve with two lost silos, a stopped pledge system, and live institutional consequences for the Archivist Orders, the Canticle Fleet, and the Synod.'
+    causal_note: 'Four more null stones remain sealed in the audit hall, making eleven total. Pledge audit is suspended across the outer sleeve; Jory Fenn and another acolyte are held for the Archivist Inquisition. The doctrine lintel has forgotten the word only. The pilot run and its cost occur after this story closes.'
     involved_entities:
       - story-0022
       - char-0028

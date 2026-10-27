@@ -41,14 +41,20 @@ try {
   write('characters/README.md', 'No frontmatter');
   write('characters/char-0001_backup_old.md', '---\nid: char-0001\nname: Backup\n---\n');
   write('data/lexicon/terms.yaml', 'terms:\n  - id: term-0001\n    term: Passage\n    definition: A route.\n');
+  write('data/timeline/events.yaml',
+    'events:\n  - id: event-story-0001-001\n    timestamp: T0\n    summary: The first beat.\n    canon_tier: primary_canon\n' +
+    '  - id: event-story-0002-001\n    timestamp: T0\n    summary: A draft beat.\n    canon_tier: draft\n');
 
   process.chdir(root);
-  const ids = ['char-0001', 'term-0001', 'char-0001', 'char-0159'];
+  const ids = ['char-0001', 'term-0001', 'char-0001', 'char-0159', 'event-story-0001-001'];
   const { result, reads } = countSourceReads(() => pack(ids));
-  assert.deepEqual(result.entries.map(entry => entry.id), ['char-0001', 'char-0001', 'char-0159', 'term-0001']);
+  assert.deepEqual(result.entries.map(entry => entry.id), ['char-0001', 'char-0001', 'char-0159', 'term-0001', 'event-story-0001-001']);
   assert.deepEqual(result.entries.filter(entry => entry.id === 'char-0001').map(entry => entry.name), ['Character 1', 'Character 1']);
   assert.equal(result.entries.find(entry => entry.id === 'term-0001').summary_50, 'A route.');
   assert.equal(result.entries.find(entry => entry.id === 'char-0159').summary_50, 'Summary 159');
+  assert.equal(result.entries.find(entry => entry.id === 'event-story-0001-001').summary_50, 'The first beat.');
+  assert.deepEqual(pack(['event-story-0002-001'], { canonOnly: true }).entries, []);
+  assert.equal(pack(['event-story-0002-001'], { canonOnly: true, includeDrafts: true }).entries[0].canon_tier, 'draft');
   assert.equal(reads.markdown, 161, 'each live Markdown source should be parsed once per pack');
   assert.equal(reads.lexicon, 1, 'the lexicon should be parsed once per pack');
 

@@ -106,8 +106,9 @@ each consequence:
 - Its entities should rise with it. A primary-canon story whose protagonist is
   `speculative` leaves the Authoritative Canon view incoherent.
 - Anything it depends on must be at least as trustworthy. A story cannot be
-  primary canon while a story it `references` for its premise remains a draft
-  that might be revised away.
+  primary canon while a story or shared event it `references` for its premise
+  remains a draft that might be revised away. An event-level reference locks
+  the named beat, not every outcome of its source work.
 
 The bar, therefore, is not "good story." It is: exact to the mechanics,
 compliant with the bible, tonally inside the anthology, structurally sound,
@@ -121,9 +122,11 @@ retrieved correctly, and worth locking.
 1. **Baseline.** `npm ci`, `npm run validate:ci`, `npm run report:canon-tiers`.
    Record the list of stories in scope with their current `canon_tier`,
    `status`, and `metadata.status`.
-2. **Dependency map.** From each story's `references.stories`, build the
-   directed graph of which stories depend on which. Note every edge into a
-   draft, a novella, or the novel. Note entities shared across stories.
+2. **Dependency map.** From each story's `references.stories` and
+   `references.events`, build the directed graph of story and event
+   prerequisites. Check event IDs and tiers against `data/timeline/events.yaml`.
+   Note every edge into a draft, a novella, or the novel. Note entities shared
+   across stories.
 3. **Per-story review.** For each story in ID order:
    - Read the full manuscript. Then read its entity files and lexicon terms.
    - Apply the seven criteria in section 5, writing citations as you go.
@@ -143,10 +146,10 @@ retrieved correctly, and worth locking.
    do not reconcile, timeline order that cannot hold, a mechanic used two ways.
    Record each in the contradiction register with both locations.
 5. **Promotion order.** Produce an ordered list. A story appears only after
-   every story it depends on, or in a bundle with stories it depends on
-   mutually. Stories that depend on the novel or novella drafts cannot be
-   promoted until that dependency is severed or the dependency itself is
-   promoted; say which.
+   every story and event it depends on is approved, or in a bundle with
+   mutually dependent stories. Stories that depend on unapproved novel or
+   novella events cannot be promoted until that dependency is severed or the
+   event is independently approved; say which.
 6. **Report.** Write the report (section 8). Re-read it once for every claim
    that lacks a citation and fix those before finishing.
 
@@ -172,7 +175,8 @@ total:
 - A bible red line crossed (criterion B at 0).
 - A new metaphysical law stated or depended on in prose with no matching
   mechanics or lore update (criterion A at 0).
-- A dependency on the novel draft or an unpromoted novella.
+- A dependency on an unapproved event or wider outcome of the novel draft or
+  an unpromoted novella.
 - `npm run validate:ci` would fail with the story's current frontmatter.
 
 ---
@@ -295,9 +299,10 @@ from this list; a flag here is a reason to look, not a score.
 
 - Dependency chains in the current drafts: story-0004 → story-0015 →
   story-0021; story-0014 → story-0016; story-0007 → story-0018;
-  story-0013 → story-0021; story-0008 and story-0013 and story-0021 → story-0022
-  (already primary canon). A dependent cannot be promoted ahead of what it
-  depends on.
+  story-0013 → story-0021. Story-0022 (already primary canon) depends on
+  events `event-story-0008-004` and `event-story-0013-003`, plus story-0012
+  and story-0001; its former story-0021 reference was a metadata overstatement.
+  Verify these edges against current `references` before scoring.
 - story-0020 (`The Inventory of Absence`) is written against the unpublished
   novel's context (Heavonly, the bleaching conspiracy, Gorgi). Decide whether
   that is a dependency on a draft or a self-standing use of a speculative

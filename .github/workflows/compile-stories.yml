@@ -7,6 +7,7 @@ on:
       - '!stories/README.md'
       - 'scripts/compile_stories.sh'
       - 'scripts/compile_stories.js'
+      - 'scripts/compile_publication.js'
       - 'scripts/lib/scene_indexer.js'
       - 'scripts/lib/path_safety.js'
       - 'scripts/tests/test_compile_stories.js'
@@ -19,6 +20,7 @@ on:
       - '!stories/README.md'
       - 'scripts/compile_stories.sh'
       - 'scripts/compile_stories.js'
+      - 'scripts/compile_publication.js'
       - 'scripts/lib/scene_indexer.js'
       - 'scripts/lib/path_safety.js'
       - 'scripts/tests/test_compile_stories.js'
@@ -51,10 +53,10 @@ jobs:
       - name: Test story compilation
         run: node scripts/tests/test_compile_stories.js
 
-      - name: Compile stories
+      - name: Compile primary-canon stories
         run: scripts/compile_stories.sh
 
-      - name: Upload compiled stories
+      - name: Upload compiled primary-canon stories
         uses: actions/upload-artifact@v4
         with:
           name: forgotten-tides-stories
@@ -65,7 +67,7 @@ jobs:
       - name: Write workflow summary
         run: |
           {
-            echo "## Story compilation artifacts";
+            echo "## Primary-canon story compilation artifacts";
             echo "";
             echo "- out/compiled/forgotten_tides_stories.md";
             echo "- out/compiled/forgotten_tides_stories.epub";

@@ -32,6 +32,7 @@ const PREFIX_TO_BUCKET = {
   fact: 'factions',
   mech: 'mechanics',
   story: 'stories',
+  event: 'events',
   term: 'terms'
 };
 
@@ -42,6 +43,7 @@ function emptyIndex() {
     factions: new Set(),
     mechanics: new Set(),
     stories: new Set(),
+    events: new Set(),
     terms: new Set()
   };
 }
@@ -92,6 +94,7 @@ function parseStructuredFile(filePath) {
 
 function bucketForId(id) {
   if (typeof id !== 'string') return null;
+  if (/^event-(?:[a-z0-9]+-)*\d{3,}$/i.test(id.trim())) return 'events';
   const match = id.trim().toLowerCase().match(/^([a-z]+)-\d{4,}$/);
   if (!match) return null;
   return PREFIX_TO_BUCKET[match[1]] || null;
@@ -149,6 +152,37 @@ function indexLexiconTerms(index, rootDir = ROOT_DIR) {
   }
 }
 
+function indexTimelineEvents(index, rootDir = ROOT_DIR) {
+  const timelinePath = path.join(rootDir, 'data/timeline/events.yaml');
+  const tiers = new Map();
+  if (!fs.existsSync(timelinePath)) return tiers;
+  try {
+    const data = yaml.load(fs.readFileSync(timelinePath, 'utf8')) || {};
+    if (!Array.isArray(data.events)) throw new Error('events must be an array');
+    for (const event of data.events) {
+      if (!event || bucketForId(event.id) !== 'events') {
+        throw new Error(`invalid event ID: ${String(event?.id)}`);
+      }
+      const id = event.id.trim().toLowerCase();
+      if (tiers.has(id)) throw new Error(`duplicate event ID: ${id}`);
+      tiers.set(id, event.canon_tier || 'draft');
+      index.events.add(id);
+    }
+    for (const event of data.events) {
+      for (const relationship of event.relationships || []) {
+        if (!relationship || !['before', 'after'].includes(relationship.type) ||
+            bucketForId(relationship.target) !== 'events' ||
+            !tiers.has(relationship.target.trim().toLowerCase())) {
+          throw new Error(`invalid relationship on ${event.id}`);
+        }
+      }
+    }
+  } catch (error) {
+    throw new Error(`${relativePath(timelinePath, rootDir)}: ${error.message}`);
+  }
+  return tiers;
+}
+
 function buildIdIndex(rootDir = ROOT_DIR) {
   const index = emptyIndex();
 
@@ -165,10 +199,11 @@ function buildIdIndex(rootDir = ROOT_DIR) {
   }
 
   const terms = indexLexiconTerms(index, rootDir);
-  return { index, terms };
+  const eventTiers = indexTimelineEvents(index, rootDir);
+  return { index, terms, eventTiers };
 }
 
-function checkReferencesInFile(filePath, index, rootDir = ROOT_DIR) {
+function checkReferencesInFile(filePath, index, rootDir = ROOT_DIR, eventTiers = new Map()) {
   const failures = [];
   const data = parseStructuredFile(filePath);
   if (!data) return failures;
@@ -180,11 +215,22 @@ function checkReferencesInFile(filePath, index, rootDir = ROOT_DIR) {
     }
   }
 
+  if (data.type === 'story' && data.story_type === 'short-story' &&
+      data.canon_tier === 'primary_canon' && Array.isArray(data.references?.events)) {
+    for (const rawId of data.references.events) {
+      const id = String(rawId).trim().toLowerCase();
+      const tier = eventTiers.get(id);
+      if (tier && tier !== 'primary_canon') {
+        failures.push(`${relativePath(filePath, rootDir)}: primary-canon story depends on non-primary event ${id} (${tier})`);
+      }
+    }
+  }
+
   return failures;
 }
 
 function analyzeReferences(rootDir = ROOT_DIR) {
-  const { index, terms } = buildIdIndex(rootDir);
+  const { index, terms, eventTiers } = buildIdIndex(rootDir);
   const failures = [];
   let filesChecked = 0;
 
@@ -192,7 +238,7 @@ function analyzeReferences(rootDir = ROOT_DIR) {
     const files = walkFiles(path.join(rootDir, root));
     for (const filePath of files) {
       try {
-        const fileFailures = checkReferencesInFile(filePath, index, rootDir);
+        const fileFailures = checkReferencesInFile(filePath, index, rootDir, eventTiers);
         filesChecked += 1;
         failures.push(...fileFailures);
       } catch (error) {

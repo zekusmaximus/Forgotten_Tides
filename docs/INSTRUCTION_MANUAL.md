@@ -70,8 +70,9 @@ This manual explains the repository structure, canon guardrails, and all availab
 - ID and intent plumbing: `resolve_ids.js`, `route_intent.js`, `ordering.js`, `work_meta.js`, `scene_autotag.js` support deterministic IDs, intent routing, and auto-tagging.
 
 ## 10) Story Compilation
-- Local build: `scripts/compile_stories.sh`
-  - Produces `out/compiled/forgotten_tides_stories.{md,pdf,epub}` via Pandoc (mirrors `.github/workflows/compile-stories.yml`).
+- Local canon build: `scripts/compile_stories.sh`
+  - Produces `out/compiled/forgotten_tides_stories.{md,epub}` from `primary_canon` manuscripts (mirrors `.github/workflows/compile-stories.yml`).
+  - For a chosen publication table of contents and reading order, preview an explicit manifest with `npm run publication:plan`, then assemble it with `npm run publication:assemble`; see `docs/USAGE.md`.
 - Shell helpers: `scripts/check_canon.sh` (runs lint/canon guardrails) and `scripts/validate_links.sh`.
 
 ## 11) Testing
@@ -94,7 +95,7 @@ This manual explains the repository structure, canon guardrails, and all availab
 - 4) Update glossary/lexicon entries as needed.
 - 5) Run `npm run validate:ci` before opening a PR.
 - 6) (Optional) Preview continuity graph with `npm run dashboard`.
-- 7) For publication artifacts, run `scripts/compile_stories.sh`.
+- 7) For the canon collection, run `scripts/compile_stories.sh`. For publication artifacts, select and review an ordered manifest before assembly.
 
 ## 14) Troubleshooting Pointers
 - Schema failures: check YAML frontmatter against the matching schema file and rerun `npm run lint:schema`.

@@ -55,6 +55,7 @@ references:
 coordinates:
   region: Helios Drift outer sleeve
   memory_density: 0.78
+  memory_density_as_of: Before the Tessarine Breach (event-story-0022-001)
 metadata:
   status: canonical
   created: '2026-05-27T00:00:00.000Z'
@@ -121,5 +122,5 @@ binds later stories.
 - **Null stones:** eleven total. Four sealed in the hall. Seven in Canticle custody aboard
   Elior Ren's cutter, bound for the Navigant house at the inner relay.
 
-The `memory_density` figure in the frontmatter predates the breach and is left unchanged
-pending author review.
+The frontmatter `memory_density` value of 0.78 is a pre-breach measurement. No
+post-breach measurement has been established.

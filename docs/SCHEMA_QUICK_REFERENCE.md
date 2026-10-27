@@ -29,6 +29,7 @@ Both objects accept the same keys. ID pattern constraints:
 | `factions[]` | `fact-####` |
 | `mechanics[]` | `mech-####` |
 | `stories[]` | `story-####` |
+| `events[]` | Existing shared timeline ID, e.g. `event-0001` or `event-story-0008-004` |
 
 ---
 

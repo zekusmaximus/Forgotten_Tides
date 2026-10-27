@@ -2,9 +2,9 @@
 
 A living document listing underexplored territory in *The Forgotten Tides* universe. Use this as a menu when deciding what to write next. Each entry describes a narrative gap, an open character arc, or thematic territory that is thin. Where a draft already touches an area, it is named so you can read it first and build on it rather than reinvent it.
 
-Only `story-0001` and `story-0022` are primary canon. Every other story cited below is a draft: a prior claim to reconcile with, not locked canon. Check `CANONICAL_INDEX.md` before trusting any coverage statement here.
+`story-0001`, `story-0008`, `story-0012`, `story-0013`, and `story-0022` are primary canon. Other stories cited below are drafts: prior claims to reconcile with, not locked canon. Check `CANONICAL_INDEX.md` before trusting any coverage statement here.
 
-Last updated: October 20, 2026.
+Canon status checked: October 27, 2026. Opportunity inventory and theme counts last reviewed: October 20, 2026.
 
 ---
 
@@ -101,7 +101,7 @@ Tari is a locked bible character; read `bible/ARCHIVISTS_WAKE_STORY_BIBLE.md` be
 
 ## Thematic Coverage
 
-Counts are from the `themes` frontmatter of the twenty-two short stories as of the date above. `story-0001` predates the field and is not counted. Recompute before relying on these; the agent brief in `agents/canon_promotion_review_agent.md` shows how.
+Counts are from the `themes` frontmatter of the twenty-one short stories as of October 20, 2026. `story-0001` predates the field and is not counted. Recompute before relying on these; the agent brief in `agents/canon_promotion_review_agent.md` shows how.
 
 | Theme | Coverage | Stories | Notes |
 |-------|----------|---------|-------|
@@ -121,7 +121,7 @@ Counts are from the `themes` frontmatter of the twenty-two short stories as of t
 ## Specific Scenarios
 
 ### The Halix Exchange
-Introduced in *The Light Inheritance* (story-0004); used since in *The Halix Aftermarket* (story-0015) and *Receipt for a Voice* (story-0021), and referenced in story-0022. All but story-0022 are drafts. Still open:
+Introduced in *The Light Inheritance* (story-0004) and used in *The Halix Aftermarket* (story-0015) and *Receipt for a Voice* (story-0021). All three are drafts; story-0022 mentions Halix but does not establish the Exchange. Still open:
 - The Consortium fixer from story-0004 himself, who has not reappeared
 - The memory economy from the seller's side at scale, not one transaction
 - What happens to memory stones that are sold rather than burned or released, once they leave the Exchange

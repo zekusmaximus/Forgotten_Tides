@@ -149,6 +149,27 @@ function collectEntities() {
       });
     }
   }
+  const timelinePath = "data/timeline/events.yaml";
+  if (fs.existsSync(timelinePath)) {
+    try {
+      const timeline = yaml.load(fs.readFileSync(timelinePath, "utf8")) || {};
+      for (const event of timeline.events || []) {
+        if (!event || !event.id) continue;
+        items.push({
+          id: event.id,
+          type: "event",
+          name: event.summary || event.id,
+          aliases: [],
+          tags: [],
+          summaries: [event.causal_note || ""],
+          path: timelinePath,
+          source_weight: describePolicy(event, timelinePath, "event").source_weight
+        });
+      }
+    } catch (e) {
+      // Leave other entity sources available if the timeline is malformed.
+    }
+  }
   return items;
 }
 

@@ -175,9 +175,14 @@ events:
     causal_note: "Nara Oss's ledger entry (total oblivion denied, burden accepted) is locked continuity; her standing inside the Synod remains unresolved."
   - id: event-story-0022-001
     timestamp: "T0+1h"
-    summary: "The Tessarine Breach: Obsidian Synod null stones slotted into the Tessarine Vault's quarterly review trays are amplified by the audit hall's cradles; four booths are lost and the hall is sealed. First on-page Synod operation inside the Helios Drift proper."
+    summary: "Four Tessarine Vault review trays carry Obsidian Synod null stones; lowered cradles amplify absence and four of sixteen audit booths are lost to forgetting."
     canon_tier: primary_canon
     source: stories/short_story/spend_what_you_can_afford/manuscript.md
+    relationships:
+      - type: after
+        target: event-story-0008-004
+      - type: after
+        target: event-story-0013-003
     involved_entities:
       - story-0022
       - loc-0011
@@ -188,23 +193,84 @@ events:
       - char-0030
     causal_note: "Shared event: pledge audit is suspended across the Helios Drift outer sleeve; four null stones remain sealed in the hall. Twelve weeks after story-0008."
   - id: event-story-0022-002
-    timestamp: "T0+2h"
-    summary: "Two Tessarine civic silos enter oblivion (Fourth Sleeve lost to null pressure; Ninth Sleeve released by Navigant triage). The Second Sleeve silo is bound by senior Reliquarist Hael's complete anchor sequence; he enters catastrophic anchor loss."
+    timestamp: "T0+1h25m"
+    summary: "The Fourth Sleeve civic silo is lost to null pressure before the defense reaches the silo bank."
     canon_tier: primary_canon
     source: stories/short_story/spend_what_you_can_afford/manuscript.md
     involved_entities:
       - story-0022
       - loc-0011
       - loc-0008
+      - story-0008
+      - fact-0005
+      - mech-0001
+    causal_note: "Three generations of Drift Sleeve Four civic memory enter oblivion; Tellis Aru's granddaughters (story-0008) live in that sleeve."
+  - id: event-story-0022-003
+    timestamp: "T0+1h25m"
+    summary: "A Synod acolyte dies when the deck beneath him forgets to hold."
+    canon_tier: primary_canon
+    source: stories/short_story/spend_what_you_can_afford/manuscript.md
+    involved_entities:
+      - story-0022
+      - loc-0011
+      - fact-0005
+      - mech-0001
+    causal_note: "Drift logic order (meaning, orientation, matter) governs the death."
+  - id: event-story-0022-004
+    timestamp: "T0+1h45m"
+    summary: "Navigant Marsk orders the Ninth Sleeve silo released by triage to prioritize three more populous threatened sleeves."
+    canon_tier: primary_canon
+    source: stories/short_story/spend_what_you_can_afford/manuscript.md
+    involved_entities:
+      - story-0022
+      - char-0028
+      - char-0010
+      - loc-0011
+      - fact-0002
+      - mech-0001
+    causal_note: "The Ninth Sleeve has four stations and nine hundred living; Ilka takes responsibility for the decision."
+  - id: event-story-0022-005
+    timestamp: "T0+1h45m"
+    summary: "Approximately one hundred sixty pledged middle-ring memory stones are spent into the Second, Fifth, and Seventh housings on Navigant Marsk's order, without donor consent."
+    canon_tier: primary_canon
+    source: stories/short_story/spend_what_you_can_afford/manuscript.md
+    involved_entities:
+      - story-0022
+      - char-0028
+      - char-0010
+      - loc-0011
+      - fact-0002
+      - mech-0001
+    causal_note: "Personal pledges thicken a civic silo but do not bind it. The expenditure is an institutional breach the Orders must now carry."
+  - id: event-story-0022-006
+    timestamp: "T0+2h"
+    summary: "The Ninth Sleeve silo loses its pitch and is lost to oblivion after Navigant Marsk's triage decision."
+    canon_tier: primary_canon
+    source: stories/short_story/spend_what_you_can_afford/manuscript.md
+    involved_entities:
+      - story-0022
+      - char-0028
+      - loc-0011
+      - loc-0008
+      - mech-0001
+    causal_note: "Four Ninth Sleeve stations and nine hundred living begin to lose their civic coherence."
+  - id: event-story-0022-007
+    timestamp: "T0+2h10m"
+    summary: "Brother Hael binds the Second Sleeve silo by feeding it his complete anchor sequence and enters catastrophic anchor loss."
+    canon_tier: primary_canon
+    source: stories/short_story/spend_what_you_can_afford/manuscript.md
+    involved_entities:
+      - story-0022
       - char-0029
       - char-0028
       - char-0010
-      - mech-0001
+      - loc-0011
       - mech-0003
-    causal_note: "Shared event: the Helios Drift outer sleeve's civic coherence is reduced; the Fourth and Ninth Sleeves begin to soften; approximately one hundred sixty pledged stones were spent without donor consent."
-  - id: event-story-0022-003
+      - story-0001
+    causal_note: "The final expenditure is classified as zero-anchoring and is not prevented. The room stops holding Hael; Inya Solven's knot of his voice remains hers and intact."
+  - id: event-story-0022-008
     timestamp: "T0+3h"
-    summary: "Seven Synod null stones pass to Canticle custody under pilot Elior Ren with an expected, unfiled cost; Jory Fenn and one acolyte are held for the Archivist Inquisition; the Tessarine doctrine lintel has forgotten the word 'only'."
+    summary: "Seven Synod null stones pass to Canticle pilot Elior Ren under a manifest naming an expected pilot cost."
     canon_tier: primary_canon
     source: stories/short_story/spend_what_you_can_afford/manuscript.md
     involved_entities:
@@ -214,4 +280,4 @@ events:
       - fact-0001
       - fact-0002
       - fact-0005
-    causal_note: "Shared event with open consequences for the Canticle Fleet's posture in the Drift, the Inquisition, and the Navigant Sect's judgment of Ilka Marsk."
+    causal_note: "Four more null stones remain sealed in the audit hall, making eleven total. Pledge audit is suspended across the outer sleeve; Jory Fenn and another acolyte are held for the Archivist Inquisition. The doctrine lintel has forgotten the word only. The pilot run and its cost occur after this story closes."

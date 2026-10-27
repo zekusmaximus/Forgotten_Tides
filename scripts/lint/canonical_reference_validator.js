@@ -33,7 +33,9 @@ function loadCanonicalIds(indexPath = INDEX_PATH) {
 }
 
 function isCanonicalId(value) {
-  return typeof value === 'string' && /^[A-Za-z][A-Za-z0-9_]*-\d+$/.test(value.trim());
+  return typeof value === 'string' &&
+    (/^[A-Za-z][A-Za-z0-9_]*-\d+$/.test(value.trim()) ||
+      /^event-(?:[a-z0-9]+-)*\d{3,}$/i.test(value.trim()));
 }
 
 function collectIdsFromValue(value, ids) {
