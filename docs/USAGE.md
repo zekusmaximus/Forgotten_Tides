@@ -79,7 +79,7 @@ node scripts/prompt/orchestrate.js "worldbuild how memory gravity affects black 
 
 ### `compile_artifacts`
 
-Compiles publishable story manuscripts and their referenced scenes into
+Compiles `primary_canon` story manuscripts and their referenced scenes into
 `out/compiled/forgotten_tides_stories.md`. Missing scene references stop the
 command without replacing a prior compilation. Use `scripts/compile_stories.sh`
 below when an ePub is also needed.
@@ -121,7 +121,9 @@ See [dashboard/README.md](../dashboard/README.md) for detailed documentation.
 
 ## Story Compilation (Local)
 
-Compile story manuscripts into a single Markdown source and an ePub. Manuscript
+Compile primary-canon story manuscripts into a single Markdown source and an ePub. The
+selection follows each manuscript's `canon_tier: primary_canon` frontmatter.
+Manuscript
 scene references are expanded once, in place; scene files that are not referenced
 are omitted. Outlines, notes, backups, and work directories marked `TEST`,
 `SAMPLE`, or `SANDBOX` are excluded. Requires Node.js,
@@ -134,6 +136,46 @@ scripts/compile_stories.sh
 **Output:**
 - `out/compiled/forgotten_tides_stories.md`
 - `out/compiled/forgotten_tides_stories.epub`
+
+## Publication Compilation
+
+Publication selection and reading order live in an explicit JSON manifest. No
+publication table of contents is selected by default. Create a file inside the
+repository, such as `data/publication/issue_01.json`:
+
+```json
+{
+  "title": "Issue 01",
+  "works": [
+    { "kind": "short_story", "work": "the_archivists_wake" },
+    { "kind": "short_story", "work": "the_reliquarists_doubt" }
+  ]
+}
+```
+
+The `works` array is the reading order. Its entries use the directory names
+under `stories/<kind>/`; valid kinds are `short_story`, `novella`, `novel`, and
+`screenplay`. The example is illustrative, not an approved publication list.
+The publication compiler may include a draft when it is deliberately listed.
+Preview the proposed contents, source paths, canon tiers, and statuses before
+assembling:
+
+```bash
+npm run publication:plan -- --manifest data/publication/issue_01.json
+mkdir -p out/compiled
+npm run publication:assemble -- --manifest data/publication/issue_01.json > out/compiled/issue_01.md
+```
+
+The second command writes the selected manuscripts and referenced scenes as
+Markdown in manifest order. To produce an ePub after reviewing that Markdown:
+
+```bash
+pandoc out/compiled/issue_01.md --metadata title="Issue 01" -o out/compiled/issue_01.epub
+```
+
+Missing works, duplicate entries, unsafe paths, and missing scene references
+stop assembly. The publication compiler never silently falls back to the canon
+collection.
 
 ## Chunking & Summaries (RAG)
 

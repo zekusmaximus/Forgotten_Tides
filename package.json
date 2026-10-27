@@ -32,6 +32,8 @@
     "author:apply": "node scripts/prompt/authoring.js",
     "compile:edit": "node scripts/compile_edit_packet.js",
     "compile:screenplay": "node scripts/compile_screenplay.js",
+    "publication:plan": "node scripts/compile_publication.js --plan",
+    "publication:assemble": "node scripts/compile_publication.js --assemble",
     "sandbox:lint": "node scripts/sandbox/lint_sandbox.js",
     "sandbox:merge": "node scripts/sandbox/merge_sandbox.js",
     "start:draft": "node scripts/prompt/start_draft.js",

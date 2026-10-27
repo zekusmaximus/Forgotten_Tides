@@ -34,6 +34,7 @@
         story: '#A78BFA',
         lore: '#42C9C0',
         term: '#E49B6B',
+        event: '#C48AD6',
         missing: '#6A727C',
     };
 
@@ -45,6 +46,7 @@
         story: 'Stories',
         lore: 'Lore',
         term: 'Terms',
+        event: 'Events',
     };
 
     // ============================================================
@@ -63,6 +65,7 @@
         story: true,
         lore: true,
         term: true,
+        event: true,
     };
 
     // ============================================================
@@ -213,7 +216,7 @@
 
             return {
                 id: node.canonical_id,
-                label: node.name,
+                label: type === 'event' ? node.canonical_id : node.name,
                 title: `${escapeHtml(node.name)} · ${escapeHtml(type)}\n${escapeHtml(node.canonical_id)}` +
                     (status !== 'normal' ? `\n${status}` : '') +
                     (isOrphaned ? '\n— orphan (no connections)' : ''),

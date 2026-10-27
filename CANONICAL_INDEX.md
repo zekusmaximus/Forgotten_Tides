@@ -1,6 +1,6 @@
 # Canonical Index
 
-This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-10-20T16:48:37.604Z
+This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-10-27T19:57:46.090Z
 
 ## Character
 - `char-0001` — Rell (`characters/Rell.md`)
@@ -33,6 +33,34 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `char-0028` — Ilka Marsk (`characters/Ilka_Marsk.md`)
 - `char-0029` — Hael (`characters/Hael.md`)
 - `char-0030` — Jory Fenn (`characters/Jory_Fenn.md`)
+
+## Event
+- `event-0001` — The Archivist's Wake establishes memory corridor travel, anchor-loss consequences, memory stones, and conceptual decay as primary canon. (`data/timeline/events.yaml`)
+- `event-0002` — Corridor instability detected; Tari fades semi-permanent; Rell performs illegal zero-anchoring and burns one anchor to stabilize. (`data/timeline/events.yaml`)
+- `event-0003` — Galley aftermath; Sutira and Estavan confront Rell; Heliodrome telemetry shows conceptual dementia expanding. (`data/timeline/events.yaml`)
+- `event-0004` — Lattice Gap passage; Tari offers memory copy; Rell uses small personal memory stone; eddy tracks mnemonic wake (new canon). (`data/timeline/events.yaml`)
+- `event-0005` — Heliodrome approach under spatial misalignment; Rell burns last forbidden emotional anchor to re-stabilize station. (`data/timeline/events.yaml`)
+- `event-0006` — Docking and recovery; crew performs manual latch under drift; Rell exhibits identity void; Sutira confronts. (`data/timeline/events.yaml`)
+- `event-0007` — Departure; Rell declines replacement anchor and walks forward into lighter self; crew registers grief and fear. (`data/timeline/events.yaml`)
+- `event-story-0008-001` — Inya Solven receives a freshly pledged personal memory stone at the Tessarine Vault for routine clean-audit. (`data/timeline/events.yaml`)
+- `event-story-0008-002` — First cradle pass; the pledged stone sings true on the cradle but its memory is wrong for the donor. (`data/timeline/events.yaml`)
+- `event-story-0008-003` — Inya verifies the donor's birth records against the terrain held in the memory. (`data/timeline/events.yaml`)
+- `event-story-0008-004` — Inya makes her ledger entry and burns one personal anchor to seal the audit. (`data/timeline/events.yaml`)
+- `event-story-0012-001` — Nara Oss enters an abandoned Black Horizon station as part of an Obsidian Synod release rite. (`data/timeline/events.yaml`)
+- `event-story-0012-002` — Nara discovers one living inhabitant who has remained to preserve the station's injuries as testimony. (`data/timeline/events.yaml`)
+- `event-story-0012-003` — The inhabitant refuses Synod release and asks that pain be remembered because it is the only warning left. (`data/timeline/events.yaml`)
+- `event-story-0012-004` — Nara preserves the testimony in a ledger and leaves with an unresolved burden rather than completing total ritual forgetting. (`data/timeline/events.yaml`)
+- `event-story-0013-001` — Elior Ren completes a pre-run anchor audit for his first supervised Canticle correction in the Helios Drift. (`data/timeline/events.yaml`)
+- `event-story-0013-002` — During a non-emergency corridor correction, Elior performs a controlled anchor burn of one childhood sensory memory. (`data/timeline/events.yaml`)
+- `event-story-0013-003` — The post-run audit confirms Elior remains coherent with eleven anchors; the burned classroom smell is permanently gone. (`data/timeline/events.yaml`)
+- `event-story-0022-001` — Four Tessarine Vault review trays carry Obsidian Synod null stones; lowered cradles amplify absence and four of sixteen audit booths are lost to forgetting. (`data/timeline/events.yaml`)
+- `event-story-0022-002` — The Fourth Sleeve civic silo is lost to null pressure before the defense reaches the silo bank. (`data/timeline/events.yaml`)
+- `event-story-0022-003` — A Synod acolyte dies when the deck beneath him forgets to hold. (`data/timeline/events.yaml`)
+- `event-story-0022-004` — Navigant Marsk orders the Ninth Sleeve silo released by triage to prioritize three more populous threatened sleeves. (`data/timeline/events.yaml`)
+- `event-story-0022-005` — Approximately one hundred sixty pledged middle-ring memory stones are spent into the Second, Fifth, and Seventh housings on Navigant Marsk's order, without donor consent. (`data/timeline/events.yaml`)
+- `event-story-0022-006` — The Ninth Sleeve silo loses its pitch and is lost to oblivion after Navigant Marsk's triage decision. (`data/timeline/events.yaml`)
+- `event-story-0022-007` — Brother Hael binds the Second Sleeve silo by feeding it his complete anchor sequence and enters catastrophic anchor loss. (`data/timeline/events.yaml`)
+- `event-story-0022-008` — Seven Synod null stones pass to Canticle pilot Elior Ren under a manifest naming an expected pilot cost. (`data/timeline/events.yaml`)
 
 ## Faction
 - `fact-0001` — Canticle Fleet (`factions/Canticle_Fleet.md`)
@@ -157,6 +185,9 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `term-0027` — Null Stone (`data/lexicon/terms.yaml`)
 - `term-0028` — Civic Silo (`data/lexicon/terms.yaml`)
 - `term-0029` — Conceptual Ghost (`data/lexicon/terms.yaml`)
+- `term-0030` — Memory Density (`data/lexicon/terms.yaml`)
+- `term-0031` — Junior Seal (`data/lexicon/terms.yaml`)
+- `term-0032` — Synod Lamp (`data/lexicon/terms.yaml`)
 
 ## Canon Views
 
@@ -175,6 +206,32 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `char-0028` - Ilka Marsk (character, primary_canon, weight 110, `characters/Ilka_Marsk.md`)
 - `char-0029` - Hael (character, primary_canon, weight 110, `characters/Hael.md`)
 - `char-0030` - Jory Fenn (character, primary_canon, weight 110, `characters/Jory_Fenn.md`)
+- `event-0001` - The Archivist's Wake establishes memory corridor travel, anchor-loss consequences, memory stones, and conceptual decay as primary canon. (event, primary_canon, weight 105, `data/timeline/events.yaml`)
+- `event-0002` - Corridor instability detected; Tari fades semi-permanent; Rell performs illegal zero-anchoring and burns one anchor to stabilize. (event, primary_canon, weight 105, `data/timeline/events.yaml`)
+- `event-0003` - Galley aftermath; Sutira and Estavan confront Rell; Heliodrome telemetry shows conceptual dementia expanding. (event, primary_canon, weight 105, `data/timeline/events.yaml`)
+- `event-0004` - Lattice Gap passage; Tari offers memory copy; Rell uses small personal memory stone; eddy tracks mnemonic wake (new canon). (event, primary_canon, weight 105, `data/timeline/events.yaml`)
+- `event-0005` - Heliodrome approach under spatial misalignment; Rell burns last forbidden emotional anchor to re-stabilize station. (event, primary_canon, weight 105, `data/timeline/events.yaml`)
+- `event-0006` - Docking and recovery; crew performs manual latch under drift; Rell exhibits identity void; Sutira confronts. (event, primary_canon, weight 105, `data/timeline/events.yaml`)
+- `event-0007` - Departure; Rell declines replacement anchor and walks forward into lighter self; crew registers grief and fear. (event, primary_canon, weight 105, `data/timeline/events.yaml`)
+- `event-story-0008-001` - Inya Solven receives a freshly pledged personal memory stone at the Tessarine Vault for routine clean-audit. (event, primary_canon, weight 105, `data/timeline/events.yaml`)
+- `event-story-0008-002` - First cradle pass; the pledged stone sings true on the cradle but its memory is wrong for the donor. (event, primary_canon, weight 105, `data/timeline/events.yaml`)
+- `event-story-0008-003` - Inya verifies the donor's birth records against the terrain held in the memory. (event, primary_canon, weight 105, `data/timeline/events.yaml`)
+- `event-story-0008-004` - Inya makes her ledger entry and burns one personal anchor to seal the audit. (event, primary_canon, weight 105, `data/timeline/events.yaml`)
+- `event-story-0012-001` - Nara Oss enters an abandoned Black Horizon station as part of an Obsidian Synod release rite. (event, primary_canon, weight 105, `data/timeline/events.yaml`)
+- `event-story-0012-002` - Nara discovers one living inhabitant who has remained to preserve the station's injuries as testimony. (event, primary_canon, weight 105, `data/timeline/events.yaml`)
+- `event-story-0012-003` - The inhabitant refuses Synod release and asks that pain be remembered because it is the only warning left. (event, primary_canon, weight 105, `data/timeline/events.yaml`)
+- `event-story-0012-004` - Nara preserves the testimony in a ledger and leaves with an unresolved burden rather than completing total ritual forgetting. (event, primary_canon, weight 105, `data/timeline/events.yaml`)
+- `event-story-0013-001` - Elior Ren completes a pre-run anchor audit for his first supervised Canticle correction in the Helios Drift. (event, primary_canon, weight 105, `data/timeline/events.yaml`)
+- `event-story-0013-002` - During a non-emergency corridor correction, Elior performs a controlled anchor burn of one childhood sensory memory. (event, primary_canon, weight 105, `data/timeline/events.yaml`)
+- `event-story-0013-003` - The post-run audit confirms Elior remains coherent with eleven anchors; the burned classroom smell is permanently gone. (event, primary_canon, weight 105, `data/timeline/events.yaml`)
+- `event-story-0022-001` - Four Tessarine Vault review trays carry Obsidian Synod null stones; lowered cradles amplify absence and four of sixteen audit booths are lost to forgetting. (event, primary_canon, weight 105, `data/timeline/events.yaml`)
+- `event-story-0022-002` - The Fourth Sleeve civic silo is lost to null pressure before the defense reaches the silo bank. (event, primary_canon, weight 105, `data/timeline/events.yaml`)
+- `event-story-0022-003` - A Synod acolyte dies when the deck beneath him forgets to hold. (event, primary_canon, weight 105, `data/timeline/events.yaml`)
+- `event-story-0022-004` - Navigant Marsk orders the Ninth Sleeve silo released by triage to prioritize three more populous threatened sleeves. (event, primary_canon, weight 105, `data/timeline/events.yaml`)
+- `event-story-0022-005` - Approximately one hundred sixty pledged middle-ring memory stones are spent into the Second, Fifth, and Seventh housings on Navigant Marsk's order, without donor consent. (event, primary_canon, weight 105, `data/timeline/events.yaml`)
+- `event-story-0022-006` - The Ninth Sleeve silo loses its pitch and is lost to oblivion after Navigant Marsk's triage decision. (event, primary_canon, weight 105, `data/timeline/events.yaml`)
+- `event-story-0022-007` - Brother Hael binds the Second Sleeve silo by feeding it his complete anchor sequence and enters catastrophic anchor loss. (event, primary_canon, weight 105, `data/timeline/events.yaml`)
+- `event-story-0022-008` - Seven Synod null stones pass to Canticle pilot Elior Ren under a manifest naming an expected pilot cost. (event, primary_canon, weight 105, `data/timeline/events.yaml`)
 - `fact-0001` - Canticle Fleet (faction, primary_canon, weight 110, `factions/Canticle_Fleet.md`)
 - `fact-0002` - Archivist Orders (faction, primary_canon, weight 110, `factions/Archivist_Orders.md`)
 - `fact-0003` - Mnemosyne Lattice Consortium (faction, primary_canon, weight 110, `factions/Mnemosyne_Lattice_Consortium.md`)
@@ -200,8 +257,6 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `mech-0001` - MEMORY PHYSICS (mechanics, primary_canon, weight 110, `mechanics/MEMORY_PHYSICS.md`)
 - `mech-0002` - CORRIDOR MECHANICS (mechanics, primary_canon, weight 110, `mechanics/CORRIDOR_MECHANICS.md`)
 - `mech-0003` - ANCHOR THEORY (mechanics, primary_canon, weight 110, `mechanics/ANCHOR_THEORY.md`)
-- `notes_chat_highlights_1765472978233` - Chat Highlights (lore, working_canon, weight 85, `lore/notes/NOTES_CHAT_HIGHLIGHTS_1765472978233.md`)
-- `notes_chat_highlights_1765473539542` - Chat Highlights (lore, working_canon, weight 85, `lore/notes/NOTES_CHAT_HIGHLIGHTS_1765473539542.md`)
 - `story-0001` - The Archivist's Wake (story, primary_canon, weight 110, `stories/short_story/the_archivists_wake/manuscript.md`)
 - `story-0008` - The Reliquarist's Doubt (story, primary_canon, weight 110, `stories/short_story/the_reliquarists_doubt/manuscript.md`)
 - `story-0012` - The Mercy Doctrine (story, primary_canon, weight 110, `stories/short_story/the_mercy_doctrine/manuscript.md`)
@@ -227,7 +282,6 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `term-0018` - Shear (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
 - `term-0019` - Thinning (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
 - `term-0020` - Zero-Anchoring (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
-- `term-0021` - Light-Bequest (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
 - `term-0022` - Continuity Cleric (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
 - `term-0023` - Liturgy of the Hull (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
 - `term-0024` - Structural Softening (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
@@ -236,9 +290,14 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `term-0027` - Null Stone (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
 - `term-0028` - Civic Silo (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
 - `term-0029` - Conceptual Ghost (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
+- `term-0030` - Memory Density (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
+- `term-0031` - Junior Seal (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
+- `term-0032` - Synod Lamp (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
 
 ### Active Drafts
 - `lore-doctrine-empty-stars-continuity-brief` - The Doctrine of Empty Stars - Continuity Brief (story, draft, weight 65, `stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/continuity_brief.md`)
+- `notes_chat_highlights_1765472978233` - Chat Highlights (lore, draft, weight 55, `lore/notes/NOTES_CHAT_HIGHLIGHTS_1765472978233.md`)
+- `notes_chat_highlights_1765473539542` - Chat Highlights (lore, draft, weight 55, `lore/notes/NOTES_CHAT_HIGHLIGHTS_1765473539542.md`)
 - `novel_forgotten_tides_manuscript` - Forgotten Tides (story, draft, weight 55, `stories/novel/NOVEL_FORGOTTEN_TIDES/manuscript.md`)
 - `novel_forgotten_tides_notes` - Forgotten Tides - Development Notes (story, draft, weight 55, `stories/novel/NOVEL_FORGOTTEN_TIDES/notes.md`)
 - `novel_forgotten_tides_outline` - Forgotten Tides - Outline (story, draft, weight 55, `stories/novel/NOVEL_FORGOTTEN_TIDES/outline.md`)
@@ -278,6 +337,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `story-0019` - The Miniaturist's Name (story, draft, weight 65, `stories/short_story/the_miniaturists_name/manuscript.md`)
 - `story-0020` - The Inventory of Absence (story, draft, weight 65, `stories/short_story/the_inventory_of_absence/manuscript.md`)
 - `story-0021` - Receipt for a Voice (story, draft, weight 65, `stories/short_story/receipt_for_a_voice/manuscript.md`)
+- `term-0021` - Light-Bequest (term, draft, weight 65, `data/lexicon/terms.yaml`)
 
 ### Speculative / Sandbox Material
 - `char-0009` - Maren Holt (character, speculative, weight 60, `characters/Maren_Holt.md`)

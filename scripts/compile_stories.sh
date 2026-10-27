@@ -22,9 +22,9 @@ epub_temp=$(mktemp "${OUTPUT_DIR}/.stories.XXXXXXXX.epub")
 trap 'rm -f "$source_temp" "$epub_temp"' EXIT
 
 node "${ROOT_DIR}/scripts/compile_stories.js" > "$source_temp"
-pandoc "$source_temp" --metadata title="Forgotten Tides Stories" -o "$epub_temp"
+pandoc "$source_temp" --metadata title="Forgotten Tides Canon Stories" -o "$epub_temp"
 mv "$source_temp" "$SOURCE_FILE"
 mv "$epub_temp" "$EPUB_FILE"
 
-echo "Compiled stories source: $SOURCE_FILE"
-echo "Compiled stories ePub: $EPUB_FILE"
+echo "Compiled primary-canon stories source: $SOURCE_FILE"
+echo "Compiled primary-canon stories ePub: $EPUB_FILE"

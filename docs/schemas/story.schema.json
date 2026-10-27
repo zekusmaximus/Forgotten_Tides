@@ -109,6 +109,13 @@
             "type": "string",
             "pattern": "^story-\\d{4,}$"
           }
+        },
+        "events": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^event-(?:[a-z0-9]+-)*\\d{3,}$"
+          }
         }
       },
       "additionalProperties": false
@@ -150,6 +157,13 @@
           "items": {
             "type": "string",
             "pattern": "^story-\\d{4,}$"
+          }
+        },
+        "events": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^event-(?:[a-z0-9]+-)*\\d{3,}$"
           }
         }
       },

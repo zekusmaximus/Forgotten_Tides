@@ -197,6 +197,42 @@ async function buildLinkMap(options = {}) {
         }
     }
 
+    // Shared timeline events are referenceable units of continuity. A story
+    // can depend on a specific beat without depending on its whole source work.
+    const timelinePath = path.join(repoRoot, 'data/timeline/events.yaml');
+    if (fs.existsSync(timelinePath)) {
+        let timeline;
+        try { timeline = yaml.load(fs.readFileSync(timelinePath, 'utf8')); } catch (error) {
+            throw new Error(`Could not parse data/timeline/events.yaml: ${error.message}`);
+        }
+        if (!timeline || !Array.isArray(timeline.events)) {
+            throw new Error('Could not parse data/timeline/events.yaml: events must be an array');
+        }
+        for (const [index, event] of timeline.events.entries()) {
+            const sourcePath = `data/timeline/events.yaml#events[${index}]`;
+            const eid = pickCanonicalId(event, sourcePath);
+            if (!eid || !/^event-(?:[a-z0-9]+-)*\d{3,}$/.test(eid)) {
+                throw new Error(`Invalid event ID in ${sourcePath}: ${String(event && event.id)}`);
+            }
+            assertUniqueId(entities, eid, sourcePath);
+            const policy = describePolicy(event, 'data/timeline/events.yaml', 'event');
+            entities[eid] = {
+                canonical_id: eid,
+                display_id: event.id,
+                type: 'event',
+                name: event.summary || eid,
+                path: 'data/timeline/events.yaml',
+                ...policy,
+                _refs: {
+                    involved_entities: event.involved_entities || [],
+                    temporal: Array.isArray(event.relationships)
+                        ? event.relationships.map(relationship => relationship && relationship.target).filter(Boolean)
+                        : []
+                }
+            };
+        }
+    }
+
     // Build edges from each entity's reference fields.
     const knownIds = new Set(Object.keys(entities));
     const edgeSet = new Set();

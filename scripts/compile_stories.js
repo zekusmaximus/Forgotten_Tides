@@ -106,9 +106,16 @@ function renderManuscript(root, manuscript) {
   return `<!-- Source: ${relativeManuscript} -->\n\n${body}`;
 }
 
+function renderCompilation(root, manuscripts) {
+  return `${manuscripts.map(manuscript => renderManuscript(root, manuscript)).join('\n\n---\n\n')}\n`;
+}
+
 function buildCompilation(repoRoot) {
   const root = fs.realpathSync(repoRoot);
-  return `${discoverManuscripts(root).map(manuscript => renderManuscript(root, manuscript)).join('\n\n---\n\n')}\n`;
+  const canonical = discoverManuscripts(root).filter(manuscript =>
+    readMarkdown(manuscript.path, root).data.canon_tier === 'primary_canon');
+  if (canonical.length === 0) throw new Error('No primary-canon manuscripts found under stories/.');
+  return renderCompilation(root, canonical);
 }
 
 if (require.main === module) {
@@ -124,4 +131,4 @@ if (require.main === module) {
   }
 }
 
-module.exports = { buildCompilation, discoverManuscripts };
+module.exports = { buildCompilation, discoverManuscripts, renderCompilation };

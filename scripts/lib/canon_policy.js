@@ -53,12 +53,14 @@ function inferCanonTier(meta = {}, filePath = '') {
   if (/_backup_/i.test(rel) || /\btest\b/i.test(rel) || rel.includes('_test') || rel.includes('test_') || rel.includes('sample')) return 'test';
   if (rel.includes('/lore/ideas/') || rel.startsWith('lore/ideas/') || rel.includes('/docs/session/') || rel.startsWith('docs/session/')) return 'test';
   if (rel.startsWith('archive/')) return 'deprecated';
+  // An explicit draft status on an entry (notably a lexicon term) must not
+  // become primary canon just because its containing file has a canon path.
+  if (status === 'draft' || status === 'revised') return 'draft';
   if (rel === 'stories/short_story/the_archivists_wake/manuscript.md' || rel === 'the_archivists_wake.md' || rel.startsWith('bible/') || rel.startsWith('mechanics/') || rel.startsWith('characters/') || rel.startsWith('atlas/') || rel.startsWith('factions/') || rel.startsWith('data/lexicon/')) {
     return 'primary_canon';
   }
   if (rel.startsWith('lore/') || rel.startsWith('manuals/')) return 'working_canon';
   if (rel.startsWith('stories/')) return 'draft';
-  if (status === 'draft' || status === 'revised') return 'draft';
   if (status === 'canonical') return 'working_canon';
   return 'working_canon';
 }

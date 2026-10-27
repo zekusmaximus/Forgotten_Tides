@@ -58,6 +58,7 @@ references:
 coordinates:
   region: Helios Drift
   memory_density: 0.65
+  memory_density_as_of: Before the Tessarine Breach (event-story-0022-001)
 metadata:
   status: canonical
   created: '2026-05-23T00:00:00.000Z'
@@ -80,4 +81,5 @@ Halix Exchange went to full recitation on two decks, and pods on the tether line
 corners. Afterward the Second Sleeve mouths thickened again; nothing returned from the
 Ninth. Pledge audit at Tessarine is suspended. Recertification of outer-sleeve routes and
 the slow softening of the Fourth and Ninth Sleeves are open consequences for later stories.
-The `memory_density` figure above is unchanged pending author review.
+The frontmatter `memory_density` value of 0.65 is a pre-breach measurement. No
+post-breach measurement has been established.

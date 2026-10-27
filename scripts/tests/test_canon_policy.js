@@ -29,6 +29,12 @@ test('canonical characters rank high', () => {
   assert(policy.source_weight >= 100);
 });
 
+test('draft lexicon entries stay draft inside the canon lexicon file', () => {
+  const policy = describePolicy({ status: 'draft', term: 'Unapproved term' }, 'data/lexicon/terms.yaml', 'term');
+  assert.strictEqual(policy.canon_tier, 'draft');
+  assert.strictEqual(shouldInclude(policy, { canonOnly: true }), false);
+});
+
 test('test and sample paths rank low', () => {
   assert.strictEqual(inferCanonTier({}, 'stories/novella/NOVELLA_TEST/manuscript.md'), 'test');
   assert.strictEqual(inferCanonTier({}, 'stories/screenplay/SCREENPLAY_SAMPLE/manuscript.md'), 'test');

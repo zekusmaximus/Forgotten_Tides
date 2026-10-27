@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 const fs = require('fs');
 const path = require('path');
+const nodeAssert = require('node:assert/strict');
 const { execSync } = require('child_process');
 const yaml = require('js-yaml');
 
@@ -27,6 +28,27 @@ try {
   // Post-seed: frontmatter_event_count > 0 and origin coverage
   assert(report.summary.frontmatter_event_count > 0, 'frontmatter event count > 0 after seeding');
   assert(report.events && report.events.some(e => e.id === 'event-0001' || (e.source && e.source.includes('the_archivists_wake'))), 'report contains seeded origin events');
+  assert(report.summary.event_conflicts === 0, 'shared event IDs agree with manuscript timestamps and summaries');
+
+  const manuscriptPath = path.join(process.cwd(), 'stories', 'short_story', 'spend_what_you_can_afford', 'manuscript.md');
+  const manuscriptRaw = fs.readFileSync(manuscriptPath, 'utf8');
+  const frontmatter = manuscriptRaw.match(/^---\r?\n([\s\S]*?)\r?\n---/);
+  assert(frontmatter, 'story-0022 has YAML frontmatter');
+  const manuscript = yaml.load(frontmatter[1]);
+  const source = 'stories/short_story/spend_what_you_can_afford/manuscript.md';
+  const sharedEvents = data.events.filter(event => event.source === source);
+  const manuscriptEvents = manuscript.events || [];
+  assert(sharedEvents.length === manuscriptEvents.length, 'story-0022 has one shared record per manuscript event');
+  const sharedById = new Map(sharedEvents.map(event => [event.id, event]));
+  for (const event of manuscriptEvents) {
+    const shared = sharedById.get(event.id);
+    assert(shared, `shared timeline contains ${event.id}`);
+    assert(shared.timestamp === event.timestamp, `${event.id} has one timestamp`);
+    assert(shared.summary === event.summary, `${event.id} has one summary`);
+    assert(shared.canon_tier === event.canon_tier, `${event.id} has one canon tier`);
+    nodeAssert.deepStrictEqual(shared.relationships || [], event.relationships || [],
+      `${event.id} has matching timeline relationships`);
+  }
 
   console.log('PASS: timeline events parsed and reported');
 } catch (err) {

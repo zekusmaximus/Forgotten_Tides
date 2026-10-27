@@ -88,7 +88,14 @@ See [`docs/SCHEMA_QUICK_REFERENCE.md`](SCHEMA_QUICK_REFERENCE.md) for the comple
 - `cross_refs`: entities that **appear in or are mentioned by** this story (narrative presence)
 - `references`: entities that this story **depends on for continuity** (causal dependency)
 
-In most short stories these lists are identical. Populate both with the same IDs unless you have a specific reason to diverge. See `CONTRIBUTING.md` for the full explanation.
+Record each list independently. A mention or shared character belongs in
+`cross_refs`; put a story in `references.stories` only when this manuscript
+needs the source work's wider outcomes to be true. For one established beat,
+use its shared timeline ID in `references.events` instead. Draft short stories
+may depend on draft events. Primary-canon short stories may depend only on
+`primary_canon` shared events. Do not turn a related draft into a causal
+prerequisite by copying the `cross_refs` list.
+See `CONTRIBUTING.md` for the full explanation.
 
 ---
 
@@ -210,8 +217,8 @@ Use this matrix before validation. The goal is that the next agent or human can 
 | New named character | Add `characters/<Name>.md`; add the `char-####` ID to story `cross_refs.characters` and `references.characters`; run `npm run linkmap:build`. |
 | New named location, ship, station, artifact, or region | Add `atlas/<Name>.md`; add the `loc-####` ID to story `cross_refs.locations` and `references.locations`; run `npm run linkmap:build`. |
 | New faction, order, institution, company, cult, or political body | Add `factions/<Name>.md`; add the `fact-####` ID to story refs; update `lore/POLITIES_AND_FACTIONS.md` if the faction changes the political landscape; run `npm run linkmap:build`. |
-| New term or capitalized technical phrase | Add an entry under `terms:` in `data/lexicon/terms.yaml`; use `status: draft` until reviewed; run `npm run linkmap:build`. |
-| Timeline-significant event | Add a story-frontmatter `events` entry (structured: id/timestamp/summary + optional canon_tier/causal_note/involved_entities). If the event becomes shared canon beyond this story, also add it to `data/timeline/events.yaml`. Stories with non-trivial internal chronology (timeline.chronology.length >= 3 or explicit timeline-significant events) must include `events` frontmatter. |
+| New reusable concept or technical term | Check the curated lexicon first. Add an entry under `terms:` in `data/lexicon/terms.yaml` only with a source and definition; use `status: draft` until reviewed. A capitalized phrase alone is not grounds for an entry. Run `npm run linkmap:build`. |
+| Timeline-significant event | Add a story-frontmatter `events` entry (structured: id/timestamp/summary + optional canon_tier/causal_note/involved_entities). If the event becomes shared canon beyond this story, also add it to `data/timeline/events.yaml`. One event ID identifies one beat: its timestamp and summary must match in both places. Give an arc summary a separate ID rather than reusing a beat's ID. Stories with non-trivial internal chronology (timeline.chronology.length >= 3 or explicit timeline-significant events) must include `events` frontmatter. |
 | Uses Rell, Sutira, Estavan, Tari, Heliodrome, Lattice Gap, eddies, zero-anchoring, or anchor burn | Re-read `bible/ARCHIVISTS_WAKE_STORY_BIBLE.md`; preserve all red lines; cite the relevant IDs in refs. |
 | Introduces or changes metaphysical mechanics | Do not leave the change only in fiction. Add an explicit Canon Note in the PR and update the relevant mechanics or lore file. |
 | Uses only existing canon and introduces no new named entities or terms | Manuscript plus accurate `cross_refs` and `references` may be sufficient. Still run full validation. |

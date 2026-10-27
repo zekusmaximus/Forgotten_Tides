@@ -162,7 +162,7 @@ function loadContextProfiles() {
   } catch (e) {
     console.warn("Warning: Could not load context profiles, using default");
     return {
-      default: { order: ["rules", "characters", "locations", "mechanics", "factions", "terms", "stories"], max_entities: 8 }
+      default: { order: ["rules", "events", "characters", "locations", "mechanics", "factions", "terms", "stories"], max_entities: 8 }
     };
   }
 }
@@ -228,6 +228,28 @@ function readEntityData(filters = {}) {
     // Skip lexicon if it can't be read
   }
 
+  // Shared event records can be retrieved as precise continuity prerequisites.
+  try {
+    const timelinePath = "data/timeline/events.yaml";
+    if (fs.existsSync(timelinePath)) {
+      const timeline = yaml.load(fs.readFileSync(timelinePath, "utf8")) || {};
+      for (const event of timeline.events || []) {
+        if (!event || !event.id) continue;
+        const policy = describePolicy(event, timelinePath, "event");
+        if (!shouldInclude(policy, filters)) continue;
+        entities[event.id] = {
+          ...event,
+          type: "event",
+          name: event.summary || event.id,
+          ...policy,
+          source: timelinePath
+        };
+      }
+    }
+  } catch (e) {
+    // Skip timeline if it cannot be read
+  }
+
   return entities;
 }
 
@@ -268,6 +290,13 @@ function expandEntities(primaryIds, entities) {
           }
         }
       }
+    } else if (entity.type === "story") {
+      for (const relatedId of entity.references?.events || []) {
+        if (!seen.has(relatedId) && entities[relatedId]) {
+          expanded.push({ id: relatedId, reason: "1-hop from " + id + " → event prerequisite" });
+          seen.add(relatedId);
+        }
+      }
     } else if (entity.type === "term") {
       // Terms: expand to related terms
       if (entity.related_terms && Array.isArray(entity.related_terms)) {
@@ -297,22 +326,29 @@ function applyOrderingAndCapping(ids, expanded, profile, max, entities) {
   const maxEntities = max !== null ? max : profileConfig.max_entities;
 
   // Combine primary and expanded IDs
-  const allIds = [...ids];
+  const allIds = ids.filter(id => Boolean(entities[id]));
 
   // Add expanded IDs
   for (const exp of expanded) {
-    if (!allIds.includes(exp.id)) {
+    if (entities[exp.id] && !allIds.includes(exp.id)) {
       allIds.push(exp.id);
     }
   }
 
-  // Sort by source quality first, then ID for deterministic ordering.
-  allIds.sort((a, b) => {
+  const resolvedRank = new Map(ids.map((id, index) => [id, index]));
+  // Keep source quality first, then preserve resolver relevance before
+  // falling back to the ID. An expanded prerequisite must not displace a
+  // directly resolved event of the same quality merely because its ID is lower.
+  const compareIds = (a, b) => {
     const aw = entities[a]?.source_weight || 0;
     const bw = entities[b]?.source_weight || 0;
     if (bw !== aw) return bw - aw;
+    const ar = resolvedRank.get(a) ?? Infinity;
+    const br = resolvedRank.get(b) ?? Infinity;
+    if (ar !== br) return ar - br;
     return String(a).localeCompare(String(b));
-  });
+  };
+  allIds.sort(compareIds);
 
   // Apply profile ordering
   const orderRules = profileConfig.order || [];
@@ -329,14 +365,10 @@ function applyOrderingAndCapping(ids, expanded, profile, max, entities) {
       if (rule === "locations" && entity.type === "location") return true;
       if (rule === "factions" && entity.type === "faction") return true;
       if (rule === "terms" && entity.type === "term") return true;
+      if (rule === "events" && entity.type === "event") return true;
       if (rule === "stories" && entity.type === "story") return true;
       return false;
-    }).sort((a, b) => {
-      const aw = entities[a]?.source_weight || 0;
-      const bw = entities[b]?.source_weight || 0;
-      if (bw !== aw) return bw - aw;
-      return String(a).localeCompare(String(b));
-    });
+    }).sort(compareIds);
 
     ordered.push(...matching);
   }
@@ -399,5 +431,6 @@ function main() {
   console.log(outputPath);
 }
 
-// Run main function
-main();
+if (require.main === module) main();
+
+module.exports = { readEntityData, expandEntities, applyOrderingAndCapping };

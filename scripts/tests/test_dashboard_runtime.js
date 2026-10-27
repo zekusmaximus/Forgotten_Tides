@@ -364,6 +364,10 @@ async function main() {
         await app.settle();
         assert.equal(app.network.data.nodes.length, actual.nodes.length);
         assert.equal(app.network.data.edges.length, actual.edges.length);
+        const eventId = 'event-story-0022-001';
+        assert.equal(node(app.network, eventId).label, eventId);
+        app.filters.get('event').click();
+        assert(!app.network.data.nodes.some(item => item.id === eventId));
         assert.notEqual(app.get('error').style.display, 'block');
         assert.equal(app.get('loading').style.display, 'none');
     });

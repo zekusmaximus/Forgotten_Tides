@@ -123,11 +123,38 @@ function buildEntityIndex(ids, options) {
       // Markdown entries remain available when the optional lexicon is invalid.
     }
   }
+  const timelinePath = 'data/timeline/events.yaml';
+  if (unresolved.size && fs.existsSync(timelinePath)) {
+    const timeline = yaml.load(fs.readFileSync(timelinePath, 'utf8')) || {};
+    for (const event of timeline.events || []) {
+      if (!unresolved.has(event.id)) continue;
+      const candidates = byId.get(event.id) || [];
+      candidates.push({ path: timelinePath, event, timeline: true });
+      byId.set(event.id, candidates);
+      unresolved.delete(event.id);
+    }
+  }
   return byId;
 }
 
 function findById(index, id, options = {}) {
   for (const candidate of index.get(id) || []) {
+    if (candidate.timeline) {
+      const { event, path: timelinePath } = candidate;
+      const policy = describePolicy(event, timelinePath, 'event');
+      if (!shouldInclude(policy, options)) return null;
+      return {
+        path: timelinePath,
+        meta: {
+          ...event,
+          type: 'event',
+          name: event.summary || event.id,
+          summary_50: event.summary || '',
+          summary_200: event.summary || ''
+        },
+        policy
+      };
+    }
     if (candidate.lexicon) {
       const { term, path: lexiconPath } = candidate;
       const policy = describePolicy(term, lexiconPath, 'term');

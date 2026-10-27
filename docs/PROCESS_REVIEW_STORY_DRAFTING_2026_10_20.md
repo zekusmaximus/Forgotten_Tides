@@ -431,3 +431,22 @@ These cannot be settled by an agent and are not settled by this review.
    `story-0009` or the novel's draft context before those are promoted.
 6. **Which drafts to promote.** The review agent produces the scored report;
    the decision is the author's.
+
+### Follow-up on October 27, 2026
+
+- Story-0022's story-0021 dependency was removed after checking the prose.
+  Its shared event IDs now match the manuscript's individual beats and times;
+  the null-stone transfer is seven, with four sealed in the Vault.
+- The Tessarine Vault's 0.78 and Helios Drift's 0.65 `memory_density` values
+  are labeled as **pre-breach measurements**. No post-breach number has been
+  established; the proposed numerical change in decision 2 is closed.
+- The lexicon remains a curated list of approved concepts and terms. The
+  title-case scanner remains advisory; see `docs/governance/lexicon.md`.
+- Short stories can now cite specific shared events in `references.events`.
+  Draft short stories may cite draft events; primary-canon short stories may
+  cite only primary-canon events. Whether to approve an entity independently
+  of its source story, and whether wider novel/novella draft outcomes may be
+  prerequisites, remain open policy choices.
+- The routine compilation now selects `primary_canon` manuscripts. A separate
+  publication compiler previews an explicit work list and reading order before
+  assembly; no publication table of contents has been approved yet.

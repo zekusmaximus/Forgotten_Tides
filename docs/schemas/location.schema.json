@@ -154,6 +154,10 @@
           "type": "number",
           "minimum": 0,
           "maximum": 1
+        },
+        "memory_density_as_of": {
+          "type": "string",
+          "description": "When the memory_density value was measured; identify the relevant event when a later change has not been measured."
         }
       }
     },
