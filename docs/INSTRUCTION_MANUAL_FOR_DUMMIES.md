@@ -45,7 +45,8 @@ Every canon file starts with YAML frontmatter at the top. It’s like a “metad
 Typical frontmatter includes:
 - `id` (the canonical ID — lowercase, like `char-0001`)
 - `uuid` (unique ID for tracking)
-- `cross_refs` (other canon IDs this file references)
+- `cross_refs` (other IDs appearing in or mentioned by this file)
+- `references` (IDs this file relies on for continuity)
 - `metadata.status`
 
 If you don’t include the right fields, the lint scripts will tell you what’s missing.

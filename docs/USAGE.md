@@ -119,6 +119,29 @@ Then open your browser to `http://127.0.0.1:8080/dashboard/`
 
 See [dashboard/README.md](../dashboard/README.md) for detailed documentation.
 
+## Dependency Impact Report
+
+Regenerate the reference map before checking what depends on an entity or
+story. The report follows declared causal `references` and event source-story
+links, showing direct and downstream dependents with their canon tiers. Add
+`--include-mentions` to see `cross_refs` candidates as well.
+
+```bash
+npm run linkmap:build
+npm run report:impact -- --id story-0007
+npm run report:impact -- --id loc-0010 --include-mentions
+npm run --silent report:impact -- --id story-0007 --json
+```
+
+Direct results include declared references from any file. Downstream traversal
+follows story and event dependencies; it stops at character, faction, location,
+and other entity links because older metadata sometimes copied associations
+into `references`. `--include-mentions` adds direct `cross_refs` and mentions of
+events sourced from the target story as review candidates. These structured
+links help identify files to review, but prose may contain undeclared
+dependencies. Review the affected stories before changing approved facts or
+promoting a draft.
+
 ## Story Compilation (Local)
 
 Compile primary-canon story manuscripts into a single Markdown source and an ePub. The

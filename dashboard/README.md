@@ -38,17 +38,24 @@ The dashboard accepts a JSON object with `nodes` and `edges` arrays. Both arrays
       "name": "Example character",
       "path": "characters/Example.md",
       "canon_tier": "primary_canon"
+    },
+    {
+      "canonical_id": "story-0001",
+      "type": "story",
+      "name": "Example story",
+      "path": "stories/short_story/example/manuscript.md",
+      "canon_tier": "primary_canon"
     }
   ],
   "edges": [
-    { "from": "char-0001", "to": "char-0001", "type": "related" }
+    { "from": "char-0001", "to": "story-0001", "type": "stories", "fields": ["cross_refs", "references"] }
   ]
 }
 ```
 
 Each node requires a unique, nonempty string `canonical_id`, a nonempty string `name`, and one of these exact `type` values: `character`, `location`, `mechanics`, `faction`, `story`, `event`, `lore`, `term`. `path` is optional, but must be a string when present. It is displayed and copied as given; the dashboard server does not expose source files. The dashboard reads `canon_tier` to style `speculative` nodes. If available, legacy `status` values `speculative` and `missing` are also recognized. Other metadata such as `source_weight` and `retrieval_role` may be present but does not affect this graph.
 
-Each edge requires string `from` and `to` IDs that match existing nodes and a nonempty string `type`. An edge counts once for each endpoint, including when it connects a node to itself. Edges render only when both endpoints are visible. A node's orphan state and detail-panel edge count always use the complete map.
+Each edge requires string `from` and `to` IDs that match existing nodes and a nonempty string `type`. Generated edges also include sorted `fields` naming the source frontmatter fields, such as `cross_refs` for presence or `references` for causal reliance. A shared event's `source_story` edge uses `fields: ["source"]` to point to its manuscript. The dashboard displays all links together; use `npm run report:impact -- --id <id>` to inspect inbound dependencies. An edge counts once for each endpoint, including when it connects a node to itself. Edges render only when both endpoints are visible. A node's orphan state and detail-panel edge count always use the complete map.
 
 The dashboard treats unsupported node types, duplicate IDs, unresolved endpoints, and incorrectly shaped data as malformed. Generate a compatible map before using the dashboard. No content file is read by the browser.
 

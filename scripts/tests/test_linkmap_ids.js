@@ -101,6 +101,38 @@ async function main() {
     assert(map.edges.some(edge => edge.from === 'story-0002' && edge.to === 'event-story-0001-001'));
   });
 
+  await withFixture(async root => {
+    write(root, 'characters/One.md', entity('char-0001'));
+    write(root, 'stories/short_story/ORIGIN/manuscript.md',
+      '---\nid: story-0001\ntype: story\ntitle: Origin\n---\n');
+    write(root, 'stories/short_story/LATER/manuscript.md',
+      '---\nid: story-0002\ntype: story\ncross_refs:\n  characters: [char-0001]\n  stories: [story-0001]\nreferences:\n  characters: [char-0001]\n  stories: [story-0001]\n  events: [event-story-0001-001]\n---\n');
+    write(root, 'data/timeline/events.yaml',
+      'events:\n  - id: event-story-0001-001\n    timestamp: T0\n    summary: First beat.\n    canon_tier: draft\n    source: stories/short_story/ORIGIN/manuscript.md\n');
+    await buildLinkMap({ repoRoot: root });
+    const map = JSON.parse(fs.readFileSync(path.join(root, 'REFERENCE_MAP.json'), 'utf8'));
+    const findEdge = (from, to, type) => map.edges.find(edge =>
+      edge.from === from && edge.to === to && edge.type === type);
+    assert.deepStrictEqual(findEdge('story-0002', 'char-0001', 'characters').fields,
+      ['cross_refs', 'references']);
+    assert.deepStrictEqual(findEdge('story-0002', 'story-0001', 'stories').fields,
+      ['cross_refs', 'references']);
+    assert.deepStrictEqual(findEdge('story-0002', 'event-story-0001-001', 'events').fields,
+      ['references']);
+    assert.deepStrictEqual(findEdge('event-story-0001-001', 'story-0001', 'source_story').fields,
+      ['source']);
+    assert.strictEqual(map.edges.filter(edge =>
+      edge.from === 'story-0002' && edge.to === 'char-0001' && edge.type === 'characters').length, 1);
+  });
+
+  await withFixture(async root => {
+    write(root, 'data/timeline/events.yaml',
+      'events:\n  - id: event-story-0001-001\n    summary: Missing origin.\n    source: stories/short_story/MISSING/manuscript.md\n');
+    await assert.rejects(buildLinkMap({ repoRoot: root }),
+      /event-story-0001-001 has unindexed story source stories\/short_story\/MISSING\/manuscript.md/);
+    assertNoArtifacts(root);
+  });
+
   for (const [relativePath, content] of [
     ['characters/Broken.md', '---\nid: [unterminated\n---\n'],
     ['characters/Broken.md', '---\nid: char-0002\n'],
