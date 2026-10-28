@@ -1,6 +1,6 @@
 # Canonical Index
 
-This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-10-28T17:26:22.217Z
+This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-10-28T22:36:39.325Z
 
 ## Character
 - `char-0001` — Rell (`characters/Rell.md`)
@@ -33,6 +33,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `char-0028` — Ilka Marsk (`characters/Ilka_Marsk.md`)
 - `char-0029` — Hael (`characters/Hael.md`)
 - `char-0030` — Jory Fenn (`characters/Jory_Fenn.md`)
+- `char-0031` — Aurel Ket (`characters/Aurel_Ket.md`)
 
 ## Event
 - `event-0001` — The Archivist's Wake establishes memory corridor travel, anchor-loss consequences, memory stones, and conceptual decay as primary canon. (`data/timeline/events.yaml`)
@@ -353,6 +354,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `char-0025` - Toma Vey (character, speculative, weight 60, `characters/Toma_Vey.md`)
 - `char-0026` - Yenu Skather-Ait (character, speculative, weight 60, `characters/Yenu_Skather-Ait.md`)
 - `char-0027` - Hol-Vren (character, speculative, weight 60, `characters/Hol-Vren.md`)
+- `char-0031` - Aurel Ket (character, speculative, weight 60, `characters/Aurel_Ket.md`)
 - `loc-0002` - Ostra-Vael (location, speculative, weight 60, `atlas/Ostra-Vael.md`)
 - `loc-0009` - Ebbhaven (location, speculative, weight 60, `atlas/Ebbhaven.md`)
 - `loc-0010` - Solace Hospice (location, speculative, weight 60, `atlas/Solace_Hospice.md`)

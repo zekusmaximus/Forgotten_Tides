@@ -4,7 +4,7 @@ title: The Light Inheritance - Outline
 work_id: the_light_inheritance
 parent_story: story-0004
 created: '2026-05-23T00:00:00Z'
-modified: '2026-05-23T00:00:00Z'
+modified: '2026-10-28T00:00:00Z'
 status: draft
 ---
 
@@ -39,14 +39,15 @@ field, or honor it the way her clade honors what it cannot put down.
 ### III. The Tether-Shuttle / Halix Exchange
 - Six-hour cup ride to a four-kilometer bazaar-ship.
 - Yenu finds Tess Vlin's counter by the sound of a well-lowered tuning ring.
-- Tess identifies the stone as a *light-bequest* before touching it.
+- Tess identifies the stone as a *light-bequest*, then recognizes its
+  missed-generation tuning.
 - Yenu demonstrates, by clade recitation, that she understands what she is
   selling. Tess agrees to listen first, value second, sell only on request.
 
 ### IV. The Two Registers
 - Tess lowers the ring. The stone sings in two registers:
-  1. The grandmother's voice, calling *Yen* (a diminutive only Yenu's
-     mother uses), with sensory residue.
+  1. The grandmother's voice, calling *Yen* (a family diminutive Yenu's
+     mother has carried forward), with sensory residue.
   2. The carved hollow — the cup-shape made for a sixteen-year-old
      listener that has waited sixteen years and is exactly her size.
 - Tess names a fair price: enough to save the pod for twelve to fourteen
@@ -55,8 +56,8 @@ field, or honor it the way her clade honors what it cannot put down.
   counter-offer: three times the price, plus indexed stipend, for the stone
   to be folded into a cultural reinforcement field stabilizing an inner-ring
   lattice node.
-- Yenu understands the offer completely: her grandmother's voice would
-  become civic memory for ~6,000 people for ~200 years, but the hollow — the
+- Yenu understands Aurel's pitch: he claims her grandmother's voice could
+  serve a civic field for ~6,000 people for ~200 years, but the hollow — the
   part made *for her* — would be sanded off in the process.
 - Yenu refuses, on clade grounds: *We carry only what we can put down.*
 
@@ -93,13 +94,13 @@ field, or honor it the way her clade honors what it cannot put down.
 | Scene | Purpose | Canon Lever |
 |---|---|---|
 | Bedside recitation | Establish Drift Clade dying-rite & POV voice | New cultural detail; consistent with SPECIES_OVERVIEW §3 |
-| Pod elder & the kettle | Externalize the family's silent expectation | Establishes pod coherence-frame mechanic (canon-additive) |
-| Halix counter | Promote Halix from offstage reference to setting | Same exchange named in *The Tuner of Last Lights* |
-| Two registers | Introduce the *light-bequest* tuning signature | Canon-additive; consistent with reliquary mechanics |
+| Pod elder & the kettle | Externalize the family's silent expectation | Proposes the Skather-Ait pod's frame design |
+| Halix counter | Bring Halix on page | Same exchange named in draft *The Tuner of Last Lights* |
+| Two registers | Show the proposed signature of Yenu's missed-generation bequest | Draft subtype, not a rule for all Light-Bequests |
 | Aurel Ket's offer | Embody the Mnemosyne Consortium's quieter cruelty | Consistent with POLITIES_AND_FACTIONS §3 |
-| Listening together | Show a stone *completing* (never previously dramatized) | Canon-additive: closed-inheritance state |
+| Listening together | Show Yenu's stone *completing* | Proposed closed-inheritance state for this subtype |
 | The release | Dramatize dark matter as ethical category, not just physics | Consistent with MEMORY_PHYSICS §3.3 |
-| Final recitation | Show selfhood-by-recitation as cultural strength | Canon-additive; reframes Drift Clade lightness |
+| Final recitation | Show selfhood-by-recitation as cultural strength | Draft practice of Yenu's clade |
 
 ## Themes (mapped to AGENT.md §2.2)
 
@@ -117,31 +118,33 @@ field, or honor it the way her clade honors what it cannot put down.
 
 A sixth implicit theme the universe has been circling but not directly named:
 **Release as a third option** between preservation (Solace) and consumption
-(corridor-burn / Consortium reinforcement). The Drift Clades are the only
-faction that practices it as a doctrine.
+(corridor-burn / Consortium reinforcement). This clade practices it as a
+doctrine in the draft.
 
-## New Canon Introduced (Canon-Additive, Not Canon-Altering)
+## Draft Concepts for Review
 
-1. **Light-bequest** (lexicon-ready term):
-   A memory stone willed across one missed generation. Tunes in two
-   registers — donor voice + hearer-shaped absence. Unstable in drives;
-   honored only by being heard or released. New term added to
+1. **Missed-generation light-bequest** (subtype of the broad term):
+   The broader Light-Bequest category appears in primary stories 0008 and
+   0022. Yenu's stone was tuned for a hearer the donor never met. It gives
+   two registers — donor voice and hearer-shaped absence. Its proposed drive
+   risks and the clade's choice to hear or release it belong to this subtype,
+   not to every Light-Bequest. The draft definition is tracked in
    `data/lexicon/terms.yaml`.
 
 2. **Closed inheritance** (state, not term):
-   What a light-bequest becomes when its intended hearer finally listens.
-   Stone goes cool and inert; the carried voice settles into the hearer as
-   a recitation, not a stored memory. First time the universe has
-   dramatized a reliquary *completing.*
+   What Yenu's missed-generation bequest becomes when its intended hearer
+   listens. This stone goes cool and inert; the carried voice settles into
+   Yenu as a recitation, not a stored memory. Whether other stones of this
+   subtype close the same way remains open.
 
 3. **Drift Clade pod coherence-frame**:
-   A low-resonant mesh of tuned filaments through which a pod's collective
-   recitations are threaded. Needs periodic re-tuning. Soft expansion of
-   habitat mechanics; consistent with memory-gravity scaling rules.
+   The Skather-Ait pod's low-resonant mesh of tuned filaments carries its
+   collective recitations and needs periodic re-tuning. A wider habitat
+   rule has not been approved.
 
 4. **Drift Clade dying-rite of recitation**:
    The dying corrects the living; the living carries the correction
-   forward. Establishes a positive identity practice for the clade,
+   forward. Proposes a positive identity practice for this clade,
    reframing their "fluid identity" as discipline rather than deficiency.
 
 5. **Clade-traditional thinning ("stopping")**:
@@ -149,13 +152,13 @@ faction that practices it as a doctrine.
    between the Order's ethical forgetting and the Synod's nihilism. Adds
    ethical complexity without contradicting either existing position.
 
-## Continuity Compliance
+## Continuity Review Status
 
-- Passes AGENT.md §6 (Canon Compliance Test): could coexist with *The
-  Archivist's Wake*; reflects memory cost; introduces no metaphysical
-  contradiction; stylistically matches the anthology.
-- No edits to established canon documents required.
-- References *The Tuner of Last Lights* (story-0003) and the Halix Exchange,
-  Bleaching, Mnemosyne Consortium, Remembrancer doctrine without altering
-  any of them.
-- Adds one entry to the lexicon: *light-bequest.*
+- The story remains draft pending the review in
+  `docs/reviews/STORY_0004_REVIEW_2026_10_28.md`.
+- The broader Light-Bequest category is established in primary stories;
+  two-register tuning and closure are draft claims about Yenu's subtype.
+- *The Tuner of Last Lights* (story-0003) mentions Halix Exchange but is
+  draft context, not a causal prerequisite for Yenu's plot.
+- The maxim quoted at Solace belongs to the Archivist Orders. Its placement
+  on a Solace wall remains a draft detail.

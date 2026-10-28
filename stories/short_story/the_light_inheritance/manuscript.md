@@ -8,67 +8,141 @@ story_type: short-story
 status: draft
 canon_tier: draft
 retrieval_role: active_draft
-summary_50: A Drift Clade girl inherits her dying grandfather's last memory stone and must choose between selling it, burning it, or releasing it.
-summary_200: "On a failing Drift Clade pod at the edge of the Helios Drift, sixteen-year-old Yenu Skather-Ait inherits a small tuned reliquary—her grandfather's last memory, the voice of a grandmother she never met. The stone could buy a re-tuning of the pod's coherence-frame and keep her family from drifting into a void margin. On the deck of the Halix Exchange, a Mnemosyne Consortium fixer offers a different bargain, one Yenu understands too well. The story enriches Drift Clade culture, introduces inheritance memory and clade-traditional thinning, and dramatizes a memory bazaar from the inside without contradicting any canon."
+summary_50: Yenu weighs selling her grandmother's rare light-bequest to repair her pod, then chooses to hear and release it.
+summary_200: "A dying grandfather gives Yenu a memory stone her grandmother tuned for a descendant she never met. With her Drift Clade pod's coherence-frame overdue for repair, Yenu travels to the Halix Exchange for a valuation and hears the stone's two registers. A Consortium fixer offers enough to save the pod in exchange for using the recording in a reinforcement field. Yenu must weigh that offer against her grandmother's intended hearing and the pod's immediate need."
 cross_refs:
-  characters: []
-  locations: []
+  characters:
+    - char-0019
+    - char-0026
+    - char-0027
+    - char-0031
+  locations:
+    - loc-0008
+    - loc-0013
+    - loc-0015
   factions:
+    - fact-0002
+    - fact-0003
     - fact-0004
+    - fact-0005
+    - fact-0006
   mechanics:
     - mech-0001
-  stories:
-    - story-0003
+  stories: []
 references:
   characters: []
-  locations: []
+  locations:
+    - loc-0008
   factions:
+    - fact-0003
     - fact-0004
   mechanics:
     - mech-0001
-  stories:
-    - story-0003
+  stories: []
 timeline:
   setting: A small Drift Clade pod habitat and the Halix Exchange bazaar-ship, both moored in an outer sleeve of the Helios Drift
-  duration: Approximately twenty-six hours, from second watch on the pod to third watch the following night
+  duration: Approximately twenty-three hours, from Yenu's bedside visit to the release of the stone
   chronology:
-    - event: Yenu recites her grandfather at his bedside; receives the stone
+    - event: Yenu receives her grandmother's light-bequest from her dying grandfather.
       timestamp: T0
-    - event: Walk through the failing pod coherence-frame
+    - event: Yenu learns the pod's coherence-frame needs urgent retuning.
       timestamp: T0+2h
-    - event: Tether-shuttle to Halix Exchange
+    - event: Yenu boards the six-hour tether shuttle to the Halix Exchange.
       timestamp: T0+5h
-    - event: Tess Vlin tunes the stone; valuation
-      timestamp: T0+7h
-    - event: Mnemosyne Consortium fixer makes a second offer
-      timestamp: T0+8h
-    - event: Yenu returns with the stone unsold
-      timestamp: T0+14h
-    - event: Grandfather recites his mother to Yenu
-      timestamp: T0+16h
-    - event: Grandfather dies during third watch
+    - event: Tess Vlin values Yenu's missed-generation light-bequest after tuning it.
+      timestamp: T0+12h
+    - event: Yenu refuses Aurel Ket's offer to acquire the stone.
+      timestamp: T0+13h
+    - event: Yenu returns to the pod with the stone unsold.
+      timestamp: T0+20h
+    - event: Yenu and her grandfather hear the grandmother's recorded voice together.
+      timestamp: T0+21h
+    - event: Her grandfather dies an hour after the hearing.
       timestamp: T0+22h
-    - event: Release at the pod membrane; Yenu begins reciting her grandfather
-      timestamp: T0+26h
+    - event: Yenu releases the closed carrier through the pod membrane.
+      timestamp: T0+22h30m
+    - event: Yenu begins reciting her grandfather, slightly firming a softened corner.
+      timestamp: T0+22h45m
+events:
+  - id: event-story-0004-001
+    timestamp: T0
+    summary: Yenu receives her grandmother's light-bequest from her dying grandfather.
+    canon_tier: draft
+    source: stories/short_story/the_light_inheritance/manuscript.md
+    involved_entities: [story-0004, char-0026, loc-0015]
+  - id: event-story-0004-002
+    timestamp: T0+2h
+    summary: Yenu learns the pod's coherence-frame needs urgent retuning.
+    canon_tier: draft
+    source: stories/short_story/the_light_inheritance/manuscript.md
+    involved_entities: [story-0004, char-0026, loc-0015]
+  - id: event-story-0004-003
+    timestamp: T0+5h
+    summary: Yenu boards the six-hour tether shuttle to the Halix Exchange.
+    canon_tier: draft
+    source: stories/short_story/the_light_inheritance/manuscript.md
+    involved_entities: [story-0004, char-0026, loc-0013, loc-0015]
+  - id: event-story-0004-004
+    timestamp: T0+12h
+    summary: Tess Vlin values Yenu's missed-generation light-bequest after tuning it.
+    canon_tier: draft
+    source: stories/short_story/the_light_inheritance/manuscript.md
+    involved_entities: [story-0004, char-0019, char-0026, loc-0013]
+  - id: event-story-0004-005
+    timestamp: T0+13h
+    summary: Yenu refuses Aurel Ket's offer to acquire the stone.
+    canon_tier: draft
+    source: stories/short_story/the_light_inheritance/manuscript.md
+    involved_entities: [story-0004, char-0026, char-0031, fact-0003, loc-0013]
+  - id: event-story-0004-006
+    timestamp: T0+20h
+    summary: Yenu returns to the pod with the stone unsold.
+    canon_tier: draft
+    source: stories/short_story/the_light_inheritance/manuscript.md
+    involved_entities: [story-0004, char-0026, loc-0015]
+  - id: event-story-0004-007
+    timestamp: T0+21h
+    summary: Yenu and her grandfather hear the grandmother's recorded voice together.
+    canon_tier: draft
+    source: stories/short_story/the_light_inheritance/manuscript.md
+    involved_entities: [story-0004, char-0026, loc-0015]
+  - id: event-story-0004-008
+    timestamp: T0+22h
+    summary: Her grandfather dies an hour after the hearing.
+    canon_tier: draft
+    source: stories/short_story/the_light_inheritance/manuscript.md
+    involved_entities: [story-0004, char-0026, loc-0015]
+  - id: event-story-0004-009
+    timestamp: T0+22h30m
+    summary: Yenu releases the closed carrier through the pod membrane.
+    canon_tier: draft
+    source: stories/short_story/the_light_inheritance/manuscript.md
+    involved_entities: [story-0004, char-0026, loc-0015]
+  - id: event-story-0004-010
+    timestamp: T0+22h45m
+    summary: Yenu begins reciting her grandfather, slightly firming a softened corner.
+    canon_tier: draft
+    source: stories/short_story/the_light_inheritance/manuscript.md
+    involved_entities: [story-0004, char-0026, loc-0015]
 themes:
   - memory-as-cost
   - identity-erosion
   - sacrifice
   - conceptual-fragility
 continuity_notes:
-  - Introduces no new metaphysics; all effects derive from existing memory-physics rules in MEMORY_PHYSICS.md and CORRIDOR_MECHANICS.md
+  - Proposes a local filament coherence-frame and a missed-generation light-bequest subtype; their particular mechanisms remain draft pending review.
   - Adds Drift Clade selfhood-by-recitation as a positive cultural practice consistent with SPECIES_OVERVIEW §3 and POLITIES_AND_FACTIONS §4
   - Introduces clade-traditional thinning as a non-Synod, non-Remembrancer mode of chosen lightness; sits between the existing ethical poles without altering them
-  - Adds the concept of inheritance memory ("light-bequest") - a stone willed across one missed generation - and its distinctive double-register tuning signature; canon-safe extension of reliquary mechanics in MEMORY_ECONOMY.md §1.4
-  - Promotes the Halix Exchange from offstage reference (in The Tuner of Last Lights) to onstage setting; preserves its established morally grey status
-  - References the Bleaching (MEMORY_ECONOMY.md §3) and the Mnemosyne Lattice Consortium (POLITIES_AND_FACTIONS §3) without making new claims about either
-  - Uses the Remembrancer doctrine "Spend only what you can afford. Preserve what must endure." in a non-Remembrancer setting as cross-clade quotation; consistent with established cultural exchange
+  - Light-bequests occur in primary stories 0008 and 0022; this stone's two-register and closed-carrier behavior belongs to the proposed missed-generation subtype, not the broad category.
+  - Sets Halix Exchange on page after its offstage mention in draft story-0003; no story-0003 plot outcome is required.
+  - Aurel Ket's proposed cultural-memory acquisition and conversion remain his claims; Consortium secrecy and technical scope still need editorial review.
+  - Quotes the Archivist Orders' maxim at Solace as a cross-faction borrowing; this placement remains draft.
 metadata:
   status: draft
-  word_count: 6884
+  word_count: 6947
   author: AI Generated (Claude)
   created: '2026-05-23T00:00:00Z'
-  modified: '2026-05-23T00:00:00Z'
+  modified: '2026-10-28T00:00:00Z'
 tags:
   - drift-clades
   - halix-exchange
@@ -250,7 +324,7 @@ Tess's eyebrows lifted, the smallest fraction. "Both? The donor and —"
 
 "My grandmother was the donor. My grandfather had it tuned and held it for me. Sixteen years."
 
-"Then it is a *long-held* light-bequest. The hold itself has thickened it." She set her hands flat on the bench. "Child. Before I lower the ring. You understand what you have brought me."
+"Then it is a *missed-generation* light-bequest. Long-held, too. The hold itself has thickened it." She set her hands flat on the bench. "Child. Before I lower the ring. You understand what you have brought me."
 
 "I understand."
 
@@ -258,7 +332,7 @@ Tess's eyebrows lifted, the smallest fraction. "Both? The donor and —"
 
 It was a test, of course. Halix benches did not work with people who did not know what they were selling. Yenu sat up straighter. Her clade voice came out a little formal, the way it did when she was reciting.
 
-"A light-bequest," she said, "is a memory stone willed across one missed generation. The donor and the intended hearer never met. The donor records the memory for someone who does not yet exist; the holder carries it; the hearer inherits it. When tuned, the stone sings in two registers. The first is the donor's, which is a personal memory and low-mass. The second is the *absence of the hearer* — the place where the recitation was supposed to land, which never did. The two together make the stone behave," — she searched for the word — "*inhabited*. Not civic. Not personal. Something between. Unstable in drives. Unsafe to burn. Honored, in inheritance, only by being heard or released, never spent."
+"A light-bequest," she said, "is a memory stone left for a later family hearer. This one is the missed-generation kind. My grandmother and I never met. She recorded a memory for someone who did not yet exist; my grandfather held it; now I inherit it. A stone tuned this way sings in two registers. The first is the donor's, a personal memory and low-mass. The second is the *absence of the hearer* — the place where the recitation was meant to land and could not. Together they make this stone behave," — she searched for the word — "*inhabited*. Not civic. Not quite personal. My grandfather taught me it would be unstable in a drive and dangerous to burn. My clade would honor it by hearing or releasing it, not spending it."
 
 Tess looked at her for a long second. Then she said, with the small involuntary respect of a professional acknowledging another professional, "Who taught you that."
 
@@ -286,7 +360,7 @@ The booth thickened.
 
 Yenu had heard tuning before — at the pod funerals, at the elder's bench, once at a Solace outstation when she was nine — but she had never heard a stone tuned that had been made for her. The difference was the difference between hearing a name spoken in a room and hearing your own name spoken in a room. The air changed shape around it.
 
-The first register came up first, as Tess had said it would: a woman's voice, mid-range, warm, calling a name. The name was *Yen* — not Yenu, *Yen*, the diminutive Yenu's mother used and no one else, the diminutive Yenu had not known her grandmother had even known to plan for. The voice said *Yen* three times, the way one calls a child in from a courtyard at the end of a long afternoon, and under the voice was the smell of pod-air through a cooling vent and the small papery rustle of someone's sleeve and the feeling of a hand on the back of a neck, brief, sure.
+The first register came up first, as Tess had said it would: a woman's voice, mid-range, warm, calling a name. The name was *Yen* — not Yenu, *Yen*, the family diminutive her mother used for her. Before the Bleaching, her mother had told the grandmother what she hoped to call a daughter. The voice said *Yen* three times, the way one calls a child in from a courtyard at the end of a long afternoon, and under the voice was the smell of pod-air through a cooling vent and the small papery rustle of someone's sleeve and the feeling of a hand on the back of a neck, brief, sure.
 
 Yenu had not cried at her grandfather's bedside and she did not cry now. She had been told not to and she had been raised to obey small useful instructions.
 
@@ -302,7 +376,7 @@ The booth thinned again.
 
 Yenu sat with her hands in her lap and her face entirely composed and she did not cry, because she had said she would not, and because the booth two down was a Synod counter and Tess had asked her not to.
 
-"That," Tess said quietly, "is the cleanest light-bequest I have heard in nine years. The donor knew what she was doing. The holder kept it well. I am sorry for your losses, both of them, and I am sorry for the third one, which is whatever you are about to choose."
+"That," Tess said quietly, "is the cleanest missed-generation light-bequest I have heard in nine years. The donor knew what she was doing. The holder kept it well. I am sorry for your losses, both of them, and I am sorry for the third one, which is whatever you are about to choose."
 
 "Value it," Yenu said. Her voice was level. The clade was good at level voices.
 
@@ -330,7 +404,7 @@ Tess Vlin's face did the small closed thing professional faces did when they wer
 
 He turned to Yenu. His voice was good. It was the voice of a man who had been trained to address Drift Clade adolescents and had practiced.
 
-"My name is Aurel Ket," he said. "I work for a cultural reinforcement program out of the Lattice Core. We are, frankly, in the business of stabilizing endangered cultural memory before it disperses. Light-bequests like yours are — I am sorry to be blunt — exactly the kind of stones we are commissioned to acquire. We pay above market. Significantly above. And we do not unmake them. We preserve them in a curated archive. They are heard. They are studied. They are *kept.*"
+"My name is Aurel Ket," he said. "I work for a cultural reinforcement program out of the Lattice Core. We are, frankly, in the business of stabilizing endangered cultural memory before it disperses. Missed-generation stones like yours are — I am sorry to be blunt — exactly the kind of stones we are commissioned to acquire. We pay above market. Significantly above. And we do not unmake them. We preserve them in a curated archive. They are heard. They are studied. They are *kept.*"
 
 "Aurel," Tess said, with the tone of someone who had warned a man twice already.
 
@@ -368,7 +442,7 @@ He had a good face. He was waiting patiently. He did this work because someone h
 
 "Aurel, please."
 
-"Mr. Ket. The doctrine on the wall at Solace says, *Spend only what you can afford. Preserve what must endure.* My clade does not take that doctrine, exactly, but we have an old one of our own, which is closer than people think. It says, *We carry only what we can put down.*"
+"Mr. Ket. The Archivist maxim quoted on the wall at Solace says, *Spend only what you can afford. Preserve what must endure.* My clade does not take that doctrine, exactly, but we have an old one of our own, which is closer than people think. It says, *We carry only what we can put down.*"
 
 He nodded politely. He had heard variations of this from clade sellers before. It usually preceded a yes.
 
@@ -416,7 +490,7 @@ She thought about the number Aurel Ket had named, and the number Tess Vlin had n
 
 She closed the latch.
 
-The cup got back to the pod a little after second watch on the following night. The pod was quiet. The galley light was on. The elder had left a cup of bitter green on the table, cold, untouched, in the polite Drift Clade way of saying *I waited, but I will not ask.*
+The cup got back to the pod a little after first watch on the following night. The pod was quiet. The galley light was on. The elder had left a cup of bitter green on the table, cold, untouched, in the polite Drift Clade way of saying *I waited, but I will not ask.*
 
 She walked past it.
 
@@ -470,7 +544,7 @@ The second register rose under it. The hollow. The cup-shape carved for Yenu, wh
 
 She felt the stone shift, slightly, in her palm.
 
-This was the part no one had taught her. This was the part the bench-tuners did not know, because the bench-tuners never got to hear a light-bequest *complete*; the stones never made it that far. They were always sold first, or vaulted, or — at Solace — refused and locked away. A light-bequest, when its intended hearer finally heard it, did not stay a light-bequest. It became something the lexicon did not yet have a word for. A *closed inheritance.* A stone that had done its work.
+This was the part no one had taught her. The missed-generation stones Yenu knew of had been sold, vaulted, or — at Solace — refused and locked away before their intended hearers could listen. She did not know whether every stone tuned this way would change as this one had. Its hearer-shaped hollow was closing. Her grandmother's bequest was becoming something the lexicon did not yet have a word for. A *closed inheritance.* A stone that had done its work.
 
 She felt her grandmother's voice settle, very quietly, into the place in her own mind that had been the cup-shape, and seal there — not as memory exactly, because Yenu's clade did not hold memory that way, but as a *recitation she would now be able to give.* She would be able to say, for the rest of her life: *My grandmother's voice was warm in the mid-range. She called me Yen. She smelled of cooling-vent air. Her sleeve was thin and her hand was sure.* She would be able to say it to her own grandchildren, if she had any. She would be able to say it at funerals. She would be able to say it to herself in the dark.
 
@@ -524,7 +598,7 @@ She thought of her grandmother's voice, which was no longer in the stone, becaus
 
 The stone in her palm now held only the small, closed, *neutral* residue of a completed bequest. A clean object. It would not power a drive — too small, too narrow, too quiet. It would not stabilize a frame — wrong tuning. It would not, in fact, do anything anymore, for anyone, except sit on a shelf and be a thing that had once been a memory.
 
-She could keep it. The clade allowed that. Some grandchildren did. There were small ancestral shelves in some of the older sleeping-cells, lined with closed bequests, and they were considered, by people who liked that kind of thing, a kind of comfort.
+She could keep it. The clade allowed that. Some grandchildren did. There were small ancestral shelves in some of the older sleeping-cells, lined with closed missed-generation bequests, and they were considered, by people who liked that kind of thing, a kind of comfort.
 
 She did not want a shelf.
 

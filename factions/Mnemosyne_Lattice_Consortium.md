@@ -32,8 +32,7 @@ references:
   mechanics:
     - mech-0001
     - mech-0002
-  stories:
-    - story-0004
+  stories: []
 doctrine:
   core_beliefs:
     - Memory governance must be centralized to prevent catastrophic drift.
@@ -46,7 +45,7 @@ doctrine:
 metadata:
   status: canonical
   created: '2026-05-23T00:00:00.000Z'
-  modified: '2026-05-23T00:00:00.000Z'
+  modified: '2026-10-28T00:00:00.000Z'
 ---
 
 # Mnemosyne Lattice Consortium

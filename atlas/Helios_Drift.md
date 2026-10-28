@@ -51,7 +51,6 @@ references:
     - mech-0001
     - mech-0002
   stories:
-    - story-0004
     - story-0008
     - story-0013
     - story-0022
@@ -62,14 +61,14 @@ coordinates:
 metadata:
   status: canonical
   created: '2026-05-23T00:00:00.000Z'
-  modified: '2026-10-20T00:00:00.000Z'
+  modified: '2026-10-28T00:00:00.000Z'
 ---
 
 # Helios Drift
 
 The Helios Drift is the most inhabited and politically active region in the known galaxy — a broad belt of moderate memory coherence where corridors are reliable enough to sustain trade, civilization, and the elaborate social structures that depend on both. Its floating city-ships are engineering marvels, entire civic memories encoded into the hulls and decks of vessels that have been traveling for generations.
 
-The Drift is also where most of the galaxy's political conflicts play out. The Canticle Fleets patrol its corridors. The Archivist monasteries anchor its moral architecture. And at its outer sleeve, where memory density thins and void margins begin to press inward, smaller Drift Clade habitats cling to coherence by increasingly tenuous means.
+The Drift is also where most of the galaxy's political conflicts play out. The Canticle Fleets patrol its corridors. The Archivist monasteries anchor its moral architecture. And at its outer sleeve, where memory density thins and void margins begin to press inward, smaller pod habitats cling to coherence by increasingly tenuous means.
 
 ## Continuity: After the Tessarine Breach (story-0022)
 

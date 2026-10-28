@@ -9,12 +9,13 @@ status: draft
 canon_tier: draft
 retrieval_role: active_draft
 summary_50: A corrected route chart strands a pod's repair filament; Yenu spends the sound of her grandfather's voice to bring it home.
-summary_200: "After Corin Tave's correction suspends H-37, the Skather-Ait pod cannot receive its frame filament on the booked route as its sleeping deck loses shape. At Halix, Tess Vlin cannot advance the fare after paying to withdraw another family's closed Light-Bequest from trade. Yenu voluntarily renders her own memory of her grandfather's voice for a tuned stone, and Elior Ren flies the longer corridor with his eleven remaining anchors. The repair holds, the lost voice does not return, and Lysa Korr's hidden cost stays on the record."
+summary_200: "After Corin Tave's correction suspends H-37, the Skather-Ait pod cannot receive its frame filament on the booked route as its sleeping deck loses shape. At Halix, Tess Vlin cannot advance the fare after paying to withdraw another family's closed missed-generation Light-Bequest from trade. Yenu voluntarily renders her own memory of her grandfather's voice for a tuned stone, and Elior Ren flies the longer corridor with his eleven remaining anchors. The repair holds, the lost voice does not return, and Lysa Korr's hidden cost stays on the record."
 cross_refs:
   characters:
     - char-0026
     - char-0027
     - char-0019
+    - char-0031
     - char-0017
     - char-0021
     - char-0022
@@ -112,7 +113,7 @@ themes:
   - ethical-forgetting
 continuity_notes:
   - "This draft follows story-0004, story-0015, story-0017, and story-0013; these predecessor stories and their dependent outcomes remain drafts."
-  - Yenu's grandmother's completed Light-Bequest remains closed and cannot power a drive; Tess's depleted renewal bond follows her purchase and withdrawal of another family's closed carrier.
+  - Yenu's grandmother's completed missed-generation Light-Bequest remains closed and cannot power a drive; Tess's depleted renewal bond follows her purchase and withdrawal of another family's closed carrier of the same subtype.
   - Lysa Korr remains deceased, her undisclosed anchor burn remains permanent, and H-37's prior clean certification remains suspended after Corin's correction.
   - Elior begins and ends the flight with eleven responsive anchors; his classroom smell is not restored, and the donated stone is spent alongside ordinary drive stocks.
   - Yenu's voluntary rendering removes the lived sound of her grandfather's correction. The recorded words, her mother's testimony, and the stone before use do not restore that experience.
@@ -276,9 +277,9 @@ seemed to wish she had not.
 
 "Because of the stone you bought."
 
-It was a different family's closed bequest. The family had needed frame work;
-buyers had offered far more for the right to exhibit or study the proof of its
-completion. Tess had purchased the used carrier herself and sent it out of
+It was a different family's closed missed-generation bequest. The family had
+needed frame work; buyers had offered far more for the right to exhibit or study
+proof that the stone had completed its work. Tess had purchased the used carrier herself and sent it out of
 Halix without its names. The market had charged her bond for making a valuable
 lot disappear.
 
