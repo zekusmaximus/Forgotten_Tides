@@ -14,7 +14,7 @@ status: draft
 
 A sixteen-year-old Drift Clade girl inherits her dying grandfather's last
 memory stone — her grandmother's voice, tuned for a granddaughter not yet
-conceived and held for sixteen years — and must decide whether to sell it to
+conceived and held through Yenu's childhood — and must decide whether to sell it to
 save her failing pod, surrender it to a Lattice Consortium reinforcement
 field, or honor it the way her clade honors what it cannot put down.
 
@@ -24,70 +24,75 @@ field, or honor it the way her clade honors what it cannot put down.
 - Yenu recites her grandfather's life back to him at his bedside (Drift Clade
   dying-rite). He corrects her gently.
 - He gives her a small wooden case containing a tuned reliquary stone.
-- He asks her to promise not to decide what to do with it now.
+- He asks her to have a tuner assay it without receiving the intended hearing,
+  then decide what to do with it.
 - Stakes established: he is dying; the stone is unnamed; she is sixteen.
 
 ### II. The Pod Frame
 - Yenu walks the pod corridor and notices fresh conceptual softenings in
   the walls.
+- Hol-Vren measures the bowing sleeping-cell corner, moves two children into
+  the galley, and plans a temporary brace. The filament still needs replacing.
 - The pod elder, doing the kettle on third watch, tells her without telling
-  her: the coherence-frame needs eight cycles of re-tuning; the stone could
-  buy twelve to fourteen.
+  her: a new filament and labor cost eight cycles of pooled wages; the stone
+  might be worth twelve to fourteen cycles' wages.
 - He directs her to Tess Vlin's bench on the Halix Exchange. He does not
-  tell her to sell.
+  tell her to sell, but diverts her around her mother, who might urge it.
 
 ### III. The Tether-Shuttle / Halix Exchange
 - Six-hour cup ride to a four-kilometer bazaar-ship.
 - Yenu finds Tess Vlin's counter by the sound of a well-lowered tuning ring.
 - Tess identifies the stone as a *light-bequest*, then recognizes its
   missed-generation tuning.
-- Yenu demonstrates, by clade recitation, that she understands what she is
-  selling. Tess agrees to listen first, value second, sell only on request.
+- Tess warns that her ring can expose a trace without completing this stone's
+  intended hearing. Yenu keeps her hands away during the assay.
 
 ### IV. The Two Registers
-- Tess lowers the ring. The stone sings in two registers:
+- Tess lowers the ring. Its trace reveals two registers:
   1. The grandmother's voice, calling *Yen* (a family diminutive Yenu's
      mother has carried forward), with sensory residue.
   2. The carved hollow — the cup-shape made for a sixteen-year-old
      listener that has waited sixteen years and is exactly her size.
-- Tess names a fair price: enough to save the pod for twelve to fourteen
-  cycles.
+- Tess gives a valuation range of twelve to fourteen cycles of pooled wages,
+  enough to pay the eight-cycle repair bill, but no buyer has committed.
 - Aurel Ket, a Mnemosyne Consortium fixer who has been circling, makes a
-  counter-offer: three times the price, plus indexed stipend, for the stone
+  counter-offer: three times the high end, plus indexed stipend, for the stone
   to be folded into a cultural reinforcement field. He gives no location,
   field capacity, duration, or sign that any Consortium node is failing.
-- Yenu imagines his pitch working: her grandmother's voice could reach strangers
-  for years, while the hollow — the part made *for her* — might be lost in
-  conversion. Aurel promises preservation but says nothing about the hollow.
-- Yenu refuses, on clade grounds: *We carry only what we can put down.*
+- Yenu asks whether the original stone and its hearer-shaped hollow would be
+  available to her. Aurel guarantees the recording, not the private tuning;
+  his buyer would keep the original. Yenu refuses his contract.
+- Aurel leaves his offer open until second watch the next day. Tess offers to seek private
+  buyers. Yenu takes the stone and Aurel's card home without deciding whether
+  to sell it elsewhere or hear it as intended.
 
 ### V. The Recitation in Return
 - Yenu rides the cup home with the case unsold.
-- Her grandfather is still alive — he held on the extra day on purpose.
-- He asks to hear the stone once before he stops. Yenu agrees, on her own
-  terms ("a Yenu answer, not a clade answer").
-- They listen together, with no ring (her listening is the ring). The stone
-  *completes*: the hollow closes, the bequest is fulfilled, the stone goes
-  cool and becomes a small, used, neutral object.
+- Her grandfather is still alive within the medic's estimate. He admits he
+  considered selling the stone himself and says her mother may be right to
+  want the filament.
+- He asks to hear the stone with her, while acknowledging that direct hearing
+  may close it and end the sale. Yenu chooses to hear it for her own reasons.
+- Unlike Tess's assay, Yenu holds the stone and answers its call. Her
+  grandmother's full message includes an ordinary correction about the
+  uneven tuning chair. The hollow closes and the carrier goes cool.
 - The grandmother's voice settles into Yenu as a *recitation she can now
   give* — not held as lattice-style memory but carried as clade-style
   spoken inheritance.
-- Grandfather asks Yenu to recite him to her mother after. He stops at the
-  end of the hour. "The well-finished do not announce themselves."
+- Grandfather asks Yenu to recite him accurately to her mother. He dies
+  naturally near the end of the hour; the medic confirms his death.
 
 ### VI. The Release
 - Yenu carries the cool, completed stone to the pod's outer membrane.
-- She opens the stone-release port (a ritual seal her hands know without
-  ever having used it).
-- She releases the stone into the Drift, where dark matter will take it —
-  *the kindest part of the cosmos, because it asks nothing of what it
-  holds.*
-- Walking back, she passes the softened corner; it firms slightly under
-  her now-denser voice.
-- She finds her mother in the galley and begins reciting her grandfather.
-  The pod's coherence-frame responds to her recitation.
-- Final image: the math has not changed; the frame still needs eight
-  cycles; she speaks anyway. *That was the work.*
+- She opens the stone-release port she has watched others use.
+- She releases the spent carrier into the Drift; the stone can no longer pay
+  for the filament.
+- Her mother names the value of the lost sale and says she might have urged
+  Yenu to sell. Yenu accepts the first-watch work of moving bunks and does
+  not ask her mother to approve the choice.
+- Yenu passes on the grandmother's chair detail, then begins reciting her
+  grandfather with his exact correction: "could not afford to." One galley
+  seam firms slightly; the sleeping-cell brace and repair bill remain.
 
 ## Key Scenes
 
@@ -95,10 +100,10 @@ field, or honor it the way her clade honors what it cannot put down.
 |---|---|---|
 | Bedside recitation | Establish Drift Clade dying-rite & POV voice | New cultural detail; consistent with SPECIES_OVERVIEW §3 |
 | Pod elder & the kettle | Externalize the family's silent expectation | Proposes the Skather-Ait pod's frame design |
-| Halix counter | Bring Halix on page | Same exchange named in draft *The Tuner of Last Lights* |
+| Halix counter | Test the stone without completing its intended hearing | Assay is local to Yenu's stone; same exchange named in draft *The Tuner of Last Lights* |
 | Two registers | Show the proposed signature of Yenu's missed-generation bequest | This stone's draft tuning, not a wider subtype rule |
-| Aurel Ket's offer | Embody the Mnemosyne Consortium's quieter cruelty | General field pitch; concealed node drift stays secret |
-| Listening together | Show Yenu's stone *completing* | Proposed closed-inheritance state for this stone |
+| Aurel Ket's offer | Put a guaranteed price and permanent custody against the repair bill | General field pitch; concealed node drift stays secret |
+| Listening together | Make Yenu's choice irreversible through her own action | Proposed closed-inheritance state for this stone |
 | The release | Dramatize dark matter as ethical category, not just physics | Consistent with MEMORY_PHYSICS §3.3 |
 | Final recitation | Show selfhood-by-recitation as cultural strength | Draft practice of Yenu's clade |
 
@@ -109,12 +114,13 @@ field, or honor it the way her clade honors what it cannot put down.
 - **Identity as consumable resource** — Drift Clade selfhood is
   *constitutively* borrowed and re-spoken; the story makes this a discipline,
   not a deficit.
-- **Ethics of remembering and forgetting** — The Consortium offer is the
-  central moral pivot; refusing it costs the pod its safest survival path.
+- **Ethics of remembering and forgetting** — Aurel's contract, Tess's possible
+  buyers, and Yenu's direct hearing keep both money and inheritance viable
+  until her bedside choice.
 - **Memory as nourishment and burden** — The stone is both gift and weight;
   the bequest is closed only when received, not when held.
-- **Fragility of structure** — The pod's coherence-frame is the physical
-  expression of the family's voice-work; both are failing in tandem.
+- **Fragility of structure** — A spoken recitation helps one seam, while
+  Hol-Vren's brace and the unpaid filament show the remaining material work.
 
 A sixth implicit theme the universe has been circling but not directly named:
 **Release as a third option** between preservation (Solace) and consumption
@@ -160,7 +166,7 @@ doctrine in the draft.
   two-register tuning and closure are draft claims about Yenu's stone.
 - *The Tuner of Last Lights* (story-0003) mentions Halix Exchange but is
   draft context, not a causal prerequisite for Yenu's plot.
-- The maxim quoted at Solace belongs to the Archivist Orders. Its placement
-  on a Solace wall remains a draft detail.
+- The grandfather dies naturally. His recitation correction remains "could
+  not afford to," which draft story-0021 later uses as the sound Yenu loses.
 - Tess's warning about a nearby Synod front is an unverified Halix rumor;
   the story depicts no Synod operation in the Helios Drift.

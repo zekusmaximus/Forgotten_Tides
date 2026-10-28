@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-28T22:39:52.207Z",
+  "generated": "2026-10-28T23:25:48.207Z",
   "nodes": [
     {
       "canonical_id": "char-0001",
@@ -6280,14 +6280,6 @@
       "from": "story-0004",
       "to": "char-0031",
       "type": "characters",
-      "fields": [
-        "cross_refs"
-      ]
-    },
-    {
-      "from": "story-0004",
-      "to": "fact-0002",
-      "type": "factions",
       "fields": [
         "cross_refs"
       ]

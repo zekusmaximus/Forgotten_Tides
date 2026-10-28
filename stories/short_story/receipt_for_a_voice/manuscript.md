@@ -124,7 +124,7 @@ bible_refs:
   - bible/ARCHIVISTS_WAKE_STORY_BIBLE.md#72-corridor-rules
 metadata:
   status: draft
-  word_count: 2680
+  word_count: 2682
   author: AI-assisted draft
   created: '2026-09-24T00:00:00.000Z'
   modified: '2026-09-24T00:00:00.000Z'
@@ -236,7 +236,7 @@ ordinary corridor passage.
 Consortium has reserves, but its conditions arrive after you agree to the
 price."
 
-"I met their conditions once. They were very polite."
+"I heard one of their offers once. They were very polite."
 
 Tess looked up. She had been at the bench when Aurel Ket offered to make Yenu's
 grandmother's voice part of a cultural reinforcement field. She had also watched Yenu take the
