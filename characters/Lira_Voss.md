@@ -42,7 +42,7 @@ continuity:
     - Preserve the ethical boundary between chosen forgetting and forced erasure
     - Track any future relationship to anchor-burned pilots and released anchors
 metadata:
-  status: canonical
+  status: speculative
   created: '2026-05-27T00:00:00.000Z'
-  modified: '2026-05-27T00:00:00.000Z'
+  modified: '2026-10-28T01:54:53.000Z'
 ---

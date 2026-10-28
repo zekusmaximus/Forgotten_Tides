@@ -131,7 +131,7 @@ See also:
 | Error | Cause | Fix |
 |-------|-------|-----|
 | `themes/0: must be equal to one of the allowed values` | Used an unlisted theme string | Check the `themes[]` table above |
-| `metadata/status: must be equal to one of the allowed values` | Used `draft` in an entity file | Change to `canonical` or `speculative` |
+| `metadata/status: must be equal to one of the allowed values` | Used `draft` in an entity file | Use `speculative` for a draft-origin entity; use `canonical` only after its claims are approved |
 | `Unresolved reference: char-####` | Character file not created yet | Create `characters/<Name>.md` with that ID |
 | `Unresolved reference: fact-####` | Faction file not created yet | Create `factions/<Name>.md` with that ID |
 | `Missing required field: schema_version` | Frontmatter missing `schema_version` | Add `schema_version: v1.0.0` |

@@ -1,6 +1,6 @@
 # Canonical Index
 
-This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-10-27T19:57:46.090Z
+This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-10-28T01:55:36.363Z
 
 ## Character
 - `char-0001` — Rell (`characters/Rell.md`)
@@ -196,10 +196,6 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `char-0002` - Sutira (character, primary_canon, weight 110, `characters/Sutira.md`)
 - `char-0003` - Estavan (character, primary_canon, weight 110, `characters/Estavan.md`)
 - `char-0004` - Tari (character, primary_canon, weight 110, `characters/Tari.md`)
-- `char-0005` - Kaelen (character, primary_canon, weight 110, `characters/Kaelen.md`)
-- `char-0006` - Vane (character, primary_canon, weight 110, `characters/Vane.md`)
-- `char-0007` - Kael Voss (character, primary_canon, weight 110, `characters/Kael_Voss.md`)
-- `char-0008` - Lira Voss (character, primary_canon, weight 110, `characters/Lira_Voss.md`)
 - `char-0010` - Inya Solven (character, primary_canon, weight 110, `characters/Inya_Solven.md`)
 - `char-0016` - Nara Oss (character, primary_canon, weight 110, `characters/Nara_Oss.md`)
 - `char-0017` - Elior Ren (character, primary_canon, weight 110, `characters/Elior_Ren.md`)
@@ -240,15 +236,12 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `fact-0006` - Remembrancers of Solace (faction, primary_canon, weight 110, `factions/Remembrancers_of_Solace.md`)
 - `fact-0007` - Heliodrome Authority (faction, primary_canon, weight 110, `factions/Heliodrome_Authority.md`)
 - `loc-0001` - Heliodrome (location, primary_canon, weight 110, `atlas/Heliodrome.md`)
-- `loc-0002` - Ostra-Vael (location, primary_canon, weight 110, `atlas/Ostra-Vael.md`)
 - `loc-0003` - Lattice Gap (location, primary_canon, weight 110, `atlas/Lattice_Gap.md`)
 - `loc-0004` - Remnant Seas (location, primary_canon, weight 110, `atlas/Remnant_Seas.md`)
 - `loc-0005` - Mnemosyne Lattice Core (location, primary_canon, weight 110, `atlas/Mnemosyne_Lattice_Core.md`)
 - `loc-0006` - Void Regions (location, primary_canon, weight 110, `atlas/Void_Regions.md`)
 - `loc-0007` - Black Horizon (location, primary_canon, weight 110, `atlas/Black_Horizon.md`)
 - `loc-0008` - Helios Drift (location, primary_canon, weight 110, `atlas/Helios_Drift.md`)
-- `loc-0009` - Ebbhaven (location, primary_canon, weight 110, `atlas/Ebbhaven.md`)
-- `loc-0010` - Solace Hospice (location, primary_canon, weight 110, `atlas/Solace_Hospice.md`)
 - `loc-0011` - Tessarine Vault (location, primary_canon, weight 110, `atlas/Tessarine_Vault.md`)
 - `lore-0001` - COSMIC REGIONS (lore, working_canon, weight 95, `lore/COSMIC_REGIONS.md`)
 - `lore-0002` - MEMORY ECONOMY (lore, working_canon, weight 95, `lore/MEMORY_ECONOMY.md`)
@@ -340,6 +333,10 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `term-0021` - Light-Bequest (term, draft, weight 65, `data/lexicon/terms.yaml`)
 
 ### Speculative / Sandbox Material
+- `char-0005` - Kaelen (character, speculative, weight 60, `characters/Kaelen.md`)
+- `char-0006` - Vane (character, speculative, weight 60, `characters/Vane.md`)
+- `char-0007` - Kael Voss (character, speculative, weight 60, `characters/Kael_Voss.md`)
+- `char-0008` - Lira Voss (character, speculative, weight 60, `characters/Lira_Voss.md`)
 - `char-0009` - Maren Holt (character, speculative, weight 60, `characters/Maren_Holt.md`)
 - `char-0011` - Sael Orro (character, speculative, weight 60, `characters/Sael_Orro.md`)
 - `char-0012` - Ives Mar (character, speculative, weight 60, `characters/Ives_Mar.md`)
@@ -356,6 +353,9 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `char-0025` - Toma Vey (character, speculative, weight 60, `characters/Toma_Vey.md`)
 - `char-0026` - Yenu Skather-Ait (character, speculative, weight 60, `characters/Yenu_Skather-Ait.md`)
 - `char-0027` - Hol-Vren (character, speculative, weight 60, `characters/Hol-Vren.md`)
+- `loc-0002` - Ostra-Vael (location, speculative, weight 60, `atlas/Ostra-Vael.md`)
+- `loc-0009` - Ebbhaven (location, speculative, weight 60, `atlas/Ebbhaven.md`)
+- `loc-0010` - Solace Hospice (location, speculative, weight 60, `atlas/Solace_Hospice.md`)
 - `loc-0012` - Narthex of Low Mercy (location, speculative, weight 60, `atlas/Narthex_of_Low_Mercy.md`)
 - `loc-0013` - Halix Exchange (location, speculative, weight 60, `atlas/Halix_Exchange.md`)
 - `loc-0014` - Heavonly (location, speculative, weight 60, `atlas/Heavonly.md`)

@@ -34,7 +34,7 @@ references:
   stories:
     - story-0007
 metadata:
-  status: canonical
+  status: speculative
   created: '2026-05-27T00:00:00.000Z'
-  modified: '2026-05-27T00:00:00.000Z'
+  modified: '2026-10-28T01:54:53.000Z'
 ---

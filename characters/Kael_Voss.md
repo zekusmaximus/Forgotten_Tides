@@ -28,9 +28,9 @@ continuity:
     - Relationship to salvaged memories
     - Shifts in his release-vs-preserve philosophy
 metadata:
-  status: canonical
+  status: speculative
   created: "2026-05-23T10:13:00.000Z"
-  modified: "2026-05-23T10:13:00.000Z"
+  modified: "2026-10-28T01:54:53.000Z"
 ---
 
 Kael Voss drifts alone aboard the *Quiet Drift*. A pragmatic freelancer, he salvages decaying memory buoys but refuses to let them consume his own identity. His philosophy: some memories are better released than anchored forever.
