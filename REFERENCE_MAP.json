@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-28T03:47:44.580Z",
+  "generated": "2026-10-28T17:26:22.217Z",
   "nodes": [
     {
       "canonical_id": "char-0001",
@@ -537,9 +537,9 @@
       "type": "faction",
       "name": "Drift Clades",
       "path": "factions/Drift_Clades.md",
-      "canon_tier": "primary_canon",
-      "source_weight": 110,
-      "retrieval_role": "authoritative"
+      "canon_tier": "working_canon",
+      "source_weight": 100,
+      "retrieval_role": "working_reference"
     },
     {
       "canonical_id": "fact-0005",
@@ -1446,18 +1446,18 @@
       "type": "term",
       "name": "Continuity Cleric",
       "path": "data/lexicon/terms.yaml",
-      "canon_tier": "primary_canon",
-      "source_weight": 110,
-      "retrieval_role": "authoritative"
+      "canon_tier": "draft",
+      "source_weight": 65,
+      "retrieval_role": "active_draft"
     },
     {
       "canonical_id": "term-0023",
       "type": "term",
       "name": "Liturgy of the Hull",
       "path": "data/lexicon/terms.yaml",
-      "canon_tier": "primary_canon",
-      "source_weight": 110,
-      "retrieval_role": "authoritative"
+      "canon_tier": "draft",
+      "source_weight": 65,
+      "retrieval_role": "active_draft"
     },
     {
       "canonical_id": "term-0024",
@@ -4777,17 +4777,8 @@
     },
     {
       "from": "fact-0004",
-      "to": "mech-0003",
+      "to": "mech-0002",
       "type": "mechanics",
-      "fields": [
-        "cross_refs",
-        "references"
-      ]
-    },
-    {
-      "from": "fact-0004",
-      "to": "story-0004",
-      "type": "stories",
       "fields": [
         "cross_refs",
         "references"
@@ -6186,6 +6177,15 @@
       "from": "story-0003",
       "to": "mech-0001",
       "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
+    },
+    {
+      "from": "story-0004",
+      "to": "fact-0004",
+      "type": "factions",
       "fields": [
         "cross_refs",
         "references"

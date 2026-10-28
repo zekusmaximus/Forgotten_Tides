@@ -45,13 +45,13 @@ terms:
 
   - id: term-0004
     term: Civic Memory
-    definition: Large-scale cultural or institutional memories; powerful but volatile when used for navigation.
+    definition: Collective memories that help a station maintain its identity; when used for corridor navigation, civic memories run hot and can overcorrect.
     category: Memory Types
     related_terms:
       - term-0016  # Personal Memory
       - term-0013  # Memory Drive
     first_appearance: The Archivist's Wake
-    canonical_source: lore/MEMORY_ECONOMY.md
+    canonical_source: bible/ARCHIVISTS_WAKE_STORY_BIBLE.md
     status: canonical
 
   - id: term-0005
@@ -104,13 +104,13 @@ terms:
 
   - id: term-0009
     term: Eddy
-    definition: A vortical region of predatory forgetting; erases memory before matter.
+    definition: A forgetting-attractor that can track a corridor through mnemonic residue and erases meaning before matter.
     category: Hazards
     related_terms:
       - term-0010  # Forgetting Field
       - term-0015  # Oblivion
     first_appearance: The Archivist's Wake
-    canonical_source: lore/COSMIC_REGIONS.md
+    canonical_source: bible/ARCHIVISTS_WAKE_STORY_BIBLE.md
     status: canonical
 
   - id: term-0010
@@ -263,8 +263,8 @@ terms:
       - term-0006  # Conceptual Drift
       - term-0004  # Civic Memory
     first_appearance: The Liturgy of Rust
-    canonical_source: lore/POLITIES_AND_FACTIONS.md
-    status: canonical
+    canonical_source: stories/short_story/the_liturgy_of_rust/manuscript.md
+    status: draft
 
   - id: term-0023
     term: Liturgy of the Hull
@@ -274,8 +274,8 @@ terms:
       - term-0005  # Coherence
       - term-0006  # Conceptual Drift
     first_appearance: The Liturgy of Rust
-    canonical_source: lore/POLITIES_AND_FACTIONS.md
-    status: canonical
+    canonical_source: stories/short_story/the_liturgy_of_rust/manuscript.md
+    status: draft
 
   - id: term-0024
     term: Structural Softening
@@ -315,7 +315,7 @@ terms:
 
   - id: term-0027
     term: Null Stone
-    definition: An artificial anti-memory core manufactured by the Obsidian Synod. Where a memory stone gives back a tone, a null stone gives back absence. Left unattended it induces local conceptual thinning in whatever surrounds it; placed on a tuning cradle it is amplified exactly as a true stone would be, so that a cradle becomes a detonator. Sustained attention suppresses a null stone's local effect at the attender's cost, and the forgetting transfers into whatever touches it, most often the hands that hold it. The Synod carries null stones in dull housings called lamps.
+    definition: A Synod-made core that gives back absence where a memory stone would give back a tone. Left unattended, it thins nearby meaning and structure. A tuning cradle amplifies its absence; sustained attention contains its local effect at a cost to the attender. Handling a housed core can transfer forgetting into the holder's hand. The Synod carries null stones in housings called lamps.
     category: Hazards
     related_terms:
       - term-0014  # Memory Stone
@@ -324,7 +324,7 @@ terms:
       - term-0026  # Tuning Cradle
       - term-0015  # Oblivion
     first_appearance: Spend What You Can Afford
-    canonical_source: lore/theology/OBLIVION_HERESIES.md
+    canonical_source: stories/short_story/spend_what_you_can_afford/manuscript.md
     status: canonical
     aliases:
       - Null Core

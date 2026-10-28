@@ -35,6 +35,11 @@
       "enum": ["canonical", "speculative", "deprecated"],
       "description": "Canonical status of the faction"
     },
+    "canon_tier": {
+      "type": "string",
+      "enum": ["primary_canon", "working_canon", "draft", "speculative", "sandbox", "test", "deprecated"],
+      "description": "Explicit authority tier for a faction profile when its source is less authoritative than its file path"
+    },
     "tags": {
       "type": "array",
       "items": {
