@@ -20,9 +20,9 @@ references:
   mechanics: []
   stories: ["story-0006"]
 metadata:
-  status: canonical
+  status: speculative
   created: "2026-05-23T10:13:00.000Z"
-  modified: "2026-05-23T10:13:00.000Z"
+  modified: "2026-10-28T01:54:53.000Z"
 ---
 
 Ebbhaven no longer exists as a physical place. It survives only as echoes in a single rogue memory buoy encountered by salvager Kael Voss.

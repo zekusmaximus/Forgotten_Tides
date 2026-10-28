@@ -36,9 +36,9 @@ coordinates:
   region: Remnant Seas
   memory_density: 0.30
 metadata:
-  status: canonical
+  status: speculative
   created: '2026-05-23T00:00:00Z'
-  modified: '2026-05-23T00:00:00Z'
+  modified: '2026-10-28T01:54:53.000Z'
 ---
 
 # Ostra-Vael

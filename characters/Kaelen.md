@@ -43,9 +43,9 @@ continuity:
     - Psychological state and faith in his vocation
     - Relationship to Ostra-Vael station
 metadata:
-  status: canonical
+  status: speculative
   created: '2026-05-23T00:00:00Z'
-  modified: '2026-05-23T00:00:00Z'
+  modified: '2026-10-28T01:54:53.000Z'
 ---
 
 # Kaelen

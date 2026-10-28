@@ -1,6 +1,6 @@
 # Link Map - Entity Relationships
 
-Generated: 2026-10-27T19:57:46.090Z
+Generated: 2026-10-28T01:55:36.363Z
 
 ## Entities (171)
 
@@ -8,10 +8,10 @@ Generated: 2026-10-27T19:57:46.090Z
 - `char-0002` (character, primary_canon, weight 110)
 - `char-0003` (character, primary_canon, weight 110)
 - `char-0004` (character, primary_canon, weight 110)
-- `char-0005` (character, primary_canon, weight 110)
-- `char-0006` (character, primary_canon, weight 110)
-- `char-0007` (character, primary_canon, weight 110)
-- `char-0008` (character, primary_canon, weight 110)
+- `char-0005` (character, speculative, weight 60)
+- `char-0006` (character, speculative, weight 60)
+- `char-0007` (character, speculative, weight 60)
+- `char-0008` (character, speculative, weight 60)
 - `char-0009` (character, speculative, weight 60)
 - `char-0010` (character, primary_canon, weight 110)
 - `char-0011` (character, speculative, weight 60)
@@ -68,15 +68,15 @@ Generated: 2026-10-27T19:57:46.090Z
 - `fact-0006` (faction, primary_canon, weight 110)
 - `fact-0007` (faction, primary_canon, weight 110)
 - `loc-0001` (location, primary_canon, weight 110)
-- `loc-0002` (location, primary_canon, weight 110)
+- `loc-0002` (location, speculative, weight 60)
 - `loc-0003` (location, primary_canon, weight 110)
 - `loc-0004` (location, primary_canon, weight 110)
 - `loc-0005` (location, primary_canon, weight 110)
 - `loc-0006` (location, primary_canon, weight 110)
 - `loc-0007` (location, primary_canon, weight 110)
 - `loc-0008` (location, primary_canon, weight 110)
-- `loc-0009` (location, primary_canon, weight 110)
-- `loc-0010` (location, primary_canon, weight 110)
+- `loc-0009` (location, speculative, weight 60)
+- `loc-0010` (location, speculative, weight 60)
 - `loc-0011` (location, primary_canon, weight 110)
 - `loc-0012` (location, speculative, weight 60)
 - `loc-0013` (location, speculative, weight 60)
@@ -929,6 +929,6 @@ _none_
 - **Total Relationships**: 740
 - **Orphaned Targets**: 0
 - **Entity Types**: character, event, faction, location, lore, mechanics, story, term
-- **Primary / Working Canon**: 101
+- **Primary / Working Canon**: 94
 - **Draft Entities**: 43
 - **Test / Sandbox / Deprecated Entities**: 7
