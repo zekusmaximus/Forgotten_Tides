@@ -34,3 +34,18 @@ universal transfer to everything it touches.
 The dependency report returns zero dependents for these terms because it does
 not trace lexicon `canonical_source`, `related_terms`, or prose mentions. This
 is a coverage limit, not evidence that changing a definition has no impact.
+
+## Story-0005 Lexicon Definitions — 2026-10-28
+
+**Author decision:** Keep `term-0022` Continuity Cleric and `term-0023`
+Liturgy of the Hull provisional as draft lexicon entries until `story-0005`
+(*The Liturgy of Rust*) is approved. Their detailed definitions retain the
+draft story as `canonical_source` for provenance and future promotion review.
+The working lore in `lore/POLITIES_AND_FACTIONS.md` supports the broad role and
+the daily hull, decks, and seals recitation, but it does not establish the
+draft's acoustic and focused-memory method or the effect of a cleric's doubt.
+
+`term-0025` Reliquarist has a `related_terms` link to `term-0022`. That link is
+an association, not approval of the draft definition. The dependency report
+does not trace `related_terms` or prose mentions, so these links and mentions
+need review when `story-0005` is considered for canon.

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-28T15:44:02.064Z",
+  "generated": "2026-10-28T17:26:22.217Z",
   "nodes": [
     {
       "canonical_id": "char-0001",
@@ -1446,18 +1446,18 @@
       "type": "term",
       "name": "Continuity Cleric",
       "path": "data/lexicon/terms.yaml",
-      "canon_tier": "primary_canon",
-      "source_weight": 110,
-      "retrieval_role": "authoritative"
+      "canon_tier": "draft",
+      "source_weight": 65,
+      "retrieval_role": "active_draft"
     },
     {
       "canonical_id": "term-0023",
       "type": "term",
       "name": "Liturgy of the Hull",
       "path": "data/lexicon/terms.yaml",
-      "canon_tier": "primary_canon",
-      "source_weight": 110,
-      "retrieval_role": "authoritative"
+      "canon_tier": "draft",
+      "source_weight": 65,
+      "retrieval_role": "active_draft"
     },
     {
       "canonical_id": "term-0024",
