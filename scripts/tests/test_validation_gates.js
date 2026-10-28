@@ -62,6 +62,20 @@ withFixture(root => {
 });
 
 withFixture(root => {
+  const faction = write(root, 'factions/Working.md',
+    '---\nid: fact-9999\nschema_version: v1.0.0\ntype: faction\ntags: []\n' +
+    'summary_50: Working profile\nsummary_200: Supported by working lore.\n' +
+    'cross_refs: {}\nreferences: {}\ncanon_tier: working_canon\n' +
+    'metadata:\n  status: canonical\n---\n');
+  const valid = validateFile(faction, null, { required: true });
+  assert.strictEqual(valid.valid, true, valid.errors?.join('; '));
+
+  fs.writeFileSync(faction, fs.readFileSync(faction, 'utf8').replace('working_canon', 'unreviewed'));
+  const invalid = validateFile(faction, null, { required: true });
+  assert.strictEqual(invalid.valid, false, 'a faction cannot use an unknown authority tier');
+});
+
+withFixture(root => {
   assert.strictEqual(loadConfig(root).max_new_entities_per_scene, 4);
 
   write(root, 'docs/reader_model.json', '{broken');

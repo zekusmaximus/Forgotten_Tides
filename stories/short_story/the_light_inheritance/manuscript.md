@@ -13,7 +13,8 @@ summary_200: "On a failing Drift Clade pod at the edge of the Helios Drift, sixt
 cross_refs:
   characters: []
   locations: []
-  factions: []
+  factions:
+    - fact-0004
   mechanics:
     - mech-0001
   stories:
@@ -21,7 +22,8 @@ cross_refs:
 references:
   characters: []
   locations: []
-  factions: []
+  factions:
+    - fact-0004
   mechanics:
     - mech-0001
   stories:

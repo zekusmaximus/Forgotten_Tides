@@ -1,6 +1,6 @@
 # Link Map - Entity Relationships
 
-Generated: 2026-10-28T03:47:44.580Z
+Generated: 2026-10-28T15:44:02.064Z
 
 ## Entities (171)
 
@@ -63,7 +63,7 @@ Generated: 2026-10-28T03:47:44.580Z
 - `fact-0001` (faction, primary_canon, weight 110)
 - `fact-0002` (faction, primary_canon, weight 110)
 - `fact-0003` (faction, primary_canon, weight 110)
-- `fact-0004` (faction, primary_canon, weight 110)
+- `fact-0004` (faction, working_canon, weight 100)
 - `fact-0005` (faction, primary_canon, weight 110)
 - `fact-0006` (faction, primary_canon, weight 110)
 - `fact-0007` (faction, primary_canon, weight 110)
@@ -552,8 +552,7 @@ Generated: 2026-10-28T03:47:44.580Z
 - `fact-0003` → `mech-0002` (mechanics; cross_refs, references)
 - `fact-0003` → `story-0004` (stories; cross_refs, references)
 - `fact-0004` → `mech-0001` (mechanics; cross_refs, references)
-- `fact-0004` → `mech-0003` (mechanics; cross_refs, references)
-- `fact-0004` → `story-0004` (stories; cross_refs, references)
+- `fact-0004` → `mech-0002` (mechanics; cross_refs, references)
 - `fact-0005` → `char-0030` (characters; cross_refs, references)
 - `fact-0005` → `loc-0011` (locations; cross_refs, references)
 - `fact-0005` → `mech-0001` (mechanics; cross_refs, references)
@@ -711,6 +710,7 @@ Generated: 2026-10-28T03:47:44.580Z
 - `story-0001` → `mech-0003` (mechanics; cross_refs, references)
 - `story-0002` → `mech-0001` (mechanics; cross_refs, references)
 - `story-0003` → `mech-0001` (mechanics; cross_refs, references)
+- `story-0004` → `fact-0004` (factions; cross_refs, references)
 - `story-0004` → `mech-0001` (mechanics; cross_refs, references)
 - `story-0004` → `story-0003` (stories; cross_refs, references)
 - `story-0005` → `char-0005` (characters; cross_refs, references)

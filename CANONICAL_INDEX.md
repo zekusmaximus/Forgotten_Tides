@@ -1,6 +1,6 @@
 # Canonical Index
 
-This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-10-28T01:55:36.363Z
+This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-10-28T15:44:02.064Z
 
 ## Character
 - `char-0001` — Rell (`characters/Rell.md`)
@@ -231,7 +231,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `fact-0001` - Canticle Fleet (faction, primary_canon, weight 110, `factions/Canticle_Fleet.md`)
 - `fact-0002` - Archivist Orders (faction, primary_canon, weight 110, `factions/Archivist_Orders.md`)
 - `fact-0003` - Mnemosyne Lattice Consortium (faction, primary_canon, weight 110, `factions/Mnemosyne_Lattice_Consortium.md`)
-- `fact-0004` - Drift Clades (faction, primary_canon, weight 110, `factions/Drift_Clades.md`)
+- `fact-0004` - Drift Clades (faction, working_canon, weight 100, `factions/Drift_Clades.md`)
 - `fact-0005` - Obsidian Synod (faction, primary_canon, weight 110, `factions/Obsidian_Synod.md`)
 - `fact-0006` - Remembrancers of Solace (faction, primary_canon, weight 110, `factions/Remembrancers_of_Solace.md`)
 - `fact-0007` - Heliodrome Authority (faction, primary_canon, weight 110, `factions/Heliodrome_Authority.md`)
