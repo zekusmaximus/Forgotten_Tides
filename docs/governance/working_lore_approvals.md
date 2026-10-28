@@ -20,3 +20,17 @@ speculative character or location profiles as direct dependents. It finds no
 transitive dependents. The report follows structured links; prose mentions
 still require review. `story-0004` now declares its faction link so it appears
 in future impact reports.
+
+## Primary-Backed Lexicon Definitions — 2026-10-28
+
+**Author decision:** Keep `term-0004` Civic Memory, `term-0009` Eddy, and
+`term-0027` Null Stone canonical, with definitions limited to claims supported
+by primary sources. Civic Memory and Eddy now cite
+`bible/ARCHIVISTS_WAKE_STORY_BIBLE.md`; Null Stone cites primary-canon
+`story-0022` (*Spend What You Can Afford*). The Eddy definition no longer
+requires a vortical shape, and the Null Stone definition no longer asserts a
+universal transfer to everything it touches.
+
+The dependency report returns zero dependents for these terms because it does
+not trace lexicon `canonical_source`, `related_terms`, or prose mentions. This
+is a coverage limit, not evidence that changing a definition has no impact.
