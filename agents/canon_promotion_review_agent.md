@@ -272,10 +272,15 @@ byte-identical afterward. Everything below is left to you:
    its consequences "draft".
 2. In `data/timeline/events.yaml`: remove "draft" from the story's event
    summaries and causal notes (the tool changes only `canon_tier`).
-3. Entity files that exist only because of this story: `metadata.status:
-   canonical`. Entity files that predate the story: leave their status alone
-   unless the author has set a rule.
-4. Lexicon terms introduced by the story: `status: canonical`.
+3. Review each linked entity profile claim against the approved story and
+   other authoritative sources. Set `metadata.status: canonical` only when
+   the full profile is supported and separately approved; otherwise leave it
+   provisional or remove unsupported details. Story approval does not decide
+   the profile's status.
+4. Review each introduced lexicon definition and source separately. Set
+   `status: canonical` only for approved, supported wording; otherwise leave
+   the term `draft`. Follow
+   `docs/governance/source_first_approvals.md` for either decision.
 5. Every "Draft Continuity" or "(draft)" label the story's own PR added to
    atlas, faction, lore, docs, and character files. Grep for `draft` next to
    the story ID and read each hit.

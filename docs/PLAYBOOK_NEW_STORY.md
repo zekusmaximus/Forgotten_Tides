@@ -146,7 +146,8 @@ the source story triggers a review of each profile claim; change the entity to
 `canonical` only when the approved story or another authoritative source
 supports the full profile.
 See [provisional profile decisions](governance/provisional_profiles.md) for
-current story-linked examples.
+current story-linked examples, and [source-first approvals](governance/source_first_approvals.md)
+for the independent-approval exception.
 
 ### New Locations → `atlas/<Name>.md`
 
@@ -300,7 +301,7 @@ The tool changes, in one pass:
 
 It then prints a **manual checklist** of what it will not decide for you:
 - Referenced entity files (`characters/`, `atlas/`, `factions/`) whose `metadata.status` is not `canonical`. Review each profile claim against the approved manuscript before changing its status. Leave unsupported claims provisional or separate them from the approved profile.
-- Lexicon terms the story introduced (`first_appearance` matches the title) whose `status` is not `canonical`.
+- Lexicon terms the story introduced (`first_appearance` matches the title) whose `status` is not `canonical`. Review each definition separately before changing its status; story approval alone does not approve the term.
 - Lines in entity, lore, and docs files that name the story next to the word "draft". Read each and reword the ones that describe the story's tier.
 - Manuscript `events[]` ids with no entry in `data/timeline/events.yaml`. The tool edits existing timeline entries only; add shared events by hand (see `data/timeline/events.yaml` for the shape).
 
