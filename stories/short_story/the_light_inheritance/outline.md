@@ -54,11 +54,11 @@ field, or honor it the way her clade honors what it cannot put down.
   cycles.
 - Aurel Ket, a Mnemosyne Consortium fixer who has been circling, makes a
   counter-offer: three times the price, plus indexed stipend, for the stone
-  to be folded into a cultural reinforcement field stabilizing an inner-ring
-  lattice node.
-- Yenu understands Aurel's pitch: he claims her grandmother's voice could
-  serve a civic field for ~6,000 people for ~200 years, but the hollow — the
-  part made *for her* — would be sanded off in the process.
+  to be folded into a cultural reinforcement field. He gives no location,
+  field capacity, duration, or sign that any Consortium node is failing.
+- Yenu imagines his pitch working: her grandmother's voice could reach strangers
+  for years, while the hollow — the part made *for her* — might be lost in
+  conversion. Aurel promises preservation but says nothing about the hollow.
 - Yenu refuses, on clade grounds: *We carry only what we can put down.*
 
 ### V. The Recitation in Return
@@ -96,9 +96,9 @@ field, or honor it the way her clade honors what it cannot put down.
 | Bedside recitation | Establish Drift Clade dying-rite & POV voice | New cultural detail; consistent with SPECIES_OVERVIEW §3 |
 | Pod elder & the kettle | Externalize the family's silent expectation | Proposes the Skather-Ait pod's frame design |
 | Halix counter | Bring Halix on page | Same exchange named in draft *The Tuner of Last Lights* |
-| Two registers | Show the proposed signature of Yenu's missed-generation bequest | Draft subtype, not a rule for all Light-Bequests |
-| Aurel Ket's offer | Embody the Mnemosyne Consortium's quieter cruelty | Consistent with POLITIES_AND_FACTIONS §3 |
-| Listening together | Show Yenu's stone *completing* | Proposed closed-inheritance state for this subtype |
+| Two registers | Show the proposed signature of Yenu's missed-generation bequest | This stone's draft tuning, not a wider subtype rule |
+| Aurel Ket's offer | Embody the Mnemosyne Consortium's quieter cruelty | General field pitch; concealed node drift stays secret |
+| Listening together | Show Yenu's stone *completing* | Proposed closed-inheritance state for this stone |
 | The release | Dramatize dark matter as ethical category, not just physics | Consistent with MEMORY_PHYSICS §3.3 |
 | Final recitation | Show selfhood-by-recitation as cultural strength | Draft practice of Yenu's clade |
 
@@ -127,12 +127,12 @@ doctrine in the draft.
    The broader Light-Bequest category appears in primary stories 0008 and
    0022. Yenu's stone was tuned for a hearer the donor never met. It gives
    two registers — donor voice and hearer-shaped absence. Its proposed drive
-   risks and the clade's choice to hear or release it belong to this subtype,
-   not to every Light-Bequest. The draft definition is tracked in
+   risks and the clade's choice to hear or release it concern this stone,
+   not every missed-generation or ordinary Light-Bequest. The draft definition is tracked in
    `data/lexicon/terms.yaml`.
 
 2. **Closed inheritance** (state, not term):
-   What Yenu's missed-generation bequest becomes when its intended hearer
+   What Yenu's particular missed-generation bequest becomes when its intended hearer
    listens. This stone goes cool and inert; the carried voice settles into
    Yenu as a recitation, not a stored memory. Whether other stones of this
    subtype close the same way remains open.
@@ -157,7 +157,7 @@ doctrine in the draft.
 - The story remains draft pending the review in
   `docs/reviews/STORY_0004_REVIEW_2026_10_28.md`.
 - The broader Light-Bequest category is established in primary stories;
-  two-register tuning and closure are draft claims about Yenu's subtype.
+  two-register tuning and closure are draft claims about Yenu's stone.
 - *The Tuner of Last Lights* (story-0003) mentions Halix Exchange but is
   draft context, not a causal prerequisite for Yenu's plot.
 - The maxim quoted at Solace belongs to the Archivist Orders. Its placement

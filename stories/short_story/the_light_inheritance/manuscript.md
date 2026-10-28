@@ -133,13 +133,13 @@ continuity_notes:
   - Proposes a local filament coherence-frame and a missed-generation light-bequest subtype; their particular mechanisms remain draft pending review.
   - Adds Drift Clade selfhood-by-recitation as a positive cultural practice consistent with SPECIES_OVERVIEW §3 and POLITIES_AND_FACTIONS §4
   - Introduces clade-traditional thinning as a non-Synod, non-Remembrancer mode of chosen lightness; sits between the existing ethical poles without altering them
-  - Light-bequests occur in primary stories 0008 and 0022; this stone's two-register and closed-carrier behavior belongs to the proposed missed-generation subtype, not the broad category.
+  - Light-bequests occur in primary stories 0008 and 0022; this particular missed-generation stone's two-register and closed-carrier behavior remains a draft proposal, not a rule for the subtype or broad category.
   - Sets Halix Exchange on page after its offstage mention in draft story-0003; no story-0003 plot outcome is required.
-  - Aurel Ket's proposed cultural-memory acquisition and conversion remain his claims; Consortium secrecy and technical scope still need editorial review.
+  - Aurel Ket pitches cultural-memory acquisition and civic reinforcement without disclosing the Consortium's concealed node drift; his technical promises remain unverified claims.
   - Quotes the Archivist Orders' maxim at Solace as a cross-faction borrowing; this placement remains draft.
 metadata:
   status: draft
-  word_count: 6947
+  word_count: 6898
   author: AI Generated (Claude)
   created: '2026-05-23T00:00:00Z'
   modified: '2026-10-28T00:00:00Z'
@@ -216,7 +216,7 @@ She sat there a long time with the wooden case in her lap before she carried it 
 
 ## II. The Pod Frame
 
-The pod's main corridor was running its low-cycle hum. Drift Clade habitats did not bother with day-night cycles the way lattice stations did; they ran instead on watch-cycles, four hours apiece, soft and rhythmic, so a body would feel always slightly drowsy and slightly attentive at the same time. It was, the pod elder said, the natural cadence of a people who lived inside something they could not entirely trust to remain solid.
+The pod's main corridor was running its low-cycle hum. On Skather-Ait they did not bother with day-night cycles the way lattice stations did; they ran on watch-cycles, four hours apiece, soft and rhythmic, so a body would feel always slightly drowsy and slightly attentive at the same time. It was, the pod elder said, the natural cadence of people who lived inside something they could not entirely trust to remain solid.
 
 The walls were murmuring tonight.
 
@@ -224,13 +224,13 @@ Yenu noticed it three steps into the corridor — a small, soft *forgetting* in 
 
 The coherence-frame was failing.
 
-Every Drift Clade pod was held together by two things: its physical hull, which was simple, and its coherence-frame, which was complicated. The frame was a low-resonant mesh of tuned filaments through which the pod's collective recitations were threaded — the names, the dailies, the lullabies, the genealogies — so that the pod *remembered itself as a thing that held*. Without the frame, a hull was just metal and polymer, and metal and polymer alone, in the outer sleeves of the Helios Drift, was not enough.
+Skather-Ait was held together by two things: its physical hull, which was simple, and its coherence-frame, which was complicated. Their frame was a low-resonant mesh of tuned filaments through which the pod's collective recitations were threaded — the names, the dailies, the lullabies, the genealogies — so that the pod *remembered itself as a thing that held*. Without it, this hull was just metal and polymer, and metal and polymer alone, in their sleeve of the Helios Drift, was not enough.
 
-The frame needed re-tuning every eight or nine cycles. The pod's last re-tuning had been thirteen cycles ago. Hol-Vren had been making the math work for two seasons now, the way people make math work when there is nothing else to do with it.
+Their frame needed re-tuning every eight or nine cycles. The pod's last re-tuning had been thirteen cycles ago. Hol-Vren had been making the math work for two seasons now, the way people make math work when there is nothing else to do with it.
 
 Yenu walked past the new soft place near the sleeping-cells. She did not touch the wall. Touching a softening wall, Hol-Vren had taught her at eleven, only taught the wall to forget your hand was a hand.
 
-The pod elder was in the galley, doing the kettle. Pod elders always did the kettle on third watch. It was, like everything else on a Drift Clade pod, a recitation: *I am still here, the kettle is still hot, water still knows how to be water at this temperature.*
+The pod elder was in the galley, doing the kettle. On Skather-Ait, he always did the kettle on third watch. It too was a recitation: *I am still here, the kettle is still hot, water still knows how to be water at this temperature.*
 
 "Sit," he said, without turning.
 
@@ -274,7 +274,7 @@ She went.
 
 ## III. The Tether-Shuttle
 
-The tether-shuttle to Halix was a six-hour ride on a thin filament the pod shared with two other Drift Clade pods and one Remembrancer outstation. The shuttle was a cup of pressurized air on a hook, basically; it had no Memory Drive, because tether transit did not need one, the filament's shared recitation being enough to hold the line.
+The tether-shuttle to Halix was a six-hour ride on a thin filament the pod shared with two other Drift Clade pods and one Remembrancer outstation. The shuttle was a cup of pressurized air on a hook, basically; it had no Memory Drive, because this tether did not need one. The filament's shared recitation was enough to hold this line.
 
 She sat in the cup with the wooden case in her lap and her knees drawn up against the cold, and she did not open the case, because she had promised, and because she was afraid.
 
@@ -332,7 +332,7 @@ Tess's eyebrows lifted, the smallest fraction. "Both? The donor and —"
 
 It was a test, of course. Halix benches did not work with people who did not know what they were selling. Yenu sat up straighter. Her clade voice came out a little formal, the way it did when she was reciting.
 
-"A light-bequest," she said, "is a memory stone left for a later family hearer. This one is the missed-generation kind. My grandmother and I never met. She recorded a memory for someone who did not yet exist; my grandfather held it; now I inherit it. A stone tuned this way sings in two registers. The first is the donor's, a personal memory and low-mass. The second is the *absence of the hearer* — the place where the recitation was meant to land and could not. Together they make this stone behave," — she searched for the word — "*inhabited*. Not civic. Not quite personal. My grandfather taught me it would be unstable in a drive and dangerous to burn. My clade would honor it by hearing or releasing it, not spending it."
+"A light-bequest," she said, "is a memory stone left for a later family hearer. This one is the missed-generation kind. My grandmother and I never met. She recorded a memory for someone who did not yet exist; my grandfather held it; now I inherit it. My grandfather said this stone was tuned in two registers. The first is the donor's, a personal memory and low-mass. The second is the *absence of the hearer* — the place where the recitation was meant to land and could not. Together they make this stone behave," — she searched for the word — "*inhabited*. Not civic. Not quite personal. My grandfather taught me it would be unstable in a drive and dangerous to burn. We would honor this stone by hearing or releasing it, not spending it."
 
 Tess looked at her for a long second. Then she said, with the small involuntary respect of a professional acknowledging another professional, "Who taught you that."
 
@@ -408,7 +408,7 @@ He turned to Yenu. His voice was good. It was the voice of a man who had been tr
 
 "Aurel," Tess said, with the tone of someone who had warned a man twice already.
 
-"One moment, Tess." He did not look at her. He looked only at Yenu. "I will tell you the offer. You decide what you do with it. Your grandmother's voice would enter a permanent collection. She would be remembered, properly, in archives that do not crash. The Bleaching could not touch her there. She would also" — he hesitated, calibrating — "she would also become part of a cultural reinforcement field. Specifically, an inner-ring lattice node currently suffering some conceptual drift. Her recitation, woven into that node, would help stabilize approximately six thousand lives a day."
+"One moment, Tess." He did not look at her. He looked only at Yenu. "I will tell you the offer. You decide what you do with it. Your grandmother's voice would enter a permanent collection. She would be remembered, properly, in archives that do not crash. The Bleaching could not touch her there. She would also" — he hesitated, calibrating — "she would also become part of a cultural reinforcement field. Her recitation could help hold the public spaces people depend on, and be heard by many more lives than one family can reach."
 
 "Aurel."
 
@@ -418,17 +418,17 @@ Yenu did not speak.
 
 She understood the offer entirely. She understood it in the small, complete, terrible way clade children understood the world: by mapping every part of it onto the body of someone they loved.
 
-The Consortium would take her grandmother's voice and weave it into a cultural reinforcement field. Her grandmother's *Yen, Yen, Yen* would become — slowly, over months — *part of the civic memory* of six thousand lattice citizens who had never met her, who would never know her name, who would feel her calling them in from their courtyards at the ends of their afternoons and would think it was their own grandmother, or the city's grandmother, or no one's at all, just a warm pressure in the air at evening, and her grandmother's voice would do that work for those six thousand citizens for as long as the field held, which would be — Yenu did the math in her clade-quick head — perhaps two hundred standard years.
+If Aurel was right, the Consortium would take her grandmother's voice and weave it into a cultural reinforcement field. Yenu imagined her grandmother's *Yen, Yen, Yen* becoming — slowly, over months — *part of the civic memory* of people who had never met her, who would never know her name, who might feel her calling them in from their courtyards at the ends of their afternoons and think it was their own grandmother, or the city's grandmother, or no one's at all, just a warm pressure in the air at evening. How long would such a field hold that voice? Aurel had not said.
 
 And Yenu's grandmother would no longer be a personal memory.
 
 She would be civic.
 
-She would be *heard*, as Aurel Ket had said. She would not be unmade. She would not be lost.
+Aurel said she would be *heard*, kept, untouched by the Bleaching. Yenu wanted to believe him.
 
 She would also no longer be *for* Yenu.
 
-The hollow in the stone — that exact cup-shape carved for a sixteen-year-old granddaughter's listening, which had been waiting sixteen years for Yenu to climb into it — would close. The Consortium did not buy hollows. They sanded them. The lattice was not made for inheritance memory; it was made for civic. Aurel Ket had not lied. He had merely declined to mention which part of the stone the inner-ring node could not use.
+The hollow in the stone — that exact cup-shape carved for a sixteen-year-old granddaughter's listening, which had been waiting sixteen years for Yenu to climb into it — might be lost. Aurel had offered to keep the voice; he had said nothing about the place made for her. Yenu imagined that place sanded away before the recitation could enter a civic field. She could not ask the field to give it back.
 
 She thought, briefly and clearly, of the pod frame, and of the corner near the sleeping-cells that had softened tonight. Three times Tess's number. Indexed to inflation. The pod would not have to make the math work, possibly, for ten years. Possibly more.
 
@@ -584,7 +584,7 @@ She sat with him another twenty minutes. Then she got up, and she did not call t
 
 ## VI. The Release
 
-The outer membrane of a Drift Clade pod was a thin clear pane set into the hull, ringed with a small ritual seal that any pod-dweller could open in the case of a Releasing. It was for this. It had always been for this. Yenu had never opened it before. Her hands knew the motion anyway, the way clade hands knew motions they had only watched.
+Skather-Ait's outer membrane was a thin clear pane set into the hull, ringed with a small ritual seal that any pod-dweller here could open in the case of a Releasing. It was for this. It had always been for this. Yenu had never opened it before. Her hands knew the motion anyway, the way clade hands knew motions they had only watched.
 
 She opened the seal.
 
@@ -598,7 +598,7 @@ She thought of her grandmother's voice, which was no longer in the stone, becaus
 
 The stone in her palm now held only the small, closed, *neutral* residue of a completed bequest. A clean object. It would not power a drive — too small, too narrow, too quiet. It would not stabilize a frame — wrong tuning. It would not, in fact, do anything anymore, for anyone, except sit on a shelf and be a thing that had once been a memory.
 
-She could keep it. The clade allowed that. Some grandchildren did. There were small ancestral shelves in some of the older sleeping-cells, lined with closed missed-generation bequests, and they were considered, by people who liked that kind of thing, a kind of comfort.
+She could keep it. Her clade allowed that. Some families kept spent carriers and other mementos on small ancestral shelves in the older sleeping-cells. Yenu could imagine her stone among them, a comfort to someone who wanted that kind of thing.
 
 She did not want a shelf.
 

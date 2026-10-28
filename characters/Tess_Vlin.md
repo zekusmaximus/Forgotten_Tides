@@ -9,7 +9,7 @@ tags:
   - reliquary-tuner
   - light-bequest
 summary_50: Halix Exchange broker-tuner whose precise market ethics make her a dangerous scale for sacred memory objects.
-summary_200: "Tess Vlin is a mid-gravity broker-tuner on the Halix Exchange, working the fourth-deck inheritance quarter where Light-Bequests and other family reliquaries are valued. She is not a Remembrancer or Archivist and does not pretend the market is mercy, but her bench is trusted because she distinguishes price from truth. Her encounters with open and closed missed-generation bequests reveal a precise, costly ethic: memory objects may pass through commerce, but she will not sell a completed carrier as fuel, proof, or spectacle."
+summary_200: "Tess Vlin is a mid-gravity broker-tuner on the Halix Exchange, working the fourth-deck inheritance quarter where Light-Bequests and other family reliquaries are valued. She is not a Remembrancer or Archivist and does not pretend the market is mercy, but her bench is trusted because she distinguishes price from truth. Draft stories 0004 and 0015 show her assessing Yenu's open stone and a second family's stone as closed; each case needs its own review before becoming shared canon."
 cross_refs:
   characters: []
   locations:
@@ -40,7 +40,7 @@ continuity:
   invariants:
     - Tess is a Halix Exchange broker-tuner, not a member of Solace, the Archivist Orders, or the Mnemosyne Lattice Consortium.
     - Her ethics are transactional but precise; she does not sentimentalize the market or falsify an assay.
-    - She can identify and tune Light-Bequests at her bench, including recognizing when a missed-generation bequest has completed its intended inheritance function.
+    - In draft stories, she identifies Yenu's two-register stone and assesses another family's carrier as closed; neither case establishes wider subtype behavior.
     - Her refusal to sell a completed carrier costs money and standing, not memory physics or anchor burn.
   watchlist:
     - Avoid making Tess saintly; her credibility depends on being honest in Halix's hard commercial sense.

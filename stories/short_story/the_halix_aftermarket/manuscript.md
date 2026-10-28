@@ -87,14 +87,15 @@ themes:
   - inheritance
   - institutional-burden
 continuity_notes:
-  - "This stone follows the proposed missed-generation subtype in draft story-0004: its intended hearing completes the inheritance function and leaves this carrier with no drive-safe or frame-useful memory payload."
-  - "Term-0021 covers the broader Light-Bequest category; this closed state remains a draft outcome for the subtype, not a rule for every Light-Bequest or an independently approved reliquary mechanic."
+  - "This draft depicts Tess assessing another family's stone as closed, analogous to Yenu's stone in draft story-0004. Its intended hearing completed this carrier's inheritance function and left no drive-safe or frame-useful memory payload in this story; shared canon needs separate review."
+  - "Term-0021 covers the broader Light-Bequest category. Story-0004 does not establish that other missed-generation stones close the same way, and this draft outcome is not an approved reliquary mechanic."
+  - "The other family's pod also needs coherence-frame work. Its frame is a separate local draft design, not evidence that all Drift Clade pods use Skather-Ait's tuned filaments."
   - "Buyers value provenance, symbolic weight, and market narrative only; no memory is recovered, restored, burned, or converted into new usable fuel."
   - "Consortium interest remains consistent with fact-0003's cultural reinforcement agenda, but no new Consortium technology or successful extraction is introduced."
   - "Halix Exchange details are local speculative setting texture for loc-0013 and do not change shared memory-economy rules."
 metadata:
   status: draft
-  word_count: 4393
+  word_count: 4403
   author: AI Generated (Codex)
   created: '2026-07-07T00:00:00.000Z'
   modified: '2026-07-07T00:00:00.000Z'
@@ -175,9 +176,9 @@ She set the slip down. "You understand what this claims to be."
 He said it carefully, capital letters audible in the mouth. Someone had coached him. Good.
 The uncoached were too easy to rob.
 
-"Most closed stones of this kind do not come to market," Tess said.
+"I don't often see a stone claimed as closed come to market," Tess said.
 
-"Most pods have better frames."
+"Our frame needs work."
 
 Also a good answer.
 
@@ -213,9 +214,9 @@ tuning ring.
 
 The booth thickened.
 
-With an open missed-generation Light-Bequest, the first register rose like a hand from
+With Yenu's open missed-generation Light-Bequest, the first register had risen like a hand from
 water: donor voice, single locus, a memory intended for someone who had not existed yet.
-The second register followed underneath, the hearer-shaped absence. Tess had heard one
+The second register had followed underneath, the hearer-shaped absence. Tess had heard that one
 cleanly not long ago.
 It had left the air around her bench tender for the rest of the watch.
 
@@ -846,8 +847,8 @@ She stepped inside. The clerk sealed the door behind her.
 
 Through the small port, the Helios Drift lay in a long dark curve. Not empty. Never empty.
 Dark matter scaffolded the region with all the forgotten-but-not-erased weight the universe
-had not yet surrendered. Somewhere beyond sight, clade pods clung to their frames. Farther
-in, Consortium nodes pretended not to drift. Between them, Halix moved its warm yellow
+had not yet surrendered. Somewhere beyond sight, clade pods held against the Drift. Farther
+in, Consortium nodes advertised perfect stability. Between them, Halix moved its warm yellow
 body through the outer sleeve, selling what people could not carry and buying what they
 could not admit they wanted.
 

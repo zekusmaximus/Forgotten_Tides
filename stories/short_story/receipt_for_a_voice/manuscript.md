@@ -113,18 +113,18 @@ themes:
   - ethical-forgetting
 continuity_notes:
   - "This draft follows story-0004, story-0015, story-0017, and story-0013; these predecessor stories and their dependent outcomes remain drafts."
-  - Yenu's grandmother's completed missed-generation Light-Bequest remains closed and cannot power a drive; Tess's depleted renewal bond follows her purchase and withdrawal of another family's closed carrier of the same subtype.
+  - Yenu's grandmother's particular missed-generation Light-Bequest remains closed and cannot power a drive; Tess's depleted renewal bond follows her purchase and withdrawal of another family's carrier assessed as closed in draft story-0015, a separate outcome needing review.
   - Lysa Korr remains deceased, her undisclosed anchor burn remains permanent, and H-37's prior clean certification remains suspended after Corin's correction.
   - Elior begins and ends the flight with eleven responsive anchors; his classroom smell is not restored, and the donated stone is spent alongside ordinary drive stocks.
   - Yenu's voluntary rendering removes the lived sound of her grandfather's correction. The recorded words, her mother's testimony, and the stone before use do not restore that experience.
-  - The tether shuttle, tuned coherence-frame filaments, ethical rendering, memory stones, and corridor attention are established in story-0004, lore/MEMORY_ECONOMY.md, and the existing mechanics files; this story adds no new physical law.
+  - The tether shuttle and tuned coherence-frame filaments are local draft features proposed in story-0004; ethical rendering, memory stones, and corridor attention have separate lore and mechanics sources. This story claims no wider rule for Drift Clade pods.
 bible_refs:
   - bible/ARCHIVISTS_WAKE_STORY_BIBLE.md#36-anchor-burn-consequence
   - bible/ARCHIVISTS_WAKE_STORY_BIBLE.md#71-anchor-rules
   - bible/ARCHIVISTS_WAKE_STORY_BIBLE.md#72-corridor-rules
 metadata:
   status: draft
-  word_count: 2675
+  word_count: 2680
   author: AI-assisted draft
   created: '2026-09-24T00:00:00.000Z'
   modified: '2026-09-24T00:00:00.000Z'
@@ -239,7 +239,7 @@ price."
 "I met their conditions once. They were very polite."
 
 Tess looked up. She had been at the bench when Aurel Ket offered to make Yenu's
-grandmother's voice part of a lattice node. She had also watched Yenu take the
+grandmother's voice part of a cultural reinforcement field. She had also watched Yenu take the
 stone home.
 
 "Did you release it?" Tess asked.
