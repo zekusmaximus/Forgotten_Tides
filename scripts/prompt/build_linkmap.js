@@ -223,6 +223,7 @@ async function buildLinkMap(options = {}) {
                 name: event.summary || eid,
                 path: 'data/timeline/events.yaml',
                 ...policy,
+                _sourcePath: typeof event.source === 'string' ? event.source.replace(/\\/g, '/') : null,
                 _refs: {
                     involved_entities: event.involved_entities || [],
                     temporal: Array.isArray(event.relationships)
@@ -235,9 +236,16 @@ async function buildLinkMap(options = {}) {
 
     // Build edges from each entity's reference fields.
     const knownIds = new Set(Object.keys(entities));
-    const edgeSet = new Set();
-    const relationships = [];
-    const orphanedTargets = [];
+    const relationshipMap = new Map();
+    const orphanedMap = new Map();
+
+    function addRelationship(source, target, type, field) {
+        const key = `${source}|${target}|${type}`;
+        const map = knownIds.has(target) ? relationshipMap : orphanedMap;
+        if (!map.has(key)) map.set(key, { source, target, type, fields: [] });
+        const relationship = map.get(key);
+        if (!relationship.fields.includes(field)) relationship.fields.push(field);
+    }
 
     for (const entity of Object.values(entities)) {
         const refs = entity._refs || {};
@@ -250,14 +258,7 @@ async function buildLinkMap(options = {}) {
                     collectTargetIds(subVal, targets);
                     for (const target of targets) {
                         if (target === entity.canonical_id) continue;
-                        const edgeKey = `${entity.canonical_id}|${target}|${subKey}`;
-                        if (edgeSet.has(edgeKey)) continue;
-                        edgeSet.add(edgeKey);
-                        if (knownIds.has(target)) {
-                            relationships.push({ source: entity.canonical_id, target, type: subKey });
-                        } else {
-                            orphanedTargets.push({ source: entity.canonical_id, target, type: subKey });
-                        }
+                        addRelationship(entity.canonical_id, target, subKey, field);
                     }
                 }
             } else {
@@ -265,31 +266,45 @@ async function buildLinkMap(options = {}) {
                 collectTargetIds(value, targets);
                 for (const target of targets) {
                     if (target === entity.canonical_id) continue;
-                    const edgeKey = `${entity.canonical_id}|${target}|${field}`;
-                    if (edgeSet.has(edgeKey)) continue;
-                    edgeSet.add(edgeKey);
-                    if (knownIds.has(target)) {
-                        relationships.push({ source: entity.canonical_id, target, type: field });
-                    } else {
-                        orphanedTargets.push({ source: entity.canonical_id, target, type: field });
-                    }
+                    addRelationship(entity.canonical_id, target, field, field);
                 }
             }
         }
     }
 
+    // Link shared events to the manuscript that establishes them. Reverse
+    // traversal can then find event-level dependents of a source story.
+    const storyByPath = new Map(Object.values(entities)
+        .filter(entity => entity.type === 'story')
+        .map(entity => [entity.path, entity.canonical_id]));
+    for (const entity of Object.values(entities)) {
+        if (entity.type !== 'event' || !entity._sourcePath) continue;
+        const sourceStoryId = storyByPath.get(entity._sourcePath);
+        if (sourceStoryId) addRelationship(entity.canonical_id, sourceStoryId, 'source_story', 'source');
+        else if (entity._sourcePath.startsWith('stories/')) {
+            throw new Error(`Timeline event ${entity.canonical_id} has unindexed story source ${entity._sourcePath}`);
+        }
+    }
+
+    const relationships = [...relationshipMap.values()];
+    const orphanedTargets = [...orphanedMap.values()];
+    for (const relationship of [...relationships, ...orphanedTargets]) relationship.fields.sort();
+
     // Sort relationships for deterministic output regardless of file discovery order.
-    relationships.sort((a, b) => {
+    const byRelationship = (a, b) => {
         const srcCmp = a.source.localeCompare(b.source);
         if (srcCmp !== 0) return srcCmp;
         const tgtCmp = a.target.localeCompare(b.target);
         if (tgtCmp !== 0) return tgtCmp;
         return a.type.localeCompare(b.type);
-    });
+    };
+    relationships.sort(byRelationship);
+    orphanedTargets.sort(byRelationship);
 
     // Strip the internal _refs scratch before serializing.
     for (const entity of Object.values(entities)) {
         delete entity._refs;
+        delete entity._sourcePath;
     }
 
     const sortedEntityValues = Object.values(entities).sort((a, b) => a.canonical_id.localeCompare(b.canonical_id));
@@ -312,7 +327,7 @@ async function buildLinkMap(options = {}) {
             source_weight: e.source_weight,
             retrieval_role: e.retrieval_role
         })),
-        edges: relationships.map(r => ({ from: r.source, to: r.target, type: r.type }))
+        edges: relationships.map(r => ({ from: r.source, to: r.target, type: r.type, fields: r.fields }))
     };
 
     const sortedEntities = sortedEntityValues;
@@ -351,12 +366,12 @@ ${sortedEntities.map(e => `- \`${e.canonical_id}\` (${e.type}, ${e.canon_tier}, 
 
 ## Relationships (${relationships.length})
 
-${relationships.map(r => `- \`${r.source}\` → \`${r.target}\` (${r.type})`).join('\n') || '_none_'}
+${relationships.map(r => `- \`${r.source}\` → \`${r.target}\` (${r.type}; ${r.fields.join(', ')})`).join('\n') || '_none_'}
 
 ## Orphaned Reference Targets (${orphanedTargets.length})
 
 ${orphanedTargets.length
-    ? orphanedTargets.map(r => `- \`${r.source}\` → \`${r.target}\` (${r.type}) — target not found`).join('\n')
+    ? orphanedTargets.map(r => `- \`${r.source}\` → \`${r.target}\` (${r.type}; ${r.fields.join(', ')}) — target not found`).join('\n')
     : '_none_'}
 
 ## Statistics

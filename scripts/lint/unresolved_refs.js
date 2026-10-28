@@ -35,6 +35,7 @@ const PREFIX_TO_BUCKET = {
   event: 'events',
   term: 'terms'
 };
+const APPROVED_BIBLE_SOURCES = new Set(['bible/ARCHIVISTS_WAKE_STORY_BIBLE.md']);
 
 function emptyIndex() {
   return {
@@ -154,8 +155,8 @@ function indexLexiconTerms(index, rootDir = ROOT_DIR) {
 
 function indexTimelineEvents(index, rootDir = ROOT_DIR) {
   const timelinePath = path.join(rootDir, 'data/timeline/events.yaml');
-  const tiers = new Map();
-  if (!fs.existsSync(timelinePath)) return tiers;
+  const events = new Map();
+  if (!fs.existsSync(timelinePath)) return events;
   try {
     const data = yaml.load(fs.readFileSync(timelinePath, 'utf8')) || {};
     if (!Array.isArray(data.events)) throw new Error('events must be an array');
@@ -164,15 +165,15 @@ function indexTimelineEvents(index, rootDir = ROOT_DIR) {
         throw new Error(`invalid event ID: ${String(event?.id)}`);
       }
       const id = event.id.trim().toLowerCase();
-      if (tiers.has(id)) throw new Error(`duplicate event ID: ${id}`);
-      tiers.set(id, event.canon_tier || 'draft');
+      if (events.has(id)) throw new Error(`duplicate event ID: ${id}`);
+      events.set(id, { tier: event.canon_tier || 'draft', source: event.source });
       index.events.add(id);
     }
     for (const event of data.events) {
       for (const relationship of event.relationships || []) {
         if (!relationship || !['before', 'after'].includes(relationship.type) ||
             bucketForId(relationship.target) !== 'events' ||
-            !tiers.has(relationship.target.trim().toLowerCase())) {
+            !events.has(relationship.target.trim().toLowerCase())) {
           throw new Error(`invalid relationship on ${event.id}`);
         }
       }
@@ -180,11 +181,13 @@ function indexTimelineEvents(index, rootDir = ROOT_DIR) {
   } catch (error) {
     throw new Error(`${relativePath(timelinePath, rootDir)}: ${error.message}`);
   }
-  return tiers;
+  return events;
 }
 
 function buildIdIndex(rootDir = ROOT_DIR) {
   const index = emptyIndex();
+  const storyTiers = new Map();
+  const storiesByPath = new Map();
 
   for (const root of SOURCE_ROOTS) {
     const files = walkFiles(path.join(rootDir, root));
@@ -192,6 +195,15 @@ function buildIdIndex(rootDir = ROOT_DIR) {
       try {
         const data = parseStructuredFile(filePath);
         if (data && data.id) addId(index, data.id);
+        if (data && bucketForId(data.id) === 'stories' && data.type === 'story' &&
+            path.basename(filePath).toLowerCase() === 'manuscript.md') {
+          const id = data.id.trim().toLowerCase();
+          const tier = data.canon_tier || 'draft';
+          const sourcePath = relativePath(filePath, rootDir);
+          if (storyTiers.has(id)) throw new Error(`duplicate story ID: ${id}`);
+          storyTiers.set(id, tier);
+          storiesByPath.set(sourcePath, { id, tier });
+        }
       } catch (error) {
         throw new Error(`${relativePath(filePath, rootDir)}: ${error.message}`);
       }
@@ -199,11 +211,42 @@ function buildIdIndex(rootDir = ROOT_DIR) {
   }
 
   const terms = indexLexiconTerms(index, rootDir);
-  const eventTiers = indexTimelineEvents(index, rootDir);
-  return { index, terms, eventTiers };
+  const events = indexTimelineEvents(index, rootDir);
+  return { index, terms, events, storyTiers, storiesByPath };
 }
 
-function checkReferencesInFile(filePath, index, rootDir = ROOT_DIR, eventTiers = new Map()) {
+function approvedEventSource(source, storiesByPath, rootDir) {
+  if (typeof source !== 'string' || !source.trim()) return { approved: false, detail: 'missing source' };
+  const normalized = source.replace(/\\/g, '/');
+  if (normalized !== path.posix.normalize(normalized) || normalized.startsWith('/') ||
+      normalized === '..' || normalized.startsWith('../')) {
+    return { approved: false, detail: `invalid source ${source}` };
+  }
+  const story = storiesByPath.get(normalized);
+  if (story) {
+    return story.tier === 'primary_canon'
+      ? { approved: true }
+      : { approved: false, detail: `source story ${story.id} is ${story.tier}` };
+  }
+  if (APPROVED_BIBLE_SOURCES.has(normalized)) {
+    let current = rootDir;
+    const parts = normalized.split('/');
+    try {
+      for (const [index, part] of parts.entries()) {
+        current = path.join(current, part);
+        const stat = fs.lstatSync(current);
+        if (stat.isSymbolicLink()) break;
+        if (index === parts.length - 1 && stat.isFile()) return { approved: true };
+        if (index < parts.length - 1 && !stat.isDirectory()) break;
+      }
+    } catch (_) {
+      // A missing or unreadable source cannot establish a primary event.
+    }
+  }
+  return { approved: false, detail: `source ${source} is not a primary story or approved story bible` };
+}
+
+function checkReferencesInFile(filePath, index, rootDir = ROOT_DIR, context = {}) {
   const failures = [];
   const data = parseStructuredFile(filePath);
   if (!data) return failures;
@@ -215,13 +258,32 @@ function checkReferencesInFile(filePath, index, rootDir = ROOT_DIR, eventTiers =
     }
   }
 
-  if (data.type === 'story' && data.story_type === 'short-story' &&
-      data.canon_tier === 'primary_canon' && Array.isArray(data.references?.events)) {
-    for (const rawId of data.references.events) {
+  const sourcePath = relativePath(filePath, rootDir);
+  if (sourcePath.startsWith('stories/short_story/') &&
+      path.posix.basename(sourcePath).toLowerCase() === 'manuscript.md' &&
+      data.canon_tier === 'primary_canon') {
+    const { storyTiers = new Map(), storiesByPath = new Map(), events = new Map() } = context;
+    const storyRefs = Array.isArray(data.references?.stories) ? data.references.stories : [];
+    const eventRefs = Array.isArray(data.references?.events) ? data.references.events : [];
+    for (const rawId of storyRefs) {
       const id = String(rawId).trim().toLowerCase();
-      const tier = eventTiers.get(id);
-      if (tier && tier !== 'primary_canon') {
-        failures.push(`${relativePath(filePath, rootDir)}: primary-canon story depends on non-primary event ${id} (${tier})`);
+      if (!index.stories.has(id)) continue; // The existence check above reports this.
+      const tier = storyTiers.get(id);
+      if (tier !== 'primary_canon') {
+        failures.push(`${relativePath(filePath, rootDir)}: primary-canon story depends on non-primary story ${id} (${tier || 'unknown'})`);
+      }
+    }
+    for (const rawId of eventRefs) {
+      const id = String(rawId).trim().toLowerCase();
+      const event = events.get(id);
+      if (!event) continue; // The existence check above reports this.
+      if (event.tier !== 'primary_canon') {
+        failures.push(`${relativePath(filePath, rootDir)}: primary-canon story depends on non-primary event ${id} (${event.tier})`);
+        continue;
+      }
+      const source = approvedEventSource(event.source, storiesByPath, rootDir);
+      if (!source.approved) {
+        failures.push(`${relativePath(filePath, rootDir)}: primary-canon story depends on event ${id} with ${source.detail}`);
       }
     }
   }
@@ -230,7 +292,7 @@ function checkReferencesInFile(filePath, index, rootDir = ROOT_DIR, eventTiers =
 }
 
 function analyzeReferences(rootDir = ROOT_DIR) {
-  const { index, terms, eventTiers } = buildIdIndex(rootDir);
+  const { index, terms, events, storyTiers, storiesByPath } = buildIdIndex(rootDir);
   const failures = [];
   let filesChecked = 0;
 
@@ -238,7 +300,8 @@ function analyzeReferences(rootDir = ROOT_DIR) {
     const files = walkFiles(path.join(rootDir, root));
     for (const filePath of files) {
       try {
-        const fileFailures = checkReferencesInFile(filePath, index, rootDir, eventTiers);
+        const fileFailures = checkReferencesInFile(filePath, index, rootDir,
+          { events, storyTiers, storiesByPath });
         filesChecked += 1;
         failures.push(...fileFailures);
       } catch (error) {

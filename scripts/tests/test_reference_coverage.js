@@ -71,8 +71,8 @@ fixture(root => {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'ft-event-reference-'));
   try {
     write(root, 'data/timeline/events.yaml',
-      'events:\n  - id: event-story-0001-001\n    canon_tier: primary_canon\n' +
-      '  - id: event-story-0002-001\n    canon_tier: draft\n');
+      'events:\n  - id: event-story-0001-001\n    canon_tier: primary_canon\n    source: stories/short_story/CANON/manuscript.md\n' +
+      '  - id: event-story-0002-001\n    canon_tier: draft\n    source: stories/short_story/DRAFT/manuscript.md\n');
     const draft = 'stories/short_story/DRAFT/manuscript.md';
     const canon = 'stories/short_story/CANON/manuscript.md';
     write(root, draft,
@@ -95,6 +95,73 @@ fixture(root => {
     write(root, canon,
       '---\nid: story-0001\ntype: story\nstory_type: short-story\ncanon_tier: primary_canon\nreferences:\n  events: [event-story-0001-001]\n---\n');
     assert.deepEqual(validateReferences(root).missing, []);
+  } finally {
+    fs.rmSync(root, { recursive: true, force: true });
+  }
+}
+
+{
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'ft-canon-dependencies-'));
+  try {
+    const canon = 'stories/short_story/CANON/manuscript.md';
+    const otherCanon = 'stories/short_story/OTHER_CANON/manuscript.md';
+    const draft = 'stories/short_story/DRAFT/manuscript.md';
+    const header = '---\nid: story-0001\ntype: story\nstory_type: short-story\ncanon_tier: primary_canon\n';
+    write(root, otherCanon,
+      '---\nid: story-0003\ntype: story\nstory_type: short-story\ncanon_tier: primary_canon\n---\n');
+    write(root, draft,
+      '---\nid: story-0002\ntype: story\nstory_type: short-story\ncanon_tier: draft\n' +
+      'references:\n  stories: [story-0003]\n  events: [event-story-0002-001]\n---\n');
+    write(root, 'bible/ARCHIVISTS_WAKE_STORY_BIBLE.md', '# Approved story bible\n');
+    write(root, 'bible/README.md', '# Bible directory\n');
+    write(root, 'data/timeline/events.yaml',
+      'events:\n' +
+      `  - id: event-story-0002-001\n    canon_tier: primary_canon\n    source: ${draft}\n` +
+      '  - id: event-0001\n    canon_tier: primary_canon\n    source: bible/ARCHIVISTS_WAKE_STORY_BIBLE.md\n' +
+      '  - id: event-0002\n    canon_tier: primary_canon\n' +
+      '  - id: event-0003\n    canon_tier: primary_canon\n    source: bible/MISSING.md\n' +
+      '  - id: event-0004\n    canon_tier: primary_canon\n    source: bible/../stories/short_story/DRAFT/manuscript.md\n' +
+      '  - id: event-0005\n    canon_tier: primary_canon\n    source: bible/ARCHIVISTS_WAKE_STORY_BIBLE.md\n' +
+      '  - id: event-0006\n    canon_tier: primary_canon\n    source: bible/README.md\n' +
+      `  - id: event-story-0003-001\n    canon_tier: primary_canon\n    source: ${otherCanon}\n`);
+
+    write(root, canon, header +
+      'references:\n  stories: [story-0002]\n  events: [event-story-0002-001]\n---\n');
+    const blocked = analyzeReferences(root).failures;
+    assert.equal(blocked.length, 2);
+    assert(blocked.some(message => /non-primary story story-0002 \(draft\)/.test(message)));
+    assert(blocked.some(message => /event event-story-0002-001 with source story story-0002 is draft/.test(message)));
+
+    write(root, canon, header.replace('story_type: short-story\n', '') +
+      'references:\n  stories: [story-0002]\n---\n');
+    assert(analyzeReferences(root).failures.some(message =>
+      /non-primary story story-0002 \(draft\)/.test(message)),
+    'omitting optional story_type must not bypass the primary manuscript gate');
+
+    write(root, canon, header +
+      'cross_refs:\n  stories: [story-0002]\n' +
+      'references:\n  stories: [story-0003]\n  events: [event-0001, event-story-0003-001]\n---\n');
+    assert.deepEqual(analyzeReferences(root).failures, [],
+      'a mention of a draft is allowed, as are primary story and bible sources');
+
+    for (const [eventId, expected] of [
+      ['event-0002', /missing source/],
+      ['event-0003', /source bible\/MISSING.md is not a primary story or approved story bible/],
+      ['event-0004', /invalid source bible\/\.\.\/stories/]
+    ]) {
+      write(root, canon, header + `references:\n  events: [${eventId}]\n---\n`);
+      assert(analyzeReferences(root).failures.some(message => expected.test(message)), eventId);
+    }
+    write(root, canon, header + 'references:\n  events: [event-0006]\n---\n');
+    assert(analyzeReferences(root).failures.some(message =>
+      /source bible\/README.md is not a primary story or approved story bible/.test(message)));
+    if (process.platform !== 'win32') {
+      fs.rmSync(path.join(root, 'bible/ARCHIVISTS_WAKE_STORY_BIBLE.md'));
+      fs.symlinkSync(path.join(root, draft), path.join(root, 'bible/ARCHIVISTS_WAKE_STORY_BIBLE.md'));
+      write(root, canon, header + 'references:\n  events: [event-0005]\n---\n');
+      assert(analyzeReferences(root).failures.some(message =>
+        /source bible\/ARCHIVISTS_WAKE_STORY_BIBLE.md is not a primary story or approved story bible/.test(message)));
+    }
   } finally {
     fs.rmSync(root, { recursive: true, force: true });
   }

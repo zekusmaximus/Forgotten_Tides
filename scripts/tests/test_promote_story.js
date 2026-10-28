@@ -157,6 +157,8 @@ function write(root, rel, content) {
 function makeFixtureRoot() {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'promote-story-test-'));
   write(root, MANUSCRIPT_REL, MANUSCRIPT);
+  write(root, 'stories/short_story/other/manuscript.md',
+    '---\nid: story-9902\ntype: story\ncanon_tier: primary_canon\n---\n');
   write(root, 'data/timeline/events.yaml', TIMELINE);
   write(root, 'data/lexicon/terms.yaml', LEXICON);
   write(root, 'characters/Fixture_Character.md', CHARACTER);

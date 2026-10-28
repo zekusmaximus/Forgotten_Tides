@@ -35,6 +35,7 @@ function main() {
   verifyGeneratedArtifacts();
   runNpmScript('test:dashboard');
   runNpmScript('test:tooling');
+  runNpmScript('test:impact');
   runNpmScript('test:upgrades');
   runNpmScript('test:coverage');
   runNpmScript('test:canon-policy');

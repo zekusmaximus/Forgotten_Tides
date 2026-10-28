@@ -60,10 +60,14 @@ Record the lists independently. A mention belongs in `cross_refs`; a causal
 prerequisite belongs in `references`. For a specific established beat, a short
 story may use `references.events` with an ID from `data/timeline/events.yaml`
 instead of depending on the whole source work through `references.stories`.
-Draft short stories may depend on draft events. A primary-canon short story may
-depend only on `primary_canon` shared events; lint checks both existence and
-tier. An event from a draft source requires separate author approval before
-its tier can be raised. Neither field should be filled by copying the other.
+Draft short stories may depend on draft stories and events. A primary-canon
+short story may depend only on primary-canon stories and shared events whose
+source story is also primary canon (or whose source is the story bible). Lint
+checks these causal links before promotion. A draft event cannot be made a
+primary-canon dependency merely by changing its tier in the timeline.
+Neither field should be filled by copying the other. Run
+`npm run report:impact -- --id story-####` to review declared downstream
+dependencies before changing an established story or event.
 
 ---
 

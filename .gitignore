@@ -15,7 +15,7 @@ tools/**/node_modules/
 dist/
 .out/
 out/
-reports/
+/reports/
 coverage/
 .nyc_output/
 

@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-28T01:55:36.363Z",
+  "generated": "2026-10-28T03:47:44.580Z",
   "nodes": [
     {
       "canonical_id": "char-0001",
@@ -1545,3702 +1545,6607 @@
     {
       "from": "char-0001",
       "to": "char-0002",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0001",
       "to": "char-0003",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0001",
       "to": "char-0004",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0001",
       "to": "fact-0001",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0001",
       "to": "loc-0001",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0001",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0001",
       "to": "mech-0003",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0002",
       "to": "char-0001",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0002",
       "to": "char-0003",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0002",
       "to": "char-0004",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0002",
       "to": "fact-0001",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0003",
       "to": "char-0001",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0003",
       "to": "char-0002",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0003",
       "to": "char-0004",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0003",
       "to": "fact-0001",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0004",
       "to": "char-0001",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0004",
       "to": "char-0002",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0004",
       "to": "char-0003",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0004",
       "to": "fact-0001",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0005",
       "to": "fact-0001",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0005",
       "to": "loc-0002",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0005",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0005",
       "to": "mech-0003",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0005",
       "to": "story-0005",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0006",
       "to": "char-0005",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0006",
       "to": "loc-0002",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0006",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0006",
       "to": "story-0005",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0007",
       "to": "loc-0009",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0007",
       "to": "story-0006",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0008",
       "to": "char-0009",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0008",
       "to": "fact-0001",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0008",
       "to": "fact-0006",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0008",
       "to": "loc-0010",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0008",
       "to": "mech-0003",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0008",
       "to": "story-0007",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0009",
       "to": "char-0008",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0009",
       "to": "fact-0001",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0009",
       "to": "fact-0006",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0009",
       "to": "loc-0010",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0009",
       "to": "mech-0002",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0009",
       "to": "mech-0003",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0009",
       "to": "story-0007",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0010",
       "to": "char-0028",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0010",
       "to": "char-0029",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0010",
       "to": "fact-0002",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0010",
       "to": "loc-0008",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0010",
       "to": "loc-0011",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0010",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0010",
       "to": "mech-0003",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0010",
       "to": "story-0008",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0010",
       "to": "story-0022",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0011",
       "to": "char-0012",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0011",
       "to": "char-0013",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0011",
       "to": "fact-0005",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0011",
       "to": "loc-0007",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0011",
       "to": "loc-0012",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0011",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0011",
       "to": "mech-0002",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0011",
       "to": "mech-0003",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0011",
       "to": "story-0009",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0012",
       "to": "char-0011",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0012",
       "to": "char-0013",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0012",
       "to": "fact-0001",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0012",
       "to": "fact-0005",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0012",
       "to": "loc-0007",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0012",
       "to": "loc-0012",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0012",
       "to": "mech-0002",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0012",
       "to": "mech-0003",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0012",
       "to": "story-0009",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0013",
       "to": "char-0011",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0013",
       "to": "char-0012",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0013",
       "to": "fact-0005",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0013",
       "to": "loc-0007",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0013",
       "to": "loc-0012",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0013",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0013",
       "to": "story-0009",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0014",
       "to": "fact-0003",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0014",
       "to": "loc-0005",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0014",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0014",
       "to": "story-0010",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0015",
       "to": "fact-0002",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0015",
       "to": "fact-0003",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0015",
       "to": "loc-0004",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0015",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0015",
       "to": "story-0011",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0016",
       "to": "fact-0005",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0016",
       "to": "loc-0007",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0016",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0016",
       "to": "story-0012",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0017",
       "to": "char-0028",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0017",
       "to": "fact-0001",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0017",
       "to": "fact-0002",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0017",
       "to": "loc-0008",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0017",
       "to": "loc-0011",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0017",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0017",
       "to": "mech-0002",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0017",
       "to": "mech-0003",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0017",
       "to": "story-0001",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "references"
+      ]
     },
     {
       "from": "char-0017",
       "to": "story-0013",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0017",
       "to": "story-0021",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0017",
       "to": "story-0022",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0018",
       "to": "fact-0002",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0018",
       "to": "fact-0007",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0018",
       "to": "loc-0001",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0018",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0018",
       "to": "story-0001",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0018",
       "to": "story-0014",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0019",
       "to": "fact-0003",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0019",
       "to": "fact-0004",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0019",
       "to": "loc-0008",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0019",
       "to": "loc-0013",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0019",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0019",
       "to": "story-0004",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0019",
       "to": "story-0015",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0020",
       "to": "char-0018",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0020",
       "to": "fact-0002",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0020",
       "to": "fact-0007",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0020",
       "to": "loc-0001",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0020",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0020",
       "to": "mech-0002",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0020",
       "to": "story-0014",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0020",
       "to": "story-0016",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0021",
       "to": "char-0022",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0021",
       "to": "fact-0001",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0021",
       "to": "fact-0002",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0021",
       "to": "loc-0008",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0021",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0021",
       "to": "mech-0002",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0021",
       "to": "mech-0003",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0021",
       "to": "story-0001",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "references"
+      ]
     },
     {
       "from": "char-0021",
       "to": "story-0017",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0022",
       "to": "char-0021",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0022",
       "to": "fact-0001",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0022",
       "to": "fact-0002",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0022",
       "to": "loc-0008",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0022",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0022",
       "to": "mech-0002",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0022",
       "to": "mech-0003",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0022",
       "to": "story-0001",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "references"
+      ]
     },
     {
       "from": "char-0022",
       "to": "story-0017",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0023",
       "to": "char-0008",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0023",
       "to": "fact-0001",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0023",
       "to": "fact-0006",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0023",
       "to": "loc-0006",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0023",
       "to": "loc-0010",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0023",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0023",
       "to": "mech-0002",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0023",
       "to": "mech-0003",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0023",
       "to": "story-0018",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0024",
       "to": "fact-0003",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0024",
       "to": "fact-0004",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0024",
       "to": "loc-0005",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0024",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0024",
       "to": "story-0019",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0025",
       "to": "fact-0002",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0025",
       "to": "fact-0003",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0025",
       "to": "loc-0014",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0025",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0025",
       "to": "story-0020",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0026",
       "to": "char-0019",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0026",
       "to": "char-0027",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0026",
       "to": "fact-0004",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0026",
       "to": "loc-0008",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0026",
       "to": "loc-0013",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0026",
       "to": "loc-0015",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0026",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0026",
       "to": "story-0004",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0026",
       "to": "story-0021",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0027",
       "to": "char-0026",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0027",
       "to": "fact-0004",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0027",
       "to": "loc-0008",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0027",
       "to": "loc-0015",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0027",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0027",
       "to": "story-0004",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0027",
       "to": "story-0021",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0028",
       "to": "char-0010",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0028",
       "to": "char-0017",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0028",
       "to": "char-0029",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0028",
       "to": "char-0030",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0028",
       "to": "fact-0001",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0028",
       "to": "fact-0002",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0028",
       "to": "fact-0005",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0028",
       "to": "loc-0008",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0028",
       "to": "loc-0011",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0028",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0028",
       "to": "mech-0002",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0028",
       "to": "mech-0003",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0028",
       "to": "story-0008",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "references"
+      ]
     },
     {
       "from": "char-0028",
       "to": "story-0022",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0029",
       "to": "char-0010",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0029",
       "to": "char-0028",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0029",
       "to": "fact-0002",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0029",
       "to": "loc-0008",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0029",
       "to": "loc-0011",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0029",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0029",
       "to": "mech-0003",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0029",
       "to": "story-0001",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "references"
+      ]
     },
     {
       "from": "char-0029",
       "to": "story-0008",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0029",
       "to": "story-0022",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0030",
       "to": "char-0028",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0030",
       "to": "fact-0002",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0030",
       "to": "fact-0005",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0030",
       "to": "loc-0008",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0030",
       "to": "loc-0011",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0030",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0030",
       "to": "story-0012",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "char-0030",
       "to": "story-0022",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "event-0001",
       "to": "mech-0001",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-0001",
       "to": "mech-0002",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-0001",
       "to": "mech-0003",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-0001",
       "to": "story-0001",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
+    },
+    {
+      "from": "event-0001",
+      "to": "story-0001",
+      "type": "source_story",
+      "fields": [
+        "source"
+      ]
     },
     {
       "from": "event-story-0008-001",
       "to": "char-0010",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0008-001",
       "to": "fact-0002",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0008-001",
       "to": "loc-0008",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0008-001",
       "to": "loc-0011",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0008-001",
       "to": "story-0008",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
+    },
+    {
+      "from": "event-story-0008-001",
+      "to": "story-0008",
+      "type": "source_story",
+      "fields": [
+        "source"
+      ]
     },
     {
       "from": "event-story-0008-002",
       "to": "char-0010",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0008-002",
       "to": "char-0029",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0008-002",
       "to": "fact-0002",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0008-002",
       "to": "loc-0011",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0008-002",
       "to": "story-0008",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
+    },
+    {
+      "from": "event-story-0008-002",
+      "to": "story-0008",
+      "type": "source_story",
+      "fields": [
+        "source"
+      ]
     },
     {
       "from": "event-story-0008-003",
       "to": "char-0010",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0008-003",
       "to": "fact-0002",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0008-003",
       "to": "loc-0008",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0008-003",
       "to": "loc-0011",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0008-003",
       "to": "story-0008",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
+    },
+    {
+      "from": "event-story-0008-003",
+      "to": "story-0008",
+      "type": "source_story",
+      "fields": [
+        "source"
+      ]
     },
     {
       "from": "event-story-0008-004",
       "to": "char-0010",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0008-004",
       "to": "char-0029",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0008-004",
       "to": "fact-0002",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0008-004",
       "to": "loc-0011",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0008-004",
       "to": "mech-0003",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0008-004",
       "to": "story-0008",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
+    },
+    {
+      "from": "event-story-0008-004",
+      "to": "story-0008",
+      "type": "source_story",
+      "fields": [
+        "source"
+      ]
     },
     {
       "from": "event-story-0012-001",
       "to": "char-0016",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0012-001",
       "to": "fact-0005",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0012-001",
       "to": "loc-0007",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0012-001",
       "to": "mech-0001",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0012-001",
       "to": "story-0012",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
+    },
+    {
+      "from": "event-story-0012-001",
+      "to": "story-0012",
+      "type": "source_story",
+      "fields": [
+        "source"
+      ]
     },
     {
       "from": "event-story-0012-002",
       "to": "char-0016",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0012-002",
       "to": "fact-0005",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0012-002",
       "to": "loc-0007",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0012-002",
       "to": "mech-0001",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0012-002",
       "to": "story-0012",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
+    },
+    {
+      "from": "event-story-0012-002",
+      "to": "story-0012",
+      "type": "source_story",
+      "fields": [
+        "source"
+      ]
     },
     {
       "from": "event-story-0012-003",
       "to": "char-0016",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0012-003",
       "to": "fact-0005",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0012-003",
       "to": "mech-0001",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0012-003",
       "to": "story-0012",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
+    },
+    {
+      "from": "event-story-0012-003",
+      "to": "story-0012",
+      "type": "source_story",
+      "fields": [
+        "source"
+      ]
     },
     {
       "from": "event-story-0012-004",
       "to": "char-0016",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0012-004",
       "to": "fact-0005",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0012-004",
       "to": "loc-0007",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0012-004",
       "to": "mech-0001",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0012-004",
       "to": "story-0012",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
+    },
+    {
+      "from": "event-story-0012-004",
+      "to": "story-0012",
+      "type": "source_story",
+      "fields": [
+        "source"
+      ]
     },
     {
       "from": "event-story-0013-001",
       "to": "char-0017",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0013-001",
       "to": "fact-0001",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0013-001",
       "to": "fact-0002",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0013-001",
       "to": "loc-0008",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0013-001",
       "to": "mech-0002",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0013-001",
       "to": "mech-0003",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0013-001",
       "to": "story-0013",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
+    },
+    {
+      "from": "event-story-0013-001",
+      "to": "story-0013",
+      "type": "source_story",
+      "fields": [
+        "source"
+      ]
     },
     {
       "from": "event-story-0013-002",
       "to": "char-0017",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0013-002",
       "to": "mech-0002",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0013-002",
       "to": "mech-0003",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0013-002",
       "to": "story-0001",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0013-002",
       "to": "story-0013",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
+    },
+    {
+      "from": "event-story-0013-002",
+      "to": "story-0013",
+      "type": "source_story",
+      "fields": [
+        "source"
+      ]
     },
     {
       "from": "event-story-0013-003",
       "to": "char-0017",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0013-003",
       "to": "mech-0003",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0013-003",
       "to": "story-0013",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
+    },
+    {
+      "from": "event-story-0013-003",
+      "to": "story-0013",
+      "type": "source_story",
+      "fields": [
+        "source"
+      ]
     },
     {
       "from": "event-story-0022-001",
       "to": "char-0028",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0022-001",
       "to": "char-0030",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0022-001",
       "to": "event-story-0008-004",
-      "type": "temporal"
+      "type": "temporal",
+      "fields": [
+        "temporal"
+      ]
     },
     {
       "from": "event-story-0022-001",
       "to": "event-story-0013-003",
-      "type": "temporal"
+      "type": "temporal",
+      "fields": [
+        "temporal"
+      ]
     },
     {
       "from": "event-story-0022-001",
       "to": "fact-0002",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0022-001",
       "to": "fact-0005",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0022-001",
       "to": "loc-0008",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0022-001",
       "to": "loc-0011",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0022-001",
       "to": "story-0022",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
+    },
+    {
+      "from": "event-story-0022-001",
+      "to": "story-0022",
+      "type": "source_story",
+      "fields": [
+        "source"
+      ]
     },
     {
       "from": "event-story-0022-002",
       "to": "fact-0005",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0022-002",
       "to": "loc-0008",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0022-002",
       "to": "loc-0011",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0022-002",
       "to": "mech-0001",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0022-002",
       "to": "story-0008",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0022-002",
       "to": "story-0022",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
+    },
+    {
+      "from": "event-story-0022-002",
+      "to": "story-0022",
+      "type": "source_story",
+      "fields": [
+        "source"
+      ]
     },
     {
       "from": "event-story-0022-003",
       "to": "fact-0005",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0022-003",
       "to": "loc-0011",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0022-003",
       "to": "mech-0001",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0022-003",
       "to": "story-0022",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
+    },
+    {
+      "from": "event-story-0022-003",
+      "to": "story-0022",
+      "type": "source_story",
+      "fields": [
+        "source"
+      ]
     },
     {
       "from": "event-story-0022-004",
       "to": "char-0010",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0022-004",
       "to": "char-0028",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0022-004",
       "to": "fact-0002",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0022-004",
       "to": "loc-0011",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0022-004",
       "to": "mech-0001",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0022-004",
       "to": "story-0022",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
+    },
+    {
+      "from": "event-story-0022-004",
+      "to": "story-0022",
+      "type": "source_story",
+      "fields": [
+        "source"
+      ]
     },
     {
       "from": "event-story-0022-005",
       "to": "char-0010",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0022-005",
       "to": "char-0028",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0022-005",
       "to": "fact-0002",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0022-005",
       "to": "loc-0011",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0022-005",
       "to": "mech-0001",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0022-005",
       "to": "story-0022",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
+    },
+    {
+      "from": "event-story-0022-005",
+      "to": "story-0022",
+      "type": "source_story",
+      "fields": [
+        "source"
+      ]
     },
     {
       "from": "event-story-0022-006",
       "to": "char-0028",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0022-006",
       "to": "loc-0008",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0022-006",
       "to": "loc-0011",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0022-006",
       "to": "mech-0001",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0022-006",
       "to": "story-0022",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
+    },
+    {
+      "from": "event-story-0022-006",
+      "to": "story-0022",
+      "type": "source_story",
+      "fields": [
+        "source"
+      ]
     },
     {
       "from": "event-story-0022-007",
       "to": "char-0010",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0022-007",
       "to": "char-0028",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0022-007",
       "to": "char-0029",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0022-007",
       "to": "loc-0011",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0022-007",
       "to": "mech-0003",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0022-007",
       "to": "story-0001",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0022-007",
       "to": "story-0022",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
+    },
+    {
+      "from": "event-story-0022-007",
+      "to": "story-0022",
+      "type": "source_story",
+      "fields": [
+        "source"
+      ]
     },
     {
       "from": "event-story-0022-008",
       "to": "char-0017",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0022-008",
       "to": "char-0030",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0022-008",
       "to": "fact-0001",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0022-008",
       "to": "fact-0002",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0022-008",
       "to": "fact-0005",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
     },
     {
       "from": "event-story-0022-008",
       "to": "story-0022",
-      "type": "involved_entities"
+      "type": "involved_entities",
+      "fields": [
+        "involved_entities"
+      ]
+    },
+    {
+      "from": "event-story-0022-008",
+      "to": "story-0022",
+      "type": "source_story",
+      "fields": [
+        "source"
+      ]
     },
     {
       "from": "fact-0001",
       "to": "char-0001",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "fact-0001",
       "to": "char-0002",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "fact-0001",
       "to": "char-0003",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "fact-0001",
       "to": "char-0004",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "fact-0001",
       "to": "char-0009",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "fact-0001",
       "to": "char-0017",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "fact-0001",
       "to": "loc-0001",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "fact-0001",
       "to": "loc-0008",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "fact-0001",
       "to": "loc-0010",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "fact-0001",
       "to": "loc-0011",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "fact-0001",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "fact-0001",
       "to": "mech-0002",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "fact-0001",
       "to": "mech-0003",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "fact-0001",
       "to": "story-0001",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "fact-0001",
       "to": "story-0007",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "fact-0001",
       "to": "story-0013",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "fact-0001",
       "to": "story-0021",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "fact-0001",
       "to": "story-0022",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "fact-0002",
       "to": "char-0010",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "fact-0002",
       "to": "char-0028",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "fact-0002",
       "to": "char-0029",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "fact-0002",
       "to": "fact-0001",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "fact-0002",
       "to": "fact-0005",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "fact-0002",
       "to": "loc-0001",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "fact-0002",
       "to": "loc-0011",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "fact-0002",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "fact-0002",
       "to": "mech-0002",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "fact-0002",
       "to": "mech-0003",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "fact-0002",
       "to": "story-0001",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "fact-0002",
       "to": "story-0008",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "fact-0002",
       "to": "story-0013",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "fact-0002",
       "to": "story-0022",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "fact-0003",
       "to": "fact-0001",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "fact-0003",
       "to": "fact-0002",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "fact-0003",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "fact-0003",
       "to": "mech-0002",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "fact-0003",
       "to": "story-0004",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "fact-0004",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "fact-0004",
       "to": "mech-0003",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "fact-0004",
       "to": "story-0004",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "fact-0005",
       "to": "char-0030",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "fact-0005",
       "to": "loc-0011",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "fact-0005",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "fact-0005",
       "to": "story-0012",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "fact-0005",
       "to": "story-0022",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "fact-0006",
       "to": "char-0008",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "fact-0006",
       "to": "char-0009",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "fact-0006",
       "to": "fact-0001",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "fact-0006",
       "to": "loc-0010",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "fact-0006",
       "to": "mech-0003",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "fact-0006",
       "to": "story-0007",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "fact-0007",
       "to": "char-0001",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "fact-0007",
       "to": "char-0002",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "fact-0007",
       "to": "char-0003",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "fact-0007",
       "to": "char-0004",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "fact-0007",
       "to": "fact-0001",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "fact-0007",
       "to": "loc-0001",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "fact-0007",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "fact-0007",
       "to": "story-0001",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0001",
       "to": "char-0001",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0001",
       "to": "char-0002",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0001",
       "to": "char-0003",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0001",
       "to": "char-0004",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0001",
       "to": "fact-0001",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0001",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0001",
       "to": "mech-0002",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0001",
       "to": "mech-0003",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0001",
       "to": "story-0001",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0002",
       "to": "char-0005",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0002",
       "to": "char-0006",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0002",
       "to": "fact-0001",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0002",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0002",
       "to": "story-0005",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0003",
       "to": "char-0001",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0003",
       "to": "char-0002",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0003",
       "to": "char-0003",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0003",
       "to": "char-0004",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0003",
       "to": "fact-0001",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0003",
       "to": "fact-0007",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0003",
       "to": "loc-0001",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0003",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0003",
       "to": "mech-0002",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0003",
       "to": "mech-0003",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0003",
       "to": "story-0001",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0004",
       "to": "fact-0002",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0004",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0005",
       "to": "fact-0003",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0005",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0005",
       "to": "mech-0002",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0006",
       "to": "fact-0005",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0006",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0007",
       "to": "char-0016",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0007",
       "to": "fact-0005",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0007",
       "to": "loc-0006",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0007",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0007",
       "to": "story-0012",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0008",
       "to": "char-0001",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0008",
       "to": "char-0002",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0008",
       "to": "char-0003",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0008",
       "to": "char-0004",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0008",
       "to": "char-0017",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0008",
       "to": "fact-0001",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0008",
       "to": "fact-0002",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0008",
       "to": "fact-0005",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0008",
       "to": "loc-0011",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0008",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0008",
       "to": "mech-0002",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0008",
       "to": "story-0004",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0008",
       "to": "story-0008",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0008",
       "to": "story-0013",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0008",
       "to": "story-0022",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0009",
       "to": "char-0007",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0009",
       "to": "story-0006",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0010",
       "to": "char-0008",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0010",
       "to": "char-0009",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0010",
       "to": "fact-0001",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0010",
       "to": "fact-0006",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0010",
       "to": "mech-0003",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0010",
       "to": "story-0007",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0011",
       "to": "char-0010",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0011",
       "to": "char-0017",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0011",
       "to": "char-0028",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0011",
       "to": "char-0029",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0011",
       "to": "char-0030",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0011",
       "to": "fact-0001",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0011",
       "to": "fact-0002",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0011",
       "to": "fact-0005",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0011",
       "to": "loc-0008",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0011",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0011",
       "to": "mech-0002",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0011",
       "to": "mech-0003",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0011",
       "to": "story-0008",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0011",
       "to": "story-0022",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0012",
       "to": "char-0011",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0012",
       "to": "char-0012",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0012",
       "to": "char-0013",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0012",
       "to": "fact-0005",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0012",
       "to": "loc-0007",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0012",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0012",
       "to": "mech-0002",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0012",
       "to": "story-0009",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0013",
       "to": "char-0019",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0013",
       "to": "fact-0003",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0013",
       "to": "fact-0004",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0013",
       "to": "loc-0008",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0013",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0013",
       "to": "story-0003",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0013",
       "to": "story-0004",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0013",
       "to": "story-0015",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0014",
       "to": "char-0025",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0014",
       "to": "fact-0002",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0014",
       "to": "fact-0003",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0014",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0014",
       "to": "story-0020",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0015",
       "to": "char-0026",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0015",
       "to": "char-0027",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0015",
       "to": "fact-0004",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0015",
       "to": "loc-0008",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0015",
       "to": "loc-0013",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0015",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0015",
       "to": "story-0004",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "loc-0015",
       "to": "story-0021",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "lore-0003",
       "to": "fact-0002",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs"
+      ]
     },
     {
       "from": "lore-0003",
       "to": "fact-0005",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs"
+      ]
     },
     {
       "from": "lore-0003",
       "to": "loc-0011",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs"
+      ]
     },
     {
       "from": "lore-0003",
       "to": "story-0022",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs"
+      ]
     },
     {
       "from": "lore-doctrine-empty-stars-continuity-brief",
       "to": "char-0011",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs"
+      ]
     },
     {
       "from": "lore-doctrine-empty-stars-continuity-brief",
       "to": "char-0012",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs"
+      ]
     },
     {
       "from": "lore-doctrine-empty-stars-continuity-brief",
       "to": "char-0013",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs"
+      ]
     },
     {
       "from": "lore-doctrine-empty-stars-continuity-brief",
       "to": "fact-0001",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs"
+      ]
     },
     {
       "from": "lore-doctrine-empty-stars-continuity-brief",
       "to": "fact-0005",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs"
+      ]
     },
     {
       "from": "lore-doctrine-empty-stars-continuity-brief",
       "to": "loc-0007",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs"
+      ]
     },
     {
       "from": "lore-doctrine-empty-stars-continuity-brief",
       "to": "loc-0012",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs"
+      ]
     },
     {
       "from": "lore-doctrine-empty-stars-continuity-brief",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs"
+      ]
     },
     {
       "from": "lore-doctrine-empty-stars-continuity-brief",
       "to": "mech-0002",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs"
+      ]
     },
     {
       "from": "lore-doctrine-empty-stars-continuity-brief",
       "to": "mech-0003",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs"
+      ]
     },
     {
       "from": "lore-doctrine-empty-stars-continuity-brief",
       "to": "story-0009",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs"
+      ]
     },
     {
       "from": "mech-0001",
       "to": "char-0001",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "mech-0001",
       "to": "loc-0001",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "mech-0001",
       "to": "story-0001",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "mech-0002",
       "to": "char-0001",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "mech-0002",
       "to": "loc-0001",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "mech-0002",
       "to": "story-0001",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "mech-0003",
       "to": "char-0001",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "mech-0003",
       "to": "loc-0001",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "mech-0003",
       "to": "story-0001",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0001",
       "to": "char-0001",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0001",
       "to": "char-0002",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0001",
       "to": "char-0003",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0001",
       "to": "char-0004",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0001",
       "to": "fact-0001",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0001",
       "to": "loc-0001",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0001",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0001",
       "to": "mech-0002",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0001",
       "to": "mech-0003",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0002",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0003",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0004",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0004",
       "to": "story-0003",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0005",
       "to": "char-0005",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0005",
       "to": "char-0006",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0005",
       "to": "fact-0001",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0005",
       "to": "loc-0002",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0005",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0005",
       "to": "mech-0003",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0006",
       "to": "char-0007",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0006",
       "to": "loc-0009",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0007",
       "to": "char-0008",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0007",
       "to": "char-0009",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0007",
       "to": "fact-0001",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0007",
       "to": "fact-0006",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0007",
       "to": "loc-0010",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0007",
       "to": "mech-0002",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0007",
       "to": "mech-0003",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0008",
       "to": "char-0010",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0008",
       "to": "char-0029",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0008",
       "to": "fact-0002",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0008",
       "to": "loc-0008",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0008",
       "to": "loc-0011",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0008",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0008",
       "to": "mech-0003",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0009",
       "to": "char-0011",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0009",
       "to": "char-0012",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0009",
       "to": "char-0013",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0009",
       "to": "fact-0001",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0009",
       "to": "fact-0005",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0009",
       "to": "loc-0007",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0009",
       "to": "loc-0012",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0009",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0009",
       "to": "mech-0002",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0009",
       "to": "mech-0003",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0010",
       "to": "char-0014",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0010",
       "to": "fact-0003",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0010",
       "to": "loc-0005",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0010",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0011",
       "to": "char-0015",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0011",
       "to": "fact-0002",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0011",
       "to": "fact-0003",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0011",
       "to": "loc-0004",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0011",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0012",
       "to": "char-0016",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0012",
       "to": "fact-0005",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0012",
       "to": "loc-0007",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0012",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0013",
       "to": "char-0017",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0013",
       "to": "fact-0001",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0013",
       "to": "fact-0002",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0013",
       "to": "loc-0008",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0013",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0013",
       "to": "mech-0002",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0013",
       "to": "mech-0003",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0013",
       "to": "story-0001",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0014",
       "to": "char-0018",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0014",
       "to": "fact-0002",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0014",
       "to": "fact-0007",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0014",
       "to": "loc-0001",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0014",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0014",
       "to": "story-0001",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0015",
       "to": "char-0019",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0015",
       "to": "fact-0003",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0015",
       "to": "fact-0004",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0015",
       "to": "loc-0008",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0015",
       "to": "loc-0013",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0015",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0015",
       "to": "story-0004",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0016",
       "to": "char-0018",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0016",
       "to": "char-0020",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0016",
       "to": "fact-0002",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0016",
       "to": "fact-0007",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0016",
       "to": "loc-0001",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0016",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0016",
       "to": "mech-0002",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0016",
       "to": "story-0001",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0016",
       "to": "story-0014",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0017",
       "to": "char-0021",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0017",
       "to": "char-0022",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0017",
       "to": "fact-0001",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0017",
       "to": "fact-0002",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0017",
       "to": "loc-0008",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0017",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0017",
       "to": "mech-0002",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0017",
       "to": "mech-0003",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0017",
       "to": "story-0001",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0018",
       "to": "char-0008",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0018",
       "to": "char-0023",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0018",
       "to": "fact-0001",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0018",
       "to": "fact-0006",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0018",
       "to": "loc-0006",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0018",
       "to": "loc-0010",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0018",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0018",
       "to": "mech-0002",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0018",
       "to": "mech-0003",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0018",
       "to": "story-0001",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0018",
       "to": "story-0007",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0019",
       "to": "char-0024",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0019",
       "to": "fact-0003",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0019",
       "to": "fact-0004",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0019",
       "to": "loc-0005",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0019",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0020",
       "to": "char-0025",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0020",
       "to": "fact-0002",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0020",
       "to": "fact-0003",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0020",
       "to": "loc-0014",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0020",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0021",
       "to": "char-0017",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0021",
       "to": "char-0019",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0021",
       "to": "char-0021",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0021",
       "to": "char-0022",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0021",
       "to": "char-0026",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0021",
       "to": "char-0027",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0021",
       "to": "fact-0001",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0021",
       "to": "fact-0003",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0021",
       "to": "fact-0004",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0021",
       "to": "loc-0008",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0021",
       "to": "loc-0013",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0021",
       "to": "loc-0015",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0021",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0021",
       "to": "mech-0002",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0021",
       "to": "mech-0003",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0021",
       "to": "story-0001",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "references"
+      ]
     },
     {
       "from": "story-0021",
       "to": "story-0004",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0021",
       "to": "story-0013",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0021",
       "to": "story-0015",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0021",
       "to": "story-0017",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0022",
       "to": "char-0010",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0022",
       "to": "char-0017",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0022",
       "to": "char-0028",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0022",
       "to": "char-0029",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0022",
       "to": "char-0030",
-      "type": "characters"
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0022",
       "to": "event-story-0008-004",
-      "type": "events"
+      "type": "events",
+      "fields": [
+        "references"
+      ]
     },
     {
       "from": "story-0022",
       "to": "event-story-0013-003",
-      "type": "events"
+      "type": "events",
+      "fields": [
+        "references"
+      ]
     },
     {
       "from": "story-0022",
       "to": "fact-0001",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0022",
       "to": "fact-0002",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0022",
       "to": "fact-0005",
-      "type": "factions"
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0022",
       "to": "loc-0008",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0022",
       "to": "loc-0011",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0022",
       "to": "loc-0013",
-      "type": "locations"
+      "type": "locations",
+      "fields": [
+        "cross_refs"
+      ]
     },
     {
       "from": "story-0022",
       "to": "mech-0001",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0022",
       "to": "mech-0002",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0022",
       "to": "mech-0003",
-      "type": "mechanics"
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0022",
       "to": "story-0001",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "references"
+      ]
     },
     {
       "from": "story-0022",
       "to": "story-0008",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs"
+      ]
     },
     {
       "from": "story-0022",
       "to": "story-0012",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
     },
     {
       "from": "story-0022",
       "to": "story-0013",
-      "type": "stories"
+      "type": "stories",
+      "fields": [
+        "cross_refs"
+      ]
     },
     {
       "from": "term-0001",
       "to": "term-0002",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0001",
       "to": "term-0003",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0001",
       "to": "term-0013",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0002",
       "to": "term-0001",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0002",
       "to": "term-0013",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0002",
       "to": "term-0015",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0003",
       "to": "term-0001",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0004",
       "to": "term-0013",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0004",
       "to": "term-0016",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0005",
       "to": "term-0006",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0005",
       "to": "term-0015",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0006",
       "to": "term-0005",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0006",
       "to": "term-0018",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0006",
       "to": "term-0019",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0007",
       "to": "term-0008",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0007",
       "to": "term-0013",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0008",
       "to": "term-0007",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0008",
       "to": "term-0017",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0008",
       "to": "term-0019",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0009",
       "to": "term-0010",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0009",
       "to": "term-0015",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0010",
       "to": "term-0009",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0010",
       "to": "term-0015",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0011",
       "to": "term-0006",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0012",
       "to": "term-0006",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0012",
       "to": "term-0018",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0013",
       "to": "term-0001",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0013",
       "to": "term-0002",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0013",
       "to": "term-0007",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0014",
       "to": "term-0013",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0015",
       "to": "term-0002",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0015",
       "to": "term-0005",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0015",
       "to": "term-0009",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0016",
       "to": "term-0004",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0016",
       "to": "term-0013",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0017",
       "to": "term-0007",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0017",
       "to": "term-0008",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0018",
       "to": "term-0006",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0018",
       "to": "term-0012",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0019",
       "to": "term-0006",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0019",
       "to": "term-0008",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0020",
       "to": "term-0001",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0020",
       "to": "term-0013",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0021",
       "to": "term-0004",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0021",
       "to": "term-0014",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0021",
       "to": "term-0016",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0022",
       "to": "term-0004",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0022",
       "to": "term-0005",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0022",
       "to": "term-0006",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0023",
       "to": "term-0005",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0023",
       "to": "term-0006",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0024",
       "to": "term-0005",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0024",
       "to": "term-0006",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0024",
       "to": "term-0019",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0025",
       "to": "term-0001",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0025",
       "to": "term-0014",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0025",
       "to": "term-0022",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0026",
       "to": "term-0005",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0026",
       "to": "term-0014",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0026",
       "to": "term-0025",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0027",
       "to": "term-0014",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0027",
       "to": "term-0015",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0027",
       "to": "term-0019",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0027",
       "to": "term-0024",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0027",
       "to": "term-0026",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0028",
       "to": "term-0004",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0028",
       "to": "term-0005",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0028",
       "to": "term-0014",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0028",
       "to": "term-0027",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0029",
       "to": "term-0001",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0029",
       "to": "term-0002",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0029",
       "to": "term-0015",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0029",
       "to": "term-0020",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0030",
       "to": "term-0004",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0030",
       "to": "term-0005",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0030",
       "to": "term-0007",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0031",
       "to": "term-0002",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0031",
       "to": "term-0014",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0031",
       "to": "term-0025",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     },
     {
       "from": "term-0032",
       "to": "term-0027",
-      "type": "related_terms"
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
     }
   ]
 }

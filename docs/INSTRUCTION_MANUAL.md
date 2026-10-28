@@ -25,7 +25,7 @@ This manual explains the repository structure, canon guardrails, and all availab
 
 ## 4) Validation & Linting Suite (npm scripts)
 - `npm run lint:schema` → Validates required short-story manuscripts and canonical entity files against `docs/schemas/*.schema.json`; reports best-effort skips/warnings for out-of-scope development material.
-- `npm run lint:refs` → Recursively flags unresolved cross references between entities in the short-story pipeline.
+- `npm run lint:refs` → Recursively flags unresolved IDs and rejects primary-canon short stories that causally depend on draft stories or shared events without a primary-canon source.
 - `npm run lint:canonical-refs` → Ensures references point to canonical IDs from the current index.
 - `npm run lint:glossary` → Warns on glossary terms missing from `data/lexicon/terms.yaml` (ignore list: `docs/lint/glossary_ignore.txt`).
 - `npm run lint:canon` → Red-line checker (`scripts/checks/canon_linter.js`) for forbidden narrative moves.
@@ -41,9 +41,11 @@ This manual explains the repository structure, canon guardrails, and all availab
 - `npm run linkmap:build` (script: `scripts/prompt/build_linkmap.js`)
   - Rebuilds `REFERENCE_MAP.json` and `CANONICAL_INDEX.md` from entity frontmatter.
   - Adds `canon_tier`, `source_weight`, and `retrieval_role` so graph and prompt workflows can separate authoritative canon from drafts, tests, and sandbox material.
+  - Preserves whether a graph link came from `cross_refs` (presence) or `references` (causal dependency), and links shared events to their source stories.
   - Writes human-readable `docs/link_map/LINK_MAP.md` and graph data under `out/graphs/`.
 - Use before dashboard review or after adding new entities/relationships.
 - `npm run report:canon-tiers` writes `out/reports/canon_tier_report.{json,md}` with inferred tiers and a list of files missing explicit `canon_tier`.
+- `npm run report:impact -- --id story-0007` lists direct and downstream declared dependents; add `--include-mentions` to include presence links or `--json` for machine-readable output. Rebuild the link map first.
 
 ## 7) Dashboard
 - Start local server: `npm run dashboard` (serves on port 8080).

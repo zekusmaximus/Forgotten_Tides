@@ -57,6 +57,12 @@ Recursively checks canonical references in:
 
 It builds an index of `char-####`, `loc-####`, `fact-####`, `mech-####`, `story-####`, and `term-####` IDs, then validates reference-bearing fields such as `cross_refs`, `references`, `appears_in`, `rules_used`, `relationships`, and `related_terms`.
 
+For a primary-canon short story, causal `references.stories` must name
+primary-canon stories. Causal `references.events` must name primary-canon
+shared events sourced from a primary-canon story or the story bible. Draft
+stories may continue to depend on other drafts while their relationships are
+reviewed. `cross_refs` records presence and does not trigger this tier gate.
+
 Use `node scripts/lint/unresolved_refs.js --warn-only` only for exploratory audits. PR validation is strict by default.
 
 ### `npm run lint:canonical-refs`
