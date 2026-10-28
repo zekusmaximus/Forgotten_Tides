@@ -136,10 +136,11 @@ continuity_notes:
   - Light-bequests occur in primary stories 0008 and 0022; this particular missed-generation stone's two-register and closed-carrier behavior remains a draft proposal, not a rule for the subtype or broad category.
   - Sets Halix Exchange on page after its offstage mention in draft story-0003; no story-0003 plot outcome is required.
   - Aurel Ket pitches cultural-memory acquisition and civic reinforcement without disclosing the Consortium's concealed node drift; his technical promises remain unverified claims.
+  - Tess reports an unverified rumor that a nearby Halix booth fronts for the Synod; no Synod operation is shown, preserving story-0022's first on-page operation in the Helios Drift.
   - Quotes the Archivist Orders' maxim at Solace as a cross-faction borrowing; this placement remains draft.
 metadata:
   status: draft
-  word_count: 6898
+  word_count: 6902
   author: AI Generated (Claude)
   created: '2026-05-23T00:00:00Z'
   modified: '2026-10-28T00:00:00Z'
@@ -346,7 +347,7 @@ Tess looked at her for a long second. Then she said, with the small involuntary 
 
 "Agreed."
 
-"And, child." Tess paused with her hand on the ring. "If you start crying, do it quietly. The booth two down is a Synod counter, and they listen for grief the way other people listen for tells."
+"And, child." Tess paused with her hand on the ring. "If you start crying, do it quietly. People say the booth two down is a Synod front. I can't prove it. Its buyers listen for grief the way other people listen for tells."
 
 "I won't cry."
 
@@ -374,7 +375,7 @@ Tess Vlin lifted the ring at the end of forty seconds, very gently, the way a pe
 
 The booth thinned again.
 
-Yenu sat with her hands in her lap and her face entirely composed and she did not cry, because she had said she would not, and because the booth two down was a Synod counter and Tess had asked her not to.
+Yenu sat with her hands in her lap and her face entirely composed and she did not cry, because she had said she would not, and because she had no wish to test Tess's warning about the booth two down.
 
 "That," Tess said quietly, "is the cleanest missed-generation light-bequest I have heard in nine years. The donor knew what she was doing. The holder kept it well. I am sorry for your losses, both of them, and I am sorry for the third one, which is whatever you are about to choose."
 

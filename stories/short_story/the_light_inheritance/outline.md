@@ -162,3 +162,5 @@ doctrine in the draft.
   draft context, not a causal prerequisite for Yenu's plot.
 - The maxim quoted at Solace belongs to the Archivist Orders. Its placement
   on a Solace wall remains a draft detail.
+- Tess's warning about a nearby Synod front is an unverified Halix rumor;
+  the story depicts no Synod operation in the Helios Drift.
