@@ -1,6 +1,6 @@
 # Canonical Index
 
-This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-10-29T04:48:57.308Z
+This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-10-29T04:51:37.777Z
 
 ## Character
 - `char-0001` — Rell (`characters/Rell.md`)
@@ -249,6 +249,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `loc-0008` - Helios Drift (location, primary_canon, weight 110, `atlas/Helios_Drift.md`)
 - `loc-0011` - Tessarine Vault (location, primary_canon, weight 110, `atlas/Tessarine_Vault.md`)
 - `loc-0013` - Halix Exchange (location, primary_canon, weight 110, `atlas/Halix_Exchange.md`)
+- `loc-0015` - Skather-Ait pod (location, primary_canon, weight 110, `atlas/Skather-Ait_Pod.md`)
 - `lore-0001` - COSMIC REGIONS (lore, working_canon, weight 95, `lore/COSMIC_REGIONS.md`)
 - `lore-0002` - MEMORY ECONOMY (lore, working_canon, weight 95, `lore/MEMORY_ECONOMY.md`)
 - `lore-0003` - POLITIES AND FACTIONS (lore, working_canon, weight 95, `lore/POLITIES_AND_FACTIONS.md`)
@@ -361,7 +362,6 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `loc-0010` - Solace Hospice (location, speculative, weight 60, `atlas/Solace_Hospice.md`)
 - `loc-0012` - Narthex of Low Mercy (location, speculative, weight 60, `atlas/Narthex_of_Low_Mercy.md`)
 - `loc-0014` - Heavonly (location, speculative, weight 60, `atlas/Heavonly.md`)
-- `loc-0015` - Skather-Ait pod (location, speculative, weight 60, `atlas/Skather-Ait_Pod.md`)
 
 ### Test / Dev / Sample Material
 - `novella_test` - Test (story, test, weight 10, `stories/novella/NOVELLA_TEST/manuscript.md`)
