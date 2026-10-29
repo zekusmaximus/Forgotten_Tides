@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-29T03:40:48.339Z",
+  "generated": "2026-10-29T04:28:59.718Z",
   "nodes": [
     {
       "canonical_id": "char-0001",
@@ -1446,9 +1446,9 @@
       "type": "term",
       "name": "Light-Bequest",
       "path": "data/lexicon/terms.yaml",
-      "canon_tier": "draft",
-      "source_weight": 65,
-      "retrieval_role": "active_draft"
+      "canon_tier": "primary_canon",
+      "source_weight": 110,
+      "retrieval_role": "authoritative"
     },
     {
       "canonical_id": "term-0022",

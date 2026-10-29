@@ -1,6 +1,6 @@
 # Canonical Index
 
-This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-10-29T03:40:48.339Z
+This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-10-29T04:28:59.718Z
 
 ## Character
 - `char-0001` — Rell (`characters/Rell.md`)
@@ -277,6 +277,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `term-0018` - Shear (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
 - `term-0019` - Thinning (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
 - `term-0020` - Zero-Anchoring (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
+- `term-0021` - Light-Bequest (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
 - `term-0024` - Structural Softening (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
 - `term-0025` - Reliquarist (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
 - `term-0026` - Tuning Cradle (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
@@ -329,7 +330,6 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `story-0019` - The Miniaturist's Name (story, draft, weight 65, `stories/short_story/the_miniaturists_name/manuscript.md`)
 - `story-0020` - The Inventory of Absence (story, draft, weight 65, `stories/short_story/the_inventory_of_absence/manuscript.md`)
 - `story-0021` - Receipt for a Voice (story, draft, weight 65, `stories/short_story/receipt_for_a_voice/manuscript.md`)
-- `term-0021` - Light-Bequest (term, draft, weight 65, `data/lexicon/terms.yaml`)
 - `term-0022` - Continuity Cleric (term, draft, weight 65, `data/lexicon/terms.yaml`)
 - `term-0023` - Liturgy of the Hull (term, draft, weight 65, `data/lexicon/terms.yaml`)
 
