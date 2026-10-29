@@ -1,6 +1,6 @@
 # Canonical Index
 
-This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-10-29T03:40:48.339Z
+This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-10-29T04:51:37.777Z
 
 ## Character
 - `char-0001` — Rell (`characters/Rell.md`)
@@ -200,9 +200,13 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `char-0010` - Inya Solven (character, primary_canon, weight 110, `characters/Inya_Solven.md`)
 - `char-0016` - Nara Oss (character, primary_canon, weight 110, `characters/Nara_Oss.md`)
 - `char-0017` - Elior Ren (character, primary_canon, weight 110, `characters/Elior_Ren.md`)
+- `char-0019` - Tess Vlin (character, primary_canon, weight 110, `characters/Tess_Vlin.md`)
+- `char-0026` - Yenu Skather-Ait (character, primary_canon, weight 110, `characters/Yenu_Skather-Ait.md`)
+- `char-0027` - Hol-Vren (character, primary_canon, weight 110, `characters/Hol-Vren.md`)
 - `char-0028` - Ilka Marsk (character, primary_canon, weight 110, `characters/Ilka_Marsk.md`)
 - `char-0029` - Hael (character, primary_canon, weight 110, `characters/Hael.md`)
 - `char-0030` - Jory Fenn (character, primary_canon, weight 110, `characters/Jory_Fenn.md`)
+- `char-0031` - Aurel Ket (character, primary_canon, weight 110, `characters/Aurel_Ket.md`)
 - `event-0001` - The Archivist's Wake establishes memory corridor travel, anchor-loss consequences, memory stones, and conceptual decay as primary canon. (event, primary_canon, weight 105, `data/timeline/events.yaml`)
 - `event-0002` - Corridor instability detected; Tari fades semi-permanent; Rell performs illegal zero-anchoring and burns one anchor to stabilize. (event, primary_canon, weight 105, `data/timeline/events.yaml`)
 - `event-0003` - Galley aftermath; Sutira and Estavan confront Rell; Heliodrome telemetry shows conceptual dementia expanding. (event, primary_canon, weight 105, `data/timeline/events.yaml`)
@@ -244,6 +248,8 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `loc-0007` - Black Horizon (location, primary_canon, weight 110, `atlas/Black_Horizon.md`)
 - `loc-0008` - Helios Drift (location, primary_canon, weight 110, `atlas/Helios_Drift.md`)
 - `loc-0011` - Tessarine Vault (location, primary_canon, weight 110, `atlas/Tessarine_Vault.md`)
+- `loc-0013` - Halix Exchange (location, primary_canon, weight 110, `atlas/Halix_Exchange.md`)
+- `loc-0015` - Skather-Ait pod (location, primary_canon, weight 110, `atlas/Skather-Ait_Pod.md`)
 - `lore-0001` - COSMIC REGIONS (lore, working_canon, weight 95, `lore/COSMIC_REGIONS.md`)
 - `lore-0002` - MEMORY ECONOMY (lore, working_canon, weight 95, `lore/MEMORY_ECONOMY.md`)
 - `lore-0003` - POLITIES AND FACTIONS (lore, working_canon, weight 95, `lore/POLITIES_AND_FACTIONS.md`)
@@ -277,6 +283,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `term-0018` - Shear (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
 - `term-0019` - Thinning (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
 - `term-0020` - Zero-Anchoring (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
+- `term-0021` - Light-Bequest (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
 - `term-0024` - Structural Softening (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
 - `term-0025` - Reliquarist (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
 - `term-0026` - Tuning Cradle (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
@@ -329,7 +336,6 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `story-0019` - The Miniaturist's Name (story, draft, weight 65, `stories/short_story/the_miniaturists_name/manuscript.md`)
 - `story-0020` - The Inventory of Absence (story, draft, weight 65, `stories/short_story/the_inventory_of_absence/manuscript.md`)
 - `story-0021` - Receipt for a Voice (story, draft, weight 65, `stories/short_story/receipt_for_a_voice/manuscript.md`)
-- `term-0021` - Light-Bequest (term, draft, weight 65, `data/lexicon/terms.yaml`)
 - `term-0022` - Continuity Cleric (term, draft, weight 65, `data/lexicon/terms.yaml`)
 - `term-0023` - Liturgy of the Hull (term, draft, weight 65, `data/lexicon/terms.yaml`)
 
@@ -345,23 +351,17 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `char-0014` - Sera Venn (character, speculative, weight 60, `characters/Sera_Venn.md`)
 - `char-0015` - Oren Vale (character, speculative, weight 60, `characters/Oren_Vale.md`)
 - `char-0018` - Mael Ivar (character, speculative, weight 60, `characters/Mael_Ivar.md`)
-- `char-0019` - Tess Vlin (character, speculative, weight 60, `characters/Tess_Vlin.md`)
 - `char-0020` - Nessa Iral (character, speculative, weight 60, `characters/Nessa_Iral.md`)
 - `char-0021` - Corin Tave (character, speculative, weight 60, `characters/Corin_Tave.md`)
 - `char-0022` - Lysa Korr (character, speculative, weight 60, `characters/Lysa_Korr.md`)
 - `char-0023` - Nim Orra (character, speculative, weight 60, `characters/Nim_Orra.md`)
 - `char-0024` - Yaret Ivo-Senn (character, speculative, weight 60, `characters/Yaret_Ivo-Senn.md`)
 - `char-0025` - Toma Vey (character, speculative, weight 60, `characters/Toma_Vey.md`)
-- `char-0026` - Yenu Skather-Ait (character, speculative, weight 60, `characters/Yenu_Skather-Ait.md`)
-- `char-0027` - Hol-Vren (character, speculative, weight 60, `characters/Hol-Vren.md`)
-- `char-0031` - Aurel Ket (character, speculative, weight 60, `characters/Aurel_Ket.md`)
 - `loc-0002` - Ostra-Vael (location, speculative, weight 60, `atlas/Ostra-Vael.md`)
 - `loc-0009` - Ebbhaven (location, speculative, weight 60, `atlas/Ebbhaven.md`)
 - `loc-0010` - Solace Hospice (location, speculative, weight 60, `atlas/Solace_Hospice.md`)
 - `loc-0012` - Narthex of Low Mercy (location, speculative, weight 60, `atlas/Narthex_of_Low_Mercy.md`)
-- `loc-0013` - Halix Exchange (location, speculative, weight 60, `atlas/Halix_Exchange.md`)
 - `loc-0014` - Heavonly (location, speculative, weight 60, `atlas/Heavonly.md`)
-- `loc-0015` - Skather-Ait pod (location, speculative, weight 60, `atlas/Skather-Ait_Pod.md`)
 
 ### Test / Dev / Sample Material
 - `novella_test` - Test (story, test, weight 10, `stories/novella/NOVELLA_TEST/manuscript.md`)

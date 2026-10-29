@@ -11,12 +11,15 @@ tags:
   - reliquary
   - helios-drift
 summary_50: Bazaar-ship in the Helios Drift outer sleeve where reliquaries, Light-Bequests, and memory-market claims are brokered.
-summary_200: "The Halix Exchange is a four-kilometer bazaar-ship in the Helios Drift outer sleeve, known for memory-market brokerage, reliquary valuation, and morally gray but internally rule-bound trade. Its fourth-deck inheritance quarter houses benches such as Tess Vlin's, where family stones and Light-Bequests are tuned before sale, refusal, or release. Halix is not a monastery and not a civic archive: it prices hunger, provenance, and memory with unnerving precision."
+summary_200: "Halix Exchange is a four-kilometer bazaar-ship moored in the Helios Drift outer sleeve, with banners in seven languages, tuning booths, and a shuttle dock. Its quieter fourth-deck inheritance quarter houses Tess Vlin's bench. In story-0004, Tess assays Yenu's family stone and gives a conditional valuation, while Aurel makes a separate acquisition offer. Halix benches require sellers to understand what they are selling. Tess's warning about a nearby Synod front remains an unverified rumor. During the Tessarine breach in story-0022, Halix reports two decks on full recitation."
 cross_refs:
   characters:
     - char-0019
+    - char-0026
+    - char-0031
   locations:
     - loc-0008
+    - loc-0015
   factions:
     - fact-0004
     - fact-0003
@@ -26,50 +29,75 @@ cross_refs:
     - story-0003
     - story-0004
     - story-0015
+    - story-0019
+    - story-0021
+    - story-0022
 references:
   characters:
     - char-0019
   locations:
     - loc-0008
-  factions:
-    - fact-0004
-    - fact-0003
+  factions: []
   mechanics:
     - mech-0001
   stories:
-    - story-0003
     - story-0004
-    - story-0015
+    - story-0022
 coordinates:
   region: Helios Drift outer sleeve
-  memory_density: 0.56
 metadata:
-  status: speculative
+  status: canonical
   created: '2026-07-07T00:00:00.000Z'
-  modified: '2026-07-07T00:00:00.000Z'
+  modified: '2026-10-29T00:00:00.000Z'
 ---
 
 # Halix Exchange
 
-The Halix Exchange is a bazaar-ship operating in the outer sleeve of the Helios Drift. It is
-large enough to feel civic and unstable enough to remain honest about being a market:
-banners in multiple languages, reliquary benches, apology stalls, courier docks, inheritance
-quarters, private cabinets, and quiet counters where families learn what memory is worth
-when the walls need repair.
-
-Halix's ethics are local and exacting. It does not pretend that trade purifies memory, but
-it does maintain internal rules around assay, provenance, broker seals, and lot status. A bad
-bench can ruin a family. A good bench can still hurt one accurately.
+Halix Exchange is a four-kilometer bazaar-ship moored in the outer sleeve of
+the Helios Drift. Primary *The Light Inheritance* shows its banners in seven
+languages, a docking shuttle, and tuning rings working in a dozen booths.
+Yenu reaches it by the pod's six-hour tether shuttle.
 
 ## Inheritance Quarter
 
-The fourth-deck inheritance quarter is quieter than the main market. Benches here tune and
-value family reliquaries, pledged personal stones, and Light-Bequests. The quarter is where
-Tess Vlin keeps her counter, identifiable by a tuning ring known among Drift Clade sellers
-for a clean lowering and a broker's refusal to name a price before the stone has been heard.
+The fourth-deck inheritance quarter is quieter than the main market. Tess
+Vlin keeps her counter here, and Yenu recognizes the sound of her carefully
+lowered ring. Halix benches require sellers to understand what they are
+selling. Tess checks Yenu's understanding and waits for her request before
+naming a price; this encounter does not establish a general rule requiring
+every stone's intended hearing before valuation.
 
-## Market Role
+Tess's assay exposes a trace of Yenu's two-register stone without completing
+its intended hearing. She gives a conditional valuation and offers to
+approach private buyers while Yenu retains the stone. Aurel Ket makes a
+separate acquisition offer. Yenu's eventual intended hearing and release
+take place back on the pod.
 
-Halix sits between Drift Clade need, Consortium acquisition pressure, hospice refusal, and
-private collecting. Its importance is not that it is morally clean, but that it reveals what each
-faction believes memory can become once it is priced.
+## Unverified booth rumor
+
+Tess says people call a nearby booth a Synod front and explicitly says she
+cannot prove it. Yenu confirms no affiliation, and the scene establishes no
+Synod operation.
+
+## During the Tessarine breach
+
+In primary *Spend What You Can Afford* (story-0022), the Canticle channel
+relays Halix's report that two decks have gone to full recitation. This is a
+reported breach condition, not a count of destroyed decks or a measured
+memory-density change. It does not establish the breach's date relative to
+Yenu's visit in story-0004.
+
+## Unapproved setting proposals
+
+Draft *The Tuner of Last Lights* (story-0003) makes offstage hospice-stock
+and Synod-stock assertions about Halix. Those claims remain unapproved.
+
+Draft *The Halix Aftermarket* (story-0015) proposes apology stalls, a trading
+mesh with lot classifications, seal and bond procedures, private collecting,
+and a release facility. Its private-cabinet buyer does not establish cabinets
+as facilities aboard Halix. These systems and outcomes remain provisional.
+
+Draft *Receipt for a Voice* (story-0021) proposes a later tender and
+personal-memory rendering episode. Draft *The Miniaturist's Name*
+(story-0019) refers to Halix repair records offstage. These are draft
+provenance, not approval of additional services or facilities.
