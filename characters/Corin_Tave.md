@@ -9,12 +9,13 @@ tags:
   - loss-ledger
   - institutional-memory
 summary_50: Canticle Fleet records clerk who enters Lysa Korr's hidden anchor burn into the Loss Ledger.
-summary_200: "Corin Tave is a Canticle Fleet records clerk and loss-ledger keeper in the Helios Drift. In story-0017, Corin discovers deceased pilot Lysa Korr's undocumented anchor burn inside a clean route chart used by thousands. Corin records the loss and signs a correction that invalidates the chart pending recertification, accepting operational disruption and personnel review so the Fleet must carry the true cost of the route."
+summary_200: "Corin Tave is a Canticle Fleet records clerk and loss-ledger keeper in the Helios Drift. In story-0017, surviving calibration records reveal deceased pilot Lysa Korr's undocumented anchor burn beneath H-37's clean summary. Corin records the loss and signs a correction that invalidates the chart pending recertification, accepting operational disruption and personnel review so the Fleet must carry the true cost of the route."
 cross_refs:
   characters:
     - char-0022
   locations:
     - loc-0008
+    - loc-0016
   factions:
     - fact-0001
     - fact-0002
@@ -29,6 +30,7 @@ references:
     - char-0022
   locations:
     - loc-0008
+    - loc-0016
   factions:
     - fact-0001
     - fact-0002
@@ -42,7 +44,7 @@ references:
 continuity:
   invariants:
     - Canticle Fleet records clerk and loss-ledger keeper active in the Helios Drift during story-0017
-    - Discovers Lysa Korr's undocumented anchor burn inside route chart H-37
+    - Discovers surviving calibration records of Lysa Korr's undocumented anchor burn beneath route chart H-37's clean summary
     - Records the loss and signs the correction that invalidates H-37's clean certification pending recertification
     - Does not alter corridor physics, restore Lysa's anchor, or make recordkeeping function as a free stabilization mechanism
     - Treats accurate institutional memory as a burden the Fleet must carry, not as absolution
@@ -54,7 +56,7 @@ continuity:
 metadata:
   status: speculative
   created: '2026-07-07T00:00:00.000Z'
-  modified: '2026-07-07T00:00:00.000Z'
+  modified: '2026-10-29T00:00:00.000Z'
 ---
 
 # Corin Tave
@@ -74,8 +76,8 @@ procedural refusal: they keep reading after a form has tried to become convenien
 
 ## Story-0017 Status
 
-In *The Loss Ledger*, Corin discovers an undocumented anchor-burn trace belonging to
-deceased pilot Lysa Korr inside the clean certification of route chart H-37. Logging
+In *The Loss Ledger*, Corin discovers surviving calibration records of deceased
+pilot Lysa Korr's undocumented anchor burn beneath H-37's clean summary. Logging
 the burn invalidates the chart pending recertification and disrupts traffic used by
 thousands. Corin signs the correction anyway, placing Lysa's loss into institutional
 memory without claiming that the entry can repair the route or restore the burned

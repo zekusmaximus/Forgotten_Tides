@@ -1,6 +1,6 @@
 # Canonical Index
 
-This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-10-29T14:11:31.781Z
+This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-10-29T18:26:25.824Z
 
 ## Character
 - `char-0001` — Rell (`characters/Rell.md`)
@@ -88,6 +88,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `loc-0013` — Halix Exchange (`atlas/Halix_Exchange.md`)
 - `loc-0014` — Heavonly (`atlas/Heavonly.md`)
 - `loc-0015` — Skather-Ait pod (`atlas/Skather-Ait_Pod.md`)
+- `loc-0016` — H-37 Route Chart (`atlas/H_37_Route_Chart.md`)
 
 ## Lore
 - `lore-0001` — COSMIC REGIONS (`lore/COSMIC_REGIONS.md`)
@@ -366,6 +367,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `loc-0010` - Solace Hospice (location, speculative, weight 60, `atlas/Solace_Hospice.md`)
 - `loc-0012` - Narthex of Low Mercy (location, speculative, weight 60, `atlas/Narthex_of_Low_Mercy.md`)
 - `loc-0014` - Heavonly (location, speculative, weight 60, `atlas/Heavonly.md`)
+- `loc-0016` - H-37 Route Chart (location, speculative, weight 60, `atlas/H_37_Route_Chart.md`)
 
 ### Test / Dev / Sample Material
 - `novella_test` - Test (story, test, weight 10, `stories/novella/NOVELLA_TEST/manuscript.md`)

@@ -1,5 +1,13 @@
 # Canon Promotion Review: The Loss Ledger
 
+**Current checkpoint:** The author approved all three recommended revision
+scopes on October 29, 2026. They are implemented below in section 10. The
+revised story scores **62/70**, with hard gates passing and no remaining
+manuscript blocker identified. This is a readiness finding, not promotion.
+Story-0017 and its five local events remain draft; Corin, Lysa, and the new
+H-37 chart profile remain speculative. Sections 1-9 preserve the original
+40/70 review at `8acded9`; those findings are historical after the revision.
+
 ## 1. Scope and baseline
 
 **Review only: story-0017, *The Loss Ledger*. Recommendation: Hold, 40/70;
@@ -543,9 +551,100 @@ evidence. Independent read-only dependency and mechanics audits were
 reconciled with the primary review. Summaries and continuity notes were
 checked against scenes, not accepted as findings.
 
-Only this distinct report is added. Existing reports, all manuscripts,
+At the original review checkpoint, only this distinct report was added. Existing reports, all manuscripts,
 profiles, lexicon, events, lore, mechanics, and generated maps are unchanged.
 No promotion command was run. The approved story-0004/story-0015 prose and
 decisions are preserved. The report is committed and pushed on the review
 branch so the review survives the session; no PR is prepared until the
 author's approved changes are implemented, as requested.
+
+## 10. Author-approved revision and fresh readiness check
+
+### Approval and implemented scope
+
+The author responded **“Approve all three”** to the three recommended scopes
+in section 8: documentary evidence rather than expanded residue mechanics;
+the fifteen-anchor history; and the local suspension/triage outcome with a
+narrow H-37 profile and minimal prose cuts. This authorizes revision and PR
+preparation under the original task, not promotion or profile status changes.
+
+The five-section plot remains intact. Corin still signs the entry despite
+traffic disruption and personnel review. Lysa remains dead, the spent
+experience remains absent, and neither recording the cost nor withdrawing
+certification repairs a physical corridor. The last ledger image is retained;
+O1's larger ending cut is not applied. The manuscript and repository style
+guide control the prose, with the author's *Write in Jeff's Voice* fiction
+guidance used to preserve its register.
+
+The following references point to the revised manuscript, rather than the
+original line numbers in sections 1-9.
+
+| Finding | Implementation and revised evidence |
+| --- | --- |
+| F1: documentary investigation | The table reads calibration telemetry and instrument logs, not residue or spent contents (`manuscript.md:203-225,254-258`). The witness tests the recorded feed against stone input (`:304-314`); no automatic forensic law remains. The later display also uses recorded feeds (`:502`). |
+| F1: certification and fresh cost | Corin identifies a calibration/model omission, not a living memory hidden in the chart (`:528,557-564`). Signature withdraws certification while physics remains unchanged (`:798-807`). Present pilot attention and input remain required (`:916-917`). |
+| F2: record versus experience | The packet retains edit history, not deleted text (`:388-398`). The entry says no surviving description was found in this packet (`:762`); the coda leaves contents unknown while affirming permanent burn (`:864-866`). Both profiles now preserve this distinction. |
+| F3: chronology and count | Telemetry belongs to the second run (`:254-258`), consistent with its replay. Fifteen initial anchors and four documented burns leave eleven; the hidden burn reconstructs ten (`:330-334,405-415`). The moderate voice-knot is gone while other memories carry vocation (`:683-686`). The final listed nine remains explicitly suspect (`:432-436`). |
+| F4: local medical procedure | Waiver requires the pilot's acceptance of possible additional expenditure (`:577-582`). Both medical ships are offered the procedure; one captain declines and the other returns acceptance (`:825-828`). No guaranteed measured tax or universal waiver law is added. |
+| F5: metadata and events | Duration now extends into the next watch. Event 004 records suspension pending recertification, not unshown recertification work. Existing IDs/timestamps remain; optional event 005 at T0+3h makes the leadership confrontation retrievable (`:45-120`). |
+| F6: restraint and pacing | The narrator's reference to “the story,” the amputation exchange, and repeated burden/justice glosses are removed. The supervisor retains the concrete case about food, scarce stores, medical craft, and alternate-route costs (`:491-516`). The departure, personnel notice, spoken correction, and final physical image remain (`:883-921`). |
+| F7: scoped artifact and profiles | `ids_next.js --type loc` allocated `loc-0016`, now `atlas/H_37_Route_Chart.md`. The artifact covers chart certification, the documented omission, triage, and pending recertification only. Story and character links include it. Corin/Lysa summaries, invariants, and bodies use recorded evidence and remain speculative. |
+| O2: input sequence | The replay uses the first personal stone and then the second (`:342-346`), clarifying the existing two-stone input without implying concurrent untuned feed. |
+
+The optional T0+3h event was added as a coverage improvement, not because
+the playbook requires one event per chronology row. Repository and available
+git-history searches found no prior use of `event-story-0017-005` before
+allocation. All five event IDs stay local and draft. No entry was added to
+`data/timeline/events.yaml`. The body now contains **4464 words**, matching
+`metadata.word_count`; summaries remain within limits at 104/543 characters.
+Modification dates were updated on the revised manuscript and profiles.
+
+### Fresh assessment
+
+The revised manuscript was reread in full. An independent fresh mechanics,
+craft, and hygiene review reached the same score and found no remaining
+manuscript blocker. The original unsupported-law hard gate is resolved by
+documentary evidence, not waived or reclassified.
+
+| Criterion | Score | Weight | Points | Revised evidence |
+| --- | --- | --- | --- | --- |
+| A Metaphysical fidelity | 4 | 3 | 12 | Evidence is surviving telemetry (`:203-219`); recorded calibration is not donor fuel (`:557-564`), and current attention/input are explicit (`:916-917`). The local equipment/procedure remains an application, not a reusable burn-contour law. |
+| B Bible compliance | 5 | 3 | 15 | No anchor, lived experience, death, or collapse is reversed (`:388-398,432-436,864-866`). Bible references remain present (`:135-138`); no locked protagonist or Heliodrome outcome changes. |
+| C Tonal fidelity | 4 | 2 | 8 | Pilot losses are concrete and restrained (`:664-689`); repeated coda explanation is reduced while the withheld passenger departure and private personnel notice retain cost (`:883-900`). Some pointed institutional phrasing remains, deliberately within this story's voice. |
+| D Craft and structure | 4 | 2 | 8 | Evidence and second-run chronology agree (`:254-258,338-386`); the model defect supplies a practical suspension reason (`:557-564`). Waiver choice, traffic adaptation, and personnel review sustain irreversible consequence (`:823-844,896-904`). The retained coda is still more extended than the primary exemplars' tightest exits. |
+| E Cross-canon coherence | 5 | 2 | 10 | Story-0001 remains the only causal story prerequisite (`:43-44`). Count and permanent-loss distinctions are reconciled (`:405-415,683-686`), and no later-draft outcome supports the result. The three dependent profiles remain explicitly speculative. |
+| F Repository hygiene | 5 | 1 | 5 | Valid contract/citations and accurate count (`:4,135-144`); five local draft events record actual outcomes (`:59-120`), and the named chart has a scoped profile. Generated artifacts include the new artifact and links. |
+| G Canon value | 4 | 1 | 4 | Disclosure creates a useful institutional constraint and real transport costs without repairing old sacrifice (`:798-844,903-917`). It supplies a precise proposed prerequisite for later 0021 review while locking neither completed recertification nor that draft's repair/rendering. |
+| **Total** | | | **62 / 70** | |
+
+**Hard gates: PASS. Recommendation: ready for the author's story-approval
+decision (Promote score band). Full CI-parity validation passes.** This
+readiness finding does not change any story, event, or profile status.
+
+### Validation and preserved boundaries
+
+Pre-commit `npm run lint`, `npm run check`, and `git diff --check` pass.
+Continuity and timeline reports have zero hard failures and zero soft
+warnings. The rebuilt graph has **175 entities, 808 edges, zero orphaned
+targets**. Existing advisories are **21 schema warnings** (18 skips plus
+three recommended-status warnings), **976 glossary candidates** across 55
+scanned files, and the two nonblocking draft red-line warnings in stories
+0005 and 0007. After staging the generated files, `npm run validate:ci`
+passes the complete CI-parity suite, including dashboard, tooling,
+dependency-impact, coverage, canon-policy, prompt-pack, timeline-event,
+promotion-tool, red-line, and continuity regression tests. A final
+`git diff --check` also passes.
+
+The impact report now finds four direct dependents: speculative Corin,
+speculative Lysa, speculative H-37, and draft story-0021; no transitive
+dependents. Manuscript story prerequisites remain primary-only. The new
+artifact depends on draft 0017 and cannot acquire canonical status merely
+because this revision passes checks.
+
+No governing mechanics, bible, manual, lore, lexicon, or shared timeline file
+changes. No profile is promoted. Story-0004, story-0015, their local events,
+Tess/Halix's separate pending claim reviews, and story-0021's manuscript and
+unresolved childhood-visit conflict remain untouched. The PR contains only
+the approved story-0017 revision, its two provisional profile corrections,
+the new provisional chart artifact, this review checkpoint, and generated
+maps. The author will merge; no merge or promotion is performed here.

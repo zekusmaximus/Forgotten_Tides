@@ -16,6 +16,7 @@ cross_refs:
     - char-0022
   locations:
     - loc-0008
+    - loc-0016
   factions:
     - fact-0001
     - fact-0002
@@ -31,6 +32,7 @@ references:
     - char-0022
   locations:
     - loc-0008
+    - loc-0016
   factions:
     - fact-0001
     - fact-0002
@@ -42,17 +44,17 @@ references:
     - story-0001
 timeline:
   setting: An unnamed Canticle Fleet records annex in the Helios Drift
-  duration: One records watch, from routine chart audit to traffic suspension notice
+  duration: From a records watch into the following watch, through the first delayed departure and closing audit
   chronology:
     - event: Corin Tave begins routine certification of a heavily used Helios Drift route chart
       timestamp: T0
-    - event: Corin detects an undocumented anchor-burn trace belonging to deceased pilot Lysa Korr
+    - event: Corin identifies recorded evidence of deceased pilot Lysa Korr's undocumented anchor burn
       timestamp: T0+1h
     - event: Canticle traffic leadership pressures Corin to preserve the clean chart for operational stability
       timestamp: T0+3h
     - event: Corin enters Lysa's anchor burn into the Loss Ledger and signs the chart correction
       timestamp: T0+5h
-    - event: The route chart is invalidated pending recertification, delaying traffic without restoring Lysa's loss
+    - event: Canticle traffic reroutes ships and delays corridor assignments while H-37's clean certification remains suspended pending recertification; Lysa's burned anchor remains lost
       timestamp: T0+6h
 events:
   - id: event-story-0017-001
@@ -68,7 +70,7 @@ events:
       - mech-0002
   - id: event-story-0017-002
     timestamp: T0+1h
-    summary: Corin identifies deceased pilot Lysa Korr's undocumented anchor burn folded into the chart's clean certification.
+    summary: Corin identifies recorded evidence of deceased pilot Lysa Korr's undocumented anchor burn beneath the chart's clean summary.
     canon_tier: draft
     source: stories/short_story/the_loss_ledger/manuscript.md
     causal_note: The discovery reveals an institutional record failure; it does not change corridor mechanics or restore the burned anchor.
@@ -78,6 +80,17 @@ events:
       - char-0022
       - mech-0001
       - mech-0003
+  - id: event-story-0017-005
+    timestamp: T0+3h
+    summary: Canticle traffic leadership pressures Corin to preserve the clean chart for operational stability.
+    canon_tier: draft
+    source: stories/short_story/the_loss_ledger/manuscript.md
+    involved_entities:
+      - story-0017
+      - char-0021
+      - loc-0016
+      - fact-0001
+      - fact-0002
   - id: event-story-0017-003
     timestamp: T0+5h
     summary: Corin records Lysa's loss in the Loss Ledger and signs a correction that invalidates the route chart pending recertification.
@@ -94,7 +107,7 @@ events:
       - mech-0003
   - id: event-story-0017-004
     timestamp: T0+6h
-    summary: Canticle traffic reroutes ships, delays corridor assignments, and begins recertifying the chart without recovering Lysa's burned anchor.
+    summary: Canticle traffic reroutes ships and delays corridor assignments while H-37's clean certification remains suspended pending recertification; Lysa's burned anchor remains lost.
     canon_tier: draft
     source: stories/short_story/the_loss_ledger/manuscript.md
     causal_note: The consequence is borne through traffic, memory rationing, and command accountability rather than altered metaphysics.
@@ -115,7 +128,9 @@ continuity_notes:
   - The Loss Ledger is treated as an existing Canticle/Archivist record required by the Pilot Manual after anchor burn; the story does not introduce a new metaphysical device.
   - Recording Lysa Korr's anchor burn does not restore her anchor, heal the route chart, stabilize a corridor, or change physics for free.
   - "The corrected record invalidates a clean route certification and imposes operational costs: delays, rerouting, rationed reliquary use, and recertification labor."
-  - Lysa Korr is deceased before the story opens; she appears through records, traces, and institutional consequences, not as a ghost or recoverable presence.
+  - Lysa Korr is deceased before the story opens; she appears through surviving calibration records and institutional consequences, not as a ghost or recoverable presence.
+  - The chart's evidence comes from recorded drive telemetry and excision history, not a metaphysical contour left by burned anchors. A surviving description would not restore the burned experience; no description is recovered here.
+  - H-37's certification is a reviewed load model and disclosed assumptions, not a guarantee of free or permanently safe passage. Its local suspension and medical waivers do not complete recertification or establish a fixed minimum duration.
   - Anchor burn permanence, corridor attention requirements, and institutional memory weight derive from MEMORY_PHYSICS.md, CORRIDOR_MECHANICS.md, ANCHOR_THEORY.md, manuals/PILOT_MANUAL.md, and story-0001.
 bible_refs:
   - bible/ARCHIVISTS_WAKE_STORY_BIBLE.md#36-anchor-burn-consequence
@@ -123,10 +138,10 @@ bible_refs:
   - bible/ARCHIVISTS_WAKE_STORY_BIBLE.md#72-corridor-rules
 metadata:
   status: draft
-  word_count: 4610
+  word_count: 4464
   author: AI Generated (Writing Agent 2)
   created: '2026-07-07T00:00:00.000Z'
-  modified: '2026-07-07T00:00:00.000Z'
+  modified: '2026-10-29T00:00:00.000Z'
 tags:
   - canticle-fleet
   - loss-ledger
@@ -185,7 +200,8 @@ green line thinned there by less than a hair. Most readers would have called it
 screen jitter. A pilot might have called it old shear. A records clerk had fewer
 beautiful words. Corin called it an unpaid line item.
 
-He lowered the room lights and asked for anchor residue.
+He lowered the room lights and asked for the calibration telemetry beneath the
+summary.
 
 The chart resisted. Not like an argument. Like a floor that had been polished so
 often it forgot where the old stain had entered the grain. The certification table
@@ -193,19 +209,18 @@ sent a narrow vibration through his wrist. The route line opened into layers:
 reliquary mass, civic reinforcement, traffic repetition, pilot attention, old
 corrections, newer corrections, institutional approval.
 
-There, under the reliquary layer, something personal answered.
+There, under the reliquary layer, the recorded pilot feed rose without a matching
+stone input.
 
 It was small and hard and wrong.
 
-Corin held his attention on it until the table warmed. The trace did not bloom into
-a memory. It could not. Burned anchors did not return because a clerk stared at their
-ashes with professional discipline. But anchor burn left a contour in systems that
-had used it. A route chart could carry that contour the way a healed bone carried
-weather.
+Corin held his attention on it until the table warmed. The table was reading
+instrument logs, not the spent memory. A recorded change in pilot feed could
+survive a false summary. It could not give back what the pilot had burned.
 
-The trace sat at the release end of H-37, folded under the clean certification.
+The feed change sat at the release end of H-37, folded under the clean summary.
 
-Pilot loss present.
+Pilot input present.
 
 Unlogged.
 
@@ -236,18 +251,16 @@ confirmation runs.
 
 Clean. Competent. Dead ordinary.
 
-Corin compared the timestamp to the residue.
+Corin compared the recorded feed change with the confirmation logs.
 
-The numbers did not agree.
-
-The undocumented trace belonged between the second and third confirmation runs,
-seven minutes before Lysa signed the green recommendation. The chart said reliquary
-only. The route said a pilot had spent something.
+It fell during the second run, where the summary recorded reliquary input alone.
+The instruments showed a pilot input the summary had omitted. He opened the run
+to find out what it had cost.
 
 He opened the loss ledger's active entry field and did not type.
 
-If he logged the trace, H-37 would lose green certification before the next traffic
-cycle. All derivative charts would become suspect. The Fleet would have to reroute
+If he confirmed an unlogged burn, H-37 would lose green certification before the
+next traffic cycle. All derivative charts would become suspect. The Fleet would have to reroute
 thousands through longer, rougher corridors until pilots and Archivists recertified
 the line under honest load. Reliquary stores would be spent. Anchor taxes would rise
 in small increments across ships whose crews had never heard Lysa Korr's name.
@@ -276,7 +289,7 @@ Archivists on witness duty used office titles when the work required less self.
 
 "You called anomaly," they said.
 
-"Anchor residue under a clean route certification."
+"An unlogged pilot input under a clean route certification."
 
 The Archivist's face changed by not changing enough.
 
@@ -288,17 +301,17 @@ Corin turned the chart toward them. "H-37."
 
 "Show me the layer."
 
-He did. The table reopened the route, and the same hard trace appeared under the
-release end. The Archivist bent close. Their shadow crossed the green line. For a
-moment the line dimmed, not physically but in confidence, as if embarrassed by
+He did. The table reopened the recorded feeds at the release end. The Archivist
+bent close. Their shadow crossed the green line. For a moment the line dimmed,
+not physically but in confidence, as if embarrassed by
 attention.
 
 "Personal," the Archivist said.
 
 "Anchor burn?"
 
-"Likely. Not a stone. Not civic leakage." They touched two fingers to the table and
-waited for the witness relay to answer through their ring. "Whose packet?"
+"Likely. The stone feed does not account for it." They touched two fingers to the
+table and waited for the witness relay to answer through their ring. "Whose packet?"
 
 "Lysa Korr."
 
@@ -314,7 +327,7 @@ Corin opened Lysa's full pilot packet. The table arranged it in four columns: se
 summary, anchor audits, route work, death record. He hated the efficiency of it. A
 life became legible by losing depth.
 
-Lysa Korr had entered the Fleet with fourteen responsive anchors. Mid-gravity human,
+Lysa Korr had entered the Fleet with fifteen responsive anchors. Mid-gravity human,
 strong attention discipline, poor tolerance for political briefings, exceptional
 release-end correction. Three mild burns over eleven active years. One moderate
 burn during an evacuation corridor. No forbidden anchor exposure. No zero-anchoring.
@@ -328,9 +341,9 @@ Corin called up the log.
 
 At first the record behaved. H-37 opened in simulation: a modest corridor with
 reliable memory currents and a slight release-end thinness. Lysa's attention pattern
-held the line steady. Two personal memory stones warmed the model. The ship, unnamed
-in the packet because the ship did not matter to the chart, passed through without
-drama.
+held the line steady. The model replayed the first personal stone, then the second.
+The ship, unnamed in the packet because the ship did not matter to the chart,
+passed through without drama.
 
 Then the release end puckered.
 
@@ -374,19 +387,15 @@ admit.
 
 "Can you recover the excised line?" Corin asked.
 
-"No." The Archivist said it without softness. "If the line held the anchor contents,
-and the contents were burned, an excised record will not give them back."
+"No. The packet retains the edit history, not the deleted text."
 
-"I know."
+"Another record might name it."
 
-"Say it anyway."
+"A description would still be a description. It would not restore her anchor."
 
-Corin looked at the frozen chart. "Recovery would be restoration. Restoration is
-impossible."
+"There is no description here," Corin said.
 
-"Good."
-
-They both stood with the impossibility for a while.
+They both stood with the blank field for a while.
 
 The table displayed Lysa's post-run audit. It had been filed as complete. Corin
 opened the attached witness pane. The form had all the required fields: full name,
@@ -401,6 +410,9 @@ No new loss reported.
 
 Corin checked Lysa's prior audit. Eleven anchors before the run. The report had
 preserved arithmetic by deleting cost.
+
+Four documented knots gone from fifteen. Eleven before H-37. If this run had taken
+another, the post-run count should have been ten.
 
 "She lied?" he asked.
 
@@ -475,8 +487,7 @@ formal. Supervisors made them disappear into workload.
 
 The supervisor entered the sealed annex with a slate already open and did not sit.
 Her uniform had the gray shoulder band of Canticle traffic authority, no name visible
-in the angle of the light. Corin preferred it that way. If he named everyone in this
-room, the story would pretend names were the same thing as accountability.
+in the angle of the light.
 
 "I have forty-two ships queued on H-37," she said. "Six passenger. Two medical. One
 reliquary courier under Archivist seal. The rest cargo, but cargo keeps people fed
@@ -488,7 +499,7 @@ whether poets respect it or not."
 
 The Archivist remained by the wall, witness ring dim.
 
-Corin displayed the anchor trace again. "The chart is false."
+Corin displayed the recorded feeds again. "The chart is false."
 
 "The chart has carried traffic for seventy-two cycles."
 
@@ -514,11 +525,7 @@ arithmetic."
 The supervisor leaned over the table. The green route line passed across her sleeve.
 "The route is stable."
 
-"Because it learned a correction from a pilot we did not record."
-
-"Learned?" Her eyes flicked toward the Archivist. "Is that your term or his?"
-
-"Mine. Plain language."
+"Its model includes a correction from a pilot whose loss we did not record."
 
 "Then plainly: does the corridor care whether Lysa Korr has a ledger entry?"
 
@@ -548,22 +555,19 @@ That landed because it was true enough to bruise.
 Corin let the silence hold. He had watched junior clerks ruin records by defending
 the wrong sentence. A true objection deserved space even when it served a lie.
 
-"Her anchor is gone," he said. "The chart contains the effect of its expenditure.
-That effect was certified as reliquary-only. Every pilot using H-37 is being told a
-false story about what the route requires."
+"Her anchor is gone," he said. "The chart contains the calibration from that run.
+We certified a personal expenditure as reliquary-only. We have not verified the
+release under the load the chart promises."
+
+The certification admitted a cost model, not a promise that no pilot would ever
+burn. The missing expenditure meant that model had not been tested on the terms
+the Fleet was offering.
 
 "The false story is reducing panic."
 
 "It is increasing ignorance."
 
-"Ignorance can be operationally useful."
-
-The Archivist spoke then. "So can amputation."
-
-The supervisor looked at them. "The Orders do not get to moralize while your sealed
-courier waits in my queue."
-
-"I am not moralizing," the Archivist said. "I am naming categories."
+"A caution flag could keep this watch moving."
 
 The supervisor exhaled through her nose and turned back to Corin. "What do you want?"
 
@@ -571,9 +575,10 @@ The clean answer was easy: log the burn, suspend the chart, let truth do its dam
 Corin distrusted easy things on records desks.
 
 "A provisional invalidation," he said. "Immediate amber status. No passenger traffic
-until recertification. Medical traffic by captain's acceptance of increased anchor
-tax. Cargo rerouted or delayed. Reliquary courier reassigned to alternate line with
-Archivist signoff. Chart H-37 marked unclean until the route is flown under honest
+until recertification. Medical traffic only by captain's waiver, with the pilot's
+acceptance of possible additional anchor expenditure. Cargo rerouted or delayed.
+Reliquary courier reassigned to alternate line with Archivist signoff.
+Chart H-37 marked unclean until the route is flown under honest
 modeling."
 
 "That is still suspension."
@@ -677,8 +682,8 @@ Do not downgrade me for being exact.
 
 The fourth burn, the moderate one, came from an evacuation corridor. Lysa had spent
 the sound of her first instructor saying her name correctly after months of getting
-it wrong. The report classified it as moderate because the name remained, the voice
-did not, and the vocational anchor thinned but held. Lysa's addendum was only one
+it wrong. The report classified it as moderate: the voice-knot was gone, while
+other memories still held her name and vocation. Lysa's addendum was only one
 line:
 
 Accuracy is not mourning, but it is the part command permits.
@@ -694,8 +699,8 @@ repetition still left a shape.
 He wondered what shape Lysa had left in the pilots who used H-37 without knowing it.
 Not gratitude. Gratitude required knowledge. Not debt. Debt required a creditor the
 institution admitted. Something less noble and more useful: ease. A clean release.
-A schedule held. Thousands of safe arrivals leaning, fraction by fraction, on a loss
-filed as none.
+A schedule held. Thousands of arrivals modeled against a calibration whose cost
+had been filed as none.
 
 He found the excision history buried under a maintenance checksum.
 
@@ -754,7 +759,7 @@ Undocumented anchor burn, personal, exact tier unknown.
 
 Anchor contents.
 
-Unknown. Excised from source record. Not recoverable.
+Unknown. Excised from source record. No surviving description found in this packet.
 
 Operational effect.
 
@@ -817,9 +822,10 @@ to mistake recordkeeping for salvation. Its weight appeared in less merciful for
 
 Passenger traffic held in berth. Cargo manifests split and rerouted. The reliquary
 courier surrendered its clean slot and took an older line with three additional
-anchor-audit requirements. The two medical ships received captain's waivers after
-their pilots accepted increased release-end tax and additional Archivist witnesses.
-One captain declined and delayed. One accepted and asked for the corrected chart.
+anchor-audit requirements. The two medical ships were offered waivers requiring
+pilot consent to possible additional release-end expenditure and an additional
+Archivist witness. One captain declined and delayed. The other returned the pilot's
+acceptance and asked for the corrected chart.
 
 Corin watched the request arrive.
 
@@ -837,23 +843,6 @@ The Archivist remained until the formal witness period ended.
 "You understand this will not make her more alive," they said.
 
 Corin closed Lysa's packet. "Yes."
-
-"It will not make the burn more meaningful."
-
-He considered that. "I do not know."
-
-The Archivist tilted their head.
-
-"The anchor meant what it meant when she spent it," Corin said. "We do not control
-that. But the institution controlled whether her loss became part of the route's
-memory or only part of its convenience."
-
-"And now?"
-
-"Now it is burden."
-
-The Archivist gathered their cold tea and did not drink it. "Burden is one of the
-honest forms memory takes."
 
 After they left, Corin stayed alone with the loss ledger.
 
@@ -873,13 +862,12 @@ reader to trust forms more than absence.
 He touched the field.
 
 Lysa Korr's undocumented anchor burn was used to certify H-37 as cleaner than it
-was. The lost anchor contents remain unknown and unrecoverable. Future traffic must
-not treat unknown as negligible.
+was. The lost anchor's contents remain unknown in the surviving record; the burn is
+permanent. Future traffic must not treat unknown as negligible.
 
 He stopped there.
 
-Then he added one more sentence, because the record required it and because he did
-not know where else civilization put shame when it was still useful.
+He added one sentence.
 
 The route held because someone paid.
 
@@ -898,10 +886,6 @@ the unknown burn, and the increased tax. The ship left forty-seven minutes late.
 one aboard would thank Lysa Korr. Most would never hear her name.
 
 But their pilot had.
-
-That was not justice. Corin disliked the word when applied to the dead. Justice
-suggested balance, and memory did not balance. It accumulated. It pressed. It asked
-the living to walk differently.
 
 He shut down the certification table.
 
@@ -929,8 +913,8 @@ It did not need to.
 
 Outside, the Helios Drift kept moving around the new obstruction. Ships found other
 paths. Pilots counted anchors with more care. Traffic complained and adapted.
-Somewhere, a corridor that had never cared what clerks admitted continued to hold
-because memory had already been spent into it.
+Somewhere, a pilot held a crossing with present attention and memory input. The
+correction changed what the Fleet disclosed, not what a drive had to spend.
 
 Corin turned off the room lights.
 
