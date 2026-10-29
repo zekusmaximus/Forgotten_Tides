@@ -19,10 +19,12 @@ references:
   factions: [fact-0004]
   mechanics: [mech-0001]
   stories: [story-0004, story-0021]
+coordinates:
+  region: Helios Drift outer sleeve
 metadata:
   status: speculative
   created: '2026-09-24T00:00:00.000Z'
-  modified: '2026-09-24T00:00:00.000Z'
+  modified: '2026-10-29T00:00:00.000Z'
 ---
 
 # Skather-Ait Pod

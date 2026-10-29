@@ -73,3 +73,26 @@ that entity is approved. No entity's tier or status changed.
 
 Draft `story-0007` uses "third pull" as a time of day and needs revision
 before promotion.
+
+## Atlas Map Second-Pass Decisions — 2026-10-29
+
+**Author decision:** Accept the twenty-one second-pass recommendations
+(Q1–Q21) in `design/map/CARTOGRAPHIC_BRIEF.md` §2. These decisions remove the
+brief's remaining inferences.
+
+- The Lattice Gap touches the Drift's outer sleeve without cutting into any
+  sleeve. This amends the first pass's "crossing."
+- The inner relay is a facility in the Drift's inner sleeve, not a band.
+- The outer sleeve holds exactly nine sleeves.
+- The Core and the Drift touch.
+- Drawn counts and all geometry are cartographic.
+
+The approved arrangement now appears in prose as
+`lore/COSMIC_REGIONS.md` §7, which leaves speculative entities out. Three
+speculative atlas entries gained or corrected `coordinates.region` (Heavonly,
+Skather-Ait pod, Solace Hospice), and no density values were invented. The
+eight primary-canon atlas entries are unchanged.
+
+Two draft revisions follow in a separate PR: `story-0003` loses the proper
+name of its hospice, and `story-0007` changes "third pull," used as a time of
+day, to "third watch."

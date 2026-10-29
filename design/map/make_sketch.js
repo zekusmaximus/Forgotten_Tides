@@ -1,5 +1,5 @@
 // Generates the layout sketch for author review. Geometry is cartographic (P.A.).
-// Usage: node design/map/make_sketch.js design/map/layout_sketch_v0.svg
+// Usage: node design/map/make_sketch.js design/map/layout_sketch_v1.svg
 // Placements mirror design/map/CARTOGRAPHIC_BRIEF.md section 3; keep them in step.
 const fs = require('fs');
 
@@ -62,7 +62,7 @@ function inPoly(x, y, pts) {
 }
 
 // Sketch density profile through the soundings (interpolated between them).
-const PROFILE = [[0, 0.97], [0.12, 0.97], [0.165, 0.82], [0.4, 0.65], [0.55, 0.56], [0.62, 0.5],
+const PROFILE = [[0, 0.97], [0.12, 0.97], [0.135, 0.82], [0.37, 0.65], [0.535, 0.56], [0.62, 0.5],
   [0.76, 0.31], [0.9, 0.1], [1.0, 0.02], [1.2, 0.01]];
 const density = (r) => {
   for (let k = 1; k < PROFILE.length; k++) {
@@ -105,8 +105,8 @@ const inGap = (x, y) => inPoly(x, y, gapPts);
 
 // ---------- Document ----------
 add(`<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-labelledby="t d">`);
-add(`<title id="t">The Known Galaxy: layout sketch v0</title>`);
-add(`<desc id="d">Rough layout sketch for author review, 2026-10-29. Radial memory-density layout: Mnemosyne Lattice Core at center, Helios Drift belt with inner relay, mid-sleeve and an outer sleeve of nine numbered sleeves, Lattice Gap as an outward rift with the Heliodrome at its epicenter, Remnant Seas pockets, scattered Void Regions, and the Black Horizon perimeter. Topology follows the accepted decisions; all geometry is approximate.</desc>`);
+add(`<title id="t">The Known Galaxy: layout sketch v1</title>`);
+add(`<desc id="d">Rough layout sketch for author review, 2026-10-29. Radial memory-density layout: Mnemosyne Lattice Core at center, Helios Drift belt touching the Core, with an inner sleeve, a mid-sleeve and an outer sleeve of nine numbered sleeves, Lattice Gap as an outward rift with the Heliodrome at its epicenter, Remnant Seas pockets, scattered Void Regions, and the Black Horizon perimeter. Topology follows the accepted decisions; all geometry is approximate.</desc>`);
 add(`<defs>
 <style>
   .region { font-family: 'Cormorant Garamond', Georgia, 'Times New Roman', serif; font-weight: 600; letter-spacing: 6px; fill: #F1ECE0; }
@@ -131,7 +131,7 @@ add(`<defs>
   <stop offset="0.86" stop-color="#0A0D12"/><stop offset="1" stop-color="#05070A"/>
 </radialGradient>
 <radialGradient id="drift" gradientUnits="userSpaceOnUse" cx="${CX}" cy="${CY}" r="${S * 0.62}">
-  <stop offset="0.29" stop-color="#E8A856" stop-opacity="0.34"/>
+  <stop offset="0.19" stop-color="#E8A856" stop-opacity="0.34"/>
   <stop offset="0.75" stop-color="#E8A856" stop-opacity="0.16"/>
   <stop offset="1" stop-color="#E8A856" stop-opacity="0.06"/>
 </radialGradient>
@@ -168,7 +168,7 @@ for (const off of [0, 180]) {
 }
 
 // Helios Drift belt.
-add(`<path d="${annulus(0.18, 0.62)}" fill="url(#drift)" fill-rule="evenodd"/>`);
+add(`<path d="${annulus(0.12, 0.62)}" fill="url(#drift)" fill-rule="evenodd"/>`);
 
 // Stars, brightness tracking density; none in voids; cinders in the Remnant Seas.
 for (let k = 0; k < 2600; k++) {
@@ -189,10 +189,6 @@ for (let k = 0; k < 2600; k++) {
 add(`<path d="${annulus(1.0, 1.24)}" fill="url(#horizon)" fill-rule="evenodd"/>`);
 add(`<path d="${annulus(1.0, 1.17)}" fill="url(#synod)" fill-rule="evenodd"/>`);
 add(`<circle cx="${CX}" cy="${CY}" r="${S}" fill="none" stroke="#6A727C" stroke-width="1.2" stroke-dasharray="2 7"/>`);
-for (let a = 0; a < 360; a += 15) {
-  const [x0, y0] = P(1.0, a), [x1, y1] = P(1.018, a);
-  add(`<line x1="${f(x0)}" y1="${f(y0)}" x2="${f(x1)}" y2="${f(y1)}" stroke="#A8AEB6" stroke-width="1.2" stroke-opacity="0.6"/>`);
-}
 // Black-hole knots (dense clustering at galactic scale).
 for (const [r, a, s] of [[1.08, 12, 7], [1.12, 58, 5], [1.1, 103, 8], [1.13, 150, 6], [1.07, 197, 7], [1.12, 236, 5], [1.09, 281, 8], [1.13, 318, 6], [1.11, 350, 5]]) {
   const [x, y] = P(r, a);
@@ -221,15 +217,15 @@ for (const [r, name] of [[0.72, 'near sleeve'], [0.84, 'outer sleeve']]) {
 }
 
 // Drift band boundaries and the nine numbered sleeves.
-for (const r of [0.18, 0.62]) add(`<circle cx="${CX}" cy="${CY}" r="${r * S}" fill="none" stroke="#E8A856" stroke-opacity="0.55" stroke-width="1.2"/>`);
-for (const r of [0.30, 0.46]) add(`<circle cx="${CX}" cy="${CY}" r="${r * S}" fill="none" stroke="#E8A856" stroke-opacity="0.45" stroke-dasharray="6 6"/>`);
+for (const r of [0.12, 0.62]) add(`<circle cx="${CX}" cy="${CY}" r="${r * S}" fill="none" stroke="#E8A856" stroke-opacity="0.55" stroke-width="1.2"/>`);
+for (const r of [0.28, 0.45]) add(`<circle cx="${CX}" cy="${CY}" r="${r * S}" fill="none" stroke="#E8A856" stroke-opacity="0.45" stroke-dasharray="6 6"/>`);
 for (let k = 1; k < 9; k++) {
-  const r = 0.46 + (0.16 * k) / 9;
+  const r = 0.45 + (0.17 * k) / 9;
   add(`<circle cx="${CX}" cy="${CY}" r="${f(r * S)}" fill="none" stroke="#E8A856" stroke-opacity="0.16" stroke-width="0.8"/>`);
 }
 // Post-breach: Fourth and Ninth Sleeves softening (dashed in state colour).
 for (const k of [4, 9]) {
-  const r = 0.46 + (0.16 * (k - 0.5)) / 9;
+  const r = 0.45 + (0.17 * (k - 0.5)) / 9;
   add(`<circle cx="${CX}" cy="${CY}" r="${f(r * S)}" fill="none" stroke="#2A313A" stroke-width="6" stroke-opacity="0.9" stroke-dasharray="2 10"/>`);
 }
 
@@ -240,12 +236,12 @@ for (const r of [0.03, 0.06, 0.09]) add(`<circle cx="${CX}" cy="${CY}" r="${r * 
 
 // Region names on curved baselines.
 arcText(0.395, 145, 35, 'HELIOS DRIFT', 'region" font-size="34');
-arcText(0.24, 243, 297, 'INNER RELAY', 'band" font-size="12');
-arcText(0.38, 250, 290, 'MID-SLEEVE', 'band');
+arcText(0.235, 236, 304, 'INNER SLEEVE', 'band" font-size="12');
+arcText(0.365, 250, 290, 'MID-SLEEVE', 'band');
 arcText(0.588, 250, 290, 'OUTER SLEEVE · I–IX', 'band');
 arcText(1.105, 150, 30, 'BLACK HORIZON', 'region" font-size="30');
 arcText(1.14, 248, 292, 'far edge uncharted', 'small');
-arcText(1.035, 205, 235, 'near edge · Archivist stations', 'small');
+arcText(1.035, 198, 242, 'near edge · Archivist monitoring stations', 'small');
 
 // Labels with leaders. Primary pins solid; speculative pins hollow, dashed, faded.
 function pin(r, deg, primary) {
@@ -269,33 +265,33 @@ function callout(x, y, tx, ty, lines, spec) {
 }
 
 // Core label.
-arcText(0.158, 190, 350, 'MNEMOSYNE LATTICE CORE', 'region" font-size="13" style="letter-spacing:2.5px');
+arcText(0.16, 185, 355, 'MNEMOSYNE LATTICE CORE', 'region" font-size="13" style="letter-spacing:2.5px');
 add(`<text class="snd" x="${CX}" y="${CY + 5}" text-anchor="middle" fill="#3A2A14" style="fill:#3A2A14">0.97</text>`);
 
 // Heavonly (speculative) at the Drift–Core boundary.
-{ const [x, y] = pin(0.165, 100, false);
+{ const [x, y] = pin(0.135, 100, false);
   callout(x, y, x - 60, y - 58, [['label', 'Heavonly'], ['snd', '0.82'], ['small', 'gateway; galaxies not drawn']], true); }
 
 // Tessarine Vault, inner relay, and the two-pull route.
-{ const [xr, yr] = P(0.225, -22), [xv, yv] = P(0.46, -22);
+{ const [xr, yr] = P(0.2, -22), [xv, yv] = P(0.45, -22);
   add(`<line x1="${f(xr)}" y1="${f(yr)}" x2="${f(xv)}" y2="${f(yv)}" stroke="#F6C684" stroke-width="1.6" stroke-dasharray="1 6" stroke-linecap="round"/>`);
-  const [mx, my] = P(0.345, -26);
+  const [mx, my] = P(0.325, -26);
   add(`<text class="mono" x="${f(mx)}" y="${f(my)}" text-anchor="middle" style="fill:#F6C684">2 pulls</text>`);
-  const [x1, y1] = pin(0.225, -22, true);
-  callout(x1, y1, x1 + 40, y1 - 46, [['label', 'Navigant house, inner relay'], ['small', 'unnamed in the atlas']], false);
-  const [x2, y2] = pin(0.46, -22, true);
+  const [x1, y1] = pin(0.2, -22, true);
+  callout(x1, y1, x1 + 40, y1 - 46, [['label', 'Inner relay · Navigant house'], ['small', 'corridor and courier node, inner sleeve']], false);
+  const [x2, y2] = pin(0.45, -22, true);
   callout(x2, y2, x2 + 60, y2 + 92, [['label', 'Tessarine Vault'], ['snd', '0.78 pre-breach · unmeasured after'], ['small', 'inner edge of the outer sleeve']], false); }
 
 // Halix circuit, Skather-Ait pod, and the shared tether (speculative entities).
-{ const [hx, hy] = P(0.545, -58);
+{ const [hx, hy] = P(0.535, -58);
   add(`<g class="spec"><ellipse cx="${f(hx)}" cy="${f(hy)}" rx="44" ry="20" transform="rotate(${f(58 - 90)} ${f(hx)} ${f(hy)})" fill="none" stroke="#F6C684" stroke-width="1.3" stroke-dasharray="5 4"/></g>`);
-  const [px, py] = P(0.6, -66);
+  const [px, py] = P(0.59, -66);
   add(`<line class="spec" x1="${f(hx + 12)}" y1="${f(hy + 14)}" x2="${f(px)}" y2="${f(py)}" stroke="#D8D2C4" stroke-width="0.9"/>`);
   for (const t of [0.35, 0.6, 0.8]) add(`<circle class="spec" cx="${f(hx + 12 + (px - hx - 12) * t)}" cy="${f(hy + 14 + (py - hy - 14) * t)}" r="2.2" fill="#D8D2C4"/>`);
-  const [x1, y1] = pin(0.545, -58, false);
-  callout(x1, y1, x1 + 150, y1 + 18, [['label', 'Halix Exchange'], ['snd', '0.56'], ['small', 'slow circuit; moors at tether heads']], true);
-  const [x2, y2] = pin(0.6, -66, false);
-  callout(x2, y2, x2 + 120, y2 + 66, [['label', 'Skather-Ait pod'], ['small', 'six-hour tether, shared with two pods'], ['small', 'and a Remembrancer outstation']], true); }
+  const [x1, y1] = pin(0.535, -58, false);
+  callout(x1, y1, x1 + 150, y1 + 18, [['label', 'Halix Exchange'], ['snd', '0.56 · no story source'], ['small', 'slow circuit; moors at tether heads']], true);
+  const [x2, y2] = pin(0.59, -66, false);
+  callout(x2, y2, x2 + 120, y2 + 66, [['label', 'Skather-Ait pod'], ['small', "six-hour tether to Halix; shares"], ['small', "Halix's sleeve, number not given"]], true); }
 
 // Lattice Gap labels, Heliodrome, the Wake's three pulls, and Solace Hospice.
 { const [lx, ly] = P(0.94, 17);
@@ -304,12 +300,21 @@ add(`<text class="snd" x="${CX}" y="${CY + 5}" text-anchor="middle" fill="#3A2A1
   add(`<text class="snd" x="${f(lx)}" y="${f(ly + 19)}">0.31</text>`);
   add(`<text class="small" x="${f(lx)}" y="${f(ly + 36)}">rift at the Lattice's outer reach</text>`);
   const hg = gapAt(0.76);
-  const [ws, wsy] = P(0.62, 26), [hx, hy] = P(0.76, hg.c);
-  add(`<path d="M${f(ws)},${f(wsy)} Q${pt(0.7, 27)} ${f(hx)},${f(hy)}" fill="none" stroke="#F6C684" stroke-width="1.6" stroke-dasharray="1 6" stroke-linecap="round"/>`);
-  const [mx, my] = P(0.665, 21);
+  // Approach only: the route fades in inside the Gap and claims no origin.
+  const ga = gapAt(0.645);
+  const [ws, wsy] = P(0.645, ga.c), [hx, hy] = P(0.76, hg.c);
+  add(`<linearGradient id="wake" gradientUnits="userSpaceOnUse" x1="${f(ws)}" y1="${f(wsy)}" x2="${f(hx)}" y2="${f(hy)}"><stop offset="0" stop-color="#F6C684" stop-opacity="0"/><stop offset="0.6" stop-color="#F6C684" stop-opacity="1"/></linearGradient>`);
+  add(`<path d="M${f(ws)},${f(wsy)} L${f(hx)},${f(hy)}" fill="none" stroke="url(#wake)" stroke-width="1.8" stroke-dasharray="1 5" stroke-linecap="round"/>`);
+  const [mx, my] = P(0.7, 29.5);
   add(`<text class="mono" x="${f(mx)}" y="${f(my)}" style="fill:#F6C684">3 pulls</text>`);
   const [x1, y1] = pin(0.76, hg.c, true);
   callout(x1, y1, x1 - 110, y1 - 95, [['label', 'Heliodrome'], ['snd', '0.31'], ['small', 'epicenter of the fracture']], false);
+  // Historical site: the scoured fishing-colony moon in the Gap's near sleeve (no entity).
+  { const g = gapAt(0.69);
+    const [cx2, cy2] = P(0.69, g.c + g.half * 0.55);
+    add(`<circle cx="${f(cx2)}" cy="${f(cy2)}" r="4.5" fill="none" stroke="#D8D2C4" stroke-width="1.2"/>`);
+    add(`<line x1="${f(cx2 - 3.2)}" y1="${f(cy2 + 3.2)}" x2="${f(cx2 + 3.2)}" y2="${f(cy2 - 3.2)}" stroke="#D8D2C4" stroke-width="1.2"/>`);
+    callout(cx2, cy2, cx2 - 40, cy2 - 166, [['small', 'scoured colony moon'], ['small', 'near sleeve · unnamed']], false); }
   const [x2, y2] = pin(0.9, gapAt(0.9).c + gapAt(0.9).half - 0.6, false);
   callout(x2, y2, x2 - 30, y2 - 80, [['label', 'Solace Hospice'], ['small', "Gap's outer sleeve, at a Void"]], true); }
 
@@ -363,20 +368,21 @@ add(`<rect x="${LX - 26}" y="30" width="${W - LX + 6}" height="${H - 60}" fill="
 line('title" font-size="28" style="letter-spacing:5px', 'THE KNOWN', 34);
 line('title" font-size="28" style="letter-spacing:5px', 'GALAXY', 32);
 line('subtitle', 'a coherence chart', 26);
-line('mono', 'layout sketch v0 · 2026-10-29', 17);
+line('mono', 'layout sketch v1 · 2026-10-29', 17);
 line('mono', 'for author review', 30);
 line('h', 'AUTHORITY', 20);
-line('body', 'Topology follows the accepted', 17);
-line('body', 'decisions (brief §4). Positions,', 17);
-line('body', 'sizes and angles are P.A.:', 17);
-line('body', 'position approximate.', 28);
+line('body', 'Claims follow the brief, §4,', 17);
+line('body', 'all settled. Positions, sizes,', 17);
+line('body', 'angles and drawn counts are', 17);
+line('body', 'P.A.: position approximate.', 28);
 
 line('h', 'SYMBOLS', 24);
 const sym = (draw, text) => { draw(LX + 9, ly - 5); add(`<text class="body" x="${LX + 46}" y="${ly}">${text}</text>`); ly += 24; };
 sym((x, y) => { add(`<circle cx="${x}" cy="${y}" r="9" fill="none" stroke="#F1ECE0" stroke-width="1.2"/><circle cx="${x}" cy="${y}" r="5" fill="#FF6B6B"/>`); }, 'primary canon location');
 sym((x, y) => { add(`<circle class="spec" cx="${x}" cy="${y}" r="7" fill="none" stroke="#FF6B6B" stroke-width="1.6" stroke-dasharray="3 3"/>`); }, 'speculative (author build only)');
 sym((x, y) => { add(`<text class="snd" x="${x - 9}" y="${y + 5}">0.31</text>`); }, 'sounding: canon value only');
-sym((x, y) => { add(`<line x1="${x - 9}" y1="${y}" x2="${x + 11}" y2="${y}" stroke="#F6C684" stroke-width="1.6" stroke-dasharray="1 5" stroke-linecap="round"/>`); }, 'route; pulls counted, start P.A.');
+sym((x, y) => { add(`<line x1="${x - 9}" y1="${y}" x2="${x + 11}" y2="${y}" stroke="#F6C684" stroke-width="1.6" stroke-dasharray="1 5" stroke-linecap="round"/>`); }, 'route; pulls counted, no origin');
+sym((x, y) => { add(`<circle cx="${x}" cy="${y}" r="4.5" fill="none" stroke="#D8D2C4" stroke-width="1.2"/><line x1="${x - 3.2}" y1="${y + 3.2}" x2="${x + 3.2}" y2="${y - 3.2}" stroke="#D8D2C4" stroke-width="1.2"/>`); }, 'historical site, no atlas entry');
 sym((x, y) => { add(`<line x1="${x - 9}" y1="${y}" x2="${x + 11}" y2="${y}" stroke="#2A313A" stroke-width="6" stroke-dasharray="2 5"/>`); }, 'sleeve softening, post-breach');
 sym((x, y) => { add(`<rect x="${x - 9}" y="${y - 8}" width="20" height="16" fill="#05070A" stroke="#3A424D"/>`); }, 'Void: nothing charted');
 sym((x, y) => { add(`<rect x="${x - 9}" y="${y - 8}" width="20" height="16" fill="url(#synod)" stroke="#3A424D"/>`); }, 'Obsidian Synod territory');
@@ -411,6 +417,8 @@ ly += rows.length * rowH + 6;
 add(`<text class="small" x="${LX}" y="${ly + 6}">outer edge: void margins, Lattice Gap</text>`);
 ly += 18;
 add(`<text class="small" x="${LX}" y="${ly + 6}">— = unnamed in canon; no figure given</text>`);
+ly += 18;
+add(`<text class="small" x="${LX}" y="${ly + 6}">Halix, Skather-Ait: one shared sleeve, unnumbered</text>`);
 ly += 34;
 
 // Density profile along the radius: soundings against the sketch's radii.
@@ -419,7 +427,7 @@ const gx = LX + 30, gy = ly + 8, gw = W - LX - 80, gh = 150;
 add(`<rect x="${gx}" y="${gy}" width="${gw}" height="${gh}" fill="none" stroke="#2A313A"/>`);
 const gX = (r) => gx + (r / 1.2) * gw, gY = (d) => gy + gh - d * gh;
 add(`<polyline points="${PROFILE.map(([r, d]) => `${f(gX(r))},${f(gY(d))}`).join(' ')}" fill="none" stroke="#A8AEB6" stroke-dasharray="3 3" stroke-width="1"/>`);
-const marks = [[0.06, 0.97, 'Core'], [0.165, 0.82, 'Heavonly*'], [0.4, 0.65, 'Drift'], [0.46, 0.78, 'Vault'], [0.545, 0.56, 'Halix*'], [0.76, 0.31, 'Gap'], [0.725, 0.30, ''], [0.83, 0.04, 'Seas'], [1.09, 0.015, ''], [1.1, 0.01, 'Horizon']];
+const marks = [[0.06, 0.97, 'Core'], [0.135, 0.82, 'Heavonly*'], [0.37, 0.65, 'Drift'], [0.45, 0.78, 'Vault'], [0.535, 0.56, 'Halix*'], [0.76, 0.31, 'Gap'], [0.725, 0.30, ''], [0.83, 0.04, 'Seas'], [1.09, 0.015, ''], [1.1, 0.01, 'Horizon']];
 for (const [r, d, name] of marks) {
   add(`<circle cx="${f(gX(r))}" cy="${f(gY(d))}" r="3.2" fill="#E8A856"/>`);
   if (name) add(`<text class="mono" font-size="10.5" x="${f(gX(r) + 5)}" y="${f(gY(d) - 5)}">${name}</text>`);

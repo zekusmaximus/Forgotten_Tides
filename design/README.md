@@ -8,5 +8,5 @@
 
 The atlas map's [cartographic brief](map/CARTOGRAPHIC_BRIEF.md) records the
 accepted map decisions and the spatial claims they approve. The
-[layout sketch](map/layout_sketch_v0.svg) shows the resulting layout for
+[layout sketch](map/layout_sketch_v1.svg) shows the resulting layout for
 review.

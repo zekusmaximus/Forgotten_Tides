@@ -707,9 +707,9 @@ Each phase ends in a commit on a `feat/map/...` branch and a green
   and the decisions in section 9.
 - **Done when** the author has answered decisions 1–6 or deferred them
   explicitly.
-- **Status (2026-10-29):** The brief and `design/map/layout_sketch_v0.svg`
-  are written, and decisions 1–10 are accepted. The brief's second-pass
-  questions (section 8, Q1–Q21) are open.
+- **Status (2026-10-29):** The brief and the sketch (now
+  `design/map/layout_sketch_v1.svg`) are written. Decisions D1–D10 and the
+  second-pass decisions Q1–Q21 are accepted.
 
 ### Phase 0b — Canon and draft alignment (one to two sessions)
 
