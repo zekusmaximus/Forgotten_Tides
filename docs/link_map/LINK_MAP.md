@@ -1,6 +1,6 @@
 # Link Map - Entity Relationships
 
-Generated: 2026-10-29T04:35:56.629Z
+Generated: 2026-10-29T04:42:31.095Z
 
 ## Entities (172)
 
@@ -30,7 +30,7 @@ Generated: 2026-10-29T04:35:56.629Z
 - `char-0024` (character, speculative, weight 60)
 - `char-0025` (character, speculative, weight 60)
 - `char-0026` (character, primary_canon, weight 110)
-- `char-0027` (character, speculative, weight 60)
+- `char-0027` (character, primary_canon, weight 110)
 - `char-0028` (character, primary_canon, weight 110)
 - `char-0029` (character, primary_canon, weight 110)
 - `char-0030` (character, primary_canon, weight 110)
@@ -353,12 +353,12 @@ Generated: 2026-10-29T04:35:56.629Z
 - `char-0026` → `story-0004` (stories; cross_refs, references)
 - `char-0026` → `story-0021` (stories; cross_refs)
 - `char-0027` → `char-0026` (characters; cross_refs, references)
-- `char-0027` → `fact-0004` (factions; cross_refs, references)
-- `char-0027` → `loc-0008` (locations; cross_refs, references)
+- `char-0027` → `fact-0004` (factions; cross_refs)
+- `char-0027` → `loc-0008` (locations; cross_refs)
 - `char-0027` → `loc-0015` (locations; cross_refs, references)
 - `char-0027` → `mech-0001` (mechanics; cross_refs, references)
 - `char-0027` → `story-0004` (stories; cross_refs, references)
-- `char-0027` → `story-0021` (stories; cross_refs, references)
+- `char-0027` → `story-0021` (stories; cross_refs)
 - `char-0028` → `char-0010` (characters; cross_refs, references)
 - `char-0028` → `char-0017` (characters; cross_refs, references)
 - `char-0028` → `char-0029` (characters; cross_refs, references)
@@ -971,6 +971,6 @@ _none_
 - **Total Relationships**: 781
 - **Orphaned Targets**: 0
 - **Entity Types**: character, event, faction, location, lore, mechanics, story, term
-- **Primary / Working Canon**: 96
+- **Primary / Working Canon**: 97
 - **Draft Entities**: 43
 - **Test / Sandbox / Deprecated Entities**: 7

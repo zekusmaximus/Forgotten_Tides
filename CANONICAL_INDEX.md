@@ -1,6 +1,6 @@
 # Canonical Index
 
-This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-10-29T04:35:56.629Z
+This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-10-29T04:42:31.095Z
 
 ## Character
 - `char-0001` — Rell (`characters/Rell.md`)
@@ -202,6 +202,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `char-0017` - Elior Ren (character, primary_canon, weight 110, `characters/Elior_Ren.md`)
 - `char-0019` - Tess Vlin (character, primary_canon, weight 110, `characters/Tess_Vlin.md`)
 - `char-0026` - Yenu Skather-Ait (character, primary_canon, weight 110, `characters/Yenu_Skather-Ait.md`)
+- `char-0027` - Hol-Vren (character, primary_canon, weight 110, `characters/Hol-Vren.md`)
 - `char-0028` - Ilka Marsk (character, primary_canon, weight 110, `characters/Ilka_Marsk.md`)
 - `char-0029` - Hael (character, primary_canon, weight 110, `characters/Hael.md`)
 - `char-0030` - Jory Fenn (character, primary_canon, weight 110, `characters/Jory_Fenn.md`)
@@ -353,7 +354,6 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `char-0023` - Nim Orra (character, speculative, weight 60, `characters/Nim_Orra.md`)
 - `char-0024` - Yaret Ivo-Senn (character, speculative, weight 60, `characters/Yaret_Ivo-Senn.md`)
 - `char-0025` - Toma Vey (character, speculative, weight 60, `characters/Toma_Vey.md`)
-- `char-0027` - Hol-Vren (character, speculative, weight 60, `characters/Hol-Vren.md`)
 - `char-0031` - Aurel Ket (character, speculative, weight 60, `characters/Aurel_Ket.md`)
 - `loc-0002` - Ostra-Vael (location, speculative, weight 60, `atlas/Ostra-Vael.md`)
 - `loc-0009` - Ebbhaven (location, speculative, weight 60, `atlas/Ebbhaven.md`)
