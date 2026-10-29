@@ -1,6 +1,6 @@
 # Link Map - Entity Relationships
 
-Generated: 2026-10-29T04:28:59.718Z
+Generated: 2026-10-29T04:32:40.907Z
 
 ## Entities (172)
 
@@ -22,7 +22,7 @@ Generated: 2026-10-29T04:28:59.718Z
 - `char-0016` (character, primary_canon, weight 110)
 - `char-0017` (character, primary_canon, weight 110)
 - `char-0018` (character, speculative, weight 60)
-- `char-0019` (character, speculative, weight 60)
+- `char-0019` (character, primary_canon, weight 110)
 - `char-0020` (character, speculative, weight 60)
 - `char-0021` (character, speculative, weight 60)
 - `char-0022` (character, speculative, weight 60)
@@ -177,7 +177,7 @@ Generated: 2026-10-29T04:28:59.718Z
 - `term-0031` (term, primary_canon, weight 110)
 - `term-0032` (term, primary_canon, weight 110)
 
-## Relationships (777)
+## Relationships (780)
 
 - `char-0001` → `char-0002` (characters; cross_refs, references)
 - `char-0001` → `char-0003` (characters; cross_refs, references)
@@ -287,13 +287,16 @@ Generated: 2026-10-29T04:28:59.718Z
 - `char-0018` → `mech-0001` (mechanics; cross_refs, references)
 - `char-0018` → `story-0001` (stories; cross_refs, references)
 - `char-0018` → `story-0014` (stories; cross_refs, references)
-- `char-0019` → `fact-0003` (factions; cross_refs, references)
-- `char-0019` → `fact-0004` (factions; cross_refs, references)
-- `char-0019` → `loc-0008` (locations; cross_refs, references)
+- `char-0019` → `char-0026` (characters; cross_refs)
+- `char-0019` → `char-0031` (characters; cross_refs)
+- `char-0019` → `fact-0003` (factions; cross_refs)
+- `char-0019` → `fact-0004` (factions; cross_refs)
+- `char-0019` → `loc-0008` (locations; cross_refs)
 - `char-0019` → `loc-0013` (locations; cross_refs, references)
 - `char-0019` → `mech-0001` (mechanics; cross_refs, references)
 - `char-0019` → `story-0004` (stories; cross_refs, references)
-- `char-0019` → `story-0015` (stories; cross_refs, references)
+- `char-0019` → `story-0015` (stories; cross_refs)
+- `char-0019` → `story-0021` (stories; cross_refs)
 - `char-0020` → `char-0018` (characters; cross_refs, references)
 - `char-0020` → `fact-0002` (factions; cross_refs, references)
 - `char-0020` → `fact-0007` (factions; cross_refs, references)
@@ -964,9 +967,9 @@ _none_
 ## Statistics
 
 - **Total Entities**: 172
-- **Total Relationships**: 777
+- **Total Relationships**: 780
 - **Orphaned Targets**: 0
 - **Entity Types**: character, event, faction, location, lore, mechanics, story, term
-- **Primary / Working Canon**: 94
+- **Primary / Working Canon**: 95
 - **Draft Entities**: 43
 - **Test / Sandbox / Deprecated Entities**: 7

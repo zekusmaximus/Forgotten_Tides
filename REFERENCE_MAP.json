@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-29T04:28:59.718Z",
+  "generated": "2026-10-29T04:32:40.907Z",
   "nodes": [
     {
       "canonical_id": "char-0001",
@@ -168,9 +168,9 @@
       "type": "character",
       "name": "Tess Vlin",
       "path": "characters/Tess_Vlin.md",
-      "canon_tier": "speculative",
-      "source_weight": 60,
-      "retrieval_role": "exploratory"
+      "canon_tier": "primary_canon",
+      "source_weight": 110,
+      "retrieval_role": "authoritative"
     },
     {
       "canonical_id": "char-0020",
@@ -2524,11 +2524,26 @@
     },
     {
       "from": "char-0019",
+      "to": "char-0026",
+      "type": "characters",
+      "fields": [
+        "cross_refs"
+      ]
+    },
+    {
+      "from": "char-0019",
+      "to": "char-0031",
+      "type": "characters",
+      "fields": [
+        "cross_refs"
+      ]
+    },
+    {
+      "from": "char-0019",
       "to": "fact-0003",
       "type": "factions",
       "fields": [
-        "cross_refs",
-        "references"
+        "cross_refs"
       ]
     },
     {
@@ -2536,8 +2551,7 @@
       "to": "fact-0004",
       "type": "factions",
       "fields": [
-        "cross_refs",
-        "references"
+        "cross_refs"
       ]
     },
     {
@@ -2545,8 +2559,7 @@
       "to": "loc-0008",
       "type": "locations",
       "fields": [
-        "cross_refs",
-        "references"
+        "cross_refs"
       ]
     },
     {
@@ -2581,8 +2594,15 @@
       "to": "story-0015",
       "type": "stories",
       "fields": [
-        "cross_refs",
-        "references"
+        "cross_refs"
+      ]
+    },
+    {
+      "from": "char-0019",
+      "to": "story-0021",
+      "type": "stories",
+      "fields": [
+        "cross_refs"
       ]
     },
     {

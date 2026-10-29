@@ -1,6 +1,6 @@
 # Canonical Index
 
-This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-10-29T04:28:59.718Z
+This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-10-29T04:32:40.907Z
 
 ## Character
 - `char-0001` — Rell (`characters/Rell.md`)
@@ -200,6 +200,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `char-0010` - Inya Solven (character, primary_canon, weight 110, `characters/Inya_Solven.md`)
 - `char-0016` - Nara Oss (character, primary_canon, weight 110, `characters/Nara_Oss.md`)
 - `char-0017` - Elior Ren (character, primary_canon, weight 110, `characters/Elior_Ren.md`)
+- `char-0019` - Tess Vlin (character, primary_canon, weight 110, `characters/Tess_Vlin.md`)
 - `char-0028` - Ilka Marsk (character, primary_canon, weight 110, `characters/Ilka_Marsk.md`)
 - `char-0029` - Hael (character, primary_canon, weight 110, `characters/Hael.md`)
 - `char-0030` - Jory Fenn (character, primary_canon, weight 110, `characters/Jory_Fenn.md`)
@@ -345,7 +346,6 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `char-0014` - Sera Venn (character, speculative, weight 60, `characters/Sera_Venn.md`)
 - `char-0015` - Oren Vale (character, speculative, weight 60, `characters/Oren_Vale.md`)
 - `char-0018` - Mael Ivar (character, speculative, weight 60, `characters/Mael_Ivar.md`)
-- `char-0019` - Tess Vlin (character, speculative, weight 60, `characters/Tess_Vlin.md`)
 - `char-0020` - Nessa Iral (character, speculative, weight 60, `characters/Nessa_Iral.md`)
 - `char-0021` - Corin Tave (character, speculative, weight 60, `characters/Corin_Tave.md`)
 - `char-0022` - Lysa Korr (character, speculative, weight 60, `characters/Lysa_Korr.md`)
