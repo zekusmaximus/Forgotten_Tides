@@ -10,6 +10,12 @@ const os = require('os');
 const path = require('path');
 const sharp = require('sharp');
 
+// libvips caches open input files; on Windows an open file cannot be
+// deleted, so read tiles into memory and keep the cache off.
+sharp.cache(false);
+const readTile = file => sharp(fs.readFileSync(file));
+const removeDir = dir => fs.rmSync(dir, { recursive: true, force: true, maxRetries: 5, retryDelay: 100 });
+
 const { renderTiles, pyramid } = require('../map/render_tiles');
 const layout = require('../map/layout');
 const { toXY } = require('../map/geometry');
@@ -32,7 +38,7 @@ async function pixelAt(dir, size, xy) {
   const u = Math.floor(((xy[0] + extent) / (2 * extent)) * top.dim);
   const v = Math.floor(((extent - xy[1]) / (2 * extent)) * top.dim);
   const file = path.join(dir, 'galaxy_files', String(top.level), `${Math.floor(u / 256)}_${Math.floor(v / 256)}.webp`);
-  const { data, info } = await sharp(file).raw().toBuffer({ resolveWithObject: true });
+  const { data, info } = await readTile(file).raw().toBuffer({ resolveWithObject: true });
   const k = ((v % 256) * info.width + (u % 256)) * info.channels;
   return [data[k], data[k + 1], data[k + 2]];
 }
@@ -58,7 +64,7 @@ async function pixelAt(dir, size, xy) {
       const dzi = fs.readFileSync(path.join(first, 'galaxy.dzi'), 'utf8');
       assert.match(dzi, /TileSize="256"/);
       assert.match(dzi, /<Size Width="1024" Height="1024"\/>/);
-      const meta = await sharp(path.join(first, 'galaxy_files', '10', '3_3.webp')).metadata();
+      const meta = await readTile(path.join(first, 'galaxy_files', '10', '3_3.webp')).metadata();
       assert.deepEqual([meta.width, meta.height], [256, 256]);
       assert(!fs.existsSync(path.join(first, 'galaxy_files.partial')), 'staging directory removed');
     });
@@ -97,7 +103,7 @@ async function pixelAt(dir, size, xy) {
       assert(fs.existsSync(path.join(first, 'galaxy_files', '10', '0_0.webp')), 'the earlier render is untouched');
     });
   } finally {
-    for (const dir of [first, second, third]) fs.rmSync(dir, { recursive: true, force: true });
+    for (const dir of [first, second, third]) removeDir(dir);
   }
   if (process.exitCode) console.error('\nMap render tests: failures above');
   else console.log('\nMap render tests: all passed');
