@@ -1,8 +1,8 @@
 # Link Map - Entity Relationships
 
-Generated: 2026-10-29T14:11:31.781Z
+Generated: 2026-10-29T18:26:25.824Z
 
-## Entities (174)
+## Entities (175)
 
 - `char-0001` (character, primary_canon, weight 110)
 - `char-0002` (character, primary_canon, weight 110)
@@ -83,6 +83,7 @@ Generated: 2026-10-29T14:11:31.781Z
 - `loc-0013` (location, primary_canon, weight 110)
 - `loc-0014` (location, speculative, weight 60)
 - `loc-0015` (location, primary_canon, weight 110)
+- `loc-0016` (location, speculative, weight 60)
 - `lore-0001` (lore, working_canon, weight 95)
 - `lore-0002` (lore, working_canon, weight 95)
 - `lore-0003` (lore, working_canon, weight 95)
@@ -179,7 +180,7 @@ Generated: 2026-10-29T14:11:31.781Z
 - `term-0033` (term, draft, weight 65)
 - `term-0034` (term, draft, weight 65)
 
-## Relationships (796)
+## Relationships (808)
 
 - `char-0001` → `char-0002` (characters; cross_refs, references)
 - `char-0001` → `char-0003` (characters; cross_refs, references)
@@ -311,6 +312,7 @@ Generated: 2026-10-29T14:11:31.781Z
 - `char-0021` → `fact-0001` (factions; cross_refs, references)
 - `char-0021` → `fact-0002` (factions; cross_refs, references)
 - `char-0021` → `loc-0008` (locations; cross_refs, references)
+- `char-0021` → `loc-0016` (locations; cross_refs, references)
 - `char-0021` → `mech-0001` (mechanics; cross_refs, references)
 - `char-0021` → `mech-0002` (mechanics; cross_refs, references)
 - `char-0021` → `mech-0003` (mechanics; cross_refs, references)
@@ -320,6 +322,7 @@ Generated: 2026-10-29T14:11:31.781Z
 - `char-0022` → `fact-0001` (factions; cross_refs, references)
 - `char-0022` → `fact-0002` (factions; cross_refs, references)
 - `char-0022` → `loc-0008` (locations; cross_refs, references)
+- `char-0022` → `loc-0016` (locations; cross_refs, references)
 - `char-0022` → `mech-0001` (mechanics; cross_refs, references)
 - `char-0022` → `mech-0002` (mechanics; cross_refs, references)
 - `char-0022` → `mech-0003` (mechanics; cross_refs, references)
@@ -696,6 +699,15 @@ Generated: 2026-10-29T14:11:31.781Z
 - `loc-0015` → `mech-0001` (mechanics; cross_refs, references)
 - `loc-0015` → `story-0004` (stories; cross_refs, references)
 - `loc-0015` → `story-0021` (stories; cross_refs)
+- `loc-0016` → `char-0021` (characters; cross_refs, references)
+- `loc-0016` → `char-0022` (characters; cross_refs, references)
+- `loc-0016` → `fact-0001` (factions; cross_refs, references)
+- `loc-0016` → `fact-0002` (factions; cross_refs, references)
+- `loc-0016` → `loc-0008` (locations; cross_refs, references)
+- `loc-0016` → `mech-0001` (mechanics; cross_refs, references)
+- `loc-0016` → `mech-0002` (mechanics; cross_refs, references)
+- `loc-0016` → `mech-0003` (mechanics; cross_refs, references)
+- `loc-0016` → `story-0017` (stories; cross_refs, references)
 - `lore-0003` → `fact-0002` (factions; cross_refs)
 - `lore-0003` → `fact-0005` (factions; cross_refs)
 - `lore-0003` → `loc-0011` (locations; cross_refs)
@@ -827,6 +839,7 @@ Generated: 2026-10-29T14:11:31.781Z
 - `story-0017` → `fact-0001` (factions; cross_refs, references)
 - `story-0017` → `fact-0002` (factions; cross_refs, references)
 - `story-0017` → `loc-0008` (locations; cross_refs, references)
+- `story-0017` → `loc-0016` (locations; cross_refs, references)
 - `story-0017` → `mech-0001` (mechanics; cross_refs, references)
 - `story-0017` → `mech-0002` (mechanics; cross_refs, references)
 - `story-0017` → `mech-0003` (mechanics; cross_refs, references)
@@ -984,8 +997,8 @@ _none_
 
 ## Statistics
 
-- **Total Entities**: 174
-- **Total Relationships**: 796
+- **Total Entities**: 175
+- **Total Relationships**: 808
 - **Orphaned Targets**: 0
 - **Entity Types**: character, event, faction, location, lore, mechanics, story, term
 - **Primary / Working Canon**: 101
