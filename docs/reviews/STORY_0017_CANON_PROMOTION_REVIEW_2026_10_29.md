@@ -1,12 +1,13 @@
 # Canon Promotion Review: The Loss Ledger
 
-**Current checkpoint:** The author approved all three recommended revision
-scopes on October 29, 2026. They are implemented below in section 10. The
-revised story scores **62/70**, with hard gates passing and no remaining
-manuscript blocker identified. This is a readiness finding, not promotion.
-Story-0017 and its five local events remain draft; Corin, Lysa, and the new
-H-37 chart profile remain speculative. Sections 1-9 preserve the original
-40/70 review at `8acded9`; those findings are historical after the revision.
+**Current checkpoint:** On October 29, 2026, the author approved promotion of
+the revised story merged in PR #50 at `05d7560`, following its **62/70**
+readiness finding. Story-0017 and its five local events now carry
+`primary_canon` on the promotion branch; the story is `canonical` and
+`authoritative`. The approved prose is unchanged. Corin, Lysa, and H-37 remain
+speculative pending separate claim approval. Sections 1-9 preserve the
+original review, section 10 records the revision/readiness checkpoint, and
+section 11 records this promotion.
 
 ## 1. Scope and baseline
 
@@ -648,3 +649,80 @@ unresolved childhood-visit conflict remain untouched. The PR contains only
 the approved story-0017 revision, its two provisional profile corrections,
 the new provisional chart artifact, this review checkpoint, and generated
 maps. The author will merge; no merge or promotion is performed here.
+
+## 11. Author approval and promotion — October 29, 2026
+
+After PR #50 merged the approved revision as `05d7560`, the author directed
+**“Promote.”** This approves the revised story and its established local
+outcomes, not a further prose revision or automatic profile promotion.
+
+### Promotion and body preservation
+
+Current main was fetched at `05d756032ecac9454820ddbb51c5400196fb092f` into
+`canon/stories/promote-story-0017`, preserving a clean workspace. `npm ci`
+and the full baseline `npm run validate:ci` passed. Promotion dry-run
+preflight found only primary story-0001 as a story prerequisite and no
+unapproved shared-event prerequisite.
+
+`npm run promote:story -- --id story-0017` changed the manuscript's
+`canon_tier` to `primary_canon`, both statuses to `canonical`, retrieval role
+to `authoritative`, the modification timestamp, and all five local event
+tiers to `primary_canon`. The five existing IDs and timestamps are retained.
+The story's count is still **4464 words**. Its complete body is byte-identical
+to the approved revision at `05d7560`; SHA-256 remains
+`4e985f0c7594bf261b3a7ee622f7b7473509a6e272ec36c09268b5dbe36f12c9`.
+
+The approved story establishes documentary evidence of Lysa's hidden burn,
+the fifteen/eleven/reconstructed-ten history with the final reported nine
+still untrusted, Corin's witnessed correction, H-37's local suspension and
+medical triage, and personnel review. Recertification remains pending.
+It establishes neither forensic anchor residue nor a corridor running on a
+dead pilot's spent memory. Descriptions and records cannot restore the
+burned experience; they are not universally erased by the burn.
+
+### Manual checklist and source-first boundaries
+
+- Corin (`char-0021`), Lysa (`char-0022`), and H-37 (`loc-0016`) retain
+  `metadata.status: speculative`. Their source story is approved, but their
+  full profiles still require separate claim-by-claim approval under
+  `docs/governance/source_first_approvals.md`. Their wording is unchanged.
+- Manual source/first-appearance/related-term searches found no lexicon term
+  introduced by this story and no hidden lexicon promotion prerequisite.
+- All five event IDs occur only in this manuscript. No other work references
+  an individual ID, so none needs a new shared timeline entry. The five
+  events remain local; `data/timeline/events.yaml` is unchanged.
+- The story list now records the primary/canonical state. Historical draft
+  findings in this and earlier reports keep their original dated context.
+- Story-0021's single source-label note now recognizes primary story-0017
+  alongside its other primary sources. Its own outcomes remain provisional.
+  Its body is byte-identical to main, SHA-256
+  `f336984b4829b66fcc4bbaf671cc6f3155154ce0574ba1f8272dc79bf8bf4c0f`.
+  Its draft status, local draft events, rendering, transport, repair, and
+  unresolved childhood Halix-visit conflict are unchanged and unapproved.
+- The impact report finds four direct dependents (the three speculative
+  profiles and draft story-0021), with no transitive dependents. Promotion
+  does not approve additional claims in any of them.
+- No story-0004/story-0015 decision or prose changes. Their local events,
+  Light-Bequest's broad scope, the local stone/frame limits, unverified
+  promises and booth rumor, and pending Tess/Halix profile claims are intact.
+
+### Verification and PR
+
+The regenerated graph contains **175 entities, 808 edges, and zero orphaned
+targets**. Story-0017 resolves to `primary_canon` and `authoritative`, while
+its three provisional profiles remain speculative. Manuscript-body and
+event-locality checks pass. Promotion is prepared as a PR; no merge is
+implied by this approval checkpoint.
+
+Pre-commit `npm run lint`, `npm run check`, and every `npm run test:*` script
+pass. Continuity and timeline report zero hard failures and zero soft
+warnings. Existing nonblocking advisories remain 21 schema warnings, 976
+glossary candidates, and the two draft red-line warnings in stories 0005 and
+0007. An independent promotion audit confirms body preservation, local
+events, unchanged provisional profiles, and the single source-label change
+in draft 0021. No blocker was found.
+
+After committing the generated artifacts, the complete
+`npm run validate:ci` suite also passes. `git diff --check` is clean. The
+promotion commit and this final verification record are pushed for PR
+review; remote check results are available on that PR.
