@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-29T04:45:23.424Z",
+  "generated": "2026-10-29T04:48:57.308Z",
   "nodes": [
     {
       "canonical_id": "char-0001",
@@ -690,9 +690,9 @@
       "type": "location",
       "name": "Halix Exchange",
       "path": "atlas/Halix_Exchange.md",
-      "canon_tier": "speculative",
-      "source_weight": 60,
-      "retrieval_role": "exploratory"
+      "canon_tier": "primary_canon",
+      "source_weight": 110,
+      "retrieval_role": "authoritative"
     },
     {
       "canonical_id": "loc-0014",
@@ -5803,11 +5803,26 @@
     },
     {
       "from": "loc-0013",
+      "to": "char-0026",
+      "type": "characters",
+      "fields": [
+        "cross_refs"
+      ]
+    },
+    {
+      "from": "loc-0013",
+      "to": "char-0031",
+      "type": "characters",
+      "fields": [
+        "cross_refs"
+      ]
+    },
+    {
+      "from": "loc-0013",
       "to": "fact-0003",
       "type": "factions",
       "fields": [
-        "cross_refs",
-        "references"
+        "cross_refs"
       ]
     },
     {
@@ -5815,8 +5830,7 @@
       "to": "fact-0004",
       "type": "factions",
       "fields": [
-        "cross_refs",
-        "references"
+        "cross_refs"
       ]
     },
     {
@@ -5826,6 +5840,14 @@
       "fields": [
         "cross_refs",
         "references"
+      ]
+    },
+    {
+      "from": "loc-0013",
+      "to": "loc-0015",
+      "type": "locations",
+      "fields": [
+        "cross_refs"
       ]
     },
     {
@@ -5842,8 +5864,7 @@
       "to": "story-0003",
       "type": "stories",
       "fields": [
-        "cross_refs",
-        "references"
+        "cross_refs"
       ]
     },
     {
@@ -5858,6 +5879,30 @@
     {
       "from": "loc-0013",
       "to": "story-0015",
+      "type": "stories",
+      "fields": [
+        "cross_refs"
+      ]
+    },
+    {
+      "from": "loc-0013",
+      "to": "story-0019",
+      "type": "stories",
+      "fields": [
+        "cross_refs"
+      ]
+    },
+    {
+      "from": "loc-0013",
+      "to": "story-0021",
+      "type": "stories",
+      "fields": [
+        "cross_refs"
+      ]
+    },
+    {
+      "from": "loc-0013",
+      "to": "story-0022",
       "type": "stories",
       "fields": [
         "cross_refs",
