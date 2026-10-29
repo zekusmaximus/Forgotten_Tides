@@ -44,6 +44,7 @@ function disc({ radius, r = 0, theta = 0 }) {
 // An annulus around the chart origin. Its probe sits at the mid radius,
 // straight up the chart, where no overlay region is placed.
 function annulus({ inner, outer }) {
+  if (!(outer > inner)) throw new Error(`annulus outer (${outer}) must exceed inner (${inner})`);
   return {
     type: 'annulus',
     inner,
@@ -65,8 +66,10 @@ function annulus({ inner, outer }) {
 // line. `clip` limits it to a radial band while keeping the parent's center
 // line and taper, which is how a rift's named sleeves are drawn.
 function rift({ r0, r1, theta0, theta1, half0, half1, taper = 1 }, clip = null) {
+  if (!(r1 > r0)) throw new Error(`rift r1 (${r1}) must exceed r0 (${r0})`);
   const lo = clip ? clip[0] : r0;
   const hi = clip ? clip[1] : r1;
+  if (!(hi > lo)) throw new Error(`rift band end (${hi}) must exceed its start (${lo})`);
   const at = r => {
     const t = Math.max(0, (r - r0) / (r1 - r0));
     return {

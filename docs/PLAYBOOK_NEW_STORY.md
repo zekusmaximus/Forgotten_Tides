@@ -301,7 +301,7 @@ The tool changes, in one pass:
 
 It then prints a **manual checklist** of what it will not decide for you:
 - Referenced entity files (`characters/`, `atlas/`, `factions/`) whose `metadata.status` is not `canonical`. Review each profile claim against the approved manuscript before changing its status. Leave unsupported claims provisional or separate them from the approved profile.
-- When a location becomes canonical, it needs a placement in `design/map/cartography.yaml`, or `npm run lint:map` (part of `validate:ci`) fails. Cite the claims in `design/map/CARTOGRAPHIC_BRIEF.md` §4 that place it. If the placement asserts new topology, add a claim row with the author's approval first. Name every placement change on the PR's Canon Impact line.
+- When a location becomes canonical, it needs a placement in `design/map/cartography.yaml`, or `npm run lint:map` (part of `validate:ci`) fails. Artifacts are exempt; they have no fixed position. Cite the claims in `design/map/CARTOGRAPHIC_BRIEF.md` §4 that place it. If the placement asserts new topology, add a claim row with the author's approval first. Name every placement change on the PR's Canon Impact line.
 - Lexicon terms the story introduced (`first_appearance` matches the title) whose `status` is not `canonical`. Review each definition separately before changing its status; story approval alone does not approve the term.
 - Lines in entity, lore, and docs files that name the story next to the word "draft". Read each and reword the ones that describe the story's tier.
 - Manuscript `events[]` ids with no entry in `data/timeline/events.yaml`. The tool edits existing timeline entries only; add shared events by hand (see `data/timeline/events.yaml` for the shape).

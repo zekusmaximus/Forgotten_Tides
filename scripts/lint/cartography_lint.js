@@ -9,16 +9,24 @@
  * - Every placement names a real atlas location, once; region placements are
  *   `location_type: region`.
  * - Every primary- or working-canon location is placed (error); an unplaced
- *   speculative location is a warning.
+ *   speculative or draft location is a warning. Artifacts have no fixed
+ *   position and are exempt, as are deprecated, sandbox, and test entries.
  * - Every claim and rule cited exists in the brief's register, and every
  *   source file, line, and timeline anchor exists.
  * - A site lies inside (or, with `relation: boundary`, on the edge of) the
  *   region or band its atlas `coordinates.region` names, and sits at its
  *   declared band position.
- * - Density fidelity: the field reproduces each location's locked
- *   `memory_density` within 0.02 at every probe and site.
- * - A `canon` feature or route cites a primary- or working-canon source;
- *   `approved` ones cite a claim; `cartographic` ones cite a drawing rule.
+ * - Density fidelity: the field reproduces each region's locked
+ *   `memory_density` within 0.02 at its probes, and no non-finite value
+ *   passes. A site with a density pulls the field to its own value by design
+ *   (sites may peak above their surroundings), so at sites this only guards
+ *   against overlapping kernels; a site's placement is checked by
+ *   containment.
+ * - A `canon` feature or route cites a primary- or working-canon source from
+ *   a canon content root (docs and design files never count); `approved`
+ *   ones cite a claim; `cartographic` ones cite a drawing rule.
+ * - Feature positions lie within their region; `along` references resolve;
+ *   route paths start at `from` and end at `to`; a route's story exists.
  * - Every listed relation (touches, disjoint, near) holds.
  *
  * Usage: node scripts/lint/cartography_lint.js [--root <dir>] [--json]
@@ -37,9 +45,24 @@ const SCHEMA_PATH = path.join(__dirname, '../../docs/schemas/cartography.schema.
 const EDGE_TOLERANCE = 0.01;
 const POSITION_TOLERANCE = 0.006;
 const FIDELITY_TOLERANCE = 0.02;
+const CONTENT_ROOTS = [
+  'atlas/', 'bible/', 'characters/', 'data/lexicon/', 'data/timeline/',
+  'factions/', 'lore/', 'manuals/', 'mechanics/', 'stories/'
+];
+const UNPLACED_EXEMPT_TIERS = new Set(['deprecated', 'sandbox', 'test']);
+
+// Only content files carry canon; plans, briefs, sketches, and tooling do not.
+function sourceTier(file, meta) {
+  return CONTENT_ROOTS.some(root => file.startsWith(root)) ? inferCanonTier(meta, file) : 'reference';
+}
+
+function lineCount(raw) {
+  if (!raw) return 0;
+  return raw.split(/\r?\n/).length - (/\r?\n$/.test(raw) ? 1 : 0);
+}
 
 function parseSource(source) {
-  const match = /^([^:#\s]+)(?::(\d+)(?:-(\d+))?|#([A-Za-z0-9_-]+))?$/.exec(String(source));
+  const match = /^([^:#\s]+)(?::([1-9]\d*)(?:-([1-9]\d*))?|#([A-Za-z0-9_-]+))?$/.exec(String(source));
   if (!match) return null;
   return {
     file: match[1],
@@ -62,7 +85,7 @@ function resolveSource(root, source, cache) {
       result = { error: `source file ${parsed.file} does not exist` };
     } else {
       const raw = fs.readFileSync(full, 'utf8');
-      const lines = raw.split(/\r?\n/).length;
+      const lines = lineCount(raw);
       if (parsed.end !== null && (parsed.end > lines || parsed.start > parsed.end)) {
         result = { error: `source ${source} cites lines beyond ${parsed.file} (${lines} lines)` };
       } else if (parsed.anchor) {
@@ -72,13 +95,13 @@ function resolveSource(root, source, cache) {
           const events = (yaml.load(raw) || {}).events || [];
           const event = events.find(entry => entry.id === parsed.anchor);
           result = event
-            ? { tier: event.canon_tier || 'working_canon' }
+            ? { tier: event.canon_tier || sourceTier(parsed.file, {}) }
             : { error: `source ${source}: no event ${parsed.anchor} in ${parsed.file}` };
         }
       } else if (parsed.file.endsWith('.md')) {
-        result = { tier: inferCanonTier(loadFrontmatter(full).data, parsed.file) };
+        result = { tier: sourceTier(parsed.file, loadFrontmatter(full).data) };
       } else {
-        result = { tier: inferCanonTier({}, parsed.file) };
+        result = { tier: sourceTier(parsed.file, {}) };
       }
     }
   }
@@ -152,7 +175,7 @@ function lintCartography({ root = layout.DEFAULT_ROOT } = {}) {
     }
   }
   for (const entity of atlas.values()) {
-    if (placed.has(entity.id)) continue;
+    if (placed.has(entity.id) || entity.location_type === 'artifact' || UNPLACED_EXEMPT_TIERS.has(entity.tier)) continue;
     const message = `${entity.id} (${entity.name}, ${entity.tier}) has no placement`;
     if (layout.CANON_TIERS.has(entity.tier)) error('', message);
     else warn('', message);
@@ -217,27 +240,34 @@ function lintCartography({ root = layout.DEFAULT_ROOT } = {}) {
     const [x, y] = points.get(site.id).xy;
     const depth = shapes.get(ref).depth(x, y);
     if (site.relation === 'boundary') {
-      if (Math.abs(depth) > EDGE_TOLERANCE) error(at, `should lie on the edge of ${ref} but is ${depth.toFixed(3)} from it`);
-    } else if (depth < -EDGE_TOLERANCE) {
+      if (!(Math.abs(depth) <= EDGE_TOLERANCE)) error(at, `should lie on the edge of ${ref} but is ${depth.toFixed(3)} from it`);
+    } else if (!(depth >= -EDGE_TOLERANCE)) {
       error(at, `lies outside ${ref}, which its atlas region "${entity.region}" names (${(-depth).toFixed(3)} outside)`);
     }
     const band = layout.findBand(cartography, ref);
     const position = site.band_position || (band && band.subbands ? 'mid' : null);
     if (band && position) {
       const target = { mid: (band.from + band.to) / 2, 'inner-edge': band.from, 'outer-edge': band.to }[position];
-      if (Math.abs(site.at.r - target) > POSITION_TOLERANCE) {
+      if (!(Math.abs(site.at.r - target) <= POSITION_TOLERANCE)) {
         error(at, `band_position ${position} puts it at r ${target}, but it is at r ${site.at.r}`);
       }
     }
   }
   for (const feature of features) {
-    if (!feature.within) continue;
     const at = `features[${feature.key}]`;
+    if (feature.along && !shapes.has(feature.along)) {
+      error(at, `along names ${feature.along}, which is not a placed region, band, or item`);
+    }
+    if (!feature.within) continue;
     if (!shapes.has(feature.within)) {
       error(at, `within names ${feature.within}, which is not a placed region, band, or item`);
-    } else if (feature.at) {
-      const [x, y] = points.get(feature.key).xy;
-      if (shapes.get(feature.within).depth(x, y) < -EDGE_TOLERANCE) error(at, `lies outside ${feature.within}`);
+      continue;
+    }
+    const shape = shapes.get(feature.within);
+    const spots = [...(feature.at ? [feature.at] : []), ...(feature.positions || [])];
+    for (const spot of spots) {
+      const [x, y] = toXY(spot.r, spot.theta);
+      if (!(shape.depth(x, y) >= -EDGE_TOLERANCE)) error(at, `point r ${spot.r}, theta ${spot.theta} lies outside ${feature.within}`);
     }
   }
 
@@ -251,7 +281,7 @@ function lintCartography({ root = layout.DEFAULT_ROOT } = {}) {
   }
   const check = (at, name, value, [x, y]) => {
     const got = map.field(x, y);
-    if (Math.abs(got - value) > FIDELITY_TOLERANCE) {
+    if (!(Math.abs(got - value) <= FIDELITY_TOLERANCE)) {
       error(at, `density fidelity: the field gives ${got.toFixed(3)} at ${name}, but the atlas value is ${value}`);
     }
   };
@@ -267,8 +297,20 @@ function lintCartography({ root = layout.DEFAULT_ROOT } = {}) {
   }
 
   // Routes.
+  const referenceMapPath = path.join(root, 'REFERENCE_MAP.json');
+  const storyIds = fs.existsSync(referenceMapPath)
+    ? new Set(JSON.parse(fs.readFileSync(referenceMapPath, 'utf8')).nodes.filter(n => n.type === 'story').map(n => n.canonical_id))
+    : null;
   for (const route of routes) {
     const at = `routes[${route.key}]`;
+    if (route.story && storyIds && !storyIds.has(route.story)) {
+      error(at, `story ${route.story} is not in REFERENCE_MAP.json; run npm run linkmap:build or fix the ID`);
+    }
+    if (route.path && route.from && points.has(route.from)) {
+      const [x, y] = toXY(route.path[0].r, route.path[0].theta);
+      const [fx, fy] = points.get(route.from).xy;
+      if (!(Math.hypot(fx - x, fy - y) <= EDGE_TOLERANCE)) error(at, `path does not start at ${route.from}`);
+    }
     for (const end of ['from', 'to']) {
       if (route[end] && !points.has(route[end])) error(at, `${end} names ${route[end]}, which is not a placed site or point feature`);
     }
@@ -276,14 +318,14 @@ function lintCartography({ root = layout.DEFAULT_ROOT } = {}) {
       const last = route.path[route.path.length - 1];
       const [x, y] = toXY(last.r, last.theta);
       const [tx, ty] = points.get(route.to).xy;
-      if (Math.hypot(tx - x, ty - y) > EDGE_TOLERANCE) error(at, `path does not end at ${route.to}`);
+      if (!(Math.hypot(tx - x, ty - y) <= EDGE_TOLERANCE)) error(at, `path does not end at ${route.to}`);
     }
     if (route.start_within) {
       if (!shapes.has(route.start_within)) {
         error(at, `start_within names ${route.start_within}, which is not a placed shape`);
       } else if (route.path) {
         const [x, y] = toXY(route.path[0].r, route.path[0].theta);
-        if (shapes.get(route.start_within).depth(x, y) < -EDGE_TOLERANCE) error(at, `path does not start inside ${route.start_within}`);
+        if (!(shapes.get(route.start_within).depth(x, y) >= -EDGE_TOLERANCE)) error(at, `path does not start inside ${route.start_within}`);
       }
     }
   }

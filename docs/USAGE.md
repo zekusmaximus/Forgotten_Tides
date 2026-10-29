@@ -159,11 +159,14 @@ npm run --silent lint:map -- --json       # findings as JSON
 these:
 
 - An unplaced primary- or working-canon location. An unplaced speculative
-  location is a warning.
+  location is a warning. Artifacts, which have no fixed position, are exempt.
 - A site outside the region or band its atlas `coordinates.region` names.
-- A field that misses a locked `memory_density` by more than 0.02.
+- A field that misses a region's locked `memory_density` by more than 0.02.
+  Sites pull the field to their own value by design, so a site's placement
+  is checked by containment instead.
 - A claim, rule, source line, or timeline anchor that does not exist.
-- A `canon` feature or route without a canon source.
+- A `canon` feature or route without a canon source. Docs, design, and
+  tooling files never count as canon sources.
 - A relation from the brief that no longer holds.
 
 `map:data` refuses to build while the lint reports errors. The public build

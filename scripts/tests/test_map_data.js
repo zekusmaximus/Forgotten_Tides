@@ -308,12 +308,42 @@ const DEFECTS = [
   ['a site off its band position', { cartography: c => { c.sites[0].at = { r: 0.58, theta: 300 }; c.routes = []; } }, 'band_position mid'],
   ['a field that misses a canon value', { cartography: c => { c.regions[3].shape.items[0].radius = 0.01; } }, 'density fidelity'],
   ['a relation that does not hold', { cartography: c => { c.relations.push({ type: 'touches', a: 'loc-9001', b: 'loc-9005', claims: ['T1'] }); } }, 'loc-9001 touches loc-9005 does not hold'],
-  ['a route path that misses its endpoint', { cartography: c => { c.routes[0].path = [{ r: 0.46, theta: 300 }, { r: 0.3, theta: 90 }]; } }, 'path does not end at relay']
+  ['a route path that misses its endpoint', { cartography: c => { c.routes[0].path = [{ r: 0.46, theta: 300 }, { r: 0.3, theta: 90 }]; } }, 'path does not end at relay'],
+  ['a route path that misses its origin', { cartography: c => { c.routes[0].path = [{ r: 0.2, theta: 120 }, { r: 0.2, theta: 90 }]; } }, 'path does not start at loc-9006'],
+  ['a route whose story is unknown', { cartography: c => { c.routes[0].story = 'story-9999'; } }, 'story story-9999 is not in REFERENCE_MAP.json'],
+  ['a canon feature citing only a design file', { cartography: c => { c.features[0].sources = ['design/map/CARTOGRAPHIC_BRIEF.md:3']; } }, 'cites no primary- or working-canon source'],
+  ['a source line past a trailing newline', { cartography: c => { c.features[0].sources = ['stories/short_story/canon_story/manuscript.md:7']; } }, 'cites lines beyond'],
+  ['a line-zero citation', { cartography: c => { c.features[0].sources = ['stories/short_story/canon_story/manuscript.md:0']; } }, 'must match pattern'],
+  ['a radial core that is not a disc', { cartography: c => { c.field.radial.core = 'loc-9002'; } }, 'field.radial.core loc-9002 must be a disc'],
+  ['a degenerate rift', { cartography: c => { c.regions[2].shape.r1 = 0.62; } }, 'rift r1 (0.62) must exceed r0 (0.62)'],
+  ['a texture position outside its region', { cartography: c => { c.features.push({ key: 'knots', label: 'Knots', kind: 'texture', tier: 'cartographic', within: 'loc-9005', rules: ['R1'], positions: [{ r: 0.5, theta: 12 }] }); } }, 'point r 0.5, theta 12 lies outside loc-9005'],
+  ['an along reference that does not resolve', { cartography: c => { c.features.push({ key: 'edge', label: 'Edge', kind: 'edge-line', tier: 'cartographic', along: 'loc-9099', rules: ['R1'] }); } }, 'along names loc-9099']
 ];
 
 for (const [name, mutate, fragment] of DEFECTS) {
   test(`the lint rejects ${name}`, () => expectError(lintWith(mutate), fragment));
 }
+
+test('an unplaced artifact is exempt from coverage', () => {
+  const report = lintWith({ atlas: a => { a['atlas/Relic.md'] = { id: 'loc-9010', name: 'Relic', type: 'artifact', status: 'canonical' }; } });
+  assert.strictEqual(report.errors, 0, JSON.stringify(report.findings, null, 2));
+  assert(!report.findings.some(f => f.message.includes('loc-9010')), 'no finding for the artifact');
+});
+
+test('the public build drops a route that ends at a draft point feature', () => {
+  const root = makeFixture({
+    cartography: c => {
+      c.features.push({ key: 'draft-post', label: 'Draft post', kind: 'facility', tier: 'draft', at: { r: 0.2, theta: 180 }, rules: ['R1'] });
+      c.routes.push({ key: 'to-draft-post', label: 'To draft post', kind: 'corridor', tier: 'canon', story: 'story-9901', pulls: 1, from: 'loc-9006', to: 'draft-post', sources: ['stories/short_story/canon_story/manuscript.md:6'] });
+    }
+  });
+  try {
+    assert(buildMapData({ root, build: 'author' }).routes.some(r => r.key === 'to-draft-post'));
+    assert(!buildMapData({ root, build: 'public' }).routes.some(r => r.key === 'to-draft-post'));
+  } finally {
+    fs.rmSync(root, { recursive: true, force: true });
+  }
+});
 
 test('the author build keeps every tier; the public build drops speculative and draft material', () => {
   const root = makeFixture();

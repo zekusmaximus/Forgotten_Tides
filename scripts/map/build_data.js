@@ -82,11 +82,11 @@ function buildMapData({ root = layout.DEFAULT_ROOT, build = 'author' } = {}) {
     .map(({ id, at, relation = 'inside', band_position = null, marker = 'pin', circuit = null, claims = [] }) => ({
       ...entityFields(id), at, relation, band_position, marker, circuit, claims
     }));
-  const placedPoints = new Set([...sites.map(site => site.id), ...(cartography.features || []).filter(f => f.at).map(f => f.key)]);
   const features = (cartography.features || []).filter(feature => !isPublic || feature.tier !== 'draft');
+  const placedPoints = new Set([...sites.map(site => site.id), ...features.filter(f => f.at).map(f => f.key)]);
   const routes = (cartography.routes || []).filter(route => {
     if (isPublic && route.tier === 'draft') return false;
-    if (route.story && nodes.has(route.story) && !keepTier(nodes.get(route.story).canon_tier)) return false;
+    if (route.story && isPublic && !(nodes.has(route.story) && keepTier(nodes.get(route.story).canon_tier))) return false;
     return [route.from, route.to].filter(Boolean).every(end => placedPoints.has(end));
   });
 

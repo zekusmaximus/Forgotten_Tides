@@ -5,9 +5,11 @@
 // from the core's plateau through the belt's gradient (equal to the belt's
 // value at its mid radius) and an interpolated zone out to the perimeter's
 // value. Overlay regions are then blended in, in order, and each site with a
-// density pulls the field to its own value at its point. The lint evaluates
-// this function at every probe and site, and the Phase 3 renderer will draw
-// from it, so the chart cannot drift from the canon numbers unnoticed.
+// density pulls the field to its own value at its point (sites may peak above
+// their surroundings), so site values hold by construction. The lint
+// evaluates this function at every region probe, and the Phase 3 renderer
+// will draw from it, so the chart cannot drift from the canon numbers
+// unnoticed.
 
 const { toXY } = require('./geometry');
 
@@ -29,9 +31,13 @@ function lerp(a, b, t) {
  */
 function createField({ config, shapes, values, sites = [] }) {
   const { core, belt, perimeter } = config.radial;
-  for (const id of [core, belt, perimeter]) {
-    if (!shapes.has(id)) throw new Error(`field.radial names ${id}, which has no placed shape`);
-    if (!values.has(id)) throw new Error(`field.radial names ${id}, which has no memory_density`);
+  const expected = { core: 'disc', belt: 'annulus', perimeter: 'annulus' };
+  for (const [role, id] of Object.entries({ core, belt, perimeter })) {
+    if (!shapes.has(id)) throw new Error(`field.radial.${role} names ${id}, which has no placed shape`);
+    if (!values.has(id)) throw new Error(`field.radial.${role} names ${id}, which has no memory_density`);
+    if (shapes.get(id).type !== expected[role]) {
+      throw new Error(`field.radial.${role} ${id} must be ${expected[role] === 'disc' ? 'a disc' : 'an annulus'}, not a ${shapes.get(id).type}`);
+    }
   }
   const coreRadius = shapes.get(core).radius;
   const { inner: beltInner, outer: beltOuter } = shapes.get(belt);
