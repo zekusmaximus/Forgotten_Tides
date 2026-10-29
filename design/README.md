@@ -7,6 +7,7 @@
 **Status:** Active.
 
 The atlas map's [cartographic brief](map/CARTOGRAPHIC_BRIEF.md) records the
-accepted map decisions and the spatial claims they approve. The
+accepted map decisions and the spatial claims they approve. Placements live in
+`map/cartography.yaml`, checked by `npm run lint:map`. The
 [layout sketch](map/layout_sketch_v1.svg) shows the resulting layout for
 review.

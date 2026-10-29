@@ -1,0 +1,266 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://forgotten-tides.com/schemas/cartography.schema.json",
+  "title": "Atlas Map Placement File",
+  "description": "Schema for design/map/cartography.yaml. Geometry is cartographic; claims cite design/map/CARTOGRAPHIC_BRIEF.md. Densities are never repeated here.",
+  "type": "object",
+  "required": ["schema_version", "frame", "field", "regions", "sites"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "type": "string", "pattern": "^v?\\d+\\.\\d+\\.\\d+$" },
+    "frame": {
+      "type": "object",
+      "required": ["units"],
+      "additionalProperties": false,
+      "properties": {
+        "units": { "const": "chart_radius" },
+        "angles": { "type": "string" },
+        "note": { "type": "string" }
+      }
+    },
+    "field": {
+      "type": "object",
+      "required": ["blend", "site_sigma", "belt_spread", "radial"],
+      "additionalProperties": false,
+      "properties": {
+        "blend": { "type": "number", "exclusiveMinimum": 0 },
+        "site_sigma": { "type": "number", "exclusiveMinimum": 0 },
+        "belt_spread": { "type": "number", "minimum": 0 },
+        "radial": {
+          "type": "object",
+          "required": ["core", "belt", "perimeter"],
+          "additionalProperties": false,
+          "properties": {
+            "core": { "$ref": "#/definitions/locId" },
+            "belt": { "$ref": "#/definitions/locId" },
+            "perimeter": { "$ref": "#/definitions/locId" }
+          }
+        },
+        "overlays": { "type": "array", "items": { "$ref": "#/definitions/locId" } }
+      }
+    },
+    "regions": { "type": "array", "items": { "$ref": "#/definitions/region" } },
+    "sites": { "type": "array", "items": { "$ref": "#/definitions/site" } },
+    "features": { "type": "array", "items": { "$ref": "#/definitions/feature" } },
+    "routes": { "type": "array", "items": { "$ref": "#/definitions/route" } },
+    "relations": { "type": "array", "items": { "$ref": "#/definitions/relation" } }
+  },
+  "definitions": {
+    "locId": { "type": "string", "pattern": "^loc-\\d{4}$" },
+    "key": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
+    "ref": { "type": "string", "minLength": 1 },
+    "polar": {
+      "type": "object",
+      "required": ["r", "theta"],
+      "additionalProperties": false,
+      "properties": {
+        "r": { "type": "number", "minimum": 0 },
+        "theta": { "type": "number", "minimum": 0, "exclusiveMaximum": 360 }
+      }
+    },
+    "claims": { "type": "array", "items": { "type": "string", "pattern": "^T\\d+$" } },
+    "rules": { "type": "array", "items": { "type": "string", "pattern": "^R\\d+$" } },
+    "source": { "type": "string", "pattern": "^[^\\s:#]+(:[1-9]\\d*(-[1-9]\\d*)?|#[A-Za-z0-9_-]+)?$" },
+    "sources": { "type": "array", "items": { "$ref": "#/definitions/source" } },
+    "tier": { "enum": ["canon", "approved", "cartographic", "draft"] },
+    "shape": {
+      "oneOf": [
+        {
+          "type": "object",
+          "required": ["type", "radius"],
+          "additionalProperties": false,
+          "properties": {
+            "type": { "const": "disc" },
+            "radius": { "type": "number", "exclusiveMinimum": 0 },
+            "r": { "type": "number", "minimum": 0 },
+            "theta": { "type": "number" }
+          }
+        },
+        {
+          "type": "object",
+          "required": ["type", "inner", "outer"],
+          "additionalProperties": false,
+          "properties": {
+            "type": { "const": "annulus" },
+            "inner": { "type": "number", "minimum": 0 },
+            "outer": { "type": "number", "exclusiveMinimum": 0 }
+          }
+        },
+        {
+          "type": "object",
+          "required": ["type", "r0", "r1", "theta0", "theta1", "half0", "half1"],
+          "additionalProperties": false,
+          "properties": {
+            "type": { "const": "rift" },
+            "r0": { "type": "number", "minimum": 0 },
+            "r1": { "type": "number", "exclusiveMinimum": 0 },
+            "theta0": { "type": "number" },
+            "theta1": { "type": "number" },
+            "half0": { "type": "number", "minimum": 0 },
+            "half1": { "type": "number", "minimum": 0 },
+            "taper": { "type": "number", "exclusiveMinimum": 0 }
+          }
+        },
+        {
+          "type": "object",
+          "required": ["type", "items"],
+          "additionalProperties": false,
+          "properties": {
+            "type": { "const": "pockets" },
+            "items": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "object",
+                "required": ["r", "theta", "radius"],
+                "additionalProperties": false,
+                "properties": {
+                  "r": { "type": "number", "minimum": 0 },
+                  "theta": { "type": "number" },
+                  "radius": { "type": "number", "exclusiveMinimum": 0 }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "band": {
+      "type": "object",
+      "required": ["name", "from", "to"],
+      "additionalProperties": false,
+      "properties": {
+        "name": { "type": "string", "pattern": "^[a-z][a-z -]*[a-z]$" },
+        "from": { "type": "number", "minimum": 0 },
+        "to": { "type": "number", "exclusiveMinimum": 0 },
+        "subbands": { "type": "integer", "minimum": 2 }
+      }
+    },
+    "region": {
+      "type": "object",
+      "required": ["id", "shape"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "#/definitions/locId" },
+        "shape": { "$ref": "#/definitions/shape" },
+        "bands": { "type": "array", "items": { "$ref": "#/definitions/band" } },
+        "aliases": { "type": "array", "items": { "type": "string" } },
+        "claims": { "$ref": "#/definitions/claims" },
+        "rules": { "$ref": "#/definitions/rules" },
+        "sources": { "$ref": "#/definitions/sources" },
+        "note": { "type": "string" }
+      }
+    },
+    "site": {
+      "type": "object",
+      "required": ["id", "at"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "$ref": "#/definitions/locId" },
+        "at": { "$ref": "#/definitions/polar" },
+        "relation": { "enum": ["inside", "boundary"] },
+        "band_position": { "enum": ["mid", "inner-edge", "outer-edge"] },
+        "marker": { "enum": ["pin", "existence-doubtful"] },
+        "circuit": {
+          "type": "object",
+          "required": ["radius"],
+          "additionalProperties": false,
+          "properties": { "radius": { "type": "number", "exclusiveMinimum": 0 } }
+        },
+        "claims": { "$ref": "#/definitions/claims" },
+        "rules": { "$ref": "#/definitions/rules" },
+        "sources": { "$ref": "#/definitions/sources" },
+        "note": { "type": "string" }
+      }
+    },
+    "sleeve": {
+      "type": "object",
+      "required": ["number"],
+      "additionalProperties": false,
+      "properties": {
+        "number": { "type": "integer", "minimum": 1 },
+        "population": { "type": "integer", "minimum": 0 },
+        "approximate": { "type": "boolean" },
+        "stations": { "type": "integer", "minimum": 0 },
+        "city_ships": { "type": "integer", "minimum": 0 },
+        "post_breach": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "silo": { "enum": ["held", "reduced-pitch", "lost"] },
+            "sleeve": { "enum": ["coherent", "softening"] },
+            "note": { "type": "string" }
+          }
+        },
+        "source": { "$ref": "#/definitions/source" }
+      },
+      "allOf": [
+        { "if": { "required": ["population"] }, "then": { "required": ["source"] } },
+        { "if": { "required": ["stations"] }, "then": { "required": ["source"] } },
+        { "if": { "required": ["post_breach"] }, "then": { "required": ["source"] } }
+      ]
+    },
+    "feature": {
+      "type": "object",
+      "required": ["key", "label", "kind", "tier"],
+      "additionalProperties": false,
+      "properties": {
+        "key": { "$ref": "#/definitions/key" },
+        "label": { "type": "string" },
+        "kind": { "enum": ["facility", "sleeves", "historical-site", "edge-line", "texture"] },
+        "tier": { "$ref": "#/definitions/tier" },
+        "at": { "$ref": "#/definitions/polar" },
+        "within": { "$ref": "#/definitions/ref" },
+        "along": { "$ref": "#/definitions/ref" },
+        "count": { "type": "integer", "minimum": 1 },
+        "positions": { "type": "array", "items": { "$ref": "#/definitions/polar" } },
+        "sleeves": { "type": "array", "items": { "$ref": "#/definitions/sleeve" } },
+        "claims": { "$ref": "#/definitions/claims" },
+        "rules": { "$ref": "#/definitions/rules" },
+        "sources": { "$ref": "#/definitions/sources" },
+        "note": { "type": "string" }
+      }
+    },
+    "route": {
+      "type": "object",
+      "required": ["key", "label", "kind", "tier", "to"],
+      "additionalProperties": false,
+      "properties": {
+        "key": { "$ref": "#/definitions/key" },
+        "label": { "type": "string" },
+        "kind": { "enum": ["corridor", "tether"] },
+        "tier": { "$ref": "#/definitions/tier" },
+        "story": { "type": "string", "pattern": "^story-\\d{4}$" },
+        "pulls": { "type": "integer", "minimum": 1 },
+        "duration": { "type": "string" },
+        "origin": { "enum": ["none"] },
+        "from": { "$ref": "#/definitions/ref" },
+        "to": { "$ref": "#/definitions/ref" },
+        "start_within": { "$ref": "#/definitions/ref" },
+        "path": { "type": "array", "minItems": 2, "items": { "$ref": "#/definitions/polar" } },
+        "claims": { "$ref": "#/definitions/claims" },
+        "rules": { "$ref": "#/definitions/rules" },
+        "sources": { "$ref": "#/definitions/sources" },
+        "note": { "type": "string" }
+      },
+      "allOf": [
+        { "if": { "required": ["pulls"] }, "then": { "required": ["sources"], "properties": { "sources": { "minItems": 1 } } } },
+        { "if": { "required": ["duration"] }, "then": { "required": ["sources"], "properties": { "sources": { "minItems": 1 } } } },
+        { "if": { "required": ["origin"] }, "then": { "required": ["path", "start_within"] } },
+        { "if": { "not": { "required": ["origin"] } }, "then": { "required": ["from"] } }
+      ]
+    },
+    "relation": {
+      "type": "object",
+      "required": ["type", "a", "b", "claims"],
+      "additionalProperties": false,
+      "properties": {
+        "type": { "enum": ["touches", "disjoint", "near"] },
+        "a": { "$ref": "#/definitions/ref" },
+        "b": { "$ref": "#/definitions/ref" },
+        "claims": { "$ref": "#/definitions/claims" },
+        "note": { "type": "string" }
+      }
+    }
+  }
+}

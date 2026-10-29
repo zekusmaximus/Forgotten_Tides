@@ -1,0 +1,286 @@
+# Atlas map placement file.
+#
+# Every radius, angle, size, and drawn count here is cartographic (P.A.,
+# position approximate). Claims (T#) and drawing rules (R#) cite the register
+# in design/map/CARTOGRAPHIC_BRIEF.md; sources cite files, path:line ranges,
+# or timeline event IDs. Densities are read from atlas frontmatter and never
+# repeated here. `npm run lint:map` checks this file against canon, and
+# `npm run map:data` builds the viewer's data from it.
+#
+# Coordinates: r in chart units (1.0 = the Black Horizon's near edge; no
+# distance implied), theta in degrees counterclockwise from the chart's
+# right-hand side.
+
+schema_version: v1.0.0
+
+frame:
+  units: chart_radius
+  angles: degrees counterclockwise from the chart's right-hand side
+  note: No distance is implied. Corridor legs are counted in pulls (term-0033), never converted.
+
+field:
+  blend: 0.02          # edge softening between regions, chart units
+  site_sigma: 0.01     # reach of a site's own density
+  belt_spread: 0.15    # the Drift runs from its value + spread (inner) to - spread (outer)
+  radial:
+    core: loc-0005
+    belt: loc-0008
+    perimeter: loc-0007
+  overlays: [loc-0003, loc-0004, loc-0006]
+
+regions:
+  - id: loc-0005 # Mnemosyne Lattice Core
+    shape: { type: disc, radius: 0.12 }
+    claims: [T1]
+
+  - id: loc-0008 # Helios Drift
+    shape: { type: annulus, inner: 0.12, outer: 0.62 }
+    bands:
+      - { name: inner sleeve, from: 0.12, to: 0.28 }
+      - { name: mid-sleeve, from: 0.28, to: 0.45 }
+      - { name: outer sleeve, from: 0.45, to: 0.62, subbands: 9 }
+    claims: [T3, T4, T5, T6, T7]
+    sources:
+      - characters/Inya_Solven.md:90
+      - stories/short_story/the_reliquarists_doubt/manuscript.md:206
+
+  - id: loc-0003 # Lattice Gap
+    shape: { type: rift, r0: 0.62, r1: 0.93, theta0: 35, theta1: 43, half0: 1.2, half1: 9.7, taper: 0.7 }
+    bands:
+      - { name: near sleeve, from: 0.62, to: 0.72 }
+      - { name: outer sleeve, from: 0.84, to: 0.93 }
+    claims: [T13, T16]
+    sources:
+      - stories/short_story/the_reliquarists_doubt/manuscript.md:208
+
+  - id: loc-0004 # Remnant Seas
+    shape:
+      type: pockets
+      items:
+        - { r: 0.81, theta: 165, radius: 0.085 }
+        - { r: 0.86, theta: 221, radius: 0.07 }
+        - { r: 0.78, theta: 292, radius: 0.04 }
+    claims: [T19]
+    rules: [R2]
+
+  - id: loc-0006 # Void Regions
+    shape:
+      type: pockets
+      items:
+        - { r: 0.90, theta: 54, radius: 0.045 }   # touches the Gap's outer sleeve (T18)
+        - { r: 0.665, theta: 112, radius: 0.028 }
+        - { r: 0.67, theta: 248, radius: 0.03 }
+        - { r: 0.66, theta: 322, radius: 0.026 }
+        - { r: 0.885, theta: 128, radius: 0.05 }
+        - { r: 0.90, theta: 272, radius: 0.055 }
+        - { r: 0.80, theta: 345, radius: 0.032 }
+    claims: [T21, T18]
+    rules: [R2]
+
+  - id: loc-0007 # Black Horizon
+    shape: { type: annulus, inner: 1.0, outer: 1.2 }
+    claims: [T22]
+    sources:
+      - atlas/Black_Horizon.md
+
+sites:
+  - id: loc-0001 # Heliodrome, at the Gap's epicenter
+    at: { r: 0.76, theta: 38.61 }
+    claims: [T15]
+
+  - id: loc-0002 # Ostra-Vael, on a Remnant Seas boundary; side not specified
+    at: { r: 0.725, theta: 165 }
+    relation: boundary
+    claims: [T20]
+
+  - id: loc-0009 # Ebbhaven, the buoy's last contact
+    at: { r: 0.965, theta: 140 }
+    marker: existence-doubtful
+    claims: [T26]
+
+  - id: loc-0010 # Solace Hospice, where the Gap's outer sleeve touches a Void
+    at: { r: 0.90, theta: 50.7 }
+    claims: [T18]
+
+  - id: loc-0011 # Tessarine Vault, at the outer sleeve's inner edge
+    at: { r: 0.45, theta: 338 }
+    band_position: inner-edge
+    claims: [T23]
+
+  - id: loc-0012 # Narthex of Low Mercy, inside the Black Horizon
+    at: { r: 1.09, theta: 78 }
+    sources:
+      - atlas/Narthex_of_Low_Mercy.md
+
+  - id: loc-0013 # Halix Exchange; shares one unnumbered sleeve with Skather-Ait (R3)
+    at: { r: 0.535, theta: 302 }
+    circuit: { radius: 0.04 }
+    claims: [T24]
+    rules: [R3]
+    sources:
+      - stories/short_story/the_light_inheritance/manuscript.md:42
+      - stories/short_story/the_halix_aftermarket/manuscript.md:857-858
+
+  - id: loc-0014 # Heavonly, at the Drift's inner edge where it meets the Core
+    at: { r: 0.124, theta: 100 }
+    band_position: inner-edge
+    claims: [T11]
+
+  - id: loc-0015 # Skather-Ait pod; same sleeve as Halix, number not given (R3)
+    at: { r: 0.535, theta: 293 }
+    claims: [T24, T25]
+    rules: [R3]
+    sources:
+      - stories/short_story/the_light_inheritance/manuscript.md:42
+
+features:
+  - key: inner-relay
+    label: Inner relay
+    kind: facility
+    tier: canon
+    at: { r: 0.20, theta: 338 }
+    within: loc-0008/inner sleeve
+    claims: [T9, T10]
+    sources:
+      - stories/short_story/spend_what_you_can_afford/manuscript.md:903
+    note: A corridor and courier node; hosts the Navigant house.
+
+  - key: outer-sleeve-sleeves
+    label: Numbered sleeves of the outer sleeve
+    kind: sleeves
+    tier: canon
+    within: loc-0008/outer sleeve
+    claims: [T6, T14]
+    rules: [R5, R9]
+    sources:
+      - stories/short_story/spend_what_you_can_afford/manuscript.md:505-512
+    sleeves:
+      - { number: 1 }
+      - number: 2
+        population: 200000
+        stations: 11
+        city_ships: 1
+        post_breach: { silo: held, sleeve: coherent, note: Bound by Brother Hael's complete anchor sequence. }
+        source: stories/short_story/spend_what_you_can_afford/manuscript.md:650-651
+      - { number: 3 }
+      - number: 4
+        post_breach: { silo: lost, sleeve: softening }
+        source: data/timeline/events.yaml#event-story-0022-002
+      - number: 5
+        population: 80000
+        post_breach: { silo: reduced-pitch, sleeve: coherent }
+        source: stories/short_story/spend_what_you_can_afford/manuscript.md:653-655
+      - { number: 6 }
+      - number: 7
+        population: 40000
+        approximate: true
+        post_breach: { silo: reduced-pitch, sleeve: coherent }
+        source: stories/short_story/spend_what_you_can_afford/manuscript.md:657-659
+      - { number: 8 }
+      - number: 9
+        population: 900
+        stations: 4
+        post_breach: { silo: lost, sleeve: softening }
+        source: stories/short_story/spend_what_you_can_afford/manuscript.md:661-665
+
+  - key: gap-colony-moon
+    label: Scoured fishing-colony moon
+    kind: historical-site
+    tier: canon
+    at: { r: 0.69, theta: 39.1 }
+    within: loc-0003/near sleeve
+    claims: [T17]
+    sources:
+      - stories/short_story/the_reliquarists_doubt/manuscript.md:208
+    note: Unnamed; scoured 180 years before Tellis Aru's birth. No atlas entry.
+
+  - key: archivist-monitoring-stations
+    label: Archivist monitoring stations
+    kind: edge-line
+    tier: canon
+    along: loc-0007
+    claims: [T22]
+    rules: [R2]
+    sources:
+      - atlas/Black_Horizon.md
+    note: Drawn as one labeled line on the near edge; canon gives no count.
+
+  - key: spiral-arms
+    label: Spiral arms
+    kind: texture
+    tier: approved
+    count: 2
+    claims: [T2]
+    rules: [R2]
+
+  - key: black-hole-knots
+    label: Black-hole knots
+    kind: texture
+    tier: cartographic
+    within: loc-0007
+    rules: [R2]
+    positions:
+      - { r: 1.08, theta: 12 }
+      - { r: 1.12, theta: 58 }
+      - { r: 1.10, theta: 103 }
+      - { r: 1.13, theta: 150 }
+      - { r: 1.07, theta: 197 }
+      - { r: 1.12, theta: 236 }
+      - { r: 1.09, theta: 281 }
+      - { r: 1.13, theta: 318 }
+      - { r: 1.11, theta: 350 }
+
+routes:
+  - key: archivists-wake-approach
+    label: The Archivist's Wake
+    kind: corridor
+    tier: canon
+    story: story-0001
+    pulls: 3
+    origin: none
+    start_within: loc-0003
+    to: loc-0001
+    path:
+      - { r: 0.645, theta: 35.65 }
+      - { r: 0.76, theta: 38.61 }
+    rules: [R4]
+    sources:
+      - stories/short_story/the_archivists_wake/manuscript.md:131
+
+  - key: vault-to-inner-relay
+    label: Tessarine Vault to the Navigant house
+    kind: corridor
+    tier: canon
+    story: story-0022
+    pulls: 2
+    from: loc-0011
+    to: inner-relay
+    rules: [R4]
+    sources:
+      - stories/short_story/spend_what_you_can_afford/manuscript.md:903
+
+  - key: skather-ait-tether
+    label: Skather-Ait tether
+    kind: tether
+    tier: canon
+    story: story-0004
+    duration: six hours
+    from: loc-0015
+    to: loc-0013
+    claims: [T25]
+    sources:
+      - stories/short_story/the_light_inheritance/manuscript.md:282
+
+relations:
+  - { type: touches, a: loc-0005, b: loc-0008, claims: [T3] }
+  - { type: disjoint, a: loc-0005, b: loc-0008, claims: [T3] }
+  - { type: touches, a: loc-0003, b: loc-0008/outer sleeve, claims: [T13] }
+  - { type: disjoint, a: loc-0003, b: loc-0008, claims: [T13], note: The Gap cuts into no sleeve (Q1). }
+  - { type: touches, a: loc-0003, b: loc-0008/outer sleeve/9, claims: [T14] }
+  - { type: touches, a: loc-0006#0, b: loc-0003/outer sleeve, claims: [T18] }
+  - { type: near, a: loc-0010, b: loc-0006#0, claims: [T18] }
+  - { type: disjoint, a: loc-0004, b: loc-0008, claims: [T19] }
+  - { type: disjoint, a: loc-0004, b: loc-0007, claims: [T19] }
+  - { type: disjoint, a: loc-0006, b: loc-0008, claims: [T21] }
+  - { type: disjoint, a: loc-0006, b: loc-0007, claims: [T21] }
+  - { type: disjoint, a: loc-0003, b: loc-0007, claims: [T22] }

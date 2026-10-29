@@ -1,6 +1,6 @@
 // Generates the layout sketch for author review. Geometry is cartographic (P.A.).
 // Usage: node design/map/make_sketch.js design/map/layout_sketch_v1.svg
-// Placements mirror design/map/CARTOGRAPHIC_BRIEF.md section 3; keep them in step.
+// Placements mirror design/map/cartography.yaml, which governs where they differ.
 const fs = require('fs');
 
 const W = 1800, H = 1500;
@@ -62,7 +62,7 @@ function inPoly(x, y, pts) {
 }
 
 // Sketch density profile through the soundings (interpolated between them).
-const PROFILE = [[0, 0.97], [0.12, 0.97], [0.135, 0.82], [0.37, 0.65], [0.62, 0.5],
+const PROFILE = [[0, 0.97], [0.12, 0.97], [0.124, 0.82], [0.37, 0.65], [0.62, 0.5],
   [0.76, 0.31], [0.9, 0.1], [1.0, 0.02], [1.2, 0.01]];
 const density = (r) => {
   for (let k = 1; k < PROFILE.length; k++) {
@@ -90,7 +90,7 @@ const gapPts = [...gapL, ...gapR];
 const gapD = 'M' + gapPts.map((p) => p.map(f).join(',')).join(' L') + ' Z';
 
 const voids = [
-  blob(0.955, 56, 0.045, 0.5),   // touches the Gap's outer sleeve (decision 6)
+  blob(0.90, 54, 0.045, 0.5),   // touches the Gap's outer sleeve (decision 6)
   blob(0.665, 112, 0.028, 0.6),  // void margins against the outer sleeve
   blob(0.67, 248, 0.03, 0.6),
   blob(0.66, 322, 0.026, 0.6),
@@ -269,7 +269,7 @@ arcText(0.16, 185, 355, 'MNEMOSYNE LATTICE CORE', 'region" font-size="13" style=
 add(`<text class="snd" x="${CX}" y="${CY + 5}" text-anchor="middle" fill="#3A2A14" style="fill:#3A2A14">0.97</text>`);
 
 // Heavonly (speculative) at the Drift–Core boundary.
-{ const [x, y] = pin(0.135, 100, false);
+{ const [x, y] = pin(0.124, 100, false);
   callout(x, y, x - 60, y - 58, [['label', 'Heavonly'], ['snd', '0.82'], ['small', 'gateway; galaxies not drawn']], true); }
 
 // Tessarine Vault, inner relay, and the two-pull route.
@@ -285,12 +285,12 @@ add(`<text class="snd" x="${CX}" y="${CY + 5}" text-anchor="middle" fill="#3A2A1
 // Halix circuit, Skather-Ait pod, and the shared tether (primary canon since PR #45).
 { const [hx, hy] = P(0.535, -58);
   add(`<ellipse cx="${f(hx)}" cy="${f(hy)}" rx="44" ry="20" transform="rotate(${f(58 - 90)} ${f(hx)} ${f(hy)})" fill="none" stroke="#F6C684" stroke-width="1.3" stroke-dasharray="5 4"/>`);
-  const [px, py] = P(0.59, -66);
+  const [px, py] = P(0.535, -67);
   add(`<line x1="${f(hx + 12)}" y1="${f(hy + 14)}" x2="${f(px)}" y2="${f(py)}" stroke="#D8D2C4" stroke-width="0.9"/>`);
   for (const t of [0.35, 0.6, 0.8]) add(`<circle cx="${f(hx + 12 + (px - hx - 12) * t)}" cy="${f(hy + 14 + (py - hy - 14) * t)}" r="2.2" fill="#D8D2C4"/>`);
   const [x1, y1] = pin(0.535, -58, true);
   callout(x1, y1, x1 + 150, y1 + 18, [['label', 'Halix Exchange'], ['small', 'slow circuit; moors at tether heads'], ['small', 'no sounding: no canon figure']], false);
-  const [x2, y2] = pin(0.59, -66, true);
+  const [x2, y2] = pin(0.535, -67, true);
   callout(x2, y2, x2 + 120, y2 + 66, [['label', 'Skather-Ait pod'], ['small', "six-hour tether to Halix; shares"], ['small', "Halix's sleeve, number not given"]], false); }
 
 // Lattice Gap labels, Heliodrome, the Wake's three pulls, and Solace Hospice.
@@ -324,7 +324,7 @@ add(`<text class="snd" x="${CX}" y="${CY + 5}" text-anchor="middle" fill="#3A2A1
   add(`<text class="snd" x="${f(rx)}" y="${f(ry + 15)}" text-anchor="middle">0.04</text>`);
   const [r2x, r2y] = P(0.86, 221);
   add(`<text class="small" x="${f(r2x)}" y="${f(r2y + 4)}" text-anchor="middle">Remnant Seas</text>`);
-  const [x1, y1] = pin(0.725, 160, false);
+  const [x1, y1] = pin(0.725, 165, false);
   callout(x1, y1, x1 + 30, y1 - 70, [['label', 'Ostra-Vael'], ['snd', '0.30'], ['small', 'on the Seas boundary']], true); }
 
 // Void Regions: name outside, leaders in.
@@ -427,7 +427,7 @@ const gx = LX + 30, gy = ly + 8, gw = W - LX - 80, gh = 150;
 add(`<rect x="${gx}" y="${gy}" width="${gw}" height="${gh}" fill="none" stroke="#2A313A"/>`);
 const gX = (r) => gx + (r / 1.2) * gw, gY = (d) => gy + gh - d * gh;
 add(`<polyline points="${PROFILE.map(([r, d]) => `${f(gX(r))},${f(gY(d))}`).join(' ')}" fill="none" stroke="#A8AEB6" stroke-dasharray="3 3" stroke-width="1"/>`);
-const marks = [[0.06, 0.97, 'Core'], [0.135, 0.82, 'Heavonly*'], [0.37, 0.65, 'Drift'], [0.45, 0.78, 'Vault'], [0.76, 0.31, 'Gap'], [0.725, 0.30, ''], [0.83, 0.04, 'Seas'], [1.09, 0.015, ''], [1.1, 0.01, 'Horizon']];
+const marks = [[0.06, 0.97, 'Core'], [0.124, 0.82, 'Heavonly*'], [0.37, 0.65, 'Drift'], [0.45, 0.78, 'Vault'], [0.76, 0.31, 'Gap'], [0.725, 0.30, ''], [0.83, 0.04, 'Seas'], [1.09, 0.015, ''], [1.1, 0.01, 'Horizon']];
 for (const [r, d, name] of marks) {
   add(`<circle cx="${f(gX(r))}" cy="${f(gY(d))}" r="3.2" fill="#E8A856"/>`);
   if (name) add(`<text class="mono" font-size="10.5" x="${f(gX(r) + 5)}" y="${f(gY(d) - 5)}">${name}</text>`);
