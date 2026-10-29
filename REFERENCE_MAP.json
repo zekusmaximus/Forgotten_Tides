@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-29T04:32:40.907Z",
+  "generated": "2026-10-29T04:35:56.629Z",
   "nodes": [
     {
       "canonical_id": "char-0001",
@@ -231,9 +231,9 @@
       "type": "character",
       "name": "Yenu Skather-Ait",
       "path": "characters/Yenu_Skather-Ait.md",
-      "canon_tier": "speculative",
-      "source_weight": 60,
-      "retrieval_role": "exploratory"
+      "canon_tier": "primary_canon",
+      "source_weight": 110,
+      "retrieval_role": "authoritative"
     },
     {
       "canonical_id": "char-0027",
@@ -3028,11 +3028,18 @@
     },
     {
       "from": "char-0026",
+      "to": "char-0031",
+      "type": "characters",
+      "fields": [
+        "cross_refs"
+      ]
+    },
+    {
+      "from": "char-0026",
       "to": "fact-0004",
       "type": "factions",
       "fields": [
-        "cross_refs",
-        "references"
+        "cross_refs"
       ]
     },
     {
@@ -3040,8 +3047,7 @@
       "to": "loc-0008",
       "type": "locations",
       "fields": [
-        "cross_refs",
-        "references"
+        "cross_refs"
       ]
     },
     {
@@ -3085,8 +3091,7 @@
       "to": "story-0021",
       "type": "stories",
       "fields": [
-        "cross_refs",
-        "references"
+        "cross_refs"
       ]
     },
     {
