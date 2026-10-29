@@ -46,7 +46,7 @@ continuity_notes:
   - Maren's released route anchor is permanently gone; the story does not restore anchors or create replacement navigation evidence.
 metadata:
   created: '2026-05-27T00:00:00.000Z'
-  modified: '2026-05-27T00:00:00.000Z'
+  modified: '2026-10-29T00:00:00.000Z'
 tags:
   - hospice
   - anchor-loss
@@ -426,7 +426,7 @@ He closed his eyes. The chamber held.
 
 ## V. Dawn Audit
 
-At third pull, the assessor came back with two more forms and an older officer on the line.
+At third watch, the assessor came back with two more forms and an older officer on the line.
 
 Lira met him in the receiving corridor. Behind her, Maren slept sitting up, head bowed, sensorium ring dark for the first time since arrival. His folded jacket remained at his feet. It looked less like an accusation now. More like cloth.
 
@@ -524,7 +524,7 @@ Maren looked at the wall. His eyes found *afford* and passed over it. Then they 
 
 The words held.
 
-Outside, the next pilot arrived at third pull. The station moved around them with its quiet work: carts, robes, low voices, grief made procedural so it could survive the day.
+Outside, the next pilot arrived at third watch. The station moved around them with its quiet work: carts, robes, low voices, grief made procedural so it could survive the day.
 
 Maren stayed seated, hands open on his knees, lighter by one useful anchor and heavier by one honest choice.
 
