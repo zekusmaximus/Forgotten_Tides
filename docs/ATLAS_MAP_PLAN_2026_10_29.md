@@ -39,6 +39,12 @@ built from the repository's own location data.
 
 ## 1. What Exists Now
 
+*Update, 2026-10-29:* After this section was written, PR #45 approved
+Halix Exchange (`loc-0013`) and Skather-Ait pod (`loc-0015`) as primary
+canon, and PR #46 promoted `story-0015`. Rows below that call those sources
+speculative or draft reflect the earlier state. `design/map/CARTOGRAPHIC_BRIEF.md`
+is current.
+
 ### 1.1 Location inventory
 
 From `CANONICAL_INDEX.md` and the `atlas/` frontmatter. "Tier" is the index
@@ -726,8 +732,8 @@ contradictions that the continuity checks and the map would otherwise flag.
 3. Drafts: revise `story-0003` (Q18) and `story-0007` (Q19). Add the
    novel's continuity note (Q20).
 4. Run the source-first claim review of `loc-0013` Halix and `loc-0015`
-   Skather-Ait against `story-0004`. The author decides whether to promote
-   them. This must finish before the public build.
+   Skather-Ait against `story-0004`. **Done in PR #45**, which approved both
+   as primary canon.
 5. Open and merge the PRs (Q21).
 
 - **Done when** every question in brief section 8 is answered, the edits are

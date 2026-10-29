@@ -89,9 +89,11 @@ brief's remaining inferences.
 
 The approved arrangement now appears in prose as
 `lore/COSMIC_REGIONS.md` §7, which leaves speculative entities out. Three
-speculative atlas entries gained or corrected `coordinates.region` (Heavonly,
-Skather-Ait pod, Solace Hospice), and no density values were invented. The
-eight primary-canon atlas entries are unchanged.
+Speculative atlas entries Heavonly and Solace Hospice gained or corrected
+`coordinates.region`. Skather-Ait pod received the same field after PR #45
+approved it as primary canon; the value matches its primary source. No
+density values were invented, and no primary-canon atlas entry gained map
+topology.
 
 Two draft revisions follow in a separate PR: `story-0003` loses the proper
 name of its hospice, and `story-0007` changes "third pull," used as a time of

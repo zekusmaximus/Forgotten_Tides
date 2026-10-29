@@ -9,7 +9,7 @@ This brief records the author's map decisions and turns them into placement
 rules. Its claim register (section 4) and drawing rules (section 5) are what
 the placement file, `design/map/cartography.yaml`, and its lint will encode in
 Phase 1. Every question raised so far is answered; nothing in this brief rests
-on an unapproved inference.
+on an unapproved inference. It reflects `main` after PRs #45 and #46.
 
 ## 1. Authority
 
@@ -41,7 +41,7 @@ on an unapproved inference.
 | D4 | Heavonly sits at the Drift–Core boundary, in the author build only. No other galaxies are drawn until the novel settles the count. |
 | D5 | **Sleeve:** a band of any region, named relative to the region's inward edge. The Drift's outer sleeve holds nine numbered sleeves, counted outward. **Pull:** a count of drive engagements, never converted to distance or time. Both are lexicon `draft` terms. |
 | D6 | Solace Hospice at the Gap–Void contact; Ostra-Vael on a Seas boundary; black-hole knots; Ebbhaven *E.D.*; Halix on a circuit through the outer sleeve; the Vault at the outer sleeve's inner edge; "the Tides" is not a mapped region. |
-| D7 | **Two builds.** The author build shows every tier, with speculative entities faded. The public build includes only primary and working canon, and excludes draft data at build time. Halix and Skather-Ait get a source-first review against `story-0004`. |
+| D7 | **Two builds.** The author build shows every tier, with speculative entities faded. The public build includes only primary and working canon, and excludes draft data at build time. Halix and Skather-Ait received their source-first review in PR #45 and are now primary canon. |
 | D8 | The author build is private, on the VPS behind basic auth. The public build launches with a reader-facing occasion. Public panels carry summaries only. |
 | D9 | Procedural art first; judge a style frame after Phase 2. A commissioned hero map, if wanted, is work made for hire with an assignment backstop. No AI plates. |
 | D10 | A placement is required at promotion (playbook Step 6b), not at drafting. Drafting agents may propose a placement in the PR body but do not edit the placement file. After the Phase 1 backfill, CI errors on an unplaced primary-canon location and warns on a speculative one. A placement change is a Canon Impact line. |
@@ -64,7 +64,7 @@ on an unapproved inference.
 | Q12 | Sleeves I, III, VI, and VIII show numerals only. The Fourth Sleeve's population stays blank. |
 | Q13 | Nothing named "the Tides" is drawn. The universe-level dark-matter scaffold stays unlabeled. The lore question goes to the `story-0006` review. |
 | Q14 | `lore/COSMIC_REGIONS.md` gains an "Arrangement" section that points to this brief. |
-| Q15 | The eight primary-canon atlas files are not edited. |
+| Q15 | Primary-canon atlas files gain no map topology. Skather-Ait became primary canon in PR #45 after Q16 approved its region field. That value matches its primary source (`ss/the_light_inheritance:42`) and Halix's approved entry, so it was applied. |
 | Q16 | Heavonly: `region: Helios Drift inner sleeve`. Skather-Ait: `region: Helios Drift outer sleeve`. Solace Hospice: `region: Lattice Gap outer sleeve`. No densities are invented. |
 | Q17 | Ebbhaven's `location_type` is deferred to the `story-0006` review. |
 | Q18 | The `story-0003` hospice loses its proper name and becomes "a Remembrancer hospice" or "the hospice." |
@@ -92,8 +92,8 @@ chart's right-hand side. No distance is implied.
 | Heavonly (speculative) | 0.135 | 100 |
 | Inner relay, with the Navigant house | 0.20 | 338 |
 | Tessarine Vault | 0.45 | 338 |
-| Halix Exchange circuit, center (speculative) | 0.535 | 302 |
-| Skather-Ait pod (speculative) | 0.59 | 294 |
+| Halix Exchange circuit, center | 0.535 | 302 |
+| Skather-Ait pod | 0.59 | 294 |
 | Lattice Gap rift: inner tip to outer edge | 0.62 → 0.93 | 35 → 43; half-width 1.2° → 9.7° |
 | Gap near sleeve / outer sleeve | 0.62–0.72 / 0.84–0.93 | within the rift |
 | Fishing-colony moon (historical site) | 0.68 | within the near sleeve |
@@ -137,11 +137,12 @@ chart's right-hand side. No distance is implied.
 | T21 | Void Regions are scattered beyond the Drift, densest at its margins. | D2; `atlas/Helios_Drift.md` | Approved |
 | T22 | The Black Horizon is the perimeter ring. Its near edge faces inward and holds Archivist monitoring stations, number unspecified; its far edge and interior are uncharted. | D2, D6, Q8; `atlas/Black_Horizon.md` | Approved |
 | T23 | The Tessarine Vault is at the inner edge of the outer sleeve. | D6 | Approved |
-| T24 | Halix and Skather-Ait share one numbered sleeve when Halix is moored. Its number is not established. Halix moves on a slow circuit through the outer sleeve when it is not moored. | `ss/the_light_inheritance:42`; D6, Q6 | Canon (shared sleeve); approved (circuit); speculative entities |
-| T25 | The Skather-Ait tether is a six-hour ride shared with two other pods and a Remembrancer outstation. | `ss/the_light_inheritance:282` | Canon; speculative entity |
+| T24 | Halix and Skather-Ait share one numbered sleeve when Halix is moored; its number is not established. Halix also moves through the outer sleeve. The map reconciles the two as a slow circuit that moors at tether heads. | `ss/the_light_inheritance:42`; `ss/the_halix_aftermarket:858`; D6, Q6 | Canon (shared sleeve, movement); approved (circuit) |
+| T25 | The Skather-Ait tether is a six-hour ride shared with two other pods and a Remembrancer outstation. | `ss/the_light_inheritance:282` | Canon |
 | T26 | Ebbhaven is marked *E.D.* at the buoy's last contact in the outer reaches. | D6 | Approved; speculative entity |
 | T27 | Nothing named "the Tides" is drawn. | D6, Q13 | Approved |
 | T28 | The abandoned station of `story-0012` is not drawn. | Q11 | Approved |
+| T29 | Consortium nodes lie farther in than Halix's outer sleeve, and clade pods hold farther out. | `ss/the_halix_aftermarket:857-858` | Canon |
 
 ## 5. Drawing Rules
 
@@ -172,7 +173,7 @@ The Voids are holes at 0.00. Sites may peak above their surroundings.
 | Heavonly | 0.82 | 0.135 | Speculative; between the Core and the Drift |
 | Tessarine Vault | 0.78 | 0.45 | Site peak above the Drift band; pre-breach, unmeasured after |
 | Helios Drift | 0.65 | 0.12–0.62 | Region value; pre-breach |
-| Halix Exchange | 0.56 | 0.535 | Speculative, and no story gives the figure. See the source-first review. |
+| Halix Exchange | none | 0.535 | PR #45 removed the unsourced 0.56 when it approved Halix. No sounding is drawn. |
 | Lattice Gap, Heliodrome | 0.31 | 0.62–0.93, 0.76 | |
 | Ostra-Vael | 0.30 | 0.725 | Speculative site peak; verify separately from the story's 30% integrity (`docs/governance/provisional_profiles.md`) |
 | Remnant Seas | 0.04 | pockets, 0.70–0.95 | |
@@ -189,8 +190,8 @@ The Voids are holes at 0.00. Sites may peak above their surroundings.
 | Speculative atlas regions (Q16) | Done |
 | Novel continuity note (Q20) | Done |
 | Draft revisions: `story-0003` (Q18), `story-0007` (Q19) | Prepared for PR 2 |
-| Source-first review of Halix and Skather-Ait | Written: `docs/reviews/SOURCE_FIRST_REVIEW_LOC_0013_LOC_0015_2026_10_29.md`. Awaits the author's decision. |
-| PRs (Q21) | PR 1 opened from this branch |
+| Source-first review of Halix and Skather-Ait | Done in PR #45, merged. Both are primary canon with trimmed profiles. The duplicate review drafted on this branch was withdrawn. |
+| PRs (Q21) | PR 1 is #47. PR 2 (the draft revisions) is prepared on its own branch from `main`. |
 
 Two items from the first version of this brief needed no revision after all:
 

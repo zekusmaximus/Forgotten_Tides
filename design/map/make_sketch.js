@@ -62,7 +62,7 @@ function inPoly(x, y, pts) {
 }
 
 // Sketch density profile through the soundings (interpolated between them).
-const PROFILE = [[0, 0.97], [0.12, 0.97], [0.135, 0.82], [0.37, 0.65], [0.535, 0.56], [0.62, 0.5],
+const PROFILE = [[0, 0.97], [0.12, 0.97], [0.135, 0.82], [0.37, 0.65], [0.62, 0.5],
   [0.76, 0.31], [0.9, 0.1], [1.0, 0.02], [1.2, 0.01]];
 const density = (r) => {
   for (let k = 1; k < PROFILE.length; k++) {
@@ -282,16 +282,16 @@ add(`<text class="snd" x="${CX}" y="${CY + 5}" text-anchor="middle" fill="#3A2A1
   const [x2, y2] = pin(0.45, -22, true);
   callout(x2, y2, x2 + 60, y2 + 92, [['label', 'Tessarine Vault'], ['snd', '0.78 pre-breach · unmeasured after'], ['small', 'inner edge of the outer sleeve']], false); }
 
-// Halix circuit, Skather-Ait pod, and the shared tether (speculative entities).
+// Halix circuit, Skather-Ait pod, and the shared tether (primary canon since PR #45).
 { const [hx, hy] = P(0.535, -58);
-  add(`<g class="spec"><ellipse cx="${f(hx)}" cy="${f(hy)}" rx="44" ry="20" transform="rotate(${f(58 - 90)} ${f(hx)} ${f(hy)})" fill="none" stroke="#F6C684" stroke-width="1.3" stroke-dasharray="5 4"/></g>`);
+  add(`<ellipse cx="${f(hx)}" cy="${f(hy)}" rx="44" ry="20" transform="rotate(${f(58 - 90)} ${f(hx)} ${f(hy)})" fill="none" stroke="#F6C684" stroke-width="1.3" stroke-dasharray="5 4"/>`);
   const [px, py] = P(0.59, -66);
-  add(`<line class="spec" x1="${f(hx + 12)}" y1="${f(hy + 14)}" x2="${f(px)}" y2="${f(py)}" stroke="#D8D2C4" stroke-width="0.9"/>`);
-  for (const t of [0.35, 0.6, 0.8]) add(`<circle class="spec" cx="${f(hx + 12 + (px - hx - 12) * t)}" cy="${f(hy + 14 + (py - hy - 14) * t)}" r="2.2" fill="#D8D2C4"/>`);
-  const [x1, y1] = pin(0.535, -58, false);
-  callout(x1, y1, x1 + 150, y1 + 18, [['label', 'Halix Exchange'], ['snd', '0.56 · no story source'], ['small', 'slow circuit; moors at tether heads']], true);
-  const [x2, y2] = pin(0.59, -66, false);
-  callout(x2, y2, x2 + 120, y2 + 66, [['label', 'Skather-Ait pod'], ['small', "six-hour tether to Halix; shares"], ['small', "Halix's sleeve, number not given"]], true); }
+  add(`<line x1="${f(hx + 12)}" y1="${f(hy + 14)}" x2="${f(px)}" y2="${f(py)}" stroke="#D8D2C4" stroke-width="0.9"/>`);
+  for (const t of [0.35, 0.6, 0.8]) add(`<circle cx="${f(hx + 12 + (px - hx - 12) * t)}" cy="${f(hy + 14 + (py - hy - 14) * t)}" r="2.2" fill="#D8D2C4"/>`);
+  const [x1, y1] = pin(0.535, -58, true);
+  callout(x1, y1, x1 + 150, y1 + 18, [['label', 'Halix Exchange'], ['small', 'slow circuit; moors at tether heads'], ['small', 'no sounding: no canon figure']], false);
+  const [x2, y2] = pin(0.59, -66, true);
+  callout(x2, y2, x2 + 120, y2 + 66, [['label', 'Skather-Ait pod'], ['small', "six-hour tether to Halix; shares"], ['small', "Halix's sleeve, number not given"]], false); }
 
 // Lattice Gap labels, Heliodrome, the Wake's three pulls, and Solace Hospice.
 { const [lx, ly] = P(0.94, 17);
@@ -427,7 +427,7 @@ const gx = LX + 30, gy = ly + 8, gw = W - LX - 80, gh = 150;
 add(`<rect x="${gx}" y="${gy}" width="${gw}" height="${gh}" fill="none" stroke="#2A313A"/>`);
 const gX = (r) => gx + (r / 1.2) * gw, gY = (d) => gy + gh - d * gh;
 add(`<polyline points="${PROFILE.map(([r, d]) => `${f(gX(r))},${f(gY(d))}`).join(' ')}" fill="none" stroke="#A8AEB6" stroke-dasharray="3 3" stroke-width="1"/>`);
-const marks = [[0.06, 0.97, 'Core'], [0.135, 0.82, 'Heavonly*'], [0.37, 0.65, 'Drift'], [0.45, 0.78, 'Vault'], [0.535, 0.56, 'Halix*'], [0.76, 0.31, 'Gap'], [0.725, 0.30, ''], [0.83, 0.04, 'Seas'], [1.09, 0.015, ''], [1.1, 0.01, 'Horizon']];
+const marks = [[0.06, 0.97, 'Core'], [0.135, 0.82, 'Heavonly*'], [0.37, 0.65, 'Drift'], [0.45, 0.78, 'Vault'], [0.76, 0.31, 'Gap'], [0.725, 0.30, ''], [0.83, 0.04, 'Seas'], [1.09, 0.015, ''], [1.1, 0.01, 'Horizon']];
 for (const [r, d, name] of marks) {
   add(`<circle cx="${f(gX(r))}" cy="${f(gY(d))}" r="3.2" fill="#E8A856"/>`);
   if (name) add(`<text class="mono" font-size="10.5" x="${f(gX(r) + 5)}" y="${f(gY(d) - 5)}">${name}</text>`);
