@@ -87,7 +87,7 @@ themes:
   - inheritance
   - institutional-burden
 continuity_notes:
-  - "This draft depicts Tess assessing another family's stone as closed, analogous to Yenu's stone in draft story-0004. Its intended hearing completed this carrier's inheritance function and left no drive-safe or frame-useful memory payload in this story; shared canon needs separate review."
+  - "This draft depicts Tess assessing another family's stone as closed, analogous to Yenu's particular stone in primary story-0004. Its intended hearing completed this carrier's inheritance function and left no drive-safe or frame-useful memory payload in this story; shared canon needs separate review."
   - "Term-0021 covers the broader Light-Bequest category. Story-0004 does not establish that other missed-generation stones close the same way, and this draft outcome is not an approved reliquary mechanic."
   - "The other family's pod also needs coherence-frame work. Its frame is a separate local draft design, not evidence that all Drift Clade pods use Skather-Ait's tuned filaments."
   - "Buyers value provenance, symbolic weight, and market narrative only; no memory is recovered, restored, burned, or converted into new usable fuel."

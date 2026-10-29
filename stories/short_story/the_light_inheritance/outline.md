@@ -99,13 +99,13 @@ field, or honor it the way her clade honors what it cannot put down.
 | Scene | Purpose | Canon Lever |
 |---|---|---|
 | Bedside recitation | Establish Drift Clade dying-rite & POV voice | New cultural detail; consistent with SPECIES_OVERVIEW §3 |
-| Pod elder & the kettle | Externalize the family's silent expectation | Proposes the Skather-Ait pod's frame design |
+| Pod elder & the kettle | Externalize the family's silent expectation | Establishes the Skather-Ait pod's local frame design |
 | Halix counter | Test the stone without completing its intended hearing | Assay is local to Yenu's stone; same exchange named in draft *The Tuner of Last Lights* |
-| Two registers | Show the proposed signature of Yenu's missed-generation bequest | This stone's draft tuning, not a wider subtype rule |
+| Two registers | Show the signature of Yenu's missed-generation bequest | This stone's tuning, not a wider subtype rule |
 | Aurel Ket's offer | Put a guaranteed price and permanent custody against the repair bill | General field pitch; concealed node drift stays secret |
-| Listening together | Make Yenu's choice irreversible through her own action | Proposed closed-inheritance state for this stone |
+| Listening together | Make Yenu's choice irreversible through her own action | Closed-inheritance state for this stone |
 | The release | Dramatize dark matter as ethical category, not just physics | Consistent with MEMORY_PHYSICS §3.3 |
-| Final recitation | Show selfhood-by-recitation as cultural strength | Draft practice of Yenu's clade |
+| Final recitation | Show selfhood-by-recitation as cultural strength | Practice depicted for Yenu's clade |
 
 ## Themes (mapped to AGENT.md §2.2)
 
@@ -125,17 +125,17 @@ field, or honor it the way her clade honors what it cannot put down.
 A sixth implicit theme the universe has been circling but not directly named:
 **Release as a third option** between preservation (Solace) and consumption
 (corridor-burn / Consortium reinforcement). This clade practices it as a
-doctrine in the draft.
+practice in the story.
 
-## Draft Concepts for Review
+## Scoped Story Facts and Pending Reference Review
 
 1. **Missed-generation light-bequest** (subtype of the broad term):
    The broader Light-Bequest category appears in primary stories 0008 and
    0022. Yenu's stone was tuned for a hearer the donor never met. It gives
-   two registers — donor voice and hearer-shaped absence. Its proposed drive
-   risks and the clade's choice to hear or release it concern this stone,
-   not every missed-generation or ordinary Light-Bequest. The draft definition is tracked in
-   `data/lexicon/terms.yaml`.
+   two registers — donor voice and hearer-shaped absence. Her grandfather's
+   warnings about drive and burn risks, and the choice to hear or release it,
+   concern this stone, not every missed-generation or ordinary Light-Bequest.
+   The provisional lexicon definition is tracked in `data/lexicon/terms.yaml`.
 
 2. **Closed inheritance** (state, not term):
    What Yenu's particular missed-generation bequest becomes when its intended hearer
@@ -150,7 +150,7 @@ doctrine in the draft.
 
 4. **Drift Clade dying-rite of recitation**:
    The dying corrects the living; the living carries the correction
-   forward. Proposes a positive identity practice for this clade,
+   forward. Depicts a positive identity practice for this clade,
    reframing their "fluid identity" as discipline rather than deficiency.
 
 5. **Clade-traditional thinning ("stopping")**:
@@ -160,10 +160,11 @@ doctrine in the draft.
 
 ## Continuity Review Status
 
-- The story remains draft pending the review in
-  `docs/reviews/STORY_0004_REVIEW_2026_10_28.md`.
+- The manuscript is primary canon following the author's October 29 approval,
+  recorded in `docs/reviews/STORY_0004_REVIEW_2026_10_28.md`. This outline
+  remains a separate planning artifact.
 - The broader Light-Bequest category is established in primary stories;
-  two-register tuning and closure are draft claims about Yenu's stone.
+  two-register tuning and closure are established for Yenu's stone only.
 - *The Tuner of Last Lights* (story-0003) mentions Halix Exchange but is
   draft context, not a causal prerequisite for Yenu's plot.
 - The grandfather dies naturally. His recitation correction remains "could

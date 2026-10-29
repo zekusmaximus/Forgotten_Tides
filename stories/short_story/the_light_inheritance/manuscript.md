@@ -5,9 +5,9 @@ contract_version: v1.0.0
 type: story
 title: The Light Inheritance
 story_type: short-story
-status: draft
-canon_tier: draft
-retrieval_role: active_draft
+status: canonical
+canon_tier: primary_canon
+retrieval_role: authoritative
 summary_50: Yenu weighs selling her grandmother's rare light-bequest to repair her pod, then chooses to hear and release it.
 summary_200: "With her pod's coherence-frame overdue for repair, Yenu takes her grandmother's missed-generation light-bequest to Halix. Tess assays it without completing its intended hearing and values it above the repair cost; a Consortium fixer offers more but cannot promise to preserve the part tuned for Yenu. She returns with the sale still possible, then chooses to hear the stone beside her dying grandfather. The hearing closes it. Yenu releases the carrier and faces her mother and the unpaid repair bill."
 cross_refs:
@@ -66,61 +66,61 @@ events:
   - id: event-story-0004-001
     timestamp: T0
     summary: Yenu receives her grandmother's light-bequest from her dying grandfather.
-    canon_tier: draft
+    canon_tier: primary_canon
     source: stories/short_story/the_light_inheritance/manuscript.md
     involved_entities: [story-0004, char-0026, loc-0015]
   - id: event-story-0004-002
     timestamp: T0+2h
     summary: Yenu learns the pod's coherence-frame needs urgent retuning.
-    canon_tier: draft
+    canon_tier: primary_canon
     source: stories/short_story/the_light_inheritance/manuscript.md
     involved_entities: [story-0004, char-0026, loc-0015]
   - id: event-story-0004-003
     timestamp: T0+5h
     summary: Yenu boards the six-hour tether shuttle to the Halix Exchange.
-    canon_tier: draft
+    canon_tier: primary_canon
     source: stories/short_story/the_light_inheritance/manuscript.md
     involved_entities: [story-0004, char-0026, loc-0013, loc-0015]
   - id: event-story-0004-004
     timestamp: T0+12h
     summary: Tess Vlin values Yenu's missed-generation light-bequest after tuning it.
-    canon_tier: draft
+    canon_tier: primary_canon
     source: stories/short_story/the_light_inheritance/manuscript.md
     involved_entities: [story-0004, char-0019, char-0026, loc-0013]
   - id: event-story-0004-005
     timestamp: T0+13h
     summary: Yenu refuses Aurel Ket's offer to acquire the stone.
-    canon_tier: draft
+    canon_tier: primary_canon
     source: stories/short_story/the_light_inheritance/manuscript.md
     involved_entities: [story-0004, char-0026, char-0031, fact-0003, loc-0013]
   - id: event-story-0004-006
     timestamp: T0+20h
     summary: Yenu returns to the pod with the stone unsold.
-    canon_tier: draft
+    canon_tier: primary_canon
     source: stories/short_story/the_light_inheritance/manuscript.md
     involved_entities: [story-0004, char-0026, loc-0015]
   - id: event-story-0004-007
     timestamp: T0+21h
     summary: Yenu and her grandfather hear the grandmother's recorded voice together.
-    canon_tier: draft
+    canon_tier: primary_canon
     source: stories/short_story/the_light_inheritance/manuscript.md
     involved_entities: [story-0004, char-0026, loc-0015]
   - id: event-story-0004-008
     timestamp: T0+22h
     summary: Her grandfather dies about an hour after the hearing.
-    canon_tier: draft
+    canon_tier: primary_canon
     source: stories/short_story/the_light_inheritance/manuscript.md
     involved_entities: [story-0004, char-0026, loc-0015]
   - id: event-story-0004-009
     timestamp: T0+22h30m
     summary: Yenu releases the closed carrier through the pod membrane.
-    canon_tier: draft
+    canon_tier: primary_canon
     source: stories/short_story/the_light_inheritance/manuscript.md
     involved_entities: [story-0004, char-0026, loc-0015]
   - id: event-story-0004-010
     timestamp: T0+22h45m
     summary: Yenu begins reciting her grandfather, slightly firming a galley seam.
-    canon_tier: draft
+    canon_tier: primary_canon
     source: stories/short_story/the_light_inheritance/manuscript.md
     involved_entities: [story-0004, char-0026, loc-0015]
 themes:
@@ -129,21 +129,21 @@ themes:
   - sacrifice
   - conceptual-fragility
 continuity_notes:
-  - Proposes a local filament coherence-frame and a missed-generation light-bequest subtype; their particular mechanisms remain draft pending review.
+  - Establishes Skather-Ait's local filament coherence-frame and Yenu's missed-generation light-bequest; neither design is a general rule for other pods or stones.
   - Adds Drift Clade selfhood-by-recitation as a positive cultural practice consistent with SPECIES_OVERVIEW §3 and POLITIES_AND_FACTIONS §4
   - Introduces clade-traditional thinning as a non-Synod, non-Remembrancer mode of chosen lightness; sits between the existing ethical poles without altering them
-  - Light-bequests occur in primary stories 0008 and 0022; this particular missed-generation stone's two-register and closed-carrier behavior remains a draft proposal, not a rule for the subtype or broad category.
+  - Light-bequests occur in primary stories 0008 and 0022; this particular missed-generation stone's two-register and closed-carrier behavior is established here, not as a rule for the subtype or broad category.
   - Sets Halix Exchange on page after its offstage mention in draft story-0003; no story-0003 plot outcome is required.
   - Aurel Ket pitches cultural-memory acquisition and civic reinforcement without disclosing the Consortium's concealed node drift; his technical promises remain unverified claims.
   - Tess reports an unverified rumor that a nearby Halix booth fronts for the Synod; no Synod operation is shown, preserving story-0022's first on-page operation in the Helios Drift.
   - Tess's ring exposes only a trace of this stone; Yenu's direct, chosen hearing at the bedside closes its particular hearer-shaped hollow.
   - Her grandfather dies naturally after the hearing, and the pod's filament and labor remain unpaid. Yenu's recitation firms only a local seam.
 metadata:
-  status: draft
+  status: canonical
   word_count: 5442
   author: AI Generated (Claude)
   created: '2026-05-23T00:00:00Z'
-  modified: '2026-10-28T00:00:00Z'
+  modified: '2026-10-29T03:40:47.862Z'
 tags:
   - drift-clades
   - halix-exchange

@@ -112,12 +112,12 @@ themes:
   - quiet-heroism
   - ethical-forgetting
 continuity_notes:
-  - "This draft follows story-0004, story-0015, story-0017, and story-0013; these predecessor stories and their dependent outcomes remain drafts."
+  - "This draft follows primary stories 0004 and 0013 and draft stories 0015 and 0017; outcomes introduced by those later drafts remain provisional."
   - Yenu's grandmother's particular missed-generation Light-Bequest remains closed and cannot power a drive; Tess's depleted renewal bond follows her purchase and withdrawal of another family's carrier assessed as closed in draft story-0015, a separate outcome needing review.
   - Lysa Korr remains deceased, her undisclosed anchor burn remains permanent, and H-37's prior clean certification remains suspended after Corin's correction.
   - Elior begins and ends the flight with eleven responsive anchors; his classroom smell is not restored, and the donated stone is spent alongside ordinary drive stocks.
   - Yenu's voluntary rendering removes the lived sound of her grandfather's correction. The recorded words, her mother's testimony, and the stone before use do not restore that experience.
-  - The tether shuttle and tuned coherence-frame filaments are local draft features proposed in story-0004; ethical rendering, memory stones, and corridor attention have separate lore and mechanics sources. This story claims no wider rule for Drift Clade pods.
+  - The tether shuttle and tuned coherence-frame filaments are local Skather-Ait features established in primary story-0004; this draft's later repair remains provisional. Ethical rendering, memory stones, and corridor attention have separate lore and mechanics sources. This story claims no wider rule for Drift Clade pods.
 bible_refs:
   - bible/ARCHIVISTS_WAKE_STORY_BIBLE.md#36-anchor-burn-consequence
   - bible/ARCHIVISTS_WAKE_STORY_BIBLE.md#71-anchor-rules

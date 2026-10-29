@@ -9,9 +9,10 @@ a loose grouping of low-gravity, memory-fragile peoples with fluid identities,
 decentralized societies, void-drift risk, and memory-drive miniaturization
 expertise. Their profile no longer labels them a single political faction.
 
-Inheritance memory and clade-traditional thinning remain in draft `story-0004`
-(*The Light Inheritance*) until that story and those claims receive separate
-review. The profile's unsupported claims about compact reliquary innovations
+Inheritance memory, recitation, and clade-traditional thinning are depicted in
+primary `story-0004` (*The Light Inheritance*). Their scope in the wider Drift
+Clades profile still needs separate claim review. The profile's unsupported
+claims about compact reliquary innovations
 and specific cultural doctrine were removed; they can be proposed again with
 evidence.
 

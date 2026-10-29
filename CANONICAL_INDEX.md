@@ -1,6 +1,6 @@
 # Canonical Index
 
-This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-10-28T22:36:39.325Z
+This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-10-29T03:40:48.339Z
 
 ## Character
 - `char-0001` — Rell (`characters/Rell.md`)
@@ -252,6 +252,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `mech-0002` - CORRIDOR MECHANICS (mechanics, primary_canon, weight 110, `mechanics/CORRIDOR_MECHANICS.md`)
 - `mech-0003` - ANCHOR THEORY (mechanics, primary_canon, weight 110, `mechanics/ANCHOR_THEORY.md`)
 - `story-0001` - The Archivist's Wake (story, primary_canon, weight 110, `stories/short_story/the_archivists_wake/manuscript.md`)
+- `story-0004` - The Light Inheritance (story, primary_canon, weight 110, `stories/short_story/the_light_inheritance/manuscript.md`)
 - `story-0008` - The Reliquarist's Doubt (story, primary_canon, weight 110, `stories/short_story/the_reliquarists_doubt/manuscript.md`)
 - `story-0012` - The Mercy Doctrine (story, primary_canon, weight 110, `stories/short_story/the_mercy_doctrine/manuscript.md`)
 - `story-0013` - The Smallest Burn (story, primary_canon, weight 110, `stories/short_story/the_smallest_burn/manuscript.md`)
@@ -313,7 +314,6 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `scene_the_doctrine_empty_stars_012` - The First Heavy Thing (story, draft, weight 55, `stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/scenes/SCENE_THE_DOCTRINE_EMPTY_STARS_012.md`)
 - `story-0002` - Memoir of a Nobody (story, draft, weight 65, `stories/short_story/memoir_of_a_nobody/manuscript.md`)
 - `story-0003` - The Tuner of Last Lights (story, draft, weight 65, `stories/short_story/the_tuner_of_last_lights/manuscript.md`)
-- `story-0004` - The Light Inheritance (story, draft, weight 65, `stories/short_story/the_light_inheritance/manuscript.md`)
 - `story-0004-outline` - The Light Inheritance - Outline (story, draft, weight 55, `stories/short_story/the_light_inheritance/outline.md`)
 - `story-0005` - The Liturgy of Rust (story, draft, weight 65, `stories/short_story/the_liturgy_of_rust/manuscript.md`)
 - `story-0006` - The Anchorless Tide (story, draft, weight 65, `stories/short_story/the_anchorless_tide/manuscript.md`)

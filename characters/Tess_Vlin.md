@@ -9,7 +9,7 @@ tags:
   - reliquary-tuner
   - light-bequest
 summary_50: Halix Exchange broker-tuner whose precise market ethics make her a dangerous scale for sacred memory objects.
-summary_200: "Tess Vlin is a mid-gravity broker-tuner on the Halix Exchange, working the fourth-deck inheritance quarter where Light-Bequests and other family reliquaries are valued. She is not a Remembrancer or Archivist and does not pretend the market is mercy, but her bench is trusted because she distinguishes price from truth. Draft stories 0004 and 0015 show her assessing Yenu's open stone and a second family's stone as closed; each case needs its own review before becoming shared canon."
+summary_200: "Tess Vlin is a mid-gravity broker-tuner on the Halix Exchange, working the fourth-deck inheritance quarter where Light-Bequests and other family reliquaries are valued. She is not a Remembrancer or Archivist and does not pretend the market is mercy, but her bench is trusted because she distinguishes price from truth. Primary story-0004 shows her assaying Yenu's stone without completing its intended hearing; draft story-0015 proposes her assessment of a second family's stone as closed. Neither case establishes a wider rule for other stones."
 cross_refs:
   characters: []
   locations:
@@ -40,8 +40,8 @@ continuity:
   invariants:
     - Tess is a Halix Exchange broker-tuner, not a member of Solace, the Archivist Orders, or the Mnemosyne Lattice Consortium.
     - Her ethics are transactional but precise; she does not sentimentalize the market or falsify an assay.
-    - In draft stories, she identifies Yenu's two-register stone and assesses another family's carrier as closed; neither case establishes wider subtype behavior.
-    - Her refusal to sell a completed carrier costs money and standing, not memory physics or anchor burn.
+    - In primary story-0004 she identifies Yenu's two-register stone; draft story-0015 proposes her assessment of another family's carrier as closed. Neither case establishes wider subtype behavior.
+    - Her proposed refusal to sell a completed carrier in draft story-0015 costs money and standing, not memory physics or anchor burn.
   watchlist:
     - Avoid making Tess saintly; her credibility depends on being honest in Halix's hard commercial sense.
     - Do not let her invent new Light-Bequest doctrine or override Drift Clade inheritance practice outside her own bench.

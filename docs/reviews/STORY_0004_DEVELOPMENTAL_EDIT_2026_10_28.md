@@ -2,7 +2,9 @@
 
 **Date:** October 28, 2026  
 **Source reviewed:** `story-0004` at commit `df0fdc1`  
-**Status:** Revised draft for author review; no canon approval or promotion
+**Status at this edit:** Revised draft for author review. The author approved
+the revision and promoted the manuscript on October 29, 2026; see the
+[story review](STORY_0004_REVIEW_2026_10_28.md#author-approval-and-promotion--october-29-2026).
 
 ## Assessment
 
