@@ -44,6 +44,7 @@ function main() {
   runNpmScript('test:promote');
   runNpmScript('test:redline');
   runNpmScript('test:continuity');
+  runNpmScript('test:map');
   console.log('CI-parity validation passed.');
 }
 
