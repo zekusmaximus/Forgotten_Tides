@@ -1,6 +1,6 @@
 # Link Map - Entity Relationships
 
-Generated: 2026-10-29T04:51:37.777Z
+Generated: 2026-10-29T13:12:32.713Z
 
 ## Entities (172)
 
@@ -177,7 +177,7 @@ Generated: 2026-10-29T04:51:37.777Z
 - `term-0031` (term, primary_canon, weight 110)
 - `term-0032` (term, primary_canon, weight 110)
 
-## Relationships (788)
+## Relationships (792)
 
 - `char-0001` → `char-0002` (characters; cross_refs, references)
 - `char-0001` → `char-0003` (characters; cross_refs, references)
@@ -801,8 +801,12 @@ Generated: 2026-10-29T04:51:37.777Z
 - `story-0014` → `mech-0001` (mechanics; cross_refs, references)
 - `story-0014` → `story-0001` (stories; cross_refs, references)
 - `story-0015` → `char-0019` (characters; cross_refs, references)
+- `story-0015` → `char-0026` (characters; cross_refs)
+- `story-0015` → `char-0031` (characters; cross_refs)
+- `story-0015` → `fact-0002` (factions; cross_refs)
 - `story-0015` → `fact-0003` (factions; cross_refs, references)
 - `story-0015` → `fact-0004` (factions; cross_refs, references)
+- `story-0015` → `fact-0006` (factions; cross_refs)
 - `story-0015` → `loc-0008` (locations; cross_refs, references)
 - `story-0015` → `loc-0013` (locations; cross_refs, references)
 - `story-0015` → `mech-0001` (mechanics; cross_refs, references)
@@ -975,7 +979,7 @@ _none_
 ## Statistics
 
 - **Total Entities**: 172
-- **Total Relationships**: 788
+- **Total Relationships**: 792
 - **Orphaned Targets**: 0
 - **Entity Types**: character, event, faction, location, lore, mechanics, story, term
 - **Primary / Working Canon**: 100

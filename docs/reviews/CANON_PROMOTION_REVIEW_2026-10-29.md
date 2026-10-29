@@ -1,5 +1,12 @@
 # Canon Promotion Review: The Halix Aftermarket
 
+**Current checkpoint:** The author approved the recommended revision scope
+and the revision has been applied. The fresh assessment is **61 / 70,
+Promote band**, ready for the author's review of the revised story. Its
+status and events remain draft; no promotion is authorized by scope approval
+alone. Sections 1-9 preserve the original review at `a176921`; section 10
+records implementation and current-line evidence.
+
 ## 1. Scope and baseline
 
 **Scope:** Story-0015, *The Halix Aftermarket*, only. The author authorized
@@ -318,8 +325,88 @@ later-draft passages were used only to inspect dependencies, not to score
 another story. This single story's card was completed without opening a new
 story for review.
 
-This review does not repeat or reopen the approved story-0004 developmental
-edit. No manuscript, entity, lexicon, timeline, mechanics, or lore file has
-been modified. No status, tier, or event was promoted. Only this tracked
-review report was added; the review branch is retained for the author's next
-editorial choice.
+At the original review checkpoint, no manuscript, entity, lexicon, timeline,
+mechanics, or lore file was modified; only this tracked report was added.
+The approved story-0004 developmental edit was not repeated or reopened.
+The subsequent author-approved revision is recorded below. No status, tier,
+or event has been promoted.
+
+## 10. Author-approved revision and fresh readiness check
+
+### Approval and implementation scope
+
+On October 29, 2026, the author approved the recommended revision scope:
+preserve the second carrier as a local case, retain the small physical
+attention effect with corrected causality, give the courier explicit
+delegated discretion and his own reason for choosing the lower bid, and keep
+the procedures local to Halix. F1-F7 were applied, together with O1's
+financial clarification. This approved revision scope is not a promotion
+decision about the finished text.
+
+The manuscript retains its plot and five sections. The financial loss,
+professional consequences, and ordinary spent-carrier release remain.
+The revision uses the supplied draft and repository style guide as its
+primary prose evidence, with the author's *Write in Jeff's Voice*
+speculative-fiction guidance as additional style calibration.
+
+### Implemented fixes
+
+Line references in this section point to the revised manuscript.
+
+| Finding | Implementation and current evidence |
+| --- | --- |
+| F1: scale causality | Private payment clears without a scale change at `manuscript.md:678`. Buyers depart and inquiries close at `:775-779`; only then does the scale partly ease at `:781-782`. The narrator's universal-law declaration is replaced with Tess's limited observation at `:583-584`. No donor payload is restored. |
+| F2: authority and choice | The courier's reported discretion is checked against his aunt's written permission for the carrier and its record at `:553-557`. Tess discloses withdrawal and release before purchase at `:611-612`. The courier can refuse at `:657-663`; his gesture to the hearer's name and reason for accepting temporary help appear at `:671-676`. |
+| F3: repetition and conduct | The repeated later scale/knife and mirror exchanges are removed. The Consortium's credible public-benefit argument remains at `:707-713`. Tess will decide each future case rather than promise universal buyouts (`:725`). The climax joke is replaced with a practical response (`:773`), and the ring's silence leads directly to the waiting customer (`:903-908`). |
+| F4: scope | Assay patterns are Tess's experience, with silence expressly inconclusive and the witness record checked (`:248-258`). Packaging is her expectation of a family case (`:143-146`); the courier's final posture remains observed action rather than a Clade-wide gratitude rule (`:816-817`). |
+| F5: summary | The short summary now says no usable memory rather than no remaining use (`:11`). The buyers' provenance uses remain possible. |
+| F6: events | Five events match all five chronology summaries and timestamps exactly (`:47-99`). Existing IDs 001/002/003 and their timestamps remain stable. New local IDs 004 (assay) and 005 (purchase) were allocated after checking tracked/current/archive sources and all available git history for prior use. The ID helper has no event allocator. All five events remain local and draft. |
+| F7: appearances | Yenu and the prior fixer Aurel, plus the Orders and Solace, are added only to appearance links (`:14-25`). The causal story source remains primary story-0004 (`:41-42`). |
+| O1: financial procedure | The withdrawal charge is explicitly against the renewal bond and separate from the purchase (`:750-752`). No memory or anchor debit is introduced. |
+
+The revised body contains **4344 words**, matched by `metadata.word_count`.
+The frontmatter's `modified` date is updated. No new named reusable entity or
+lexicon term was introduced.
+
+### Fresh assessment
+
+The revised manuscript was reread in full, with independent craft,
+mechanics, and hygiene checks. All seven required finding groups are
+resolved. No further mandatory correction was identified.
+
+| Criterion | Score | Weight | Points | Revised evidence |
+| --- | --- | --- | --- | --- |
+| A Metaphysical fidelity | 4 | 3 | 12 | The local scale response now follows visible attention changes (`:775-782`); donor content remains absent (`:286-288,583-584`). This remains a limited application of remembrance/coherence, not a general mechanism for turning demand into fuel. |
+| B Bible compliance | 5 | 3 | 15 | No locked-character, anchor-restoration, corridor-cost, or Synod-operation violation is introduced; release remains ordinary matter (`:875-884`). |
+| C Tonal fidelity | 4 | 2 | 8 | Later quips and repeated arguments are reduced; the practical response to review (`:771-773`) and the quiet ending (`:903-908`) retain restraint without flattening the early dry voice. |
+| D Craft and structure | 4 | 2 | 8 | Written delegation, disclosed release terms, refusal rights, and the courier's own preference now carry the purchase (`:553-557,611-612,657-678`); payment, charge, and complaints preserve consequences (`:678,750-752,888-892`). |
+| E Cross-canon coherence | 5 | 2 | 10 | Closure remains one case (`:467`), diagnostics are bounded (`:248-258`), and the new material stays local under continuity notes `:113-120`. Only primary story-0004 is a story prerequisite. |
+| F Repository hygiene | 5 | 1 | 5 | Word count, summaries, source paths, appearances, and five matching local events are verified (`:11-123`). Full CI-parity validation passes. |
+| G Canon value | 3 | 1 | 3 | The story adds a useful local commercial consequence for Tess and draft story-0021, without establishing wider closure or buyout policy (`:611-612,725,750-752`). |
+| **Total** | | | **61 / 70** | |
+
+**Hard gates: PASS. Recommendation: ready for the author's story-approval
+decision.** The score is a readiness finding, not author approval or a status
+change. A later promotion must preserve the local carrier/attention scope
+and separately review any expanded Tess or Halix profile claims.
+
+### Validation and preserved boundaries
+
+`npm run validate:ci` passes the complete CI-parity suite after the revision.
+`git diff --check` passes. The rebuilt graph contains 172 entities, 792 edges,
+and zero orphaned targets. The graph change records the four added appearance
+links; the canonical index has no semantic change. Existing nonblocking
+advisories are 21 schema warnings (18 skips and three recommended-status
+warnings), 975 glossary candidates across 55 scanned files, and two draft
+red-line citation warnings for stories 0005 and 0007. No gate fails.
+
+The impact report still finds one direct dependent, draft story-0021, no
+transitive dependents, and Tess, Aurel, and Halix as appearance candidates.
+Their approved profiles retain their separate provisional sections. Story-0021's
+later events and childhood Halix-visit conflict were not revised here.
+
+Story-0015 remains `draft` / `active_draft`, and all five local events remain
+draft. No entry is added to `data/timeline/events.yaml`. Story-0004, its ten
+local event IDs, the lexicon, governing mechanics/lore, and all entity profile
+statuses remain unchanged. The revised manuscript, this checkpoint, and the
+changed generated maps are prepared for PR review.
