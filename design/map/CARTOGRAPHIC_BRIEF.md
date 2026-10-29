@@ -159,16 +159,74 @@ The Voids are holes at 0.00. Sites may peak above their surroundings.
 
 ## 7. Follow-Up Work Created by the Decisions
 
-| Item | Where | When |
-|------|-------|------|
-| Add **Pull** (`term-0033`) and **Sleeve** (`term-0034`) as `draft` lexicon terms | `data/lexicon/terms.yaml` | Done on this branch; OWNER review at PR per `docs/governance/lexicon.md` |
-| Record the decisions | `docs/governance/working_lore_approvals.md` | Done on this branch |
-| Add `coordinates.region` to Skather-Ait and Solace Hospice. Replace Heavonly's descriptive `region` with a region name. | `atlas/` speculative entries | Phase 1 backfill |
-| Add the placement step to Step 6b and the Canon Impact line for placement changes | `docs/PLAYBOOK_NEW_STORY.md`, `.github/pull_request_template.md` | Phase 1, with the lint |
-| Source-first claim review of `loc-0013` Halix and `loc-0015` Skather-Ait against `story-0004` | `docs/reviews/` | Review session |
-| Rename the `story-0003` hospice as a separate Remembrancer house | `ss/the_tuner_of_last_lights` | Next revision of that draft |
-| Replace "third pull" used as a time of day | `ss/the_hospice_knot:429, 527` | Next revision of that draft |
-| Change "three pods" to two pods and a Remembrancer outstation | `ss/receipt_for_a_voice:212` | Next revision of that draft |
-| Settle "three galaxies" against "three other galaxies," and routine intergalactic cruisers against `mechanics/CORRIDOR_MECHANICS.md` §6.3 | Novel draft | Novel revision |
-| Set up the private author build behind basic auth | Hetzner VPS | Phase 2, which needs server access |
-| Decide whether "the Tides" names a universe-level current layer | Author | Open |
+Done on this branch:
+
+- **Pull** (`term-0033`) and **Sleeve** (`term-0034`) added as `draft`
+  lexicon terms. They take OWNER review at the PR, per
+  `docs/governance/lexicon.md`.
+- The decisions are recorded in `docs/governance/working_lore_approvals.md`.
+
+The remaining work is ordered in Phase 0b of the plan, which runs before
+Phase 1. Two items from the first version of this list were wrong:
+
+- **`ss/receipt_for_a_voice:212` needs no revision.** Its "three pods"
+  holding the tether line are Skather-Ait plus the two other pods named in
+  `ss/the_light_inheritance:282`, so the two stories agree.
+- **`ss/the_navigator_who_forgot_enough:152` needs no revision.** "The Void
+  Regions lay beyond the station's outer sleeve" reads correctly under T14:
+  the station sits in the Gap's outer sleeve, and a Void lies beyond it.
+
+## 8. Second-Pass Questions (2026-10-29)
+
+An audit of this brief found claims that rest on inference rather than on a
+decision, and questions the first pass left open. Each item below gives the
+recommendation; the full options and tradeoffs are in the session record.
+The author has not answered them yet. Until then, T4, T11, T21, and T26–T29
+are suspended, and so are the "Core margin" and inner-relay rows of
+section 3.
+
+**Map claims that rest on inference**
+
+| # | Question | Recommendation |
+|---|----------|----------------|
+| Q1 | Does the Gap cut into the outer sleeve or only touch it? The accepted D2 wording says "crossing"; T11 and T26 softened it to "touches" without a decision. | Touch only. Cutting in would tear populated sleeves, which no story describes. |
+| Q2 | Is the Ninth Sleeve the frontier band that meets the void margins and the Gap? | Yes. It follows from T6 and T17 and fits the Ninth's 900 mostly old residents. |
+| Q3 | Is the "inner relay" a band of the Drift or a facility? | A facility: a corridor and courier node in the Drift's inner sleeve that hosts the Navigant house. The bands are inner sleeve, mid-sleeve, and outer sleeve. |
+| Q4 | Does the outer sleeve hold exactly nine sleeves, each with its silo at the Vault? | Exactly nine. |
+| Q5 | Do the Core and the Drift touch, or is there a margin between them? | They touch, with Heavonly on the boundary. Remove the sketch's dark ring and the "Core margin" zone. |
+| Q6 | Which sleeve holds Halix and Skather-Ait? | One shared, unnumbered sleeve (primary canon: "both moored in an outer sleeve"). The map asserts no number. |
+| Q7 | Which side of its pocket is Ostra-Vael on? | Drop T28. It is geometry, not a claim. |
+| Q8 | Do counts of drawn features (arms, pockets, Voids, black-hole knots, Archivist stations) carry canon weight? | No, all counts are cartographic. Drop the per-station ticks on the Black Horizon's near edge, since canon gives no count. |
+| Q9 | Where does the *Archivist's Wake* route start? | No origin. Draw only the approach into the Gap, marked "3 pulls." |
+
+**What canon mentions and the map must include or leave out**
+
+| # | Question | Recommendation |
+|---|----------|----------------|
+| Q10 | The fishing-colony moon in the Gap's near sleeve (primary, `story-0008`) has no entity file. | Show it as an unnamed historical site. Create no entity. |
+| Q11 | The abandoned Black Horizon station from `story-0012`. | Omit it; the story declares it story-local. |
+| Q12 | Unnamed Sleeves I, III, VI, and VIII, and the Fourth Sleeve's population. | Show the numerals with no data. Leave the Fourth's population blank. |
+| Q13 | "The Tides." | Draw nothing named. The universe-level dark-matter scaffold stays unlabeled. The lore question goes to the `story-0006` review. |
+
+**File changes**
+
+| # | Question | Recommendation |
+|---|----------|----------------|
+| Q14 | How do drafting agents learn the approved topology? | Add an "Arrangement" section to `lore/COSMIC_REGIONS.md`. It is already working canon and is in the quickstart reading list. Point it to this brief. |
+| Q15 | Should the eight primary-canon atlas files be edited to match? | No. Keep working-canon topology out of primary-canon files. |
+| Q16 | Speculative atlas fields. | Heavonly: `region: Helios Drift inner sleeve`. Skather-Ait: `region: Helios Drift outer sleeve`. Solace Hospice: `region: Lattice Gap outer sleeve`. Invent no densities. |
+| Q17 | Ebbhaven's `location_type`. | Defer to the `story-0006` review, where `docs/governance/provisional_profiles.md` already places it. The map uses an *E.D.* marker either way. |
+
+**Draft revisions**
+
+| # | Question | Recommendation |
+|---|----------|----------------|
+| Q18 | The `story-0003` hospice, which is named "Solace Hospice" but sits on the Drift's outer rim. | Remove the proper name. It becomes "a Remembrancer hospice" or "the hospice" in the summary, setting, and prose line 76. |
+| Q19 | "Third pull" used as a time of day in `story-0007`. | Change it to "third watch," matching the Remembrancer hospice in `story-0003` ("at second watch"). |
+| Q20 | The novel's galaxy count and its routine inter-galactic cruisers. | Add a continuity note to the novel's `notes.md` now. Revise the prose in the author's next novel pass. |
+
+**Process**
+
+| # | Question | Recommendation |
+|---|----------|----------------|
+| Q21 | How the changes reach `main`. | Three PRs. (1) The map decisions, lexicon, and lore and atlas edits, merged after OWNER review. (2) The draft revisions. (3) Phase 1 tooling. |

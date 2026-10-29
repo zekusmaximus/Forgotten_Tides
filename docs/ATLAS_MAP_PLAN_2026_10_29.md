@@ -708,8 +708,30 @@ Each phase ends in a commit on a `feat/map/...` branch and a green
 - **Done when** the author has answered decisions 1–6 or deferred them
   explicitly.
 - **Status (2026-10-29):** The brief and `design/map/layout_sketch_v0.svg`
-  are written, and decisions 1–10 are accepted. Approval of the brief's four
-  proposed claims (T26–T29) remains open.
+  are written, and decisions 1–10 are accepted. The brief's second-pass
+  questions (section 8, Q1–Q21) are open.
+
+### Phase 0b — Canon and draft alignment (one to two sessions)
+
+Settle the text before building tools that check it. Phase 1's lint reads
+atlas `coordinates.region` and lexicon definitions, so fixing those first
+lets it pass on its first run without exceptions. Revising drafts now clears
+contradictions that the continuity checks and the map would otherwise flag.
+
+1. Answer the brief's second-pass questions. Update the brief, the lexicon
+   wording if Q4 changes it, and the sketch (v1).
+2. Lore and atlas: add the "Arrangement" section to
+   `lore/COSMIC_REGIONS.md` (Q14). Set the three speculative atlas region
+   fields (Q16). Leave the primary-canon atlas files unchanged (Q15).
+3. Drafts: revise `story-0003` (Q18) and `story-0007` (Q19). Add the
+   novel's continuity note (Q20).
+4. Run the source-first claim review of `loc-0013` Halix and `loc-0015`
+   Skather-Ait against `story-0004`. The author decides whether to promote
+   them. This must finish before the public build.
+5. Open and merge the PRs (Q21).
+
+- **Done when** every question in brief section 8 is answered, the edits are
+  merged, and `npm run validate:ci` passes.
 
 ### Phase 1 — Data layer (one session)
 
