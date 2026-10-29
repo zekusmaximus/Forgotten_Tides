@@ -40,6 +40,7 @@ async function pixelAt(dir, size, xy) {
 (async () => {
   const first = fs.mkdtempSync(path.join(os.tmpdir(), 'map-render-a-'));
   const second = fs.mkdtempSync(path.join(os.tmpdir(), 'map-render-b-'));
+  const third = fs.mkdtempSync(path.join(os.tmpdir(), 'map-render-public-'));
   try {
     await test('the pyramid has one level per halving and the right tile counts', () => {
       const levels = pyramid(1000, 256);
@@ -80,9 +81,23 @@ async function pixelAt(dir, size, xy) {
       assert(core[0] > 200, `the Core should be bright, got ${core}`);
       assert(Math.max(...empty) < 20, `a Void center should be near black, got ${empty}`);
     });
+    await test('the public build carries no speculative density', async () => {
+      await renderTiles({ build: 'public', size: 1024, tile: 256, out: third, workers: 2 });
+      const { cartography, atlas } = layout.loadMapContext();
+      const speculative = cartography.sites.find(site => atlas.get(site.id).tier === 'speculative' && atlas.get(site.id).memory_density !== null && site.relation === 'boundary');
+      const point = toXY(speculative.at.r, speculative.at.theta);
+      assert.notDeepEqual(await pixelAt(first, 1024, point), await pixelAt(third, 1024, point), `${speculative.id} shapes only the author image`);
+      assert.deepEqual(await pixelAt(first, 1024, [0, 0]), await pixelAt(third, 1024, [0, 0]), 'canon areas render the same in both builds');
+    });
+
+    await test('bad settings fail before anything on disk changes', async () => {
+      for (const settings of [{ workers: 0 }, { workers: Number.NaN }, { quality: 0 }, { size: 100 }, { build: 'draft' }]) {
+        await assert.rejects(() => renderTiles({ size: 512, out: first, ...settings }));
+      }
+      assert(fs.existsSync(path.join(first, 'galaxy_files', '10', '0_0.webp')), 'the earlier render is untouched');
+    });
   } finally {
-    fs.rmSync(first, { recursive: true, force: true });
-    fs.rmSync(second, { recursive: true, force: true });
+    for (const dir of [first, second, third]) fs.rmSync(dir, { recursive: true, force: true });
   }
   if (process.exitCode) console.error('\nMap render tests: failures above');
   else console.log('\nMap render tests: all passed');

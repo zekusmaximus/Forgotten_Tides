@@ -10,11 +10,15 @@
  * grow past a few pixels. The same inputs always produce byte-identical
  * tiles. The cartography lint must pass first.
  *
- * Usage: node scripts/map/render_tiles.js [--size 16384] [--tile 256]
- *          [--out out/map/tiles] [--workers N] [--quality 82] [--root <dir>]
- * Output: <out>/galaxy.dzi, <out>/galaxy_files/<level>/<col>_<row>.webp,
- *         and <out>/galaxy.json (render manifest). Everything under out/ is
- *         gitignored.
+ * The public build renders from primary- and working-canon densities only,
+ * so no speculative site shapes the public image (decision D7).
+ *
+ * Usage: node scripts/map/render_tiles.js [--build author|public]
+ *          [--size 16384] [--tile 256] [--out <dir>] [--workers N]
+ *          [--quality 82] [--root <dir>]
+ * Output (default out/map/tiles, or out/map/tiles-public for the public
+ * build): galaxy.dzi, galaxy_files/<level>/<col>_<row>.webp, and galaxy.json
+ * (the render manifest). Everything under out/ is gitignored.
  */
 
 const fs = require('fs');
@@ -88,16 +92,17 @@ function ramp(v) {
 }
 
 // Builds the per-pixel painter from the repository's map inputs.
-function createPainter(root) {
+function createPainter(root, { build = 'author' } = {}) {
   // simplex-noise ships CommonJS; required here so tests that never render
   // do not load it.
   const { createNoise2D } = require('simplex-noise');
   const context = layout.loadMapContext(root);
   const shapes = layout.buildShapes(context.cartography);
-  const { field } = layout.createMapField(context, shapes);
+  const include = build === 'public' ? entity => layout.CANON_TIERS.has(entity.tier) : () => true;
+  const { field } = layout.createMapField(context, shapes, { include });
   const blend = context.cartography.field.blend;
   const treated = treatment => context.cartography.regions
-    .filter(region => region.treatment === treatment)
+    .filter(region => region.treatment === treatment && include(context.atlas.get(region.id) || { tier: 'speculative' }))
     .map(region => shapes.get(region.id));
   const masks = { fracture: treated('fracture'), ash: treated('ash'), void: treated('void'), perimeter: treated('perimeter') };
   const noise = createNoise2D(mulberry32(20261029));
@@ -198,7 +203,9 @@ function createPainter(root) {
     }
 
     // Stars: per class, one candidate per world cell, visible once the cell
-    // spans a few pixels at this level.
+    // spans a few pixels at this level. Each star is decided from the field
+    // and masks at its exact world position, never from this tile's grid, so
+    // neighboring tiles always agree on a star that straddles their edge.
     for (const cls of STAR_CLASSES) {
       const cellPx = cls.cell / px;
       if (cellPx < 3) continue;
@@ -214,10 +221,9 @@ function createPainter(root) {
           const sy = (j + hash2(i, j, cls.salt + 1)) * cls.cell;
           const su = (sx - x0) / px;
           const sv = (y0 - sy) / px;
-          const density = Math.max(0, sample(grid.density, su, sv));
-          const isVoid = sample(grid.void, su, sv);
-          if (isVoid > 0.5) continue;
-          const ash = sample(grid.ash, su, sv) > 0.5;
+          if (maskAt(masks.void, sx, sy) > 0.5) continue;
+          const density = Math.max(0, field(sx, sy));
+          const ash = maskAt(masks.ash, sx, sy) > 0.5;
           const chance = ash ? 0.3 : 0.05 + 0.6 * Math.pow(density, 1.3);
           if (hash2(i, j, cls.salt + 2) > chance) continue;
           const roll = hash2(i, j, cls.salt + 3);
@@ -255,8 +261,8 @@ function createPainter(root) {
 async function runWorker() {
   const sharp = require('sharp');
   sharp.concurrency(1);
-  const { root, tile, quality, levels, tasks, dir } = workerData;
-  const painter = createPainter(root);
+  const { root, build, tile, quality, levels, tasks, dir } = workerData;
+  const painter = createPainter(root, { build });
   for (const [level, col, row] of tasks) {
     const { buffer, width, height } = painter.paint(levels[level], col, row, tile);
     await sharp(buffer, { raw: { width, height, channels: 3 } })
@@ -268,20 +274,23 @@ async function runWorker() {
 
 async function renderTiles({
   root = layout.DEFAULT_ROOT,
+  build = 'author',
   size = 16384,
   tile = 256,
-  out = path.join(root, 'out', 'map', 'tiles'),
+  out = path.join(root, 'out', 'map', build === 'public' ? 'tiles-public' : 'tiles'),
   workers = Math.max(1, Math.min(8, os.cpus().length)),
   quality = 82,
   log = () => {}
 } = {}) {
-  // Loaded lazily so `npm run map:tiles -- --help`-style failures stay cheap.
+  // Validate everything before anything on disk changes.
+  if (!['author', 'public'].includes(build)) throw new Error(`unknown build "${build}"; use author or public`);
+  if (!Number.isInteger(tile) || tile < 64) throw new Error(`tile (${tile}) must be an integer of at least 64`);
+  if (!Number.isInteger(size) || size < tile) throw new Error(`size (${size}) must be an integer of at least tile (${tile})`);
+  if (!Number.isInteger(workers) || workers < 1) throw new Error(`workers (${workers}) must be a positive integer`);
+  if (!Number.isInteger(quality) || quality < 1 || quality > 100) throw new Error(`quality (${quality}) must be an integer from 1 to 100`);
   const { lintCartography } = require('../lint/cartography_lint');
   const lint = lintCartography({ root });
   if (lint.errors) throw new Error(`the cartography lint reports ${lint.errors} errors; run npm run lint:map`);
-  if (!Number.isInteger(size) || size < tile || !Number.isInteger(tile) || tile < 64) {
-    throw new Error(`size (${size}) must be an integer of at least tile (${tile}), and tile at least 64`);
-  }
 
   const started = Date.now();
   const levels = pyramid(size, tile);
@@ -299,26 +308,36 @@ async function renderTiles({
   const count = Math.min(workers, tasks.length);
   let done = 0;
   let reported = 0;
-  await Promise.all(Array.from({ length: count }, (_, w) => new Promise((resolve, reject) => {
-    const worker = new Worker(__filename, {
-      workerData: { kind: 'atlas-map-render', root, tile, quality, levels, dir: stagingDir, tasks: tasks.filter((_, k) => k % count === w) }
-    });
-    worker.on('message', () => {
-      done++;
-      const percent = Math.floor((done / tasks.length) * 100);
-      if (percent >= reported + 10) {
-        reported = percent - (percent % 10);
-        log(`  ${reported}% (${done}/${tasks.length} tiles)`);
-      }
-    });
-    worker.on('error', reject);
-    worker.on('exit', code => (code === 0 ? resolve() : reject(new Error(`render worker exited with code ${code}`))));
-  })));
+  const pool = [];
+  try {
+    await Promise.all(Array.from({ length: count }, (_, w) => new Promise((resolve, reject) => {
+      const worker = new Worker(__filename, {
+        workerData: { kind: 'atlas-map-render', root, build, tile, quality, levels, dir: stagingDir, tasks: tasks.filter((_, k) => k % count === w) }
+      });
+      pool.push(worker);
+      worker.on('message', () => {
+        done++;
+        const percent = Math.floor((done / tasks.length) * 100);
+        if (percent >= reported + 10) {
+          reported = percent - (percent % 10);
+          log(`  ${reported}% (${done}/${tasks.length} tiles)`);
+        }
+      });
+      worker.on('error', reject);
+      worker.on('exit', code => (code === 0 ? resolve() : reject(new Error(`render worker exited with code ${code}`))));
+    })));
+    if (done !== tasks.length) throw new Error(`rendered ${done} of ${tasks.length} tiles`);
+  } catch (err) {
+    // Stop the other workers and leave the previous tiles untouched.
+    await Promise.all(pool.map(worker => worker.terminate()));
+    fs.rmSync(stagingDir, { recursive: true, force: true });
+    throw err;
+  }
 
   fs.rmSync(filesDir, { recursive: true, force: true });
   fs.renameSync(stagingDir, filesDir);
   fs.writeFileSync(path.join(outDir, `${NAME}.dzi`), dziXml(size, tile));
-  const manifest = { generated: new Date().toISOString(), size, tile, format: FORMAT, extent: layout.IMAGE_EXTENT, levels: levels.length, tiles: tasks.length, ms: Date.now() - started };
+  const manifest = { generated: new Date().toISOString(), build, size, tile, format: FORMAT, extent: layout.IMAGE_EXTENT, levels: levels.length, tiles: tasks.length, ms: Date.now() - started };
   fs.writeFileSync(path.join(outDir, `${NAME}.json`), `${JSON.stringify(manifest, null, 2)}\n`);
   return manifest;
 }
@@ -332,6 +351,7 @@ function main() {
   const root = option('--root') ? path.resolve(option('--root')) : layout.DEFAULT_ROOT;
   const settings = {
     root,
+    build: option('--build'),
     size: option('--size', Number),
     tile: option('--tile', Number),
     out: option('--out') ? path.resolve(option('--out')) : undefined,
@@ -340,7 +360,7 @@ function main() {
     log: message => console.log(message)
   };
   for (const key of Object.keys(settings)) if (settings[key] === undefined) delete settings[key];
-  console.log(`Rendering atlas map tiles (size ${settings.size || 16384})...`);
+  console.log(`Rendering atlas map tiles (${settings.build || 'author'} build, size ${settings.size || 16384})...`);
   renderTiles(settings).then(
     manifest => console.log(`Rendered ${manifest.tiles} tiles in ${manifest.levels} levels in ${(manifest.ms / 1000).toFixed(1)} s.`),
     err => {

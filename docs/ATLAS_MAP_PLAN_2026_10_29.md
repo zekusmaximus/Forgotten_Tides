@@ -769,10 +769,15 @@ contradictions that the continuity checks and the map would otherwise flag.
     - the overlays and the detail panel;
     - the lens, search, deep links and the list view;
     - the public build and a no-tiles fallback.
-  - `npm run test:map-browser`, a CI job, checks the lens states and the
-    other behaviors in headless Chromium and saves screenshots. The viewer
-    logic, the server boundary and the renderer have Node tests in
-    `validate:ci`.
+  - `npm run test:map-browser`, a CI job, checks each lens state in headless
+    Chromium against a structural snapshot derived from the data: pin
+    visibility by tier, dashed speculative pins, solid canon pins. It also
+    covers the other behaviors and saves screenshots for review. It uses no
+    pixel baselines, which differ across machines; that is a deliberate
+    departure from "snapshot" in the narrow sense.
+  - The public build has its own tiles, rendered from canon densities only.
+  - The viewer logic, the server boundary and the renderer have Node tests
+    in `validate:ci`.
   - The procedural style frame is ready for the D9 review.
 
 ### Phase 3 — High-definition pipeline (two to three sessions)

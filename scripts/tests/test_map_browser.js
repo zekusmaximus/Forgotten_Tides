@@ -2,8 +2,14 @@
 /**
  * Browser tests for the atlas map viewer, run in headless Chromium through
  * Playwright: the three lens states, search, deep links, the list view, the
- * public build, and the no-tiles fallback. Each lens state is saved as a
- * screenshot under out/map/screenshots/ for review.
+ * public build, and the no-tiles fallback.
+ *
+ * Each lens state gets a structural snapshot derived from the data: every
+ * pin's visibility must match its tier under that lens, and speculative pins
+ * must render dashed and faded while canon pins render solid. Pixel
+ * baselines are deliberately not used, since font and GPU differences across
+ * machines make them brittle; screenshots are saved under
+ * out/map/screenshots/ for human review instead.
  *
  * Usage: npm run test:map-browser
  * Needs a Chromium for the pinned Playwright version
@@ -65,6 +71,7 @@ const pinHidden = (page, id) => page.$eval(`#pins [data-id="${id}"]`, node => no
       }
     }
     await renderTiles({ size: 1024, tile: 256, out: path.join(outDir, 'tiles'), workers: 2 });
+    await renderTiles({ build: 'public', size: 1024, tile: 256, out: path.join(outDir, 'tiles-public'), workers: 2 });
     const authorUrl = await listen(servers[servers.push(createMapServer({ build: 'author', outDir })) - 1]);
     const publicUrl = await listen(servers[servers.push(createMapServer({ build: 'public', outDir })) - 1]);
     const bareUrl = await listen(servers[servers.push(createMapServer({ build: 'author', outDir: bareDir })) - 1]);
@@ -80,16 +87,47 @@ const pinHidden = (page, id) => page.$eval(`#pins [data-id="${id}"]`, node => no
       await page.close();
     });
 
-    await test('each lens shows only its tiers (screenshots saved)', async () => {
+    await test('each lens state matches its structural snapshot (screenshots saved)', async () => {
       const { page } = await openMap(browser, authorUrl);
+      const tileRequests = [];
+      page.on('request', req => { if (req.url().includes('/map/tiles/galaxy_files/')) tileRequests.push(req.url()); });
       await page.waitForTimeout(1500);
-      for (const [lens, heavonlyHidden] of [['primary', true], ['working', true], ['speculative', false]]) {
+      for (const lens of ['primary', 'working', 'speculative']) {
         await page.click(`.lens [data-lens="${lens}"]`);
         assert.equal(await page.$eval(`.lens [data-lens="${lens}"]`, node => node.getAttribute('aria-checked')), 'true');
-        assert.equal(await pinHidden(page, 'loc-0014'), heavonlyHidden, `Heavonly under ${lens}`);
-        assert.equal(await pinHidden(page, 'loc-0011'), false, `Tessarine Vault under ${lens}`);
+        const mismatches = await page.evaluate(activeLens => {
+          const problems = [];
+          for (const pin of window.__map.state.pins) {
+            const node = pin.node;
+            const shouldShow = window.MapCore.visible(activeLens, pin.item.tier);
+            if (node.hidden === shouldShow) problems.push(`${pin.item.id}: hidden=${node.hidden} under ${activeLens}`);
+            if (!shouldShow || node.classList.contains('existence-doubtful')) continue;
+            const style = getComputedStyle(node);
+            const speculative = window.MapCore.lensTier(pin.item.tier) === 'speculative';
+            if (speculative && (style.borderTopStyle !== 'dashed' || Number(style.opacity) >= 1)) problems.push(`${pin.item.id}: speculative pin not dashed and faded`);
+            if (!speculative && pin.item.kind === 'site' && style.borderTopStyle !== 'solid') problems.push(`${pin.item.id}: canon pin not solid`);
+          }
+          return problems;
+        }, lens);
+        assert.deepEqual(mismatches, [], `lens ${lens}`);
+        assert.equal(await pinHidden(page, 'loc-0014'), lens !== 'speculative', `Heavonly under ${lens}`);
         await page.screenshot({ path: path.join(SCREENSHOTS, `lens-${lens}.png`) });
       }
+      // Panning loads more tiles; every tile URL carries the render version.
+      await page.evaluate(() => window.__map.select('loc-0011'));
+      await page.waitForTimeout(1500);
+      assert(tileRequests.length > 0, 'tiles were requested');
+      assert(tileRequests.every(url => /\.webp\?v=/.test(url)), `unversioned tile URL: ${tileRequests.find(url => !/\?v=/.test(url))}`);
+      await page.close();
+    });
+
+    await test('Escape closes search results without dropping the selection', async () => {
+      const { page } = await openMap(browser, `${authorUrl}#loc-0011`);
+      await page.fill('#search', 'hel');
+      await page.waitForSelector('#results li');
+      await page.press('#search', 'Escape');
+      assert.equal(await page.$eval('#results', node => node.hidden), true);
+      assert.equal(await page.$eval('#panel h2', node => node.textContent), 'Tessarine Vault');
       await page.close();
     });
 
@@ -129,6 +167,7 @@ const pinHidden = (page, id) => page.$eval(`#pins [data-id="${id}"]`, node => no
       const tiers = await page.evaluate(() => window.__map.state.items.map(item => item.tier));
       assert(!tiers.includes('speculative') && !tiers.includes('draft'));
       assert.equal(await page.$eval('#build-badge', node => node.textContent), 'Public build');
+      assert.equal(await page.evaluate(() => document.body.classList.contains('no-tiles')), false, 'public tiles are served');
       await page.screenshot({ path: path.join(SCREENSHOTS, 'public-build.png') });
       await page.close();
     });

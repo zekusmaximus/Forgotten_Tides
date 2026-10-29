@@ -9,7 +9,6 @@
   const LENSES = ['primary', 'working', 'speculative'];
   const RANK = { primary: 0, working: 1, speculative: 2 };
   const ROMAN = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII'];
-  const SLEEVE_LABEL_THETA = 250;
 
   // Entity tiers and feature/route tiers map onto the three lens positions.
   // Canon, approved, and cartographic features count as primary; drafts and
@@ -43,15 +42,6 @@
     return { minX: Math.min(...xs), maxX: Math.max(...xs), minY: Math.min(...ys), maxY: Math.max(...ys) };
   }
 
-  // The outer band that carries numbered sleeves, if any region has one.
-  function sleeveBand(data) {
-    for (const region of data.regions || []) {
-      const band = (region.bands || []).find(b => b.subbands);
-      if (band) return { region, band };
-    }
-    return null;
-  }
-
   function buildIndex(data) {
     const items = [];
     for (const region of data.regions || []) {
@@ -60,23 +50,20 @@
     for (const site of data.sites || []) {
       items.push({ kind: 'site', id: site.id, name: site.name, tier: site.tier, xy: site.xy, summary: site.summary_50, ref: site });
     }
-    const band = sleeveBand(data);
     for (const feature of data.features || []) {
       if (feature.xy) {
         items.push({ kind: 'feature', id: feature.key, name: feature.label, tier: feature.tier, xy: feature.xy, summary: feature.note || '', ref: feature });
       }
-      if (feature.kind === 'sleeves' && band) {
-        const width = (band.band.to - band.band.from) / band.band.subbands;
-        for (const sleeve of feature.sleeves || []) {
-          const r = band.band.from + width * (sleeve.number - 0.5);
-          const theta = (SLEEVE_LABEL_THETA * Math.PI) / 180;
+      if (feature.kind === 'sleeves') {
+        // Sleeve points come from the data build; the viewer keeps no geometry.
+        for (const sleeve of (feature.sleeves || []).filter(s => s.xy)) {
           items.push({
             kind: 'sleeve',
             id: `sleeve-${sleeve.number}`,
             name: `Sleeve ${ROMAN[sleeve.number - 1] || sleeve.number}`,
             numeral: ROMAN[sleeve.number - 1] || String(sleeve.number),
             tier: feature.tier,
-            xy: [r * Math.cos(theta), r * Math.sin(theta)],
+            xy: sleeve.xy,
             summary: sleeve.population ? `${sleeve.approximate ? 'About ' : ''}${sleeve.population.toLocaleString('en-US')} people` : '',
             ref: sleeve,
             feature

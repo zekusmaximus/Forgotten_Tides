@@ -317,12 +317,26 @@ const DEFECTS = [
   ['a radial core that is not a disc', { cartography: c => { c.field.radial.core = 'loc-9002'; } }, 'field.radial.core loc-9002 must be a disc'],
   ['a degenerate rift', { cartography: c => { c.regions[2].shape.r1 = 0.62; } }, 'rift r1 (0.62) must exceed r0 (0.62)'],
   ['a texture position outside its region', { cartography: c => { c.features.push({ key: 'knots', label: 'Knots', kind: 'texture', tier: 'cartographic', within: 'loc-9005', rules: ['R1'], positions: [{ r: 0.5, theta: 12 }] }); } }, 'point r 0.5, theta 12 lies outside loc-9005'],
+  ['a route with neither an origin nor a path', { cartography: c => { delete c.routes[0].from; } }, "must have required property 'from'"],
+  ['an approach route without a path', { cartography: c => { delete c.routes[0].from; c.routes[0].origin = 'none'; c.routes[0].start_within = 'loc-9003'; } }, "must have required property 'path'"],
   ['an along reference that does not resolve', { cartography: c => { c.features.push({ key: 'edge', label: 'Edge', kind: 'edge-line', tier: 'cartographic', along: 'loc-9099', rules: ['R1'] }); } }, 'along names loc-9099']
 ];
 
 for (const [name, mutate, fragment] of DEFECTS) {
   test(`the lint rejects ${name}`, () => expectError(lintWith(mutate), fragment));
 }
+
+test('the build places each sleeve on its own sub-band', () => {
+  const root = makeFixture();
+  try {
+    const bands = buildMapData({ root }).features.find(f => f.key === 'bands');
+    const [first] = bands.sleeves;
+    assert(Math.abs(first.ring_r - 0.34) < 1e-9, `sleeve 1 of 4 in [0.3, 0.62] has its ring at r 0.34, got ${first.ring_r}`);
+    assert(Math.abs(Math.hypot(...first.xy) - 0.34) < 1e-9, 'its numeral sits on that ring');
+  } finally {
+    fs.rmSync(root, { recursive: true, force: true });
+  }
+});
 
 test('an unplaced artifact is exempt from coverage', () => {
   const report = lintWith({ atlas: a => { a['atlas/Relic.md'] = { id: 'loc-9010', name: 'Relic', type: 'artifact', status: 'canonical' }; } });

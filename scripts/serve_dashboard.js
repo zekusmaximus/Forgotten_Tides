@@ -4,6 +4,8 @@ const fs = require('fs');
 const http = require('http');
 const path = require('path');
 
+const { validatePathSegment } = require('./lib/path_safety');
+
 const ROOT = path.join(__dirname, '..');
 const HOST = '127.0.0.1';
 const PORT = 8080;
@@ -36,17 +38,24 @@ function safeAsset(root, filePath) {
 }
 
 // A directory route serves files under a URL prefix from one directory, and
-// only with listed extensions. Every path segment must be a plain name: no
-// empty, dot, or dot-dot segments, no backslashes, and no percent-encoding.
+// only with listed extensions. Every segment must pass validatePathSegment
+// (no empty, dot, or dot-dot segments; no separators, colons, or trailing
+// dots or spaces), and percent-encoding is refused outright.
 function resolvePrefixRoute(prefixes, requestedPath) {
   for (const entry of prefixes) {
     if (!requestedPath.startsWith(entry.prefix)) continue;
     const rel = requestedPath.slice(entry.prefix.length);
+    if (!rel || rel.includes('%')) return null;
     const segments = rel.split('/');
-    if (!rel || /[\\%]/.test(rel) || segments.some(segment => !segment || segment === '.' || segment === '..')) return null;
-    const type = entry.types[path.extname(rel).toLowerCase()];
+    try {
+      segments.forEach(segment => validatePathSegment(segment));
+    } catch (error) {
+      return null;
+    }
+    const ext = path.extname(rel).toLowerCase();
+    const type = entry.types[ext];
     if (!type) return null;
-    return { file: path.join(entry.dir, ...segments), type, root: entry.dir, cache: entry.cache };
+    return { file: path.join(entry.dir, ...segments), type, root: entry.dir, cache: (entry.cache || {})[ext] };
   }
   return null;
 }

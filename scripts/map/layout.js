@@ -118,15 +118,17 @@ function findBand(cartography, ref) {
   return region && name ? (region.bands || []).find(band => band.name === name) || null : null;
 }
 
-function createMapField({ cartography, atlas }, shapes = buildShapes(cartography)) {
+// `include` limits which entities' densities shape the field; the public
+// tile build passes a canon-only filter so no speculative site leaves a mark.
+function createMapField({ cartography, atlas }, shapes = buildShapes(cartography), { include = () => true } = {}) {
   const values = new Map();
   for (const region of cartography.regions || []) {
     const entity = atlas.get(region.id);
-    if (entity && entity.memory_density !== null) values.set(region.id, entity.memory_density);
+    if (entity && entity.memory_density !== null && include(entity)) values.set(region.id, entity.memory_density);
   }
   const sites = (cartography.sites || [])
     .map(site => ({ site, entity: atlas.get(site.id) }))
-    .filter(({ entity }) => entity && entity.memory_density !== null)
+    .filter(({ entity }) => entity && entity.memory_density !== null && include(entity))
     .map(({ site, entity }) => ({ r: site.at.r, theta: site.at.theta, value: entity.memory_density }));
   return { field: createField({ config: cartography.field, shapes, values, sites }), values, shapes };
 }

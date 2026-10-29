@@ -7,8 +7,9 @@
  * Usage: node scripts/serve_map.js [--build author|public] [--port 8081]
  * Build the inputs first:
  *   npm run map:data               (and/or: npm run map:data -- --build public)
- *   npm run map:tiles              (optional; without tiles the viewer draws
- *                                   overlays on a plain background)
+ *   npm run map:tiles              (optional; add -- --build public for the
+ *                                   public tiles; without tiles the viewer
+ *                                   draws overlays on a plain background)
  */
 
 const fs = require('fs');
@@ -17,6 +18,10 @@ const { createDashboardServer, HOST } = require('./serve_dashboard');
 
 const ROOT = path.join(__dirname, '..');
 const DEFAULT_PORT = 8081;
+
+function tilesDirName(build) {
+  return build === 'public' ? 'tiles-public' : 'tiles';
+}
 const TYPES = {
   html: 'text/html; charset=utf-8',
   js: 'text/javascript; charset=utf-8',
@@ -39,11 +44,14 @@ function createMapServer({ root = ROOT, build = 'author', outDir = path.join(roo
     }],
     ['/map/data/atlas.json', { file: path.join(outDir, `atlas.${build}.json`), type: TYPES.json }]
   ]);
+  // Each build has its own tiles: the public pyramid is rendered from canon
+  // densities only. Tile images may be cached (the viewer versions their URLs
+  // with the render manifest); the descriptor and manifest never are.
   const prefixes = [{
     prefix: '/map/tiles/',
-    dir: path.join(outDir, 'tiles'),
+    dir: path.join(outDir, tilesDirName(build)),
     types: { '.dzi': 'application/xml; charset=utf-8', '.webp': 'image/webp', '.json': TYPES.json },
-    cache: 'public, max-age=3600'
+    cache: { '.webp': 'public, max-age=86400' }
   }];
   return createDashboardServer({ root, routes, prefixes });
 }
@@ -61,15 +69,15 @@ function main() {
     console.error(`No map data for the ${build} build. Run: npm run map:data${build === 'public' ? ' -- --build public' : ''}`);
     process.exit(1);
   }
-  if (!fs.existsSync(path.join(outDir, 'tiles', 'galaxy.dzi'))) {
-    console.warn('No rendered tiles; the viewer will draw overlays on a plain background. Run: npm run map:tiles');
+  if (!fs.existsSync(path.join(outDir, tilesDirName(build), 'galaxy.dzi'))) {
+    console.warn(`No rendered tiles for the ${build} build; the viewer will draw overlays on a plain background. Run: npm run map:tiles${build === 'public' ? ' -- --build public' : ''}`);
   }
   createMapServer({ build, outDir }).listen(port, HOST, () => {
     console.log(`Atlas map (${build} build): http://${HOST}:${port}/map/`);
   });
 }
 
-module.exports = { createMapServer, DEFAULT_PORT };
+module.exports = { createMapServer, tilesDirName, DEFAULT_PORT };
 
 if (require.main === module) {
   main();

@@ -55,7 +55,7 @@ const DATA = {
   features: [
     { key: 'inner-relay', label: 'Inner relay', kind: 'facility', tier: 'canon', xy: [0.18, -0.07] },
     { key: 'draft-mark', label: 'Draft mark', kind: 'facility', tier: 'draft', xy: [0.1, 0.1] },
-    { key: 'sleeves', label: 'Sleeves', kind: 'sleeves', tier: 'canon', sleeves: [{ number: 2, population: 200000 }, { number: 9, population: 900 }] }
+    { key: 'sleeves', label: 'Sleeves', kind: 'sleeves', tier: 'canon', sleeves: [{ number: 2, population: 200000, xy: [-0.16, -0.45], ring_r: 0.48 }, { number: 9, population: 900, xy: [-0.21, -0.57], ring_r: 0.61 }, { number: 3 }] }
   ],
   routes: [{ key: 'wake', label: 'The Wake', tier: 'canon', pulls: 3, points: [[0.6, 0.4], [0.7, 0.5]] }]
 };
@@ -89,9 +89,10 @@ const DATA = {
     const ids = items.map(item => item.id);
     for (const id of ['loc-9001', 'loc-9006', 'inner-relay', 'sleeve-2', 'sleeve-9', 'wake']) assert(ids.includes(id), id);
     assert(!ids.includes('sleeves'), 'a sleeves feature has no point of its own');
+    assert(!ids.includes('sleeve-3'), 'a sleeve without a built point is not indexed');
     const nine = items.find(item => item.id === 'sleeve-9');
     assert.equal(nine.numeral, 'IX');
-    assert(Math.hypot(...nine.xy) > 0.6 && Math.hypot(...nine.xy) < 0.62, 'the Ninth sits in the outermost sub-band');
+    assert.deepEqual(nine.xy, [-0.21, -0.57], 'sleeve points come from the data build, not the viewer');
   });
 
   await test('search ranks name prefixes first and respects the lens', () => {
@@ -144,15 +145,37 @@ const DATA = {
       const tile = await request(port, '/map/tiles/galaxy_files/0/0_0.webp');
       assert.equal(tile.status, 200);
       assert.equal(tile.headers['content-type'], 'image/webp');
-      assert.match(tile.headers['cache-control'], /max-age/);
-      assert.equal((await request(port, '/map/tiles/galaxy.dzi')).status, 200);
+      assert.match(tile.headers['cache-control'], /max-age/, 'tile images may be cached');
+      const dzi = await request(port, '/map/tiles/galaxy.dzi');
+      assert.equal(dzi.status, 200);
+      assert.equal(dzi.headers['cache-control'], 'no-store', 'the descriptor is never cached');
       const denied = [
         '/map/tiles/', '/map/tiles/secret.txt', '/map/tiles/../../package.json', '/map/tiles/%2e%2e/galaxy.dzi',
         '/map/tiles/galaxy_files//0_0.webp', '/map/tiles/./galaxy.dzi', '/map/tiles/galaxy_files\\0\\0_0.webp',
-        '/map/data/atlas.public.json', '/map/README.md', '/package.json', '/map/../package.json'
+        '/map/data/atlas.public.json', '/map/README.md', '/package.json', '/map/../package.json',
+        '/map/tiles/galaxy.dzi:x.json', '/map/tiles/galaxy.dzi.', '/map/tiles/galaxy.dzi%20', '/map/tiles/galaxy_files/0/0_0.webp?x=../../'
       ];
       if (linked) denied.push('/map/tiles/galaxy_files/0/1_0.webp');
-      for (const pathname of denied) assert.equal((await request(port, pathname)).status, 404, `${pathname} must be denied`);
+      for (const pathname of denied.filter(p => !p.includes('?'))) assert.equal((await request(port, pathname)).status, 404, `${pathname} must be denied`);
+      assert.equal((await request(port, '/map/tiles/galaxy_files/0/0_0.webp?x=../../')).status, 200, 'a query string is ignored, not resolved');
+    } finally {
+      await new Promise(resolve => server.close(resolve));
+      fs.rmSync(outDir, { recursive: true, force: true });
+    }
+  });
+
+  await test('each build serves its own tiles', async () => {
+    const outDir = path.join(ROOT, 'out', `map-viewer-builds-${process.pid}`);
+    for (const dir of ['tiles', 'tiles-public']) {
+      fs.mkdirSync(path.join(outDir, dir), { recursive: true });
+      fs.writeFileSync(path.join(outDir, dir, 'galaxy.dzi'), dir);
+    }
+    fs.writeFileSync(path.join(outDir, 'atlas.public.json'), JSON.stringify({ ...DATA, build: 'public' }));
+    const server = createMapServer({ build: 'public', outDir });
+    await new Promise((resolve, reject) => { server.once('error', reject); server.listen(0, HOST, resolve); });
+    try {
+      const { port } = server.address();
+      assert.equal((await request(port, '/map/tiles/galaxy.dzi')).body.toString(), 'tiles-public');
     } finally {
       await new Promise(resolve => server.close(resolve));
       fs.rmSync(outDir, { recursive: true, force: true });

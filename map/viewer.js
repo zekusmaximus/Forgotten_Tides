@@ -93,15 +93,9 @@
         const p = vp(xy);
         group.append(svg('circle', { cx: p.x, cy: p.y, r: vlen(0.006), class: 'knot' }));
       }
-      if (feature.kind === 'sleeves') {
-        const band = data.regions.flatMap(r => r.bands || []).find(b => b.subbands);
-        if (band) {
-          const width = (band.to - band.from) / band.subbands;
-          for (const sleeve of feature.sleeves || []) {
-            if (!sleeve.post_breach || sleeve.post_breach.sleeve !== 'softening') continue;
-            drawOutline(group, { circles: [{ x: 0, y: 0, r: band.from + width * (sleeve.number - 0.5) }] }, 'softening', feature.tier);
-          }
-        }
+      for (const sleeve of feature.sleeves || []) {
+        if (!sleeve.ring_r || !sleeve.post_breach || sleeve.post_breach.sleeve !== 'softening') continue;
+        drawOutline(group, { circles: [{ x: 0, y: 0, r: sleeve.ring_r }] }, 'softening', feature.tier);
       }
       world.append(group);
       state.shapes.push({ node: group, tier: feature.tier });
@@ -436,7 +430,8 @@
       setTimeout(render, 0);
     });
     document.addEventListener('keydown', event => {
-      if (event.key === 'Escape' && state.selected && document.activeElement !== $('#search')) select(null);
+      // Escape in the search box only closes its results.
+      if (event.key === 'Escape' && state.selected && event.target !== $('#search')) select(null);
     });
   }
 
@@ -449,7 +444,10 @@
     state.items = Core.buildIndex(state.data);
     state.byId = new Map(state.items.map(item => [item.id, item]));
     $('#build-badge').textContent = state.data.build === 'public' ? 'Public build' : 'Author build';
-    state.hasTiles = await fetch('tiles/galaxy.dzi', { method: 'HEAD' }).then(r => r.ok, () => false);
+    // The render manifest is never cached; its timestamp versions the tile
+    // URLs, so a re-render is never mixed with cached tiles.
+    const manifest = await fetch('tiles/galaxy.json', { cache: 'no-store' }).then(r => (r.ok ? r.json() : null), () => null);
+    state.hasTiles = Boolean(manifest);
     if (!state.hasTiles) {
       document.body.classList.add('no-tiles');
       const notice = $('#notice');
@@ -459,7 +457,7 @@
 
     state.viewer = OpenSeadragon({
       element: $('#chart'),
-      tileSources: state.hasTiles ? 'tiles/galaxy.dzi' : { type: 'image', url: blankImage() },
+      tileSources: state.hasTiles ? `tiles/galaxy.dzi?v=${encodeURIComponent(manifest.generated)}` : { type: 'image', url: blankImage() },
       drawer: 'canvas',
       showNavigationControl: false,
       showNavigator: true,
