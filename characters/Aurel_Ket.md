@@ -5,35 +5,57 @@ type: character
 name: Aurel Ket
 tags: [mnemosyne-lattice-consortium, halix-exchange, memory-market]
 summary_50: Consortium fixer who offers to acquire Yenu's grandmother's stone at the Halix Exchange.
-summary_200: "At Tess Vlin's bench in primary story-0004, Aurel Ket identifies himself as a Consortium cultural-reinforcement fixer and offers above market for Yenu's missed-generation light-bequest. He claims the stone would be preserved and used in a reinforcement field, without naming a location or a failing node; Yenu refuses. Draft story-0021 recalls his offer. His technical promises remain unverified."
+summary_200: "Aurel Ket is a Consortium fixer who approaches Yenu at Tess Vlin's Halix bench in story-0004. He offers three times Tess's high valuation plus an indexed annual stipend, promising preservation and civic reinforcement. He cannot guarantee that civic use would preserve the stone's private tuning, and the original would remain in Consortium custody. Yenu declines his offer. He leaves his card and keeps the offer open until second watch the next day. His technical and preservation promises remain unverified; he identifies no failing node."
 cross_refs:
   characters: [char-0019, char-0026]
   locations: [loc-0013]
   factions: [fact-0003]
   mechanics: [mech-0001]
-  stories: [story-0004, story-0021]
+  stories: [story-0004, story-0015, story-0021]
 references:
   characters: [char-0019, char-0026]
   locations: [loc-0013]
   factions: [fact-0003]
   mechanics: [mech-0001]
-  stories: [story-0004, story-0021]
+  stories: [story-0004]
 continuity:
   invariants:
+    - Aurel is a Consortium fixer in story-0004; he says he works for a cultural reinforcement program out of the Lattice Core.
     - Aurel makes an acquisition offer at Tess Vlin's Halix bench in primary story-0004; Yenu refuses it.
-    - His claims about cultural reinforcement are his sales pitch, not independently verified mechanics.
+    - His offer is three times Tess's high valuation plus an indexed annual stipend; no acquisition or payment occurs in the scene.
+    - His proposed terms retain the original in Consortium custody, and he cannot guarantee what civic use would do to its private tuning.
+    - His preservation and cultural-reinforcement promises are his sales pitch, not independently verified performance.
   watchlist:
     - Do not treat his claimed field performance as an approved Consortium fact or have him disclose concealed node drift in this scene.
-    - Keep his affiliation and later appearances provisional until their source stories are reviewed.
+    - His affiliation in story-0004 is established, but wider competence, secret knowledge, and later activity require separate evidence; draft recollections add no later outcome.
 metadata:
-  status: speculative
+  status: canonical
   created: '2026-10-28T00:00:00.000Z'
-  modified: '2026-10-28T00:00:00.000Z'
+  modified: '2026-10-29T00:00:00.000Z'
 ---
 
 # Aurel Ket
 
-Aurel Ket approaches Yenu while Tess is valuing her grandmother's stone. He
-presents a lucrative Consortium offer in terms of preservation and civic
-benefit. Yenu refuses because the stone's intended hearing matters to her.
-What he knows about the Consortium's needs and methods remains open.
+Aurel Ket is a Consortium fixer who approaches Yenu while Tess is valuing
+her grandmother's stone in primary *The Light Inheritance*. He says he works
+for a cultural reinforcement program out of the Lattice Core. He offers
+three times Tess's high valuation plus an indexed annual stipend for use
+rights, promising archival preservation and civic reinforcement.
+
+When Yenu asks about the intended hearing, he cannot guarantee what civic
+use would do to the private tuning; the original would remain in Consortium
+custody. She declines his offer. He leaves his card and keeps the offer open
+until second watch the next day. No payment or acquisition takes place.
+
+His promises about preservation, archive reliability, protection from the
+Bleaching, and field performance remain unverified. His pitch names no
+failing node. What he knows about the Consortium's concealed drift remains
+unspecified.
+
+## Later mentions
+
+Draft *Receipt for a Voice* (story-0021) recalls his earlier offer without
+depicting new activity by him. Primary *The Halix Aftermarket* (story-0015)
+indirectly recalls the same fixer but explicitly gives its later acquisition
+offer to a different Consortium buyer. Neither establishes successful
+conversion, preservation, or a later Aurel outcome.

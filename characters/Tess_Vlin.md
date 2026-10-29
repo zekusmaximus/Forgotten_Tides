@@ -8,10 +8,12 @@ tags:
   - memory-broker
   - reliquary-tuner
   - light-bequest
-summary_50: Halix Exchange broker-tuner whose precise market ethics make her a dangerous scale for sacred memory objects.
-summary_200: "Tess Vlin is a mid-gravity broker-tuner on the Halix Exchange, working the fourth-deck inheritance quarter where Light-Bequests and other family reliquaries are valued. She is not a Remembrancer or Archivist and does not pretend the market is mercy, but her bench is trusted because she distinguishes price from truth. Primary story-0004 shows her assaying Yenu's stone without completing its intended hearing; draft story-0015 proposes her assessment of a second family's stone as closed. Neither case establishes a wider rule for other stones."
+summary_50: Halix Exchange broker-tuner who assays Yenu's inheritance stone, gives a conditional valuation, and leaves custody and choice with her.
+summary_200: "Tess Vlin is a middle-aged, mid-gravity broker-tuner with a fourth-deck bench in Halix Exchange's inheritance quarter in the Helios Drift. The Skather-Ait elder recommends her commercial honesty. In story-0004 she checks Yenu's understanding before assaying her grandmother's stone, exposes its two registers without completing its intended hearing, and acknowledges that she does not know what that hearing will do. She values it at twelve to fourteen cycles of the pod's pooled wages, conditional on finding a buyer. She challenges Aurel Ket's intrusion into the valuation and later offers to approach private buyers while Yenu retains the stone."
 cross_refs:
-  characters: []
+  characters:
+    - char-0026
+    - char-0031
   locations:
     - loc-0013
     - loc-0008
@@ -23,47 +25,66 @@ cross_refs:
   stories:
     - story-0004
     - story-0015
+    - story-0021
 references:
   characters: []
   locations:
     - loc-0013
-    - loc-0008
-  factions:
-    - fact-0004
-    - fact-0003
+  factions: []
   mechanics:
     - mech-0001
   stories:
     - story-0004
-    - story-0015
 continuity:
   invariants:
-    - Tess is a Halix Exchange broker-tuner, not a member of Solace, the Archivist Orders, or the Mnemosyne Lattice Consortium.
-    - Her ethics are transactional but precise; she does not sentimentalize the market or falsify an assay.
-    - In primary story-0004 she identifies Yenu's two-register stone; draft story-0015 proposes her assessment of another family's carrier as closed. Neither case establishes wider subtype behavior.
-    - Her proposed refusal to sell a completed carrier in draft story-0015 costs money and standing, not memory physics or anchor burn.
+    - Tess is a middle-aged, mid-gravity broker-tuner with a fourth-deck inheritance bench on the Halix Exchange in story-0004.
+    - In story-0004 she checks Yenu's understanding before the assay and waits for her request before naming a price or offering the stone for sale.
+    - Her ring exposes a trace of Yenu's two-register stone without completing its intended hearing; Tess acknowledges that she does not know what that hearing will do.
+    - She distinguishes valuation from payment; the twelve-to-fourteen-cycle range for Yenu's stone requires a buyer.
+    - She offers to approach private buyers while Yenu retains the stone and the choice to sell.
   watchlist:
     - Avoid making Tess saintly; her credibility depends on being honest in Halix's hard commercial sense.
     - Do not let her invent new Light-Bequest doctrine or override Drift Clade inheritance practice outside her own bench.
     - Keep her conflicts grounded in price, provenance, and custody rather than heroic rescue.
+    - Story-0015 supplies an approved source for additional profile claims that await separate entry review; story-0021's rendering and later outcomes remain draft. Neither establishes a general closure rule.
 metadata:
-  status: speculative
+  status: canonical
   created: '2026-07-07T00:00:00.000Z'
-  modified: '2026-10-28T00:00:00.000Z'
+  modified: '2026-10-29T00:00:00.000Z'
 ---
 
 # Tess Vlin
 
-Tess Vlin keeps a fourth-deck bench on the Halix Exchange, in the quieter inheritance
-quarter where family reliquaries are tested before the market is allowed to touch them. She
-is a capable tuner with a broker's discipline: she names what a stone is, what it can do, and
-what buyers are actually trying to purchase.
+Tess Vlin keeps a fourth-deck bench in Halix Exchange's inheritance quarter.
+She is middle-aged and mid-gravity by build. The Skather-Ait elder recommends
+her commercial honesty to Yenu; the story does not establish a group-wide
+reputation or a complete affiliation history.
 
-Her reputation is narrow but durable. Drift Clade sellers trust her because she will not
-accidentally cheat them. Consortium buyers tolerate her because she understands value too
-well to be dismissed as sentimental. Neither group fully trusts her with doctrine, which is
-one reason her bench remains useful.
+In primary *The Light Inheritance*, Tess checks Yenu's understanding before
+lowering the ring over her grandmother's stone. The assay exposes two
+registers without completing the intended hearing. Tess acknowledges that she
+does not know what Yenu's own listening will do. Her valuation of twelve to
+fourteen cycles of pooled pod wages depends on finding a buyer.
 
-Tess's narrative function is to show the memory economy from the scale rather than from
-the sickbed, cockpit, or monastery. She lives where sacred objects become lots, and her best
-choices still pass through ledgers.
+Tess challenges Aurel Ket's intrusion into the valuation. She later offers to
+approach two private buyers, leaving Yenu in possession of the stone and free
+to answer from the pod. These are demonstrated commercial boundaries, not a
+general guarantee about what other stones can do.
+
+## Continuations and review scope
+
+Primary *The Halix Aftermarket* (story-0015) depicts Tess assessing another
+family's stone as closed, purchasing it, and withdrawing it from commerce at
+financial and professional cost. These facts now have an approved story
+source; adding them to this profile's authoritative summary and invariants
+still requires a separate claim review.
+
+Draft *Receipt for a Voice* (story-0021) builds on that cost and proposes Tess
+rendering Yenu's personal memory for transport. Its later outcomes and
+additional capabilities remain unapproved.
+
+## Editorial guidance
+
+Tess's role places memory valuation at a commercial bench. Preserve the
+distinction between price, provenance, and custody without making her saintly
+or giving her authority over wider Light-Bequest doctrine.

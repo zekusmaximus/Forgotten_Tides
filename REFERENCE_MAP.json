@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-29T13:15:24.451Z",
+  "generated": "2026-10-29T14:11:31.781Z",
   "nodes": [
     {
       "canonical_id": "char-0001",
@@ -168,9 +168,9 @@
       "type": "character",
       "name": "Tess Vlin",
       "path": "characters/Tess_Vlin.md",
-      "canon_tier": "speculative",
-      "source_weight": 60,
-      "retrieval_role": "exploratory"
+      "canon_tier": "primary_canon",
+      "source_weight": 110,
+      "retrieval_role": "authoritative"
     },
     {
       "canonical_id": "char-0020",
@@ -231,18 +231,18 @@
       "type": "character",
       "name": "Yenu Skather-Ait",
       "path": "characters/Yenu_Skather-Ait.md",
-      "canon_tier": "speculative",
-      "source_weight": 60,
-      "retrieval_role": "exploratory"
+      "canon_tier": "primary_canon",
+      "source_weight": 110,
+      "retrieval_role": "authoritative"
     },
     {
       "canonical_id": "char-0027",
       "type": "character",
       "name": "Hol-Vren",
       "path": "characters/Hol-Vren.md",
-      "canon_tier": "speculative",
-      "source_weight": 60,
-      "retrieval_role": "exploratory"
+      "canon_tier": "primary_canon",
+      "source_weight": 110,
+      "retrieval_role": "authoritative"
     },
     {
       "canonical_id": "char-0028",
@@ -276,9 +276,9 @@
       "type": "character",
       "name": "Aurel Ket",
       "path": "characters/Aurel_Ket.md",
-      "canon_tier": "speculative",
-      "source_weight": 60,
-      "retrieval_role": "exploratory"
+      "canon_tier": "primary_canon",
+      "source_weight": 110,
+      "retrieval_role": "authoritative"
     },
     {
       "canonical_id": "event-0001",
@@ -690,9 +690,9 @@
       "type": "location",
       "name": "Halix Exchange",
       "path": "atlas/Halix_Exchange.md",
-      "canon_tier": "speculative",
-      "source_weight": 60,
-      "retrieval_role": "exploratory"
+      "canon_tier": "primary_canon",
+      "source_weight": 110,
+      "retrieval_role": "authoritative"
     },
     {
       "canonical_id": "loc-0014",
@@ -708,9 +708,9 @@
       "type": "location",
       "name": "Skather-Ait pod",
       "path": "atlas/Skather-Ait_Pod.md",
-      "canon_tier": "speculative",
-      "source_weight": 60,
-      "retrieval_role": "exploratory"
+      "canon_tier": "primary_canon",
+      "source_weight": 110,
+      "retrieval_role": "authoritative"
     },
     {
       "canonical_id": "lore-0001",
@@ -1194,9 +1194,9 @@
       "type": "story",
       "name": "The Halix Aftermarket",
       "path": "stories/short_story/the_halix_aftermarket/manuscript.md",
-      "canon_tier": "draft",
-      "source_weight": 65,
-      "retrieval_role": "active_draft"
+      "canon_tier": "primary_canon",
+      "source_weight": 110,
+      "retrieval_role": "authoritative"
     },
     {
       "canonical_id": "story-0016",
@@ -1446,9 +1446,9 @@
       "type": "term",
       "name": "Light-Bequest",
       "path": "data/lexicon/terms.yaml",
-      "canon_tier": "draft",
-      "source_weight": 65,
-      "retrieval_role": "active_draft"
+      "canon_tier": "primary_canon",
+      "source_weight": 110,
+      "retrieval_role": "authoritative"
     },
     {
       "canonical_id": "term-0022",
@@ -2542,11 +2542,26 @@
     },
     {
       "from": "char-0019",
+      "to": "char-0026",
+      "type": "characters",
+      "fields": [
+        "cross_refs"
+      ]
+    },
+    {
+      "from": "char-0019",
+      "to": "char-0031",
+      "type": "characters",
+      "fields": [
+        "cross_refs"
+      ]
+    },
+    {
+      "from": "char-0019",
       "to": "fact-0003",
       "type": "factions",
       "fields": [
-        "cross_refs",
-        "references"
+        "cross_refs"
       ]
     },
     {
@@ -2554,8 +2569,7 @@
       "to": "fact-0004",
       "type": "factions",
       "fields": [
-        "cross_refs",
-        "references"
+        "cross_refs"
       ]
     },
     {
@@ -2563,8 +2577,7 @@
       "to": "loc-0008",
       "type": "locations",
       "fields": [
-        "cross_refs",
-        "references"
+        "cross_refs"
       ]
     },
     {
@@ -2599,8 +2612,15 @@
       "to": "story-0015",
       "type": "stories",
       "fields": [
-        "cross_refs",
-        "references"
+        "cross_refs"
+      ]
+    },
+    {
+      "from": "char-0019",
+      "to": "story-0021",
+      "type": "stories",
+      "fields": [
+        "cross_refs"
       ]
     },
     {
@@ -3026,11 +3046,18 @@
     },
     {
       "from": "char-0026",
+      "to": "char-0031",
+      "type": "characters",
+      "fields": [
+        "cross_refs"
+      ]
+    },
+    {
+      "from": "char-0026",
       "to": "fact-0004",
       "type": "factions",
       "fields": [
-        "cross_refs",
-        "references"
+        "cross_refs"
       ]
     },
     {
@@ -3038,8 +3065,7 @@
       "to": "loc-0008",
       "type": "locations",
       "fields": [
-        "cross_refs",
-        "references"
+        "cross_refs"
       ]
     },
     {
@@ -3083,8 +3109,7 @@
       "to": "story-0021",
       "type": "stories",
       "fields": [
-        "cross_refs",
-        "references"
+        "cross_refs"
       ]
     },
     {
@@ -3101,8 +3126,7 @@
       "to": "fact-0004",
       "type": "factions",
       "fields": [
-        "cross_refs",
-        "references"
+        "cross_refs"
       ]
     },
     {
@@ -3110,8 +3134,7 @@
       "to": "loc-0008",
       "type": "locations",
       "fields": [
-        "cross_refs",
-        "references"
+        "cross_refs"
       ]
     },
     {
@@ -3146,8 +3169,7 @@
       "to": "story-0021",
       "type": "stories",
       "fields": [
-        "cross_refs",
-        "references"
+        "cross_refs"
       ]
     },
     {
@@ -3492,11 +3514,18 @@
     },
     {
       "from": "char-0031",
+      "to": "story-0015",
+      "type": "stories",
+      "fields": [
+        "cross_refs"
+      ]
+    },
+    {
+      "from": "char-0031",
       "to": "story-0021",
       "type": "stories",
       "fields": [
-        "cross_refs",
-        "references"
+        "cross_refs"
       ]
     },
     {
@@ -5792,11 +5821,26 @@
     },
     {
       "from": "loc-0013",
+      "to": "char-0026",
+      "type": "characters",
+      "fields": [
+        "cross_refs"
+      ]
+    },
+    {
+      "from": "loc-0013",
+      "to": "char-0031",
+      "type": "characters",
+      "fields": [
+        "cross_refs"
+      ]
+    },
+    {
+      "from": "loc-0013",
       "to": "fact-0003",
       "type": "factions",
       "fields": [
-        "cross_refs",
-        "references"
+        "cross_refs"
       ]
     },
     {
@@ -5804,8 +5848,7 @@
       "to": "fact-0004",
       "type": "factions",
       "fields": [
-        "cross_refs",
-        "references"
+        "cross_refs"
       ]
     },
     {
@@ -5815,6 +5858,14 @@
       "fields": [
         "cross_refs",
         "references"
+      ]
+    },
+    {
+      "from": "loc-0013",
+      "to": "loc-0015",
+      "type": "locations",
+      "fields": [
+        "cross_refs"
       ]
     },
     {
@@ -5831,8 +5882,7 @@
       "to": "story-0003",
       "type": "stories",
       "fields": [
-        "cross_refs",
-        "references"
+        "cross_refs"
       ]
     },
     {
@@ -5847,6 +5897,30 @@
     {
       "from": "loc-0013",
       "to": "story-0015",
+      "type": "stories",
+      "fields": [
+        "cross_refs"
+      ]
+    },
+    {
+      "from": "loc-0013",
+      "to": "story-0019",
+      "type": "stories",
+      "fields": [
+        "cross_refs"
+      ]
+    },
+    {
+      "from": "loc-0013",
+      "to": "story-0021",
+      "type": "stories",
+      "fields": [
+        "cross_refs"
+      ]
+    },
+    {
+      "from": "loc-0013",
+      "to": "story-0022",
       "type": "stories",
       "fields": [
         "cross_refs",
@@ -5921,8 +5995,7 @@
       "to": "fact-0004",
       "type": "factions",
       "fields": [
-        "cross_refs",
-        "references"
+        "cross_refs"
       ]
     },
     {
@@ -5966,8 +6039,7 @@
       "to": "story-0021",
       "type": "stories",
       "fields": [
-        "cross_refs",
-        "references"
+        "cross_refs"
       ]
     },
     {
@@ -6912,6 +6984,30 @@
     },
     {
       "from": "story-0015",
+      "to": "char-0026",
+      "type": "characters",
+      "fields": [
+        "cross_refs"
+      ]
+    },
+    {
+      "from": "story-0015",
+      "to": "char-0031",
+      "type": "characters",
+      "fields": [
+        "cross_refs"
+      ]
+    },
+    {
+      "from": "story-0015",
+      "to": "fact-0002",
+      "type": "factions",
+      "fields": [
+        "cross_refs"
+      ]
+    },
+    {
+      "from": "story-0015",
       "to": "fact-0003",
       "type": "factions",
       "fields": [
@@ -6926,6 +7022,14 @@
       "fields": [
         "cross_refs",
         "references"
+      ]
+    },
+    {
+      "from": "story-0015",
+      "to": "fact-0006",
+      "type": "factions",
+      "fields": [
+        "cross_refs"
       ]
     },
     {

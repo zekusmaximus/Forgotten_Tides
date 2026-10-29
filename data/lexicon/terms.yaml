@@ -241,18 +241,19 @@ terms:
 
   - id: term-0021
     term: Light-Bequest
-    definition: An inherited memory stone set aside for a later intended hearer, often a descendant. The category includes ordinary family pledges held for licensed draw; a pledged light-bequest was also spent into a civic silo during the Tessarine breach. Yenu's missed-generation light-bequest in primary story-0004 is tuned for a hearer the donor never met. That particular stone sings with the donor's memory and a hearer-shaped second register; Tess warns of drive and burn risks, and Yenu's direct hearing closes its carrier. Whether other stones tuned this way behave alike remains unverified.
+    definition: A memory stone set aside as an inheritance for a later family hearer. The category includes ordinary personal-memory pledges held for licensed draw. During the Tessarine breach, one pledged light-bequest was spent into a civic silo. In story-0004, Yenu's particular missed-generation stone holds her grandmother's memory and a hearer-shaped second register. Yenu reports her grandfather's warning that it would be unstable in a drive and dangerous to burn. Her intended hearing closes that carrier; the same behavior is not established as a general rule for other stones.
     category: Memory Types
     related_terms:
       - term-0014  # Memory Stone
       - term-0016  # Personal Memory
       - term-0004  # Civic Memory
     first_appearance: The Reliquarist's Doubt
-    canonical_source: stories/short_story/the_light_inheritance/manuscript.md
-    status: draft
-    aliases:
-      - Inheritance Stone
-      - Inheritance Memory
+    # Broad category and licensed draw: story-0008, manuscript.md:146-148.
+    # Local stone and warning: stories/short_story/the_light_inheritance/manuscript.md:338,366-374,520,564.
+    # Civic expenditure: stories/short_story/spend_what_you_can_afford/manuscript.md:680-689.
+    # Approval scope: docs/reviews/STORY_0004_REVIEW_2026_10_28.md (October 29 linked-entry review).
+    canonical_source: stories/short_story/the_reliquarists_doubt/manuscript.md
+    status: canonical
 
   - id: term-0022
     term: Continuity Cleric

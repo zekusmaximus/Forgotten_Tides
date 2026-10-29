@@ -1,0 +1,490 @@
+# Canon Promotion Review: The Halix Aftermarket
+
+**Current checkpoint:** On October 29, 2026, the author approved promotion
+of the revised story at `33595f7`. Story-0015 and its five matching local
+events now carry `primary_canon`; the story is `canonical` and
+`authoritative`. The approved body is unchanged. Sections 1-9 preserve the
+original review at `a176921`; section 10 records the revision/readiness
+checkpoint, and section 11 records the subsequent promotion. Expanded
+Tess/Halix profile claims still require separate review.
+
+## 1. Scope and baseline
+
+**Scope:** Story-0015, *The Halix Aftermarket*, only. The author authorized
+the next editorial review after merging PR #45. This is a review, not
+authorization to revise the manuscript or promote its status. The settled
+story-0004 decisions and seven linked-entry approvals remain in force.
+
+**Baseline:** Current `main` at `a176921` (merged PR #45), reviewed on branch
+`editorial/story-0015-review`. Source line references below use that commit.
+`npm ci`, `npm run validate:ci`, and `npm run report:canon-tiers` completed
+successfully before the draft review. Continuity and timeline reports each
+contain zero hard failures and zero soft warnings. Existing nonblocking
+schema/glossary advisories and red-line citation warnings for drafts 0005 and
+0007 do not name a new story-0015 failure.
+
+**Current manuscript state:** `canon_tier: draft`, `status: draft`,
+`metadata.status: draft`, `retrieval_role: active_draft`.
+
+Primary reference points are the governing mechanics, bible, manual, lore,
+lexicon, primary exemplars *The Archivist's Wake* and *Spend What You Can
+Afford*, and the approved *The Light Inheritance*. Every entity declared by
+story-0015 was read, including Tess's invariants and watchlist. The original
+story-0004 developmental edit was not repeated.
+
+## 2. Summary table
+
+| ID | Title | Score | Hard gates | Recommendation band | Fix groups | Story prerequisite |
+| --- | --- | --- | --- | --- | --- | --- |
+| `story-0015` | The Halix Aftermarket | 50 / 70 | PASS | Promote after fixes; not ready as written | Seven required groups; one optional clarification | Primary `story-0004` only |
+
+The second carrier is treated as a separate case, not a universal closure
+rule. The purchase and withdrawal cost Tess money and standing on-page.
+The principal weaknesses are the timing of the scale's response, the
+courier's authority and reason for accepting the lower bid, repeated ethical
+argument, and incomplete event coverage. A replacement premise is not needed.
+
+## 3. Hard-gate failures
+
+**None found.**
+
+- No bible red line is crossed. No locked protagonist appears, no anchor is
+  restored or spent, and the release is ordinary matter carried by ship air
+  (`stories/short_story/the_halix_aftermarket/manuscript.md:868-879`).
+- No unsupported new metaphysical law must be accepted to sustain the
+  premise. Remembered objects' physical coherence is established in
+  `mechanics/MEMORY_PHYSICS.md:75-84`, narrative importance and gravitational
+  lock at `:178`, and remembered things' weight in
+  `lore/theology/THEOLOGY_OF_MEMORY.md:17`. The transfer-timed scale drop is
+  an unexplained causal transition requiring correction (F1), rather than
+  proof of a declared universal ownership-gravity law.
+- The only declared story prerequisite is primary story-0004
+  (`manuscript.md:37-38`); there is no novel, novella, or unapproved shared
+  event prerequisite.
+- Full CI-parity validation passes with the current frontmatter. Manual
+  chronology review nevertheless finds omissions that automated checks do
+  not reject (F6).
+
+## 4. Recommended promotion order
+
+1. Revise story-0015 against F1-F7 after the author settles the scope choices
+   in section 8. Recheck the revised manuscript and obtain explicit story
+   approval before promotion. Its only story prerequisite is already primary.
+2. Review draft story-0017, *The Loss Ledger*, separately. It supplies the
+   route-suspension outcome used by story-0021; it is not a prerequisite for
+   story-0015.
+3. Review draft story-0021, *Receipt for a Voice*, after its story-0015 and
+   story-0017 prerequisites are settled. That review must address the already
+   recorded childhood Halix-visit conflict and the rendering/transport/repair
+   outcomes. No decision about them is made here.
+
+No bundle or new shared story-0004 event is needed for this review.
+
+## 5. Cross-story contradiction and ambiguity register
+
+| Item | Evidence | Finding and proposed treatment |
+| --- | --- | --- |
+| Closure scope | Primary story-0004 `stories/short_story/the_light_inheritance/manuscript.md:520,564`; story-0015 `manuscript.md:261-263,442` | No hard conflict. Yenu's outcome remains particular; Tess expressly says this specimen proves one stone completed cleanly. Approving the second case would not approve universal subtype behavior. |
+| Assay diagnostics | Primary story-0008 `stories/short_story/the_reliquarists_doubt/manuscript.md:162`; story-0015 `manuscript.md:225-226` | Scope tension, not a proven contradiction: the primary source permits corruption to howl or fall silent, while the draft states that failed stones scrape. Narrow Tess's diagnostic patterns rather than creating an exhaustive rule (F4). |
+| Gravity and legal transfer | Story-0015 `manuscript.md:653-657,661-674,773-775` | Internal causality ambiguity. The scale eases before buyers learn of the purchase and before inquiries close. Move the easing after observable withdrawal of attention (F1). |
+| Seller's authority | Story-0015 `manuscript.md:156,492,528-529,637-653` | The instructions are incomplete, not necessarily contradictory. Establish delegated discretion or consultation, then a concrete seller reason for accepting the lower bid (F2). Do not characterize the existing scene as coercion. |
+| Later financial consequence | Draft story-0021 `stories/short_story/receipt_for_a_voice/manuscript.md:276-286` | It depends on Tess's purchase/withdrawal cost here. That cost is paid in story-0015 at `:653,748,881-885`; it remains an unapproved later-draft prerequisite until this story is approved. |
+
+The different Consortium buyer is explicitly a woman rather than Aurel
+(`story-0015:408-410`). No concealed node failure is disclosed. The ordinary
+spent-carrier release does not retrieve donor memory or archive it anew in
+dark matter (`:848-879`; primary `story-0004:564-568`).
+
+## 6. Per-story card
+
+### story-0015 — The Halix Aftermarket
+
+Current tier: draft / draft / metadata.status draft  
+Hard gates: PASS  
+Depends on: primary story-0004  
+Depended on by: draft story-0021
+
+What it establishes: Tess assesses another family's missed-generation
+carrier as closed, while buyers value provenance and public meaning rather
+than usable donor content. She purchases it below the highest offer,
+withdraws it from commerce at financial and professional cost, and releases
+the spent carrier. The story proposes local Halix trading, bond, seal, and
+release procedures; these are not yet approved setting facts.
+
+| Criterion | Score | Weight | Points | Evidence |
+| --- | --- | --- | --- | --- |
+| A Metaphysical fidelity | 3 | 3 | 9 | Donor content stays absent (`:261-263,422-424,562,734`), and the physical premise has a source bridge; the scale's immediate reaction to private settlement is unexplained (`:653-657`). |
+| B Bible compliance | 5 | 3 | 15 | No locked character or anchor expenditure is introduced by the declared cast (`:13-38`); the release remains ordinary matter (`:868-879`). No new Synod operation is shown. |
+| C Tonal fidelity | 3 | 2 | 6 | Quiet financial cost fits the register (`:576-587,745-750,881-885`); repeated pointed exchanges and the lunch joke weaken restraint (`:446-450,694-724,769`). |
+| D Craft and structure | 3 | 2 | 6 | Offer, purchase, debit, and release change the state irreversibly (`:591-653,745-750,868-885`). The courier's discretion and positive reason for accepting less are underdeveloped (`:492,528-529,615-651`); Sections III-IV repeat the argument. |
+| E Cross-canon coherence | 4 | 2 | 8 | The local closure limit is explicit (`:442`), and the later buyer is not Aurel (`:408-410`). Broader diagnostic and Clade-custom assertions exceed the evidence that supported existing profiles (`:120-123,225-226,809-810`). |
+| F Repository hygiene | 3 | 1 | 3 | Basic frontmatter, source paths, word count, and tiers are valid. Five chronology beats have only three event records (`:43-82`); the short summary and appearance lists need correction (`:11,13-25`). |
+| G Canon value | 3 | 1 | 3 | The costly withdrawal is useful local continuity for Tess and story-0021. Only the needed procedures and this particular decision should lock, rather than a general closure or future charitable-buyout rule (`:442,706-739`). |
+| **Total** | | | **50 / 70** | |
+
+Recommendation: **Promote after fixes**, subject to author approval of the
+revised story. This is not readiness as written and not authorization to
+change its status now.
+
+Required fixes before promotion: F1-F7 below. O1 is an optional clarification.
+
+Contradictions found: no hard contradiction with primary canon; scope and
+internal-causality findings are recorded in section 5.
+
+Author decisions needed: carrier-case scope, local physical attention effect,
+and the courier's authority/choice and Halix procedure scope (section 8).
+
+## 7. Fix list by story
+
+All proposed prose below is review material, not an applied revision or an
+approved new canon claim.
+
+### F1 — Make the scale respond to attention, not private title transfer
+
+**Locations:** `manuscript.md:555-558,653-657,773-775`.
+
+After the private transfer, the draft says the scale drops toward material
+truth. The shutters are still down; inquiries remain active until Section IV.
+Remove `:655-657` and place a limited easing after `:773-775`, for example:
+
+> As the inquiries closed, the cradle scale eased toward its earlier reading.
+> It did not return all the way.
+
+Replace the paragraph beginning at `:555`, which asserts that it is not a new
+law, with limited observation rather than a compliance declaration:
+
+> Tess knew what remembrance could do to a room. The carrier had not recovered
+> its voice. The buyers were giving it another history now.
+
+Keep the distinction between newly remembered provenance and usable donor
+content. The latter is not restored or converted to fuel.
+
+### F2 — Establish the courier's authority and his reason for accepting less
+
+**Locations:** `:492,528-529,615-653`.
+
+The courier is allowed to refuse Tess and choose another buyer. Keep that
+agency. The missing step is whether the aunt authorized him to choose a
+lower offer and disposal terms after the assay, and why he chooses that
+instead of the Consortium's full retuning.
+
+If the author chooses delegated discretion, add after the aunt's instructions
+at `:528-529`, for example:
+
+> She said I could choose after that.
+
+Then give him one concrete preference before his thumb accepts at `:651`,
+for example:
+
+> We can brace the frame. I don't want her name to pay for the rest.
+
+That wording is an author choice about this family, not a general Clade ethic.
+The alternative is a brief consultation with the aunt. Do not quietly assume
+that selling a carrier also settles all provenance and release rights; the
+unread rights inquiry at `:316-318` makes the gap visible.
+
+### F3 — Compress repeated argument and preserve Tess's particular decision
+
+**Locations:** `:694-724,769,900`.
+
+- Cut the repeated scale/knife exchange at `:694-704`; preserve the preceding
+  concession at `:691-692` that the Consortium's public-trust argument may be
+  true. This keeps the buyer an ethical counterweight.
+- At `:716`, replace the promise to be poorer whenever more carriers arrive
+  with: **Then I will have to decide again.** This preserves this purchase
+  without committing Tess to buying every completed carrier.
+- Cut the repeated mirror retort at `:722-724` if the shortened exchange
+  already establishes commercial consequences.
+- Replace the lunch joke at `:769` with a practical response such as
+  **Send it to the bench.** The early dry rapport at `:196-200` can remain.
+- Delete the thematic gloss at `:900`. Let the ring's silence at `:898` lead
+  to the waiting customer at `:902-903`.
+
+No additional sacrifice, anchor burn, or restoration is needed. The existing
+purchase transfer, bond debit, and complaints already demonstrate cost.
+
+### F4 — Narrow diagnostic and cultural generalizations
+
+**Locations:** `:120-123,225-226,809-810`.
+
+Make the assay depend on Tess's observed patterns and this witness record,
+not a universal noise test. A possible replacement at `:225-227` is:
+
+> She had heard failed stones scrape, counterfeits over-declare themselves,
+> coerced memories catch on a cut note. Silence alone settled none of that.
+> She matched the quiet pressure against the hearing date and witness mark.
+
+Replace the broad family/hospice/Clade packaging doctrine at `:120-123` with
+Tess's expectation of a family case, for example:
+
+> She had expected the worn wood of a family case. The commercial latch made
+> her check the sender twice.
+
+At `:809-810`, retain the courier's nod, posture, and departure as observed
+action; remove the general claim about how Drift Clade gratitude appears.
+These changes avoid approving wider faction customs through incidental prose.
+
+### F5 — Correct the short summary's meaning of use
+
+**Location:** `:11`.
+
+Replace **no remaining use** with **no usable memory**. The buyers plainly
+find display, provenance, and institutional uses for the object; its absent
+payload is the relevant limit. Both current summaries otherwise fit their
+schema limits: 142 and 478 characters.
+
+### F6 — Give each chronology beat its own matching event
+
+**Locations:** `:43-82`; `docs/PLAYBOOK_NEW_STORY.md:230`.
+
+Five chronology beats have only three event records. Add distinct local
+records for the assay at `T0+20m` and purchase at `T0+2h`, using the repository
+ID allocation workflow at implementation time. Preserve the existing IDs;
+narrow `event-story-0015-003` at `T0+3h` to the release alone, for example:
+
+> Tess releases the purchased carrier from Halix after withdrawing it from commerce.
+
+Match chronology and event summaries/timestamps beat by beat. No global
+timeline entry is required now: story-0021 depends on the wider story rather
+than an individual event ID. Revisit shared-event coverage only when a later
+approved story needs a particular beat.
+
+### F7 — Complete appearance links without copying them into prerequisites
+
+**Locations:** `:13-25,153,217,278-280,408-410,510-512`.
+
+Add Yenu (`char-0026`) and the identifiable prior fixer Aurel (`char-0031`)
+under `cross_refs.characters`. Add the Archivist Orders (`fact-0002`) and
+Remembrancers of Solace (`fact-0006`) under `cross_refs.factions` for mentions.
+These need not become causal prerequisites. Retain story-0004 as the sole
+story prerequisite.
+
+### O1 — Optional: make the renewal-bond debit unmistakably financial
+
+**Locations:** `:576-579,745-752`.
+
+The existing context reads as a financial renewal bond, not an anchor cost.
+For clearer procedure, replace the sensors reading her personal bond with:
+
+> The sensors recognized her palm. The counter displayed the withdrawal charge
+> against her renewal bond. She confirmed it; the balance dimmed.
+
+Distinguish this withdrawal charge from her purchase payment. Do not invent
+a memory debit or suggest that renaming the lot alone changes its gravity.
+
+### Verified items requiring no repair
+
+- The body contains exactly **4403 words** under the repository's whitespace
+  convention, matching `metadata.word_count`.
+- `contract_version`, source paths, basic statuses, and existing event tiers
+  are valid. There is no missing mandatory bible citation for this story's
+  current content.
+- No new named reusable character or location lacks a profile. The unnamed
+  courier, aunt, buyers, clerk, and other family's pod can stay story-local.
+- Closed inheritance and no lot are states/procedure labels, not automatic
+  requirements for new lexicon terms.
+- Source-first profiles correctly keep story-0015 outcomes provisional:
+  `characters/Tess_Vlin.md:75-80`, `characters/Aurel_Ket.md:55-61`, and
+  `atlas/Halix_Exchange.md:95-103`. None relies on the new outcome as canon.
+- The impact report finds one direct dependent, draft story-0021, no
+  transitive dependents, and Tess/Aurel/Halix as appearance candidates.
+  Manual lexicon-source and related-term searches found no hidden lexicon
+  dependency on story-0015.
+
+## 8. Author decisions
+
+1. **Approve this second carrier as a local proposed outcome?** Recommended:
+   yes, as a separately witnessed/assessed case with no general closure rule.
+   This preserves the story's premise and commercial consequence. Declining
+   the case requires a different premise; approving universal subtype
+   behavior would require a broader mechanics review and is not recommended.
+2. **Keep a physical market-attention effect?** Recommended: keep the small
+   local scale effect, apply F1, and preserve the absence of usable donor
+   memory. This develops the existing remembrance/coherence rule without
+   making title transfer a gravitational switch. A wholly metaphorical
+   treatment would reduce the mechanical commitment but remove the scale's
+   narrative function.
+3. **Whose decision and which procedures should this story establish?**
+   Recommended: give the courier explicit delegated discretion plus his own
+   reason to choose Tess; keep the mesh, financial bond, withdrawal charge,
+   and release facility local to Halix. Apply F3 so Tess makes this particular
+   costly decision rather than adopting universal charitable duty. A brief
+   aunt consultation is a viable alternative with a larger scene change.
+
+These recommendations define a revision scope, not story approval. After
+revision, reassess the text and obtain an explicit promotion decision.
+Any added claims in the already-approved Tess/Halix profiles or lexicon still
+need separate claim approval under `docs/governance/source_first_approvals.md`.
+The broader Drift Clades profile remains working canon.
+
+## 9. Method and change boundary
+
+The full manuscript was read, with independent mechanics, craft, and hygiene
+checks. Required governing sources and both primary exemplars were read in
+full. Declared entity files and the primary story prerequisite were checked;
+later-draft passages were used only to inspect dependencies, not to score
+another story. This single story's card was completed without opening a new
+story for review.
+
+At the original review checkpoint, no manuscript, entity, lexicon, timeline,
+mechanics, or lore file was modified; only this tracked report was added.
+The approved story-0004 developmental edit was not repeated or reopened.
+The subsequent author-approved revision is recorded below. Neither this
+initial review nor approval of its revision scope granted promotion; the
+later explicit author decision is recorded in section 11.
+
+## 10. Author-approved revision and fresh readiness check
+
+### Approval and implementation scope
+
+On October 29, 2026, the author approved the recommended revision scope:
+preserve the second carrier as a local case, retain the small physical
+attention effect with corrected causality, give the courier explicit
+delegated discretion and his own reason for choosing the lower bid, and keep
+the procedures local to Halix. F1-F7 were applied, together with O1's
+financial clarification. This approved revision scope is not a promotion
+decision about the finished text.
+
+The manuscript retains its plot and five sections. The financial loss,
+professional consequences, and ordinary spent-carrier release remain.
+The revision uses the supplied draft and repository style guide as its
+primary prose evidence, with the author's *Write in Jeff's Voice*
+speculative-fiction guidance as additional style calibration.
+
+### Implemented fixes
+
+Line references in this section point to the revised manuscript.
+
+| Finding | Implementation and current evidence |
+| --- | --- |
+| F1: scale causality | Private payment clears without a scale change at `manuscript.md:678`. Buyers depart and inquiries close at `:775-779`; only then does the scale partly ease at `:781-782`. The narrator's universal-law declaration is replaced with Tess's limited observation at `:583-584`. No donor payload is restored. |
+| F2: authority and choice | The courier's reported discretion is checked against his aunt's written permission for the carrier and its record at `:553-557`. Tess discloses withdrawal and release before purchase at `:611-612`. The courier can refuse at `:657-663`; his gesture to the hearer's name and reason for accepting temporary help appear at `:671-676`. |
+| F3: repetition and conduct | The repeated later scale/knife and mirror exchanges are removed. The Consortium's credible public-benefit argument remains at `:707-713`. Tess will decide each future case rather than promise universal buyouts (`:725`). The climax joke is replaced with a practical response (`:773`), and the ring's silence leads directly to the waiting customer (`:903-908`). |
+| F4: scope | Assay patterns are Tess's experience, with silence expressly inconclusive and the witness record checked (`:248-258`). Packaging is her expectation of a family case (`:143-146`); the courier's final posture remains observed action rather than a Clade-wide gratitude rule (`:816-817`). |
+| F5: summary | The short summary now says no usable memory rather than no remaining use (`:11`). The buyers' provenance uses remain possible. |
+| F6: events | Five events match all five chronology summaries and timestamps exactly (`:47-99`). Existing IDs 001/002/003 and their timestamps remain stable. New local IDs 004 (assay) and 005 (purchase) were allocated after checking tracked/current/archive sources and all available git history for prior use. The ID helper has no event allocator. All five events remain local and draft. |
+| F7: appearances | Yenu and the prior fixer Aurel, plus the Orders and Solace, are added only to appearance links (`:14-25`). The causal story source remains primary story-0004 (`:41-42`). |
+| O1: financial procedure | The withdrawal charge is explicitly against the renewal bond and separate from the purchase (`:750-752`). No memory or anchor debit is introduced. |
+
+The revised body contains **4344 words**, matched by `metadata.word_count`.
+The frontmatter's `modified` date is updated. No new named reusable entity or
+lexicon term was introduced.
+
+### Fresh assessment
+
+The revised manuscript was reread in full, with independent craft,
+mechanics, and hygiene checks. All seven required finding groups are
+resolved. No further mandatory correction was identified.
+
+| Criterion | Score | Weight | Points | Revised evidence |
+| --- | --- | --- | --- | --- |
+| A Metaphysical fidelity | 4 | 3 | 12 | The local scale response now follows visible attention changes (`:775-782`); donor content remains absent (`:286-288,583-584`). This remains a limited application of remembrance/coherence, not a general mechanism for turning demand into fuel. |
+| B Bible compliance | 5 | 3 | 15 | No locked-character, anchor-restoration, corridor-cost, or Synod-operation violation is introduced; release remains ordinary matter (`:875-884`). |
+| C Tonal fidelity | 4 | 2 | 8 | Later quips and repeated arguments are reduced; the practical response to review (`:771-773`) and the quiet ending (`:903-908`) retain restraint without flattening the early dry voice. |
+| D Craft and structure | 4 | 2 | 8 | Written delegation, disclosed release terms, refusal rights, and the courier's own preference now carry the purchase (`:553-557,611-612,657-678`); payment, charge, and complaints preserve consequences (`:678,750-752,888-892`). |
+| E Cross-canon coherence | 5 | 2 | 10 | Closure remains one case (`:467`), diagnostics are bounded (`:248-258`), and the new material stays local under continuity notes `:113-120`. Only primary story-0004 is a story prerequisite. |
+| F Repository hygiene | 5 | 1 | 5 | Word count, summaries, source paths, appearances, and five matching local events are verified (`:11-123`). Full CI-parity validation passes. |
+| G Canon value | 3 | 1 | 3 | The story adds a useful local commercial consequence for Tess and draft story-0021, without establishing wider closure or buyout policy (`:611-612,725,750-752`). |
+| **Total** | | | **61 / 70** | |
+
+**Hard gates: PASS. Recommendation: ready for the author's story-approval
+decision.** The score is a readiness finding, not author approval or a status
+change. A later promotion must preserve the local carrier/attention scope
+and separately review any expanded Tess or Halix profile claims.
+
+### Validation and preserved boundaries
+
+`npm run validate:ci` passes the complete CI-parity suite after the revision.
+`git diff --check` passes. The rebuilt graph contains 172 entities, 792 edges,
+and zero orphaned targets. The graph change records the four added appearance
+links; the canonical index has no semantic change. Existing nonblocking
+advisories are 21 schema warnings (18 skips and three recommended-status
+warnings), 975 glossary candidates across 55 scanned files, and two draft
+red-line citation warnings for stories 0005 and 0007. No gate fails.
+
+The impact report still finds one direct dependent, draft story-0021, no
+transitive dependents, and Tess, Aurel, and Halix as appearance candidates.
+Their approved profiles retain their separate provisional sections. Story-0021's
+later events and childhood Halix-visit conflict were not revised here.
+
+Story-0015 remains `draft` / `active_draft`, and all five local events remain
+draft. No entry is added to `data/timeline/events.yaml`. Story-0004, its ten
+local event IDs, the lexicon, governing mechanics/lore, and all entity profile
+statuses remain unchanged. The revised manuscript, this checkpoint, and the
+changed generated maps are prepared for PR review.
+
+## 11. Author approval and promotion — October 29, 2026
+
+After reviewing the revised story and its 61/70 readiness finding, the author
+directed: **“Let's promote it!”** This authorizes promotion of the revised
+manuscript at `33595f7`, not another developmental edit or automatic expansion
+of its linked profiles.
+
+### Promotion applied
+
+The promotion dry run passed link-map preflight and identified no unapproved
+story or shared-event prerequisite. The only causal story source is primary
+story-0004. `npm run promote:story -- --id story-0015` then set:
+
+- `canon_tier: primary_canon`;
+- `status: canonical` and `metadata.status: canonical`;
+- `retrieval_role: authoritative`;
+- `canon_tier: primary_canon` on all five matching local events;
+- the manuscript's modification timestamp.
+
+The promotion leaves the approved manuscript body byte-identical to
+`33595f7`. SHA-256 of that body remains
+`c2816455e6e9b5abd660e775698b145ea6f089c9057713deb04bc62541a868c3`.
+The body still contains 4344 words. The tool's frontmatter serialization and
+the manual continuity-note corrections change no narrative prose.
+
+The second carrier's assessment, Tess's purchase and withdrawal, the
+courier's authorized choice, the local attention effect, and Halix's
+on-page procedures are established by this story. They establish neither a
+universal closure rule nor universal Clade pod practices, and private title
+transfer does not become a gravitational switch. No donor memory is
+restored or converted into new usable fuel.
+
+### Manual checklist and source-first boundaries
+
+- Current labels in Tess, Aurel, Halix, the story list, and the opportunities
+  document now identify story-0015 as primary. Historical review findings
+  retain their original dated draft context.
+- Tess's and Halix's approved baseline summaries, invariants, causal
+  references, and statuses are unchanged. Their additional story-0015
+  profile claims now have an approved source but remain separated pending
+  their own claim review. Aurel's mention still concerns a different buyer,
+  not a new activity by him.
+- Light-Bequest remains the approved broad category. Its closing warning
+  now says the same behavior is not established **as a general rule** for
+  other stones, avoiding a categorical denial of another local case. This
+  preserves the previously approved limit; it adds no new example, mechanic,
+  alias, source-field change, or status change to the term.
+- Draft story-0021's frontmatter now recognizes primary story-0015 as the
+  source of Tess's financial purchase/withdrawal cost. Story-0017 remains a
+  draft prerequisite. Story-0021's body, status, four event tiers, later
+  rendering and repair, and recorded childhood Halix-visit conflict are
+  unchanged. Its body SHA-256 remains
+  `f336984b4829b66fcc4bbaf671cc6f3155154ce0574ba1f8272dc79bf8bf4c0f`.
+- Manual lexicon-source, related-term, prose, and event-ID searches found no
+  hidden prerequisite requiring another promotion. The impact report still
+  finds draft story-0021 as the sole direct dependent, with no transitive
+  dependents; Tess, Aurel, and Halix are appearance candidates.
+- No other story references an individual story-0015 event ID. All five
+  events remain local; `data/timeline/events.yaml` is unchanged. The ten
+  story-0004 event IDs also remain local and untouched.
+
+### Verification and PR
+
+`npm run validate:ci` passes after promotion and the manual source updates.
+The regenerated maps report 172 entities, 792 edges, and zero orphaned
+targets, with story-0015 resolving to `primary_canon` and `authoritative`.
+`git diff --check` passes. Continuity and timeline checks report zero hard
+failures and zero soft warnings. The existing advisories remain 21 schema
+warnings, 975 glossary candidates, and two nonblocking red-line citation
+warnings in draft stories 0005 and 0007.
+
+An independent promotion audit confirmed body preservation, matching event
+coverage, accurate source labels, and the source-first profile boundaries.
+No blocker was found. The promotion is added to the still-open PR #46, whose
+title and description are updated to reflect the final approved scope.
