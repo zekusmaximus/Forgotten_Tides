@@ -707,6 +707,9 @@ Each phase ends in a commit on a `feat/map/...` branch and a green
   and the decisions in section 9.
 - **Done when** the author has answered decisions 1–6 or deferred them
   explicitly.
+- **Status (2026-10-29):** The brief and `design/map/layout_sketch_v0.svg`
+  are written, and decisions 1–10 are accepted. Approval of the brief's four
+  proposed claims (T26–T29) remains open.
 
 ### Phase 1 — Data layer (one session)
 
@@ -760,8 +763,11 @@ Each phase ends in a commit on a `feat/map/...` branch and a green
 The map cannot proceed past Phase 0 placeholders without these. None of them
 overlaps the open decisions in
 `docs/PROCESS_REVIEW_STORY_DRAFTING_2026_10_20.md` §7. Each item below gives
-the question, then the agent's recommendation with its main reason. The
-author has not decided any of them.
+the question, then the agent's recommendation with its main reason.
+
+**Accepted by the author on 2026-10-29, all ten as recommended.**
+`design/map/CARTOGRAPHIC_BRIEF.md` records them as decisions D1–D10 and lists
+the claims they approve.
 
 1. **Status of the layout.** Options: cartographic interpretation only,
    working canon, or primary canon.
