@@ -9,7 +9,7 @@ status: draft
 canon_tier: draft
 retrieval_role: active_draft
 summary_50: "A hospice reliquarist discovers her latest memory stone was coercively cut from a living mind, and must decide what to do before the patient it was made to comfort dies."
-summary_200: "At the Solace Hospice on the outer rim of the Helios Drift, Indre Vael tunes memory stones for the dying — small, kind reliquaries meant to ease the final raveling of mind. When a stone arrives off-channel for a patient who has only one night left, Indre recognizes the fingerprint of coercive extraction — a memory cut, not given. To honor the patient she must betray the donor; to honor the donor she must let the patient die in fear. The story enriches the Remembrancers of Solace, the craft of reliquary tuning, and the moral economy of memory at the edge of oblivion."
+summary_200: "At a Remembrancer hospice on the outer rim of the Helios Drift, Indre Vael tunes memory stones for the dying — small, kind reliquaries meant to ease the final raveling of mind. When a stone arrives off-channel for a patient who has only one night left, Indre recognizes the fingerprint of coercive extraction — a memory cut, not given. To honor the patient she must betray the donor; to honor the donor she must let the patient die in fear. The story enriches the Remembrancers of Solace, the craft of reliquary tuning, and the moral economy of memory at the edge of oblivion."
 cross_refs:
   characters: []
   locations: []
@@ -25,7 +25,7 @@ references:
     - mech-0001
   stories: []
 timeline:
-  setting: Solace Hospice, an outer Remembrancer house in the Helios Drift
+  setting: An outer Remembrancer hospice in the Helios Drift
   duration: One night, from second watch to dawn
   chronology:
     - event: Off-channel reliquary arrives for patient Mira Calvent
@@ -55,7 +55,7 @@ metadata:
   word_count: 3662
   author: AI Generated (Claude)
   created: '2026-05-23T00:00:00Z'
-  modified: '2026-05-23T00:00:00Z'
+  modified: '2026-10-29T00:00:00Z'
 tags:
   - remembrancers-of-solace
   - memory-stone
@@ -73,7 +73,7 @@ The stone came in at second watch, wrapped in unbleached linen and bedded in a c
 
 Indre Vael heard it before she touched it.
 
-She kept a quiet bench at the back of the Solace Hospice — three rooms cut into the inner shell of the station, sealed with old felt and older silence. Tuning required quiet the way surgery required light. On the wall, the hospice's only ornament: a single line of script, half-lost under decades of incense smoke.
+She kept a quiet bench at the back of the hospice — three rooms cut into the inner shell of the station, sealed with old felt and older silence. Tuning required quiet the way surgery required light. On the wall, the hospice's only ornament: a single line of script, half-lost under decades of incense smoke.
 
 *Spend only what you can afford. Preserve what must endure.*
 
