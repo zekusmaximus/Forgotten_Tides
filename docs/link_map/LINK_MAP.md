@@ -1,6 +1,6 @@
 # Link Map - Entity Relationships
 
-Generated: 2026-10-29T04:42:31.095Z
+Generated: 2026-10-29T04:45:23.424Z
 
 ## Entities (172)
 
@@ -34,7 +34,7 @@ Generated: 2026-10-29T04:42:31.095Z
 - `char-0028` (character, primary_canon, weight 110)
 - `char-0029` (character, primary_canon, weight 110)
 - `char-0030` (character, primary_canon, weight 110)
-- `char-0031` (character, speculative, weight 60)
+- `char-0031` (character, primary_canon, weight 110)
 - `event-0001` (event, primary_canon, weight 105)
 - `event-0002` (event, primary_canon, weight 105)
 - `event-0003` (event, primary_canon, weight 105)
@@ -177,7 +177,7 @@ Generated: 2026-10-29T04:42:31.095Z
 - `term-0031` (term, primary_canon, weight 110)
 - `term-0032` (term, primary_canon, weight 110)
 
-## Relationships (781)
+## Relationships (782)
 
 - `char-0001` → `char-0002` (characters; cross_refs, references)
 - `char-0001` → `char-0003` (characters; cross_refs, references)
@@ -397,7 +397,8 @@ Generated: 2026-10-29T04:42:31.095Z
 - `char-0031` → `loc-0013` (locations; cross_refs, references)
 - `char-0031` → `mech-0001` (mechanics; cross_refs, references)
 - `char-0031` → `story-0004` (stories; cross_refs, references)
-- `char-0031` → `story-0021` (stories; cross_refs, references)
+- `char-0031` → `story-0015` (stories; cross_refs)
+- `char-0031` → `story-0021` (stories; cross_refs)
 - `event-0001` → `mech-0001` (involved_entities; involved_entities)
 - `event-0001` → `mech-0002` (involved_entities; involved_entities)
 - `event-0001` → `mech-0003` (involved_entities; involved_entities)
@@ -968,9 +969,9 @@ _none_
 ## Statistics
 
 - **Total Entities**: 172
-- **Total Relationships**: 781
+- **Total Relationships**: 782
 - **Orphaned Targets**: 0
 - **Entity Types**: character, event, faction, location, lore, mechanics, story, term
-- **Primary / Working Canon**: 97
+- **Primary / Working Canon**: 98
 - **Draft Entities**: 43
 - **Test / Sandbox / Deprecated Entities**: 7

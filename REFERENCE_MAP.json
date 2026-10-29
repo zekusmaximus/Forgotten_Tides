@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-29T04:42:31.095Z",
+  "generated": "2026-10-29T04:45:23.424Z",
   "nodes": [
     {
       "canonical_id": "char-0001",
@@ -276,9 +276,9 @@
       "type": "character",
       "name": "Aurel Ket",
       "path": "characters/Aurel_Ket.md",
-      "canon_tier": "speculative",
-      "source_weight": 60,
-      "retrieval_role": "exploratory"
+      "canon_tier": "primary_canon",
+      "source_weight": 110,
+      "retrieval_role": "authoritative"
     },
     {
       "canonical_id": "event-0001",
@@ -3496,11 +3496,18 @@
     },
     {
       "from": "char-0031",
+      "to": "story-0015",
+      "type": "stories",
+      "fields": [
+        "cross_refs"
+      ]
+    },
+    {
+      "from": "char-0031",
       "to": "story-0021",
       "type": "stories",
       "fields": [
-        "cross_refs",
-        "references"
+        "cross_refs"
       ]
     },
     {
