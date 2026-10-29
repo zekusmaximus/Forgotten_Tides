@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-29T03:40:48.339Z",
+  "generated": "2026-10-29T13:15:24.451Z",
   "nodes": [
     {
       "canonical_id": "char-0001",
@@ -1548,6 +1548,24 @@
       "canon_tier": "primary_canon",
       "source_weight": 110,
       "retrieval_role": "authoritative"
+    },
+    {
+      "canonical_id": "term-0033",
+      "type": "term",
+      "name": "Pull",
+      "path": "data/lexicon/terms.yaml",
+      "canon_tier": "draft",
+      "source_weight": 65,
+      "retrieval_role": "active_draft"
+    },
+    {
+      "canonical_id": "term-0034",
+      "type": "term",
+      "name": "Sleeve",
+      "path": "data/lexicon/terms.yaml",
+      "canon_tier": "draft",
+      "source_weight": 65,
+      "retrieval_role": "active_draft"
     }
   ],
   "edges": [
@@ -8293,6 +8311,38 @@
     {
       "from": "term-0032",
       "to": "term-0027",
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
+    },
+    {
+      "from": "term-0033",
+      "to": "term-0007",
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
+    },
+    {
+      "from": "term-0033",
+      "to": "term-0013",
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
+    },
+    {
+      "from": "term-0034",
+      "to": "term-0004",
+      "type": "related_terms",
+      "fields": [
+        "related_terms"
+      ]
+    },
+    {
+      "from": "term-0034",
+      "to": "term-0028",
       "type": "related_terms",
       "fields": [
         "related_terms"
