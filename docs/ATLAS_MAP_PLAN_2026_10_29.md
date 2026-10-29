@@ -26,7 +26,7 @@ built from the repository's own location data.
   OpenSeadragon displays the pyramid, and live SVG/HTML overlays generated
   from repository data supply labels, regions, corridors, and detail panels.
   Hosting is static: the Hetzner VPS behind Caddy, or object storage.
-- **Keep placements out of the locked atlas files.** Put positions and shapes
+- **Keep placements out of the atlas entity files.** Put positions and shapes
   in a separate cartography file, `design/map/cartography.yaml`. Every
   placement records its basis: a canon citation, a draft citation, or
   cartographic license. A lint checks the chart against canon, including
@@ -42,7 +42,8 @@ built from the repository's own location data.
 ### 1.1 Location inventory
 
 From `CANONICAL_INDEX.md` and the `atlas/` frontmatter. "Tier" is the index
-tier; densities are the locked frontmatter values.
+tier; densities are the frontmatter values, locked for the primary-canon
+entries.
 
 | ID | Name | Type | Tier | `coordinates.region` | `memory_density` | Spatial statement in its own file |
 |----|------|------|------|----------------------|------------------|-----------------------------------|
@@ -318,9 +319,10 @@ click away, visibly marked as drafts.
 
 ### 3.1 Why a separate cartography file
 
-- Atlas files are locked continuity (`CLAUDE.md`). Coordinates added there
-  would read as canon. The open `coordinates` object would accept them, so
-  nothing would mark them as interpretation.
+- The eight canonical atlas entries are `primary_canon`, which `CLAUDE.md`
+  treats as locked. Coordinates added to any atlas file would read as canon.
+  The open `coordinates` object would accept them, so nothing would mark
+  them as interpretation.
 - Most placements are cartographic license. They need provenance on each
   entry, which frontmatter has no place for.
 - Region-name strings such as "Helios Drift outer sleeve" need a mapping to
@@ -358,7 +360,7 @@ regions:
         to: 0.62
         basis: canon
         source: stories/short_story/the_reliquarists_doubt/manuscript.md
-        sectors: 9              # one per silo housing; order is cartographic
+        subbands: 9             # numbered outward; see decision 5
     region_aliases: ["Helios Drift", "Helios Drift outer sleeve"]
 
 sites:
@@ -757,38 +759,90 @@ Each phase ends in a commit on a `feat/map/...` branch and a green
 
 The map cannot proceed past Phase 0 placeholders without these. None of them
 overlaps the open decisions in
-`docs/PROCESS_REVIEW_STORY_DRAFTING_2026_10_20.md` §7.
+`docs/PROCESS_REVIEW_STORY_DRAFTING_2026_10_20.md` §7. Each item below gives
+the question, then the agent's recommendation with its main reason. The
+author has not decided any of them.
 
-1. **Status of the layout.** Is the approved layout a cartographic
-   interpretation, shown with *P.A.* notes and never cited as canon, or does
-   it become working canon that later stories must respect? The second
-   option makes the map a continuity constraint, which is powerful and also
-   binding.
-2. **Galaxy shape, arrangement, and the Drift's scale.** The proposed
-   arrangement is a disk with a radial gradient: the Core at the center, the
-   Drift as a belt around it, the Black Horizon as the perimeter ring, and
-   the Gap, the Remnant Seas, and the Voids as features between the Drift
-   and the perimeter. This depends on reading the Drift as a galactic belt
-   rather than a single star's ring system (1.4 item 2).
-3. **Dimensionality.** A two-dimensional chart, or a 3D galaxy with a 2D
-   chart as one view of it.
-4. **Beyond the galaxy.** Whether to draw Heavonly's three galaxies (unnamed
-   in canon) and where Heavonly sits.
-5. **Sleeves and pulls.** Whether the inner relay, mid-sleeve, and outer
-   sleeve are radial bands of the Drift, with the nine numbered sleeves as
-   angular segments of the outer ring, as story-0022's nine-housing silo bank
-   suggests. Whether the Lattice Gap's "near sleeve" means other regions have
-   sleeves too. Whether "pull" gets a lexicon entry; the chart will only
-   count pulls, never convert them.
-6. **Specific placements** blocked by the ambiguities in 1.4.
-7. **Default canon lens.** Primary only, or primary plus ghosted
-   speculative.
-8. **Visibility.** Public, password-protected, or local only.
-9. **Art direction.** Procedural only, procedural with painted plates, or a
-   commissioned cartographer.
-10. **Process.** Whether a new location's placement becomes a row in the
-    playbook's Lore Update Matrix, and whether an unplaced canonical location
-    fails CI.
+1. **Status of the layout.** Options: cartographic interpretation only,
+   working canon, or primary canon.
+   *Recommendation:* split by claim type. Topology (containment, adjacency,
+   radial order, which sleeve a site is in) becomes working canon on
+   approval. Geometry (exact positions, sizes, angles, lane shapes) stays
+   cartographic and carries *P.A.* notes. The map never reaches
+   primary canon on its own authority. Stories rely on topology, so topology
+   needs authority; geometry is presentation and should stay revisable.
+2. **Galaxy shape, arrangement, and the Drift's scale.**
+   *Recommendation:*
+   - Draw a spiral disk whose arms carry the density field, with the Core at
+     the center, the Drift as the inhabited belt, and the Black Horizon at
+     the perimeter, its interior left uncharted.
+   - Place the Lattice Gap as a rift at the outer reach of the Lattice,
+     crossing the Drift's outer edge, with the Gap's outer sleeve touching a
+     Void Region.
+   - Put the Remnant Seas in pockets beyond the Drift. Scatter the Void
+     Regions, densest at the margins.
+   - Read the Drift at galactic scale throughout, with its outer sleeve as a
+     sparse deep-orbit ring around the Core. That reading keeps every
+     canonical statement literal; its only cost is that the outer sleeve is
+     thinly settled, which canon already implies.
+3. **Dimensionality.**
+   *Recommendation:* a 2D chart as the canonical artifact, with an optional
+   2.5D gravity-well view later that takes its height from the same density
+   field. Do not assign z-coordinates.
+4. **Beyond the galaxy.**
+   *Recommendation:* place Heavonly under the speculative lens only, at the
+   Drift's inner edge where it meets the Core. Its 0.82 falls between the
+   Drift's 0.65 and the Core's 0.97, and a dense hub can fund
+   inter-galactic burns. Do not draw or name other galaxies until the novel
+   settles "three galaxies" against "three other galaxies."
+5. **Sleeves and pulls.**
+   *Recommendation:*
+   - Define "sleeve" as a navigational band of any region, named by its
+     position relative to the region's inward edge (near or inner, mid,
+     outer).
+   - In the Drift, the outer sleeve divides into nine numbered civic sleeves
+     numbered outward. Canon populations fall with the number (Second
+     200,000, Fifth 80,000, Seventh about 40,000, Ninth 900).
+   - Add "pull" to the lexicon as a count of drive engagements on a
+     corridor run, explicitly not a distance or a time.
+6. **Specific placements.**
+   *Recommendation:*
+   - Put Solace Hospice where the Lattice Gap's outer sleeve touches a Void
+     Region. That one position satisfies the atlas, `story-0007`, and
+     `story-0018`. The `story-0003` hospice becomes a different Remembrancer
+     house; already tracked in `docs/governance/provisional_profiles.md`.
+   - Put Ostra-Vael on the Remnant Seas boundary.
+   - Draw the Black Horizon's superclustering as dense black-hole knots at
+     galactic scale.
+   - Mark Ebbhaven with *E.D.* in the outer reaches.
+   - Put Halix on a slow circuit through the outer sleeve, mooring at tether
+     heads.
+   - Put the Tessarine Vault at the outer sleeve's inner edge, facing all
+     nine sleeves.
+7. **Default canon lens.**
+   *Recommendation:* two builds.
+   - The author build shows every tier, with speculative entities faded.
+   - The public build includes only primary and working canon, and
+     excludes draft data at build time rather than hiding it in the browser.
+   - Separately, run the source-first claim review of `loc-0013` Halix and
+     `loc-0015` Skather-Ait against primary-canon `story-0004`. A
+     primary-only map otherwise omits the settings of a primary-canon story.
+8. **Visibility.**
+   *Recommendation:* the author build goes on the VPS behind basic auth now.
+   Launch the public build only with a reader-facing occasion. Public panels
+   carry summaries only, never excerpts.
+9. **Art direction.**
+   *Recommendation:* the procedural base, which the lint requires anyway.
+   Judge a style frame at the end of Phase 2. If hand craft is wanted,
+   commission a hero print map on the approved geometry under a written
+   work-made-for-hire agreement (a map is a "supplementary work" under
+   17 U.S.C. §101), with an assignment as backup. Skip AI plates.
+10. **Process.**
+    *Recommendation:* require a placement at promotion (Step 6b), not at
+    drafting. Drafting agents may propose a placement in the PR body but do
+    not edit the cartography file. After the Phase 1 backfill, CI fails on
+    an unplaced primary-canon location and warns on a speculative one. A
+    placement change is a Canon Impact line in the PR.
 
 ## 10. Risks
 
