@@ -1,6 +1,6 @@
 # Canonical Index
 
-This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-10-29T13:48:19.709Z
+This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-10-29T14:11:31.781Z
 
 ## Character
 - `char-0001` — Rell (`characters/Rell.md`)
@@ -189,6 +189,8 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `term-0030` — Memory Density (`data/lexicon/terms.yaml`)
 - `term-0031` — Junior Seal (`data/lexicon/terms.yaml`)
 - `term-0032` — Synod Lamp (`data/lexicon/terms.yaml`)
+- `term-0033` — Pull (`data/lexicon/terms.yaml`)
+- `term-0034` — Sleeve (`data/lexicon/terms.yaml`)
 
 ## Canon Views
 
@@ -338,6 +340,8 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `story-0021` - Receipt for a Voice (story, draft, weight 65, `stories/short_story/receipt_for_a_voice/manuscript.md`)
 - `term-0022` - Continuity Cleric (term, draft, weight 65, `data/lexicon/terms.yaml`)
 - `term-0023` - Liturgy of the Hull (term, draft, weight 65, `data/lexicon/terms.yaml`)
+- `term-0033` - Pull (term, draft, weight 65, `data/lexicon/terms.yaml`)
+- `term-0034` - Sleeve (term, draft, weight 65, `data/lexicon/terms.yaml`)
 
 ### Speculative / Sandbox Material
 - `char-0005` - Kaelen (character, speculative, weight 60, `characters/Kaelen.md`)

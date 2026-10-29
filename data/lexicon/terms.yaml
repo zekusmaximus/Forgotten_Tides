@@ -389,3 +389,25 @@ terms:
     first_appearance: The Mercy Doctrine
     canonical_source: stories/short_story/spend_what_you_can_afford/manuscript.md
     status: canonical
+
+  - id: term-0033
+    term: Pull
+    definition: One engagement of a memory drive on a corridor run, and the unit in which crews count a crossing ("three pulls to reach them"). A pull counts drive effort. It is not a measure of distance or duration, and a pull count does not convert to either.
+    category: Navigation
+    related_terms:
+      - term-0007  # Corridor
+      - term-0013  # Memory Drive
+    first_appearance: The Archivist's Wake
+    canonical_source: stories/short_story/the_archivists_wake/manuscript.md
+    status: draft
+
+  - id: term-0034
+    term: Sleeve
+    definition: A navigational band of a region, named by its position relative to the region's inward edge (near or inner, mid, outer). The Helios Drift's outer sleeve is a deep-orbit ring divided into nine numbered civic sleeves, counted outward; each sleeve's stations, tethers, and pods share a civic memory held in its silo at the Tessarine Vault.
+    category: Navigation
+    related_terms:
+      - term-0028  # Civic Silo
+      - term-0004  # Civic Memory
+    first_appearance: The Light Inheritance
+    canonical_source: stories/short_story/spend_what_you_can_afford/manuscript.md
+    status: draft

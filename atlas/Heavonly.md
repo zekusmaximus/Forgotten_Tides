@@ -34,12 +34,12 @@ references:
   stories:
     - story-0020
 coordinates:
-  region: High-density political hub and intergalactic gateway
+  region: Helios Drift inner sleeve
   memory_density: 0.82
 metadata:
   status: speculative
   created: '2026-07-07T00:00:00.000Z'
-  modified: '2026-07-07T00:00:00.000Z'
+  modified: '2026-10-29T00:00:00.000Z'
 ---
 
 # Heavonly

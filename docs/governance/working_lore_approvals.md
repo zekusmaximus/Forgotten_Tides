@@ -50,3 +50,51 @@ draft's acoustic and focused-memory method or the effect of a cleric's doubt.
 an association, not approval of the draft definition. The dependency report
 does not trace `related_terms` or prose mentions, so these links and mentions
 need review when `story-0005` is considered for canon.
+
+## Atlas Map Decisions — 2026-10-29
+
+**Author decision:** Accept the ten recommendations in
+`docs/ATLAS_MAP_PLAN_2026_10_29.md` §9. The topology claims marked Approved in
+`design/map/CARTOGRAPHIC_BRIEF.md` §4 are working canon. The map's geometry
+(positions, sizes, angles, and shapes) is cartographic interpretation and
+carries *P.A.* notes. Claims marked Proposed are not approved. A claim about a
+speculative entity governs the map's author build only; it binds canon when
+that entity is approved. No entity's tier or status changed.
+
+`term-0033` Pull and `term-0034` Sleeve enter the lexicon as `draft`.
+
+- **Pull** is defined as a count of drive engagements, not convertible to
+  distance or duration. That fits every primary-canon use: three pulls in
+  `story-0001`, two pulls in `story-0022`, and the pull-stamped chronology of
+  `story-0013`.
+- **Sleeve** rests on `story-0008` for its general sense (the outer sleeve as
+  "a deep-orbit ring," and "the Lattice Gap's near sleeve") and on
+  `story-0022` for the nine numbered sleeves.
+
+Draft `story-0007` uses "third pull" as a time of day and needs revision
+before promotion.
+
+## Atlas Map Second-Pass Decisions — 2026-10-29
+
+**Author decision:** Accept the twenty-one second-pass recommendations
+(Q1–Q21) in `design/map/CARTOGRAPHIC_BRIEF.md` §2. These decisions remove the
+brief's remaining inferences.
+
+- The Lattice Gap touches the Drift's outer sleeve without cutting into any
+  sleeve. This amends the first pass's "crossing."
+- The inner relay is a facility in the Drift's inner sleeve, not a band.
+- The outer sleeve holds exactly nine sleeves.
+- The Core and the Drift touch.
+- Drawn counts and all geometry are cartographic.
+
+The approved arrangement now appears in prose as
+`lore/COSMIC_REGIONS.md` §7, which leaves speculative entities out. Three
+Speculative atlas entries Heavonly and Solace Hospice gained or corrected
+`coordinates.region`. Skather-Ait pod received the same field after PR #45
+approved it as primary canon; the value matches its primary source. No
+density values were invented, and no primary-canon atlas entry gained map
+topology.
+
+Two draft revisions follow in a separate PR: `story-0003` loses the proper
+name of its hospice, and `story-0007` changes "third pull," used as a time of
+day, to "third watch."

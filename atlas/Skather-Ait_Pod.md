@@ -19,6 +19,8 @@ references:
   factions: []
   mechanics: [mech-0001]
   stories: [story-0004]
+coordinates:
+  region: Helios Drift outer sleeve
 metadata:
   status: canonical
   created: '2026-09-24T00:00:00.000Z'

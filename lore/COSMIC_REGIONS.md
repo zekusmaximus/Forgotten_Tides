@@ -19,7 +19,7 @@ cross_refs:
 metadata:
   status: canonical
   created: '2025-12-11T00:55:01.581Z'
-  modified: '2025-12-11T00:55:01.581Z'
+  modified: '2026-10-29T00:00:00.000Z'
 ---
 
 # Cosmic Regions of The Forgotten Tides
@@ -115,3 +115,41 @@ Region of universal forgetting.
 
 Risk Level: **Existential**
 
+---
+
+# 7. Arrangement
+
+*Working canon, approved by the author on 2026-10-29. The claim-by-claim
+register, with sources, is `design/map/CARTOGRAPHIC_BRIEF.md` §4. Distances,
+sizes, angles, and drawn counts on the atlas map are approximate and are not
+canon.*
+
+The known galaxy is a spiral disk. Its arms are where memory gathers, and
+density falls from the center outward.
+
+- **The Mnemosyne Lattice Core** is the center.
+- **The Helios Drift** is the inhabited belt around the Core and touches it,
+  with no margin between. Its bands run outward: the inner sleeve, the
+  mid-sleeve, and the outer sleeve. The inner and mid sleeves hold worlds;
+  the outer sleeve is habitats. The **inner relay**, a corridor and courier
+  node in the inner sleeve, houses the Navigant house.
+- **The outer sleeve** is a sparse deep-orbit ring around the Core. It holds
+  exactly nine numbered civic sleeves, counted outward, and each keeps its
+  civic memory in a silo at the Tessarine Vault, which stands at the outer
+  sleeve's inner edge. The Ninth is the frontier band: beyond it lie the void
+  margins and the Lattice Gap.
+- **The Lattice Gap** is a rift at the outer reach of the Lattice. It touches
+  the outer edge of the Drift's outer sleeve without cutting into any sleeve,
+  and runs outward. Its near sleeve faces the Drift; its outer sleeve touches
+  a Void Region. The Heliodrome stands at its epicenter.
+- **The Remnant Seas** lie in pockets beyond the Drift.
+- **The Void Regions** are scattered beyond the Drift, most densely at its
+  margins.
+- **The Black Horizon** is the perimeter. Its near edge faces inward, where
+  the Archivist Orders keep monitoring stations; its far edge and interior
+  are uncharted.
+
+"Sleeve" names a band of any region, counted from its inward edge
+(`term-0034`). Corridor crossings are counted in pulls (`term-0033`), which do
+not convert to distance or duration. Speculative locations are placed only on
+the author's working map and are not part of this arrangement until approved.

@@ -33,8 +33,10 @@ references:
     - mech-0003
   stories:
     - story-0007
+coordinates:
+  region: Lattice Gap outer sleeve
 metadata:
   status: speculative
   created: '2026-05-27T00:00:00.000Z'
-  modified: '2026-10-28T01:54:53.000Z'
+  modified: '2026-10-29T00:00:00.000Z'
 ---

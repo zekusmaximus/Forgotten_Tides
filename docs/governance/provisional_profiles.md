@@ -9,8 +9,8 @@ available to draft workflows without treating its claims as primary canon.
 | Draft story | Provisional profiles | Review before approval |
 | --- | --- | --- |
 | `story-0005` (*The Liturgy of Rust*) | `char-0005` Kaelen; `char-0006` Vane; `loc-0002` Ostra-Vael | Reconcile Kaelen's zero-anchoring and resulting anchor losses with governing mechanics; verify Ostra-Vael's `memory_density: 0.30` separately from the story's 30% conceptual integrity. |
-| `story-0006` (*The Anchorless Tide*) | `char-0007` Kael Voss; `loc-0009` Ebbhaven | Resolve Kael's anchor accounting; decide what happened to Ebbhaven and whether `location_type: region` describes it correctly. |
-| `story-0007` (*The Hospice Knot*) | `char-0008` Lira Voss; `loc-0010` Solace Hospice | Review the consent precedent and reconcile Solace's location across draft stories `0003`, `0007`, and `0018`. |
+| `story-0006` (*The Anchorless Tide*) | `char-0007` Kael Voss; `loc-0009` Ebbhaven | Resolve Kael's anchor accounting; decide what happened to Ebbhaven and whether `location_type: region` describes it correctly; decide whether "the Tides" names anything physical (atlas map decision Q13). |
+| `story-0007` (*The Hospice Knot*) | `char-0008` Lira Voss; `loc-0010` Solace Hospice | Review the consent precedent. Solace's location was reconciled on 2026-10-29: the Lattice Gap's outer sleeve, where it touches a Void Region (`design/map/CARTOGRAPHIC_BRIEF.md` T18). The `story-0003` hospice is a separate, unnamed Remembrancer house. |
 
 Promoting a source story starts a separate review of its linked profiles. It
 does not automatically approve every claim in those profiles. Draft

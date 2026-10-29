@@ -261,6 +261,9 @@ While grittier than *The Archivist's Wake*, this novel must still honor:
 3. How does the Consortium connect to the assassination?
 4. What memory does Gorgi lose that hurts most? (The floater game with brothers?)
 5. Does Fuin face consequences, or disappear into complicity?
+6. Galaxy count: `atlas/Heavonly.md` says Heavonly is the gateway to "three galaxies"; the scene draft says "three other galaxies." Choose one before Heavonly is approved. (Atlas map decision Q20, 2026-10-29.)
+7. Routine inter-galactic travel: the scene's "big corridor cruisers... long hauls between galaxies" sits against `mechanics/CORRIDOR_MECHANICS.md` §6.3, where inter-galactic travel "costs generational or cultural memory" and is "never attempted lightly." Reconcile in the next prose pass.
+8. Heavonly's map position: the atlas map places it at the Helios Drift's inner edge, where the Drift meets the Mnemosyne Lattice Core (`design/map/CARTOGRAPHIC_BRIEF.md` T11). The Raoniar's run "to the other side of the galaxy" fits that position. The placement binds canon only when Heavonly is approved.
 
 ---
 
