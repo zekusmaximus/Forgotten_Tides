@@ -29,6 +29,7 @@ Complete every row that applies.
 - [ ] Timeline-significant events are represented in story `events` (structured), and `data/timeline/events.yaml` if promoted beyond this story. Non-trivial chronology stories include `events`.
 - [ ] Use of Rell, Sutira, Estavan, Tari, Heliodrome, Lattice Gap, eddies, zero-anchoring, or anchor burn has been checked against `bible/ARCHIVISTS_WAKE_STORY_BIBLE.md`
 - [ ] Metaphysical changes are documented outside the story, not only in prose
+- [ ] Locations approved as primary or working canon are placed in `design/map/cartography.yaml` (`npm run lint:map`), and any placement change is named in the Canon note
 - [ ] `CANONICAL_INDEX.md`, `REFERENCE_MAP.json`, and `docs/link_map/LINK_MAP.md` are updated if generated output changed
 
 Notes for rows marked incomplete or not applicable:

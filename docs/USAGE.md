@@ -142,6 +142,34 @@ links help identify files to review, but prose may contain undeclared
 dependencies. Review the affected stories before changing approved facts or
 promoting a draft.
 
+## Atlas Map Data
+
+The atlas map's placements live in `design/map/cartography.yaml`. Its claims
+and drawing rules cite the register in `design/map/CARTOGRAPHIC_BRIEF.md`, and
+its densities come only from atlas frontmatter.
+
+```bash
+npm run lint:map                          # check placements against canon
+npm run map:data                          # author build -> out/map/atlas.author.json
+npm run map:data -- --build public        # public build -> out/map/atlas.public.json
+npm run --silent lint:map -- --json       # findings as JSON
+```
+
+`lint:map` runs as part of `npm run lint`, so `validate:ci` fails on any of
+these:
+
+- An unplaced primary- or working-canon location. An unplaced speculative
+  location is a warning.
+- A site outside the region or band its atlas `coordinates.region` names.
+- A field that misses a locked `memory_density` by more than 0.02.
+- A claim, rule, source line, or timeline anchor that does not exist.
+- A `canon` feature or route without a canon source.
+- A relation from the brief that no longer holds.
+
+`map:data` refuses to build while the lint reports errors. The public build
+leaves speculative entities and draft material out of the file itself.
+`npm run test:map` exercises every lint rule against a fixture.
+
 ## Story Compilation (Local)
 
 Compile primary-canon story manuscripts into a single Markdown source and an ePub. The

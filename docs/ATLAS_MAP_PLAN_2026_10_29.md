@@ -748,6 +748,11 @@ contradictions that the continuity checks and the map would otherwise flag.
   pattern of the existing tests.
 - **Done when** every canonical location is placed, the density-fidelity
   rule passes, and a deliberately bad fixture fails each rule.
+- **Status (2026-10-29):** Done. All 15 locations are placed with zero
+  findings. `scripts/tests/test_map_data.js` breaks the fixture 19 ways and
+  each rule catches its defect. `lint:map` runs in `npm run lint`, and
+  `test:map` runs in `validate:ci`. The playbook (Step 4 and Step 6b) and the
+  PR template carry the D10 placement steps.
 
 ### Phase 2 — Viewer MVP (one to two sessions)
 
