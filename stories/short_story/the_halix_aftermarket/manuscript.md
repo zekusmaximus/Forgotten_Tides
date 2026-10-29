@@ -5,20 +5,24 @@ contract_version: v1.0.0
 type: story
 title: The Halix Aftermarket
 story_type: short-story
-status: draft
-canon_tier: draft
-retrieval_role: active_draft
-summary_50: "Tess Vlin receives a closed missed-generation Light-Bequest and must decide whether a memory object with no remaining use can still be sacred."
-summary_200: "On the Halix Exchange bazaar-ship, broker-tuner Tess Vlin receives a closed missed-generation Light-Bequest: a memory stone whose intended hearer has already listened, leaving no usable memory and no inheritance hollow. The stone should be nearly worthless, but Consortium and private buyers want its provenance, proof that completion itself can be packaged. Tess must choose between the market's honest price and the quieter duty of refusing to sell what has finished its work."
+status: canonical
+canon_tier: primary_canon
+retrieval_role: authoritative
+summary_50: Tess Vlin receives a closed missed-generation Light-Bequest and must decide whether a memory object with no usable memory can still be sacred.
+summary_200: 'On the Halix Exchange bazaar-ship, broker-tuner Tess Vlin receives a closed missed-generation Light-Bequest: a memory stone whose intended hearer has already listened, leaving no usable memory and no inheritance hollow. The stone should be nearly worthless, but Consortium and private buyers want its provenance, proof that completion itself can be packaged. Tess must choose between the market''s honest price and the quieter duty of refusing to sell what has finished its work.'
 cross_refs:
   characters:
     - char-0019
+    - char-0026
+    - char-0031
   locations:
     - loc-0013
     - loc-0008
   factions:
     - fact-0004
     - fact-0003
+    - fact-0002
+    - fact-0006
   mechanics:
     - mech-0001
   stories:
@@ -38,23 +42,33 @@ references:
     - story-0004
 timeline:
   setting: The fourth-deck inheritance quarter and outer skin of the Halix Exchange bazaar-ship in the Helios Drift outer sleeve
-  duration: One watch-cycle, from receipt of the closed missed-generation Light-Bequest to its removal from market circulation
+  duration: 'One watch-cycle, from receipt of the closed missed-generation Light-Bequest to its removal from market circulation'
   chronology:
-    - event: Tess Vlin receives a closed missed-generation Light-Bequest for valuation
+    - event: Tess Vlin receives a closed missed-generation Light-Bequest for valuation at her Halix Exchange bench.
       timestamp: T0
-    - event: Her tuning ring confirms the stone has completed its inheritance function
+    - event: Tess's assay and the witness record support her assessment that this carrier's inheritance function is complete.
       timestamp: T0+20m
-    - event: Buyers gather when the Halix ledger exposes the stone's provenance value
+    - event: Halix buyers bid on the stone's provenance and symbolic weight despite its lack of remaining usable memory.
       timestamp: T0+1h
-    - event: Tess buys out the seller and refuses higher bids
+    - event: Tess buys the carrier under the courier's agreed terms.
       timestamp: T0+2h
-    - event: Tess releases the stone from Halix instead of returning it to commerce
+    - event: Tess releases the purchased carrier from Halix after withdrawing it from commerce.
       timestamp: T0+3h
 events:
   - id: event-story-0015-001
     timestamp: T0
-    summary: "Tess Vlin receives a closed missed-generation Light-Bequest at her Halix Exchange bench."
-    canon_tier: draft
+    summary: Tess Vlin receives a closed missed-generation Light-Bequest for valuation at her Halix Exchange bench.
+    canon_tier: primary_canon
+    source: stories/short_story/the_halix_aftermarket/manuscript.md
+    involved_entities:
+      - story-0015
+      - char-0019
+      - loc-0013
+      - mech-0001
+  - id: event-story-0015-004
+    timestamp: T0+20m
+    summary: Tess's assay and the witness record support her assessment that this carrier's inheritance function is complete.
+    canon_tier: primary_canon
     source: stories/short_story/the_halix_aftermarket/manuscript.md
     involved_entities:
       - story-0015
@@ -63,18 +77,27 @@ events:
       - mech-0001
   - id: event-story-0015-002
     timestamp: T0+1h
-    summary: "Halix buyers bid on the stone's provenance and symbolic weight despite its lack of remaining usable memory."
-    canon_tier: draft
+    summary: Halix buyers bid on the stone's provenance and symbolic weight despite its lack of remaining usable memory.
+    canon_tier: primary_canon
     source: stories/short_story/the_halix_aftermarket/manuscript.md
     involved_entities:
       - story-0015
       - loc-0013
       - fact-0003
       - fact-0004
+  - id: event-story-0015-005
+    timestamp: T0+2h
+    summary: Tess buys the carrier under the courier's agreed terms.
+    canon_tier: primary_canon
+    source: stories/short_story/the_halix_aftermarket/manuscript.md
+    involved_entities:
+      - story-0015
+      - char-0019
+      - loc-0013
   - id: event-story-0015-003
     timestamp: T0+3h
-    summary: "Tess removes the completed missed-generation Light-Bequest from commerce by buying out the seller and releasing the stone from Halix."
-    canon_tier: draft
+    summary: Tess releases the purchased carrier from Halix after withdrawing it from commerce.
+    canon_tier: primary_canon
     source: stories/short_story/the_halix_aftermarket/manuscript.md
     involved_entities:
       - story-0015
@@ -87,18 +110,20 @@ themes:
   - inheritance
   - institutional-burden
 continuity_notes:
-  - "This draft depicts Tess assessing another family's stone as closed, analogous to Yenu's particular stone in primary story-0004. Its intended hearing completed this carrier's inheritance function and left no drive-safe or frame-useful memory payload in this story; shared canon needs separate review."
-  - "Term-0021 covers the broader Light-Bequest category. Story-0004 does not establish that other missed-generation stones close the same way, and this draft outcome is not an approved reliquary mechanic."
-  - "The other family's pod also needs coherence-frame work. Its frame is a separate local draft design, not evidence that all Drift Clade pods use Skather-Ait's tuned filaments."
-  - "Buyers value provenance, symbolic weight, and market narrative only; no memory is recovered, restored, burned, or converted into new usable fuel."
-  - "Consortium interest remains consistent with fact-0003's cultural reinforcement agenda, but no new Consortium technology or successful extraction is introduced."
-  - "Halix Exchange details are local speculative setting texture for loc-0013 and do not change shared memory-economy rules."
+  - 'This story establishes Tess''s assessment of another family''s carrier as closed, a separate local case from Yenu''s particular stone in primary story-0004. Its intended hearing completed this carrier''s inheritance function and left no drive-safe or frame-useful memory payload; this outcome does not define other stones.'
+  - 'Term-0021 covers the broader Light-Bequest category. The particular outcomes in stories 0004 and 0015 do not establish a general closure rule for other missed-generation stones or light-bequests.'
+  - 'The other family''s pod also needs coherence-frame work. Its frame is a separate local design, not evidence that all Drift Clade pods use Skather-Ait''s tuned filaments.'
+  - 'Buyers value provenance, symbolic weight, and market narrative only; no memory is recovered, restored, burned, or converted into new usable fuel.'
+  - 'The small scale response is local to this carrier and the attention around Tess''s bench; its partial easing follows the buyers'' departure and closed inquiries, not private payment or a change of title.'
+  - 'The courier has his aunt''s written authority to choose a buyer and agree terms for the carrier and its record. His choice of Tess''s lower offer is particular to this family, not Drift Clade doctrine.'
+  - 'Consortium interest remains consistent with fact-0003''s cultural reinforcement agenda, but no new Consortium technology or successful extraction is introduced.'
+  - 'The trading mesh, financial bond, withdrawal charge, and release facility are local Halix Exchange details established here. They do not change shared memory-economy rules; expanded profile claims require separate review under docs/governance/source_first_approvals.md.'
 metadata:
-  status: draft
-  word_count: 4403
+  status: canonical
+  word_count: 4344
   author: AI Generated (Codex)
   created: '2026-07-07T00:00:00.000Z'
-  modified: '2026-07-07T00:00:00.000Z'
+  modified: '2026-10-29T13:48:19.301Z'
 tags:
   - halix-exchange
   - memory-economy
@@ -117,10 +142,8 @@ The stone arrived in a seller's case, which was the first discourtesy.
 
 Tess Vlin had finished cleaning the brass taste from her tuning ring and was balancing the
 fourth-deck receipts when the courier set the case on her counter. It was black polymer,
-commercial grade, with a latch calibrated for bulk reliquaries. A family would have used
-wood. A hospice would have used unbleached linen. A clade would have used whatever had
-held the stone before it became precious, because Drift Clades distrusted containers that
-improved themselves after grief.
+commercial grade, with a latch calibrated for bulk reliquaries. She had expected the worn
+wood of a family case. The commercial latch made her check the sender twice.
 
 This case wanted to look neutral.
 
@@ -222,15 +245,17 @@ It had left the air around her bench tender for the rest of the watch.
 
 This stone did not sing.
 
-It did not fail, either. A failed stone scraped. A counterfeit stone over-declared itself. A
-stone that had been coerced kept a cut note no polishing could entirely hide. This one gave
-Tess none of those mercies.
+She had heard failed stones scrape, counterfeits over-declare themselves, coerced memories
+catch on a cut note. Silence alone settled none of that.
 
 It was quiet with structure.
 
 Under the ring, the booth held a small pressure, neat as a folded sheet. No voice. No hollow.
 No waiting. The stone had the density of a door after the person you loved had already
 passed through it and closed it behind them.
+
+She checked the hearing date and witness mark again. They agreed with what she could
+find under the ring.
 
 Tess lifted the ring.
 
@@ -526,7 +551,10 @@ for a moment that it was a ship before it remembered that it was a market.
 "What?"
 
 "She said if it had memory, sell high. If it had none, bring it back. But if it had none and
-they still wanted it, ask you what they were buying."
+they still wanted it, ask you what they were buying. She said I could choose after that."
+
+Tess turned the slip over. The aunt had signed for him to choose a buyer and agree terms
+for the carrier and its record.
 
 Tess looked at him for a long moment.
 
@@ -552,16 +580,8 @@ Tess almost answered nothing.
 Then she looked at the cradle scale again. It had not fallen. The stone remained a little
 heavier than matter justified.
 
-This was not a new law. It was an old one doing old work in a smaller room. Collective
-attention made weight. A station survived because enough people remembered it as home.
-A name survived because enough mouths returned to it. A completed gift, dragged under
-market light, gathered gravity from the crowd that wanted to use its completion as evidence.
-
-The stone was not empty after all.
-
-It held no memory. But it had become the center of a memory being made around it.
-
-That was more dangerous.
+Tess knew what remembrance could do to a room. The carrier had not recovered its voice.
+The buyers were giving it another history now.
 
 "I would buy silence," Tess said.
 
@@ -589,7 +609,7 @@ loss before she authorized it.
 She turned the ledger to him.
 
 "This is my purchase offer. No commission. Immediate transfer. Your aunt keeps the case
-and the original witness slip. I keep the stone."
+and the original witness slip. I keep the stone, withdraw it from the market, and release it."
 
 He stared. "You said it has no usable memory."
 
@@ -648,13 +668,14 @@ This time the smile arrived, briefly and without pleasure. "Honest like Halix."
 
 "My aunt said it was the only kind we could afford."
 
+He looked toward the shutter. The Consortium woman's outline still waited beyond it.
+He smoothed the slip over the hearer's name.
+
+"We can brace the frame," he said. "I don't want her name to pay for the rest."
+
 He pressed his thumb to the ledger.
 
 The transfer cleared.
-
-For one breath, nothing happened. Then the cradle scale dropped back to material truth.
-
-Not entirely. But enough.
 
 ## IV. No Lot
 
@@ -691,18 +712,6 @@ reduce coercive supply."
 Tess had to respect the angle. It was a good one. It might even be true, in the large
 bloodless way large systems were sometimes true.
 
-"At what scale?" she asked.
-
-"Meaningful scale."
-
-"There it is again."
-
-"What?"
-
-"Your favorite knife."
-
-The cabinet buyer made the mistake of enjoying that. The Consortium woman did not.
-
 "You cannot keep every completed inheritance out of commerce."
 
 "I only have one."
@@ -713,15 +722,11 @@ The cabinet buyer made the mistake of enjoying that. The Consortium woman did no
 
 "And if they come to you?"
 
-Tess looked down at the stone. "Then I will be poorer."
+Tess looked down at the stone. "Then I will have to decide again."
 
 The woman's face closed. Not anger. Filing.
 
 "The Lattice prefers reliable counterparties."
-
-"The Lattice prefers mirrors."
-
-"Careful."
 
 Tess was careful. That was the worst part. Every word now had mass. The courier's transfer
 receipt sat complete in the ledger. The case lay open. The stone had no voice, but the room
@@ -742,10 +747,9 @@ She sealed the entry.
 
 The counter gave a low refusal tone.
 
-Tess placed her left palm flat on the bench and leaned enough weight into it that the old
-sensors read her personal bond. The refusal tone steadied, reconsidered, and accepted.
-
-Her renewal number dimmed.
+Tess placed her left palm flat on the bench. The sensors recognized it. The counter
+displayed a withdrawal charge against her renewal bond, separate from the purchase.
+She confirmed it. The refusal tone stopped, and the balance dimmed.
 
 There. Cost, small and exact.
 
@@ -766,13 +770,16 @@ obstruction with a pulse.
 
 "There will be a review."
 
-"This is Halix. There is always a review. Sometimes there are three, if lunch is slow."
+"Send it to the bench," Tess said.
 
 The cabinet buyer left first, irritated by the absence of drama. The Consortium woman
 left after him, slower, leaving no card because cards were for hopeful negotiations. The
 other inquiries died from the mesh one by one. Somewhere in the fourth deck, a broker
 who had been waiting to underbid her cursed softly enough that she could pretend not to
 hear.
+
+As the inquiries closed, the cradle scale eased toward its earlier reading. It did not
+return all the way.
 
 The courier remained.
 
@@ -806,8 +813,8 @@ so much trouble around it had any right to be.
 
 "Tell her it was allowed to stop."
 
-The courier nodded once. Drift Clade gratitude was often indistinguishable from good
-posture. He tucked the case under one arm and left without another word.
+The courier nodded once and straightened. He tucked the case under one arm and left
+without another word.
 
 Tess watched him go until the crowd folded him in.
 
@@ -896,8 +903,6 @@ where value can be named.
 Tess touched the tuning ring.
 
 It gave back the good silence.
-
-Not mercy. Not absolution. Merely a clean interval in which nothing was being appraised.
 
 Then she opened the counter, because the next customer was already waiting, and Halix,
 being Halix, had not finished needing her.

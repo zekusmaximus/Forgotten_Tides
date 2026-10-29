@@ -1,6 +1,6 @@
 # Canonical Index
 
-This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-10-29T04:51:37.777Z
+This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-10-29T13:48:19.709Z
 
 ## Character
 - `char-0001` — Rell (`characters/Rell.md`)
@@ -262,6 +262,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `story-0008` - The Reliquarist's Doubt (story, primary_canon, weight 110, `stories/short_story/the_reliquarists_doubt/manuscript.md`)
 - `story-0012` - The Mercy Doctrine (story, primary_canon, weight 110, `stories/short_story/the_mercy_doctrine/manuscript.md`)
 - `story-0013` - The Smallest Burn (story, primary_canon, weight 110, `stories/short_story/the_smallest_burn/manuscript.md`)
+- `story-0015` - The Halix Aftermarket (story, primary_canon, weight 110, `stories/short_story/the_halix_aftermarket/manuscript.md`)
 - `story-0022` - Spend What You Can Afford (story, primary_canon, weight 110, `stories/short_story/spend_what_you_can_afford/manuscript.md`)
 - `term-0001` - Anchor (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
 - `term-0002` - Anchor Burn (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
@@ -329,7 +330,6 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `story-0010` - The Error That Remembered Itself (story, draft, weight 65, `stories/short_story/the_error_that_remembered_itself/manuscript.md`)
 - `story-0011` - The Quiet Census (story, draft, weight 65, `stories/short_story/the_quiet_census/manuscript.md`)
 - `story-0014` - The Public Weight of a Private Lie (story, draft, weight 65, `stories/short_story/the_public_weight_of_a_private_lie/manuscript.md`)
-- `story-0015` - The Halix Aftermarket (story, draft, weight 65, `stories/short_story/the_halix_aftermarket/manuscript.md`)
 - `story-0016` - The Lie That Learned the Hallway (story, draft, weight 65, `stories/short_story/the_lie_that_learned_the_hallway/manuscript.md`)
 - `story-0017` - The Loss Ledger (story, draft, weight 65, `stories/short_story/the_loss_ledger/manuscript.md`)
 - `story-0018` - The Navigator Who Forgot Enough (story, draft, weight 65, `stories/short_story/the_navigator_who_forgot_enough/manuscript.md`)

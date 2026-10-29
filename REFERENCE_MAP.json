@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-29T04:51:37.777Z",
+  "generated": "2026-10-29T13:48:19.709Z",
   "nodes": [
     {
       "canonical_id": "char-0001",
@@ -1194,9 +1194,9 @@
       "type": "story",
       "name": "The Halix Aftermarket",
       "path": "stories/short_story/the_halix_aftermarket/manuscript.md",
-      "canon_tier": "draft",
-      "source_weight": 65,
-      "retrieval_role": "active_draft"
+      "canon_tier": "primary_canon",
+      "source_weight": 110,
+      "retrieval_role": "authoritative"
     },
     {
       "canonical_id": "story-0016",
@@ -6966,6 +6966,30 @@
     },
     {
       "from": "story-0015",
+      "to": "char-0026",
+      "type": "characters",
+      "fields": [
+        "cross_refs"
+      ]
+    },
+    {
+      "from": "story-0015",
+      "to": "char-0031",
+      "type": "characters",
+      "fields": [
+        "cross_refs"
+      ]
+    },
+    {
+      "from": "story-0015",
+      "to": "fact-0002",
+      "type": "factions",
+      "fields": [
+        "cross_refs"
+      ]
+    },
+    {
+      "from": "story-0015",
       "to": "fact-0003",
       "type": "factions",
       "fields": [
@@ -6980,6 +7004,14 @@
       "fields": [
         "cross_refs",
         "references"
+      ]
+    },
+    {
+      "from": "story-0015",
+      "to": "fact-0006",
+      "type": "factions",
+      "fields": [
+        "cross_refs"
       ]
     },
     {

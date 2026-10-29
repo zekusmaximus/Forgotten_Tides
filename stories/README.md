@@ -29,7 +29,7 @@ candidates for promotion (see `docs/PLAYBOOK_NEW_STORY.md`, Step 6b).
 | `story-0012` | The Mercy Doctrine | primary_canon | canonical | [manuscript](./short_story/the_mercy_doctrine/manuscript.md) |
 | `story-0013` | The Smallest Burn | primary_canon | canonical | [manuscript](./short_story/the_smallest_burn/manuscript.md) |
 | `story-0014` | The Public Weight of a Private Lie | draft | draft | [manuscript](./short_story/the_public_weight_of_a_private_lie/manuscript.md) |
-| `story-0015` | The Halix Aftermarket | draft | draft | [manuscript](./short_story/the_halix_aftermarket/manuscript.md) |
+| `story-0015` | The Halix Aftermarket | primary_canon | canonical | [manuscript](./short_story/the_halix_aftermarket/manuscript.md) |
 | `story-0016` | The Lie That Learned the Hallway | draft | draft | [manuscript](./short_story/the_lie_that_learned_the_hallway/manuscript.md) |
 | `story-0017` | The Loss Ledger | draft | draft | [manuscript](./short_story/the_loss_ledger/manuscript.md) |
 | `story-0018` | The Navigator Who Forgot Enough | draft | draft | [manuscript](./short_story/the_navigator_who_forgot_enough/manuscript.md) |

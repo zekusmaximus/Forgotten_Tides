@@ -52,10 +52,10 @@ Bleaching, and field performance remain unverified. His pitch names no
 failing node. What he knows about the Consortium's concealed drift remains
 unspecified.
 
-## Later draft mentions
+## Later mentions
 
 Draft *Receipt for a Voice* (story-0021) recalls his earlier offer without
-depicting new activity by him. Draft *The Halix Aftermarket* (story-0015)
+depicting new activity by him. Primary *The Halix Aftermarket* (story-0015)
 indirectly recalls the same fixer but explicitly gives its later acquisition
 offer to a different Consortium buyer. Neither establishes successful
 conversion, preservation, or a later Aurel outcome.

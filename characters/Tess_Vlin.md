@@ -46,7 +46,7 @@ continuity:
     - Avoid making Tess saintly; her credibility depends on being honest in Halix's hard commercial sense.
     - Do not let her invent new Light-Bequest doctrine or override Drift Clade inheritance practice outside her own bench.
     - Keep her conflicts grounded in price, provenance, and custody rather than heroic rescue.
-    - Later outcomes and personal-memory rendering in draft stories 0015 and 0021 remain provisional and do not establish wider stone behavior.
+    - Story-0015 supplies an approved source for additional profile claims that await separate entry review; story-0021's rendering and later outcomes remain draft. Neither establishes a general closure rule.
 metadata:
   status: canonical
   created: '2026-07-07T00:00:00.000Z'
@@ -71,13 +71,17 @@ approach two private buyers, leaving Yenu in possession of the stone and free
 to answer from the pod. These are demonstrated commercial boundaries, not a
 general guarantee about what other stones can do.
 
-## Unapproved later appearances
+## Continuations and review scope
 
-Draft *The Halix Aftermarket* (story-0015) proposes Tess assessing another
+Primary *The Halix Aftermarket* (story-0015) depicts Tess assessing another
 family's stone as closed, purchasing it, and withdrawing it from commerce at
-financial and professional cost. Draft *Receipt for a Voice* (story-0021)
-builds on that cost and proposes Tess rendering Yenu's personal memory for
-transport. These outcomes and additional capabilities remain unapproved.
+financial and professional cost. These facts now have an approved story
+source; adding them to this profile's authoritative summary and invariants
+still requires a separate claim review.
+
+Draft *Receipt for a Voice* (story-0021) builds on that cost and proposes Tess
+rendering Yenu's personal memory for transport. Its later outcomes and
+additional capabilities remain unapproved.
 
 ## Editorial guidance
 
