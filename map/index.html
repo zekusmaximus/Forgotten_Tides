@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Known Galaxy · Atlas Map</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="viewer.css">
+</head>
+<body>
+  <header class="bar">
+    <div class="title">
+      <span class="title-name">The Known Galaxy</span>
+      <span class="title-sub">a coherence chart</span>
+      <span id="build-badge" class="badge"></span>
+    </div>
+    <div class="lens" role="radiogroup" aria-label="Canon lens">
+      <button type="button" role="radio" aria-checked="false" data-lens="primary">Primary</button>
+      <button type="button" role="radio" aria-checked="false" data-lens="working">+ Working</button>
+      <button type="button" role="radio" aria-checked="false" data-lens="speculative">+ Speculative</button>
+    </div>
+    <div class="search">
+      <input id="search" type="search" placeholder="Search the chart" aria-label="Search the chart"
+        autocomplete="off" aria-controls="results" aria-expanded="false" role="combobox">
+      <ul id="results" role="listbox" hidden></ul>
+    </div>
+    <button type="button" id="list-toggle" class="bar-button" aria-expanded="false" aria-controls="list">List</button>
+  </header>
+
+  <main class="layout">
+    <section id="list" class="list" aria-label="Everything on the chart" hidden></section>
+    <div id="stage" class="stage">
+      <div id="chart" class="chart" aria-label="Zoomable chart of the known galaxy"></div>
+      <div id="layers" class="layers" aria-hidden="false">
+        <svg id="shapes" class="shapes" aria-hidden="true"><g id="world"></g></svg>
+        <div id="labels" class="labels" aria-hidden="true"></div>
+        <div id="pins" class="pins"></div>
+      </div>
+      <div id="notice" class="notice" role="status" hidden></div>
+    </div>
+    <aside id="panel" class="panel" aria-live="polite"></aside>
+  </main>
+
+  <script src="vendor/openseadragon.min.js"></script>
+  <script src="viewer_core.js"></script>
+  <script src="viewer.js"></script>
+</body>
+</html>

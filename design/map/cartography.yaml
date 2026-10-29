@@ -31,10 +31,14 @@ field:
 regions:
   - id: loc-0005 # Mnemosyne Lattice Core
     shape: { type: disc, radius: 0.12 }
+    label: { r: 0.175, theta: 270 }
+    treatment: core
     claims: [T1]
 
   - id: loc-0008 # Helios Drift
     shape: { type: annulus, inner: 0.12, outer: 0.62 }
+    label: { r: 0.395, theta: 90 }
+    treatment: belt
     bands:
       - { name: inner sleeve, from: 0.12, to: 0.28 }
       - { name: mid-sleeve, from: 0.28, to: 0.45 }
@@ -46,6 +50,8 @@ regions:
 
   - id: loc-0003 # Lattice Gap
     shape: { type: rift, r0: 0.62, r1: 0.93, theta0: 35, theta1: 43, half0: 1.2, half1: 9.7, taper: 0.7 }
+    label: { r: 1.0, theta: 22 }
+    treatment: fracture
     bands:
       - { name: near sleeve, from: 0.62, to: 0.72 }
       - { name: outer sleeve, from: 0.84, to: 0.93 }
@@ -60,6 +66,8 @@ regions:
         - { r: 0.81, theta: 165, radius: 0.085 }
         - { r: 0.86, theta: 221, radius: 0.07 }
         - { r: 0.78, theta: 292, radius: 0.04 }
+    label: { r: 0.81, theta: 165 }
+    treatment: ash
     claims: [T19]
     rules: [R2]
 
@@ -74,11 +82,15 @@ regions:
         - { r: 0.885, theta: 128, radius: 0.05 }
         - { r: 0.90, theta: 272, radius: 0.055 }
         - { r: 0.80, theta: 345, radius: 0.032 }
+    label: { r: 0.95, theta: 300 }   # outside every Void: nothing is charted inside
+    treatment: void
     claims: [T21, T18]
     rules: [R2]
 
   - id: loc-0007 # Black Horizon
     shape: { type: annulus, inner: 1.0, outer: 1.2 }
+    label: { r: 1.1, theta: 90 }
+    treatment: perimeter
     claims: [T22]
     sources:
       - atlas/Black_Horizon.md

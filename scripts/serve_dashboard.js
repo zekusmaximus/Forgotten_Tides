@@ -35,9 +35,26 @@ function safeAsset(root, filePath) {
   return current;
 }
 
+// A directory route serves files under a URL prefix from one directory, and
+// only with listed extensions. Every path segment must be a plain name: no
+// empty, dot, or dot-dot segments, no backslashes, and no percent-encoding.
+function resolvePrefixRoute(prefixes, requestedPath) {
+  for (const entry of prefixes) {
+    if (!requestedPath.startsWith(entry.prefix)) continue;
+    const rel = requestedPath.slice(entry.prefix.length);
+    const segments = rel.split('/');
+    if (!rel || /[\\%]/.test(rel) || segments.some(segment => !segment || segment === '.' || segment === '..')) return null;
+    const type = entry.types[path.extname(rel).toLowerCase()];
+    if (!type) return null;
+    return { file: path.join(entry.dir, ...segments), type, root: entry.dir, cache: entry.cache };
+  }
+  return null;
+}
+
 function createDashboardServer(options = {}) {
   const root = options.root || ROOT;
   const routes = options.routes || ROUTES;
+  const prefixes = options.prefixes || [];
   return http.createServer((request, response) => {
     if (request.method !== 'GET' && request.method !== 'HEAD') {
       response.writeHead(405, { Allow: 'GET, HEAD', 'Content-Type': 'text/plain; charset=utf-8' });
@@ -48,7 +65,7 @@ function createDashboardServer(options = {}) {
     // Compare the raw path. URL parsing would normalize dot segments before
     // checking the allowlist, making traversal-shaped requests look valid.
     const requestedPath = (request.url || '').split('?', 1)[0];
-    const route = routes.get(requestedPath);
+    const route = routes.get(requestedPath) || resolvePrefixRoute(prefixes, requestedPath);
     if (!route) {
       response.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
       response.end('Not found');
@@ -57,7 +74,7 @@ function createDashboardServer(options = {}) {
 
     let asset;
     try {
-      asset = safeAsset(root, route.file);
+      asset = safeAsset(route.root || root, route.file);
     } catch (error) {
       if (error.code !== 'ENOENT') console.error(`Dashboard asset error: ${error.message}`);
     }
@@ -79,7 +96,7 @@ function createDashboardServer(options = {}) {
       response.writeHead(200, {
         'Content-Type': route.type,
         'Content-Length': stat.size,
-        'Cache-Control': 'no-store',
+        'Cache-Control': route.cache || 'no-store',
         'X-Content-Type-Options': 'nosniff'
       });
       if (request.method === 'HEAD') {

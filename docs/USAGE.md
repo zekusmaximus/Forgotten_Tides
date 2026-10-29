@@ -173,6 +173,21 @@ these:
 leaves speculative entities and draft material out of the file itself.
 `npm run test:map` exercises every lint rule against a fixture.
 
+### Viewing the map
+
+```bash
+npm run map:data                          # data for the viewer
+npm run map:tiles                         # 16k base image, about a minute on 4 cores
+npm run map                               # http://127.0.0.1:8081/map/ (author build)
+npm run map -- --build public             # serve the public build instead
+npm run test:map-browser                  # headless browser tests; screenshots in out/map/screenshots/
+```
+
+`map:tiles` takes `--size` (default 16384), `--workers`, and `--quality`. The
+tiles, data, and screenshots live under `out/map/`, which is gitignored.
+Without tiles the viewer still draws its overlays on a plain background. See
+[map/README.md](../map/README.md) for the controls and the data contract.
+
 ## Story Compilation (Local)
 
 Compile primary-canon story manuscripts into a single Markdown source and an ePub. The

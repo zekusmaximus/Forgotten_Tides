@@ -19,6 +19,9 @@ const DEFAULT_ROOT = path.join(__dirname, '../..');
 const CARTOGRAPHY_PATH = 'design/map/cartography.yaml';
 const BRIEF_PATH = 'design/map/CARTOGRAPHIC_BRIEF.md';
 const CANON_TIERS = new Set(['primary_canon', 'working_canon']);
+// The rendered image spans the chart square [-IMAGE_EXTENT, IMAGE_EXTENT] on
+// both axes: the Black Horizon's outer band (to r 1.2) plus a margin.
+const IMAGE_EXTENT = 1.25;
 
 function normalizeName(name) {
   return String(name).trim().toLowerCase().replace(/\s+/g, ' ');
@@ -133,6 +136,7 @@ module.exports = {
   CARTOGRAPHY_PATH,
   BRIEF_PATH,
   CANON_TIERS,
+  IMAGE_EXTENT,
   normalizeName,
   loadAtlas,
   loadRegister,

@@ -762,6 +762,18 @@ contradictions that the continuity checks and the map would otherwise flag.
 - **Done when** every canonical location can be found, selected, and
   deep-linked; speculative entities appear only under the lens; and
   Playwright snapshot tests cover the three lens states.
+- **Status (2026-10-29):** Done.
+  - `npm run map:tiles` renders the 16k base in about 70 s on 4 cores:
+    5,469 tiles, 22 MB.
+  - `npm run map` serves the viewer, with:
+    - the overlays and the detail panel;
+    - the lens, search, deep links and the list view;
+    - the public build and a no-tiles fallback.
+  - `npm run test:map-browser`, a CI job, checks the lens states and the
+    other behaviors in headless Chromium and saves screenshots. The viewer
+    logic, the server boundary and the renderer have Node tests in
+    `validate:ci`.
+  - The procedural style frame is ready for the D9 review.
 
 ### Phase 3 — High-definition pipeline (two to three sessions)
 
