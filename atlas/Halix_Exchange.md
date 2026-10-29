@@ -87,15 +87,19 @@ reported breach condition, not a count of destroyed decks or a measured
 memory-density change. It does not establish the breach's date relative to
 Yenu's visit in story-0004.
 
+## Source-approved setting pending profile review
+
+Primary *The Halix Aftermarket* (story-0015) depicts apology stalls, a trading
+mesh with lot classifications, seal and bond procedures, private collecting,
+and a release facility. Its private-cabinet buyer does not establish cabinets
+as facilities aboard Halix. These local facts now have an approved story
+source; expanding this profile's authoritative baseline still requires a
+separate claim review.
+
 ## Unapproved setting proposals
 
 Draft *The Tuner of Last Lights* (story-0003) makes offstage hospice-stock
 and Synod-stock assertions about Halix. Those claims remain unapproved.
-
-Draft *The Halix Aftermarket* (story-0015) proposes apology stalls, a trading
-mesh with lot classifications, seal and bond procedures, private collecting,
-and a release facility. Its private-cabinet buyer does not establish cabinets
-as facilities aboard Halix. These systems and outcomes remain provisional.
 
 Draft *Receipt for a Voice* (story-0021) proposes a later tender and
 personal-memory rendering episode. Draft *The Miniaturist's Name*

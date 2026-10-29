@@ -5,11 +5,11 @@ contract_version: v1.0.0
 type: story
 title: The Halix Aftermarket
 story_type: short-story
-status: draft
-canon_tier: draft
-retrieval_role: active_draft
-summary_50: "Tess Vlin receives a closed missed-generation Light-Bequest and must decide whether a memory object with no usable memory can still be sacred."
-summary_200: "On the Halix Exchange bazaar-ship, broker-tuner Tess Vlin receives a closed missed-generation Light-Bequest: a memory stone whose intended hearer has already listened, leaving no usable memory and no inheritance hollow. The stone should be nearly worthless, but Consortium and private buyers want its provenance, proof that completion itself can be packaged. Tess must choose between the market's honest price and the quieter duty of refusing to sell what has finished its work."
+status: canonical
+canon_tier: primary_canon
+retrieval_role: authoritative
+summary_50: Tess Vlin receives a closed missed-generation Light-Bequest and must decide whether a memory object with no usable memory can still be sacred.
+summary_200: 'On the Halix Exchange bazaar-ship, broker-tuner Tess Vlin receives a closed missed-generation Light-Bequest: a memory stone whose intended hearer has already listened, leaving no usable memory and no inheritance hollow. The stone should be nearly worthless, but Consortium and private buyers want its provenance, proof that completion itself can be packaged. Tess must choose between the market''s honest price and the quieter duty of refusing to sell what has finished its work.'
 cross_refs:
   characters:
     - char-0019
@@ -42,7 +42,7 @@ references:
     - story-0004
 timeline:
   setting: The fourth-deck inheritance quarter and outer skin of the Halix Exchange bazaar-ship in the Helios Drift outer sleeve
-  duration: One watch-cycle, from receipt of the closed missed-generation Light-Bequest to its removal from market circulation
+  duration: 'One watch-cycle, from receipt of the closed missed-generation Light-Bequest to its removal from market circulation'
   chronology:
     - event: Tess Vlin receives a closed missed-generation Light-Bequest for valuation at her Halix Exchange bench.
       timestamp: T0
@@ -57,8 +57,8 @@ timeline:
 events:
   - id: event-story-0015-001
     timestamp: T0
-    summary: "Tess Vlin receives a closed missed-generation Light-Bequest for valuation at her Halix Exchange bench."
-    canon_tier: draft
+    summary: Tess Vlin receives a closed missed-generation Light-Bequest for valuation at her Halix Exchange bench.
+    canon_tier: primary_canon
     source: stories/short_story/the_halix_aftermarket/manuscript.md
     involved_entities:
       - story-0015
@@ -67,8 +67,8 @@ events:
       - mech-0001
   - id: event-story-0015-004
     timestamp: T0+20m
-    summary: "Tess's assay and the witness record support her assessment that this carrier's inheritance function is complete."
-    canon_tier: draft
+    summary: Tess's assay and the witness record support her assessment that this carrier's inheritance function is complete.
+    canon_tier: primary_canon
     source: stories/short_story/the_halix_aftermarket/manuscript.md
     involved_entities:
       - story-0015
@@ -77,8 +77,8 @@ events:
       - mech-0001
   - id: event-story-0015-002
     timestamp: T0+1h
-    summary: "Halix buyers bid on the stone's provenance and symbolic weight despite its lack of remaining usable memory."
-    canon_tier: draft
+    summary: Halix buyers bid on the stone's provenance and symbolic weight despite its lack of remaining usable memory.
+    canon_tier: primary_canon
     source: stories/short_story/the_halix_aftermarket/manuscript.md
     involved_entities:
       - story-0015
@@ -87,8 +87,8 @@ events:
       - fact-0004
   - id: event-story-0015-005
     timestamp: T0+2h
-    summary: "Tess buys the carrier under the courier's agreed terms."
-    canon_tier: draft
+    summary: Tess buys the carrier under the courier's agreed terms.
+    canon_tier: primary_canon
     source: stories/short_story/the_halix_aftermarket/manuscript.md
     involved_entities:
       - story-0015
@@ -96,8 +96,8 @@ events:
       - loc-0013
   - id: event-story-0015-003
     timestamp: T0+3h
-    summary: "Tess releases the purchased carrier from Halix after withdrawing it from commerce."
-    canon_tier: draft
+    summary: Tess releases the purchased carrier from Halix after withdrawing it from commerce.
+    canon_tier: primary_canon
     source: stories/short_story/the_halix_aftermarket/manuscript.md
     involved_entities:
       - story-0015
@@ -110,20 +110,20 @@ themes:
   - inheritance
   - institutional-burden
 continuity_notes:
-  - "This draft depicts Tess assessing another family's stone as closed, analogous to Yenu's particular stone in primary story-0004. Its intended hearing completed this carrier's inheritance function and left no drive-safe or frame-useful memory payload in this story; shared canon needs separate review."
-  - "Term-0021 covers the broader Light-Bequest category. Story-0004 does not establish that other missed-generation stones close the same way, and this draft outcome is not an approved reliquary mechanic."
-  - "The other family's pod also needs coherence-frame work. Its frame is a separate local draft design, not evidence that all Drift Clade pods use Skather-Ait's tuned filaments."
-  - "Buyers value provenance, symbolic weight, and market narrative only; no memory is recovered, restored, burned, or converted into new usable fuel."
-  - "The small scale response is local to this carrier and the attention around Tess's bench; its partial easing follows the buyers' departure and closed inquiries, not private payment or a change of title."
-  - "The courier has his aunt's written authority to choose a buyer and agree terms for the carrier and its record. His choice of Tess's lower offer is particular to this family, not Drift Clade doctrine."
-  - "Consortium interest remains consistent with fact-0003's cultural reinforcement agenda, but no new Consortium technology or successful extraction is introduced."
-  - "Halix Exchange details are local speculative setting texture for loc-0013 and do not change shared memory-economy rules."
+  - 'This story establishes Tess''s assessment of another family''s carrier as closed, a separate local case from Yenu''s particular stone in primary story-0004. Its intended hearing completed this carrier''s inheritance function and left no drive-safe or frame-useful memory payload; this outcome does not define other stones.'
+  - 'Term-0021 covers the broader Light-Bequest category. The particular outcomes in stories 0004 and 0015 do not establish a general closure rule for other missed-generation stones or light-bequests.'
+  - 'The other family''s pod also needs coherence-frame work. Its frame is a separate local design, not evidence that all Drift Clade pods use Skather-Ait''s tuned filaments.'
+  - 'Buyers value provenance, symbolic weight, and market narrative only; no memory is recovered, restored, burned, or converted into new usable fuel.'
+  - 'The small scale response is local to this carrier and the attention around Tess''s bench; its partial easing follows the buyers'' departure and closed inquiries, not private payment or a change of title.'
+  - 'The courier has his aunt''s written authority to choose a buyer and agree terms for the carrier and its record. His choice of Tess''s lower offer is particular to this family, not Drift Clade doctrine.'
+  - 'Consortium interest remains consistent with fact-0003''s cultural reinforcement agenda, but no new Consortium technology or successful extraction is introduced.'
+  - 'The trading mesh, financial bond, withdrawal charge, and release facility are local Halix Exchange details established here. They do not change shared memory-economy rules; expanded profile claims require separate review under docs/governance/source_first_approvals.md.'
 metadata:
-  status: draft
+  status: canonical
   word_count: 4344
   author: AI Generated (Codex)
   created: '2026-07-07T00:00:00.000Z'
-  modified: '2026-10-29T00:00:00.000Z'
+  modified: '2026-10-29T13:48:19.301Z'
 tags:
   - halix-exchange
   - memory-economy

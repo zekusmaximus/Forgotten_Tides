@@ -1,11 +1,12 @@
 # Canon Promotion Review: The Halix Aftermarket
 
-**Current checkpoint:** The author approved the recommended revision scope
-and the revision has been applied. The fresh assessment is **61 / 70,
-Promote band**, ready for the author's review of the revised story. Its
-status and events remain draft; no promotion is authorized by scope approval
-alone. Sections 1-9 preserve the original review at `a176921`; section 10
-records implementation and current-line evidence.
+**Current checkpoint:** On October 29, 2026, the author approved promotion
+of the revised story at `33595f7`. Story-0015 and its five matching local
+events now carry `primary_canon`; the story is `canonical` and
+`authoritative`. The approved body is unchanged. Sections 1-9 preserve the
+original review at `a176921`; section 10 records the revision/readiness
+checkpoint, and section 11 records the subsequent promotion. Expanded
+Tess/Halix profile claims still require separate review.
 
 ## 1. Scope and baseline
 
@@ -328,8 +329,9 @@ story for review.
 At the original review checkpoint, no manuscript, entity, lexicon, timeline,
 mechanics, or lore file was modified; only this tracked report was added.
 The approved story-0004 developmental edit was not repeated or reopened.
-The subsequent author-approved revision is recorded below. No status, tier,
-or event has been promoted.
+The subsequent author-approved revision is recorded below. Neither this
+initial review nor approval of its revision scope granted promotion; the
+later explicit author decision is recorded in section 11.
 
 ## 10. Author-approved revision and fresh readiness check
 
@@ -410,3 +412,79 @@ draft. No entry is added to `data/timeline/events.yaml`. Story-0004, its ten
 local event IDs, the lexicon, governing mechanics/lore, and all entity profile
 statuses remain unchanged. The revised manuscript, this checkpoint, and the
 changed generated maps are prepared for PR review.
+
+## 11. Author approval and promotion — October 29, 2026
+
+After reviewing the revised story and its 61/70 readiness finding, the author
+directed: **“Let's promote it!”** This authorizes promotion of the revised
+manuscript at `33595f7`, not another developmental edit or automatic expansion
+of its linked profiles.
+
+### Promotion applied
+
+The promotion dry run passed link-map preflight and identified no unapproved
+story or shared-event prerequisite. The only causal story source is primary
+story-0004. `npm run promote:story -- --id story-0015` then set:
+
+- `canon_tier: primary_canon`;
+- `status: canonical` and `metadata.status: canonical`;
+- `retrieval_role: authoritative`;
+- `canon_tier: primary_canon` on all five matching local events;
+- the manuscript's modification timestamp.
+
+The promotion leaves the approved manuscript body byte-identical to
+`33595f7`. SHA-256 of that body remains
+`c2816455e6e9b5abd660e775698b145ea6f089c9057713deb04bc62541a868c3`.
+The body still contains 4344 words. The tool's frontmatter serialization and
+the manual continuity-note corrections change no narrative prose.
+
+The second carrier's assessment, Tess's purchase and withdrawal, the
+courier's authorized choice, the local attention effect, and Halix's
+on-page procedures are established by this story. They establish neither a
+universal closure rule nor universal Clade pod practices, and private title
+transfer does not become a gravitational switch. No donor memory is
+restored or converted into new usable fuel.
+
+### Manual checklist and source-first boundaries
+
+- Current labels in Tess, Aurel, Halix, the story list, and the opportunities
+  document now identify story-0015 as primary. Historical review findings
+  retain their original dated draft context.
+- Tess's and Halix's approved baseline summaries, invariants, causal
+  references, and statuses are unchanged. Their additional story-0015
+  profile claims now have an approved source but remain separated pending
+  their own claim review. Aurel's mention still concerns a different buyer,
+  not a new activity by him.
+- Light-Bequest remains the approved broad category. Its closing warning
+  now says the same behavior is not established **as a general rule** for
+  other stones, avoiding a categorical denial of another local case. This
+  preserves the previously approved limit; it adds no new example, mechanic,
+  alias, source-field change, or status change to the term.
+- Draft story-0021's frontmatter now recognizes primary story-0015 as the
+  source of Tess's financial purchase/withdrawal cost. Story-0017 remains a
+  draft prerequisite. Story-0021's body, status, four event tiers, later
+  rendering and repair, and recorded childhood Halix-visit conflict are
+  unchanged. Its body SHA-256 remains
+  `f336984b4829b66fcc4bbaf671cc6f3155154ce0574ba1f8272dc79bf8bf4c0f`.
+- Manual lexicon-source, related-term, prose, and event-ID searches found no
+  hidden prerequisite requiring another promotion. The impact report still
+  finds draft story-0021 as the sole direct dependent, with no transitive
+  dependents; Tess, Aurel, and Halix are appearance candidates.
+- No other story references an individual story-0015 event ID. All five
+  events remain local; `data/timeline/events.yaml` is unchanged. The ten
+  story-0004 event IDs also remain local and untouched.
+
+### Verification and PR
+
+`npm run validate:ci` passes after promotion and the manual source updates.
+The regenerated maps report 172 entities, 792 edges, and zero orphaned
+targets, with story-0015 resolving to `primary_canon` and `authoritative`.
+`git diff --check` passes. Continuity and timeline checks report zero hard
+failures and zero soft warnings. The existing advisories remain 21 schema
+warnings, 975 glossary candidates, and two nonblocking red-line citation
+warnings in draft stories 0005 and 0007.
+
+An independent promotion audit confirmed body preservation, matching event
+coverage, accurate source labels, and the source-first profile boundaries.
+No blocker was found. The promotion is added to the still-open PR #46, whose
+title and description are updated to reflect the final approved scope.
