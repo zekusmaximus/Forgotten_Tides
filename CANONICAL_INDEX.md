@@ -1,6 +1,6 @@
 # Canonical Index
 
-This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-10-29T18:34:37.644Z
+This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-10-29T23:49:25.373Z
 
 ## Character
 - `char-0001` — Rell (`characters/Rell.md`)
@@ -204,6 +204,8 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `char-0016` - Nara Oss (character, primary_canon, weight 110, `characters/Nara_Oss.md`)
 - `char-0017` - Elior Ren (character, primary_canon, weight 110, `characters/Elior_Ren.md`)
 - `char-0019` - Tess Vlin (character, primary_canon, weight 110, `characters/Tess_Vlin.md`)
+- `char-0021` - Corin Tave (character, primary_canon, weight 110, `characters/Corin_Tave.md`)
+- `char-0022` - Lysa Korr (character, primary_canon, weight 110, `characters/Lysa_Korr.md`)
 - `char-0026` - Yenu Skather-Ait (character, primary_canon, weight 110, `characters/Yenu_Skather-Ait.md`)
 - `char-0027` - Hol-Vren (character, primary_canon, weight 110, `characters/Hol-Vren.md`)
 - `char-0028` - Ilka Marsk (character, primary_canon, weight 110, `characters/Ilka_Marsk.md`)
@@ -253,6 +255,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `loc-0011` - Tessarine Vault (location, primary_canon, weight 110, `atlas/Tessarine_Vault.md`)
 - `loc-0013` - Halix Exchange (location, primary_canon, weight 110, `atlas/Halix_Exchange.md`)
 - `loc-0015` - Skather-Ait pod (location, primary_canon, weight 110, `atlas/Skather-Ait_Pod.md`)
+- `loc-0016` - H-37 Route Chart (location, primary_canon, weight 110, `atlas/H_37_Route_Chart.md`)
 - `lore-0001` - COSMIC REGIONS (lore, working_canon, weight 95, `lore/COSMIC_REGIONS.md`)
 - `lore-0002` - MEMORY ECONOMY (lore, working_canon, weight 95, `lore/MEMORY_ECONOMY.md`)
 - `lore-0003` - POLITIES AND FACTIONS (lore, working_canon, weight 95, `lore/POLITIES_AND_FACTIONS.md`)
@@ -357,8 +360,6 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `char-0015` - Oren Vale (character, speculative, weight 60, `characters/Oren_Vale.md`)
 - `char-0018` - Mael Ivar (character, speculative, weight 60, `characters/Mael_Ivar.md`)
 - `char-0020` - Nessa Iral (character, speculative, weight 60, `characters/Nessa_Iral.md`)
-- `char-0021` - Corin Tave (character, speculative, weight 60, `characters/Corin_Tave.md`)
-- `char-0022` - Lysa Korr (character, speculative, weight 60, `characters/Lysa_Korr.md`)
 - `char-0023` - Nim Orra (character, speculative, weight 60, `characters/Nim_Orra.md`)
 - `char-0024` - Yaret Ivo-Senn (character, speculative, weight 60, `characters/Yaret_Ivo-Senn.md`)
 - `char-0025` - Toma Vey (character, speculative, weight 60, `characters/Toma_Vey.md`)
@@ -367,7 +368,6 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `loc-0010` - Solace Hospice (location, speculative, weight 60, `atlas/Solace_Hospice.md`)
 - `loc-0012` - Narthex of Low Mercy (location, speculative, weight 60, `atlas/Narthex_of_Low_Mercy.md`)
 - `loc-0014` - Heavonly (location, speculative, weight 60, `atlas/Heavonly.md`)
-- `loc-0016` - H-37 Route Chart (location, speculative, weight 60, `atlas/H_37_Route_Chart.md`)
 
 ### Test / Dev / Sample Material
 - `novella_test` - Test (story, test, weight 10, `stories/novella/NOVELLA_TEST/manuscript.md`)

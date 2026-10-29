@@ -2,10 +2,12 @@
 
 **Current checkpoint:** On October 29, 2026, the author approved promotion of
 the revised story merged in PR #50 at `05d7560`, following its **62/70**
-readiness finding. Story-0017 and its five local events now carry
-`primary_canon` on the promotion branch; the story is `canonical` and
-`authoritative`. The approved prose is unchanged. Corin, Lysa, and H-37 remain
-speculative pending separate claim approval. Sections 1-9 preserve the
+readiness finding. Story-0017 and its five local events carry
+`primary_canon` after PR #51 merged as `6c689de`; the story is `canonical`
+and `authoritative`. The approved prose is unchanged. Corin, Lysa, and H-37
+have since received separate, defined claim approval and canonical status;
+see [the profile claim review](STORY_0017_PROFILE_CLAIM_REVIEW_2026_10_29.md).
+Sections 1-9 preserve the
 original review, section 10 records the revision/readiness checkpoint, and
 section 11 records this promotion.
 

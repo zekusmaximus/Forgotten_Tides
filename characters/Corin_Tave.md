@@ -9,7 +9,7 @@ tags:
   - loss-ledger
   - institutional-memory
 summary_50: Canticle Fleet records clerk who enters Lysa Korr's hidden anchor burn into the Loss Ledger.
-summary_200: "Corin Tave is a Canticle Fleet records clerk and loss-ledger keeper in the Helios Drift. In story-0017, surviving calibration records reveal deceased pilot Lysa Korr's undocumented anchor burn beneath H-37's clean summary. Corin records the loss and signs a correction that invalidates the chart pending recertification, accepting operational disruption and personnel review so the Fleet must carry the true cost of the route."
+summary_200: "Corin Tave is a Canticle Fleet records clerk working in a Helios Drift records annex in story-0017. Surviving H-37 calibration records reveal deceased pilot Lysa Korr's undocumented anchor burn. With an Archivist witness, Corin signs the correction withdrawing the chart's clean certification. Passenger holds, cargo changes, and conditional medical waivers follow. Corin receives a pending-review notice on his personnel slate at the close; no later review outcome is established. The correction neither restores Lysa's burned experience nor repairs a physical corridor."
 cross_refs:
   characters:
     - char-0022
@@ -29,7 +29,6 @@ references:
   characters:
     - char-0022
   locations:
-    - loc-0008
     - loc-0016
   factions:
     - fact-0001
@@ -39,7 +38,6 @@ references:
     - mech-0002
     - mech-0003
   stories:
-    - story-0001
     - story-0017
 continuity:
   invariants:
@@ -47,32 +45,30 @@ continuity:
     - Discovers surviving calibration records of Lysa Korr's undocumented anchor burn beneath route chart H-37's clean summary
     - Records the loss and signs the correction that invalidates H-37's clean certification pending recertification
     - Does not alter corridor physics, restore Lysa's anchor, or make recordkeeping function as a free stabilization mechanism
-    - Treats accurate institutional memory as a burden the Fleet must carry, not as absolution
+    - In story-0017, enters the hidden expenditure while acknowledging that rerouting imposes additional costs on living crews
   watchlist:
-    - Future appearances should account for Corin being under personnel review after the H-37 correction
-    - Do not make Corin's ledger entry retroactively save ships or repair the corridor; it changes policy, routing, and institutional memory
+    - Story-0017 ends with a pending-review notice on Corin's personnel slate; any later hearing, reassignment, or outcome requires separately approved evidence
+    - Do not treat Corin's entry as retroactively saving ships or repairing a corridor; its shown effects are correction of the loss record, suspension, and traffic triage
     - Keep Corin's courage procedural and restrained rather than heroic in public style
-    - If H-37 appears again, its status should reflect suspension or later recertification under corrected anchor-tax assumptions
+    - H-37's clean certification is suspended at story-0017's close; any later recertification requires separately approved evidence
 metadata:
-  status: speculative
+  status: canonical
   created: '2026-07-07T00:00:00.000Z'
-  modified: '2026-10-29T00:00:00.000Z'
+  modified: '2026-10-29T23:48:56.000Z'
 ---
 
 # Corin Tave
 
 Corin Tave is a Canticle Fleet records clerk assigned to loss-ledger and route
-certification work in the Helios Drift. Corin's role is clerical rather than
-command-facing, but in a civilization where institutional memory carries physical
-and political weight, the accuracy of a record can determine who is asked to bear a
-cost.
+certification work in the Helios Drift. Corin's work here is recordkeeping and
+certification. He challenges traffic leadership over H-37; the witnessed correction
+changes what the Fleet must disclose and route around.
 
 ## Operational Profile
 
-Corin specializes in reconciling route charts, pilot loss records, and Archivist
-witness relays. They are suspicious of clean certifications and attentive to small
-inconsistencies in anchor-tax histories. Their strength is not dramatic courage but
-procedural refusal: they keep reading after a form has tried to become convenient.
+In story-0017, Corin reconciles route-chart telemetry and pilot loss records during
+an Archivist witness review. They are suspicious of clean certifications and
+attentive to small inconsistencies in anchor-tax histories.
 
 ## Story-0017 Status
 
@@ -83,7 +79,13 @@ thousands. Corin signs the correction anyway, placing Lysa's loss into instituti
 memory without claiming that the entry can repair the route or restore the burned
 anchor.
 
-## Narrative Function
+## Editorial Interpretation and Guidance
+
+The following interprets Corin's role in story-0017; it adds no further biography
+or general rule of memory physics.
+
+Their strength is not dramatic courage but procedural refusal: they keep reading
+after a form has tried to become convenient.
 
 Corin embodies the burden of accurate recordkeeping under memory physics. Their
 choice shows that institutions can steal sacrifice by making it operationally useful

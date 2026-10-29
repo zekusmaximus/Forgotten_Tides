@@ -1,5 +1,12 @@
 # Story-0017 Linked-Profile Claim Review
 
+**Current decision:** On October 29, 2026, the author approved all three
+defined scopes below. The approved corrections and reference cleanup are
+applied; Corin Tave, Lysa Korr, and H-37 now have
+`metadata.status: canonical`. Section 7 records implementation and
+verification. Sections 1-6 preserve the pre-approval claim review at
+`65c77d9`; their proposed dispositions are now settled within these scopes.
+
 ## 1. Scope, authority, and baseline
 
 **Recommendation:** Approve a narrowed story-0017 scope for Corin Tave and
@@ -357,7 +364,78 @@ and run the relevant gates before preparing a PR. The earlier authorization
 to merge after gates pass does not substitute for the author decisions
 required for these still-unapproved claim scopes.
 
-Only this new tracked report is added during this review. Existing reports,
+At the original review checkpoint, only this new tracked report was added. Existing reports,
 all three profiles and their statuses, manuscripts, lexicon, timeline,
 mechanics/lore, map placement, and generated maps remain unchanged. The
 report will be committed and pushed so the review survives the session.
+
+## 7. Author approval, implementation, and verification
+
+### Approval and scope applied
+
+The author replied **“Approve”** to the completed review's recommendation
+for all three defined scopes. This separately approves each profile's
+reviewed claims under the source-first policy; it is not an inference from
+the earlier story approval or from permission to merge after gates pass.
+
+Current main was fetched and remains `65c77d9`, including approved primary
+story-0017 and the newer atlas tooling. `npm ci` and the full baseline
+`npm run validate:ci` pass before profile edits. The report-only review
+commit `00abb91` is preserved on this branch.
+
+| Entry | Applied status | Applied scope |
+| --- | --- | --- |
+| Corin Tave, char-0021 | canonical | The exact revised long summary and scoped invariant/watchlist, observed audit work and role, unresolved pending-review notice, and separation of interpretation from biography. The procedural-refusal sentence is moved into editorial guidance unchanged. |
+| Lysa Korr, char-0022 | canonical | Existing summaries/invariants/watchlist retained; reputation attributed to the Archivist; prior voice-knot loss distinguished from surviving vocation; one deleted transcript line distinguished from surviving expenditure evidence; the correction changes neither death nor burned experience. Editorial interpretation is labeled. |
+| H-37 Route Chart, loc-0016 | canonical | Existing summaries, body, artifact classification, and references approved as written. Only status and modification timestamp change. No spatial placement or later recertification is added. |
+
+Section 5's exact reference cleanup is applied: Corin and Lysa now have
+story-0017 as their sole direct story source; both keep Helios Drift as an
+appearance/context link, and Lysa keeps Archivist Orders as an
+appearance/context link. Other approved links remain. Modification
+timestamps on all three entries record this approval; creation dates,
+IDs, and names are unchanged.
+
+The three profiles resolve to `primary_canon` and `authoritative` through
+the existing metadata-status policy. The rebuilt graph contains **175
+entities, 806 relationships, and zero orphaned targets**. The two removed
+relationships are the redundant direct character-to-story-0001 source
+edges. The regional/Orders edges remain as appearances, rather than causal
+references; no appearance was deleted.
+
+### Preserved limits
+
+- Corin has a pending-review notice at story close; no completed hearing,
+  reassignment, punishment, or rank history is established.
+- Lysa's unknown spent contents, consent to alteration, editor's identity,
+  unreliable final count, and death on a later, different corridor remain
+  unresolved within the approved source. No new numeric invariant is added.
+- H-37 remains a chart artifact. Suspension does not equal physical repair;
+  recertification remains pending, with no fixed minimum duration or
+  guaranteed future reopening. Existing artifact-placement exemption means
+  `design/map/cartography.yaml` needs no change.
+- No manuscript, event tier, shared timeline entry, lexicon, governing
+  mechanics/lore, or map placement is edited. All five story-0017 event IDs
+  remain local. Its approved body is unchanged.
+- Story-0021 remains draft, with its rendering, transport, repair, and
+  childhood Halix-visit conflict still unapproved/unresolved. Tess/Halix's
+  additional story-0015 profile claims remain outside this approval.
+
+### Validation and PR
+
+Profile summaries remain within schema limits: Corin **92/571**, Lysa
+**105/463**, H-37 **140/500** characters. The H-37 body, Lysa's summaries,
+and all unchanged frontmatter fields match the approved baseline.
+`npm run lint`, `npm run check`, and the complete `npm run validate:ci`
+suite pass, including the newer map-data tests. Continuity and timeline
+report zero hard failures and zero soft warnings. Existing nonblocking
+advisories remain 21 schema warnings, 976 glossary candidates, and the two
+draft red-line warnings in stories 0005 and 0007. `git diff --check` passes.
+
+An independent final audit found no scope blocker: exact approved wording
+and reference changes match this report, H-37's body is unchanged, all three
+generated nodes are primary/authoritative at weight 110, and manuscripts,
+data, and map placement are unchanged. The approved changes, original claim
+review, decision record, and generated maps are prepared together for a PR.
+The author has authorized merge once all local and remote gates pass;
+remote results and the merge record are available on that PR.

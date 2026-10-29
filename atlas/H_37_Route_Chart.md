@@ -42,9 +42,9 @@ references:
   stories:
     - story-0017
 metadata:
-  status: speculative
+  status: canonical
   created: '2026-10-29T00:00:00.000Z'
-  modified: '2026-10-29T00:00:00.000Z'
+  modified: '2026-10-29T23:48:56.000Z'
 ---
 
 # H-37 Route Chart
