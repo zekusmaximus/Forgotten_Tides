@@ -112,7 +112,7 @@ themes:
   - quiet-heroism
   - ethical-forgetting
 continuity_notes:
-  - "This draft follows primary stories 0004, 0013, and 0015 and draft story-0017; outcomes introduced by this draft and story-0017 remain provisional."
+  - "This draft follows primary stories 0004, 0013, 0015, and 0017; outcomes introduced by this draft remain provisional."
   - Yenu's grandmother's particular missed-generation Light-Bequest remains closed and cannot power a drive; Tess's depleted renewal bond follows her purchase and withdrawal of another family's carrier assessed as closed in primary story-0015. This draft's later rendering and repair remain unapproved.
   - Lysa Korr remains deceased, her undisclosed anchor burn remains permanent, and H-37's prior clean certification remains suspended after Corin's correction.
   - Elior begins and ends the flight with eleven responsive anchors; his classroom smell is not restored, and the donated stone is spent alongside ordinary drive stocks.

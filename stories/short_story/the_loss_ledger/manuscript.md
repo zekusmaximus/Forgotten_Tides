@@ -5,11 +5,11 @@ contract_version: v1.0.0
 type: story
 title: The Loss Ledger
 story_type: short-story
-status: draft
-canon_tier: draft
-retrieval_role: active_draft
+status: canonical
+canon_tier: primary_canon
+retrieval_role: authoritative
 summary_50: A Canticle records clerk finds a dead pilot's hidden anchor burn inside a route chart used by thousands.
-summary_200: "Canticle Fleet records clerk Corin Tave audits a widely used Helios Drift route chart and finds the undocumented anchor burn of deceased pilot Lysa Korr folded into its clean certification. Recording the loss would honor Lysa and force the Fleet to invalidate a chart used by thousands; suppressing it would keep traffic stable while stealing the true cost of the route. Corin chooses an honest correction, accepting delays, rationing, and institutional anger so the sacrifice becomes a burden civilization admits rather than a hidden subsidy."
+summary_200: 'Canticle Fleet records clerk Corin Tave audits a widely used Helios Drift route chart and finds the undocumented anchor burn of deceased pilot Lysa Korr folded into its clean certification. Recording the loss would honor Lysa and force the Fleet to invalidate a chart used by thousands; suppressing it would keep traffic stable while stealing the true cost of the route. Corin chooses an honest correction, accepting delays, rationing, and institutional anger so the sacrifice becomes a burden civilization admits rather than a hidden subsidy.'
 cross_refs:
   characters:
     - char-0021
@@ -44,7 +44,7 @@ references:
     - story-0001
 timeline:
   setting: An unnamed Canticle Fleet records annex in the Helios Drift
-  duration: From a records watch into the following watch, through the first delayed departure and closing audit
+  duration: 'From a records watch into the following watch, through the first delayed departure and closing audit'
   chronology:
     - event: Corin Tave begins routine certification of a heavily used Helios Drift route chart
       timestamp: T0
@@ -60,7 +60,7 @@ events:
   - id: event-story-0017-001
     timestamp: T0
     summary: Corin Tave audits a widely used Helios Drift route chart in a Canticle Fleet records annex.
-    canon_tier: draft
+    canon_tier: primary_canon
     source: stories/short_story/the_loss_ledger/manuscript.md
     involved_entities:
       - story-0017
@@ -71,7 +71,7 @@ events:
   - id: event-story-0017-002
     timestamp: T0+1h
     summary: Corin identifies recorded evidence of deceased pilot Lysa Korr's undocumented anchor burn beneath the chart's clean summary.
-    canon_tier: draft
+    canon_tier: primary_canon
     source: stories/short_story/the_loss_ledger/manuscript.md
     causal_note: The discovery reveals an institutional record failure; it does not change corridor mechanics or restore the burned anchor.
     involved_entities:
@@ -83,7 +83,7 @@ events:
   - id: event-story-0017-005
     timestamp: T0+3h
     summary: Canticle traffic leadership pressures Corin to preserve the clean chart for operational stability.
-    canon_tier: draft
+    canon_tier: primary_canon
     source: stories/short_story/the_loss_ledger/manuscript.md
     involved_entities:
       - story-0017
@@ -94,9 +94,9 @@ events:
   - id: event-story-0017-003
     timestamp: T0+5h
     summary: Corin records Lysa's loss in the Loss Ledger and signs a correction that invalidates the route chart pending recertification.
-    canon_tier: draft
+    canon_tier: primary_canon
     source: stories/short_story/the_loss_ledger/manuscript.md
-    causal_note: The ledger creates institutional accountability and operational disruption, not a free physical repair.
+    causal_note: 'The ledger creates institutional accountability and operational disruption, not a free physical repair.'
     involved_entities:
       - story-0017
       - char-0021
@@ -108,9 +108,9 @@ events:
   - id: event-story-0017-004
     timestamp: T0+6h
     summary: Canticle traffic reroutes ships and delays corridor assignments while H-37's clean certification remains suspended pending recertification; Lysa's burned anchor remains lost.
-    canon_tier: draft
+    canon_tier: primary_canon
     source: stories/short_story/the_loss_ledger/manuscript.md
-    causal_note: The consequence is borne through traffic, memory rationing, and command accountability rather than altered metaphysics.
+    causal_note: 'The consequence is borne through traffic, memory rationing, and command accountability rather than altered metaphysics.'
     involved_entities:
       - story-0017
       - char-0021
@@ -126,22 +126,22 @@ themes:
   - ethical-forgetting
 continuity_notes:
   - The Loss Ledger is treated as an existing Canticle/Archivist record required by the Pilot Manual after anchor burn; the story does not introduce a new metaphysical device.
-  - Recording Lysa Korr's anchor burn does not restore her anchor, heal the route chart, stabilize a corridor, or change physics for free.
-  - "The corrected record invalidates a clean route certification and imposes operational costs: delays, rerouting, rationed reliquary use, and recertification labor."
-  - Lysa Korr is deceased before the story opens; she appears through surviving calibration records and institutional consequences, not as a ghost or recoverable presence.
-  - The chart's evidence comes from recorded drive telemetry and excision history, not a metaphysical contour left by burned anchors. A surviving description would not restore the burned experience; no description is recovered here.
-  - H-37's certification is a reviewed load model and disclosed assumptions, not a guarantee of free or permanently safe passage. Its local suspension and medical waivers do not complete recertification or establish a fixed minimum duration.
-  - Anchor burn permanence, corridor attention requirements, and institutional memory weight derive from MEMORY_PHYSICS.md, CORRIDOR_MECHANICS.md, ANCHOR_THEORY.md, manuals/PILOT_MANUAL.md, and story-0001.
+  - 'Recording Lysa Korr''s anchor burn does not restore her anchor, heal the route chart, stabilize a corridor, or change physics for free.'
+  - 'The corrected record invalidates a clean route certification and imposes operational costs: delays, rerouting, rationed reliquary use, and recertification labor.'
+  - 'Lysa Korr is deceased before the story opens; she appears through surviving calibration records and institutional consequences, not as a ghost or recoverable presence.'
+  - 'The chart''s evidence comes from recorded drive telemetry and excision history, not a metaphysical contour left by burned anchors. A surviving description would not restore the burned experience; no description is recovered here.'
+  - 'H-37''s certification is a reviewed load model and disclosed assumptions, not a guarantee of free or permanently safe passage. Its local suspension and medical waivers do not complete recertification or establish a fixed minimum duration.'
+  - 'Anchor burn permanence, corridor attention requirements, and institutional memory weight derive from MEMORY_PHYSICS.md, CORRIDOR_MECHANICS.md, ANCHOR_THEORY.md, manuals/PILOT_MANUAL.md, and story-0001.'
 bible_refs:
   - bible/ARCHIVISTS_WAKE_STORY_BIBLE.md#36-anchor-burn-consequence
   - bible/ARCHIVISTS_WAKE_STORY_BIBLE.md#71-anchor-rules
   - bible/ARCHIVISTS_WAKE_STORY_BIBLE.md#72-corridor-rules
 metadata:
-  status: draft
+  status: canonical
   word_count: 4464
   author: AI Generated (Writing Agent 2)
   created: '2026-07-07T00:00:00.000Z'
-  modified: '2026-10-29T00:00:00.000Z'
+  modified: '2026-10-29T18:34:37.305Z'
 tags:
   - canticle-fleet
   - loss-ledger
