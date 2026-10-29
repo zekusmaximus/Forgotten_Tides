@@ -6,7 +6,7 @@ This document defines the change control process for the structured lexicon in `
 
 ## Editorial Scope
 
-The structured lexicon is the curated list of approved concepts and terminology.
+The structured lexicon records approved terminology and provisional proposals.
 Add a reusable mechanic, institution, procedure, or device only when its
 definition and source can be verified. Record genuine alternative names in
 `aliases`. Keep distinct objects separate: a Synod Lamp is the housing for a
@@ -14,8 +14,10 @@ Null Stone, so it is a term of its own rather than an alias of Null Stone.
 
 Names, story titles, incidental title-case phrases, and ordinary prose do not
 become lexicon terms merely because the scanner flags them. A draft-only
-concept should remain `draft` until its definition is approved or an
-authoritative source establishes it.
+concept remains `draft` until its source story and definition are approved,
+or the author independently approves a narrower, primary-backed definition.
+See [source-first approvals](source_first_approvals.md) for the evidence and
+impact review required before approving a draft-origin definition independently.
 
 ## Change Control Process
 

@@ -9,12 +9,13 @@ status: draft
 canon_tier: draft
 retrieval_role: active_draft
 summary_50: A corrected route chart strands a pod's repair filament; Yenu spends the sound of her grandfather's voice to bring it home.
-summary_200: "After Corin Tave's correction suspends H-37, the Skather-Ait pod cannot receive its frame filament on the booked route as its sleeping deck loses shape. At Halix, Tess Vlin cannot advance the fare after paying to withdraw another family's closed Light-Bequest from trade. Yenu voluntarily renders her own memory of her grandfather's voice for a tuned stone, and Elior Ren flies the longer corridor with his eleven remaining anchors. The repair holds, the lost voice does not return, and Lysa Korr's hidden cost stays on the record."
+summary_200: "After Corin Tave's correction suspends H-37, the Skather-Ait pod cannot receive its frame filament on the booked route as its sleeping deck loses shape. At Halix, Tess Vlin cannot advance the fare after paying to withdraw another family's closed missed-generation Light-Bequest from trade. Yenu voluntarily renders her own memory of her grandfather's voice for a tuned stone, and Elior Ren flies the longer corridor with his eleven remaining anchors. The repair holds, the lost voice does not return, and Lysa Korr's hidden cost stays on the record."
 cross_refs:
   characters:
     - char-0026
     - char-0027
     - char-0019
+    - char-0031
     - char-0017
     - char-0021
     - char-0022
@@ -111,19 +112,19 @@ themes:
   - quiet-heroism
   - ethical-forgetting
 continuity_notes:
-  - "This draft follows story-0004, story-0015, story-0017, and story-0013; these predecessor stories and their dependent outcomes remain drafts."
-  - Yenu's grandmother's completed Light-Bequest remains closed and cannot power a drive; Tess's depleted renewal bond follows her purchase and withdrawal of another family's closed carrier.
+  - "This draft follows primary stories 0004 and 0013 and draft stories 0015 and 0017; outcomes introduced by those later drafts remain provisional."
+  - Yenu's grandmother's particular missed-generation Light-Bequest remains closed and cannot power a drive; Tess's depleted renewal bond follows her purchase and withdrawal of another family's carrier assessed as closed in draft story-0015, a separate outcome needing review.
   - Lysa Korr remains deceased, her undisclosed anchor burn remains permanent, and H-37's prior clean certification remains suspended after Corin's correction.
   - Elior begins and ends the flight with eleven responsive anchors; his classroom smell is not restored, and the donated stone is spent alongside ordinary drive stocks.
   - Yenu's voluntary rendering removes the lived sound of her grandfather's correction. The recorded words, her mother's testimony, and the stone before use do not restore that experience.
-  - The tether shuttle, tuned coherence-frame filaments, ethical rendering, memory stones, and corridor attention are established in story-0004, lore/MEMORY_ECONOMY.md, and the existing mechanics files; this story adds no new physical law.
+  - The tether shuttle and tuned coherence-frame filaments are local Skather-Ait features established in primary story-0004; this draft's later repair remains provisional. Ethical rendering, memory stones, and corridor attention have separate lore and mechanics sources. This story claims no wider rule for Drift Clade pods.
 bible_refs:
   - bible/ARCHIVISTS_WAKE_STORY_BIBLE.md#36-anchor-burn-consequence
   - bible/ARCHIVISTS_WAKE_STORY_BIBLE.md#71-anchor-rules
   - bible/ARCHIVISTS_WAKE_STORY_BIBLE.md#72-corridor-rules
 metadata:
   status: draft
-  word_count: 2675
+  word_count: 2682
   author: AI-assisted draft
   created: '2026-09-24T00:00:00.000Z'
   modified: '2026-09-24T00:00:00.000Z'
@@ -235,10 +236,10 @@ ordinary corridor passage.
 Consortium has reserves, but its conditions arrive after you agree to the
 price."
 
-"I met their conditions once. They were very polite."
+"I heard one of their offers once. They were very polite."
 
 Tess looked up. She had been at the bench when Aurel Ket offered to make Yenu's
-grandmother's voice part of a lattice node. She had also watched Yenu take the
+grandmother's voice part of a cultural reinforcement field. She had also watched Yenu take the
 stone home.
 
 "Did you release it?" Tess asked.
@@ -276,9 +277,9 @@ seemed to wish she had not.
 
 "Because of the stone you bought."
 
-It was a different family's closed bequest. The family had needed frame work;
-buyers had offered far more for the right to exhibit or study the proof of its
-completion. Tess had purchased the used carrier herself and sent it out of
+It was a different family's closed missed-generation bequest. The family had
+needed frame work; buyers had offered far more for the right to exhibit or study
+proof that the stone had completed its work. Tess had purchased the used carrier herself and sent it out of
 Halix without its names. The market had charged her bond for making a valuable
 lot disappear.
 

@@ -8,8 +8,8 @@ story_type: short-story
 status: draft
 canon_tier: draft
 retrieval_role: active_draft
-summary_50: "Tess Vlin receives a closed Light-Bequest and must decide whether a memory object with no remaining use can still be sacred."
-summary_200: "On the Halix Exchange bazaar-ship, broker-tuner Tess Vlin receives a closed Light-Bequest: a memory stone whose intended hearer has already listened, leaving no usable memory and no inheritance hollow. The stone should be nearly worthless, but Consortium and private buyers want its provenance, proof that completion itself can be packaged. Tess must choose between the market's honest price and the quieter duty of refusing to sell what has finished its work."
+summary_50: "Tess Vlin receives a closed missed-generation Light-Bequest and must decide whether a memory object with no remaining use can still be sacred."
+summary_200: "On the Halix Exchange bazaar-ship, broker-tuner Tess Vlin receives a closed missed-generation Light-Bequest: a memory stone whose intended hearer has already listened, leaving no usable memory and no inheritance hollow. The stone should be nearly worthless, but Consortium and private buyers want its provenance, proof that completion itself can be packaged. Tess must choose between the market's honest price and the quieter duty of refusing to sell what has finished its work."
 cross_refs:
   characters:
     - char-0019
@@ -38,9 +38,9 @@ references:
     - story-0004
 timeline:
   setting: The fourth-deck inheritance quarter and outer skin of the Halix Exchange bazaar-ship in the Helios Drift outer sleeve
-  duration: One watch-cycle, from receipt of the closed Light-Bequest to its removal from market circulation
+  duration: One watch-cycle, from receipt of the closed missed-generation Light-Bequest to its removal from market circulation
   chronology:
-    - event: Tess Vlin receives a closed Light-Bequest for valuation
+    - event: Tess Vlin receives a closed missed-generation Light-Bequest for valuation
       timestamp: T0
     - event: Her tuning ring confirms the stone has completed its inheritance function
       timestamp: T0+20m
@@ -53,7 +53,7 @@ timeline:
 events:
   - id: event-story-0015-001
     timestamp: T0
-    summary: "Tess Vlin receives a closed Light-Bequest at her Halix Exchange bench."
+    summary: "Tess Vlin receives a closed missed-generation Light-Bequest at her Halix Exchange bench."
     canon_tier: draft
     source: stories/short_story/the_halix_aftermarket/manuscript.md
     involved_entities:
@@ -73,7 +73,7 @@ events:
       - fact-0004
   - id: event-story-0015-003
     timestamp: T0+3h
-    summary: "Tess removes the completed Light-Bequest from commerce by buying out the seller and releasing the stone from Halix."
+    summary: "Tess removes the completed missed-generation Light-Bequest from commerce by buying out the seller and releasing the stone from Halix."
     canon_tier: draft
     source: stories/short_story/the_halix_aftermarket/manuscript.md
     involved_entities:
@@ -87,14 +87,15 @@ themes:
   - inheritance
   - institutional-burden
 continuity_notes:
-  - "Light-Bequest behavior follows story-0004 and data/lexicon/terms.yaml term-0021: the intended hearing completes the inheritance function and leaves no drive-safe or frame-useful memory payload."
-  - "The closed inheritance state is treated as the aftermath of story-0004's established Light-Bequest logic, not as a new reliquary mechanic."
+  - "This draft depicts Tess assessing another family's stone as closed, analogous to Yenu's particular stone in primary story-0004. Its intended hearing completed this carrier's inheritance function and left no drive-safe or frame-useful memory payload in this story; shared canon needs separate review."
+  - "Term-0021 covers the broader Light-Bequest category. Story-0004 does not establish that other missed-generation stones close the same way, and this draft outcome is not an approved reliquary mechanic."
+  - "The other family's pod also needs coherence-frame work. Its frame is a separate local draft design, not evidence that all Drift Clade pods use Skather-Ait's tuned filaments."
   - "Buyers value provenance, symbolic weight, and market narrative only; no memory is recovered, restored, burned, or converted into new usable fuel."
   - "Consortium interest remains consistent with fact-0003's cultural reinforcement agenda, but no new Consortium technology or successful extraction is introduced."
   - "Halix Exchange details are local speculative setting texture for loc-0013 and do not change shared memory-economy rules."
 metadata:
   status: draft
-  word_count: 4393
+  word_count: 4403
   author: AI Generated (Codex)
   created: '2026-07-07T00:00:00.000Z'
   modified: '2026-07-07T00:00:00.000Z'
@@ -170,14 +171,14 @@ its grammar.
 
 She set the slip down. "You understand what this claims to be."
 
-"A closed Light-Bequest."
+"A closed missed-generation Light-Bequest."
 
 He said it carefully, capital letters audible in the mouth. Someone had coached him. Good.
 The uncoached were too easy to rob.
 
-"Most closed Light-Bequests do not come to market," Tess said.
+"I don't often see a stone claimed as closed come to market," Tess said.
 
-"Most pods have better frames."
+"Our frame needs work."
 
 Also a good answer.
 
@@ -213,9 +214,10 @@ tuning ring.
 
 The booth thickened.
 
-With an open Light-Bequest, the first register rose like a hand from water: donor voice,
-single locus, a memory intended for someone who had not existed yet. The second register
-followed underneath, the hearer-shaped absence. Tess had heard one cleanly not long ago.
+With Yenu's open missed-generation Light-Bequest, the first register had risen like a hand from
+water: donor voice, single locus, a memory intended for someone who had not existed yet.
+The second register had followed underneath, the hearer-shaped absence. Tess had heard that one
+cleanly not long ago.
 It had left the air around her bench tender for the rest of the watch.
 
 This stone did not sing.
@@ -293,7 +295,7 @@ deck's trading mesh: type, status, restrictions, provisional value. Most pulses 
 the day's silt. Personal stone, minor, stable. Civic fragment, disputed. Hospice comfort,
 sealed. Fraud, polite removal requested.
 
-Tess typed: Light-Bequest, closed.
+Tess typed: Light-Bequest, missed-generation, closed.
 
 The mesh held the words for half a breath.
 
@@ -355,7 +357,7 @@ though the courier were furniture with legal standing.
 
 "Then your eyes work."
 
-"Closed Light-Bequest. Verified?"
+"Closed missed-generation Light-Bequest. Verified?"
 
 "Provisional."
 
@@ -403,7 +405,7 @@ He did not leave. Of course he did not. Halix buyers liked to watch each other b
 
 The second buyer came in gray.
 
-Not the same Consortium fixer who had stood at Tess's bench for a different Light-Bequest
+Not the Consortium fixer who had stood at Tess's bench for Yenu's bequest
 and tried to turn a grandmother's voice into civic reinforcement. This one was a woman,
 older, with a clean face and no jewelry except a ring that was probably a recorder. The
 Consortium trained its people to look kind without looking soft. It saved time.
@@ -419,7 +421,7 @@ because it arrived in gray.
 
 The woman looked at the courier. "I will make my interest plain. We are not seeking fuel.
 We are not seeking donor content. We want the carrier, the assay record, and the witness
-chain. A closed Light-Bequest with clean provenance is rare enough to be instructive."
+chain. A closed missed-generation Light-Bequest with clean provenance is rare enough to be instructive."
 
 "Instructive for what?"
 
@@ -427,7 +429,8 @@ chain. A closed Light-Bequest with clean provenance is rare enough to be instruc
 
 The cabinet buyer made a small bored sound. The Consortium woman ignored him.
 
-"Families resist Light-Bequests because they fear incompletion," she said. "They fear the
+"Some families resist missed-generation Light-Bequests because they fear
+incompletion," she said. "They fear the
 stone will hold grief indefinitely, or that the intended hearer will mishandle it, or that
 closure will damage the donor trace. A verified closed specimen proves otherwise."
 
@@ -844,8 +847,8 @@ She stepped inside. The clerk sealed the door behind her.
 
 Through the small port, the Helios Drift lay in a long dark curve. Not empty. Never empty.
 Dark matter scaffolded the region with all the forgotten-but-not-erased weight the universe
-had not yet surrendered. Somewhere beyond sight, clade pods clung to their frames. Farther
-in, Consortium nodes pretended not to drift. Between them, Halix moved its warm yellow
+had not yet surrendered. Somewhere beyond sight, clade pods held against the Drift. Farther
+in, Consortium nodes advertised perfect stability. Between them, Halix moved its warm yellow
 body through the outer sleeve, selling what people could not carry and buying what they
 could not admit they wanted.
 

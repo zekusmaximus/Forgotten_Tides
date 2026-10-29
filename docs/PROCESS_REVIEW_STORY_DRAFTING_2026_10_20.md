@@ -220,6 +220,9 @@ recommended fix with a rough effort.
   follows the highest tier of any story it appears in, and promotion of a
   story promotes the entities that exist only because of it. Effort: small
   for the rule, small for a one-time pass to apply it.
+  **Superseded on October 28, 2026:** the author chose separate, claim-level
+  review after story approval; see
+  `docs/governance/source_first_approvals.md`.
 
 ### 3.9 Stories carry two status fields
 
@@ -422,6 +425,8 @@ These cannot be settled by an agent and are not settled by this review.
 
 1. **Entity status rule.** Should an entity's status follow the highest tier
    of any story it appears in? If yes, a one-time pass changes several files.
+   Resolved October 28, 2026: no automatic promotion; see the source-first
+   policy linked below.
 2. **`memory_density` after the Tessarine Breach.** `atlas/Tessarine_Vault.md`
    (0.78) and `atlas/Helios_Drift.md` (0.65) are unchanged and flagged. Two
    lost silos argue for lowering both; the figures are locked numeric canon.
@@ -444,9 +449,17 @@ These cannot be settled by an agent and are not settled by this review.
   title-case scanner remains advisory; see `docs/governance/lexicon.md`.
 - Short stories can now cite specific shared events in `references.events`.
   Draft short stories may cite draft events; primary-canon short stories may
-  cite only primary-canon events. Whether to approve an entity independently
-  of its source story, and whether wider novel/novella draft outcomes may be
-  prerequisites, remain open policy choices.
+  cite only primary-canon events. Whether wider novel/novella draft outcomes
+  may be prerequisites remains an open policy choice.
 - The routine compilation now selects `primary_canon` manuscripts. A separate
   publication compiler previews an explicit work list and reading order before
   assembly; no publication table of contents has been approved yet.
+
+### Follow-up on October 28, 2026
+
+- The default is [source-first approval](governance/source_first_approvals.md):
+  draft-origin profiles and lexicon terms remain provisional until their
+  source story is approved, followed by a separate review of each entry.
+  Narrow independent approval requires primary evidence, impact review, and
+  explicit author approval. A lore-backed baseline may stay working canon
+  without promoting its draft details.

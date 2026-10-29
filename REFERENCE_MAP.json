@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-28T17:26:22.217Z",
+  "generated": "2026-10-29T03:40:48.339Z",
   "nodes": [
     {
       "canonical_id": "char-0001",
@@ -270,6 +270,15 @@
       "canon_tier": "primary_canon",
       "source_weight": 110,
       "retrieval_role": "authoritative"
+    },
+    {
+      "canonical_id": "char-0031",
+      "type": "character",
+      "name": "Aurel Ket",
+      "path": "characters/Aurel_Ket.md",
+      "canon_tier": "speculative",
+      "source_weight": 60,
+      "retrieval_role": "exploratory"
     },
     {
       "canonical_id": "event-0001",
@@ -1077,9 +1086,9 @@
       "type": "story",
       "name": "The Light Inheritance",
       "path": "stories/short_story/the_light_inheritance/manuscript.md",
-      "canon_tier": "draft",
-      "source_weight": 65,
-      "retrieval_role": "active_draft"
+      "canon_tier": "primary_canon",
+      "source_weight": 110,
+      "retrieval_role": "authoritative"
     },
     {
       "canonical_id": "story-0004-outline",
@@ -3410,6 +3419,69 @@
       ]
     },
     {
+      "from": "char-0031",
+      "to": "char-0019",
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
+    },
+    {
+      "from": "char-0031",
+      "to": "char-0026",
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
+    },
+    {
+      "from": "char-0031",
+      "to": "fact-0003",
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
+    },
+    {
+      "from": "char-0031",
+      "to": "loc-0013",
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
+    },
+    {
+      "from": "char-0031",
+      "to": "mech-0001",
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
+    },
+    {
+      "from": "char-0031",
+      "to": "story-0004",
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
+    },
+    {
+      "from": "char-0031",
+      "to": "story-0021",
+      "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
+    },
+    {
       "from": "event-0001",
       "to": "mech-0001",
       "type": "involved_entities",
@@ -4762,8 +4834,7 @@
       "to": "story-0004",
       "type": "stories",
       "fields": [
-        "cross_refs",
-        "references"
+        "cross_refs"
       ]
     },
     {
@@ -5392,8 +5463,7 @@
       "to": "story-0004",
       "type": "stories",
       "fields": [
-        "cross_refs",
-        "references"
+        "cross_refs"
       ]
     },
     {
@@ -6184,6 +6254,47 @@
     },
     {
       "from": "story-0004",
+      "to": "char-0019",
+      "type": "characters",
+      "fields": [
+        "cross_refs"
+      ]
+    },
+    {
+      "from": "story-0004",
+      "to": "char-0026",
+      "type": "characters",
+      "fields": [
+        "cross_refs"
+      ]
+    },
+    {
+      "from": "story-0004",
+      "to": "char-0027",
+      "type": "characters",
+      "fields": [
+        "cross_refs"
+      ]
+    },
+    {
+      "from": "story-0004",
+      "to": "char-0031",
+      "type": "characters",
+      "fields": [
+        "cross_refs"
+      ]
+    },
+    {
+      "from": "story-0004",
+      "to": "fact-0003",
+      "type": "factions",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
+    },
+    {
+      "from": "story-0004",
       "to": "fact-0004",
       "type": "factions",
       "fields": [
@@ -6193,8 +6304,24 @@
     },
     {
       "from": "story-0004",
-      "to": "mech-0001",
-      "type": "mechanics",
+      "to": "fact-0005",
+      "type": "factions",
+      "fields": [
+        "cross_refs"
+      ]
+    },
+    {
+      "from": "story-0004",
+      "to": "fact-0006",
+      "type": "factions",
+      "fields": [
+        "cross_refs"
+      ]
+    },
+    {
+      "from": "story-0004",
+      "to": "loc-0008",
+      "type": "locations",
       "fields": [
         "cross_refs",
         "references"
@@ -6202,8 +6329,24 @@
     },
     {
       "from": "story-0004",
-      "to": "story-0003",
-      "type": "stories",
+      "to": "loc-0013",
+      "type": "locations",
+      "fields": [
+        "cross_refs"
+      ]
+    },
+    {
+      "from": "story-0004",
+      "to": "loc-0015",
+      "type": "locations",
+      "fields": [
+        "cross_refs"
+      ]
+    },
+    {
+      "from": "story-0004",
+      "to": "mech-0001",
+      "type": "mechanics",
       "fields": [
         "cross_refs",
         "references"
@@ -7206,6 +7349,14 @@
       "fields": [
         "cross_refs",
         "references"
+      ]
+    },
+    {
+      "from": "story-0021",
+      "to": "char-0031",
+      "type": "characters",
+      "fields": [
+        "cross_refs"
       ]
     },
     {

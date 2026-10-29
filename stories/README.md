@@ -19,7 +19,7 @@ candidates for promotion (see `docs/PLAYBOOK_NEW_STORY.md`, Step 6b).
 | `story-0001` | The Archivist's Wake | primary_canon | canonical | [manuscript](./short_story/the_archivists_wake/manuscript.md) |
 | `story-0002` | Memoir of a Nobody | draft | draft | [manuscript](./short_story/memoir_of_a_nobody/manuscript.md) |
 | `story-0003` | The Tuner of Last Lights | draft | draft | [manuscript](./short_story/the_tuner_of_last_lights/manuscript.md) |
-| `story-0004` | The Light Inheritance | draft | draft | [manuscript](./short_story/the_light_inheritance/manuscript.md), [outline](./short_story/the_light_inheritance/outline.md) |
+| `story-0004` | The Light Inheritance | primary_canon | canonical | [manuscript](./short_story/the_light_inheritance/manuscript.md), [outline](./short_story/the_light_inheritance/outline.md) |
 | `story-0005` | The Liturgy of Rust | draft | draft | [manuscript](./short_story/the_liturgy_of_rust/manuscript.md) |
 | `story-0006` | The Anchorless Tide | draft | draft | [manuscript](./short_story/the_anchorless_tide/manuscript.md) |
 | `story-0007` | The Hospice Knot | draft | draft | [manuscript](./short_story/the_hospice_knot/manuscript.md) |

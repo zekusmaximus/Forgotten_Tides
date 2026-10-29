@@ -2,9 +2,9 @@
 
 A living document listing underexplored territory in *The Forgotten Tides* universe. Use this as a menu when deciding what to write next. Each entry describes a narrative gap, an open character arc, or thematic territory that is thin. Where a draft already touches an area, it is named so you can read it first and build on it rather than reinvent it.
 
-`story-0001`, `story-0008`, `story-0012`, `story-0013`, and `story-0022` are primary canon. Other stories cited below are drafts: prior claims to reconcile with, not locked canon. Check `CANONICAL_INDEX.md` before trusting any coverage statement here.
+`story-0001`, `story-0004`, `story-0008`, `story-0012`, `story-0013`, and `story-0022` are primary canon. Other stories cited below are drafts: prior claims to reconcile with, not locked canon. Check `CANONICAL_INDEX.md` before trusting any coverage statement here.
 
-Canon status checked: October 27, 2026. Opportunity inventory and theme counts last reviewed: October 20, 2026.
+Canon status checked: October 29, 2026. Opportunity inventory and theme counts last reviewed: October 20, 2026.
 
 ---
 
@@ -68,7 +68,7 @@ Lira Voss (char-0008) carries two drafts, *The Hospice Knot* (story-0007) and *T
 ---
 
 ### The Drift Clades (beyond story-0004)
-*The Light Inheritance* (story-0004) introduced Drift Clade culture; *The Halix Aftermarket* (story-0015), *The Miniaturist's Name* (story-0019), and *Receipt for a Voice* (story-0021) extend it. All four are drafts. Still open:
+*The Light Inheritance* (story-0004, primary canon) introduced Drift Clade culture; *The Halix Aftermarket* (story-0015), *The Miniaturist's Name* (story-0019), and *Receipt for a Voice* (story-0021) are drafts that extend it. Still open:
 - A Drift Clade world undergoing literal void drift, the community deciding what to preserve versus release
 - Intergenerational memory: a Drift Clade elder passing down a tradition that contradicts the tradition they received
 - The Clades' relation to the Tessarine Vault after story-0022, where pledges from the outer sleeve have stopped
@@ -121,7 +121,7 @@ Counts are from the `themes` frontmatter of the twenty-one short stories as of O
 ## Specific Scenarios
 
 ### The Halix Exchange
-Introduced in *The Light Inheritance* (story-0004) and used in *The Halix Aftermarket* (story-0015) and *Receipt for a Voice* (story-0021). All three are drafts; story-0022 mentions Halix but does not establish the Exchange. Still open:
+Introduced in primary *The Light Inheritance* (story-0004) and used in draft *The Halix Aftermarket* (story-0015) and *Receipt for a Voice* (story-0021). Story-0022 mentions Halix but does not establish the Exchange. Still open:
 - The Consortium fixer from story-0004 himself, who has not reappeared
 - The memory economy from the seller's side at scale, not one transaction
 - What happens to memory stones that are sold rather than burned or released, once they leave the Exchange
