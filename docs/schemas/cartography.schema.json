@@ -61,9 +61,171 @@
     "sites": { "type": "array", "items": { "$ref": "#/definitions/site" } },
     "features": { "type": "array", "items": { "$ref": "#/definitions/feature" } },
     "routes": { "type": "array", "items": { "$ref": "#/definitions/route" } },
-    "relations": { "type": "array", "items": { "$ref": "#/definitions/relation" } }
+    "relations": { "type": "array", "items": { "$ref": "#/definitions/relation" } },
+    "eras": { "$ref": "#/definitions/eras" },
+    "insets": { "type": "array", "items": { "$ref": "#/definitions/inset" } },
+    "event_pins": { "type": "array", "items": { "$ref": "#/definitions/eventPin" } },
+    "universe": { "$ref": "#/definitions/universe" }
   },
   "definitions": {
+    "eventId": { "type": "string", "pattern": "^event-[a-z0-9-]+$" },
+    "era": { "enum": ["both", "before", "after"] },
+    "plateXY": { "type": "array", "minItems": 2, "maxItems": 2, "items": { "type": "number" } },
+    "eras": {
+      "description": "The era control (Q30, Q31; R15): two discrete states, before and after the breach event. Only states canon ties to the breach are listed, and none carries a figure.",
+      "type": "object",
+      "required": ["breach", "default", "states"],
+      "additionalProperties": false,
+      "properties": {
+        "breach": { "$ref": "#/definitions/eventId" },
+        "default": { "enum": ["before", "after"] },
+        "states": { "type": "array", "items": { "$ref": "#/definitions/eraState" } }
+      }
+    },
+    "eraState": {
+      "type": "object",
+      "required": ["key", "kind"],
+      "additionalProperties": false,
+      "properties": {
+        "key": { "$ref": "#/definitions/key" },
+        "kind": { "enum": ["sounding", "sleeves", "isopleth-values", "legend-note"] },
+        "target": { "$ref": "#/definitions/ref" },
+        "within": { "$ref": "#/definitions/ref" },
+        "after": { "type": "string" },
+        "claims": { "$ref": "#/definitions/claims" },
+        "rules": { "$ref": "#/definitions/rules" },
+        "sources": { "$ref": "#/definitions/sources" },
+        "note": { "type": "string" }
+      },
+      "allOf": [
+        { "if": { "properties": { "kind": { "const": "sounding" } } }, "then": { "required": ["target", "after"], "properties": { "after": { "const": "unmeasured" } } } },
+        { "if": { "properties": { "kind": { "const": "sleeves" } } }, "then": { "required": ["target"] } },
+        { "if": { "properties": { "kind": { "const": "isopleth-values" } } }, "then": { "required": ["within", "after"], "properties": { "after": { "const": "hidden" } } } },
+        { "if": { "properties": { "kind": { "const": "legend-note" } } }, "then": { "required": ["after"] } }
+      ]
+    },
+    "inset": {
+      "description": "A Z3 inset plate (Q22-Q29; R12-R14). Element geometry is in plate units: x right and y down from the plate's top-left corner.",
+      "type": "object",
+      "required": ["key", "site", "title", "plate", "eras", "elements"],
+      "additionalProperties": false,
+      "properties": {
+        "key": { "$ref": "#/definitions/key" },
+        "site": { "$ref": "#/definitions/locId" },
+        "title": { "type": "string" },
+        "caption": { "type": "string" },
+        "plate": {
+          "type": "object",
+          "required": ["width", "units"],
+          "additionalProperties": false,
+          "properties": {
+            "width": { "type": "number", "exclusiveMinimum": 0, "description": "The plate's width in chart units (P.A.)" },
+            "units": { "type": "array", "minItems": 2, "maxItems": 2, "items": { "type": "number", "exclusiveMinimum": 0 } },
+            "title_band": { "type": "number", "exclusiveMinimum": 0 }
+          }
+        },
+        "eras": { "type": "array", "minItems": 1, "uniqueItems": true, "items": { "$ref": "#/definitions/era" } },
+        "misregister": { "$ref": "#/definitions/plateXY" },
+        "elements": { "type": "array", "minItems": 1, "items": { "$ref": "#/definitions/insetElement" } },
+        "claims": { "$ref": "#/definitions/claims" },
+        "rules": { "$ref": "#/definitions/rules" },
+        "sources": { "$ref": "#/definitions/sources" },
+        "note": { "type": "string" }
+      }
+    },
+    "insetElement": {
+      "type": "object",
+      "required": ["key", "kind", "tier"],
+      "additionalProperties": false,
+      "properties": {
+        "key": { "$ref": "#/definitions/key" },
+        "kind": { "enum": ["plan", "wall", "arc-wall", "room", "door", "shelving", "booths", "housings", "legend", "stair", "station", "hull", "area", "point", "dock", "track", "note", "lintel", "anchor"] },
+        "tier": { "enum": ["canon", "drawing-approved", "cartographic", "draft"] },
+        "era": { "$ref": "#/definitions/era" },
+        "label": { "type": "string" },
+        "label_at": { "$ref": "#/definitions/plateXY" },
+        "label_align": { "enum": ["start", "middle", "end"] },
+        "label_level": { "enum": ["room", "detail", "note"] },
+        "anchor": { "$ref": "#/definitions/plateXY" },
+        "x": { "type": "number" },
+        "y": { "type": "number" },
+        "w": { "type": "number", "exclusiveMinimum": 0 },
+        "h": { "type": "number", "exclusiveMinimum": 0 },
+        "at": { "$ref": "#/definitions/plateXY" },
+        "a": { "$ref": "#/definitions/plateXY" },
+        "b": { "$ref": "#/definitions/plateXY" },
+        "c": { "$ref": "#/definitions/plateXY" },
+        "r": { "type": "number", "exclusiveMinimum": 0 },
+        "r0": { "type": "number", "minimum": 0 },
+        "r1": { "type": "number", "exclusiveMinimum": 0 },
+        "from": { "type": "number" },
+        "to": { "type": "number" },
+        "points": { "type": "array", "minItems": 2, "items": { "$ref": "#/definitions/plateXY" } },
+        "divide_at": { "type": "array", "items": { "type": "number" } },
+        "aisle": { "type": "number", "exclusiveMinimum": 0 },
+        "per_row": { "type": "integer", "minimum": 1 },
+        "count": { "type": "integer", "minimum": 1 },
+        "lost_after": { "type": "array", "uniqueItems": true, "items": { "type": "integer", "minimum": 1 } },
+        "erode": { "type": "number", "minimum": 0 },
+        "size": { "type": "number", "exclusiveMinimum": 0 },
+        "step": { "type": "number", "exclusiveMinimum": 0 },
+        "spacing": { "type": "number", "exclusiveMinimum": 0 },
+        "after_states": { "type": "object", "propertyNames": { "pattern": "^[1-9]\\d*$" }, "additionalProperties": { "enum": ["holds", "reduced", "bound", "lost"] } },
+        "style": { "enum": ["solid", "dotted"] },
+        "arrow": { "type": "boolean" },
+        "width": { "type": "number", "exclusiveMinimum": 0 },
+        "text": { "type": "string" },
+        "forgotten_after": { "type": "string" },
+        "claims": { "$ref": "#/definitions/claims" },
+        "rules": { "$ref": "#/definitions/rules" },
+        "sources": { "$ref": "#/definitions/sources" }
+      },
+      "allOf": [
+        { "if": { "properties": { "kind": { "enum": ["plan", "station", "stair", "booths"] } } }, "then": { "required": ["x", "y", "w", "h"] } },
+        { "if": { "properties": { "kind": { "const": "booths" } } }, "then": { "required": ["aisle", "per_row", "count"] } },
+        { "if": { "properties": { "kind": { "const": "housings" } } }, "then": { "required": ["c", "r", "from", "to", "size", "count"] } },
+        { "if": { "properties": { "kind": { "enum": ["arc-wall", "shelving", "area"] } } }, "then": { "required": ["c", "from", "to"] } },
+        { "if": { "properties": { "kind": { "enum": ["wall", "room", "track"] } } }, "then": { "required": ["points"] } },
+        { "if": { "properties": { "kind": { "const": "door" } } }, "then": { "required": ["a", "b"] } },
+        { "if": { "properties": { "kind": { "enum": ["point", "dock", "note", "lintel", "anchor", "legend"] } } }, "then": { "required": ["at"] } },
+        { "if": { "properties": { "kind": { "enum": ["note", "lintel"] } } }, "then": { "required": ["text"] } },
+        { "if": { "properties": { "kind": { "const": "hull" } } }, "then": { "required": ["c", "r"] } }
+      ]
+    },
+    "eventPin": {
+      "description": "An event pin (Q33; R17): on a route, or at a named anchor of an inset.",
+      "type": "object",
+      "required": ["event"],
+      "additionalProperties": false,
+      "properties": {
+        "event": { "$ref": "#/definitions/eventId" },
+        "route": { "$ref": "#/definitions/key" },
+        "along": { "type": "number", "minimum": 0, "maximum": 1 },
+        "inset": { "$ref": "#/definitions/key" },
+        "anchor": { "$ref": "#/definitions/key" },
+        "claims": { "$ref": "#/definitions/claims" },
+        "rules": { "$ref": "#/definitions/rules" },
+        "sources": { "$ref": "#/definitions/sources" }
+      },
+      "oneOf": [
+        { "required": ["route", "along"], "not": { "anyOf": [{ "required": ["inset"] }, { "required": ["anchor"] }] } },
+        { "required": ["inset", "anchor"], "not": { "anyOf": [{ "required": ["route"] }, { "required": ["along"] }] } }
+      ]
+    },
+    "universe": {
+      "description": "The Z0 scaffold (Q34; R8, R18): unlabeled filaments with no nodes and no gateways around the home galaxy.",
+      "type": "object",
+      "required": ["extent", "hole", "label"],
+      "additionalProperties": false,
+      "properties": {
+        "extent": { "type": "number", "exclusiveMinimum": 0 },
+        "hole": { "type": "number", "exclusiveMinimum": 0 },
+        "label": { "type": "string" },
+        "claims": { "$ref": "#/definitions/claims" },
+        "rules": { "$ref": "#/definitions/rules" },
+        "sources": { "$ref": "#/definitions/sources" }
+      }
+    },
     "locId": { "type": "string", "pattern": "^loc-\\d{4}$" },
     "key": { "type": "string", "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$" },
     "ref": { "type": "string", "minLength": 1 },
@@ -258,6 +420,9 @@
         "to": { "$ref": "#/definitions/ref" },
         "start_within": { "$ref": "#/definitions/ref" },
         "path": { "type": "array", "minItems": 2, "items": { "$ref": "#/definitions/polar" } },
+        "era": { "$ref": "#/definitions/era" },
+        "run": { "enum": ["completed", "intended"] },
+        "events": { "type": "array", "items": { "$ref": "#/definitions/eventId" } },
         "claims": { "$ref": "#/definitions/claims" },
         "rules": { "$ref": "#/definitions/rules" },
         "sources": { "$ref": "#/definitions/sources" },

@@ -24,6 +24,7 @@ const { toXY } = require('./geometry');
 const { placeIsoplethLabels } = require('./isopleths');
 const { TINT_STOPS, TINTS, tintBand, readsAs } = require('./painter');
 const { lintCartography } = require('../lint/cartography_lint');
+const insetsLib = require('./insets');
 
 const LINK_TYPES = new Set(['story', 'character', 'faction']);
 const SLEEVE_LABEL_THETA = 250;   // where sleeve numerals sit around their rings (cartographic)
@@ -61,9 +62,14 @@ function buildMapData({ root = layout.DEFAULT_ROOT, build = 'author' } = {}) {
 
   const timelinePath = path.join(root, 'data/timeline/events.yaml');
   const timeline = fs.existsSync(timelinePath) ? (yaml.load(fs.readFileSync(timelinePath, 'utf8')) || {}).events || [] : [];
+  const timelineById = new Map(timeline.map(event => [event.id, event]));
+  const pinnedEvents = new Set((cartography.event_pins || []).map(pin => pin.event));
+  // An event from the breach story shows after the breach only (rule R17).
+  const breachEvent = timelineById.get((cartography.eras || {}).breach);
+  const eraOfEvent = event => (breachEvent && event.source === breachEvent.source ? 'after' : 'both');
   const eventsFor = id => timeline
     .filter(event => (event.involved_entities || []).includes(id) && keepTier(event.canon_tier || 'working_canon'))
-    .map(event => ({ id: event.id, timestamp: event.timestamp, summary: event.summary, tier: event.canon_tier || 'working_canon' }));
+    .map(event => ({ id: event.id, timestamp: event.timestamp, summary: event.summary, tier: event.canon_tier || 'working_canon', era: eraOfEvent(event) }));
 
   const entityFields = id => {
     const entity = atlas.get(id);
@@ -89,7 +95,7 @@ function buildMapData({ root = layout.DEFAULT_ROOT, build = 'author' } = {}) {
     const ring = shapes.get(`${feature.within}/${sleeve.number}`);
     if (!ring || ring.type !== 'annulus') return sleeve;
     const r = (ring.inner + ring.outer) / 2;
-    return { ...sleeve, ring_r: r, xy: toXY(r, SLEEVE_LABEL_THETA) };
+    return { ...sleeve, ring_r: r, ring_inner: ring.inner, ring_outer: ring.outer, xy: toXY(r, SLEEVE_LABEL_THETA) };
   };
   // Shapes, points, and outlines are emitted in chart coordinates, so the
   // viewer draws from this file without its own copy of the geometry.
@@ -129,7 +135,11 @@ function buildMapData({ root = layout.DEFAULT_ROOT, build = 'author' } = {}) {
     return [route.from, route.to].filter(Boolean).every(end => placedPoints.has(end));
   }).map(route => ({
     ...route,
-    points: route.path ? route.path.map(xy) : [route.from, route.to].map(end => points.get(end).xy)
+    era: route.era || 'both',
+    points: route.path ? route.path.map(xy) : [route.from, route.to].map(end => points.get(end).xy),
+    // The run's events, placed or not, for its panel (rule R17).
+    events: (route.events || []).map(id => timelineById.get(id)).filter(event => event && keepTier(event.canon_tier || 'working_canon'))
+      .map(event => ({ id: event.id, timestamp: event.timestamp, summary: event.summary, tier: event.canon_tier || 'working_canon', placed: pinnedEvents.has(event.id) }))
   }));
 
   // The chart key and isopleth labels come from the same field and tints as
@@ -169,6 +179,8 @@ function buildMapData({ root = layout.DEFAULT_ROOT, build = 'author' } = {}) {
     })
   };
 
+  const depth = buildDepthAndTime({ cartography, atlas, shapes, points, sites, features, routes, regions, chart, timelineById, keepTier, isPublic, build });
+
   return {
     generated: new Date().toISOString(),
     build,
@@ -179,7 +191,105 @@ function buildMapData({ root = layout.DEFAULT_ROOT, build = 'author' } = {}) {
     regions,
     sites,
     features,
-    routes
+    routes,
+    ...depth
+  };
+}
+
+// Phase 4 data: the eras, the inset plates, the event pins, and the Z0
+// scaffold (decisions Q22-Q36). Each item carries its era, so the viewer
+// swaps discrete states and never interpolates a value (rule R15).
+function buildDepthAndTime({ cartography, atlas, shapes, points, sites, features, routes, regions, chart, timelineById, keepTier, isPublic, build }) {
+  const eraSpec = cartography.eras || { breach: null, default: 'after', states: [] };
+  const breach = timelineById.get(eraSpec.breach);
+  const eraOf = event => (breach && event.source === breach.source ? 'after' : 'both');
+  for (const route of routes) for (const event of route.events) event.era = eraOf(timelineById.get(event.id));
+  const states = eraSpec.states || [];
+
+  // A pre-breach sounding reads "unmeasured" after the breach.
+  for (const state of states.filter(entry => entry.kind === 'sounding')) {
+    for (const item of [...regions, ...sites]) if (item.id === state.target) item.era_sounding = { after: state.after };
+  }
+  // Isopleth values inside a band canon calls reduced are dropped after it.
+  for (const state of states.filter(entry => entry.kind === 'isopleth-values')) {
+    const shape = shapes.get(state.within);
+    for (const iso of chart.isopleths) {
+      if (shape && shape.depth(iso.xy[0], iso.xy[1]) >= 0) iso.hidden_in = [...new Set([...(iso.hidden_in || []), 'after'])];
+    }
+  }
+  const sleeveState = states.find(entry => entry.kind === 'sleeves');
+  for (const feature of features) if (sleeveState && feature.key === sleeveState.target) feature.post_breach_era = 'after';
+  const legend = states.find(entry => entry.kind === 'legend-note');
+
+  // Inset plates: their chart rectangles, live labels, and event anchors per
+  // era, all in chart coordinates. The rasters come from render_insets.js.
+  const siteById = new Map(sites.map(site => [site.id, site]));
+  const insets = (cartography.insets || []).filter(inset => siteById.has(inset.site)).map(inset => {
+    const frame = insetsLib.plateFrame(inset, points.get(inset.site).xy);
+    const eraList = inset.eras.includes('both') ? ['both'] : inset.eras;
+    const round = v => Number(v.toFixed(7));
+    const toChart = at => frame.toChart(at).map(round);
+    const layers = {};
+    for (const era of eraList) {
+      const { labels, anchors } = insetsLib.expandInset(inset, { era: era === 'both' ? 'after' : era, build });
+      layers[era] = {
+        labels: labels.map(label => ({ ...label, xy: toChart(label.at) })),
+        anchors: Object.fromEntries(Object.entries(anchors).map(([key, at]) => [key, toChart(at)]))
+      };
+    }
+    const site = siteById.get(inset.site);
+    return {
+      key: inset.key,
+      site: inset.site,
+      tier: site.tier,
+      title: inset.title,
+      caption: inset.caption || '',
+      units: inset.plate.units,
+      eras: eraList,
+      rect: Object.fromEntries(Object.entries(frame.rect).map(([key, v]) => [key, round(v)])),
+      layers,
+      claims: inset.claims || [],
+      rules: inset.rules || []
+    };
+  });
+  const insetByKey = new Map(insets.map(inset => [inset.key, inset]));
+  const routeByKey = new Map(routes.map(route => [route.key, route]));
+
+  // Event pins, placed where canon locates them (rule R17).
+  const eventPins = [];
+  for (const pin of cartography.event_pins || []) {
+    const event = timelineById.get(pin.event);
+    if (!event || !keepTier(event.canon_tier || 'working_canon')) continue;
+    const era = eraOf(event);
+    const base = { id: event.id, timestamp: event.timestamp, summary: event.summary, tier: event.canon_tier || 'working_canon', source: event.source || null, era, sources: pin.sources || [] };
+    if (pin.route) {
+      const route = routeByKey.get(pin.route);
+      if (!route) continue;
+      const [a, b] = [route.points[0], route.points[route.points.length - 1]];
+      eventPins.push({ ...base, place: { kind: 'route', route: route.key, label: route.label }, xy: [a[0] + (b[0] - a[0]) * pin.along, a[1] + (b[1] - a[1]) * pin.along] });
+    } else {
+      const inset = insetByKey.get(pin.inset);
+      if (!inset) continue;
+      const layer = inset.layers[era === 'after' && inset.layers.after ? 'after' : inset.eras[0]];
+      const anchorXY = layer && layer.anchors[pin.anchor];
+      if (!anchorXY) continue;
+      const room = (cartography.insets.find(entry => entry.key === pin.inset).elements.find(entry => entry.key === pin.anchor) || {}).label || pin.anchor;
+      eventPins.push({ ...base, place: { kind: 'inset', inset: inset.key, anchor: pin.anchor, room, site: inset.site }, xy: anchorXY, site_xy: siteById.get(inset.site).xy });
+    }
+  }
+
+  const universe = cartography.universe ? { ...cartography.universe, label_xy: [0, -(cartography.universe.hole + 0.12)] } : null;
+
+  return {
+    eras: {
+      breach: eraSpec.breach,
+      breach_summary: breach ? breach.summary : null,
+      default: eraSpec.default,
+      legend_note: legend ? legend.after : null
+    },
+    insets,
+    event_pins: eventPins,
+    universe
   };
 }
 

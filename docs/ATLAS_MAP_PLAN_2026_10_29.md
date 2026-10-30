@@ -823,6 +823,26 @@ contradictions that the continuity checks and the map would otherwise flag.
   routes, event pins, the era control, and the Z0 scaffold.
 - **Done when** zooming from Z1 into the Vault's silo bank is continuous,
   and the post-breach view shows no invented figure.
+- **Status (2026-10-30):** Built after the author accepted decisions
+  Q22–Q36 (the brief's third pass; the options weighed are in
+  [`ATLAS_MAP_PHASE4_QUESTIONS_2026_10_30.md`](ATLAS_MAP_PHASE4_QUESTIONS_2026_10_30.md)).
+  - Corrections to §5.3:
+    - Halix and Skather-Ait are primary canon since PR #45.
+    - The Heliodrome's Deck Six, west loop, and Stairwell Nine come only from
+      the drafts `story-0014` and `story-0016`, so the Heliodrome plate
+      draws none of them (Q29).
+    - `loc-0016` (H-37) and the `story-0021` run are not drawn (Q32).
+  - The Tessarine Vault and Heliodrome plates are painted in Node on the
+    chart's paper (`npm run map:insets`). Their text is live. The era control
+    defaults to After the breach. The two story runs, the event pins, the
+    layer toggles, and the Z0 scaffold are in the viewer.
+  - The lint checks every element's basis and every printed figure against
+    its cited lines (rules R12–R18).
+  - The browser tests check both done-when conditions:
+    - A stepped zoom from Z1 to the silo bank never shows a blank center and
+      never fades the plate back out.
+    - The After view prints no pre-breach figure, and every decimal on it is
+      a canon sounding or an isopleth value.
 
 ### Phase 5 — Publish and print (one session)
 

@@ -276,27 +276,38 @@ routes:
     tier: canon
     story: story-0001
     pulls: 3
+    era: both
+    run: completed
     origin: none
     start_within: loc-0003
     to: loc-0001
     path:
       - { r: 0.645, theta: 35.65 }
       - { r: 0.76, theta: 38.61 }
-    rules: [R4]
+    events: [event-0002, event-0003, event-0004, event-0005, event-0006, event-0007]
+    rules: [R4, R16]
     sources:
       - stories/short_story/the_archivists_wake/manuscript.md:131
 
+  # Elior Ren's run with the null stones (claim T43): stated after the
+  # breach, so the count is shown only in that era (rule R16).
   - key: vault-to-inner-relay
     label: Tessarine Vault to the Navigant house
     kind: corridor
     tier: canon
     story: story-0022
     pulls: 2
+    era: after
+    run: intended
     from: loc-0011
     to: inner-relay
-    rules: [R4]
+    events: [event-story-0022-008]
+    claims: [T10, T43]
+    rules: [R4, R16]
     sources:
       - stories/short_story/spend_what_you_can_afford/manuscript.md:903
+      - stories/short_story/spend_what_you_can_afford/manuscript.md:865
+    note: Seven null stones, attended in transit. The run and its cost are not recorded.
 
   - key: skather-ait-tether
     label: Skather-Ait tether
@@ -323,3 +334,585 @@ relations:
   - { type: disjoint, a: loc-0006, b: loc-0008, claims: [T21] }
   - { type: disjoint, a: loc-0006, b: loc-0007, claims: [T21] }
   - { type: disjoint, a: loc-0003, b: loc-0007, claims: [T22] }
+
+# ----- Phase 4: depth and time -----
+
+# The era control (decisions Q30, Q31; rule R15). Two discrete states,
+# before and after the Tessarine Breach. Only states canon ties to the
+# breach are listed; everything else is the same in both eras. No state
+# carries a figure: a pre-breach sounding reads "unmeasured" after it.
+eras:
+  breach: event-story-0022-001
+  default: after
+  states:
+    - key: vault-sounding
+      kind: sounding
+      target: loc-0011
+      after: unmeasured
+      claims: [T41]
+      rules: [R6, R15]
+      sources:
+        - atlas/Tessarine_Vault.md:125-126
+
+    - key: drift-sounding
+      kind: sounding
+      target: loc-0008
+      after: unmeasured
+      claims: [T41]
+      rules: [R6, R15]
+      sources:
+        - atlas/Helios_Drift.md:83-84
+
+    - key: softening-sleeves
+      kind: sleeves
+      target: outer-sleeve-sleeves
+      claims: [T42]
+      rules: [R9, R15]
+      sources:
+        - atlas/Helios_Drift.md:82
+
+    - key: outer-sleeve-isopleths
+      kind: isopleth-values
+      within: loc-0008/outer sleeve
+      after: hidden
+      claims: [T42]
+      rules: [R15]
+      sources:
+        - stories/short_story/spend_what_you_can_afford/manuscript.md:211
+
+    - key: field-note
+      kind: legend-note
+      after: Tints and isopleths are drawn from soundings taken before the breach.
+      claims: [T41]
+      rules: [R15]
+
+# Z3 inset plates (decisions Q22-Q29; rules R12-R14). Plate geometry is in
+# plate units: x right, y down, origin at the top-left; arc angles are
+# degrees from +x toward +y. `plate.width` is the plate's width in chart
+# units, so the plate fades in as its site is zoomed (P.A.; not to scale).
+# Every element is canon (cites a primary-canon line), drawing-approved
+# (cites a claim the brief marks drawing approved), or cartographic.
+insets:
+  - key: tessarine-vault
+    site: loc-0011
+    title: Tessarine Vault
+    caption: Plans of the silo bank, the middle ring, and the audit hall, stacked as the Vault stands. Up on the plate is the Vault's up. Not to scale; arrangement P.A.
+    plate: { width: 0.02, units: [1000, 1440] }
+    eras: [before, after]
+    claims: [T30]
+    rules: [R12]
+    elements:
+      # Silo bank (claim T35).
+      - key: silo-bank
+        kind: plan
+        label: Silo bank
+        x: 30
+        y: 112
+        w: 940
+        h: 372
+        anchor: [640, 412]
+        tier: canon
+        claims: [T30]
+        sources:
+          - atlas/Tessarine_Vault.md:108
+      - key: silo-bank-back-wall
+        kind: arc-wall
+        c: [500, 980]
+        r: 760
+        from: 236
+        to: 296
+        tier: drawing-approved
+        claims: [T35]
+      - key: silo-bank-back-wall-end
+        kind: arc-wall
+        c: [500, 980]
+        r: 760
+        from: 302
+        to: 304
+        tier: drawing-approved
+        claims: [T35]
+      - key: upper-doors
+        kind: door
+        a: [833, 297]
+        b: [903, 336]
+        label: Upper doors
+        label_at: [872, 278]
+        tier: canon
+        claims: [T35]
+        sources:
+          - stories/short_story/spend_what_you_can_afford/manuscript.md:514
+      - key: silo-bank-walls
+        kind: wall
+        points: [[75, 350], [75, 440], [470, 440]]
+        tier: drawing-approved
+        claims: [T35]
+      - key: silo-bank-walls-east
+        kind: wall
+        points: [[530, 440], [925, 440], [925, 350]]
+        tier: drawing-approved
+        claims: [T35]
+      - key: silo-bank-door
+        kind: door
+        a: [470, 440]
+        b: [530, 440]
+        tier: drawing-approved
+        claims: [T33]
+      - key: last-flight
+        kind: stair
+        x: 474
+        y: 448
+        w: 52
+        h: 22
+        label: Last flight, down to the middle ring
+        label_at: [540, 459]
+        label_align: start
+        tier: canon
+        claims: [T30]
+        sources:
+          - stories/short_story/spend_what_you_can_afford/manuscript.md:498
+      - key: housings
+        kind: housings
+        c: [500, 960]
+        r: 640
+        from: 242
+        to: 298
+        size: 22
+        count: 9
+        # Rule R13: state by category, never by value. These must agree
+        # with the outer-sleeve sleeves' post_breach silo states.
+        after_states: { 2: bound, 4: lost, 5: reduced, 7: reduced, 9: lost }
+        tier: canon
+        claims: [T35, T37]
+        sources:
+          - atlas/Tessarine_Vault.md:108-113
+      - key: housing-key
+        kind: legend
+        at: [62, 168]
+        step: 132
+        size: 9
+        tier: cartographic
+        rules: [R13]
+      - key: silo-note
+        kind: note
+        era: after
+        at: [62, 452]
+        width: 390
+        text: The Fourth and Ninth silos are lost to oblivion and cannot be rebuilt. The Fifth and Seventh hold at reduced pitch. The Second holds, bound; HAEL is scored into its brass at the height of a standing man's eyes.
+        tier: canon
+        claims: [T37]
+        sources:
+          - atlas/Tessarine_Vault.md:108-113
+
+      # Middle ring (claim T34).
+      - key: middle-ring
+        kind: plan
+        label: Middle ring
+        x: 30
+        y: 500
+        w: 940
+        h: 400
+        tier: canon
+        claims: [T30, T34]
+        sources:
+          - stories/short_story/spend_what_you_can_afford/manuscript.md:457
+      - key: ring-outer-wall
+        kind: arc-wall
+        c: [500, 705]
+        r: 180
+        from: 8
+        to: 352
+        tier: canon
+        claims: [T34]
+        sources:
+          - stories/short_story/spend_what_you_can_afford/manuscript.md:457
+      - key: outer-curve
+        kind: shelving
+        c: [500, 705]
+        r0: 150
+        r1: 168
+        from: 12
+        to: 348
+        label: Outer curve
+        label_at: [665, 548]
+        tier: canon
+        claims: [T34]
+        sources:
+          - stories/short_story/spend_what_you_can_afford/manuscript.md:482
+      - key: inner-curve
+        kind: shelving
+        c: [500, 705]
+        r0: 96
+        r1: 112
+        from: 105
+        to: 435
+        divide_at: [130, 410]
+        label: Inner curve
+        label_at: [500, 588]
+        tier: canon
+        claims: [T34]
+        sources:
+          - stories/short_story/spend_what_you_can_afford/manuscript.md:463
+      - key: stair-well
+        kind: arc-wall
+        c: [500, 705]
+        r: 92
+        from: 105
+        to: 435
+        tier: drawing-approved
+        claims: [T33]
+      - key: ring-stair
+        kind: stair
+        x: 478
+        y: 680
+        w: 44
+        h: 50
+        label: Stair
+        label_at: [500, 748]
+        tier: drawing-approved
+        claims: [T33]
+      - key: storeroom
+        kind: room
+        points: [[678, 670], [772, 670], [772, 740], [678, 740]]
+        label: Storeroom
+        label_at: [740, 705]
+        tier: canon
+        claims: [T34]
+        sources:
+          - stories/short_story/spend_what_you_can_afford/manuscript.md:921
+      - key: storeroom-door
+        kind: door
+        a: [678, 680]
+        b: [678, 730]
+        tier: canon
+        claims: [T34]
+        sources:
+          - stories/short_story/spend_what_you_can_afford/manuscript.md:921
+      - key: ring-stair-note
+        kind: note
+        at: [62, 838]
+        width: 300
+        text: The stair rises from the head of the audit hall to the ring's inner side; its last flight climbs to the silo bank.
+        tier: drawing-approved
+        claims: [T30, T33]
+      - key: ring-note
+        kind: note
+        era: after
+        at: [62, 540]
+        width: 260
+        text: Forty pledged stones were lost to null pressure on two shelves of the inner curve. Approximately one hundred sixty were spent into the silo housings without donor consent. One pledged stone remains.
+        tier: canon
+        claims: [T34]
+        sources:
+          - atlas/Tessarine_Vault.md:104-107
+
+      # Audit hall (claims T31-T33).
+      - key: audit-hall
+        kind: plan
+        label: Audit hall
+        x: 30
+        y: 916
+        w: 940
+        h: 500
+        anchor: [500, 1205]
+        tier: canon
+        claims: [T30, T31]
+        sources:
+          - atlas/Tessarine_Vault.md:71
+      - key: hall-walls
+        kind: wall
+        points: [[460, 1030], [300, 1030], [300, 950], [700, 950], [700, 1030], [540, 1030]]
+        tier: canon
+        claims: [T31]
+        sources:
+          - atlas/Tessarine_Vault.md:71
+      - key: hall-walls-lower
+        kind: wall
+        points: [[300, 1030], [300, 1390], [700, 1390], [700, 1030]]
+        tier: canon
+        claims: [T31]
+        sources:
+          - atlas/Tessarine_Vault.md:71
+      - key: lintel-doors
+        kind: door
+        a: [460, 1030]
+        b: [540, 1030]
+        tier: canon
+        claims: [T31]
+        sources:
+          - stories/short_story/spend_what_you_can_afford/manuscript.md:914
+      - key: lintel
+        kind: lintel
+        at: [500, 1016]
+        text: Spend only what you can afford. Preserve what must endure.
+        forgotten_after: only
+        tier: canon
+        claims: [T31, T38]
+        sources:
+          - atlas/Tessarine_Vault.md:73
+          - atlas/Tessarine_Vault.md:114-116
+      - key: provenance-station
+        kind: station
+        x: 316
+        y: 960
+        w: 76
+        h: 22
+        label: Provenance station
+        label_at: [400, 971]
+        label_align: start
+        tier: canon
+        claims: [T31]
+        sources:
+          - stories/short_story/spend_what_you_can_afford/manuscript.md:979-980
+      - key: hall-stair
+        kind: stair
+        x: 624
+        y: 958
+        w: 64
+        h: 28
+        label: Stair, up to the middle ring
+        label_at: [688, 1000]
+        label_align: end
+        tier: drawing-approved
+        claims: [T33]
+      - key: service-door
+        kind: door
+        a: [624, 960]
+        b: [624, 984]
+        tier: drawing-approved
+        claims: [T33]
+      - key: booths
+        kind: booths
+        x: 300
+        y: 1040
+        w: 400
+        h: 340
+        aisle: 90
+        per_row: 8
+        count: 16
+        lost_after: [3, 9, 11, 14]
+        tier: drawing-approved
+        claims: [T31, T32, T36]
+        sources:
+          - atlas/Tessarine_Vault.md:71
+          - atlas/Tessarine_Vault.md:99-100
+      - key: lower-dock
+        kind: room
+        points: [[760, 1296], [900, 1296], [900, 1380], [760, 1380]]
+        label: Lower dock
+        label_at: [830, 1338]
+        anchor: [830, 1362]
+        tier: drawing-approved
+        claims: [T33]
+      - key: hall-note
+        kind: note
+        era: after
+        at: [44, 1060]
+        width: 236
+        text: Booths Three, Nine, Eleven, and Fourteen are lost to forgetting. No one can go where the booths were. The hall is sealed with four null stones inside. Pledge audit is suspended across the outer sleeve.
+        tier: canon
+        claims: [T36]
+        sources:
+          - atlas/Tessarine_Vault.md:99-103
+
+  - key: heliodrome
+    site: loc-0001
+    title: Heliodrome
+    caption: Plan. The station's corridors misremember their own geometry, so its interior is not charted, and its hull is a symbol, not a shape. Not to scale; positions P.A. Printed out of register.
+    plate: { width: 0.02, units: [1000, 760] }
+    eras: [both]
+    misregister: [3, -2]
+    claims: [T39]
+    rules: [R12]
+    elements:
+      - key: station-plan
+        kind: plan
+        label: Plan
+        x: 30
+        y: 112
+        w: 940
+        h: 620
+        tier: drawing-approved
+        claims: [T39]
+      - key: hull
+        kind: hull
+        c: [600, 420]
+        r: 190
+        tier: drawing-approved
+        claims: [T39]
+      - key: interior-note
+        kind: note
+        at: [480, 404]
+        width: 240
+        text: Interior not charted. The station's corridors misremember their own geometry.
+        tier: canon
+        claims: [T39]
+        sources:
+          - atlas/Heliodrome.md:14
+      - key: arrays
+        kind: area
+        c: [600, 420]
+        r0: 200
+        r1: 240
+        from: 150
+        to: 230
+        label: Arrays
+        label_at: [330, 322]
+        tier: canon
+        claims: [T39]
+        sources:
+          - stories/short_story/the_archivists_wake/manuscript.md:156
+      - key: array-two
+        kind: point
+        at: [381, 439]
+        label: Array Two
+        label_at: [381, 470]
+        tier: canon
+        claims: [T39]
+        sources:
+          - stories/short_story/the_archivists_wake/manuscript.md:158
+      - key: dock
+        kind: dock
+        at: [478, 566]
+        label: Dock and hatch
+        label_at: [478, 598]
+        anchor: [492, 552]
+        tier: canon
+        claims: [T39, T40]
+        sources:
+          - stories/short_story/the_archivists_wake/manuscript.md:159
+          - stories/short_story/the_archivists_wake/manuscript.md:177-178
+      - key: wake-run
+        kind: track
+        points: [[136, 722], [240, 574]]
+        arrow: true
+        tier: canon
+        claims: [T40]
+        sources:
+          - stories/short_story/the_archivists_wake/manuscript.md:158
+      - key: release-point
+        kind: point
+        at: [250, 560]
+        size: 5
+        label: Corridor release
+        label_at: [226, 532]
+        label_align: end
+        anchor: [262, 548]
+        tier: canon
+        claims: [T40]
+        sources:
+          - stories/short_story/the_archivists_wake/manuscript.md:158
+      - key: manual-approach
+        kind: track
+        points: [[250, 560], [470, 566]]
+        style: dotted
+        tier: canon
+        claims: [T40]
+        sources:
+          - stories/short_story/the_archivists_wake/manuscript.md:159-160
+      - key: release-note
+        kind: note
+        at: [62, 616]
+        width: 270
+        text: "\u201cThe corridor released us a hundred meters from Array Two.\u201d Quoted, not drawn: the plate has no scale."
+        tier: canon
+        claims: [T40]
+        sources:
+          - stories/short_story/the_archivists_wake/manuscript.md:158
+
+# Event pins (decision Q33; rule R17): only where canon locates an event, at
+# a P.A. spot. An event from the breach story shows after the breach only;
+# the build derives that from the event's source.
+event_pins:
+  - event: event-0004
+    route: archivists-wake-approach
+    along: 0.5
+    sources:
+      - bible/ARCHIVISTS_WAKE_STORY_BIBLE.md:25-30
+  - event: event-0005
+    inset: heliodrome
+    anchor: release-point
+    sources:
+      - stories/short_story/the_archivists_wake/manuscript.md:155-158
+  - event: event-0006
+    inset: heliodrome
+    anchor: dock
+    sources:
+      - stories/short_story/the_archivists_wake/manuscript.md:177-178
+  - event: event-0007
+    inset: heliodrome
+    anchor: dock
+    sources:
+      - stories/short_story/the_archivists_wake/manuscript.md:194-207
+  - event: event-story-0008-001
+    inset: tessarine-vault
+    anchor: audit-hall
+    sources:
+      - stories/short_story/the_reliquarists_doubt/manuscript.md:134-142
+  - event: event-story-0008-002
+    inset: tessarine-vault
+    anchor: audit-hall
+    sources:
+      - stories/short_story/the_reliquarists_doubt/manuscript.md:156-160
+  - event: event-story-0008-003
+    inset: tessarine-vault
+    anchor: audit-hall
+    sources:
+      - stories/short_story/the_reliquarists_doubt/manuscript.md:200
+  - event: event-story-0008-004
+    inset: tessarine-vault
+    anchor: audit-hall
+    sources:
+      - stories/short_story/the_reliquarists_doubt/manuscript.md:282-296
+  - event: event-story-0022-001
+    inset: tessarine-vault
+    anchor: audit-hall
+    sources:
+      - stories/short_story/spend_what_you_can_afford/manuscript.md:291-319
+  - event: event-story-0022-002
+    inset: tessarine-vault
+    anchor: silo-bank
+    sources:
+      - stories/short_story/spend_what_you_can_afford/manuscript.md:519-526
+  - event: event-story-0022-003
+    inset: tessarine-vault
+    anchor: silo-bank
+    sources:
+      - stories/short_story/spend_what_you_can_afford/manuscript.md:547-561
+  - event: event-story-0022-004
+    inset: tessarine-vault
+    anchor: silo-bank
+    sources:
+      - stories/short_story/spend_what_you_can_afford/manuscript.md:667-678
+  - event: event-story-0022-005
+    inset: tessarine-vault
+    anchor: silo-bank
+    sources:
+      - stories/short_story/spend_what_you_can_afford/manuscript.md:686-693
+  - event: event-story-0022-006
+    inset: tessarine-vault
+    anchor: silo-bank
+    sources:
+      - stories/short_story/spend_what_you_can_afford/manuscript.md:696-704
+  - event: event-story-0022-007
+    inset: tessarine-vault
+    anchor: silo-bank
+    sources:
+      - stories/short_story/spend_what_you_can_afford/manuscript.md:748-809
+  - event: event-story-0022-008
+    inset: tessarine-vault
+    anchor: lower-dock
+    sources:
+      - stories/short_story/spend_what_you_can_afford/manuscript.md:853-875
+
+# The Z0 universe scaffold (decision Q34; rules R8, R18): unlabeled
+# dark-matter filaments around the home galaxy, the only luminous body,
+# which carries the chart's title. `extent` is the scaffold's half-width in
+# chart units and `hole` the radius it leaves clear for the chart (P.A.).
+universe:
+  extent: 10
+  hole: 1.2
+  label: The Known Galaxy
+  claims: [T12]
+  rules: [R8, R18]
+  sources:
+    - mechanics/MEMORY_PHYSICS.md:128-133

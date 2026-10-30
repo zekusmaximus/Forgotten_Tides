@@ -54,11 +54,15 @@ function loadAtlas(root) {
   return entries;
 }
 
+// The brief's claim and rule IDs, and each claim's status (its row's last
+// cell), so the lint can tell a drawing approval from approved topology.
 function loadRegister(root) {
   const text = fs.readFileSync(path.join(root, BRIEF_PATH), 'utf8');
-  const claims = new Set([...text.matchAll(/^\|\s*(T\d+)\s*\|/gm)].map(m => m[1]));
+  const claimRows = [...text.matchAll(/^\|\s*(T\d+)\s*\|(.*)\|\s*$/gm)];
+  const claims = new Set(claimRows.map(m => m[1]));
+  const status = new Map(claimRows.map(m => [m[1], m[2].split('|').pop().trim()]));
   const rules = new Set([...text.matchAll(/^\|\s*(R\d+)\s*\|/gm)].map(m => m[1]));
-  return { claims, rules };
+  return { claims, rules, status };
 }
 
 function loadMapContext(root = DEFAULT_ROOT) {

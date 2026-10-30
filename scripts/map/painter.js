@@ -108,6 +108,35 @@ function hash2(i, j, salt) {
 const clamp01 = t => (t < 0 ? 0 : t > 1 ? 1 : t);
 const luminance = (r, g, b) => 0.2126 * r + 0.7152 * g + 0.0722 * b;
 
+// Band-limited fractal noise: octaves whose wavelength is under two
+// pixels are left out, and the last one fades in, so no level aliases.
+function fbm(fn, x, y, base, octaves, px) {
+  let sum = 0;
+  let amp = 0.5;
+  let f = base;
+  for (let o = 0; o < octaves; o++) {
+    const fade = smoothstep(2, 4, 1 / (f * px));
+    if (fade === 0) break;
+    sum += amp * fade * fn(x * f, y * f);
+    amp *= 0.5;
+    f *= 2;
+  }
+  return sum;
+}
+
+// Paper grain: a faint mottle at chart scale (smooth enough to take from
+// the coarse grid) plus fibers that appear as the chart is zoomed. Both
+// are multipliers near 1. The inset plates (scripts/map/inset_painter.js)
+// print on the same paper.
+function createPaperGrain() {
+  const { createNoise2D } = require('simplex-noise');
+  const grainNoise = createNoise2D(mulberry32(1030));
+  const mottle = (x, y, px) => 0.025 * fbm(grainNoise, x, y, 18, 3, px);
+  const fibers = (x, y, px) => 0.08 * fbm(grainNoise, x + 7.3, y - 3.1, 700, 5, px);
+  const grain = (x, y, px) => 1 + mottle(x, y, px) + fibers(x, y, px);
+  return { mottle, fibers, grain };
+}
+
 // Builds the painter from the repository's map inputs. `network` is a
 // precomputed lane network (computeLanes output) so render workers need not
 // each recompute it; `extras` are further layers drawn before the stars.
@@ -147,32 +176,10 @@ function createPainter(root, { build = 'author', network = null, extras = [] } =
   const pocketCenters = masks.ash.flatMap(shape => (shape.items || [shape]).map(item => item.center));
 
   const noise = createNoise2D(mulberry32(20261029));
-  const grainNoise = createNoise2D(mulberry32(1030));
   const bleedNoise = createNoise2D(mulberry32(1031));
   const tintDelta = TINTS.slice(1).map((c, k) => [c[0] - TINTS[k][0], c[1] - TINTS[k][1], c[2] - TINTS[k][2]]);
 
-  // Band-limited fractal noise: octaves whose wavelength is under two
-  // pixels are left out, and the last one fades in, so no level aliases.
-  function fbm(fn, x, y, base, octaves, px) {
-    let sum = 0;
-    let amp = 0.5;
-    let f = base;
-    for (let o = 0; o < octaves; o++) {
-      const fade = smoothstep(2, 4, 1 / (f * px));
-      if (fade === 0) break;
-      sum += amp * fade * fn(x * f, y * f);
-      amp *= 0.5;
-      f *= 2;
-    }
-    return sum;
-  }
-
-  // Paper grain: a faint mottle at chart scale (smooth enough to take from
-  // the coarse grid) plus fibers that appear as the chart is zoomed. Both
-  // are multipliers near 1.
-  const mottle = (x, y, px) => 0.025 * fbm(grainNoise, x, y, 18, 3, px);
-  const fibers = (x, y, px) => 0.08 * fbm(grainNoise, x + 7.3, y - 3.1, 700, 5, px);
-  const grain = (x, y, px) => 1 + mottle(x, y, px) + fibers(x, y, px);
+  const { mottle, fibers, grain } = createPaperGrain();
 
   // The Gap's shards: the nearest Voronoi site in a jittered grid laid out in
   // (outward, sideways) coordinates, so cells run radially as splinters, and
@@ -677,4 +684,8 @@ function createPainter(root, { build = 'author', network = null, extras = [] } =
   return { paint, paintWindow, field, masks, features, shardAt, throughShard, network: lanes };
 }
 
-module.exports = { createPainter, hash2, mulberry32, tintBand, readsAs, TINT_STOPS, TINTS, VOID_COLOR, NEATLINE, FRAME_OUT, SHARD_REACH, MISREGISTER };
+module.exports = {
+  createPainter, createPaperGrain, fbm, hash2, mulberry32, tintBand, readsAs,
+  TINT_STOPS, TINTS, VOID_COLOR, NEATLINE, FRAME_OUT, SHARD_REACH, MISREGISTER,
+  LIGHT_INK, DARK_INK, GHOST_INK, PAPER
+};

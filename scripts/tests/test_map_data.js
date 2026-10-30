@@ -428,7 +428,7 @@ test('the public build drops a route that ends at a draft point feature', () => 
   const root = makeFixture({
     cartography: c => {
       c.features.push({ key: 'draft-post', label: 'Draft post', kind: 'facility', tier: 'draft', at: { r: 0.2, theta: 180 }, rules: ['R1'] });
-      c.routes.push({ key: 'to-draft-post', label: 'To draft post', kind: 'corridor', tier: 'canon', story: 'story-9901', pulls: 1, from: 'loc-9006', to: 'draft-post', sources: ['stories/short_story/canon_story/manuscript.md:6'] });
+      c.routes.push({ key: 'to-draft-post', label: 'To draft post', kind: 'corridor', tier: 'canon', story: 'story-9901', pulls: 2, from: 'loc-9006', to: 'draft-post', sources: ['stories/short_story/canon_story/manuscript.md:6'] });
     }
   });
   try {
