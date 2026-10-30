@@ -800,8 +800,12 @@ contradictions that the continuity checks and the map would otherwise flag.
     six treatments of §2.2, stars, and the frame. `scripts/map/lanes.js`
     computes the lanes and eddies (rule R10). The field gained spiral arms
     that keep every ring average, and an eased falloff (rule R11).
-  - The lint passes against the rendered field: annuli are checked by ring
-    average, and every canon value must print in its own tint band.
+  - The lint passes against the rendered field, in both builds.
+    - An annulus is checked by its ring average, and the field may stray no
+      more than 0.06 from it along the ring.
+    - Every other probe and site must read its value in its own tint band.
+    - Each region's sounding is printed, and checked, where the field reads
+      that value.
   - Void interiors contain no labels or contours. A test paints every Void
     at two zooms and requires the void color inside; isopleth labels and
     region label anchors are tested to keep out.

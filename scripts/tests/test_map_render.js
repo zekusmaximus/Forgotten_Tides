@@ -51,8 +51,8 @@ async function pixelAt(dir, size, xy) {
     await test('the pyramid has one level per halving and the right tile counts', () => {
       const levels = pyramid(1000, 256);
       assert.equal(levels.length, 11);
-      assert.deepEqual(levels[10], { level: 10, scale: 1, dim: 1000, cols: 4, rows: 4 });
-      assert.deepEqual(levels[9], { level: 9, scale: 2, dim: 500, cols: 2, rows: 2 });
+      assert.deepEqual(levels[10], { level: 10, scale: 1, dim: 1000, cols: 4, rows: 4, size: 1000 });
+      assert.deepEqual(levels[9], { level: 9, scale: 2, dim: 500, cols: 2, rows: 2, size: 1000 });
       assert.equal(levels[0].dim, 1);
     });
 
@@ -97,7 +97,7 @@ async function pixelAt(dir, size, xy) {
     });
 
     await test('bad settings fail before anything on disk changes', async () => {
-      for (const settings of [{ workers: 0 }, { workers: Number.NaN }, { quality: 0 }, { size: 100 }, { build: 'draft' }]) {
+      for (const settings of [{ workers: 0 }, { workers: Number.NaN }, { quality: 0 }, { size: 100 }, { build: 'draft' }, { tile: 100 }]) {
         await assert.rejects(() => renderTiles({ size: 512, out: first, ...settings }));
       }
       assert(fs.existsSync(path.join(first, 'galaxy_files', '10', '0_0.webp')), 'the earlier render is untouched');

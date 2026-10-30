@@ -61,6 +61,7 @@ const pinHidden = (page, id) => page.$eval(`#pins [data-id="${id}"]`, node => no
 (async () => {
   const outDir = path.join(ROOT, 'out', `map-browser-test-${process.pid}`);
   const bareDir = path.join(ROOT, 'out', `map-browser-bare-${process.pid}`);
+  const staleDir = path.join(ROOT, 'out', `map-browser-stale-${process.pid}`);
   fs.mkdirSync(SCREENSHOTS, { recursive: true });
   const servers = [];
   let browser;
@@ -76,6 +77,11 @@ const pinHidden = (page, id) => page.$eval(`#pins [data-id="${id}"]`, node => no
     const authorUrl = await listen(servers[servers.push(createMapServer({ build: 'author', outDir })) - 1]);
     const publicUrl = await listen(servers[servers.push(createMapServer({ build: 'public', outDir })) - 1]);
     const bareUrl = await listen(servers[servers.push(createMapServer({ build: 'author', outDir: bareDir })) - 1]);
+    // Tiles whose manifest records an older frame than the data's.
+    fs.cpSync(outDir, staleDir, { recursive: true });
+    const staleManifest = path.join(staleDir, 'tiles', 'galaxy.json');
+    fs.writeFileSync(staleManifest, JSON.stringify({ ...JSON.parse(fs.readFileSync(staleManifest, 'utf8')), extent: 1.25 }));
+    const staleUrl = await listen(servers[servers.push(createMapServer({ build: 'author', outDir: staleDir })) - 1]);
     browser = await chromium.launch(process.env.PW_CHROMIUM_PATH ? { executablePath: process.env.PW_CHROMIUM_PATH } : {});
 
     await test('the author build opens on every tier, with speculative pins faded', async () => {
@@ -171,10 +177,11 @@ const pinHidden = (page, id) => page.$eval(`#pins [data-id="${id}"]`, node => no
       assert(furniture.includes('THE KNOWN GALAXY'), 'title cartouche');
       assert(furniture.includes('MEMORY DENSITY (coherence units)'), 'tint key');
       assert(furniture.some(text => text.startsWith('Lanes mark where corridors tend to form')), 'notes say lanes are illustrative');
-      const core = await page.$eval('#labels .label.region[data-id="loc-0005"]', node => node.textContent);
-      assert.match(core, /0\.97/, 'the Core label carries its sounding');
-      const drift = await page.$eval('#labels .label.region[data-id="loc-0008"] .depth', node => node.textContent);
+      const core = await page.$eval('#labels .label.sounding[data-id="loc-0005"]', node => node.textContent);
+      assert.equal(core, '0.97', 'the Core prints its sounding');
+      const drift = await page.$eval('#labels .label.sounding[data-id="loc-0008"]', node => node.textContent);
       assert.equal(drift, '0.65 · Before the Tessarine Breach', 'a pre-breach sounding says so');
+      assert.equal(await page.$('#labels .label.sounding[data-id="loc-0006"]'), null, 'the Voids print no sounding: nothing is charted inside');
       const isoHidden = () => page.$$eval('#labels .label.isopleth', nodes => nodes.filter(node => !node.hidden).length);
       assert.equal(await isoHidden(), 0, 'no isopleth values at the overview');
       assert.equal(await page.evaluate(() => window.__map.state.viewer.navigator.element.style.visibility), 'hidden', 'no minimap at the overview');
@@ -202,6 +209,13 @@ const pinHidden = (page, id) => page.$eval(`#pins [data-id="${id}"]`, node => no
       await page.close();
     });
 
+    await test('tiles from an older frame keep the overlays registered and say so', async () => {
+      const { page } = await openMap(browser, staleUrl);
+      assert.equal(await page.evaluate(() => window.__map.state.extent), 1.25, 'overlays map with the tiles\' extent');
+      assert.match(await page.$eval('#notice', node => node.textContent), /older chart frame/);
+      await page.close();
+    });
+
     await test('without tiles the viewer still draws its overlays and says why', async () => {
       const { page } = await openMap(browser, bareUrl);
       assert.equal(await page.$eval('#notice', node => node.hidden), false);
@@ -214,6 +228,7 @@ const pinHidden = (page, id) => page.$eval(`#pins [data-id="${id}"]`, node => no
     await Promise.all(servers.map(server => new Promise(resolve => server.close(resolve))));
     fs.rmSync(outDir, { recursive: true, force: true });
     fs.rmSync(bareDir, { recursive: true, force: true });
+    fs.rmSync(staleDir, { recursive: true, force: true });
   }
   if (process.exitCode) console.error('\nMap browser tests: failures above');
   else console.log(`\nMap browser tests: all passed (screenshots in ${path.relative(ROOT, SCREENSHOTS)})`);

@@ -29,8 +29,10 @@ field:
     perimeter: loc-0007
   overlays: [loc-0003, loc-0004, loc-0006]
   # The spiral arms (T2) as a ring-average-preserving modulation of the
-  # radial base; the arm count comes from the spiral-arms feature (R2).
-  arms: { feature: spiral-arms, pitch: 16, amplitude: 0.11, outer_amplitude: 0.42, phase: 20, from: 0.12, full: 0.24, fade: 0.8, to: 1.0 }
+  # radial base (R11): gentle through the Drift, so it keeps close to its
+  # canon value and the Vault still peaks above it, and strongest beyond it.
+  # The arm count comes from the spiral-arms feature (R2).
+  arms: { feature: spiral-arms, pitch: 16, amplitude: 0.06, outer_amplitude: 0.6, phase: 20, from: 0.12, full: 0.24, fade: 0.85, to: 1.0 }
 
 regions:
   - id: loc-0005 # Mnemosyne Lattice Core

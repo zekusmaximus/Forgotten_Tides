@@ -15,6 +15,7 @@ const EXTENT = 1.0;
 const SAME_LEVEL_GAP = 0.3; // chart units between labels on one level
 const ANY_LEVEL_GAP = 0.085;
 const SITE_GAP = 0.05;
+const VOID_GAP = 0.06;
 const MIN_SPACING = 0.035;  // room between neighboring major isopleths
 
 function hash2(i, j, salt) {
@@ -82,7 +83,9 @@ function placeIsoplethLabels({ field, voidDepth, ashDepth, fractureDepth, avoid 
   for (const c of candidates) {
     const r = Math.hypot(c.x, c.y);
     if (r < 0.14 || r > 0.97) continue;
-    if (voidDepth(c.x, c.y) > -0.03 || ashDepth(c.x, c.y) > -0.025 || fractureDepth(c.x, c.y) > -0.02) continue;
+    // Labels are a fixed pixel size with an opaque knockout, so keep them
+    // well clear of the Voids even on a small screen at the zoom they appear.
+    if (voidDepth(c.x, c.y) > -VOID_GAP || ashDepth(c.x, c.y) > -0.025 || fractureDepth(c.x, c.y) > -0.02) continue;
     if (avoid.some(([x, y]) => Math.hypot(x - c.x, y - c.y) < SITE_GAP)) continue;
     if (placed.some(p => Math.hypot(p.xy[0] - c.x, p.xy[1] - c.y) < (p.value === c.level ? SAME_LEVEL_GAP : ANY_LEVEL_GAP))) continue;
     const h = 0.002;

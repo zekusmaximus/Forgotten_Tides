@@ -21,6 +21,7 @@ async function renderFrame({ root = layout.DEFAULT_ROOT, build = 'author', cente
   if (!['author', 'public'].includes(build)) throw new Error(`unknown build "${build}"; use author or public`);
   if (!Number.isInteger(width) || width < 1 || !Number.isInteger(height) || height < 1) throw new Error('width and height must be positive integers');
   if (!(span > 0)) throw new Error('span must be positive');
+  if (!Array.isArray(center) || center.length !== 2 || !center.every(Number.isFinite)) throw new Error('center must be two numbers, x,y');
   const sharp = require('sharp');
   const chart = painter || createPainter(root, { build });
   const px = span / width;

@@ -246,14 +246,24 @@
         : item.name;
       if (!labelText) continue;
       const treatment = item.kind === 'region' && item.ref.treatment ? ` t-${item.ref.treatment}` : '';
-      // Regions and sites carry their soundings: canon values, in italic.
-      const depth = item.kind === 'region' || item.kind === 'site' ? Core.sounding(item.ref) : null;
+      // Sites carry their soundings beside their names: canon values, in
+      // italic. Region soundings print at their own points, below.
+      const depth = item.kind === 'site' ? Core.sounding(item.ref) : null;
       const label = el('div', { class: `label ${item.kind}${treatment}${spec}`, 'data-id': item.id }, el('span', {}, [
         labelText,
         depth ? el('em', { class: 'depth', text: depth.note ? `${depth.value} · ${depth.note}` : depth.value }) : null
       ]));
       labels.append(label);
       state.labels.push({ node: label, item, point });
+      // A region's sounding sits where the field reads its value.
+      const regionDepth = item.kind === 'region' && item.ref.sounding_xy ? Core.sounding(item.ref) : null;
+      if (regionDepth) {
+        const sounding = el('div', { class: `label sounding ink-${item.ref.sounding_ink || 'light'}${spec}`, 'data-id': item.id }, el('span', {
+          text: regionDepth.note ? `${regionDepth.value} · ${regionDepth.note}` : regionDepth.value
+        }));
+        labels.append(sounding);
+        state.labels.push({ node: sounding, item, point: vp(item.ref.sounding_xy) });
+      }
     }
     // Isopleth values, set along their lines with a knockout in the band's
     // tint. These are interpolation bands, never measurements.
@@ -577,6 +587,14 @@
     // URLs, so a re-render is never mixed with cached tiles.
     const manifest = await fetch('tiles/galaxy.json', { cache: 'no-store' }).then(r => (r.ok ? r.json() : null), () => null);
     state.hasTiles = Boolean(manifest);
+    // Overlays must map with the extent the tiles were rendered at; tiles
+    // from an older frame would otherwise misregister every overlay.
+    if (manifest && typeof manifest.extent === 'number' && manifest.extent !== state.extent) {
+      state.extent = manifest.extent;
+      const notice = $('#notice');
+      notice.textContent = `The tiles were rendered for an older chart frame (extent ${manifest.extent}, data ${state.data.image.extent}). Run npm run map:tiles to match.`;
+      notice.hidden = false;
+    }
     if (!state.hasTiles) {
       document.body.classList.add('no-tiles');
       const notice = $('#notice');

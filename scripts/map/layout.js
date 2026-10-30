@@ -129,10 +129,40 @@ function resolveArms(cartography) {
   if (!feature || !Number.isInteger(feature.count) || feature.count < 1) {
     throw new Error(`field.arms.feature names ${arms.feature}, which is not a feature with a whole-number count`);
   }
-  if (!(arms.from < arms.full && arms.full <= arms.fade && arms.fade < arms.to)) {
-    throw new Error('field.arms must satisfy from < full <= fade < to');
+  if (!(arms.from > 0 && arms.from < arms.full && arms.full < arms.fade && arms.fade < arms.to)) {
+    throw new Error('field.arms must satisfy 0 < from < full < fade < to');
   }
   return { ...arms, count: feature.count };
+}
+
+// The placement file as one build sees it. The public build leaves out
+// draft features, so no draft texture (arms, lanes, eddies, knots) shapes
+// its tiles or data (decision D7).
+function forBuild(cartography, build) {
+  if (build !== 'public') return cartography;
+  return { ...cartography, features: (cartography.features || []).filter(feature => feature.tier !== 'draft') };
+}
+
+// Where a region's sounding is printed: a point inside the region where the
+// field reads the region's canon value (rule R11). For an annulus, whose
+// field the arms vary along each ring, that is the point on its probe ring
+// nearest the probe that `accept` takes (by default, within 0.004 of the
+// value), or failing that the closest; for any other shape, its first probe.
+function soundingPoint(shape, field, value, accept = f => Math.abs(f - value) <= 0.004) {
+  const probe = shape.probes[0];
+  if (shape.type !== 'annulus') return probe;
+  const r = Math.hypot(probe[0], probe[1]);
+  const start = Math.atan2(probe[1], probe[0]);
+  let best = null;
+  for (let k = 0; k <= 720; k++) {
+    const a = start + Math.ceil(k / 2) * (k % 2 ? 1 : -1) * (Math.PI / 360);
+    const point = [r * Math.cos(a), r * Math.sin(a)];
+    const f = field(point[0], point[1]);
+    const miss = Math.abs(f - value);
+    if (accept(f)) return point;
+    if (!best || miss < best.miss) best = { point, miss };
+  }
+  return best.point;
 }
 
 // `include` limits which entities' densities shape the field; the public
@@ -165,5 +195,7 @@ module.exports = {
   regionAliases,
   findBand,
   resolveArms,
+  forBuild,
+  soundingPoint,
   createMapField
 };

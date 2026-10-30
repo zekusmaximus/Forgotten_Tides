@@ -32,6 +32,11 @@ const TINTS = [
   [7, 9, 13], [10, 13, 19], [13, 17, 25], [16, 22, 32], [20, 28, 40], [25, 34, 48],
   [34, 39, 48], [50, 47, 43], [74, 61, 42], [104, 81, 47], [146, 111, 61], [204, 162, 96], [238, 216, 168]
 ];
+// The tint band a density prints in. A value on a band edge counts as above
+// it, with room for floating-point error, as the painter draws a flat plateau.
+const tintBand = value => TINT_STOPS.filter(stop => value >= stop - 1e-9).length;
+// Where a sounding may print: within 0.004 of its value, in the same band.
+const readsAs = value => f => Math.abs(f - value) <= 0.004 && tintBand(f) === tintBand(value);
 const LIGHT_INK = [236, 229, 212];
 const DARK_INK = [40, 27, 12];
 const GHOST_INK = [118, 164, 186];
@@ -109,7 +114,8 @@ const luminance = (r, g, b) => 0.2126 * r + 0.7152 * g + 0.0722 * b;
 function createPainter(root, { build = 'author', network = null, extras = [] } = {}) {
   // simplex-noise is required here so tests that never render do not load it.
   const { createNoise2D } = require('simplex-noise');
-  const context = layout.loadMapContext(root);
+  const loaded = layout.loadMapContext(root);
+  const context = { ...loaded, cartography: layout.forBuild(loaded.cartography, build) };
   const shapes = layout.buildShapes(context.cartography);
   const include = build === 'public' ? entity => layout.CANON_TIERS.has(entity.tier) : () => true;
   const { field } = layout.createMapField(context, shapes, { include });
@@ -134,7 +140,8 @@ function createPainter(root, { build = 'author', network = null, extras = [] } =
     fractureDepth: (x, y) => depthOf(masks.fracture, x, y),
     ashDepth: (x, y) => depthOf(masks.ash, x, y)
   });
-  const layers = [createLaneLayer(lanes, { eddyInk: LIGHT_INK, lanes: featureKeys.has('corridor-lanes'), eddies: featureKeys.has('eddies') }), ...extras];
+  const features = { lanes: featureKeys.has('corridor-lanes'), eddies: featureKeys.has('eddies'), knots: featureKeys.has('black-hole-knots') };
+  const layers = [createLaneLayer(lanes, { eddyInk: LIGHT_INK, lanes: features.lanes, eddies: features.eddies }), ...extras];
   const knotFeature = (cartography.features || []).find(feature => feature.key === 'black-hole-knots');
   const knots = knotFeature ? (knotFeature.positions || []).map(at => toXY(at.r, at.theta)) : [];
   const pocketCenters = masks.ash.flatMap(shape => (shape.items || [shape]).map(item => item.center));
@@ -303,8 +310,11 @@ function createPainter(root, { build = 'author', network = null, extras = [] } =
 
     // Distance in pixels from value f to the nearest contour of a class,
     // and how much that class shows given its spacing on the page.
+    // A flat plateau (an overlay region's interior) has no isopleth, even
+    // when its value is a contour level.
     function contourInk(f, grad, isGhost) {
-      const unit = Math.max(grad * px, 1e-9);
+      if (grad * px < 1e-7) return 0;
+      const unit = grad * px;
       let k = Math.round(f / CONTOUR_STEP);
       if (k < 1) k = 1;
       if (k > 19) k = 19;
@@ -356,13 +366,15 @@ function createPainter(root, { build = 'author', network = null, extras = [] } =
           [f, grad] = exact(sx, sy);
         }
 
-        // 1. Stepped tint, antialiased across each band edge.
-        const unit = Math.max(grad * px, 1e-9);
+        // 1. Stepped tint, antialiased across each band edge. A flat plateau
+        // takes its band outright (as tintBand counts it), never a blend.
+        const unit = grad * px;
+        const flat = unit < 1e-7;
         let cr = TINTS[0][0];
         let cg = TINTS[0][1];
         let cb = TINTS[0][2];
         for (let k = 0; k < TINT_STOPS.length; k++) {
-          const t = (f - TINT_STOPS[k]) / unit + 0.5;
+          const t = flat ? (f >= TINT_STOPS[k] - 1e-9 ? 1 : 0) : (f - TINT_STOPS[k]) / unit + 0.5;
           if (t <= 0) break;
           const s = t >= 1 ? 1 : t;
           cr += tintDelta[k][0] * s;
@@ -472,7 +484,8 @@ function createPainter(root, { build = 'author', network = null, extras = [] } =
           cr += (VOID_COLOR[0] - cr) * hole; cg += (VOID_COLOR[1] - cg) * hole; cb += (VOID_COLOR[2] - cb) * hole;
         }
         const r = Math.hypot(x, y);
-        if (r > NEATLINE - 0.25) {
+        // The rim's ink never reaches into a Void's interior.
+        if (r > NEATLINE - 0.25 && hole < 1) {
           [cr, cg, cb] = paintRim(cr, cg, cb, x, y, r, px, paper[p] || grain(x, y, px));
         }
         rgb[o] = cr; rgb[o + 1] = cg; rgb[o + 2] = cb;
@@ -648,18 +661,20 @@ function createPainter(root, { build = 'author', network = null, extras = [] } =
     }
   }
 
-  // A pyramid tile: level `levelInfo`, column `col`, row `row`.
+  // A pyramid tile: level `levelInfo`, column `col`, row `row`. A level
+  // pixel covers `scale` source pixels, so its size follows the source size
+  // even where the level's dimension was rounded up.
   function paint(levelInfo, col, row, tile, extent = layout.IMAGE_EXTENT) {
-    const { dim } = levelInfo;
+    const { dim, scale, size } = levelInfo;
     const w = Math.min(tile, dim - col * tile);
     const h = Math.min(tile, dim - row * tile);
-    const px = (2 * extent) / dim;
+    const px = (2 * extent * scale) / size;
     const x0 = -extent + (col * tile + 0.5) * px;
     const y0 = extent - (row * tile + 0.5) * px;
     return { buffer: paintWindow(x0, y0, px, w, h), width: w, height: h };
   }
 
-  return { paint, paintWindow, field, masks, shardAt, throughShard, network: lanes };
+  return { paint, paintWindow, field, masks, features, shardAt, throughShard, network: lanes };
 }
 
-module.exports = { createPainter, hash2, mulberry32, TINT_STOPS, TINTS, VOID_COLOR, NEATLINE, FRAME_OUT, SHARD_REACH, MISREGISTER };
+module.exports = { createPainter, hash2, mulberry32, tintBand, readsAs, TINT_STOPS, TINTS, VOID_COLOR, NEATLINE, FRAME_OUT, SHARD_REACH, MISREGISTER };

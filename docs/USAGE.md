@@ -186,8 +186,9 @@ npm run map:frame -- --center 0.6,0.5 --span 0.3 --width 1600   # one crop to ou
 npm run test:map-browser                  # headless browser tests; screenshots in out/map/screenshots/
 ```
 
-`map:tiles` takes `--build`, `--size` (default 16384), `--workers`, and
-`--quality`, and checks them before touching any existing tiles. Iterate at
+`map:tiles` takes `--build`, `--size` (default 16384), `--tile` (default
+256, a multiple of 8), `--workers`, and `--quality`, and checks them before
+touching any existing tiles. Iterate at
 16k; render 65k for release. A 65k render writes about 87,000 tiles, close
 to 1 GB, so render it to a drive with room and never commit it. The public
 tiles go to `out/map/tiles-public/`, so no speculative density reaches the

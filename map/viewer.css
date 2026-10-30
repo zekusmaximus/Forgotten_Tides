@@ -112,7 +112,8 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--focus-ring)
 .label.speculative, .pin.speculative { opacity: 0.55; }
 .label.region.t-fracture span { text-shadow: 2px 1.5px 0 rgba(118, 164, 186, 0.75), 0 0 4px var(--void-0); }
 .label .depth { display: block; margin-top: 3px; font: italic 500 11px/1.2 var(--mono); letter-spacing: 0; text-transform: none; color: var(--amber-bright); }
-.label.region .depth { text-align: center; }
+.label.sounding span { font: italic 500 11px/1.2 var(--mono); color: var(--amber-bright); transform: translate(-50%, 6px); }
+.label.sounding.ink-dark span { color: #5a3a0e; text-shadow: none; }
 .label.isopleth span { font: 500 10px/1 var(--mono); padding: 0 2px; background: var(--knockout); text-shadow: none; }
 .label.isopleth.ink-light span { color: rgba(236, 229, 212, 0.8); }
 .label.isopleth.ink-dark span { color: rgba(40, 27, 12, 0.85); }

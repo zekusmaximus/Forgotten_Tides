@@ -155,13 +155,13 @@ sleeve, per T18).
 | R8 | The universe-level dark-matter scaffold is unlabeled. | Q13 |
 | R9 | The Fourth and Ninth Sleeves draw as softening after the breach. No figure is attached. | `atlas/Helios_Drift.md` |
 | R10 | Corridor lanes and eddies are computed from the density field and are illustrative. Lanes join anonymous hubs, never named sites, and are not canon routes; corridors are temporary. Eddy glyphs are an area symbol whose count and positions carry no canon weight. | Plan §4.2; `mechanics/CORRIDOR_MECHANICS.md` §1, §5.1; R2 |
-| R11 | Spiral arms modulate the density field by a factor that averages exactly 1 around every circle, so an annulus region's canon value is checked as the field's average around its probe ring. Every canon value prints in the same tint band as the field at its probe. | D2; T2 |
+| R11 | Spiral arms modulate the density field by a factor that averages exactly 1 around every circle. An annulus region's canon value is checked as the field's average around its probe ring, and the field may stray no more than 0.06 from it anywhere on that ring; through the Drift the arms stay gentle, so the Tessarine Vault still peaks above it. Every other probe and site must read its value within 0.02 and in the same tint band. A region's sounding is printed where the field reads its value, in its band; the Voids print none. | D2; T2; §6 |
 
 ## 6. Density Consistency
 
-`npm run lint:map` checks the field against these soundings (within 0.02,
-and in the same tint band of the chart, per R11). Region values fall
-strictly with radius:
+`npm run lint:map` checks the field against these soundings, in the author
+build and the public build, per R11. Region values fall strictly with
+radius:
 
 > Core 0.97 > Drift 0.65 > Gap 0.31 > Seas 0.04 > Horizon 0.01
 

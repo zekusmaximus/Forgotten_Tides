@@ -29,17 +29,21 @@ function lerp(a, b, t) {
 
 // Logarithmic spiral arms. The modulation is a sum of harmonics of the arm
 // phase, each averaging zero around a circle, so the factor averages exactly
-// 1 at every radius. Its strength rises from `from` to `amplitude` at
-// `full`, grows to `outer_amplitude` at `fade` (arms show most in the outer
-// disk), and falls to nothing at `to`; outside that span the factor is 1.
-function createArms({ count, pitch, amplitude, outer_amplitude: outerAmplitude = amplitude, phase = 0, from, full, fade, to }) {
+// 1 at every radius. Its strength rises from nothing at `from` to
+// `amplitude` at `full` and holds there through the belt, so a belt region
+// keeps close to its canon value along every ring. Past the belt's outer
+// edge (`grow`) it grows to `outer_amplitude` at `fade`, where arms show
+// most, and falls to nothing at `to`. Outside that span the factor is 1.
+function createArms({ count, pitch, amplitude, outer_amplitude: outerAmplitude = amplitude, phase = 0, from, full, fade, to }, grow = full) {
   const wind = 1 / Math.tan(pitch * DEG);
+  const start = Math.min(Math.max(grow, full), fade);
   return (x, y, r) => {
     if (r <= from || r >= to) return 1;
-    const envelope = smoothstep(from, full, r) * (1 - smoothstep(fade, to, r)) * lerp(1, outerAmplitude / (amplitude || 1), smoothstep(full, fade, r));
-    if (envelope === 0) return 1;
+    const strength = smoothstep(from, full, r) * (1 - smoothstep(fade, to, r)) *
+      (r <= start || start >= fade ? amplitude : lerp(amplitude, outerAmplitude, smoothstep(start, fade, r)));
+    if (strength === 0) return 1;
     const phi = count * (Math.atan2(y, x) - phase * DEG - wind * Math.log(r / from));
-    return 1 + amplitude * envelope * (Math.cos(phi) + 0.35 * Math.cos(2 * phi));
+    return 1 + strength * (Math.cos(phi) + 0.35 * Math.cos(2 * phi));
   };
 }
 
@@ -81,7 +85,7 @@ function createField({ config, shapes, values, sites = [], arms = null }) {
   const overlays = (config.overlays || [])
     .filter(id => shapes.has(id) && values.has(id))
     .map(id => ({ shape: shapes.get(id), value: values.get(id) }));
-  const armFactor = arms ? createArms(arms) : () => 1;
+  const armFactor = arms ? createArms(arms, beltOuter) : () => 1;
   const kernels = sites.map(site => {
     const [x, y] = toXY(site.r, site.theta);
     return { x, y, value: site.value };
@@ -120,4 +124,14 @@ function ringMean(fn, r, samples = 720) {
   return sum / samples;
 }
 
-module.exports = { createField, createArms, ringMean, smoothstep };
+// The farthest `fn` strays from `value` around the circle of radius r.
+function ringStray(fn, r, value, samples = 720) {
+  let stray = 0;
+  for (let k = 0; k < samples; k++) {
+    const a = (2 * Math.PI * k) / samples;
+    stray = Math.max(stray, Math.abs(fn(r * Math.cos(a), r * Math.sin(a)) - value));
+  }
+  return stray;
+}
+
+module.exports = { createField, createArms, ringMean, ringStray, smoothstep };

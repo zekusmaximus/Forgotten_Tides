@@ -46,10 +46,10 @@
           "properties": {
             "feature": { "$ref": "#/definitions/key" },
             "pitch": { "type": "number", "exclusiveMinimum": 0, "exclusiveMaximum": 90, "description": "Pitch angle of the logarithmic spiral, in degrees" },
-            "amplitude": { "type": "number", "minimum": 0, "maximum": 0.5 },
+            "amplitude": { "type": "number", "minimum": 0, "maximum": 0.5, "description": "Strength through the belt; the lint bounds how far it moves the belt's field along its probe ring" },
             "outer_amplitude": { "type": "number", "minimum": 0, "maximum": 0.6 },
             "phase": { "type": "number", "description": "Rotation of the arms, in degrees" },
-            "from": { "type": "number", "minimum": 0 },
+            "from": { "type": "number", "exclusiveMinimum": 0 },
             "full": { "type": "number", "minimum": 0 },
             "fade": { "type": "number", "minimum": 0 },
             "to": { "type": "number", "exclusiveMinimum": 0 }

@@ -22,7 +22,7 @@ const yaml = require('js-yaml');
 const layout = require('./layout');
 const { toXY } = require('./geometry');
 const { placeIsoplethLabels } = require('./isopleths');
-const { TINT_STOPS, TINTS } = require('./painter');
+const { TINT_STOPS, TINTS, tintBand, readsAs } = require('./painter');
 const { lintCartography } = require('../lint/cartography_lint');
 
 const LINK_TYPES = new Set(['story', 'character', 'faction']);
@@ -136,7 +136,7 @@ function buildMapData({ root = layout.DEFAULT_ROOT, build = 'author' } = {}) {
   // this build's tiles, so the public file never reflects a speculative
   // density.
   const include = isPublic ? entity => layout.CANON_TIERS.has(entity.tier) : () => true;
-  const { field } = layout.createMapField(context, shapes, { include });
+  const { field } = layout.createMapField({ ...context, cartography: layout.forBuild(cartography, build) }, shapes, { include });
   const depthOf = treatment => {
     const list = cartography.regions
       .filter(region => region.treatment === treatment && include(atlas.get(region.id) || { tier: 'speculative' }))
@@ -144,6 +144,19 @@ function buildMapData({ root = layout.DEFAULT_ROOT, build = 'author' } = {}) {
     return (x, y) => list.reduce((d, shape) => Math.max(d, shape.depth(x, y)), -Infinity);
   };
   const hex = c => `#${c.map(v => v.toString(16).padStart(2, '0')).join('')}`;
+  // Each region's sounding prints where the field reads its value, in its
+  // tint band (rule R11). Voids print none: nothing is charted inside. A
+  // region sounding beside a site with the same value would only repeat it.
+  for (const region of regions) {
+    region.sounding_xy = null;
+    if (region.memory_density === null || region.treatment === 'void') continue;
+    const value = region.memory_density;
+    const point = layout.soundingPoint(shapes.get(region.id), field, value, readsAs(value));
+    if (sites.some(site => site.memory_density === value && Math.hypot(site.xy[0] - point[0], site.xy[1] - point[1]) < 0.06)) continue;
+    const tint = TINTS[tintBand(value)];
+    region.sounding_xy = point.map(v => Number(v.toFixed(5)));
+    region.sounding_ink = 0.2126 * tint[0] + 0.7152 * tint[1] + 0.0722 * tint[2] > 110 ? 'dark' : 'light';
+  }
   const chart = {
     tints: TINTS.map((color, k) => ({ from: k === 0 ? 0 : TINT_STOPS[k - 1], to: k < TINT_STOPS.length ? TINT_STOPS[k] : 1, color: hex(color) })),
     isopleth_interval: 0.05,

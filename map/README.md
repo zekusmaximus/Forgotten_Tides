@@ -12,12 +12,16 @@ them. The decisions behind it are in `design/map/CARTOGRAPHIC_BRIEF.md` and
   edges are the isopleths, majors every 0.1 and minors every 0.05. Minors
   appear as you zoom. Isopleth values (small upright numerals set along the
   lines) are interpolated band edges, not measurements.
-- **Soundings.** Italic amber values beside a site or region name are canon
-  `memory_density` values, the only measured numbers on the chart. A
-  pre-breach value says so.
+- **Soundings.** Italic values are canon `memory_density` values, the only
+  measured numbers on the chart. A site's sits beside its name. A region's
+  prints where the field reads that value, in its tint band (rule R11). The
+  Void Regions print none, since nothing inside is charted. A pre-breach
+  value says so.
 - **Spiral arms** carry the density gradient (decision D2). They vary the
-  field along each ring while keeping its average, so a region's canon value
-  holds as a ring average (rule R11).
+  field along each ring while keeping its average. Through the Helios Drift
+  they stay gentle: the lint holds its field within 0.06 of 0.65 all around
+  its mid-radius ring, so the Tessarine Vault still peaks above it. Beyond
+  the Drift they grow strong (rule R11).
 - **Region treatments.** The Lattice Gap breaks into splinters, prints its
   linework a second time out of register, and carries two hatch screens
   whose moiré stands for its disrupted harmonics. The Remnant Seas are
@@ -120,16 +124,24 @@ as HTML.
 
 - `npm run test:map` runs in `validate:ci` and covers the viewer logic, the
   server boundary (traversal, symlinks, and extensions), the renderer, and
-  the chart layers: empty Void interiors at two zooms, lanes and eddies kept
-  out of the Voids and Seas, eddies facing up the gradient, isopleth labels
-  clear of Voids, the Seas, the Gap, and sites, and the frame renderer.
+  the chart layers:
+  - empty Void interiors at two zooms;
+  - tiles that agree across their seams;
+  - flat plateaus;
+  - lanes kept out of the Voids, and eddies out of the Voids and the Seas;
+  - eddies densest in the Gap and facing up the gradient;
+  - isopleth labels clear of Voids, the Seas, the Gap, and sites;
+  - layers switched by the placement file;
+  - the frame renderer.
 - `npm run test:map-browser` runs in its own CI job in headless Chromium. It
   covers:
   - the three lens states, each checked against a structural snapshot from
     the data: every pin's visibility matches its tier, speculative pins are
     dashed and faded, and canon pins are solid;
-  - the furniture, soundings (including a pre-breach note), and isopleth
-    values and minimap by zoom;
+  - the furniture, soundings (including a pre-breach note and none for the
+    Voids), and isopleth values and minimap by zoom;
+  - tiles rendered for an older frame, which keep the overlays registered and
+    say so;
   - versioned tile URLs;
   - search, including Escape;
   - deep links;

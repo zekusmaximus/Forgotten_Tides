@@ -38,7 +38,7 @@ function pyramid(size, tile) {
     const scale = 2 ** (maxLevel - level);
     const dim = Math.ceil(size / scale);
     const count = Math.ceil(dim / tile);
-    return { level, scale, dim, cols: count, rows: count };
+    return { level, scale, dim, cols: count, rows: count, size };
   });
 }
 
@@ -74,7 +74,9 @@ async function renderTiles({
 } = {}) {
   // Validate everything before anything on disk changes.
   if (!['author', 'public'].includes(build)) throw new Error(`unknown build "${build}"; use author or public`);
-  if (!Number.isInteger(tile) || tile < 64) throw new Error(`tile (${tile}) must be an integer of at least 64`);
+  // Tiles must share the painter's interpolation grid nodes (spacing 1 to 8
+  // pixels), or neighbors would disagree at their seams.
+  if (!Number.isInteger(tile) || tile < 64 || tile % 8 !== 0) throw new Error(`tile (${tile}) must be a multiple of 8, at least 64`);
   if (!Number.isInteger(size) || size < tile) throw new Error(`size (${size}) must be an integer of at least tile (${tile})`);
   if (!Number.isInteger(workers) || workers < 1) throw new Error(`workers (${workers}) must be a positive integer`);
   if (!Number.isInteger(quality) || quality < 1 || quality > 100) throw new Error(`quality (${quality}) must be an integer from 1 to 100`);

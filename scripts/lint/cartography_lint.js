@@ -20,8 +20,11 @@
  *   `memory_density` within 0.02 at its probes, and no non-finite value
  *   passes. An annulus is checked by the field's average around the ring at
  *   its probe radius, since the spiral arms vary it along the ring by
- *   design. Each value must also print in the same tint band of the chart
- *   as the canon value (rule R11). A site with a density pulls the field to its own value by design
+ *   design, and the field may stray no more than 0.06 from the value
+ *   anywhere on that ring. Each value must also print in the same tint band
+ *   as the canon value, at its probe and at the point where its sounding is
+ *   printed (rule R11). The public build's field (canon densities and
+ *   non-draft textures only) is checked the same way. A site with a density pulls the field to its own value by design
  *   (sites may peak above their surroundings), so at sites this only guards
  *   against overlapping kernels; a site's placement is checked by
  *   containment.
@@ -43,17 +46,16 @@ const { loadFrontmatter } = require('../lib/file_loader');
 const { inferCanonTier } = require('../lib/canon_policy');
 const { touches, disjoint, toXY } = require('../map/geometry');
 const layout = require('../map/layout');
-const { ringMean } = require('../map/field');
-const { TINT_STOPS } = require('../map/painter');
-
-// The tint band a density prints in on the chart. A value on a band edge
-// counts as above it, with room for floating-point error in ring averages.
-const tintBand = value => TINT_STOPS.filter(stop => value >= stop - 1e-9).length;
+const { ringMean, ringStray } = require('../map/field');
+const { tintBand, readsAs } = require('../map/painter');
 
 const SCHEMA_PATH = path.join(__dirname, '../../docs/schemas/cartography.schema.json');
 const EDGE_TOLERANCE = 0.01;
 const POSITION_TOLERANCE = 0.006;
 const FIDELITY_TOLERANCE = 0.02;
+// How far the arms may move an annulus region's field from its canon value
+// anywhere along its probe ring (rule R11).
+const RING_TOLERANCE = 0.06;
 const CONTENT_ROOTS = [
   'atlas/', 'bible/', 'characters/', 'data/lexicon/', 'data/timeline/',
   'factions/', 'lore/', 'manuals/', 'mechanics/', 'stories/'
@@ -280,33 +282,66 @@ function lintCartography({ root = layout.DEFAULT_ROOT } = {}) {
     }
   }
 
-  // Density fidelity.
-  let map;
-  try {
-    map = layout.createMapField(context, shapes);
-  } catch (err) {
-    error('field', err.message);
-    return done();
-  }
-  const check = (at, name, value, [x, y], ring = false) => {
-    const got = ring ? ringMean(map.field, Math.hypot(x, y)) : map.field(x, y);
-    if (!(Math.abs(got - value) <= FIDELITY_TOLERANCE)) {
-      error(at, `density fidelity: the field gives ${got.toFixed(3)} at ${name}, but the atlas value is ${value}`);
-    } else if (tintBand(got) !== tintBand(value)) {
-      error(at, `rendered band: the field gives ${got.toFixed(3)} at ${name}, which prints in a different tint band from the atlas value ${value} (R11)`);
+  // Density fidelity, for each build's field: the author build's, and the
+  // public build's (canon densities and non-draft textures only), which
+  // draws the public tiles (decision D7). A failure in both is reported once.
+  const failed = new Set();
+  const builds = [['author', () => true], ['public', entity => layout.CANON_TIERS.has(entity.tier)]];
+  for (const [build, include] of builds) {
+    let map;
+    try {
+      map = layout.createMapField({ ...context, cartography: layout.forBuild(cartography, build) }, shapes, { include });
+    } catch (err) {
+      error('field', err.message);
+      return done();
     }
-  };
-  for (const region of regions) {
-    if (!map.values.has(region.id)) continue;
-    const shape = shapes.get(region.id);
-    shape.probes.forEach((probe, k) => {
-      const ring = shape.type === 'annulus';
-      check(`regions[${region.id}]`, ring ? `the ring average at probe ${k}` : `probe ${k}`, map.values.get(region.id), probe, ring);
-    });
-  }
-  for (const site of sites) {
-    const entity = atlas.get(site.id);
-    if (entity && entity.memory_density !== null) check(`sites[${site.id}]`, 'its point', entity.memory_density, points.get(site.id).xy);
+    const tag = build === 'public' ? ' (public build)' : '';
+    const check = (at, name, value, got) => {
+      const key = `${at}|${name}`;
+      if (build === 'public' && failed.has(key)) return;
+      if (!(Math.abs(got - value) <= FIDELITY_TOLERANCE)) {
+        failed.add(key);
+        error(at, `density fidelity${tag}: the field gives ${got.toFixed(3)} at ${name}, but the atlas value is ${value}`);
+      } else if (tintBand(got) !== tintBand(value)) {
+        failed.add(key);
+        error(at, `rendered band${tag}: the field gives ${got.toFixed(3)} at ${name}, which prints in a different tint band from the atlas value ${value} (R11)`);
+      }
+    };
+    for (const region of regions) {
+      if (!map.values.has(region.id)) continue;
+      const at = `regions[${region.id}]`;
+      const value = map.values.get(region.id);
+      const shape = shapes.get(region.id);
+      shape.probes.forEach((probe, k) => {
+        if (shape.type !== 'annulus') {
+          check(at, `probe ${k}`, value, map.field(probe[0], probe[1]));
+          return;
+        }
+        // The arms vary an annulus along each ring by design: its average
+        // must hold the value, and no point on the ring may stray far.
+        const r = Math.hypot(probe[0], probe[1]);
+        check(at, `the ring average at probe ${k}`, value, ringMean(map.field, r));
+        const stray = ringStray(map.field, r, value);
+        const key = `${at}|ring ${k}`;
+        if (stray > RING_TOLERANCE && !(build === 'public' && failed.has(key))) {
+          failed.add(key);
+          error(at, `ring spread${tag}: along the ring at probe ${k} the field strays ${stray.toFixed(3)} from the atlas value ${value}; keep it within ${RING_TOLERANCE} (R11)`);
+        }
+      });
+      // A sounding prints where the field reads its value. Voids print none:
+      // nothing is charted inside them.
+      if (region.treatment !== 'void') {
+        const point = layout.soundingPoint(shape, map.field, value, readsAs(value));
+        check(at, 'its sounding point', value, map.field(point[0], point[1]));
+      }
+    }
+    for (const site of sites) {
+      const entity = atlas.get(site.id);
+      if (entity && entity.memory_density !== null && include(entity)) {
+        const [x, y] = points.get(site.id).xy;
+        check(`sites[${site.id}]`, 'its point', entity.memory_density, map.field(x, y));
+      }
+    }
   }
 
   // Routes.

@@ -18,6 +18,7 @@ const yaml = require('js-yaml');
 
 const geometry = require('../map/geometry');
 const { createField, ringMean } = require('../map/field');
+const layout = require('../map/layout');
 const { lintCartography } = require('../lint/cartography_lint');
 const { buildMapData } = require('../map/build_data');
 
@@ -350,6 +351,18 @@ const DEFECTS = [
   ['an approach route without a path', { cartography: c => { delete c.routes[0].from; c.routes[0].origin = 'none'; c.routes[0].start_within = 'loc-9003'; } }, "must have required property 'path'"],
   ['an along reference that does not resolve', { cartography: c => { c.features.push({ key: 'edge', label: 'Edge', kind: 'edge-line', tier: 'cartographic', along: 'loc-9099', rules: ['R1'] }); } }, 'along names loc-9099'],
   ['arms that name no counted feature', { cartography: c => { c.field.arms = { feature: 'spiral-arms', pitch: 16, amplitude: 0.1, from: 0.12, full: 0.24, fade: 0.8, to: 1 }; } }, 'field.arms.feature names spiral-arms'],
+  ['arms strong enough to swamp a belt region', {
+    cartography: c => {
+      c.field.arms = { feature: 'spiral-arms', pitch: 16, amplitude: 0.2, from: 0.12, full: 0.24, fade: 0.8, to: 1 };
+      c.features.push({ key: 'spiral-arms', label: 'Spiral arms', kind: 'texture', tier: 'cartographic', count: 2, rules: ['R1'] });
+    }
+  }, 'ring spread'],
+  ['arms that start at the center', {
+    cartography: c => {
+      c.field.arms = { feature: 'spiral-arms', pitch: 16, amplitude: 0.06, from: 0, full: 0.24, fade: 0.8, to: 1 };
+      c.features.push({ key: 'spiral-arms', label: 'Spiral arms', kind: 'texture', tier: 'cartographic', count: 2, rules: ['R1'] });
+    }
+  }, 'must be > 0'],
   // A neighbor's kernel pulls the Station from 0.705 to about 0.692: within
   // 0.02, but across the 0.7 band edge, so the chart would print it wrong.
   ['a canon value printed in the wrong tint band', {
@@ -368,11 +381,29 @@ for (const [name, mutate, fragment] of DEFECTS) {
 test('arms from a counted feature pass the lint, checked by ring average', () => {
   const report = lintWith({
     cartography: c => {
-      c.field.arms = { feature: 'spiral-arms', pitch: 16, amplitude: 0.1, outer_amplitude: 0.3, from: 0.12, full: 0.24, fade: 0.8, to: 1 };
+      c.field.arms = { feature: 'spiral-arms', pitch: 16, amplitude: 0.06, outer_amplitude: 0.3, from: 0.12, full: 0.24, fade: 0.8, to: 1 };
       c.features.push({ key: 'spiral-arms', label: 'Spiral arms', kind: 'texture', tier: 'cartographic', count: 2, rules: ['R1'] });
     }
   });
   assert.strictEqual(report.errors, 0, JSON.stringify(report.findings.filter(f => f.level === 'error'), null, 2));
+});
+
+test('a sounding point reads its region value, on the ring nearest the probe', () => {
+  const shapes = new Map([['core', geometry.disc({ radius: 0.12 })], ['belt', geometry.annulus({ inner: 0.12, outer: 0.62 })], ['rim', geometry.annulus({ inner: 1, outer: 1.2 })]]);
+  const values = new Map([['core', 0.9], ['belt', 0.6], ['rim', 0.02]]);
+  const config = { blend: 0.02, site_sigma: 0.01, belt_spread: 0.1, radial: { core: 'core', belt: 'belt', perimeter: 'rim' } };
+  const field = createField({ config, shapes, values, arms: { count: 2, pitch: 16, amplitude: 0.06, from: 0.12, full: 0.24, fade: 0.8, to: 1 } });
+  const belt = shapes.get('belt');
+  const point = layout.soundingPoint(belt, field, 0.6);
+  assert(Math.abs(field(...point) - 0.6) <= 0.004, `reads ${field(...point)}`);
+  assert(Math.abs(Math.hypot(...point) - Math.hypot(...belt.probes[0])) < 1e-9, 'on the probe ring');
+  assert.deepStrictEqual(layout.soundingPoint(shapes.get('core'), field, 0.9), shapes.get('core').probes[0], 'a disc prints at its probe');
+});
+
+test('the public build sees no draft feature', () => {
+  const cartography = { features: [{ key: 'a', tier: 'draft' }, { key: 'b', tier: 'cartographic' }] };
+  assert.deepStrictEqual(layout.forBuild(cartography, 'public').features.map(f => f.key), ['b']);
+  assert.strictEqual(layout.forBuild(cartography, 'author'), cartography);
 });
 
 test('the build places each sleeve on its own sub-band', () => {

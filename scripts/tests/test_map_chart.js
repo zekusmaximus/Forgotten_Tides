@@ -20,6 +20,25 @@ const { computeLanes, createLaneLayer } = require('../map/lanes');
 const { buildMapData } = require('../map/build_data');
 const { renderFrame } = require('../map/render_frame');
 const Core = require('../../map/viewer_core');
+const yaml = require('js-yaml');
+
+// A scratch copy of the map's inputs (atlas, placement file, brief), edited,
+// so a test can paint a variant of the real chart.
+function scratchRoot({ cartography = c => c, atlas = {} } = {}) {
+  const root = fs.mkdtempSync(path.join(os.tmpdir(), 'map-chart-'));
+  fs.cpSync(path.join(layout.DEFAULT_ROOT, 'atlas'), path.join(root, 'atlas'), { recursive: true });
+  for (const [file, edit] of Object.entries(atlas)) {
+    const full = path.join(root, 'atlas', file);
+    fs.writeFileSync(full, edit(fs.readFileSync(full, 'utf8')));
+  }
+  fs.mkdirSync(path.join(root, 'design', 'map'), { recursive: true });
+  const placements = yaml.load(fs.readFileSync(path.join(layout.DEFAULT_ROOT, layout.CARTOGRAPHY_PATH), 'utf8'));
+  fs.writeFileSync(path.join(root, layout.CARTOGRAPHY_PATH), yaml.dump(cartography(placements)));
+  fs.copyFileSync(path.join(layout.DEFAULT_ROOT, layout.BRIEF_PATH), path.join(root, layout.BRIEF_PATH));
+  return root;
+}
+const removeDir = dir => fs.rmSync(dir, { recursive: true, force: true, maxRetries: 5, retryDelay: 100 });
+const meanOf = buffer => buffer.reduce((sum, v) => sum + v, 0) / buffer.length;
 
 function test(name, fn) {
   return Promise.resolve()
@@ -78,6 +97,10 @@ function test(name, fn) {
         assert(row.subarray(0, w * 3).equals(left.subarray(v * w * 3, (v + 1) * w * 3)), `left tile row ${v} at ${cx},${cy}`);
         assert(row.subarray(w * 3).equals(right.subarray(v * w * 3, (v + 1) * w * 3)), `right tile row ${v} at ${cx},${cy}`);
       }
+      // And split the other way: a tall window against its top and bottom.
+      const tall = painter.paintWindow(x0, y0, px, w, 2 * w);
+      assert(tall.subarray(0, w * w * 3).equals(left), `top tile at ${cx},${cy}`);
+      assert(tall.subarray(w * w * 3).equals(painter.paintWindow(x0, y0 - w * px, px, w, w)), `bottom tile at ${cx},${cy}`);
     }
   });
 
@@ -157,6 +180,46 @@ function test(name, fn) {
       ashDepth: (x, y) => depthIn(masks.ash, x, y)
     });
     assert.deepEqual(again, network);
+  });
+
+  await test('the placement file switches the lanes, eddies, and knots', () => {
+    assert.deepEqual(painter.features, { lanes: true, eddies: true, knots: true });
+    const root = scratchRoot({ cartography: c => ({ ...c, features: c.features.filter(f => !['corridor-lanes', 'eddies', 'black-hole-knots'].includes(f.key)) }) });
+    try {
+      const bare = createPainter(root);
+      assert.deepEqual(bare.features, { lanes: false, eddies: false, knots: false });
+      const lane = network.lanes[0].points;
+      const [cx, cy] = lane[Math.floor(lane.length / 2)];
+      const args = [cx - 32 * 0.0002, cy + 32 * 0.0002, 0.0002, 64, 64];
+      assert(!painter.paintWindow(...args).equals(bare.paintWindow(...args)), 'the listed lane draws; the unlisted one does not');
+    } finally {
+      removeDir(root);
+    }
+    const draftRoot = scratchRoot({ cartography: c => ({ ...c, features: c.features.map(f => (f.key === 'corridor-lanes' ? { ...f, tier: 'draft' } : f)) }) });
+    try {
+      assert.equal(createPainter(draftRoot, { build: 'public' }).features.lanes, false, 'a draft texture stays out of the public build');
+      assert.equal(createPainter(draftRoot).features.lanes, true, 'the author build keeps it');
+    } finally {
+      removeDir(draftRoot);
+    }
+  });
+
+  await test('a region whose value sits on a contour level and a band edge prints flat', () => {
+    // The Gap's plateau at 0.30 (a major isopleth and a tint edge) must look
+    // like the same plateau at 0.33: no contour ink flooding the interior,
+    // no blend of two tints.
+    const paintGapAt = value => {
+      const root = scratchRoot({ atlas: { 'Lattice_Gap.md': text => text.replace(/memory_density: 0\.31/, `memory_density: ${value}`) } });
+      try {
+        const [x, y] = [0.86 * Math.cos((41 * Math.PI) / 180), 0.86 * Math.sin((41 * Math.PI) / 180)];
+        return createPainter(root).paintWindow(x - 0.01, y + 0.01, 0.0003, 64, 64);
+      } finally {
+        removeDir(root);
+      }
+    };
+    const onEdge = meanOf(paintGapAt(0.3));
+    const inside = meanOf(paintGapAt(0.33));
+    assert(Math.abs(onEdge - inside) < 3, `mean ${onEdge.toFixed(1)} on the edge against ${inside.toFixed(1)} inside the band`);
   });
 
   await test('lanes and eddies draw only when the placement file lists them', () => {
