@@ -25,12 +25,12 @@ continuity:
     - He has stretched this frame's service life for two seasons with calculations and temporary braces, measures the bowed corner against a wax mark, and moves the two youngest into the galley.
     - The pod's coherence-frame remains overdue for retuning at the end of story-0004; Yenu's recitation firms a corner without replacing physical maintenance.
   watchlist:
-    - Later closure, retuning, additional training, and the delivery-cost ledger in story-0021 remain provisional pending author review.
+    - Story-0021 supplies an approved source for the later closure, retuning, and delivery-cost ledger; incorporating additional claims into this profile, including training claims, still requires separate claim review.
     - Keep recitation and structural work complementary; neither supplies free, permanent stabilization, and Skather-Ait's design does not establish a rule for other pods.
 metadata:
   status: canonical
   created: '2026-09-24T00:00:00.000Z'
-  modified: '2026-10-29T00:00:00.000Z'
+  modified: '2026-10-30T07:45:59.787Z'
 ---
 
 # Hol-Vren
@@ -47,13 +47,14 @@ into the galley. His brace remains at the story's end: filament replacement
 and retuning are still unpaid, even when recitation firms the galley soft
 place a fraction.
 
-## Unapproved continuation
+## Source-approved continuation pending profile review
 
-Draft *Receipt for a Voice* (story-0021) proposes a later closure of the
+Primary *Receipt for a Voice* (story-0021) depicts a later closure of the
 sleeping cells, a repair filament delayed by H-37's suspended certification,
 and Hol-Vren's eventual retuning with Yenu's help. Its maintenance slate
 records the materials, labor, route, and donor-memory cost. These later
-events and additional training remain unapproved.
+events now have an approved story source; incorporating additional claims
+into this profile, including training claims, still requires separate claim review.
 
 ## Editorial guidance
 

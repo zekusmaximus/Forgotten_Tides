@@ -46,11 +46,11 @@ continuity:
     - Avoid making Tess saintly; her credibility depends on being honest in Halix's hard commercial sense.
     - Do not let her invent new Light-Bequest doctrine or override Drift Clade inheritance practice outside her own bench.
     - Keep her conflicts grounded in price, provenance, and custody rather than heroic rescue.
-    - Story-0015 supplies an approved source for additional profile claims that await separate entry review; story-0021's rendering and later outcomes remain draft. Neither establishes a general closure rule.
+    - Stories 0015 and 0021 supply approved sources for additional profile claims that await separate entry review, including story-0021's rendering capability and later outcomes. Neither establishes a general closure rule.
 metadata:
   status: canonical
   created: '2026-07-07T00:00:00.000Z'
-  modified: '2026-10-29T00:00:00.000Z'
+  modified: '2026-10-30T07:45:59.787Z'
 ---
 
 # Tess Vlin
@@ -79,9 +79,10 @@ financial and professional cost. These facts now have an approved story
 source; adding them to this profile's authoritative summary and invariants
 still requires a separate claim review.
 
-Draft *Receipt for a Voice* (story-0021) builds on that cost and proposes Tess
+Primary *Receipt for a Voice* (story-0021) builds on that cost and depicts Tess
 rendering Yenu's personal memory for transport. Its later outcomes and
-additional capabilities remain unapproved.
+additional capabilities now have an approved story source; incorporating
+them into this profile's authoritative baseline still requires separate claim review.
 
 ## Editorial guidance
 
