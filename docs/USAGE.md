@@ -178,7 +178,7 @@ leaves speculative entities and draft material out of the file itself.
 ```bash
 npm run map:data                          # data for the viewer
 npm run map:tiles                         # 16k chart, about 2.5 minutes on 4 cores
-npm run map:tiles -- --size 65536         # 65k release chart, about 40 minutes on 4 cores
+npm run map:tiles -- --size 65536         # 65k release chart, about 36 minutes on 4 cores
 npm run map:tiles -- --build public       # public tiles, from canon densities only
 npm run map                               # http://127.0.0.1:8081/map/ (author build)
 npm run map -- --build public             # serve the public build instead
@@ -189,8 +189,8 @@ npm run test:map-browser                  # headless browser tests; screenshots 
 `map:tiles` takes `--build`, `--size` (default 16384), `--tile` (default
 256, a multiple of 8), `--workers`, and `--quality`, and checks them before
 touching any existing tiles. Iterate at
-16k; render 65k for release. A 65k render writes about 87,000 tiles, close
-to 1 GB, so render it to a drive with room and never commit it. The public
+16k; render 65k for release. A 65k render writes about 87,000 tiles and
+about 350 MB, so never commit it. The public
 tiles go to `out/map/tiles-public/`, so no speculative density reaches the
 public image. The tiles, data, frames, and screenshots live under `out/map/`,
 which is gitignored.

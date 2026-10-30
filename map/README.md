@@ -47,8 +47,8 @@ npm run map:tiles       # out/map/tiles/: the 16k chart, about 2.5 minutes on 4 
 npm run map             # http://127.0.0.1:8081/map/
 ```
 
-For release, render `npm run map:tiles -- --size 65536` (about 40 minutes on
-4 cores, about 87,000 tiles). `npm run map:frame` paints any window to a PNG
+For release, render `npm run map:tiles -- --size 65536` (about 36 minutes on
+4 cores, 87,389 tiles, about 350 MB). `npm run map:frame` paints any window to a PNG
 with the same painter; see `docs/USAGE.md`.
 
 `npm run map -- --build public` serves the public build instead. Its tiles

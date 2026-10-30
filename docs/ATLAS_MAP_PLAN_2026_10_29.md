@@ -811,8 +811,11 @@ contradictions that the continuity checks and the map would otherwise flag.
     region label anchors are tested to keep out.
   - Isopleth lines are baked into the tiles; their values and the soundings
     are live labels in the viewer, with the chart's furniture in the margin.
-  - Not yet done: the 65k render on the final code, here or on the author's
-    Windows machine. A 16k render takes about 2.5 minutes on 4 cores.
+  - `npm run map:tiles -- --size 65536` completed on the final code in a
+    4-core Linux container: 87,389 tiles in 17 levels, 36.4 minutes, 347 MB.
+    A 16k render takes about 2.5 minutes there.
+  - Not yet done: the 65k render on the author's Windows machine, which this
+    phase's done-when names.
 
 ### Phase 4 — Depth and time (two sessions)
 

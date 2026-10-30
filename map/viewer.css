@@ -71,7 +71,9 @@ button:focus-visible, input:focus-visible { outline: 2px solid var(--focus-ring)
 .layout { display: flex; height: calc(100% - var(--bar-height)); }
 .stage { position: relative; flex: 1; min-width: 0; }
 .chart { position: absolute; inset: 0; background: var(--void-0); }
-.layers { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+.layers { position: absolute; inset: 0; z-index: 2; pointer-events: none; overflow: hidden; }
+/* The minimap sits above the overlay labels. */
+.chart .navigator { z-index: 3 !important; background: rgba(5, 7, 10, 0.94) !important; }
 .shapes { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
 
 .shapes .outline { fill: none; stroke: rgba(236, 229, 212, 0.3); stroke-width: 1; stroke-dasharray: 7 4; vector-effect: non-scaling-stroke; }
