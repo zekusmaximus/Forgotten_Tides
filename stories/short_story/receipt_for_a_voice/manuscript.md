@@ -5,9 +5,9 @@ contract_version: v1.0.0
 type: story
 title: Receipt for a Voice
 story_type: short-story
-status: draft
-canon_tier: draft
-retrieval_role: active_draft
+status: canonical
+canon_tier: primary_canon
+retrieval_role: authoritative
 summary_50: A corrected route chart strands a pod's repair filament; Yenu renders the remembered sound of her grandfather's correction to bring it home.
 summary_200: "After Corin Tave's correction suspends H-37, the Skather-Ait pod cannot receive its frame filament on the booked route as its sleeping deck loses shape. At Halix, Tess Vlin cannot advance the fare after paying to withdraw another family's closed missed-generation Light-Bequest from trade. Yenu voluntarily renders her remembered sound of one correction spoken by her grandfather for a tuned stone, and Elior Ren flies the longer corridor with his eleven remaining anchors. The repair holds, the rendered sound does not return, and Lysa Korr's hidden cost stays on the record."
 cross_refs:
@@ -82,28 +82,28 @@ events:
   - id: event-story-0021-001
     timestamp: T0
     summary: H-37's corrected loss record suspends the pod's booked filament passage and forces an alternate route.
-    canon_tier: draft
+    canon_tier: primary_canon
     source: stories/short_story/receipt_for_a_voice/manuscript.md
     causal_note: Follows Corin Tave's correction in story-0017; neither the route nor Lysa Korr's burned anchor is repaired by changing the record.
     involved_entities: [story-0021, story-0017, char-0021, char-0022, loc-0015, loc-0016, mech-0002]
   - id: event-story-0021-002
     timestamp: T0+8h
     summary: Yenu voluntarily renders her personal memory of her grandfather's spoken correction as a drive stone.
-    canon_tier: draft
+    canon_tier: primary_canon
     source: stories/short_story/receipt_for_a_voice/manuscript.md
     causal_note: Ethical rendering transfers the lived sound into a stone; retained facts and later testimony cannot restore Yenu's lost experience.
     involved_entities: [story-0021, story-0004, char-0026, char-0019, loc-0013, mech-0001]
   - id: event-story-0021-003
     timestamp: T0+1d
     summary: Elior Ren spends the donated stone on a longer corridor to deliver the pod's frame filament.
-    canon_tier: draft
+    canon_tier: primary_canon
     source: stories/short_story/receipt_for_a_voice/manuscript.md
     causal_note: The route also consumes normal drive stocks; Elior retains eleven responsive anchors and does not recover the classroom smell lost in story-0013.
     involved_entities: [story-0021, story-0013, char-0017, loc-0008, mech-0002, mech-0003]
   - id: event-story-0021-004
     timestamp: T0+2d
     summary: Hol-Vren retunes the pod frame with the delivered filament; Yenu logs the donated memory and the reason for H-37's suspension.
-    canon_tier: draft
+    canon_tier: primary_canon
     source: stories/short_story/receipt_for_a_voice/manuscript.md
     causal_note: Physical repair and collective recitation hold the sleeping corridor; Yenu's remembered sound of her grandfather's correction remains unavailable.
     involved_entities: [story-0021, char-0026, char-0027, loc-0015, fact-0004, mech-0001]
@@ -114,22 +114,22 @@ themes:
   - quiet-heroism
   - ethical-forgetting
 continuity_notes:
-  - "This draft follows primary stories 0004, 0013, 0015, and 0017; outcomes introduced by this draft remain provisional."
-  - Yenu's grandmother's particular missed-generation Light-Bequest remains closed and cannot power a drive; Tess's depleted renewal bond follows her purchase and withdrawal of another family's carrier assessed as closed in primary story-0015. This draft's later rendering and repair remain unapproved.
+  - "This primary story follows primary stories 0004, 0013, 0015, and 0017. Linked profile expansions require separate claim review."
+  - Yenu's grandmother's particular missed-generation Light-Bequest remains closed and cannot power a drive; Tess's depleted renewal bond follows her purchase and withdrawal of another family's carrier assessed as closed in primary story-0015. The later rendering and repair are local outcomes of this story.
   - Lysa Korr remains deceased, her undisclosed anchor burn remains permanent, and H-37's prior clean certification remains suspended after Corin's correction.
   - Elior begins and ends the flight with eleven responsive anchors; his classroom smell is not restored, and the donated stone is spent alongside ordinary drive stocks.
   - Yenu's voluntary rendering removes the lived sound of her grandfather's correction. The recorded words, her mother's testimony, and the stone before use do not restore that experience.
-  - The tether shuttle and tuned coherence-frame filaments are local Skather-Ait features established in primary story-0004; this draft's later repair remains provisional. Ethical rendering, memory stones, and corridor attention have separate lore and mechanics sources. This story claims no wider rule for Drift Clade pods.
+  - The tether shuttle and tuned coherence-frame filaments are local Skather-Ait features established in primary story-0004; the later repair is local to this pod. Ethical rendering, memory stones, and corridor attention have separate lore and mechanics sources. This story claims no wider rule for Drift Clade pods.
 bible_refs:
   - bible/ARCHIVISTS_WAKE_STORY_BIBLE.md#36-anchor-burn-consequence
   - bible/ARCHIVISTS_WAKE_STORY_BIBLE.md#71-anchor-rules
   - bible/ARCHIVISTS_WAKE_STORY_BIBLE.md#72-corridor-rules
 metadata:
-  status: draft
+  status: canonical
   word_count: 2674
   author: AI-assisted draft
   created: '2026-09-24T00:00:00.000Z'
-  modified: '2026-10-30T00:19:07.066Z'
+  modified: '2026-10-30T07:45:59.787Z'
 tags:
   - drift-clades
   - halix-exchange

@@ -1,6 +1,6 @@
 # Link Map - Entity Relationships
 
-Generated: 2026-10-30T00:19:07.243Z
+Generated: 2026-10-30T07:46:00.134Z
 
 ## Entities (175)
 
@@ -143,7 +143,7 @@ Generated: 2026-10-30T00:19:07.243Z
 - `story-0018` (story, draft, weight 65)
 - `story-0019` (story, draft, weight 65)
 - `story-0020` (story, draft, weight 65)
-- `story-0021` (story, draft, weight 65)
+- `story-0021` (story, primary_canon, weight 110)
 - `story-0022` (story, primary_canon, weight 110)
 - `term-0001` (term, primary_canon, weight 110)
 - `term-0002` (term, primary_canon, weight 110)
@@ -1000,6 +1000,6 @@ _none_
 - **Total Relationships**: 807
 - **Orphaned Targets**: 0
 - **Entity Types**: character, event, faction, location, lore, mechanics, story, term
-- **Primary / Working Canon**: 105
-- **Draft Entities**: 43
+- **Primary / Working Canon**: 106
+- **Draft Entities**: 42
 - **Test / Sandbox / Deprecated Entities**: 7

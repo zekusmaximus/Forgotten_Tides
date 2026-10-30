@@ -1,6 +1,6 @@
 # Canonical Index
 
-This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-10-29T23:49:25.373Z
+This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-10-30T07:46:00.134Z
 
 ## Character
 - `char-0001` — Rell (`characters/Rell.md`)
@@ -270,6 +270,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `story-0013` - The Smallest Burn (story, primary_canon, weight 110, `stories/short_story/the_smallest_burn/manuscript.md`)
 - `story-0015` - The Halix Aftermarket (story, primary_canon, weight 110, `stories/short_story/the_halix_aftermarket/manuscript.md`)
 - `story-0017` - The Loss Ledger (story, primary_canon, weight 110, `stories/short_story/the_loss_ledger/manuscript.md`)
+- `story-0021` - Receipt for a Voice (story, primary_canon, weight 110, `stories/short_story/receipt_for_a_voice/manuscript.md`)
 - `story-0022` - Spend What You Can Afford (story, primary_canon, weight 110, `stories/short_story/spend_what_you_can_afford/manuscript.md`)
 - `term-0001` - Anchor (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
 - `term-0002` - Anchor Burn (term, primary_canon, weight 110, `data/lexicon/terms.yaml`)
@@ -341,7 +342,6 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `story-0018` - The Navigator Who Forgot Enough (story, draft, weight 65, `stories/short_story/the_navigator_who_forgot_enough/manuscript.md`)
 - `story-0019` - The Miniaturist's Name (story, draft, weight 65, `stories/short_story/the_miniaturists_name/manuscript.md`)
 - `story-0020` - The Inventory of Absence (story, draft, weight 65, `stories/short_story/the_inventory_of_absence/manuscript.md`)
-- `story-0021` - Receipt for a Voice (story, draft, weight 65, `stories/short_story/receipt_for_a_voice/manuscript.md`)
 - `term-0022` - Continuity Cleric (term, draft, weight 65, `data/lexicon/terms.yaml`)
 - `term-0023` - Liturgy of the Hull (term, draft, weight 65, `data/lexicon/terms.yaml`)
 - `term-0033` - Pull (term, draft, weight 65, `data/lexicon/terms.yaml`)

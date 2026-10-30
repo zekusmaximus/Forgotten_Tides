@@ -27,11 +27,11 @@ continuity:
     - His preservation and cultural-reinforcement promises are his sales pitch, not independently verified performance.
   watchlist:
     - Do not treat his claimed field performance as an approved Consortium fact or have him disclose concealed node drift in this scene.
-    - His affiliation in story-0004 is established, but wider competence, secret knowledge, and later activity require separate evidence; draft recollections add no later outcome.
+    - His affiliation in story-0004 is established, but wider competence, secret knowledge, and later activity require separate evidence; later recollections add no later outcome.
 metadata:
   status: canonical
   created: '2026-10-28T00:00:00.000Z'
-  modified: '2026-10-29T00:00:00.000Z'
+  modified: '2026-10-30T07:45:59.787Z'
 ---
 
 # Aurel Ket
@@ -54,7 +54,7 @@ unspecified.
 
 ## Later mentions
 
-Draft *Receipt for a Voice* (story-0021) recalls his earlier offer without
+Primary *Receipt for a Voice* (story-0021) recalls his earlier offer without
 depicting new activity by him. Primary *The Halix Aftermarket* (story-0015)
 indirectly recalls the same fixer but explicitly gives its later acquisition
 offer to a different Consortium buyer. Neither establishes successful

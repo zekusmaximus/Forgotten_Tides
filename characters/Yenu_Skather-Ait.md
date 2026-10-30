@@ -26,12 +26,12 @@ continuity:
     - Her grandfather dies naturally in story-0004, distinct from chosen thinning; Yenu carries his corrected account to her mother without undoing death.
     - The pod's repair remains unpaid at the end of story-0004; the fractional firming during recitation does not replace the brace, filament, or retuning.
   watchlist:
-    - Story-0021 is a draft continuation; its later rendering, experiential loss, and completed repair remain provisional pending author review.
-    - Preserve her chosen hearing and corrected recitation under financial and family pressure; distinguish that choice from the later proposed rendering and do not substitute a coerced memory sale or miraculous recovery.
+    - Story-0021 supplies an approved source for the later rendering, experiential loss, and completed repair; incorporating additional claims into this profile's authoritative baseline still requires separate claim review.
+    - Preserve her chosen hearing and corrected recitation under financial and family pressure; distinguish that choice from the later depicted rendering and do not substitute a coerced memory sale or miraculous recovery.
 metadata:
   status: canonical
   created: '2026-09-24T00:00:00.000Z'
-  modified: '2026-10-29T00:00:00.000Z'
+  modified: '2026-10-30T07:45:59.787Z'
 ---
 
 # Yenu Skather-Ait
@@ -49,17 +49,18 @@ releases the spent carrier and carries his corrected account to her mother.
 The galley soft place firms only a fraction during her recitation; the
 sleeping-cell brace remains, and the repair is still unpaid.
 
-## Unapproved continuation
+## Source-approved continuation pending profile review
 
-Draft *Receipt for a Voice* (story-0021) proposes Yenu consenting to render
+Primary *Receipt for a Voice* (story-0021) depicts Yenu consenting to render
 her remembered sound of her grandfather's correction to fund a transport
 correction for the repair filament. She retains the facts but loses that
 lived sound, and the delivered filament permits a later frame repair. These
-outcomes remain unapproved.
+outcomes now have an approved story source; incorporating additional claims
+into this profile's authoritative baseline still requires separate claim review.
 
 ## Editorial guidance
 
 Preserve Yenu's agency under financial and family pressure. Her chosen
-hearing in story-0004 is distinct from the personal-memory rendering proposed
+hearing in story-0004 is distinct from the personal-memory rendering depicted
 in story-0021. Corrected recitation carries an account forward without
 undoing death or replacing the pod's material maintenance.

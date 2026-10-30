@@ -68,7 +68,7 @@ Lira Voss (char-0008) carries two drafts, *The Hospice Knot* (story-0007) and *T
 ---
 
 ### The Drift Clades (beyond story-0004)
-Primary *The Light Inheritance* (story-0004) and *The Halix Aftermarket* (story-0015) show local inheritance and market choices in Drift Clade families. Drafts *The Miniaturist's Name* (story-0019) and *Receipt for a Voice* (story-0021) extend that coverage. These examples do not establish faction-wide practices. Still open:
+Primary *The Light Inheritance* (story-0004), *The Halix Aftermarket* (story-0015), and *Receipt for a Voice* (story-0021) show local inheritance and market choices in Drift Clade families. Draft *The Miniaturist's Name* (story-0019) extends that coverage. These examples do not establish faction-wide practices. Still open:
 - A Drift Clade world undergoing literal void drift, the community deciding what to preserve versus release
 - Intergenerational memory: a Drift Clade elder passing down a tradition that contradicts the tradition they received
 - The Clades' relation to the Tessarine Vault after story-0022, where pledges from the outer sleeve have stopped
@@ -121,7 +121,7 @@ Counts are from the `themes` frontmatter of the twenty-one short stories as of O
 ## Specific Scenarios
 
 ### The Halix Exchange
-Introduced in primary *The Light Inheritance* (story-0004) and developed in primary *The Halix Aftermarket* (story-0015); draft *Receipt for a Voice* (story-0021) proposes a later episode. Story-0022 reports Halix's breach response. Still open:
+Introduced in primary *The Light Inheritance* (story-0004) and developed in primary *The Halix Aftermarket* (story-0015); primary *Receipt for a Voice* (story-0021) depicts a later episode. Story-0022 reports Halix's breach response. Still open:
 - The Consortium fixer from story-0004 himself, who has not reappeared
 - The memory economy from the seller's side at scale, not one transaction
 - What happens to memory stones that are sold rather than burned or released, once they leave the Exchange
@@ -133,7 +133,7 @@ A memory stone that contains something that shouldn't be there: a memory that pr
 A station at the point of complete conceptual dementia, in its final days rather than failing like the Heliodrome. *The Mercy Doctrine* (story-0012) shows a station being ritually forgotten by the Synod; the Archivist version, a crew sent to recover whatever can still be recovered, has not been written. What do you save when everything is dissolving?
 
 ### The Corridor That Remembers Wrong
-A memory corridor that has begun to misremember its own route, consistently, toward a destination that should not exist. *The Lie That Learned the Hallway* (story-0016) and *Receipt for a Voice* (story-0021) show route charts learning wrong things; the corridor itself misremembering is still open.
+A memory corridor that has begun to misremember its own route, consistently, toward a destination that should not exist. *The Lie That Learned the Hallway* (story-0016) shows route charts learning wrong things; primary *Receipt for a Voice* (story-0021) follows H-37's suspended certification. The corridor itself misremembering is still open.
 
 ---
 

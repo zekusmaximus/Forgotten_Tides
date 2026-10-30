@@ -35,7 +35,7 @@ candidates for promotion (see `docs/PLAYBOOK_NEW_STORY.md`, Step 6b).
 | `story-0018` | The Navigator Who Forgot Enough | draft | draft | [manuscript](./short_story/the_navigator_who_forgot_enough/manuscript.md) |
 | `story-0019` | The Miniaturist's Name | draft | draft | [manuscript](./short_story/the_miniaturists_name/manuscript.md) |
 | `story-0020` | The Inventory of Absence | draft | draft | [manuscript](./short_story/the_inventory_of_absence/manuscript.md) |
-| `story-0021` | Receipt for a Voice | draft | draft | [manuscript](./short_story/receipt_for_a_voice/manuscript.md) |
+| `story-0021` | Receipt for a Voice | primary_canon | canonical | [manuscript](./short_story/receipt_for_a_voice/manuscript.md) |
 | `story-0022` | Spend What You Can Afford | primary_canon | canonical | [manuscript](./short_story/spend_what_you_can_afford/manuscript.md) |
 
 `story-0009` is the novella below; the short-story sequence skips it. `story-0001`

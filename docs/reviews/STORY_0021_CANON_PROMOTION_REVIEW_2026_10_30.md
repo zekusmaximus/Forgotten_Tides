@@ -1,12 +1,12 @@
 # Canon Promotion Review: Receipt for a Voice
 
-**Current checkpoint:** On October 30, 2026, the author approved all three
-revision scopes in section 8. F1-F5 and the recommended O1-O2 refinements
-are applied. The revised manuscript scores **65/70**, with no remaining
-editorial blockers; all hard gates and local CI parity pass. The story and
-all four local events remain draft. Promotion and profile expansion require
-separate approval. Sections 1-9 preserve the original **50/70** review;
-section 10 records the authorized revision and fresh readiness assessment.
+**Current checkpoint:** On October 30, 2026, the author approved promotion
+of the **65/70** revision merged in PR #55 at 6e4eb69. Story-0021 is now
+primary_canon / canonical / authoritative, and its four unchanged local
+events are primary_canon. The approved manuscript body is byte-identical.
+Expanded profile claims still require separate review. Sections 1-9
+preserve the original **50/70** review, section 10 records revision and
+readiness, and section 11 records this promotion and its validation.
 
 ## 1. Scope and baseline
 
@@ -592,3 +592,111 @@ existing surrounding whitespace) is:
 Only the story, this review, and the two changed generated files are
 included in the revision commit. CANONICAL_INDEX.md was regenerated but
 has no diff. There is no manuscript status/tier promotion or profile edit.
+
+
+## 11. Author-approved promotion to primary canon
+
+### Authorization and source
+
+The author replied **“Promote it”** after the revised story's PR #55 merged
+as 6e4eb69c7d81d633402e8013031548bf1da30cd0. That separately approves the
+reviewed 65/70 story for primary canon. It does not approve expanded
+character/location profiles or lexicon definitions.
+
+Current main was fetched at 6e4eb69 before work on
+canon/story-0021-promotion. npm ci and baseline npm run validate:ci pass.
+All five declared story prerequisites resolve to primary canon: 0004,
+0015, 0017, 0013, and 0001. There is no event-level, draft-story, novel, or
+novella prerequisite.
+
+### Applied promotion
+
+The promotion tool was previewed with --dry-run, then applied. The
+manuscript now has:
+
+- canon_tier: primary_canon
+- status and metadata.status: canonical
+- retrieval_role: authoritative
+- All four events[].canon_tier values: primary_canon
+- metadata.modified: 2026-10-30T07:45:59.787Z
+
+The manuscript's source-status continuity notes now describe approved local
+rendering and repair outcomes and retain the separate profile-review rule.
+Original frontmatter formatting was retained after verifying that the
+promotion tool's parsed data was unchanged. The body after the closing
+frontmatter delimiter is byte-identical to the approved revision at
+6e4eb69, including its surrounding whitespace. Its SHA-256 remains:
+
+~~~text
+252fb25c02beb89f934a5569534866ed4cbc76609b9a1328daeabc08a345fe2a
+~~~
+
+The word count remains 2674 and the summaries remain 140/576 characters.
+No prose, summary, event ID, timestamp, event summary, causal note, or
+involved-entity list changes during promotion.
+
+The four event IDs remain local to this manuscript. No entry is added to
+data/timeline/events.yaml. The ten 0004, five 0015, and five 0017 event IDs
+also remain local. The impact report still finds two direct profile
+dependents, no transitive dependents, and six appearance candidates; no
+other approved story currently needs an individual 0021 event.
+
+### Source labels and independent profile review
+
+Current source-tier labels are updated in Yenu, Hol-Vren, Tess, Aurel,
+Skather-Ait pod, and Halix Exchange. Their existing continuation notes now
+identify 0021 as an approved primary source and explicitly retain separate
+review of additions to each profile's authoritative baseline. Halix's
+still-draft 0003/0019 proposals remain in the unapproved section. Hol-Vren's
+additional-training claims remain subject to review; supervised help in
+the story is not a completed training qualification.
+
+All six profiles retain their existing statuses, summaries, invariants,
+appearance lists, and causal-reference lists. Only source-review wording,
+related headings/watchlists, and modification dates change. No profile
+tier or capability expansion is automatically approved. Aurel's mention
+still establishes no new activity or verified technical performance.
+Additional Tess/Halix claims supported by 0015 remain pending too.
+
+The stories/README.md row now agrees with primary/canonical frontmatter.
+docs/STORY_OPPORTUNITIES.md relabels the story's approved source tier and
+corrects its H-37 description to suspended certification: 0021 does not
+show a corridor learning a new route (approved revision:159-169,469).
+Historical review findings in sections 1-10 and all other review reports
+are preserved.
+
+### Scope and validation record
+
+The change includes only:
+
+- stories/short_story/receipt_for_a_voice/manuscript.md
+- characters/Yenu_Skather-Ait.md, Hol-Vren.md, Tess_Vlin.md, Aurel_Ket.md
+- atlas/Skather-Ait_Pod.md and Halix_Exchange.md
+- stories/README.md and docs/STORY_OPPORTUNITIES.md
+- This review and the three generated graph artifacts
+
+No shared timeline, lexicon, governing bible/mechanics/manual/lore, map
+placement, other manuscript, or tooling changes. H-37 remains suspended;
+the repair is local to the pod. Donor experience and burned anchors remain
+lost. No universal Light-Bequest closure, ownership/gravity rule, or pod
+design is added.
+
+All three graph artifacts were regenerated. The graph remains **175
+entities, 807 relationships, zero orphaned targets**; story-0021 now
+resolves as primary/authoritative at weight 110. Only its retrieval
+authority changes; no graph relationship is added. Independent promotion
+QA confirms byte-identical prose, correct tiers and local event IDs,
+unchanged profile baselines, and the preserved scope.
+
+npm run lint and npm run check pass; continuity and timeline contain zero
+hard failures and zero soft warnings. npm run test:validate-work passes.
+The remaining test suites are exercised by final npm run validate:ci,
+which follows the promotion commit.
+
+The local browser attempt using Debian Chromium 154 reported one resource
+404 in the first atlas test; the remaining browser assertions passed.
+Playwright's pinned Chromium 153 is not installed, and its CDN download
+is blocked by this environment's network policy (HTTP 403, Domain
+forbidden). No test or map code is changed to accommodate that fallback.
+The required GitHub browser jobs use the pinned browser and must pass
+before merging. Final local CI parity and remote results are pending.

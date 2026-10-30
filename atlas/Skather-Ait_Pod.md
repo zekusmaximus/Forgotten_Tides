@@ -24,7 +24,7 @@ coordinates:
 metadata:
   status: canonical
   created: '2026-09-24T00:00:00.000Z'
-  modified: '2026-10-29T00:00:00.000Z'
+  modified: '2026-10-30T07:45:59.787Z'
 ---
 
 # Skather-Ait Pod
@@ -44,9 +44,11 @@ service with calculations and temporary braces. Filament replacement and
 retuning remain unpaid at the end of the story: the galley soft place firms
 only a fraction during recitation, and the sleeping-cell brace remains.
 
-## Unapproved continuation
+## Source-approved continuation pending profile review
 
-Draft *Receipt for a Voice* (story-0021) proposes a later evacuation,
+Primary *Receipt for a Voice* (story-0021) depicts a later evacuation,
 alternate transport of already-purchased filament using Yenu's rendered
 memory for an additional release correction, and successful retuning with a
-maintenance ledger recording the cost. These outcomes remain unapproved.
+maintenance ledger recording the cost. These outcomes now have an approved
+story source; incorporating additional claims into this profile's authoritative
+baseline still requires separate claim review.

@@ -48,7 +48,7 @@ coordinates:
 metadata:
   status: canonical
   created: '2026-07-07T00:00:00.000Z'
-  modified: '2026-10-29T00:00:00.000Z'
+  modified: '2026-10-30T07:45:59.787Z'
 ---
 
 # Halix Exchange
@@ -96,12 +96,16 @@ as facilities aboard Halix. These local facts now have an approved story
 source; expanding this profile's authoritative baseline still requires a
 separate claim review.
 
+Primary *Receipt for a Voice* (story-0021) depicts a later tender and
+personal-memory rendering episode. These facts now have an approved story
+source; incorporating additional services or facilities into this profile's
+authoritative baseline still requires separate claim review.
+
 ## Unapproved setting proposals
 
 Draft *The Tuner of Last Lights* (story-0003) makes offstage hospice-stock
 and Synod-stock assertions about Halix. Those claims remain unapproved.
 
-Draft *Receipt for a Voice* (story-0021) proposes a later tender and
-personal-memory rendering episode. Draft *The Miniaturist's Name*
-(story-0019) refers to Halix repair records offstage. These are draft
-provenance, not approval of additional services or facilities.
+Draft *The Miniaturist's Name* (story-0019) refers to Halix repair records
+offstage. These are draft provenance, not approval of additional services
+or facilities.
