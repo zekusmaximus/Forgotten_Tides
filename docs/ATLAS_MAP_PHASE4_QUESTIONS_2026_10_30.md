@@ -2,9 +2,10 @@
 
 **Date:** 2026-10-30
 **Phase:** 4, "Depth and time," of the [atlas map plan](ATLAS_MAP_PLAN_2026_10_29.md)
-**Status:** Decision pass. No code has been written. The accepted answers go into
-[the cartographic brief](../design/map/CARTOGRAPHIC_BRIEF.md) as a Phase 4
-section; this file keeps the options that were weighed.
+**Status:** Accepted by the author on 2026-10-30, all fifteen as recommended.
+[The cartographic brief](../design/map/CARTOGRAPHIC_BRIEF.md) records them as
+Q22–Q36 in section 2, with claims T30–T43 and rules R12–R18. This file keeps
+the options that were weighed.
 
 Numbering continues the brief's register: Q22 to Q36 follow its Q1 to Q21.
 Citations use the brief's basis key: `ss/<slug>` is
