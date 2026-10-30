@@ -814,8 +814,12 @@ contradictions that the continuity checks and the map would otherwise flag.
   - `npm run map:tiles -- --size 65536` completed on the final code in a
     4-core Linux container: 87,389 tiles in 17 levels, 36.4 minutes, 347 MB.
     A 16k render takes about 2.5 minutes there.
-  - Not yet done: the 65k render on the author's Windows machine, which this
-    phase's done-when names.
+  - Done 2026-10-30: the 65k render completed on the author's Windows
+    machine: 87,389 tiles in 17 levels in 20.3 minutes
+    (`out/map/tiles/galaxy.json`). The renderer runs the cartography lint
+    first and stops on any error, so the lint passed against the field it
+    rendered. Void interiors are checked by the painter test above; the
+    Windows tiles were not checked separately.
 
 ### Phase 4 — Depth and time (two sessions)
 
@@ -960,8 +964,9 @@ the claims they approve.
   4-gigapixel chart is mostly atmosphere. That fits the tone, since forgetting
   is blankness, but the chart's appeal will come from the field and the Z3
   insets, not the pin count. Prioritize the Tessarine Vault inset.
-- **Render time on the author's machine.** The 65k layer is estimated at
-  20–60 minutes with the full layer stack. Iterate at 16k and render 65k for
+- **Render time on the author's machine.** The 65k layer was estimated at
+  20–60 minutes with the full layer stack; it took 20.3 minutes on the
+  author's Windows machine (2026-10-30). Iterate at 16k and render 65k for
   release only.
 - **Tile hosting sprawl.** About 87,000 files per release. Use rsync with
   `--delete` to a versioned directory, or object storage, and never git.
