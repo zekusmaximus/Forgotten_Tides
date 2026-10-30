@@ -1,10 +1,12 @@
 # Expanded Profile Claim Review: Stories 0015 and 0021
 
-**Review checkpoint:** October 30, 2026. **Approval pending.** This review
-proposes defined additions to five already-canonical entries: Yenu
+**Current checkpoint:** October 30, 2026. **All five scopes approved by the
+author; implementation and gates are recorded in section 11.** This review
+defines additions to five already-canonical entries: Yenu
 Skather-Ait, Hol-Vren, Tess Vlin, the Skather-Ait pod, and Halix Exchange.
 It includes the separately pending Tess/Halix claims from approved
-story-0015. No profile, status, manuscript, or generated map is changed.
+story-0015. The original review findings and exact proposals below are
+preserved; the approval applies only to these five expansions.
 
 ## 1. Scope, evidence, and baseline
 
@@ -647,6 +649,59 @@ the three maps/index files. Run relevant lint/check/full CI parity and
 prepare a PR. The earlier permission to merge after gates pass does not
 replace the separate claim approval required by source-first governance.
 
-Only this new tracked report is added. Manuscripts, profiles, statuses,
-lexicon, shared timeline, mechanics/lore, map placement, and generated files
-remain unchanged. Approval of the five proposals is pending. The review is preserved on the branch named in section 1.
+At the original review checkpoint, only this report was added; manuscripts,
+profiles, statuses, lexicon, shared timeline, mechanics/lore, map placement,
+and generated files were unchanged. The review was committed and pushed
+as bfde4c99bf015a340d5b46867e839f06fdc1f215 on the branch named in
+section 1. The author subsequently approved all five exact scopes.
+
+## 11. Author decision and implementation
+
+On October 30, 2026, the author instructed: **“Approve all five.”** This
+approves the five defined scopes in sections 4-8, including their exact
+wording, guardrails, and structured links. It authorizes no manuscript
+revision, new physical rule, profile status change, or additional entry.
+
+Implementation branch: canon/profiles/story-0021-expanded-claims, based on
+current main 49ec83d22890411050f7e34d5235708d379c3b5e plus the preserved
+review commit. All five exact scopes are implemented and local gates pass.
+
+| Entry | Author decision | Implementation scope |
+| --- | --- | --- |
+| Yenu, char-0026 | Approved | Section 4: bounded rendering/loss, paid transport contribution, supervised work, ledger, and links |
+| Hol-Vren, char-0027 | Approved | Section 5: internal relocation, actual retuning/corrections, ledger, and links |
+| Tess, char-0019 | Approved | Section 6: particular S15 purchase/withdrawal and S21 rendering/cost episodes |
+| Pod, loc-0015 | Approved | Section 7: narrowed maintained repair, internal relocation, body continuity limits, and links |
+| Halix, loc-0013 | Approved | Section 8: depicted local trading/release and rendering/transport arrangements |
+
+The summaries, invariant additions, replacement watchlists, continuation
+bodies, and structured links match the approved sections 4-8 exactly.
+All short summaries, baseline invariants/body, created dates, canonical
+statuses, location types/coordinates, and unselected claims are preserved.
+Only each changed profile's modified date is refreshed. The Halix draft
+0003/0019 setting proposals remain isolated and unapproved.
+
+The three generated artifacts were rebuilt: REFERENCE_MAP.json and
+docs/link_map/LINK_MAP.md changed; CANONICAL_INDEX.md is unchanged. The
+resulting graph contains **175 entities, 814 edges, and zero orphaned
+targets**. No new entity, term, event, physics rule, placement, or status
+was introduced. Every manuscript, governing source, lexicon, shared
+timeline, and map placement file is unchanged from the fetched main.
+Story-0021's body SHA256 remains
+252fb25c02beb89f934a5569534866ed4cbc76609b9a1328daeabc08a345fe2a.
+
+Validation after implementation:
+
+- npm ci: PASS.
+- Exact approved-proposal and protected-baseline comparisons: PASS.
+- Character/location schemas, summary limits, YAML/Markdown links, and
+  whitespace checks: PASS.
+- npm run validate:ci: PASS, including lint, continuity/timeline, policy,
+  promotion, coverage, tooling, and map data/viewer/render/chart checks.
+- Continuity/timeline: zero hard failures and zero soft warnings.
+- Existing nonblocking output: 21 schema warnings, 976 glossary candidates,
+  and two draft red-line warnings (0005/0007).
+
+The PR and hosted gate results will be recorded here after the branch is
+pushed. Pinned-browser validation runs in GitHub CI; the local full CI-parity
+command does not include those browser jobs.
