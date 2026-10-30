@@ -702,6 +702,10 @@ Validation after implementation:
 - Existing nonblocking output: 21 schema warnings, 976 glossary candidates,
   and two draft red-line warnings (0005/0007).
 
-The PR and hosted gate results will be recorded here after the branch is
-pushed. Pinned-browser validation runs in GitHub CI; the local full CI-parity
-command does not include those browser jobs.
+PR: [#57 — approved expanded profile claims](https://github.com/zekusmaximus/Forgotten_Tides/pull/57).
+The implementation commit is 2733c154dc24995b9530ea5bf4e8bffeb0a8f82b.
+Hosted check results, including the pinned-browser jobs, are available on
+the PR. The local full CI-parity command does not include those browser
+jobs. Under the author's standing merge authorization, merge requires all
+checks on the final PR head to pass; author approval of these five scopes
+is recorded above and does not approve additional claims.
