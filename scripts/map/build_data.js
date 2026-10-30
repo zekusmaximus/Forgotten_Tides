@@ -20,9 +20,11 @@ const fs = require('fs');
 const path = require('path');
 const yaml = require('js-yaml');
 const layout = require('./layout');
+const { toXY } = require('./geometry');
 const { lintCartography } = require('../lint/cartography_lint');
 
 const LINK_TYPES = new Set(['story', 'character', 'faction']);
+const SLEEVE_LABEL_THETA = 250;   // where sleeve numerals sit around their rings (cartographic)
 
 function readJson(file) {
   return fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, 'utf8')) : null;
@@ -34,6 +36,9 @@ function buildMapData({ root = layout.DEFAULT_ROOT, build = 'author' } = {}) {
   if (lint.errors) throw new Error(`the cartography lint reports ${lint.errors} errors; run npm run lint:map`);
 
   const { cartography, atlas } = layout.loadMapContext(root);
+  const shapes = layout.buildShapes(cartography);
+  const points = layout.buildPoints(cartography);
+  const xy = polar => toXY(polar.r, polar.theta);
   const isPublic = build === 'public';
   const keepTier = tier => !isPublic || layout.CANON_TIERS.has(tier);
   const keepEntity = id => atlas.has(id) && keepTier(atlas.get(id).tier);
@@ -65,6 +70,7 @@ function buildMapData({ root = layout.DEFAULT_ROOT, build = 'author' } = {}) {
       tier: entity.tier,
       location_type: entity.location_type,
       path: entity.path,
+      region: entity.region,
       summary_50: entity.summary_50,
       summary_200: entity.summary_200,
       memory_density: entity.memory_density,
@@ -74,25 +80,59 @@ function buildMapData({ root = layout.DEFAULT_ROOT, build = 'author' } = {}) {
     };
   };
 
+  // Each numbered sleeve's ring is its sub-band of the feature's `within`
+  // band; its numeral sits on that ring at a fixed angle.
+  const sleeveGeometry = (feature, sleeve) => {
+    const ring = shapes.get(`${feature.within}/${sleeve.number}`);
+    if (!ring || ring.type !== 'annulus') return sleeve;
+    const r = (ring.inner + ring.outer) / 2;
+    return { ...sleeve, ring_r: r, xy: toXY(r, SLEEVE_LABEL_THETA) };
+  };
+  // Shapes, points, and outlines are emitted in chart coordinates, so the
+  // viewer draws from this file without its own copy of the geometry.
   const regions = cartography.regions
     .filter(region => keepEntity(region.id))
-    .map(({ id, shape, bands = [], claims = [] }) => ({ ...entityFields(id), shape, bands, claims }));
+    .map(({ id, shape, bands = [], label = null, treatment = null, claims = [] }) => ({
+      ...entityFields(id),
+      shape,
+      treatment,
+      outline: shapes.get(id).outline(),
+      label_xy: label ? xy(label) : null,
+      bands: bands.map(band => ({
+        ...band,
+        outline: shapes.get(`${id}/${band.name}`).outline(),
+        subband_outlines: Array.from({ length: band.subbands || 0 }, (_, k) => shapes.get(`${id}/${band.name}/${k + 1}`).outline())
+      })),
+      claims
+    }));
   const sites = cartography.sites
     .filter(site => keepEntity(site.id))
     .map(({ id, at, relation = 'inside', band_position = null, marker = 'pin', circuit = null, claims = [] }) => ({
-      ...entityFields(id), at, relation, band_position, marker, circuit, claims
+      ...entityFields(id), at, xy: xy(at), relation, band_position, marker, circuit, claims
     }));
-  const features = (cartography.features || []).filter(feature => !isPublic || feature.tier !== 'draft');
+  const features = (cartography.features || [])
+    .filter(feature => !isPublic || feature.tier !== 'draft')
+    .map(feature => ({
+      ...feature,
+      ...(feature.at ? { xy: xy(feature.at) } : {}),
+      ...(feature.positions ? { positions_xy: feature.positions.map(xy) } : {}),
+      ...(feature.along && shapes.has(feature.along) ? { along_outline: shapes.get(feature.along).outline() } : {}),
+      ...(feature.sleeves ? { sleeves: feature.sleeves.map(sleeve => sleeveGeometry(feature, sleeve)) } : {})
+    }));
   const placedPoints = new Set([...sites.map(site => site.id), ...features.filter(f => f.at).map(f => f.key)]);
   const routes = (cartography.routes || []).filter(route => {
     if (isPublic && route.tier === 'draft') return false;
     if (route.story && isPublic && !(nodes.has(route.story) && keepTier(nodes.get(route.story).canon_tier))) return false;
     return [route.from, route.to].filter(Boolean).every(end => placedPoints.has(end));
-  });
+  }).map(route => ({
+    ...route,
+    points: route.path ? route.path.map(xy) : [route.from, route.to].map(end => points.get(end).xy)
+  }));
 
   return {
     generated: new Date().toISOString(),
     build,
+    image: { extent: layout.IMAGE_EXTENT },
     frame: cartography.frame,
     field: cartography.field,
     regions,

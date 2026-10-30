@@ -4,6 +4,8 @@ const fs = require('fs');
 const http = require('http');
 const path = require('path');
 
+const { validatePathSegment } = require('./lib/path_safety');
+
 const ROOT = path.join(__dirname, '..');
 const HOST = '127.0.0.1';
 const PORT = 8080;
@@ -35,9 +37,33 @@ function safeAsset(root, filePath) {
   return current;
 }
 
+// A directory route serves files under a URL prefix from one directory, and
+// only with listed extensions. Every segment must pass validatePathSegment
+// (no empty, dot, or dot-dot segments; no separators, colons, or trailing
+// dots or spaces), and percent-encoding is refused outright.
+function resolvePrefixRoute(prefixes, requestedPath) {
+  for (const entry of prefixes) {
+    if (!requestedPath.startsWith(entry.prefix)) continue;
+    const rel = requestedPath.slice(entry.prefix.length);
+    if (!rel || rel.includes('%')) return null;
+    const segments = rel.split('/');
+    try {
+      segments.forEach(segment => validatePathSegment(segment));
+    } catch (error) {
+      return null;
+    }
+    const ext = path.extname(rel).toLowerCase();
+    const type = entry.types[ext];
+    if (!type) return null;
+    return { file: path.join(entry.dir, ...segments), type, root: entry.dir, cache: (entry.cache || {})[ext] };
+  }
+  return null;
+}
+
 function createDashboardServer(options = {}) {
   const root = options.root || ROOT;
   const routes = options.routes || ROUTES;
+  const prefixes = options.prefixes || [];
   return http.createServer((request, response) => {
     if (request.method !== 'GET' && request.method !== 'HEAD') {
       response.writeHead(405, { Allow: 'GET, HEAD', 'Content-Type': 'text/plain; charset=utf-8' });
@@ -48,7 +74,7 @@ function createDashboardServer(options = {}) {
     // Compare the raw path. URL parsing would normalize dot segments before
     // checking the allowlist, making traversal-shaped requests look valid.
     const requestedPath = (request.url || '').split('?', 1)[0];
-    const route = routes.get(requestedPath);
+    const route = routes.get(requestedPath) || resolvePrefixRoute(prefixes, requestedPath);
     if (!route) {
       response.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' });
       response.end('Not found');
@@ -57,7 +83,7 @@ function createDashboardServer(options = {}) {
 
     let asset;
     try {
-      asset = safeAsset(root, route.file);
+      asset = safeAsset(route.root || root, route.file);
     } catch (error) {
       if (error.code !== 'ENOENT') console.error(`Dashboard asset error: ${error.message}`);
     }
@@ -79,7 +105,7 @@ function createDashboardServer(options = {}) {
       response.writeHead(200, {
         'Content-Type': route.type,
         'Content-Length': stat.size,
-        'Cache-Control': 'no-store',
+        'Cache-Control': route.cache || 'no-store',
         'X-Content-Type-Options': 'nosniff'
       });
       if (request.method === 'HEAD') {

@@ -145,6 +145,8 @@
         "shape": { "$ref": "#/definitions/shape" },
         "bands": { "type": "array", "items": { "$ref": "#/definitions/band" } },
         "aliases": { "type": "array", "items": { "type": "string" } },
+        "label": { "$ref": "#/definitions/polar" },
+        "treatment": { "enum": ["core", "belt", "fracture", "ash", "void", "perimeter"] },
         "claims": { "$ref": "#/definitions/claims" },
         "rules": { "$ref": "#/definitions/rules" },
         "sources": { "$ref": "#/definitions/sources" },

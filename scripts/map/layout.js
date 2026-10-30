@@ -19,6 +19,9 @@ const DEFAULT_ROOT = path.join(__dirname, '../..');
 const CARTOGRAPHY_PATH = 'design/map/cartography.yaml';
 const BRIEF_PATH = 'design/map/CARTOGRAPHIC_BRIEF.md';
 const CANON_TIERS = new Set(['primary_canon', 'working_canon']);
+// The rendered image spans the chart square [-IMAGE_EXTENT, IMAGE_EXTENT] on
+// both axes: the Black Horizon's outer band (to r 1.2) plus a margin.
+const IMAGE_EXTENT = 1.25;
 
 function normalizeName(name) {
   return String(name).trim().toLowerCase().replace(/\s+/g, ' ');
@@ -115,15 +118,17 @@ function findBand(cartography, ref) {
   return region && name ? (region.bands || []).find(band => band.name === name) || null : null;
 }
 
-function createMapField({ cartography, atlas }, shapes = buildShapes(cartography)) {
+// `include` limits which entities' densities shape the field; the public
+// tile build passes a canon-only filter so no speculative site leaves a mark.
+function createMapField({ cartography, atlas }, shapes = buildShapes(cartography), { include = () => true } = {}) {
   const values = new Map();
   for (const region of cartography.regions || []) {
     const entity = atlas.get(region.id);
-    if (entity && entity.memory_density !== null) values.set(region.id, entity.memory_density);
+    if (entity && entity.memory_density !== null && include(entity)) values.set(region.id, entity.memory_density);
   }
   const sites = (cartography.sites || [])
     .map(site => ({ site, entity: atlas.get(site.id) }))
-    .filter(({ entity }) => entity && entity.memory_density !== null)
+    .filter(({ entity }) => entity && entity.memory_density !== null && include(entity))
     .map(({ site, entity }) => ({ r: site.at.r, theta: site.at.theta, value: entity.memory_density }));
   return { field: createField({ config: cartography.field, shapes, values, sites }), values, shapes };
 }
@@ -133,6 +138,7 @@ module.exports = {
   CARTOGRAPHY_PATH,
   BRIEF_PATH,
   CANON_TIERS,
+  IMAGE_EXTENT,
   normalizeName,
   loadAtlas,
   loadRegister,

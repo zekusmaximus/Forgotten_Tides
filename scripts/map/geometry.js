@@ -3,8 +3,9 @@
 // Coordinates are unitless chart units: 1.0 is the Black Horizon's near edge
 // and no distance is implied. Angles are degrees counterclockwise from the
 // chart's right-hand side. Every shape exposes depth(x, y), the signed
-// distance to its nearest edge (positive inside, negative outside), and
-// boundary(n), a sampling of its edge used for contact and overlap checks.
+// distance to its nearest edge (positive inside, negative outside),
+// boundary(n), a sampling of its edge used for contact and overlap checks,
+// and outline(), the circles and ordered polygons a viewer draws.
 
 const DEG = Math.PI / 180;
 
@@ -37,7 +38,8 @@ function disc({ radius, r = 0, theta = 0 }) {
     center: [cx, cy],
     probes: [[cx, cy]],
     depth: (x, y) => radius - Math.hypot(x - cx, y - cy),
-    boundary: (n = 360) => circlePoints(cx, cy, radius, n)
+    boundary: (n = 360) => circlePoints(cx, cy, radius, n),
+    outline: () => ({ circles: [{ x: cx, y: cy, r: radius }], polygons: [] })
   };
 }
 
@@ -57,7 +59,11 @@ function annulus({ inner, outer }) {
     boundary: (n = 360) => [
       ...circlePoints(0, 0, outer, n),
       ...(inner > 0 ? circlePoints(0, 0, inner, n) : [])
-    ]
+    ],
+    outline: () => ({
+      circles: [{ x: 0, y: 0, r: outer }, ...(inner > 0 ? [{ x: 0, y: 0, r: inner }] : [])],
+      polygons: []
+    })
   };
 }
 
@@ -105,6 +111,21 @@ function rift({ r0, r1, theta0, theta1, half0, half1, taper = 1 }, clip = null) 
         }
       }
       return pts;
+    },
+    // One closed polygon: up the left edge, across the outer arc, down the
+    // right edge, and back across the inner arc.
+    outline: (steps = 48) => {
+      const radii = Array.from({ length: steps + 1 }, (_, k) => lo + ((hi - lo) * k) / steps);
+      const arc = (r, from, to) => Array.from({ length: 13 }, (_, k) => toXY(r, from + ((to - from) * k) / 12));
+      const outerEnd = at(hi);
+      const innerEnd = at(lo);
+      const polygon = [
+        ...radii.map(r => toXY(r, at(r).center + at(r).half)),
+        ...arc(hi, outerEnd.center + outerEnd.half, outerEnd.center - outerEnd.half),
+        ...radii.reverse().map(r => toXY(r, at(r).center - at(r).half)),
+        ...arc(lo, innerEnd.center - innerEnd.half, innerEnd.center + innerEnd.half)
+      ];
+      return { circles: [], polygons: [polygon] };
     }
   };
 }
@@ -117,7 +138,8 @@ function pockets({ items }) {
     items: discs,
     probes: discs.map(d => d.center),
     depth: (x, y) => Math.max(...discs.map(d => d.depth(x, y))),
-    boundary: (n = 360) => discs.flatMap(d => d.boundary(Math.max(36, Math.floor(n / discs.length))))
+    boundary: (n = 360) => discs.flatMap(d => d.boundary(Math.max(36, Math.floor(n / discs.length)))),
+    outline: () => ({ circles: discs.flatMap(d => d.outline().circles), polygons: [] })
   };
 }
 
