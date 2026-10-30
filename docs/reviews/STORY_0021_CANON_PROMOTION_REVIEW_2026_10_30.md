@@ -571,6 +571,17 @@ and render tests. Report links resolve and git diff --check passes. Remote
 PR checks and merge results are recorded on the PR; they do not authorize
 promotion.
 
+During PR #55 verification, main advanced to 5c0deba (PR #54's nautical
+atlas renderer). That merge is included without rewriting unrelated work.
+No manuscript, profile, governing canon source, or cartographic claim
+supporting this review changed; the brief's new lane/eddy rules explicitly
+describe illustrative rendering. npm ci and the complete validate:ci suite
+passed again on the combined tree, including the newly added map chart
+tests. Existing warning counts remain 21 schema advisories, 976 glossary
+candidates, and the two draft red-line warnings. The PR diff against main
+still contains only the four revision paths listed below; the revised body
+fingerprint is unchanged.
+
 The reviewed revision's body SHA-256 (gray-matter content, including its
 existing surrounding whitespace) is:
 
