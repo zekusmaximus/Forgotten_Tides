@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-29T23:49:25.373Z",
+  "generated": "2026-10-30T00:19:07.243Z",
   "nodes": [
     {
       "canonical_id": "char-0001",
@@ -7627,6 +7627,15 @@
     {
       "from": "story-0021",
       "to": "loc-0015",
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
+    },
+    {
+      "from": "story-0021",
+      "to": "loc-0016",
       "type": "locations",
       "fields": [
         "cross_refs",

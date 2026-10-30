@@ -1,9 +1,12 @@
 # Canon Promotion Review: Receipt for a Voice
 
-**Review checkpoint:** October 30, 2026. Story-0021 only. **50/70; Promote
-after fixes; formal hard gates PASS.** The story remains draft and is not
-ready for promotion as written. No manuscript, entity, event, lexicon, lore,
-or tier change is authorized or applied by this review.
+**Current checkpoint:** On October 30, 2026, the author approved all three
+revision scopes in section 8. F1-F5 and the recommended O1-O2 refinements
+are applied. The revised manuscript scores **65/70**, with no remaining
+editorial blockers; all hard gates and local CI parity pass. The story and
+all four local events remain draft. Promotion and profile expansion require
+separate approval. Sections 1-9 preserve the original **50/70** review;
+section 10 records the authorized revision and fresh readiness assessment.
 
 ## 1. Scope and baseline
 
@@ -448,3 +451,133 @@ All manuscripts and metadata, profiles, lexicon, shared timeline, lore,
 mechanics, map placement, and generated graph files remain unchanged.
 The report is the only file to commit and push for this review checkpoint.
 Its five relative Markdown links resolve, and git diff --check passes.
+
+
+## 10. Author-approved revision and readiness assessment
+
+### Approval and implementation
+
+The author replied **“Approve all three revision scopes.”** This authorizes
+the recommended changes in section 8, including O1's removal of unused copy
+speculation and O2's date narrowing. It does not authorize promotion.
+Current main was fetched again at 8ba40df; npm ci and the full baseline
+validate:ci passed before editing. The existing report-only commit ed94b08
+is preserved.
+
+Only story-0021's approved passages, summaries, relevant references/event
+metadata, word count, and modification timestamp change. The applied
+prose matches section 7's proposals. This table cites the revised
+manuscript; sections 1-9 retain their original snapshot citations.
+
+| Scope | Applied result and revised evidence |
+| --- | --- |
+| F1: first Halix visit | The childhood Halix candidate is deleted; the meal and shuttle-latch candidates remain (:313-316). No replacement childhood biography or new cameo is added. Primary 0004:298 remains unchanged. |
+| F2: certification | Pilots can no longer be offered the old load model as verified (:159-162), consistent with primary 0017:558-564. Ordinary memory expenditure remains necessary. |
+| F3: recertification | Twelve cycles is traffic's estimate; Hol-Vren cannot count on earlier clearance (:168-169). H-37 stays suspended (:469), with no guaranteed minimum or completed recertification. |
+| F4: selected sound | Both summaries (:11-12) and the return-trip search (:479-482) specify the remembered sound of the correction. The assay selects one exchange (:343-358), facts remain accessible (:423-426), and the ending does not return the rendered sound (:519-521). |
+| F5: chart reuse | loc-0016 is added to both location lists (:26,52) and event-story-0021-001's involved entities (:88). No new entity or ID is allocated. |
+| O1: copy speculation | Yenu declines to hear the correction from the unused stone (:440-441); no copying capability is asserted for Tess's cradle. The returned-stone consent choice remains (:364-374). |
+| O2: death date | Hol-Vren says Lysa died before the loss was found (:166). No cycle/year conversion is introduced. |
+
+The fourth event's causal note is synchronized with F4 (:108). Its old
+wording said the grandfather's voice remained unavailable; it now says:
+
+> Physical repair and collective recitation hold the sleeping corridor; Yenu's remembered sound of her grandfather's correction remains unavailable.
+
+This is the same approved narrowing as the summaries and return-trip
+sentence, not an additional story outcome. No event ID, timestamp,
+summary, or tier changes. Metadata now records **2674 words**, modification
+time **2026-10-30T00:19:07.066Z**, and the unchanged creation date.
+Summary lengths are **140/576 characters**.
+
+### Fresh per-story card
+
+#### story-0021 — Receipt for a Voice
+
+Current tier: draft / draft / metadata.status draft; active_draft
+
+Hard gates: PASS (narrative, dependency, and final CI parity)
+
+Depends on: primary stories 0004, 0015, 0017, 0013, 0001
+
+Depended on by: no story; existing Elior and Canticle Fleet profile links,
+plus six appearance candidates, as in the original impact report
+
+What it establishes: This revised draft keeps the specific civilian cost
+of H-37's suspension: Yenu renders one remembered spoken correction to
+enable the delivery of already-purchased repair filament. A paid courier
+and cutter trip bring it to Halix; supervised material work and shared
+recitation hold this pod's corner. H-37 remains suspended, Lysa stays
+deceased, and neither Yenu's surrendered sound nor Elior's earlier burned
+smell returns.
+
+| Criterion | Score | Weight | Points | Evidence in revised 0021 and governing sources |
+| --- | --- | --- | --- | --- |
+| A Metaphysical fidelity | 5 | 3 | 15 | Existing volunteer rendering (lore/MEMORY_ECONOMY.md:63-68) produces a bounded, permanent experiential loss (:343-368,410-426). The courier pays ordinary tax (:447-450); the cutter spends ordinary stocks plus the donated correction under continuing attention (:452-469), consistent with mechanics/CORRIDOR_MECHANICS.md:78-98. Filament, two watches of labor, and recitation repair the local frame (:484-496), following primary 0004:224-230. The unused copy-capability implication is removed (:440-441); no new law or refunded cost remains. |
+| B Bible compliance | 5 | 3 | 15 | Bible citations remain (:123-126). The grandfather's selected sound is absent after extraction (:423-426) and at the ending (:519-521); the grandmother voice (:437-438) is a distinct retained experience. Elior's pre/post counts remain eleven (:452-469), preserving primary 0013:427-482. No locked crew, Heliodrome, or Lattice Gap outcome changes. |
+| C Tonal fidelity | 4 | 2 | 8 | The corner's meaning/orientation failure (:143-148), the mother's restraint (:381-408), and substituted cadences (:479-482) earn the cost without spectacle. Consent and manifest explanation still stack (:364-368,410-414,447-456); this remains below the exemplars' most compressed embodied scenes. No tonal blocker requires more prose edits. |
+| D Craft and structure | 4 | 2 | 8 | Need, financial limit, chosen rendering, irreversible absence, and maintained shelter form a complete chain (:159-206,276-297,313-426,447-524). The flight/audit and repair remain compressed through Yenu's viewpoint (:447-496), an effective bridge rather than the exemplars' strongest fully staged action. The paid cost and changed ending remain intact. |
+| E Cross-canon coherence | 5 | 2 | 10 | The incompatible childhood Halix visit is gone (:313-316 versus primary 0004:298). The certificate and timing now preserve primary 0017:558-590 (:159-169). The specific selected sound and retained facts match the established sensory-loss distinction in primary 0013:360-368,450-482; no contradictory outcome or draft story prerequisite remains. |
+| F Repository hygiene | 5 | 1 | 5 | Contract, story/event draft tiers, citations, structured events, and accurate summaries/count exist (:4,8-12,81-109,123-132). Existing loc-0016 is linked in both location lists and the relevant event (:26,52,88). The generated graph includes the deduplicated causal/appearance edge; all four event IDs remain local. |
+| G Canon value | 4 | 1 | 4 | Certification's disclosed cost reaches a living household (:159-206,410-426), while the maintenance record names both Lysa and Yenu (:498-503). The local repair remains subject to ongoing checks (:493-496). This supplies usable consequences without locking universal pod design, rendering precision, or recertification law. |
+| **Total** | | | **65/70** | |
+
+Recommendation: **Promote band; ready for a separate promotion decision.**
+There are no remaining editorial blockers or required prose fixes.
+An independent full-manuscript review reached the same 65/70 score.
+This is a readiness recommendation; the author has not authorized a tier
+change.
+
+### Hard gates and preserved boundaries
+
+- Bible red lines PASS: no anchor, donor experience, death, or collapse is
+  reversed. The revised story still distinguishes new testimony from the
+  original lived sound (:364-368,479-482,514-521).
+- New-law gate PASS: living-memory rendering uses existing lore; fresh
+  stocks and present attention pay the trip; material upkeep and shared
+  recitation hold this local frame (:447-496).
+- Novel/novella dependency gate PASS: the five prerequisites are primary,
+  with no event-level or longer-work dependency added (:61-66).
+- CI gate PASS: full validate:ci completed after generated artifacts were staged.
+- All story/event statuses remain draft; all four 0021 events remain
+  local. The ten 0004, five 0015, and five 0017 events remain local too.
+- H-37 is the existing chart artifact; no coordinates, surveyed route
+  shape, reopening, or date relative to the Tessarine breach is added.
+- The grandmother's carrier and the different family's carrier remain
+  separate local closure cases. No donor content is recovered from either.
+  Aurel's promises remain unverified, and no Synod booth claim is expanded.
+- No character/location profile, lexicon term, governing mechanics/lore,
+  shared timeline, map placement, or other manuscript changes. Separate
+  Tess/Halix claim reviews and any later 0021 profile expansions remain
+  outside this revision.
+
+### Generated artifacts, validation, and PR
+
+npm run linkmap:build regenerated all three graph artifacts. Only
+REFERENCE_MAP.json and docs/link_map/LINK_MAP.md changed; CANONICAL_INDEX.md
+is byte-identical because no entity or tier changed. The graph contains
+**175 entities, 807 relationships, zero orphaned targets**. Its one new
+deduplicated relationship is story-0021 to loc-0016 through both appearance
+and causal reference fields.
+
+npm run lint and npm run check pass. Continuity and timeline reports have
+zero hard failures and zero soft warnings. The fresh impact report still
+finds two direct profile dependents, no transitive dependents, and six
+appearance candidates. Independent implementation QA confirms the exact
+approved scope, unchanged protected sources, correct event tiers and IDs,
+summary/count limits, and one-edge generated diff. git diff --check passes.
+The complete final npm run validate:ci passes, including map data, viewer,
+and render tests. Report links resolve and git diff --check passes. Remote
+PR checks and merge results are recorded on the PR; they do not authorize
+promotion.
+
+The reviewed revision's body SHA-256 (gray-matter content, including its
+existing surrounding whitespace) is:
+
+~~~text
+252fb25c02beb89f934a5569534866ed4cbc76609b9a1328daeabc08a345fe2a
+~~~
+
+Only the story, this review, and the two changed generated files are
+included in the revision commit. CANONICAL_INDEX.md was regenerated but
+has no diff. There is no manuscript status/tier promotion or profile edit.

@@ -8,8 +8,8 @@ story_type: short-story
 status: draft
 canon_tier: draft
 retrieval_role: active_draft
-summary_50: A corrected route chart strands a pod's repair filament; Yenu spends the sound of her grandfather's voice to bring it home.
-summary_200: "After Corin Tave's correction suspends H-37, the Skather-Ait pod cannot receive its frame filament on the booked route as its sleeping deck loses shape. At Halix, Tess Vlin cannot advance the fare after paying to withdraw another family's closed missed-generation Light-Bequest from trade. Yenu voluntarily renders her own memory of her grandfather's voice for a tuned stone, and Elior Ren flies the longer corridor with his eleven remaining anchors. The repair holds, the lost voice does not return, and Lysa Korr's hidden cost stays on the record."
+summary_50: A corrected route chart strands a pod's repair filament; Yenu renders the remembered sound of her grandfather's correction to bring it home.
+summary_200: "After Corin Tave's correction suspends H-37, the Skather-Ait pod cannot receive its frame filament on the booked route as its sleeping deck loses shape. At Halix, Tess Vlin cannot advance the fare after paying to withdraw another family's closed missed-generation Light-Bequest from trade. Yenu voluntarily renders her remembered sound of one correction spoken by her grandfather for a tuned stone, and Elior Ren flies the longer corridor with his eleven remaining anchors. The repair holds, the rendered sound does not return, and Lysa Korr's hidden cost stays on the record."
 cross_refs:
   characters:
     - char-0026
@@ -23,6 +23,7 @@ cross_refs:
     - loc-0015
     - loc-0013
     - loc-0008
+    - loc-0016
   factions:
     - fact-0004
     - fact-0001
@@ -48,6 +49,7 @@ references:
     - loc-0015
     - loc-0013
     - loc-0008
+    - loc-0016
   factions:
     - fact-0004
     - fact-0001
@@ -83,7 +85,7 @@ events:
     canon_tier: draft
     source: stories/short_story/receipt_for_a_voice/manuscript.md
     causal_note: Follows Corin Tave's correction in story-0017; neither the route nor Lysa Korr's burned anchor is repaired by changing the record.
-    involved_entities: [story-0021, story-0017, char-0021, char-0022, loc-0015, mech-0002]
+    involved_entities: [story-0021, story-0017, char-0021, char-0022, loc-0015, loc-0016, mech-0002]
   - id: event-story-0021-002
     timestamp: T0+8h
     summary: Yenu voluntarily renders her personal memory of her grandfather's spoken correction as a drive stone.
@@ -103,7 +105,7 @@ events:
     summary: Hol-Vren retunes the pod frame with the delivered filament; Yenu logs the donated memory and the reason for H-37's suspension.
     canon_tier: draft
     source: stories/short_story/receipt_for_a_voice/manuscript.md
-    causal_note: Physical repair and collective recitation hold the sleeping corridor; Yenu's grandfather's voice remains unavailable to her memory.
+    causal_note: Physical repair and collective recitation hold the sleeping corridor; Yenu's remembered sound of her grandfather's correction remains unavailable.
     involved_entities: [story-0021, char-0026, char-0027, loc-0015, fact-0004, mech-0001]
 themes:
   - memory-as-cost
@@ -124,10 +126,10 @@ bible_refs:
   - bible/ARCHIVISTS_WAKE_STORY_BIBLE.md#72-corridor-rules
 metadata:
   status: draft
-  word_count: 2682
+  word_count: 2674
   author: AI-assisted draft
   created: '2026-09-24T00:00:00.000Z'
-  modified: '2026-10-29T00:00:00.000Z'
+  modified: '2026-10-30T00:19:07.066Z'
 tags:
   - drift-clades
   - halix-exchange
@@ -157,13 +159,14 @@ face before she saw the notice.
 He held up the notice. H-37, the corridor booked for their freight from the inner
 Drift, had lost its clean certification. A Fleet clerk had found an anchor
 burn hidden in the charting record. The route itself still held. Pilots could no
-longer be told it held for free.
+longer be offered its old load model as verified.
 
 "Lysa Korr," Yenu read from the notice. "That's the pilot?"
 
-"The one who paid the missing fare. She died years ago."
+"The one who paid the missing fare. She died before the loss was found."
 
-H-37 would take at least twelve cycles to recertify. Their frame would not wait.
+Traffic estimated twelve cycles for H-37's recertification. Hol-Vren could not
+count on an earlier clearance. Their frame would not wait.
 They had saved for the filament one repair at a time, putting off the galley heat
 and the membrane seals. The money had purchased passage on
 the clean route. The alternate cutter could carry the package sooner, but its
@@ -308,9 +311,9 @@ its note cut off as soon as it began.
 need to keep the walls. Something yours."
 
 Yenu tried to think of something easy. The taste of the first bad meal she had
-cooked. An afternoon repairing a shuttle latch in Hol-Vren's shop. The cup ride
-to Halix when she had been little. Each had a shape but too little weight for
-the release correction Tess showed her on the cutter's chart.
+cooked. An afternoon repairing a shuttle latch in Hol-Vren's shop. Each had a
+shape but too little weight for the release correction Tess showed her on the
+cutter's chart.
 
 Then she found the memory. It had enough weight. She knew before she told Tess.
 
@@ -434,9 +437,8 @@ Her mother was still on the comm pane.
 The name came easily. Her grandmother's voice remained in Yenu's mind, warm in
 the mid-range, calling her by that shorter name. Yenu held it for a moment.
 
-Then she looked at the new stone and found she could not bear to hear her
-grandfather on demand, even if the cradle could make a copy of its contents
-before the cutter spent them.
+Then she looked at the new stone. She could ask to hear his correction from it
+before it left. She did not want to.
 
 "Send it," she said.
 
@@ -475,7 +477,7 @@ Tess read the audit and pushed the workshop accounts back across the counter.
 "On the invoice. You can hate it when your walls are holding."
 
 Yenu took the crate onto the tether cup. Halfway back, she tried again to
-remember her grandfather's voice. Her mind supplied her mother's cadence,
+recall the sound of his correction. Her mind supplied her mother's cadence,
 then Tess's when she had read the corrected line. She stopped trying to choose
 between them. Neither belonged to the moment she had given away.
 
