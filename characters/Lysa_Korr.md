@@ -29,17 +29,14 @@ references:
   characters:
     - char-0021
   locations:
-    - loc-0008
     - loc-0016
   factions:
     - fact-0001
-    - fact-0002
   mechanics:
     - mech-0001
     - mech-0002
     - mech-0003
   stories:
-    - story-0001
     - story-0017
 continuity:
   invariants:
@@ -54,25 +51,28 @@ continuity:
     - Preserve the distinction between the route chart retaining calibration records of her expenditure and the anchor itself being gone
     - Future references to H-37 should acknowledge that its prior clean certification was invalidated by Corin Tave's correction
 metadata:
-  status: speculative
+  status: canonical
   created: '2026-07-07T00:00:00.000Z'
-  modified: '2026-10-29T00:00:00.000Z'
+  modified: '2026-10-29T23:48:56.000Z'
 ---
 
 # Lysa Korr
 
-Lysa Korr is a deceased Canticle Fleet charting pilot whose route work becomes the
-central hidden cost in *The Loss Ledger*. She was known through her records as a
-pilot who could make clean corridors in difficult places and who reported prior
-anchor losses with exactness rather than ceremony.
+Lysa Korr was a Canticle Fleet charting pilot in the Helios Drift. The
+Archivist witness knows her through records and says she “charted clean
+corridors in dirty places.” Her surviving personal addenda describe prior
+anchor losses precisely.
 
 ## Anchor-Loss Record
 
-Before the H-37 discrepancy, Lysa's file lists several documented anchor burns:
-small sensory losses, a moderate vocational loss during an evacuation corridor, and
-no recorded forbidden-anchor exposure or zero-anchoring. Her route charting work on
-H-37 includes one additional personal anchor burn that was excised from the source
-record and never entered into the Loss Ledger during her life.
+Before the H-37 discrepancy, Lysa's file records three mild sensory burns
+and a moderate loss of her first instructor's voice-knot; other memories
+still hold her name and vocation. It records no forbidden-anchor exposure
+or zero-anchoring. During H-37's second confirmation run she spends another
+personal anchor. One transcript line between her declared correction and
+its recorded result was manually excised, but surviving telemetry and
+records still establish the expenditure. The loss had not been entered in
+the Loss Ledger when Corin reviewed it.
 
 The exact contents of that burned anchor are unknown in the surviving records.
 Recovering a description would not restore Lysa's burned experience; no description
@@ -82,11 +82,15 @@ is recovered in story-0017.
 
 Lysa is already dead when Corin Tave audits H-37. Surviving calibration records show
 her undocumented burn during H-37's release-end correction; they contain neither
-her spent experience nor an active consciousness. Corin's correction gives the
-Fleet an accurate institutional record of her expenditure and invalidates the clean chart
-certification, but it does not help Lysa directly or reverse her loss.
+her spent experience nor an active consciousness. Corin's correction gives
+the Fleet an accurate institutional record of her expenditure and invalidates
+the clean chart certification. Neither the correction nor the surviving
+evidence restores her burned experience or changes her death.
 
-## Narrative Function
+## Editorial Interpretation and Guidance
+
+The following interprets Lysa's role in story-0017; it adds no further
+biography or general rule of memory physics.
 
 Lysa represents the sacrifice institutions can depend on while failing to remember it
 accurately. Her story asks whether a cost still has civic weight when the system that
