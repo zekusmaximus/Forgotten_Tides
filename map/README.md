@@ -42,7 +42,8 @@ them. The decisions behind it are in `design/map/CARTOGRAPHIC_BRIEF.md` and
   sleeve's isopleth values are dropped, Sleeves IV and IX carry a softening
   screen with no figure, and the notes say the field is drawn from pre-breach
   soundings. *Before the Tessarine Breach* restores the pre-breach state.
-  The switch crossfades; values swap whole and never tween (rule R15).
+  The switch crossfades, with the Before plate whole under the After one
+  until the fade ends; values swap whole and never tween (rule R15).
 - **Story runs.** A run is labeled with its own pull count. *The Archivist's
   Wake* is a completed run (solid) into the Heliodrome with no charted
   origin. Elior Ren's run with the null stones, Vault to the Navigant house,
@@ -56,12 +57,16 @@ them. The decisions behind it are in `design/map/CARTOGRAPHIC_BRIEF.md` and
 - **Inset plates (Z3).** Zooming into the Tessarine Vault or the Heliodrome
   fades in a framed plate, not to scale. The Vault's plate stacks the silo
   bank, middle ring, and audit hall as the Vault stands. After the breach,
-  booths Three, Nine, Eleven, and Fourteen are blank (nothing inside, no
-  crisp edge), the Fourth and Ninth housings stand with no pitch ring, and
-  the lintel shows a smooth space where *only* was. The Heliodrome's plate
-  charts only what canon gives (its arrays, Array Two, the dock, and the
-  Wake's release point) and prints out of register. Past the chart tiles'
-  own resolution a dark mat covers the chart around a plate.
+  booths Three, Nine, Eleven, and Fourteen take the Void color over their
+  whole footprint, their edges eroding outward with no crisp outline while
+  the hall's walls stay whole; the Fourth and Ninth housings stand with no
+  pitch ring; and the lintel shows a smooth space where *only* was. A key
+  shows the housing symbols for the states the era draws. The Heliodrome's
+  plate charts only what canon gives (its arrays, Array Two, the dock, and
+  the Wake's release point) and prints out of register. A plate shows under
+  the lenses its site's tier shows under. Past the chart tiles' own
+  resolution, a dark mat covers the blurred chart around the plate the view
+  is near, only as far as that plate has faded in.
 - **Universe (Z0).** Zooming out past the chart shows an unlabeled scaffold
   of dark-matter filaments, with no nodes, knots, or other galaxies, around
   the known galaxy, which carries only the chart's title (rule R18).
@@ -85,8 +90,10 @@ with the same painter; see `docs/USAGE.md`.
 come from `npm run map:tiles -- --build public` (`out/map/tiles-public/`),
 rendered from canon densities only, so no speculative site shapes the public
 image. Its plates come from `npm run map:insets -- --build public`
-(`out/map/insets-public/`), which leaves out insets at non-canon sites and
-draft inset elements.
+(`out/map/insets-public/`), which leaves out insets at non-canon sites. A
+plate at a canon site holds no draft element and cites no source below
+canon (the lint enforces both); the public build also drops any draft
+element it is given.
 
 The server binds to loopback. It serves only this page, its scripts,
 OpenSeadragon from `node_modules`, one data file, and that build's tile and
@@ -185,8 +192,12 @@ as HTML.
   - the frame renderer;
   - the Phase 4 lint rules, each against a deliberate break of the real
     placement file;
-  - the Vault plate's lost booths, housing states, and lintel by era;
-  - the inset painter's determinism, seams, and Void-colored lost booths;
+  - the Vault plate's lost booths, housing states, lintel, and key by era;
+  - the inset painter's determinism, and seams split in quarters across the
+    lost booths' eroded edges and the Heliodrome's hatch;
+  - lost booths painted only in the Void color, under walls that stay whole;
+  - a pin for an event below canon, which must be marked draft and is left
+    out of the public data;
   - the Z0 scaffold's clear center and its filaments, with no knots or discs;
   - the era, plate, and event-pin data, and the public build's exclusions;
   - the inset renderer's pyramids, manifest, and byte-identical rerenders.
@@ -207,10 +218,12 @@ as HTML.
   - the no-tiles fallback;
   - the era control: its default, whole-state swaps, and deep links;
   - a stepped zoom from the galaxy into the Vault's silo bank that never shows
-    a blank center and never fades the plate back out;
+    a blank center, never fades the plate back out, and never darkens the
+    mat under a plate that is not yet in;
   - the post-breach view: no pre-breach figure, and every printed decimal a
     canon sounding or an isopleth value;
-  - plate crossfades, the layer toggles, story runs, event pins, and Z0.
+  - plate crossfades (including midway), the lens and layer toggles on
+    plates, story runs, event pins, and Z0.
 
   Screenshots go to `out/map/screenshots/` for human review. Pixel baselines
   are not used: font and GPU differences between machines make them

@@ -461,20 +461,27 @@
     }
   }
 
-  // Deep zoom is allowed only near a shown plate; elsewhere the chart stops
-  // at its own resolution.
+  // Deep zoom is allowed only near a plate the lens and layers show;
+  // elsewhere the chart stops at its own resolution. Returns the key of the
+  // plate the view is near, if any.
   function updateMaxZoom(center) {
     const { viewport } = state.viewer;
     const container = Math.max(1, viewport.getContainerSize().x);
     let max = (state.baseWidth * MAX_PIXEL_RATIO) / container;
+    let nearKey = null;
     if (state.layers.insets) {
       for (const plate of state.plates) {
+        if (!Core.visible(state.lens, plate.inset.tier)) continue;
         const r = plate.rect;
         const near = center.x > r.x - r.width && center.x < r.x + 2 * r.width && center.y > r.y - r.height && center.y < r.y + 2 * r.height;
-        if (near) max = Math.max(max, ((plate.pixelWidth / r.width) * MAX_PIXEL_RATIO) / container);
+        if (near) {
+          max = Math.max(max, ((plate.pixelWidth / r.width) * MAX_PIXEL_RATIO) / container);
+          nearKey = plate.key;
+        }
       }
     }
     viewport.maxZoomLevel = max;
+    return nearKey;
   }
 
   // ----- Event markers -----
@@ -515,10 +522,9 @@
     const era = shownEra();
     const mix = state.eraMix;
     const center = viewer.viewport.getCenter(true);
-    updateMaxZoom(center);
+    const nearPlate = updateMaxZoom(center);
     const baseMax = (state.baseWidth * MAX_PIXEL_RATIO) / Math.max(1, viewer.viewport.getContainerSize().x);
     const beyond = viewer.viewport.getZoom(true) / Math.max(baseMax, 1e-9);
-    if (state.mat) state.mat.setAttribute('opacity', state.hasTiles ? (0.92 * Math.min(1, Math.max(0, (beyond - 0.5) / 1.0))).toFixed(3) : 0);
     // Zooming out stops where the scaffold still covers the whole view.
     if (state.universe && state.layers.universe) {
       const home = viewer.viewport.getHomeBounds();
@@ -554,17 +560,20 @@
     state.plateView.clear();
     for (const inset of state.data.insets || []) {
       const px = vlen(inset.rect.width) * unit;
-      const opacity = state.layers.insets && !atUniverse ? Core.plateOpacity(px) : 0;
+      const opacity = state.layers.insets && !atUniverse && Core.visible(state.lens, inset.tier) ? Core.plateOpacity(px) : 0;
       state.plateView.set(inset.key, { px, opacity });
       // Room markers need a drawn plate; without its raster the site keeps
       // its glyph.
       if (opacity > 0.5 && state.plates.some(plate => plate.key === inset.key && plate.item)) platesShown.add(inset.key);
     }
+    if (state.mat) {
+      const shown = nearPlate && state.hasTiles ? state.plateView.get(nearPlate).opacity : 0;
+      state.mat.setAttribute('opacity', Core.matOpacity(shown, beyond).toFixed(3));
+    }
     for (const plate of state.plates) {
       if (!plate.item) continue;
       const view = state.plateView.get(plate.key);
-      const weight = plate.era === 'before' ? 1 - mix : plate.era === 'after' ? mix : 1;
-      plate.item.setOpacity(view.opacity * weight);
+      plate.item.setOpacity(view.opacity * Core.plateEraWeight(plate.era, mix));
       // Keep both eras loaded while a plate shows, so the switch is instant.
       plate.item.setPreload(view.opacity > 0);
     }
@@ -735,7 +744,7 @@
       if (feature.era === 'after') parts.push(el('p', { class: 'note', text: 'Shown after the Tessarine Breach only: canon gives this count for that era.' }));
       const events = (feature.events || []).filter(event => Core.eraShows(event.era, era));
       if (events.length) {
-        parts.push(el('h3', { text: 'Events of the run' }), el('ul', {}, events.map(event => el('li', {}, [
+        parts.push(el('h3', { text: "The story's events" }), el('ul', {}, events.map(event => el('li', {}, [
           el('small', { text: `${event.timestamp} ` }),
           event.summary,
           event.placed ? null : el('small', { text: ' · not placed: canon gives no position' })
@@ -854,7 +863,8 @@
     const id = state.selected ? state.selected.id : null;
     const center = state.viewer.viewport.getCenter(true);
     const zoom = state.viewer.viewport.getZoom(true) / state.viewer.viewport.getHomeZoom();
-    history.replaceState(null, '', Core.formatHash({ id, view: { x: center.x, y: center.y, zoom }, era: state.era }) || location.pathname);
+    const defaultEra = (state.data.eras && state.data.eras.default) || Core.DEFAULT_ERA;
+    history.replaceState(null, '', Core.formatHash({ id, view: { x: center.x, y: center.y, zoom }, era: state.era, defaultEra }) || location.pathname);
   }
 
   function flyTo(item) {

@@ -152,6 +152,9 @@ const DATA = {
     assert.deepEqual(Core.parseHash('#loc-0011~during'), {}, 'an unknown era is malformed');
     // Deep inside a plate the center needs more places.
     assert.equal(Core.formatHash({ view: { x: 0.6490123, y: 0.5571189, zoom: 420 } }), '#@0.649012,0.557119,420.00');
+    // The era is written only when it differs from the data's default.
+    assert.equal(Core.formatHash({ id: 'loc-0011', era: 'after', defaultEra: 'before' }), '#loc-0011~after');
+    assert.equal(Core.formatHash({ id: 'loc-0011', era: 'before', defaultEra: 'before' }), '#loc-0011');
   });
 
   await test('a plate fades in by its width on screen, its labels by level, and Z0 below the home view', () => {
@@ -168,6 +171,19 @@ const DATA = {
     assert(!Core.insetLabelVisible('detail', 600) && Core.insetLabelVisible('detail', 700));
     assert(!Core.insetLabelVisible('note', 800) && Core.insetLabelVisible('note', 900));
     assert(Core.insetFontPx('note', 400, [1000, 1440]) >= 8 && Core.insetFontPx('note', 100000, [1000, 1440]) <= 18, 'plate text stays legible and bounded');
+    // The crossfade keeps the Before raster whole until the After one is in.
+    for (const mix of [0, 0.01, 0.5, 0.99]) {
+      assert.equal(Core.plateEraWeight('before', mix), 1, `Before at mix ${mix}`);
+      assert.equal(Core.plateEraWeight('after', mix), mix, `After at mix ${mix}`);
+    }
+    assert.equal(Core.plateEraWeight('before', 1), 0);
+    assert.equal(Core.plateEraWeight('after', 1), 1);
+    assert.equal(Core.plateEraWeight('both', 0.3), 1);
+    // The mat follows the plate, and only past the chart's resolution.
+    assert.equal(Core.matOpacity(0, 5), 0, 'no mat without a plate');
+    assert.equal(Core.matOpacity(1, 1), 0, 'no mat at the chart\'s own resolution');
+    assert(Core.matOpacity(1, 3) > 0.9);
+    assert(Core.matOpacity(0.3, 3) < 0.3, 'a plate still fading in keeps the mat light');
     assert.equal(Core.universeOpacity(1), 0);
     assert.equal(Core.universeOpacity(0.2), 1);
     assert(Core.universeOpacity(0.6) > 0 && Core.universeOpacity(0.6) < 1);

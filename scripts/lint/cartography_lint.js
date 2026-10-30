@@ -39,15 +39,22 @@
  *     scaffold cites its basis. A canon inset element cites a primary- or
  *     working-canon source; a drawing-approved one cites a claim the brief
  *     marks "drawing approved"; a cartographic one cites a rule.
- *   - Every figure a note, label, route, or count states appears in the
- *     source lines it cites (R14, R16), and era notes state none.
+ *   - Every figure a note or label states appears in the source lines it
+ *     cites (R14), and era notes state none. A route's pull count is the
+ *     figure of an "N pulls" phrase in its cited lines (R16). A counted
+ *     inset field (booths, lost booths, housings) equals the figures of a
+ *     phrase quoted verbatim from its cited lines.
  *   - Every atlas sounding measured before the breach has an era state that
  *     reads "unmeasured" after it, and only those do (R6, R15); a softening
  *     sleeve carries no figure (R9).
- *   - The Vault inset's booth and housing counts, its lost booths, and its
- *     housing states agree with canon and with the sleeves' silo states.
+ *   - The Vault's housing states agree with the sleeves' silo states,
+ *     including the Second's binding.
  *   - Nothing is placed inside a lost booth, plates and pins stay out of the
- *     Voids, and every element lies on its plate.
+ *     Voids, and every element, arcs included, lies on its plate.
+ *   - On a plate at a canon site no element is a draft or cites a draft or
+ *     speculative source, so nothing below canon reaches the public build or
+ *     shows under the Primary lens; a pin for an event below working canon
+ *     must say `tier: draft` (decision Q36).
  *   - A route whose pull count only the breach story gives shows after the
  *     breach only (R16); an After-only route cites the breach story.
  *   - Event pins name real events, resolve their routes and anchors in every
@@ -473,6 +480,8 @@ function lintDepthAndTime({ root, cartography, atlas, register, shapes, points, 
   const timeline = new Map((fs.existsSync(timelinePath) ? (yaml.load(fs.readFileSync(timelinePath, 'utf8')) || {}).events || [] : []).map(event => [event.id, event]));
   const voidShapes = cartography.regions.filter(region => region.treatment === 'void').map(region => shapes.get(region.id));
   const inVoid = (x, y) => voidShapes.some(shape => shape.depth(x, y) > 0);
+  const normalize = text => String(text).toLowerCase().replace(/\s+/g, ' ');
+  const textOf = sources => (sources || []).map(source => sourceText(root, source, sourceCache)).join('\n');
 
   // Figures a text states must appear in the lines it cites (R14).
   const figuresOf = sources => {
@@ -490,8 +499,28 @@ function lintDepthAndTime({ root, cartography, atlas, register, shapes, points, 
     const given = figuresOf(sources);
     for (const figure of stated) if (!given.has(figure)) error(at, `${what} states ${figure}, which its cited sources do not give (R14)`);
   };
-  const checkCount = (at, what, value, sources) => {
-    if (!figuresOf(sources).has(value)) error(at, `${what} is ${value}, which its cited sources do not give`);
+  // A counted field equals the figures of a phrase quoted verbatim from its
+  // cited lines, so a number that merely occurs nearby cannot pass.
+  const checkQuote = (at, field, value, quote, sources) => {
+    if (!quote) {
+      error(at, `${field} needs a quote: a phrase from its cited lines whose figures it equals`);
+      return;
+    }
+    if (!normalize(textOf(sources)).includes(normalize(quote))) {
+      error(at, `the quote for ${field}, "${quote}", is not in its cited lines`);
+      return;
+    }
+    const want = [...figuresIn(quote)].sort((a, b) => a - b);
+    const have = [].concat(value).slice().sort((a, b) => a - b);
+    if (want.join(',') !== have.join(',')) error(at, `${field} reads ${have.join(', ')}, but its quote "${quote}" gives ${want.join(', ') || 'no figure'}`);
+  };
+  // The figures of every "N pulls" phrase in some cited lines (R16).
+  const pullCounts = sources => {
+    const out = new Set();
+    for (const match of textOf(sources).matchAll(/\b((?:[a-z]+[- ]){0,3}[a-z]+|\d+)\s+pulls?\b/gi)) {
+      for (const figure of figuresIn(match[1])) out.add(figure);
+    }
+    return out;
   };
 
   for (const feature of features) if (feature.note) checkFigures(`features[${feature.key}]`, 'its note', feature.note, feature.sources);
@@ -542,7 +571,7 @@ function lintDepthAndTime({ root, cartography, atlas, register, shapes, points, 
   // Routes (R16).
   for (const route of routes) {
     const at = `routes[${route.key}]`;
-    if (route.pulls) checkCount(at, 'its pull count', route.pulls, route.sources);
+    if (route.pulls && !pullCounts(route.sources).has(route.pulls)) error(at, `its pull count is ${route.pulls}, but no "${route.pulls} pulls" phrase is in its cited lines`);
     if (route.duration) checkFigures(at, 'its duration', route.duration, route.sources);
     if (route.note) checkFigures(at, 'its note', route.note, route.sources);
     for (const id of route.events || []) if (!timeline.has(id)) error(at, `events names ${id}, which is not in data/timeline/events.yaml`);
@@ -550,7 +579,7 @@ function lintDepthAndTime({ root, cartography, atlas, register, shapes, points, 
     const fromBreachStory = source => (parseSource(source) || {}).file === breachSource;
     if (route.era === 'after' && !(route.sources || []).some(fromBreachStory)) error(at, 'shows after the breach only but cites nothing from the breach story');
     if (route.pulls && route.era !== 'after') {
-      const giving = (route.sources || []).filter(source => figuresIn(sourceText(root, source, sourceCache)).has(route.pulls));
+      const giving = (route.sources || []).filter(source => pullCounts([source]).has(route.pulls));
       if (giving.length && giving.every(fromBreachStory)) error(at, `its ${route.pulls}-pull count comes only from the breach story, so it shows after the breach only (R16)`);
     }
   }
@@ -571,13 +600,25 @@ function lintDepthAndTime({ root, cartography, atlas, register, shapes, points, 
     if (inset.caption) checkFigures(at, 'its caption', inset.caption, inset.sources);
     const frame = insetsLib.plateFrame(inset, points.get(inset.site).xy);
     const { rect } = frame;
+    const siteEntity = atlas.get(inset.site);
+    const canonSite = Boolean(siteEntity) && layout.CANON_TIERS.has(siteEntity.tier);
     // The Voids are unions of discs: a plate reaches into one when the
     // disc's center lies within its radius of the plate's rectangle.
-    const reaches = voidShapes.flatMap(shape => shape.items || []).some(({ center: [cx, cy], radius }) => {
+    const discReaches = ({ center: [cx, cy], radius }) => {
       const dx = Math.max(rect.left - cx, 0, cx - rect.right);
       const dy = Math.max(rect.bottom - cy, 0, cy - rect.top);
       return Math.hypot(dx, dy) < radius;
-    });
+    };
+    // Discs are tested exactly; any other Void shape on a fine grid.
+    const sampleReaches = shape => {
+      for (let i = 0; i <= 40; i++) {
+        for (let j = 0; j <= 40; j++) {
+          if (shape.depth(rect.left + (rect.width * i) / 40, rect.bottom + (rect.height * j) / 40) > 0) return true;
+        }
+      }
+      return false;
+    };
+    const reaches = voidShapes.some(shape => (shape.items ? shape.items.some(discReaches) : shape.type === 'disc' ? discReaches(shape) : sampleReaches(shape)));
     if (reaches) error(at, 'its plate reaches into a Void Region; nothing is charted inside (R12)');
     const [uw, uh] = inset.plate.units;
     const keys = new Set();
@@ -586,36 +627,55 @@ function lintDepthAndTime({ root, cartography, atlas, register, shapes, points, 
       if (keys.has(element.key)) error(where, 'repeats a key in this inset');
       keys.add(element.key);
       if (element.era && element.era !== 'both' && !inset.eras.includes(element.era)) error(where, `era ${element.era} is not one of this inset's eras`);
-      // Every element lies on its plate.
+      // Nothing below canon on a plate at a canon site: its raster cannot be
+      // filtered by lens, and the public build would carry it (Q36).
+      if (canonSite) {
+        if (element.tier === 'draft') error(where, 'is a draft element on a plate at a canon site; the plate shows under every lens and in the public build');
+        for (const source of element.sources || []) {
+          const resolved = resolveSource(root, source, sourceCache);
+          if (resolved.tier && !layout.CANON_TIERS.has(resolved.tier) && resolved.tier !== 'reference') {
+            error(where, `cites ${source}, which is ${resolved.tier}; a plate at a canon site cites canon only (Q36)`);
+          }
+        }
+      }
+      // Every element lies on its plate, arcs and housings by their extent.
+      const arc = (c, r, from, to) => Array.from({ length: 25 }, (_, k) => {
+        const angle = ((from + ((to - from) * k) / 24) * Math.PI) / 180;
+        return [c[0] + r * Math.cos(angle), c[1] + r * Math.sin(angle)];
+      });
       const spots = [
         ...(element.x !== undefined ? [[element.x, element.y], [element.x + (element.w || 0), element.y + (element.h || 0)]] : []),
         ...['at', 'a', 'b', 'label_at', 'anchor'].filter(name => element[name]).map(name => element[name]),
         ...(element.points || []),
-        ...(element.c ? [[element.c[0], element.c[1]]] : [])
+        ...(element.c && element.kind === 'hull' ? arc(element.c, element.r, 0, 360) : []),
+        ...(element.c && ['arc-wall', 'shelving', 'area'].includes(element.kind)
+          ? [element.r, element.r0, element.r1].filter(r => r !== undefined).flatMap(r => arc(element.c, r, element.from, element.to)) : []),
+        ...(element.kind === 'housings' ? insetsLib.housingLayout(element).flatMap(({ at }) => arc(at, element.size * 1.9, 0, 360)) : [])
       ];
       if (spots.some(([u, v]) => u < 0 || v < 0 || u > uw || v > uh)) error(where, 'lies off its plate');
       for (const [name, text] of [['its label', element.label], ['its text', element.text]]) if (text) checkFigures(where, name, text, element.sources);
       if (element.kind === 'booths') {
         if (element.count !== 2 * element.per_row) error(where, `count ${element.count} does not equal two rows of ${element.per_row}`);
-        checkCount(where, 'its booth count', element.count, element.sources);
-        for (const number of element.lost_after || []) {
-          if (number > element.count) error(where, `lost booth ${number} is beyond the count of ${element.count}`);
-          checkCount(where, 'a lost booth', number, element.sources);
+        checkQuote(where, 'its booth count', element.count, (element.quotes || {}).count, element.sources);
+        if (element.lost_after) {
+          for (const number of element.lost_after) if (number > element.count) error(where, `lost booth ${number} is beyond the count of ${element.count}`);
+          checkQuote(where, 'its lost booths', element.lost_after, (element.quotes || {}).lost_after, element.sources);
         }
       }
       if (element.kind === 'housings') {
-        checkCount(where, 'its housing count', element.count, element.sources);
+        checkQuote(where, 'its housing count', element.count, (element.quotes || {}).count, element.sources);
         for (const number of Object.keys(element.after_states || {}).map(Number)) {
           if (number > element.count) error(where, `after_states names housing ${number}, beyond the count of ${element.count}`);
         }
-        // Each housing's state after the breach agrees with its sleeve's silo.
-        const expect = { lost: ['lost'], 'reduced-pitch': ['reduced'], held: ['holds', 'bound'] };
+        // Each housing's state after the breach agrees with its sleeve's silo;
+        // a held silo whose note says it is bound is drawn bound.
         for (let n = 1; n <= element.count; n++) {
           const sleeve = sleeveFeature && (sleeveFeature.sleeves || []).find(entry => entry.number === n);
           const silo = sleeve && sleeve.post_breach ? sleeve.post_breach.silo : null;
+          const bound = silo === 'held' && /\bbound\b/i.test(sleeve.post_breach.note || '');
           const state = insetsLib.housingState(element, 'after', n);
-          const allowed = silo ? expect[silo] : ['holds'];
-          if (!allowed.includes(state)) error(where, `housing ${n} is ${state} after the breach, but Sleeve ${n}'s silo is ${silo || 'not listed as changed'}`);
+          const allowed = !silo ? ['holds'] : silo === 'lost' ? ['lost'] : silo === 'reduced-pitch' ? ['reduced'] : bound ? ['bound'] : ['holds'];
+          if (!allowed.includes(state)) error(where, `housing ${n} is drawn "${state}" after the breach, but Sleeve ${n}'s silo is ${bound ? 'held and bound' : silo || 'not listed as changed'}`);
         }
       }
       if (element.kind === 'lintel' && element.forgotten_after && !element.text.split(' ').includes(element.forgotten_after)) {
@@ -655,7 +715,9 @@ function lintDepthAndTime({ root, cartography, atlas, register, shapes, points, 
       error(at, `${pin.event} is not in data/timeline/events.yaml`);
       continue;
     }
-    if (!layout.CANON_TIERS.has(event.canon_tier)) warn(at, `${pin.event} is ${event.canon_tier}; the public build leaves it out`);
+    if (!layout.CANON_TIERS.has(event.canon_tier) && pin.tier !== 'draft') {
+      error(at, `${pin.event} is ${event.canon_tier || 'of no tier'}; mark the pin tier: draft so it stays out of the public build (Q36)`);
+    }
     const era = eraOf(event);
     if (pin.route) {
       const route = routes.find(entry => entry.key === pin.route);
@@ -690,7 +752,7 @@ function lintDepthAndTime({ root, cartography, atlas, register, shapes, points, 
   const universe = cartography.universe;
   if (universe) {
     const perimeter = shapes.get(cartography.field.radial.perimeter);
-    const edge = perimeter && perimeter.type === 'annulus' ? perimeter.outer : 0;
+    const edge = !perimeter ? 0 : perimeter.type === 'annulus' ? perimeter.outer : Math.max(...perimeter.boundary(360).map(([x, y]) => Math.hypot(x, y)));
     if (!(universe.hole >= edge - 1e-9)) error('universe', `hole ${universe.hole} would cover the chart inside r ${edge}`);
     if (!(universe.extent > universe.hole)) error('universe', `extent ${universe.extent} must exceed hole ${universe.hole}`);
     if (figuresIn(universe.label).size) error('universe', 'its label states a figure; Z0 carries only the chart title (R18)');

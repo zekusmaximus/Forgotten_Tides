@@ -286,8 +286,14 @@ const pinHidden = (page, id) => page.$eval(`#pins [data-id="${id}"]`, node => no
         reached = await view(page, silo.x, silo.y, zoom);
         await settle(page);
         await page.waitForTimeout(120);
-        const opacity = await page.evaluate(() => window.__map.state.plateView.get('tessarine-vault').opacity);
+        const { opacity, mat } = await page.evaluate(() => ({
+          opacity: window.__map.state.plateView.get('tessarine-vault').opacity,
+          mat: window.__map.state.mat ? Number(window.__map.state.mat.getAttribute('opacity')) : 0
+        }));
         assert(opacity + 1e-9 >= lastOpacity, `the plate never fades back out on the way in (zoom ${zoom.toFixed(1)})`);
+        // The mat darkens the chart only as far as the plate it frames has
+        // faded in, so it never stands in for a plate that is not there.
+        assert(mat <= opacity + 1e-3, `zoom ${zoom.toFixed(1)}: the mat is at ${mat} while the plate is at ${opacity.toFixed(2)}`);
         lastOpacity = opacity;
         // The middle of the view always shows the chart or the plate, never
         // the bare stage behind them.
@@ -306,6 +312,8 @@ const pinHidden = (page, id) => page.$eval(`#pins [data-id="${id}"]`, node => no
       // Away from a plate, the chart stops at its own resolution.
       const free = await view(page, 0.3, 0.3, 600);
       assert(free < 300, `deep zoom is allowed only near a plate (reached ${free.toFixed(1)})`);
+      await settle(page);
+      assert.equal(await page.evaluate(() => Number(window.__map.state.mat.getAttribute('opacity'))), 0, 'no mat away from a plate');
       assert.deepEqual(errors, []);
       await page.close();
     });
@@ -362,6 +370,30 @@ const pinHidden = (page, id) => page.$eval(`#pins [data-id="${id}"]`, node => no
       await page.evaluate(() => window.__map.render());
       now = await opacities();
       assert(now['tessarine-vault-before'] > 0.99 && now['tessarine-vault-after'] < 0.01, JSON.stringify(now));
+      // Midway, the Before plate stays whole under the After plate, so the
+      // chart never shows through the crossfade.
+      await page.evaluate(() => { window.__map.state.eraMix = 0.5; window.__map.render(); });
+      now = await opacities();
+      assert(now['tessarine-vault-before'] > 0.99 && Math.abs(now['tessarine-vault-after'] - 0.5) < 0.01, `midway: ${JSON.stringify(now)}`);
+      await page.evaluate(() => { window.__map.state.eraMix = 0; window.__map.render(); });
+      // A plate follows the lens: one at a site below canon is hidden under
+      // the primary lens, and deep zoom is not offered there.
+      const lensed = await page.evaluate(() => {
+        const inset = window.__map.state.data.insets.find(entry => entry.key === 'tessarine-vault');
+        const { tier } = inset;
+        const { lens } = window.__map.state;
+        inset.tier = 'speculative';
+        window.__map.setLens('primary');
+        window.__map.render();
+        const shown = window.__map.state.plates.filter(plate => plate.key === 'tessarine-vault').map(plate => plate.item.getOpacity());
+        const max = window.__map.state.viewer.viewport.maxZoomLevel;
+        inset.tier = tier;
+        window.__map.setLens(lens);
+        window.__map.render();
+        return { shown, max, after: window.__map.state.viewer.viewport.maxZoomLevel };
+      });
+      assert(lensed.shown.every(value => value === 0), `a plate below the lens is hidden: ${JSON.stringify(lensed)}`);
+      assert(lensed.max < lensed.after, `deep zoom is not offered at a plate below the lens: ${JSON.stringify(lensed)}`);
       assert.equal(await page.$eval('#pins [data-id="loc-0011"]', node => node.hidden), true, 'the site pin hides under its plate');
       await page.click('#layers-toggle');
       await page.uncheck('#layer-list input[data-layer="insets"]');

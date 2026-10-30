@@ -837,10 +837,12 @@ contradictions that the continuity checks and the map would otherwise flag.
     defaults to After the breach. The two story runs, the event pins, the
     layer toggles, and the Z0 scaffold are in the viewer.
   - The lint checks every element's basis and every printed figure against
-    its cited lines (rules R12–R18).
+    its cited lines (rules R12–R18). Vault counts must equal a phrase quoted
+    from their cited lines, and a pull count needs an "N pulls" phrase there.
   - The browser tests check both done-when conditions:
-    - A stepped zoom from Z1 to the silo bank never shows a blank center and
-      never fades the plate back out.
+    - A stepped zoom from Z1 to the silo bank never shows a blank center,
+      never fades the plate back out, and never darkens the mat under a
+      plate that is not yet in.
     - The After view prints no pre-breach figure, and every decimal on it is
       a canon sounding or an isopleth value.
 

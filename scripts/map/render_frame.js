@@ -63,7 +63,16 @@ function main() {
   let span = 2 * layout.IMAGE_EXTENT;
   let height = width;
   if (option('--inset')) {
-    painter = createInsetPainter(root, { build, inset: option('--inset'), era: option('--era') || 'after' });
+    // An inset with no breach states has the one era "both".
+    const placements = layout.loadMapContext(root).cartography;
+    const spec = (placements.insets || []).find(entry => entry.key === option('--inset'));
+    const defaultEra = spec && spec.eras.includes('both') ? 'both' : 'after';
+    try {
+      painter = createInsetPainter(root, { build, inset: option('--inset'), era: option('--era') || defaultEra });
+    } catch (err) {
+      console.error(`Frame render failed: ${err.message}`);
+      process.exit(1);
+    }
     const { rect } = painter.frame;
     center = [(rect.left + rect.right) / 2, (rect.top + rect.bottom) / 2];
     span = rect.width;

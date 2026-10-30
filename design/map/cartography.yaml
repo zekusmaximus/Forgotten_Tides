@@ -399,8 +399,11 @@ insets:
     caption: Plans of the silo bank, the middle ring, and the audit hall, stacked as the Vault stands. Up on the plate is the Vault's up. Not to scale; arrangement P.A.
     plate: { width: 0.02, units: [1000, 1440] }
     eras: [before, after]
+    # The key to the housing symbols: furniture, drawn for the states each
+    # era shows (rule R13).
+    legend: { at: [62, 168], step: 132, size: 9 }
     claims: [T30]
-    rules: [R12]
+    rules: [R12, R13]
     elements:
       # Silo bank (claim T35).
       - key: silo-bank
@@ -421,16 +424,20 @@ insets:
         r: 760
         from: 236
         to: 296
-        tier: drawing-approved
-        claims: [T35]
+        tier: canon
+        claims: [T30]
+        sources:
+          - stories/short_story/spend_what_you_can_afford/manuscript.md:502
       - key: silo-bank-back-wall-end
         kind: arc-wall
         c: [500, 980]
         r: 760
         from: 302
         to: 304
-        tier: drawing-approved
-        claims: [T35]
+        tier: canon
+        claims: [T30]
+        sources:
+          - stories/short_story/spend_what_you_can_afford/manuscript.md:502
       - key: upper-doors
         kind: door
         a: [833, 297]
@@ -444,19 +451,25 @@ insets:
       - key: silo-bank-walls
         kind: wall
         points: [[75, 350], [75, 440], [470, 440]]
-        tier: drawing-approved
-        claims: [T35]
+        tier: canon
+        claims: [T30]
+        sources:
+          - stories/short_story/spend_what_you_can_afford/manuscript.md:502
       - key: silo-bank-walls-east
         kind: wall
         points: [[530, 440], [925, 440], [925, 350]]
-        tier: drawing-approved
-        claims: [T35]
+        tier: canon
+        claims: [T30]
+        sources:
+          - stories/short_story/spend_what_you_can_afford/manuscript.md:502
       - key: silo-bank-door
         kind: door
         a: [470, 440]
         b: [530, 440]
-        tier: drawing-approved
-        claims: [T33]
+        tier: canon
+        claims: [T30]
+        sources:
+          - stories/short_story/spend_what_you_can_afford/manuscript.md:707
       - key: last-flight
         kind: stair
         x: 474
@@ -478,6 +491,7 @@ insets:
         to: 298
         size: 22
         count: 9
+        quotes: { count: nine housings }
         # Rule R13: state by category, never by value. These must agree
         # with the outer-sleeve sleeves' post_breach silo states.
         after_states: { 2: bound, 4: lost, 5: reduced, 7: reduced, 9: lost }
@@ -485,13 +499,6 @@ insets:
         claims: [T35, T37]
         sources:
           - atlas/Tessarine_Vault.md:108-113
-      - key: housing-key
-        kind: legend
-        at: [62, 168]
-        step: 132
-        size: 9
-        tier: cartographic
-        rules: [R13]
       - key: silo-note
         kind: note
         era: after
@@ -604,6 +611,7 @@ insets:
         claims: [T34]
         sources:
           - atlas/Tessarine_Vault.md:104-107
+          - stories/short_story/spend_what_you_can_afford/manuscript.md:463
 
       # Audit hall (claims T31-T33).
       - key: audit-hall
@@ -690,6 +698,9 @@ insets:
         per_row: 8
         count: 16
         lost_after: [3, 9, 11, 14]
+        # Each counted field equals the figures of a phrase quoted verbatim
+        # from its cited lines.
+        quotes: { count: Sixteen cradle booths, lost_after: 'Three, Nine, Eleven, Fourteen' }
         tier: drawing-approved
         claims: [T31, T32, T36]
         sources:

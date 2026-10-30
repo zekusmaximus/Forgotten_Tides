@@ -215,11 +215,14 @@ function expandInset(inset, { era = 'after', build = 'author' } = {}) {
           const at = [labelX, r.y + r.h / 2];
           if (lostNow.has(booth.number)) {
             // A place lost to forgetting: nothing inside, an edge that is not
-            // a line, the numeral outside on a leader (rule R13).
-            lost.push({ key: `${element.key}-${booth.number}`, rect: { x: r.x - 1, y: r.y - 1, w: r.w + 2, h: r.h + 2 }, erode: element.erode || 6, seed: booth.number });
-            const edge = booth.side === 0 ? r.x + r.w + 5 : r.x - 5;
-            primitives.push({ type: 'seg', a: pt(edge, r.y + r.h / 2), b: pt(booth.side === 0 ? labelX - 3 : labelX + 3, r.y + r.h / 2), weight: WEIGHT.thin, dash: [2, 2] });
-            labels.push(labelOf(element, String(booth.number), [booth.side === 0 ? labelX + 4 : labelX - 4, at[1]], { align: booth.side === 0 ? 'start' : 'end', style: 'lost', booth: booth.number }));
+            // a line, the numeral out in the aisle on a leader (rule R13).
+            const erode = element.erode || 6;
+            lost.push({ key: `${element.key}-${booth.number}`, rect: { x: r.x, y: r.y, w: r.w, h: r.h }, erode, seed: booth.number });
+            const sign = booth.side === 0 ? 1 : -1;
+            const edge = (booth.side === 0 ? r.x + r.w : r.x) + sign * (erode + 3);
+            const tip = (booth.side === 0 ? layout.aisleLeft : layout.aisleRight) + sign * 26;
+            primitives.push({ type: 'seg', a: pt(edge, r.y + r.h / 2), b: pt(tip, r.y + r.h / 2), weight: WEIGHT.thin, dash: [2, 2] });
+            labels.push(labelOf(element, String(booth.number), [tip + sign * 3, at[1]], { align: booth.side === 0 ? 'start' : 'end', style: 'lost', booth: booth.number }));
           } else {
             labels.push(labelOf(element, String(booth.number), at, { align: booth.side === 0 ? 'start' : 'end', booth: booth.number }));
           }
@@ -233,17 +236,6 @@ function expandInset(inset, { era = 'after', build = 'author' } = {}) {
           ink(housingPrimitives(housing.at, element.size, state, towards));
           labels.push(labelOf(element, ROMAN[housing.number - 1], polar(housing.at, element.size * 2.6, towards + 180), { housing: housing.number, state }));
         }
-        break;
-      }
-      case 'legend': {
-        // A key to the housing symbols present in this era.
-        const states = era === 'after' ? HOUSING_STATES : ['holds'];
-        const words = { holds: 'holds', reduced: 'reduced pitch', bound: 'bound', lost: 'lost to oblivion' };
-        states.forEach((state, k) => {
-          const at = pt(element.at[0] + k * element.step, element.at[1]);
-          primitives.push(...housingPrimitives(at, element.size, state, 270));
-          labels.push(labelOf(element, words[state], pt(at[0] + element.size * 2.4, at[1]), { align: 'start', level: 'note', style: 'key' }));
-        });
         break;
       }
       case 'stair':
@@ -305,6 +297,18 @@ function expandInset(inset, { era = 'after', build = 'author' } = {}) {
     if (element.anchor) anchors[element.key] = element.anchor;
     else if (element.kind === 'anchor') anchors[element.key] = element.at;
   }
+  // The plate's key to its housing symbols, for the states this era shows:
+  // furniture, not an element of the place (rule R13).
+  if (inset.legend) {
+    const key = inset.legend;
+    const states = era === 'after' ? HOUSING_STATES : ['holds'];
+    const words = { holds: 'holds', reduced: 'reduced pitch', bound: 'bound', lost: 'lost to oblivion' };
+    states.forEach((state, k) => {
+      const at = pt(key.at[0] + k * key.step, key.at[1]);
+      primitives.push(...housingPrimitives(at, key.size, state, 270));
+      labels.push({ key: 'legend', kind: 'legend', text: words[state], at: pt(at[0] + key.size * 2.4, at[1]), align: 'start', level: 'note', style: 'key', tier: 'canon' });
+    });
+  }
   if (inset.misregister) {
     const [dx, dy] = inset.misregister;
     for (const p of ghost) primitives.push({ ...shift(p, dx, dy), ghost: true });
@@ -319,6 +323,8 @@ function shift(p, dx, dy) {
   if (p.b) out.b = move(p.b);
   if (p.c) out.c = move(p.c);
   if (p.x !== undefined) { out.x = p.x + dx; out.y = p.y + dy; }
+  // A hatch's lines move with it, not only its outline.
+  if (p.type === 'hatch') out.offset = [(p.offset ? p.offset[0] : 0) + dx, (p.offset ? p.offset[1] : 0) + dy];
   return out;
 }
 
@@ -334,8 +340,9 @@ const TENS = ['', '', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 
 const ORDINALS = ['zeroth', 'first', 'second', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth', 'ninth', 'tenth', 'eleventh', 'twelfth', 'thirteenth', 'fourteenth', 'fifteenth', 'sixteenth', 'seventeenth', 'eighteenth', 'nineteenth'];
 
 // Every figure a text states, as numbers: digits ("0.78", "44217"), number
-// words ("one hundred sixty", "a hundred", "forty-two"), and ordinals
-// ("Fourth"). Roman numerals are not read; they are generated labels.
+// words ("one hundred sixty", "a hundred", "forty-two", "two million",
+// "three dozen"), and ordinals ("Fourth"). Fractions ("half", "a quarter
+// of") and Roman numerals are not read; numerals are generated labels.
 function figuresIn(text) {
   const found = new Set();
   for (const match of String(text).matchAll(/\d+(?:\.\d+)?/g)) found.add(Number(match[0]));
@@ -351,14 +358,16 @@ function figuresIn(text) {
   };
   // Which word may follow which inside one figure.
   const follows = {
-    unit: [null, 'tens', 'hundred', 'thousand'],
-    tens: [null, 'hundred', 'thousand'],
+    unit: [null, 'tens', 'hundred', 'thousand', 'million'],
+    tens: [null, 'hundred', 'thousand', 'million'],
     hundred: ['unit'],
-    thousand: ['unit', 'tens', 'hundred']
+    dozen: ['unit', 'tens'],
+    thousand: ['unit', 'tens', 'hundred'],
+    million: ['unit', 'tens', 'hundred']
   };
   for (let k = 0; k < tokens.length; k++) {
     const token = tokens[k];
-    if (token === 'a' && (tokens[k + 1] === 'hundred' || tokens[k + 1] === 'thousand')) {
+    if (token === 'a' && ['hundred', 'thousand', 'million', 'dozen'].includes(tokens[k + 1])) {
       close();
       current = 1;
       last = 'unit';
@@ -366,14 +375,14 @@ function figuresIn(text) {
     }
     // "a hundred and eighty": "and" joins a figure only after hundred or
     // thousand, and only before another number word.
-    if (token === 'and' && (last === 'hundred' || last === 'thousand') && (UNITS.includes(tokens[k + 1]) || TENS.includes(tokens[k + 1]))) continue;
+    if (token === 'and' && (last === 'hundred' || last === 'thousand' || last === 'million') && (UNITS.includes(tokens[k + 1]) || TENS.includes(tokens[k + 1]))) continue;
     let kind = null;
     let value = 0;
     if (UNITS.includes(token)) { kind = 'unit'; value = UNITS.indexOf(token); }
     else if (TENS.includes(token)) { kind = 'tens'; value = TENS.indexOf(token) * 10; }
     else if (ORDINALS.includes(token) && token !== 'zeroth') { kind = 'unit'; value = ORDINALS.indexOf(token); }
-    else if (token === 'hundred') kind = 'hundred';
-    else if (token === 'thousand') kind = 'thousand';
+    else if (token === 'hundred' || token === 'dozen') kind = token;
+    else if (token === 'thousand' || token === 'million') kind = token;
     if (!kind) {
       close();
       continue;
@@ -382,10 +391,12 @@ function figuresIn(text) {
     const fits = follows[kind].includes(last) && !(kind === 'unit' && last === 'tens' && (value === 0 || value > 9));
     if (!fits) {
       close();
-      if (kind === 'hundred' || kind === 'thousand') continue;
+      if (kind === 'hundred' || kind === 'dozen' || kind === 'thousand' || kind === 'million') continue;
     }
     if (kind === 'hundred') current *= 100;
+    else if (kind === 'dozen') current *= 12;
     else if (kind === 'thousand') { total += current * 1000; current = 0; }
+    else if (kind === 'million') { total = (total + current) * 1000000; current = 0; }
     else current += value;
     last = kind;
     if (ORDINALS.includes(token)) close();

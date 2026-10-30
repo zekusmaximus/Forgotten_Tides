@@ -172,18 +172,22 @@ these:
   - an era state, inset element, event pin, or the Z0 scaffold with no
     basis, or a drawing-approved inset element that cites no claim the brief
     marks drawing approved;
-  - a figure in a note, label, route, or count that its cited source lines
+  - a figure in a note, label, or route note that its cited source lines
     do not give;
+  - a booth count, lost-booth list, or housing count that does not equal the
+    figures of the phrase it quotes, or whose quote is not in its cited lines;
+  - a route pull count with no "N pulls" phrase of that figure in its cited
+    lines, or one shown in an era canon does not give it for;
   - an atlas sounding measured before the Tessarine Breach with no era state
     reading "unmeasured" after it, or an era state on any other sounding;
   - a figure on a softening sleeve or an era note;
-  - Vault booth or housing counts, lost booths, or housing states that
-    disagree with canon or with the sleeves' silo states;
+  - a housing state after the breach that disagrees with its sleeve's silo
+    (a held silo whose note says it is bound is drawn bound);
+  - on a plate at a canon site, a draft element or a source below canon;
   - an anchor or label inside a lost booth, a plate reaching into a Void, or
     an element off its plate;
-  - a pull count shown in an era canon does not give it for;
-  - an event pin for a missing event, route, or anchor, or a pin placed
-    twice.
+  - an event pin for a missing event, route, or anchor, a pin placed twice,
+    or a pin for an event below canon that is not marked `tier: draft`.
 
 `map:data` refuses to build while the lint reports errors. The public build
 leaves speculative entities and draft material out of the file itself.

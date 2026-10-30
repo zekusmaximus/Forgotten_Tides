@@ -7,9 +7,12 @@
 // at the pixel's exact position, so neighboring tiles agree at their seams
 // and the same inputs give the same bytes. Lines keep a least width in
 // pixels and grow to their width in plate units as the plate is zoomed.
-// A lost place is painted last, in the Void color, with an eroded edge:
-// nothing inside it survives (rule R13). The raster carries no text
-// (rule R14); every label is live in the viewer.
+// A lost place is painted over everything but the walls, in the Void color:
+// it covers its whole footprint and any line on its edge, and its edge
+// erodes outward only, so nothing of it survives and no crisp outline is
+// drawn (rule R13). The
+// walls around it come after, so the hall stays whole. The raster carries
+// no text (rule R14); every label is live in the viewer.
 
 const layout = require('./layout');
 const insetsLib = require('./insets');
@@ -114,7 +117,8 @@ function coverage(p, u, v, pu) {
     const inside = clamp01(sectorDepth(u, v, p) / pu + 0.5);
     if (inside === 0) return 0;
     const a = p.angle * DEG;
-    const t = (u * Math.cos(a) + v * Math.sin(a)) / p.spacing;
+    const [ou, ov] = p.offset || [0, 0];
+    const t = ((u - ou) * Math.cos(a) + (v - ov) * Math.sin(a)) / p.spacing;
     const dist = Math.abs(t - Math.round(t)) * p.spacing;
     const width = Math.max(0.8 * pu, 0.5);
     return inside * clamp01(width / (2 * pu) + 0.5 - dist / pu) * p.alpha;
@@ -141,9 +145,16 @@ function createInsetPainter(root, { build = 'author', inset: key, era = 'after' 
   const paper = createPaperGrain();
   const erosion = createNoise2D(mulberry32(4001));
   const fills = primitives.filter(p => !p.ghost && ['disc', 'rect', 'sector', 'hatch'].includes(p.type));
-  const lines = primitives.filter(p => !p.ghost && (p.type === 'seg' || p.type === 'arc'));
+  const isLine = p => p.type === 'seg' || p.type === 'arc';
+  const isWall = p => p.weight === insetsLib.WEIGHT.wall;
+  const lines = primitives.filter(p => !p.ghost && isLine(p) && !isWall(p));
+  const walls = primitives.filter(p => !p.ghost && isLine(p) && isWall(p));
   const ghosts = primitives.filter(p => p.ghost);
   const { scale, rect } = frame;
+  // A lost place's least outward margin: half the widest line it can hold,
+  // so a line on its edge (a bench, a partition) leaves no sliver outside.
+  const lineWeights = Object.values(insetsLib.WEIGHT).filter(weight => weight !== insetsLib.WEIGHT.wall);
+  const lineMargin = pu => Math.max(...lineWeights.map(weight => Math.max(weight.px * pu, weight.units) / 2)) + pu;
 
   function paintWindow(x0, y0, px, w, h) {
     const pu = px / scale;
@@ -156,8 +167,13 @@ function createInsetPainter(root, { build = 'author', inset: key, era = 'after' 
     }).filter(({ box }) => box[0] <= window[2] && box[2] >= window[0] && box[1] <= window[3] && box[3] >= window[1]);
     const fillList = near(fills);
     const lineList = near(lines);
+    const wallList = near(walls);
     const ghostList = near(ghosts);
-    const lostList = lost.filter(({ rect: r, erode }) => r.x - erode - pu <= window[2] && r.x + r.w + erode + pu >= window[0] && r.y - erode - pu <= window[3] && r.y + r.h + erode + pu >= window[1]);
+    const margin = lineMargin(pu);
+    const lostList = lost.filter(({ rect: r, erode }) => {
+      const reach = erode + margin + pu;
+      return r.x - reach <= window[2] && r.x + r.w + reach >= window[0] && r.y - reach <= window[3] && r.y + r.h + reach >= window[1];
+    });
     const out = Buffer.alloc(w * h * 3);
     for (let j = 0; j < h; j++) {
       const v = v0 + j * pu;
@@ -180,15 +196,19 @@ function createInsetPainter(root, { build = 'author', inset: key, era = 'after' 
         lay(fillList, LIGHT_INK, 1);
         lay(lineList, LIGHT_INK, 1);
         lay(ghostList, GHOST_INK, GHOST_ALPHA);
-        // A lost place: the Void color over everything, its edge eroded.
+        // A lost place: the Void color over its whole footprint, a margin
+        // that covers any line on its edge, and up to `erode` units more
+        // that wander with the noise.
         for (const place of lostList) {
-          const depth = rectDepth(u, v, place.rect) + place.erode * (0.7 * erosion(u * 0.035 + place.seed * 17.1, v * 0.035 - place.seed * 5.3) + 0.3 * erosion(u * 0.11 - place.seed * 3.7, v * 0.11 + place.seed * 9.2));
+          const wander = 0.5 + 0.5 * (0.7 * erosion(u * 0.035 + place.seed * 17.1, v * 0.035 - place.seed * 5.3) + 0.3 * erosion(u * 0.11 - place.seed * 3.7, v * 0.11 + place.seed * 9.2));
+          const depth = rectDepth(u, v, place.rect) + place.erode * Math.max(0, wander) + margin;
           const hole = clamp01(depth / pu + 0.5);
           if (hole <= 0) continue;
           r += (VOID_COLOR[0] - r) * hole;
           gg += (VOID_COLOR[1] - gg) * hole;
           b += (VOID_COLOR[2] - b) * hole;
         }
+        lay(wallList, LIGHT_INK, 1);
         const o = (j * w + i) * 3;
         out[o] = Math.max(0, Math.min(255, Math.round(r)));
         out[o + 1] = Math.max(0, Math.min(255, Math.round(gg)));

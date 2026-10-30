@@ -128,13 +128,13 @@
     return out;
   }
 
-  function formatHash({ id, view, era } = {}) {
+  function formatHash({ id, view, era, defaultEra = DEFAULT_ERA } = {}) {
     let text = id || '';
     // Deep inside an inset plate a view needs more places to land where it
     // was written.
     const places = view && view.zoom >= 20 ? 6 : 4;
     if (view) text += `@${view.x.toFixed(places)},${view.y.toFixed(places)},${view.zoom.toFixed(2)}`;
-    if (era && era !== DEFAULT_ERA) text += `~${era}`;
+    if (era && era !== defaultEra) text += `~${era}`;
     return text ? `#${text}` : '';
   }
 
@@ -200,6 +200,23 @@
   const PLATE_FADE = [140, 280];
   function plateOpacity(platePx) {
     return smooth(PLATE_FADE[0], PLATE_FADE[1], platePx);
+  }
+
+  // A two-era plate's rasters by the era mix (0 Before, 1 After). The After
+  // raster lies over the Before one: while it fades, the one beneath stays
+  // whole, so the chart never shows through the crossfade.
+  function plateEraWeight(plateEra, mix) {
+    if (plateEra === 'before') return mix < 1 ? 1 : 0;
+    if (plateEra === 'after') return mix;
+    return 1;
+  }
+
+  // The mat that darkens the blurred chart past the chart tiles' own
+  // resolution (`beyond` > 1), only as far as the plate the view is near
+  // has faded in, so it never stands in for a plate that is not there.
+  const MAT_ALPHA = 0.92;
+  function matOpacity(nearPlateOpacity, beyond) {
+    return MAT_ALPHA * nearPlateOpacity * Math.min(1, Math.max(0, (beyond - 1) / 0.6));
   }
 
   // Plate labels by level of detail, sized in plate units so they keep
@@ -274,6 +291,8 @@
     densityLine,
     isoplethShown,
     plateOpacity,
+    plateEraWeight,
+    matOpacity,
     insetLabelVisible,
     insetFontPx,
     universeOpacity,
