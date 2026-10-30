@@ -1,10 +1,41 @@
 # Atlas Map Viewer
 
-A zoomable chart of *The Forgotten Tides*. It draws a procedural deep-zoom
-base rendered from the canon memory-density field, and over it the
-placements recorded in `design/map/cartography.yaml`. The decisions behind
-it are in `design/map/CARTOGRAPHIC_BRIEF.md` and
+A zoomable chart of *The Forgotten Tides*, drawn as an Admiralty chart on
+dark paper. The tiles are rendered from the canon memory-density field, and
+the placements recorded in `design/map/cartography.yaml` are drawn over
+them. The decisions behind it are in `design/map/CARTOGRAPHIC_BRIEF.md` and
 [the atlas map plan](../docs/ATLAS_MAP_PLAN_2026_10_29.md).
+
+## Reading the chart
+
+- **Tints and isopleths.** Each flat tint is a band of memory density; its
+  edges are the isopleths, majors every 0.1 and minors every 0.05. Minors
+  appear as you zoom. Isopleth values (small upright numerals set along the
+  lines) are interpolated band edges, not measurements.
+- **Soundings.** Italic values are canon `memory_density` values, the only
+  measured numbers on the chart. A site's sits beside its name. A region's
+  prints where the field reads that value, in its tint band (rule R11). The
+  Void Regions print none, since nothing inside is charted. A pre-breach
+  value says so.
+- **Spiral arms** carry the density gradient (decision D2). They vary the
+  field along each ring while keeping its average. Through the Helios Drift
+  they stay gentle: the lint holds its field within 0.06 of 0.65 all around
+  its mid-radius ring, so the Tessarine Vault still peaks above it. Beyond
+  the Drift they grow strong (rule R11).
+- **Region treatments.** The Lattice Gap breaks into splinters, prints its
+  linework a second time out of register, and carries two hatch screens
+  whose moiré stands for its disrupted harmonics. The Remnant Seas are
+  streaked ash with cinder stars and glints of reliquary shards. The Void
+  Regions are blank: nothing inside is drawn. The Black Horizon's ink bleeds
+  past the neatline, and its black-hole knots show as lensing rings.
+- **Corridor lanes** (faint dashed rose lines) mark where corridors tend to
+  form, computed as least-cost paths over the field between anonymous hubs.
+  They are illustrative and never canon routes. **Eddies** (small spirals)
+  are an area symbol near the lanes, each facing up the density gradient
+  (rule R10).
+- **Furniture.** The margin carries the title cartouche, notes, the tint key,
+  degree labels, and a rose that counts degrees counterclockwise from the
+  right-hand side. The chart has no north.
 
 ## Run
 
@@ -12,9 +43,13 @@ From the repository root:
 
 ```bash
 npm run map:data        # out/map/atlas.author.json (add -- --build public for the public file)
-npm run map:tiles       # out/map/tiles/: the 16k base, about a minute on 4 cores
+npm run map:tiles       # out/map/tiles/: the 16k chart, about 2.5 minutes on 4 cores
 npm run map             # http://127.0.0.1:8081/map/
 ```
+
+For release, render `npm run map:tiles -- --size 65536` (about 36 minutes on
+4 cores, 87,389 tiles, about 350 MB). `npm run map:frame` paints any window to a PNG
+with the same painter; see `docs/USAGE.md`.
 
 `npm run map -- --build public` serves the public build instead. Its tiles
 come from `npm run map:tiles -- --build public` (`out/map/tiles-public/`),
@@ -33,7 +68,7 @@ timestamp, so a re-render never mixes with cached tiles.
 ## Controls
 
 - **Pan and zoom** with the mouse, a trackpad, touch, or the keyboard once the
-  chart has focus. The minimap sits at the lower left.
+  chart has focus. Once zoomed in, a minimap appears at the lower left.
 - **Select** a pin, a list entry, or a search result. The panel shows:
   - the tier and region;
   - the canon memory density and when it was measured;
@@ -54,8 +89,9 @@ timestamp, so a re-render never mixes with cached tiles.
   location.
 
 Positions, sizes, angles, and drawn counts are cartographic (*P.A.*). Labels
-appear by zoom level: region names at the overview, and location, feature,
-route, and sleeve labels as you zoom in.
+appear by zoom level: region names and soundings at the overview, then
+location, isopleth, feature, route, and sleeve labels as you zoom in. Band
+rings appear at region zoom.
 
 ## Files
 
@@ -63,7 +99,7 @@ route, and sleeve labels as you zoom in.
 |------|------|
 | `index.html` | Page structure |
 | `viewer.css` | Styles, using the tokens in `ui_kits/colors_and_type.css` |
-| `viewer_core.js` | Pure logic: lens tiers, coordinates, the item index, search, hashes, and label levels. It loads in Node for tests. |
+| `viewer_core.js` | Pure logic: lens tiers, coordinates, the item index, search, hashes, label levels, and soundings. It loads in Node for tests. |
 | `viewer.js` | OpenSeadragon setup, overlays, the panel, and the controls |
 
 ## Data contract
@@ -72,10 +108,14 @@ The viewer reads `data/atlas.json`, the output of `scripts/map/build_data.js`.
 It has `build`, `image.extent` (the chart half-width the tiles span), and the
 following lists:
 
-- **`regions`:** outlines, label points, and bands.
-- **`sites`:** `xy`, marker, and an optional circuit.
+- **`regions`:** outlines, label points, bands, and `memory_density` for
+  the soundings.
+- **`sites`:** `xy`, marker, an optional circuit, and `memory_density`.
 - **`features`:** points, positions, sleeves, and an edge outline.
 - **`routes`:** `points`.
+- **`chart`:** `tints` (each band's range and color, from the painter) and
+  `isopleths` (each label's value, point, angle, ink, and knockout color),
+  computed from the same field as this build's tiles.
 
 Coordinates are chart units with y up. Text is always inserted as text, never
 as HTML.
@@ -83,12 +123,25 @@ as HTML.
 ## Tests
 
 - `npm run test:map` runs in `validate:ci` and covers the viewer logic, the
-  server boundary (traversal, symlinks, and extensions), and the renderer.
+  server boundary (traversal, symlinks, and extensions), the renderer, and
+  the chart layers:
+  - empty Void interiors at two zooms;
+  - tiles that agree across their seams;
+  - flat plateaus;
+  - lanes kept out of the Voids, and eddies out of the Voids and the Seas;
+  - eddies densest in the Gap and facing up the gradient;
+  - isopleth labels clear of Voids, the Seas, the Gap, and sites;
+  - layers switched by the placement file;
+  - the frame renderer.
 - `npm run test:map-browser` runs in its own CI job in headless Chromium. It
   covers:
   - the three lens states, each checked against a structural snapshot from
     the data: every pin's visibility matches its tier, speculative pins are
     dashed and faded, and canon pins are solid;
+  - the furniture, soundings (including a pre-breach note and none for the
+    Voids), and isopleth values and minimap by zoom;
+  - tiles rendered for an older frame, which keep the overlays registered and
+    say so;
   - versioned tile URLs;
   - search, including Escape;
   - deep links;

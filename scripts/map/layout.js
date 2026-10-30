@@ -20,8 +20,9 @@ const CARTOGRAPHY_PATH = 'design/map/cartography.yaml';
 const BRIEF_PATH = 'design/map/CARTOGRAPHIC_BRIEF.md';
 const CANON_TIERS = new Set(['primary_canon', 'working_canon']);
 // The rendered image spans the chart square [-IMAGE_EXTENT, IMAGE_EXTENT] on
-// both axes: the Black Horizon's outer band (to r 1.2) plus a margin.
-const IMAGE_EXTENT = 1.25;
+// both axes: the Black Horizon's outer band (to r 1.2), the frame, and a
+// margin whose corners hold the chart's title, notes, tint key, and rose.
+const IMAGE_EXTENT = 1.4;
 
 function normalizeName(name) {
   return String(name).trim().toLowerCase().replace(/\s+/g, ' ');
@@ -118,6 +119,52 @@ function findBand(cartography, ref) {
   return region && name ? (region.bands || []).find(band => band.name === name) || null : null;
 }
 
+// `field.arms` names the texture feature whose `count` sets the number of
+// arms, so the drawn count lives in one place (rule R2: it carries no canon
+// weight).
+function resolveArms(cartography) {
+  const arms = cartography.field && cartography.field.arms;
+  if (!arms) return null;
+  const feature = (cartography.features || []).find(entry => entry.key === arms.feature);
+  if (!feature || !Number.isInteger(feature.count) || feature.count < 1) {
+    throw new Error(`field.arms.feature names ${arms.feature}, which is not a feature with a whole-number count`);
+  }
+  if (!(arms.from > 0 && arms.from < arms.full && arms.full < arms.fade && arms.fade < arms.to)) {
+    throw new Error('field.arms must satisfy 0 < from < full < fade < to');
+  }
+  return { ...arms, count: feature.count };
+}
+
+// The placement file as one build sees it. The public build leaves out
+// draft features, so no draft texture (arms, lanes, eddies, knots) shapes
+// its tiles or data (decision D7).
+function forBuild(cartography, build) {
+  if (build !== 'public') return cartography;
+  return { ...cartography, features: (cartography.features || []).filter(feature => feature.tier !== 'draft') };
+}
+
+// Where a region's sounding is printed: a point inside the region where the
+// field reads the region's canon value (rule R11). For an annulus, whose
+// field the arms vary along each ring, that is the point on its probe ring
+// nearest the probe that `accept` takes (by default, within 0.004 of the
+// value), or failing that the closest; for any other shape, its first probe.
+function soundingPoint(shape, field, value, accept = f => Math.abs(f - value) <= 0.004) {
+  const probe = shape.probes[0];
+  if (shape.type !== 'annulus') return probe;
+  const r = Math.hypot(probe[0], probe[1]);
+  const start = Math.atan2(probe[1], probe[0]);
+  let best = null;
+  for (let k = 0; k <= 720; k++) {
+    const a = start + Math.ceil(k / 2) * (k % 2 ? 1 : -1) * (Math.PI / 360);
+    const point = [r * Math.cos(a), r * Math.sin(a)];
+    const f = field(point[0], point[1]);
+    const miss = Math.abs(f - value);
+    if (accept(f)) return point;
+    if (!best || miss < best.miss) best = { point, miss };
+  }
+  return best.point;
+}
+
 // `include` limits which entities' densities shape the field; the public
 // tile build passes a canon-only filter so no speculative site leaves a mark.
 function createMapField({ cartography, atlas }, shapes = buildShapes(cartography), { include = () => true } = {}) {
@@ -130,7 +177,7 @@ function createMapField({ cartography, atlas }, shapes = buildShapes(cartography
     .map(site => ({ site, entity: atlas.get(site.id) }))
     .filter(({ entity }) => entity && entity.memory_density !== null && include(entity))
     .map(({ site, entity }) => ({ r: site.at.r, theta: site.at.theta, value: entity.memory_density }));
-  return { field: createField({ config: cartography.field, shapes, values, sites }), values, shapes };
+  return { field: createField({ config: cartography.field, shapes, values, sites, arms: resolveArms(cartography) }), values, shapes };
 }
 
 module.exports = {
@@ -147,5 +194,8 @@ module.exports = {
   buildPoints,
   regionAliases,
   findBand,
+  resolveArms,
+  forBuild,
+  soundingPoint,
   createMapField
 };

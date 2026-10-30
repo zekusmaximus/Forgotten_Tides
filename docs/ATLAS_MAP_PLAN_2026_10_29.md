@@ -545,6 +545,12 @@ author's commercial property:
 Code you direct and paint you apply keep authorship clean. A commissioned
 cartographer is the premium path; get quotes before setting a budget.
 
+**Update (2026-10-30).** The author waived copyright and own-art concerns for
+the map and chose style direction A, an Admiralty chart on dark paper (see
+the D9 follow-up in the cartographic brief). The chart stays procedural for
+the other reasons above: it re-renders from canon, and generated plates
+would invent geography.
+
 ### 4.5 Print
 
 The same field and vector layers can produce a poster: 7,200 × 10,800 px is
@@ -788,6 +794,28 @@ contradictions that the continuity checks and the map would otherwise flag.
 - **Done when** a full 65k render completes on the author's Windows machine,
   the lint passes against the rendered field, and Void interiors contain no
   labels or contours.
+- **Status (2026-10-30):** Built in style direction A, an Admiralty chart on
+  dark paper (the D9 follow-up in the brief).
+  - `scripts/map/painter.js` draws stepped tints, isopleths, paper grain, all
+    six treatments of §2.2, stars, and the frame. `scripts/map/lanes.js`
+    computes the lanes and eddies (rule R10). The field gained spiral arms
+    that keep every ring average, and an eased falloff (rule R11).
+  - The lint passes against the rendered field, in both builds.
+    - An annulus is checked by its ring average, and the field may stray no
+      more than 0.06 from it along the ring.
+    - Every other probe and site must read its value in its own tint band.
+    - Each region's sounding is printed, and checked, where the field reads
+      that value.
+  - Void interiors contain no labels or contours. A test paints every Void
+    at two zooms and requires the void color inside; isopleth labels and
+    region label anchors are tested to keep out.
+  - Isopleth lines are baked into the tiles; their values and the soundings
+    are live labels in the viewer, with the chart's furniture in the margin.
+  - `npm run map:tiles -- --size 65536` completed on the final code in a
+    4-core Linux container: 87,389 tiles in 17 levels, 36.4 minutes, 347 MB.
+    A 16k render takes about 2.5 minutes there.
+  - Not yet done: the 65k render on the author's Windows machine, which this
+    phase's done-when names.
 
 ### Phase 4 — Depth and time (two sessions)
 
