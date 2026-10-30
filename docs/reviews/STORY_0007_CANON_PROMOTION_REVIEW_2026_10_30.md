@@ -1,11 +1,12 @@
 # Canon Promotion Review: The Hospice Knot
 
-**Current checkpoint:** Review complete; no revision or promotion approved.
-**Recommendation: Hold, 38/70.** Remove the unsupported consent-detection
-capability, resolve the knot's identity, tighten the local clinical/institutional
-claims and prose, and complete metadata before a fresh readiness assessment.
-The exact recommended changes are in section 7; the three author choices are
-in section 8. All source files remain unchanged.
+**Current checkpoint:** On October 30, 2026, the author approved the full
+F1–F7 draft-revision scope. It is implemented; section 10 records the fresh
+**62/70** readiness assessment and validation. Story-0007 remains draft and
+Lira, Maren and Solace remain speculative. No promotion or profile-status
+change is approved. Sections 1–9 preserve the original **38/70 Hold** review
+and its exact proposals; the former consent-detector finding is resolved by
+the approved revision, not an outstanding issue.
 
 ## 1. Scope and baseline
 
@@ -480,7 +481,7 @@ no authoritative consent-detector support. Primary 0017/0021 passages were
 checked for the surviving-record versus irrecoverable-experience distinction;
 their settled outcomes were not revised or reopened.
 
-The exact proposed replacements were checked against the baseline text;
+At the original review checkpoint, the exact proposed replacements were checked against the baseline text;
 proposed summaries remain below schema limits. Local event IDs are unused.
 No ID allocator, promotion tool, status change, manuscript edit, profile edit,
 term addition, shared timeline change or map-placement mutation was run.
@@ -488,3 +489,124 @@ The baseline link-map build regenerated artifacts without a diff. Only this
 new tracked report is committed and pushed; all earlier reports are preserved.
 The final report link and whitespace checks pass. Its proposals remain
 pending author choice.
+
+## 10. Author-approved revision and fresh readiness assessment
+
+### Approval and implemented scope
+
+The author replied **“Approved”** to the recommendation for all F1–F7,
+with promotion and profile status deferred. This authorizes the defined
+draft revision, speculative-profile corrections and faction provenance
+cleanup. It does not approve a story promotion or additional 0018 work.
+
+Current main was fetched again and remains `e92ceea`, including PR #58.
+Branch `canon/stories/revise-story-0007` preserves the pushed review commit
+`be38200` and starts from that reviewed main. `npm ci` and the complete
+baseline `npm run validate:ci` passed before edits. No unrelated work was
+present or changed.
+
+| Group | Applied change |
+| --- | --- |
+| F1 | All eleven specified witness-stone paragraphs now use an ordinary written slate. The route-trace answer preserves incomplete spoken observations; the copy cannot return the lived experience. |
+| F2 | All four anchor-audit labels and the release question identify the same failed-evacuation route. Prior burned contents remain unnamed. |
+| F3 | The assessor asks about current flight clearance, and the closing audit records Lira's assessment, the retained objection and two responsive anchors. No general immunity or later inquiry outcome is established. |
+| F4 | Applied the full approved cut/replacement set. The mother's imperfect song and the “Am I a ship?” fear remain. |
+| F5 | Added active-draft retrieval role, actual word count, governing citations, Gap/memory-physics links and six matching local draft chronology/events. T0–T5 order this story's checkpoints without inventing elapsed hours or shared dates. |
+| F6 | Applied the exact approved Lira summary/invariant, Maren watchlist and Solace summary. All three keep speculative status, short summaries, existing links and creation dates. Solace's station type and approved speculative coordinates remain unchanged. |
+| F7 | Removed seven faction causal-reference memberships, retaining every appearance link and both faction statuses/baselines. The Remembrancer source note matches the approved wording. |
+
+Three small consequential consistency edits complete the specified F1/F2
+changes: “the word *corridor*” becomes “the word *route*” after the renamed
+recitation; the hold order sits “beside the slate” rather than beside the
+removed stone; “The assessor closed his fist around it” becomes “The assessor
+held the copy.” The source's differing punctuation/attribution around the
+four audit labels is preserved. These edits add no new act, device, clinical
+claim or outcome. The surplus blank line left by the final cut was removed.
+
+### Revised card
+
+Evidence below refers to the revised
+`stories/short_story/the_hospice_knot/manuscript.md`, not the old line numbers
+in sections 1–9.
+
+### story-0007 — The Hospice Knot, revised
+
+Current tier: draft / draft / metadata.status absent
+Hard gates: **PASS**
+Depends on: primary governing mechanics/factions only; no story/event outcome prerequisite
+Depended on by: draft story-0018 and three speculative profiles; the two faction links are now appearances
+
+What it establishes if subsequently approved: Lira accepts Maren's informed,
+repeated request for one permanent route-anchor release despite the Fleet's
+preservation hold. Written fragments and the objection survive, but the
+lived anchor does not; two other anchors answer and Maren is not cleared
+for flight. Neither the six missing pods' fate nor a later institutional
+judgment is decided.
+
+| Criterion | Score | Weight | Points | Revised evidence |
+| --- | --- | --- | --- | --- |
+| A Metaphysical fidelity | 4 | 3 | 12 | Slate/written answers at :165,397,463; permanent loss at :411,499,565; two remaining anchors at :599–613. No artifact certifies freedom. The local release is demonstrated rather than specified as a general reproducible technique, limiting diagnostic detail. |
+| B Bible compliance | 5 | 3 | 15 | Explicit bible citations at :141–145; Gap stays fractured (:577), the lost anchor cannot be restored (:411), and two other anchors remain (:599–613). No locked character or station outcome is changed. |
+| C Tonal fidelity | 4 | 2 | 8 | Refusal and physical fraying remain (:193,269); the mother's bad singing carries grief (:489–495), without the three repeated pressure jokes. Some explanatory judgment remains in Lira's interiority (:329,365,553). |
+| D Craft and structure | 4 | 2 | 8 | Live hold at opening (:167), explicit competing loss (:277–289), irreversible release (:461–499) and signed contested audit (:613–615). The extended assessor exchange remains deliberate ethical argument; it is not compressed to exemplar-level economy. |
+| E Cross-canon coherence | 5 | 2 | 10 | One named evacuation knot (:183,191,257,261,407); partial record versus lived experience (:531,563–565); scoped profiles and faction provenance now agree. No novel/novella outcome is required. Later 0018 remains a separate draft. |
+| F Repository hygiene | 5 | 1 | 5 | Contract, complete references, summaries and citations at :2–42,141–149; six local draft events match chronology (:43–131). The removed device needs no new term; supporting profiles exist and graph artifacts are regenerated. |
+| G Canon value | 4 | 1 | 4 | The disputed release and preserved objection (:381–389,541,613) provide a usable local precedent without machine-certified consent or universal jurisdiction. Wider law, eventual care and the missing pods remain open. |
+| **Total** | | | **62 / 70** | |
+
+**Readiness recommendation: Promote band, subject to separate author approval.**
+This is an assessment of the revised draft, not an applied promotion. No
+further required manuscript fix remains within the approved scope. Remaining
+craft deductions do not warrant an unapproved additional edit.
+
+Hard-gate recheck: no new unsupported law, no restored anchor or free corridor,
+no unapproved novel/novella outcome, and no unresolved citation gate. The
+release remains a particular hospice case under the existing ethical-forgetting
+framework; a responsive sensorium ring is not used to certify consent. The
+new physical/source links cite established mechanics rather than importing
+another draft's procedure.
+
+### Preservation and validation
+
+The complete revised manuscript was re-read against the approved changes,
+governing sources and primary-exemplar rubric. Structured comparisons verify
+all profile statuses, short summaries, creation dates and appearance links
+are preserved; all six new events remain local and draft. The revised body
+contains **2507** whitespace-delimited words; summary lengths remain **121/349**.
+Its gray-matter content SHA-256 is:
+
+~~~text
+fef003d4db1220f03d6e318b6267fdbf97e00ba51dd159cd5b2eb4fed8038455
+~~~
+
+All three generated artifacts were rebuilt. `CANONICAL_INDEX.md` remains
+byte-identical because entity tiers did not change. The graph contains
+**175 entities, 816 relationships, zero orphaned targets**. The two new
+deduplicated relationships link 0007 to the Gap and memory physics. Seven
+existing faction relationships retain their appearance edges but lose their
+causal-reference provenance; they are not seven deleted appearance edges.
+
+No other manuscript, prior review report, lexicon, shared timeline, governing
+bible/mechanics/manual/lore, atlas placement or tooling changes. In particular,
+0018's witness device and later outcomes remain unapproved and untouched;
+no date is added relative to the Tessarine breach or Elior's unfiled run.
+The 0004/0015/0017/0021 local events and settled profile claims are unchanged.
+
+Validation after implementation:
+
+- `npm ci` and baseline full `npm run validate:ci`: PASS.
+- Approved-proposal comparisons, profile status/appearance/date preservation,
+  event/chronology equality and manuscript word count: PASS.
+- `npm run lint`, `npm run check`, and complete `npm run validate:ci`: PASS,
+  including the newer map data/viewer/render/chart/depth suites.
+- Continuity and timeline: zero hard failures, zero soft warnings and zero
+  event conflicts. Timeline now includes six additional local draft beats.
+- Existing nonblocking output: 21 schema advisories, 976 glossary candidates,
+  and **one** draft red-line warning (0005). The former 0007 warning is fixed.
+- Review links, YAML proposal fences and whitespace: PASS.
+
+The implementation and original review are prepared together for a PR.
+The final committed head must pass local CI parity and every hosted check,
+including both push/PR browser runs, before merge under the author's standing
+merge authorization. Hosted final-head results and the merge record are
+available on that PR. Those gates do not authorize story/profile promotion.

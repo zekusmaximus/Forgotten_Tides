@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-30T12:57:39.237Z",
+  "generated": "2026-10-30T20:43:39.910Z",
   "nodes": [
     {
       "canonical_id": "char-0001",
@@ -4649,8 +4649,7 @@
       "to": "char-0009",
       "type": "characters",
       "fields": [
-        "cross_refs",
-        "references"
+        "cross_refs"
       ]
     },
     {
@@ -4685,8 +4684,7 @@
       "to": "loc-0010",
       "type": "locations",
       "fields": [
-        "cross_refs",
-        "references"
+        "cross_refs"
       ]
     },
     {
@@ -4739,8 +4737,7 @@
       "to": "story-0007",
       "type": "stories",
       "fields": [
-        "cross_refs",
-        "references"
+        "cross_refs"
       ]
     },
     {
@@ -5008,8 +5005,7 @@
       "to": "char-0008",
       "type": "characters",
       "fields": [
-        "cross_refs",
-        "references"
+        "cross_refs"
       ]
     },
     {
@@ -5017,8 +5013,7 @@
       "to": "char-0009",
       "type": "characters",
       "fields": [
-        "cross_refs",
-        "references"
+        "cross_refs"
       ]
     },
     {
@@ -5035,8 +5030,7 @@
       "to": "loc-0010",
       "type": "locations",
       "fields": [
-        "cross_refs",
-        "references"
+        "cross_refs"
       ]
     },
     {
@@ -5053,8 +5047,7 @@
       "to": "story-0007",
       "type": "stories",
       "fields": [
-        "cross_refs",
-        "references"
+        "cross_refs"
       ]
     },
     {
@@ -6710,8 +6703,26 @@
     },
     {
       "from": "story-0007",
+      "to": "loc-0003",
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
+    },
+    {
+      "from": "story-0007",
       "to": "loc-0010",
       "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
+    },
+    {
+      "from": "story-0007",
+      "to": "mech-0001",
+      "type": "mechanics",
       "fields": [
         "cross_refs",
         "references"

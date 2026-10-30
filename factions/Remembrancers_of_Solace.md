@@ -22,19 +22,17 @@ cross_refs:
   stories:
     - story-0007
 references:
-  characters:
-    - char-0008
-    - char-0009
-  locations:
-    - loc-0010
+  characters: []
+  locations: []
   factions:
     - fact-0001
   mechanics:
     - mech-0003
-  stories:
-    - story-0007
+  stories: []
 metadata:
   status: canonical
   created: '2026-05-27T00:00:00.000Z'
-  modified: '2026-05-27T00:00:00.000Z'
+  modified: '2026-10-30T20:43:39.732Z'
 ---
+
+The order's general hospice mandate, pilot counseling, mediation and transformation doctrine follow `lore/POLITIES_AND_FACTIONS.md` section 6. Story-0007 is draft provenance for Lira, Maren and the particular Solace Hospice episode; it does not independently approve the episode's consent procedure or the full profiles of those people and place.
