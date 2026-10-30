@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-30T07:46:00.134Z",
+  "generated": "2026-10-30T12:57:39.237Z",
   "nodes": [
     {
       "canonical_id": "char-0001",
@@ -2621,7 +2621,8 @@
       "to": "story-0015",
       "type": "stories",
       "fields": [
-        "cross_refs"
+        "cross_refs",
+        "references"
       ]
     },
     {
@@ -2629,7 +2630,8 @@
       "to": "story-0021",
       "type": "stories",
       "fields": [
-        "cross_refs"
+        "cross_refs",
+        "references"
       ]
     },
     {
@@ -3036,6 +3038,15 @@
     },
     {
       "from": "char-0026",
+      "to": "char-0017",
+      "type": "characters",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
+    },
+    {
+      "from": "char-0026",
       "to": "char-0019",
       "type": "characters",
       "fields": [
@@ -3096,7 +3107,25 @@
     },
     {
       "from": "char-0026",
+      "to": "loc-0016",
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
+    },
+    {
+      "from": "char-0026",
       "to": "mech-0001",
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
+    },
+    {
+      "from": "char-0026",
+      "to": "mech-0002",
       "type": "mechanics",
       "fields": [
         "cross_refs",
@@ -3116,6 +3145,15 @@
       "from": "char-0026",
       "to": "story-0021",
       "type": "stories",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
+    },
+    {
+      "from": "char-0027",
+      "to": "char-0022",
+      "type": "characters",
       "fields": [
         "cross_refs"
       ]
@@ -3156,6 +3194,15 @@
     },
     {
       "from": "char-0027",
+      "to": "loc-0016",
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
+    },
+    {
+      "from": "char-0027",
       "to": "mech-0001",
       "type": "mechanics",
       "fields": [
@@ -3177,7 +3224,8 @@
       "to": "story-0021",
       "type": "stories",
       "fields": [
-        "cross_refs"
+        "cross_refs",
+        "references"
       ]
     },
     {
@@ -5907,7 +5955,8 @@
       "to": "story-0015",
       "type": "stories",
       "fields": [
-        "cross_refs"
+        "cross_refs",
+        "references"
       ]
     },
     {
@@ -5923,7 +5972,8 @@
       "to": "story-0021",
       "type": "stories",
       "fields": [
-        "cross_refs"
+        "cross_refs",
+        "references"
       ]
     },
     {
@@ -6026,7 +6076,25 @@
     },
     {
       "from": "loc-0015",
+      "to": "loc-0016",
+      "type": "locations",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
+    },
+    {
+      "from": "loc-0015",
       "to": "mech-0001",
+      "type": "mechanics",
+      "fields": [
+        "cross_refs",
+        "references"
+      ]
+    },
+    {
+      "from": "loc-0015",
+      "to": "mech-0002",
       "type": "mechanics",
       "fields": [
         "cross_refs",
@@ -6047,7 +6115,8 @@
       "to": "story-0021",
       "type": "stories",
       "fields": [
-        "cross_refs"
+        "cross_refs",
+        "references"
       ]
     },
     {
