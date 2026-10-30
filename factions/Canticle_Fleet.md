@@ -41,11 +41,9 @@ references:
     - char-0002
     - char-0003
     - char-0004
-    - char-0009
     - char-0017
   locations:
     - loc-0001
-    - loc-0010
     - loc-0008
     - loc-0011
   mechanics:
@@ -54,7 +52,6 @@ references:
     - mech-0003
   stories:
     - story-0001
-    - story-0007
     - story-0013
     - story-0021
     - story-0022
@@ -69,7 +66,7 @@ doctrine:
 metadata:
   status: canonical
   created: '2025-12-12T00:00:00.000Z'
-  modified: '2026-10-20T00:00:00.000Z'
+  modified: '2026-10-30T20:43:39.732Z'
 ---
 
 # Canticle Fleet

@@ -42,10 +42,10 @@ continuity:
     - Memory physics and anchor-loss permanence apply
   watchlist:
     - Do not restore the route anchor or use Maren as a clean witness to the missing pods
-    - Keep future recovery evidence external to Maren unless explicitly established elsewhere
+    - "A surviving description or later factual account is not the released experience and cannot restore the route anchor; do not infer complete route reconstruction or permanent flight clearance."
     - Preserve his distinction as a patient with agency, not a container for Fleet evidence
 metadata:
   status: speculative
   created: '2026-05-27T00:00:00.000Z'
-  modified: '2026-05-27T00:00:00.000Z'
+  modified: '2026-10-30T20:43:39.732Z'
 ---

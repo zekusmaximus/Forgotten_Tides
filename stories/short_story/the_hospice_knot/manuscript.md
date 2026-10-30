@@ -7,6 +7,7 @@ title: The Hospice Knot
 story_type: short-story
 status: draft
 canon_tier: draft
+retrieval_role: active_draft
 summary_50: A Remembrancer must choose between a pilot's consent and the Canticle Fleet's demand to preserve his final useful anchor.
 summary_200: At the edge of the Lattice Gap, Remembrancer Lira Voss helps Canticle pilot Maren Holt release a contested route anchor. The anchor may be the last evidence of a failed evacuation, but preserving it would turn Maren into a living archive against his will. Lira must decide whether mercy can remain ethical when forgetting costs other people answers.
 cross_refs:
@@ -15,10 +16,12 @@ cross_refs:
     - char-0009
   locations:
     - loc-0010
+    - loc-0003
   factions:
     - fact-0001
     - fact-0006
   mechanics:
+    - mech-0001
     - mech-0002
     - mech-0003
   stories: []
@@ -28,13 +31,104 @@ references:
     - char-0009
   locations:
     - loc-0010
+    - loc-0003
   factions:
     - fact-0001
     - fact-0006
   mechanics:
+    - mech-0001
     - mech-0002
     - mech-0003
   stories: []
+timeline:
+  setting: Solace Hospice in the Lattice Gap's outer sleeve; no date relative to other stories is established
+  duration: From Maren's admission audit through the third-watch handover and final written audit
+  chronology:
+    - event: "Maren's admission audit finds three weak responsive anchors while a Canticle preservation hold awaits outside."
+      timestamp: T0
+    - event: "Maren refuses further audit of the evacuation knot and requests permanent release despite the possible loss of missing-pod evidence."
+      timestamp: T1
+    - event: "Lira refuses to defer the rite for the Fleet panel and accepts a named objection for the dawn audit."
+      timestamp: T2
+    - event: "After warnings and repeated assent, Maren releases the evacuation-route anchor; two other anchors remain responsive."
+      timestamp: T3
+    - event: "At third watch, Lira supplies the assessor a copy of the written consent record and confirms Maren is not cleared for flight."
+      timestamp: T4
+    - event: "Lira writes her consent assessment, retained objection and Maren's two responsive anchors into the closing audit."
+      timestamp: T5
+events:
+  - id: event-story-0007-001
+    timestamp: T0
+    summary: "Maren's admission audit finds three weak responsive anchors while a Canticle preservation hold awaits outside."
+    canon_tier: draft
+    source: stories/short_story/the_hospice_knot/manuscript.md
+    involved_entities:
+      - story-0007
+      - char-0008
+      - char-0009
+      - loc-0010
+      - fact-0001
+      - fact-0006
+  - id: event-story-0007-002
+    timestamp: T1
+    summary: "Maren refuses further audit of the evacuation knot and requests permanent release despite the possible loss of missing-pod evidence."
+    canon_tier: draft
+    source: stories/short_story/the_hospice_knot/manuscript.md
+    involved_entities:
+      - story-0007
+      - char-0008
+      - char-0009
+      - loc-0010
+      - fact-0001
+      - fact-0006
+  - id: event-story-0007-003
+    timestamp: T2
+    summary: "Lira refuses to defer the rite for the Fleet panel and accepts a named objection for the dawn audit."
+    canon_tier: draft
+    source: stories/short_story/the_hospice_knot/manuscript.md
+    involved_entities:
+      - story-0007
+      - char-0008
+      - char-0009
+      - loc-0010
+      - fact-0001
+      - fact-0006
+  - id: event-story-0007-004
+    timestamp: T3
+    summary: "After warnings and repeated assent, Maren releases the evacuation-route anchor; two other anchors remain responsive."
+    canon_tier: draft
+    source: stories/short_story/the_hospice_knot/manuscript.md
+    involved_entities:
+      - story-0007
+      - char-0008
+      - char-0009
+      - loc-0010
+      - fact-0001
+      - fact-0006
+  - id: event-story-0007-005
+    timestamp: T4
+    summary: "At third watch, Lira supplies the assessor a copy of the written consent record and confirms Maren is not cleared for flight."
+    canon_tier: draft
+    source: stories/short_story/the_hospice_knot/manuscript.md
+    involved_entities:
+      - story-0007
+      - char-0008
+      - char-0009
+      - loc-0010
+      - fact-0001
+      - fact-0006
+  - id: event-story-0007-006
+    timestamp: T5
+    summary: "Lira writes her consent assessment, retained objection and Maren's two responsive anchors into the closing audit."
+    canon_tier: draft
+    source: stories/short_story/the_hospice_knot/manuscript.md
+    involved_entities:
+      - story-0007
+      - char-0008
+      - char-0009
+      - loc-0010
+      - fact-0001
+      - fact-0006
 themes:
   - ethical-forgetting
   - memory-preservation
@@ -42,11 +136,17 @@ themes:
   - sacrifice
 continuity_notes:
   - Renames the hospice patient from Kael Torren to Maren Holt to avoid confusion with Kael Voss.
-  - Establishes Solace release practice as consent-first when institutional preservation demands conflict with a patient's remaining agency.
+  - Depicts Lira's contested consent assessment and Maren's permanent release of one route anchor at Solace Hospice; it establishes neither general immunity from Fleet holds nor the outcome of the later inquiry.
   - Maren's released route anchor is permanently gone; the story does not restore anchors or create replacement navigation evidence.
+bible_refs:
+  - bible/ARCHIVISTS_WAKE_STORY_BIBLE.md#36-anchor-burn-consequence
+  - bible/ARCHIVISTS_WAKE_STORY_BIBLE.md#41-the-lattice-gap
+  - bible/ARCHIVISTS_WAKE_STORY_BIBLE.md#71-anchor-rules
+  - bible/ARCHIVISTS_WAKE_STORY_BIBLE.md#83-drift-logic-test
 metadata:
+  word_count: 2507
   created: '2026-05-27T00:00:00.000Z'
-  modified: '2026-10-29T00:00:00.000Z'
+  modified: '2026-10-30T20:43:39.732Z'
 tags:
   - hospice
   - anchor-loss
@@ -62,19 +162,13 @@ The hospice chamber held no rails, only low stone ledges worn by decades of hand
 
 Maren Holt sat with his back to the wall, sensorium ring dark on his brow. His Canticle jacket lay folded at his feet. Someone had removed the rank tabs before bringing him in, but not the pale rectangles they had left on the cloth. The absence still knew where to sit.
 
-Lira Voss knelt opposite him. Between them rested a reliquary tray, a consent slate, and a witness stone the size of her thumb. The stone was dull. It would not brighten until it heard a choice freely made.
+Lira Voss knelt opposite him. Between them rested a reliquary tray and a consent slate. She wrote his name at the top and left room beneath it for his answers.
 
 Outside the chamber, in the receiving corridor, a Canticle assessor waited with two clerks and a sealed preservation hold.
 
 Maren kept looking at the door.
 
 "No command voice enters this room," Lira said.
-
-He gave a thin smile. "That what the wall says?"
-
-"That is what I say."
-
-"The wall has better handwriting."
 
 The wall had one line cut into the stone above the ledges, darkened by years of oil smoke and touch:
 
@@ -86,7 +180,7 @@ Maren read it without moving his lips. He had read it six times since they carri
 
 His breath changed. Not fear, exactly. Preparation.
 
-"Third teacher," he said. "First corridor. My mother's voice."
+"Third teacher," he said. "Evacuation route. My mother's voice."
 
 Three left. Each one thinned to thread.
 
@@ -94,9 +188,9 @@ The sensorium ring woke to a low amber glow. It heard the anchors answer, but we
 
 Lira marked the slate. "Again."
 
-"Third teacher. First corridor. My mother's voice."
+"Third teacher. Evacuation route. My mother's voice."
 
-The second knot frayed on the word *corridor*. Syllables pulled apart, not in his mouth but in the air after leaving it. The chamber remembered what he had said a fraction too late.
+The second knot frayed on the word *route*. Syllables pulled apart, not in his mouth but in the air after leaving it. The chamber remembered what he had said a fraction too late.
 
 From outside came the muted click of a clerk shifting stance.
 
@@ -114,7 +208,7 @@ Maren closed his eyes. "They think if I sleep, the route will surface clean."
 
 "That is the polite version." He opened his eyes. "The useful version is that I am the only box they have left."
 
-Lira looked down at the witness stone. Still dull. Waiting.
+Lira wrote down his answer.
 
 "Are you?" she asked.
 
@@ -160,11 +254,11 @@ His fingers stopped.
 
 His throat worked. "The one with the cracked voice."
 
-"First corridor."
+"Evacuation route."
 
 Silence.
 
-"First corridor," she repeated.
+"Evacuation route," she repeated.
 
 His eyes focused on her, wet with effort and anger. "No."
 
@@ -174,7 +268,7 @@ The ring dimmed.
 
 "No more audit on that knot." His voice shook. "It answers too strongly. That is the problem."
 
-The witness stone warmed by a single degree. Not light. Not yet. But attention.
+Lira marked his refusal on the slate.
 
 "You are asking for release of the route anchor," Lira said.
 
@@ -210,7 +304,7 @@ Lira looked at him then, fully. At the gray around his mouth. At the ring burn a
 
 "I can keep them outside this room," she said. "I cannot make the cost kind."
 
-The witness stone brightened, faint as breath on glass.
+She wrote the limit beneath his request and turned the slate so he could read it.
 
 ## III. The Teeth of Mercy
 
@@ -292,7 +386,7 @@ Lira took the hold order from his hands. The seal was Canticle blue, still warm 
 
 The assessor stared at her.
 
-Lira held the folded order against her own slate. "Mercy is not the soft thing people imagine. It has teeth. Tonight they are pointed at me."
+Lira set the folded order against her slate and wrote her name beneath the objection.
 
 Then she opened the door and went back inside.
 
@@ -300,19 +394,17 @@ Then she opened the door and went back inside.
 
 Maren had not moved.
 
-The ring on his brow pulsed amber. The witness stone shone with a low, steady milk-light. It had heard enough to know there was a choice in the room.
+The ring on his brow pulsed amber. Lira set the consent slate where Maren could see her writing.
 
 "Did they leave?" he asked.
 
 "No."
 
-"Good. I would hate to disappoint them by making this easy."
+He watched the door until she sat down.
 
-Lira almost smiled. Almost.
+She set the folded hold order at the edge of the tray, beside the slate. Not hidden. Not obeyed.
 
-She set the folded hold order at the edge of the tray, beside the stone. Not hidden. Not obeyed.
-
-"Maren Holt," she said. "This is the release audit for one anchor, identified by you as the route anchor from your first failed corridor. Do you understand that release is permanent?"
+"Maren Holt," she said. "This is the release audit for one anchor, identified by you as the route anchor from the failed evacuation. Do you understand that release is permanent?"
 
 "Yes."
 
@@ -324,7 +416,7 @@ She set the folded hold order at the edge of the tray, beside the stone. Not hid
 
 His mouth twisted. He had been ready for pain. Not for that sentence.
 
-Lira waited. If mercy had teeth, consent had bones. It had to stand under its own weight.
+Lira waited, her stylus held above the slate.
 
 "Yes," he said at last.
 
@@ -350,7 +442,7 @@ The ring answered.
 
 The ring answered again, weaker but true.
 
-Lira touched the witness stone. "Name what goes."
+Lira steadied the slate on her knee. "Name what goes."
 
 Maren's face changed.
 
@@ -368,7 +460,7 @@ Maren looked at the folded order. Then at the wall. Then at Lira.
 
 "Release."
 
-The witness stone flared.
+Lira wrote the word and read it back. Maren nodded.
 
 Sound left the room.
 
@@ -404,7 +496,7 @@ Maren was crying. Not hard. Not dramatically. Tears had simply found the route h
 
 The ring quieted to green.
 
-On the tray, the witness stone went clear. Not empty. Clear. It held no route, no coordinates, no recoverable map. Only the shape of a consent freely given before loss.
+On her knee, the slate held his answers, the warnings, and the few details he had spoken before release. None of it was the route as he had held it.
 
 Maren lowered his hands to his knees.
 
@@ -434,9 +526,9 @@ Lira met him in the receiving corridor. Behind her, Maren slept sitting up, head
 
 "Yes."
 
-His eyes went to the witness stone in her palm. "Route trace?"
+His eyes went to the slate in her palm. "Route trace?"
 
-"None."
+"Only what he said before release. No complete route."
 
 "You destroyed it."
 
@@ -446,13 +538,13 @@ His eyes went to the witness stone in her palm. "Route trace?"
 
 "Yes."
 
-That answer stopped him again. Lira was beginning to understand that the Fleet trained its people for refusal and excuse, but not for plain ownership.
+Lira marked his objection beside her name.
 
 He glanced toward the chamber. "Can he testify?"
 
 "Not about the second pull."
 
-"Can he fly?"
+"Is he cleared to fly?"
 
 "No."
 
@@ -468,15 +560,11 @@ Good, Lira thought, and disliked herself for thinking it. Let one of them grieve
 
 "Yes," Lira said. "So do you."
 
-She gave him the witness stone. He held it awkwardly, as if it might accuse him. In a sense, it might. Any dawn audit could play it and hear Maren answer. Hear the warnings. Hear Lira name the cost. Hear the choice.
+She let him read the slate. It named the shear, the knocking, the marker that would not stay blue. Below those fragments she had written the warnings and Maren's answers. The assessor asked for a copy. She made one and put her name beneath it.
 
-That was all it preserved.
+The copy preserved what they had said. It could not give Maren back the experience.
 
-It was not enough for six missing pods.
-
-It was enough for one man.
-
-The assessor closed his fist around it. "The families will hate this."
+The assessor held the copy. "The families will hate this."
 
 "They may."
 
@@ -502,14 +590,6 @@ He considered that. "Am I a ship?"
 
 "No."
 
-"Am I dead?"
-
-"No."
-
-"Then I have had worse mornings."
-
-This time Lira did smile. It hurt. That seemed appropriate.
-
 She knelt opposite him once more and placed the empty tray between them.
 
 "Name what remains," she said.
@@ -526,12 +606,10 @@ The words held.
 
 Outside, the next pilot arrived at third watch. The station moved around them with its quiet work: carts, robes, low voices, grief made procedural so it could survive the day.
 
-Maren stayed seated, hands open on his knees, lighter by one useful anchor and heavier by one honest choice.
+Maren stayed seated, hands open on his knees.
 
 Lira wrote the dawn audit in her own hand.
 
-*Preservation hold refused. Release witnessed. Consent valid. Route anchor unrecoverable. Patient remains himself.*
+*Preservation hold refused; objection retained. Release witnessed. Consent assessed by Lira Voss. Route anchor unrecoverable. Two other anchors responsive. Not cleared for flight.*
 
 She let the ink dry before closing the ledger.
-
-Mercy had teeth. So did record-keeping.
