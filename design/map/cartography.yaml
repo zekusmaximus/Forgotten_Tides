@@ -22,11 +22,17 @@ field:
   blend: 0.02          # edge softening between regions, chart units
   site_sigma: 0.01     # reach of a site's own density
   belt_spread: 0.15    # the Drift runs from its value + spread (inner) to - spread (outer)
+  falloff: 2.2         # beyond the Drift the field eases toward the Horizon's value (0 = linear)
   radial:
     core: loc-0005
     belt: loc-0008
     perimeter: loc-0007
   overlays: [loc-0003, loc-0004, loc-0006]
+  # The spiral arms (T2) as a ring-average-preserving modulation of the
+  # radial base (R11): gentle through the Drift, so it keeps close to its
+  # canon value and the Vault still peaks above it, and strongest beyond it.
+  # The arm count comes from the spiral-arms feature (R2).
+  arms: { feature: spiral-arms, pitch: 16, amplitude: 0.06, outer_amplitude: 0.6, phase: 20, from: 0.12, full: 0.24, fade: 0.85, to: 1.0 }
 
 regions:
   - id: loc-0005 # Mnemosyne Lattice Core
@@ -224,6 +230,27 @@ features:
     count: 2
     claims: [T2]
     rules: [R2]
+
+  - key: corridor-lanes
+    label: Corridor lanes
+    kind: texture
+    tier: cartographic
+    rules: [R2, R10]
+    sources:
+      - atlas/Helios_Drift.md
+      - mechanics/CORRIDOR_MECHANICS.md:66-72
+    note: Computed where corridors tend to form, as least-cost paths over the density field between anonymous hubs. Illustrative; corridors are temporary and no lane is a canon route.
+
+  - key: eddies
+    label: Eddies
+    kind: texture
+    tier: cartographic
+    rules: [R2, R10]
+    sources:
+      - atlas/Helios_Drift.md
+      - atlas/Lattice_Gap.md:61
+      - mechanics/CORRIDOR_MECHANICS.md:136-141
+    note: An area symbol near the lanes, frequent in the Drift and the Gap, each glyph facing up the density gradient. Count and positions carry no canon weight.
 
   - key: black-hole-knots
     label: Black-hole knots

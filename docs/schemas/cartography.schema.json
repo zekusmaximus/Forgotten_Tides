@@ -26,6 +26,7 @@
         "blend": { "type": "number", "exclusiveMinimum": 0 },
         "site_sigma": { "type": "number", "exclusiveMinimum": 0 },
         "belt_spread": { "type": "number", "minimum": 0 },
+        "falloff": { "type": "number", "minimum": 0, "description": "How fast the field eases from the belt's outer value toward the perimeter's; 0 is linear" },
         "radial": {
           "type": "object",
           "required": ["core", "belt", "perimeter"],
@@ -36,7 +37,24 @@
             "perimeter": { "$ref": "#/definitions/locId" }
           }
         },
-        "overlays": { "type": "array", "items": { "$ref": "#/definitions/locId" } }
+        "overlays": { "type": "array", "items": { "$ref": "#/definitions/locId" } },
+        "arms": {
+          "description": "Spiral arms (claim T2): a modulation of the radial base that averages exactly 1 around every circle. The arm count is the named feature's count.",
+          "type": "object",
+          "required": ["feature", "pitch", "amplitude", "from", "full", "fade", "to"],
+          "additionalProperties": false,
+          "properties": {
+            "feature": { "$ref": "#/definitions/key" },
+            "pitch": { "type": "number", "exclusiveMinimum": 0, "exclusiveMaximum": 90, "description": "Pitch angle of the logarithmic spiral, in degrees" },
+            "amplitude": { "type": "number", "minimum": 0, "maximum": 0.5, "description": "Strength through the belt; the lint bounds how far it moves the belt's field along its probe ring" },
+            "outer_amplitude": { "type": "number", "minimum": 0, "maximum": 0.6 },
+            "phase": { "type": "number", "description": "Rotation of the arms, in degrees" },
+            "from": { "type": "number", "exclusiveMinimum": 0 },
+            "full": { "type": "number", "minimum": 0 },
+            "fade": { "type": "number", "minimum": 0 },
+            "to": { "type": "number", "exclusiveMinimum": 0 }
+          }
+        }
       }
     },
     "regions": { "type": "array", "items": { "$ref": "#/definitions/region" } },

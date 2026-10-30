@@ -17,7 +17,8 @@ const path = require('path');
 const yaml = require('js-yaml');
 
 const geometry = require('../map/geometry');
-const { createField } = require('../map/field');
+const { createField, ringMean } = require('../map/field');
+const layout = require('../map/layout');
 const { lintCartography } = require('../lint/cartography_lint');
 const { buildMapData } = require('../map/build_data');
 
@@ -282,6 +283,35 @@ test('the field reproduces region values at probes and site values at sites', ()
   assert(outer < 0.5 && outer > 0.02, 'the zone beyond the belt interpolates toward the rim');
 });
 
+test('spiral arms vary the field along each ring but keep every ring average', () => {
+  const shapes = new Map([
+    ['core', geometry.disc({ radius: 0.12 })],
+    ['belt', geometry.annulus({ inner: 0.12, outer: 0.62 })],
+    ['rim', geometry.annulus({ inner: 1, outer: 1.2 })]
+  ]);
+  const values = new Map([['core', 0.9], ['belt', 0.6], ['rim', 0.02]]);
+  const config = { blend: 0.02, site_sigma: 0.01, belt_spread: 0.1, falloff: 2, radial: { core: 'core', belt: 'belt', perimeter: 'rim' } };
+  const plain = createField({ config, shapes, values });
+  const armed = createField({ config, shapes, values, arms: { count: 2, pitch: 16, amplitude: 0.1, outer_amplitude: 0.4, from: 0.12, full: 0.24, fade: 0.8, to: 1 } });
+  for (const r of [0.2, 0.37, 0.5, 0.7, 0.9]) {
+    assert(Math.abs(ringMean(armed, r) - ringMean(plain, r)) < 1e-9, `ring average at r ${r}`);
+    const spread = [0, 45, 90, 135].map(theta => armed(...geometry.toXY(r, theta)));
+    assert(Math.max(...spread) - Math.min(...spread) > 0.01, `the arms vary the field at r ${r}`);
+  }
+  assert.strictEqual(armed(0, 0), plain(0, 0), 'no arms in the core');
+  assert.strictEqual(armed(...geometry.toXY(1.1, 30)), plain(...geometry.toXY(1.1, 30)), 'no arms past the perimeter');
+});
+
+test('a falloff eases the field beyond the belt without moving its ends', () => {
+  const shapes = new Map([['core', geometry.disc({ radius: 0.12 })], ['belt', geometry.annulus({ inner: 0.12, outer: 0.62 })], ['rim', geometry.annulus({ inner: 1, outer: 1.2 })]]);
+  const values = new Map([['core', 0.9], ['belt', 0.6], ['rim', 0.02]]);
+  const base = { blend: 0.02, site_sigma: 0.01, belt_spread: 0.1, radial: { core: 'core', belt: 'belt', perimeter: 'rim' } };
+  const linear = createField({ config: base, shapes, values });
+  const eased = createField({ config: { ...base, falloff: 2.2 }, shapes, values });
+  for (const r of [0.62, 1.0]) assert(Math.abs(linear(r, 0) - eased(r, 0)) < 1e-12, `same value at r ${r}`);
+  assert(eased(0.8, 0) < linear(0.8, 0), 'the eased field falls faster near the belt');
+});
+
 test('a well-formed fixture passes, with one warning for an unplaced speculative location', () => {
   const report = lintWith();
   assert.strictEqual(report.errors, 0, JSON.stringify(report.findings, null, 2));
@@ -319,12 +349,62 @@ const DEFECTS = [
   ['a texture position outside its region', { cartography: c => { c.features.push({ key: 'knots', label: 'Knots', kind: 'texture', tier: 'cartographic', within: 'loc-9005', rules: ['R1'], positions: [{ r: 0.5, theta: 12 }] }); } }, 'point r 0.5, theta 12 lies outside loc-9005'],
   ['a route with neither an origin nor a path', { cartography: c => { delete c.routes[0].from; } }, "must have required property 'from'"],
   ['an approach route without a path', { cartography: c => { delete c.routes[0].from; c.routes[0].origin = 'none'; c.routes[0].start_within = 'loc-9003'; } }, "must have required property 'path'"],
-  ['an along reference that does not resolve', { cartography: c => { c.features.push({ key: 'edge', label: 'Edge', kind: 'edge-line', tier: 'cartographic', along: 'loc-9099', rules: ['R1'] }); } }, 'along names loc-9099']
+  ['an along reference that does not resolve', { cartography: c => { c.features.push({ key: 'edge', label: 'Edge', kind: 'edge-line', tier: 'cartographic', along: 'loc-9099', rules: ['R1'] }); } }, 'along names loc-9099'],
+  ['arms that name no counted feature', { cartography: c => { c.field.arms = { feature: 'spiral-arms', pitch: 16, amplitude: 0.1, from: 0.12, full: 0.24, fade: 0.8, to: 1 }; } }, 'field.arms.feature names spiral-arms'],
+  ['arms strong enough to swamp a belt region', {
+    cartography: c => {
+      c.field.arms = { feature: 'spiral-arms', pitch: 16, amplitude: 0.2, from: 0.12, full: 0.24, fade: 0.8, to: 1 };
+      c.features.push({ key: 'spiral-arms', label: 'Spiral arms', kind: 'texture', tier: 'cartographic', count: 2, rules: ['R1'] });
+    }
+  }, 'ring spread'],
+  ['arms that start at the center', {
+    cartography: c => {
+      c.field.arms = { feature: 'spiral-arms', pitch: 16, amplitude: 0.06, from: 0, full: 0.24, fade: 0.8, to: 1 };
+      c.features.push({ key: 'spiral-arms', label: 'Spiral arms', kind: 'texture', tier: 'cartographic', count: 2, rules: ['R1'] });
+    }
+  }, 'must be > 0'],
+  // A neighbor's kernel pulls the Station from 0.705 to about 0.692: within
+  // 0.02, but across the 0.7 band edge, so the chart would print it wrong.
+  ['a canon value printed in the wrong tint band', {
+    atlas: a => {
+      a['atlas/Station.md'].density = 0.705;
+      a['atlas/Beacon.md'] = { id: 'loc-9011', name: 'Beacon', type: 'station', status: 'canonical', region: 'Belt outer band', density: 0.69 };
+    },
+    cartography: c => { c.sites.push({ id: 'loc-9011', at: { r: 0.46, theta: 300.5 }, rules: ['R1'] }); }
+  }, 'rendered band']
 ];
 
 for (const [name, mutate, fragment] of DEFECTS) {
   test(`the lint rejects ${name}`, () => expectError(lintWith(mutate), fragment));
 }
+
+test('arms from a counted feature pass the lint, checked by ring average', () => {
+  const report = lintWith({
+    cartography: c => {
+      c.field.arms = { feature: 'spiral-arms', pitch: 16, amplitude: 0.06, outer_amplitude: 0.3, from: 0.12, full: 0.24, fade: 0.8, to: 1 };
+      c.features.push({ key: 'spiral-arms', label: 'Spiral arms', kind: 'texture', tier: 'cartographic', count: 2, rules: ['R1'] });
+    }
+  });
+  assert.strictEqual(report.errors, 0, JSON.stringify(report.findings.filter(f => f.level === 'error'), null, 2));
+});
+
+test('a sounding point reads its region value, on the ring nearest the probe', () => {
+  const shapes = new Map([['core', geometry.disc({ radius: 0.12 })], ['belt', geometry.annulus({ inner: 0.12, outer: 0.62 })], ['rim', geometry.annulus({ inner: 1, outer: 1.2 })]]);
+  const values = new Map([['core', 0.9], ['belt', 0.6], ['rim', 0.02]]);
+  const config = { blend: 0.02, site_sigma: 0.01, belt_spread: 0.1, radial: { core: 'core', belt: 'belt', perimeter: 'rim' } };
+  const field = createField({ config, shapes, values, arms: { count: 2, pitch: 16, amplitude: 0.06, from: 0.12, full: 0.24, fade: 0.8, to: 1 } });
+  const belt = shapes.get('belt');
+  const point = layout.soundingPoint(belt, field, 0.6);
+  assert(Math.abs(field(...point) - 0.6) <= 0.004, `reads ${field(...point)}`);
+  assert(Math.abs(Math.hypot(...point) - Math.hypot(...belt.probes[0])) < 1e-9, 'on the probe ring');
+  assert.deepStrictEqual(layout.soundingPoint(shapes.get('core'), field, 0.9), shapes.get('core').probes[0], 'a disc prints at its probe');
+});
+
+test('the public build sees no draft feature', () => {
+  const cartography = { features: [{ key: 'a', tier: 'draft' }, { key: 'b', tier: 'cartographic' }] };
+  assert.deepStrictEqual(layout.forBuild(cartography, 'public').features.map(f => f.key), ['b']);
+  assert.strictEqual(layout.forBuild(cartography, 'author'), cartography);
+});
 
 test('the build places each sleeve on its own sub-band', () => {
   const root = makeFixture();
