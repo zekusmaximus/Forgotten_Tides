@@ -15,12 +15,15 @@
     lens: 'primary',
     selected: null,
     viewer: null,
-    extent: 1.25,
+    extent: 1.4,
     hasTiles: false,
     pins: [],
     labels: [],
     shapes: []
   };
+  // Chart furniture is drawn in milli-chart units (y down) inside one group,
+  // so text sizes stay well above the browser's minimum before scaling.
+  const MILLI = 1000;
   const $ = selector => document.querySelector(selector);
 
   // Minimal DOM builder; text always goes through textContent.
@@ -89,6 +92,7 @@
         const inner = [...feature.along_outline.circles].sort((a, b) => a.r - b.r)[0];
         if (inner) drawOutline(group, { circles: [inner] }, 'edge-line', feature.tier);
       }
+      // The tiles draw the knots; these marks show only without tiles.
       for (const xy of feature.positions_xy || []) {
         const p = vp(xy);
         group.append(svg('circle', { cx: p.x, cy: p.y, r: vlen(0.006), class: 'knot' }));
@@ -113,6 +117,101 @@
       world.append(line);
       state.shapes.push({ node: line, tier: route.tier });
     }
+    buildFurniture(world);
+  }
+
+  // ----- Chart furniture: degree labels, title, notes, tint key, rose -----
+
+  function buildFurniture(world) {
+    const { data } = state;
+    const k = 1 / (2 * state.extent * MILLI);
+    const sheet = svg('g', { class: 'furniture', transform: `translate(0.5 0.5) scale(${k})` });
+    const at = (x, y) => [x * MILLI, -y * MILLI];
+    const text = (x, y, content, className, attrs = {}) => {
+      const [px, py] = at(x, y);
+      const node = svg('text', { x: px, y: py, class: className, ...attrs });
+      node.textContent = content;
+      sheet.append(node);
+      return node;
+    };
+    const line = (points, className) => {
+      sheet.append(svg('polyline', { points: points.map(([x, y]) => at(x, y).join(',')).join(' '), class: className }));
+    };
+
+    // Degree labels outside the frame, every 30 degrees.
+    for (let theta = 0; theta < 360; theta += 30) {
+      const a = (theta * Math.PI) / 180;
+      text(1.268 * Math.cos(a), 1.268 * Math.sin(a), `${theta}°`, 'f-degree', { 'dominant-baseline': 'middle', 'text-anchor': 'middle' });
+    }
+
+    // Title cartouche, upper left.
+    line([[-1.37, 1.37], [-0.64, 1.37], [-0.64, 1.13], [-1.37, 1.13], [-1.37, 1.37]], 'f-rule');
+    line([[-1.36, 1.36], [-0.65, 1.36], [-0.65, 1.14], [-1.36, 1.14], [-1.36, 1.36]], 'f-rule thin');
+    text(-1.005, 1.295, 'THE KNOWN GALAXY', 'f-title', { 'text-anchor': 'middle' });
+    text(-1.005, 1.245, 'A coherence chart', 'f-subtitle', { 'text-anchor': 'middle' });
+    text(-1.005, 1.2, 'Isopleths of memory density at intervals of 0.05, interpolated', 'f-small', { 'text-anchor': 'middle' });
+    text(-1.005, 1.168, `Soundings are canon measurements · ${data.build === 'public' ? 'Public' : 'Author'} build`, 'f-small', { 'text-anchor': 'middle' });
+
+    // Notes, upper right.
+    const notes = [
+      'NOTES',
+      'All positions, sizes, and drawn counts are approximate (P.A.).',
+      'Corridor legs are counted in pulls, never converted to distance.',
+      'Lanes mark where corridors tend to form: computed, illustrative,',
+      'never routes. Corridors are temporary.',
+      'Eddies: area symbol; count and positions illustrative.',
+      'Void Regions: nothing is charted inside.',
+      'Lattice Gap: linework printed out of register.',
+      'E.D. existence doubtful.'
+    ];
+    notes.forEach((note, i) => text(0.66, 1.345 - i * 0.026, note, i === 0 ? 'f-heading' : 'f-small'));
+
+    // Tint key, lower left: one swatch per band, densest on the right.
+    const tints = (data.chart && data.chart.tints) || [];
+    const x0 = -1.36;
+    const width = 0.72 / Math.max(1, tints.length);
+    text(x0, -1.155, 'MEMORY DENSITY (coherence units)', 'f-heading');
+    tints.forEach((tint, i) => {
+      const [sx, sy] = at(x0 + i * width, -1.18);
+      sheet.append(svg('rect', { x: sx, y: sy, width: width * MILLI, height: 0.06 * MILLI, fill: tint.color, class: 'f-swatch' }));
+      if (i > 0) text(x0 + i * width, -1.27, String(tint.from), 'f-tick', { 'text-anchor': 'middle' });
+    });
+    text(x0, -1.31, 'Each tint is a band between isopleths; the band edges are interpolated.', 'f-small');
+    text(x0, -1.34, 'Soundings (italic) are the only measured values.', 'f-small');
+
+    // Rose, lower right: degrees counterclockwise from the right-hand side,
+    // as the chart frame counts them. There is no north.
+    const [cx, cy] = [1.19, -1.19];
+    const rose = svg('g', { class: 'f-rose', transform: `translate(${cx * MILLI} ${-cy * MILLI})` });
+    const R = 0.15 * MILLI;
+    rose.append(svg('circle', { r: R, class: 'f-rule' }), svg('circle', { r: R * 0.93, class: 'f-rule thin' }));
+    for (let deg = 0; deg < 360; deg += 5) {
+      const a = (deg * Math.PI) / 180;
+      const inner = deg % 30 === 0 ? R * 0.82 : deg % 10 === 0 ? R * 0.87 : R * 0.9;
+      rose.append(svg('line', { x1: Math.cos(a) * inner, y1: -Math.sin(a) * inner, x2: Math.cos(a) * R * 0.93, y2: -Math.sin(a) * R * 0.93, class: 'f-rule thin' }));
+    }
+    for (let deg = 0; deg < 360; deg += 45) {
+      const a = (deg * Math.PI) / 180;
+      const long = deg % 90 === 0;
+      const tip = long ? R * 0.78 : R * 0.5;
+      const side = (deg + 90) * (Math.PI / 180);
+      const w = R * 0.07;
+      const half = (fill, sign) => svg('polygon', {
+        points: [[0, 0], [Math.cos(a) * tip, -Math.sin(a) * tip], [sign * Math.cos(side) * w, -sign * Math.sin(side) * w]].map(p => p.join(',')).join(' '),
+        class: fill
+      });
+      rose.append(half('f-point light', 1), half('f-point dark', -1));
+    }
+    for (const deg of [0, 90, 180, 270]) {
+      const a = (deg * Math.PI) / 180;
+      const label = svg('text', { x: Math.cos(a) * R * 1.16, y: -Math.sin(a) * R * 1.16, class: 'f-degree', 'text-anchor': 'middle', 'dominant-baseline': 'middle' });
+      label.textContent = `${deg}°`;
+      rose.append(label);
+    }
+    sheet.append(rose);
+    text(cx, cy - 0.205, 'θ counterclockwise · no north', 'f-small', { 'text-anchor': 'middle' });
+
+    world.append(sheet);
   }
 
   // ----- Pins and labels -----
@@ -147,9 +246,25 @@
         : item.name;
       if (!labelText) continue;
       const treatment = item.kind === 'region' && item.ref.treatment ? ` t-${item.ref.treatment}` : '';
-      const label = el('div', { class: `label ${item.kind}${treatment}${spec}`, 'data-id': item.id }, el('span', { text: labelText }));
+      // Regions and sites carry their soundings: canon values, in italic.
+      const depth = item.kind === 'region' || item.kind === 'site' ? Core.sounding(item.ref) : null;
+      const label = el('div', { class: `label ${item.kind}${treatment}${spec}`, 'data-id': item.id }, el('span', {}, [
+        labelText,
+        depth ? el('em', { class: 'depth', text: depth.note ? `${depth.value} · ${depth.note}` : depth.value }) : null
+      ]));
       labels.append(label);
       state.labels.push({ node: label, item, point });
+    }
+    // Isopleth values, set along their lines with a knockout in the band's
+    // tint. These are interpolation bands, never measurements.
+    state.isopleths = [];
+    for (const iso of (state.data.chart && state.data.chart.isopleths) || []) {
+      const span = el('span', { text: iso.label });
+      span.style.transform = `translate(-50%, -50%) rotate(${-iso.angle}deg)`;
+      span.style.setProperty('--knockout', iso.bg);
+      const label = el('div', { class: `label isopleth ink-${iso.ink}` }, span);
+      labels.append(label);
+      state.isopleths.push({ node: label, point: vp(iso.xy) });
     }
   }
 
@@ -161,6 +276,10 @@
     $('#world').setAttribute('transform', `translate(${origin.x} ${origin.y}) scale(${unit})`);
     const zoomRatio = viewer.viewport.getZoom(true) / viewer.viewport.getHomeZoom();
     for (const shape of state.shapes) shape.node.style.display = Core.visible(state.lens, shape.tier) ? '' : 'none';
+    // Band rings appear at region zoom; the minimap only once zoomed in, so
+    // at the overview neither covers the chart or its furniture.
+    $('#shapes').classList.toggle('zoom-far', zoomRatio < 2.2);
+    if (viewer.navigator) viewer.navigator.element.style.visibility = zoomRatio < 1.25 ? 'hidden' : 'visible';
     const place = (entry, show) => {
       entry.node.hidden = !show;
       if (!show) return;
@@ -173,6 +292,8 @@
         (Core.labelVisible(label.item.kind, zoomRatio) || (state.selected && state.selected.id === label.item.id));
       place(label, show);
     }
+    const isoShow = Core.labelVisible('isopleth', zoomRatio);
+    for (const iso of state.isopleths || []) place(iso, isoShow);
   }
 
   // ----- Selection, panel, and hash -----
@@ -286,7 +407,15 @@
         legendRow('historical', 'Historical site, no atlas entry'),
         legendRow('existence-doubtful', 'Existence doubtful', 'E.D.')
       ]),
-      el('p', { class: 'note', text: 'Positions, sizes, angles, and drawn counts are approximate (P.A.). Corridor legs are counted in pulls, never converted to distance. Memory density figures are canon measurements; the background between them is interpolated.' })
+      el('h3', { text: 'Chart' }),
+      el('ul', { class: 'legend chart-key' }, [
+        el('li', {}, [el('span', { class: 'key-sounding', text: '0.31' }), 'Sounding: a canon memory density']),
+        el('li', {}, [el('span', { class: 'key-iso', text: '0.5' }), 'Isopleth value: an interpolated band edge']),
+        el('li', {}, [el('span', { class: 'key-lane' }), 'Corridor lane: where corridors tend to form (illustrative)']),
+        el('li', {}, [el('span', { class: 'key-eddy', text: '@' }), 'Eddies: area symbol, facing up the gradient']),
+        el('li', {}, [el('span', { class: 'key-void' }), 'Void Region: nothing charted inside'])
+      ]),
+      el('p', { class: 'note', text: 'Positions, sizes, angles, and drawn counts are approximate (P.A.). Corridor legs are counted in pulls, never converted to distance. Soundings are canon measurements; tints, isopleths, lanes, and eddies are drawn from the interpolated field.' })
     ];
   }
 

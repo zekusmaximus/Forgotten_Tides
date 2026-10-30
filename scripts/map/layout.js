@@ -20,8 +20,9 @@ const CARTOGRAPHY_PATH = 'design/map/cartography.yaml';
 const BRIEF_PATH = 'design/map/CARTOGRAPHIC_BRIEF.md';
 const CANON_TIERS = new Set(['primary_canon', 'working_canon']);
 // The rendered image spans the chart square [-IMAGE_EXTENT, IMAGE_EXTENT] on
-// both axes: the Black Horizon's outer band (to r 1.2) plus a margin.
-const IMAGE_EXTENT = 1.25;
+// both axes: the Black Horizon's outer band (to r 1.2), the frame, and a
+// margin whose corners hold the chart's title, notes, tint key, and rose.
+const IMAGE_EXTENT = 1.4;
 
 function normalizeName(name) {
   return String(name).trim().toLowerCase().replace(/\s+/g, ' ');
@@ -118,6 +119,22 @@ function findBand(cartography, ref) {
   return region && name ? (region.bands || []).find(band => band.name === name) || null : null;
 }
 
+// `field.arms` names the texture feature whose `count` sets the number of
+// arms, so the drawn count lives in one place (rule R2: it carries no canon
+// weight).
+function resolveArms(cartography) {
+  const arms = cartography.field && cartography.field.arms;
+  if (!arms) return null;
+  const feature = (cartography.features || []).find(entry => entry.key === arms.feature);
+  if (!feature || !Number.isInteger(feature.count) || feature.count < 1) {
+    throw new Error(`field.arms.feature names ${arms.feature}, which is not a feature with a whole-number count`);
+  }
+  if (!(arms.from < arms.full && arms.full <= arms.fade && arms.fade < arms.to)) {
+    throw new Error('field.arms must satisfy from < full <= fade < to');
+  }
+  return { ...arms, count: feature.count };
+}
+
 // `include` limits which entities' densities shape the field; the public
 // tile build passes a canon-only filter so no speculative site leaves a mark.
 function createMapField({ cartography, atlas }, shapes = buildShapes(cartography), { include = () => true } = {}) {
@@ -130,7 +147,7 @@ function createMapField({ cartography, atlas }, shapes = buildShapes(cartography
     .map(site => ({ site, entity: atlas.get(site.id) }))
     .filter(({ entity }) => entity && entity.memory_density !== null && include(entity))
     .map(({ site, entity }) => ({ r: site.at.r, theta: site.at.theta, value: entity.memory_density }));
-  return { field: createField({ config: cartography.field, shapes, values, sites }), values, shapes };
+  return { field: createField({ config: cartography.field, shapes, values, sites, arms: resolveArms(cartography) }), values, shapes };
 }
 
 module.exports = {
@@ -147,5 +164,6 @@ module.exports = {
   buildPoints,
   regionAliases,
   findBand,
+  resolveArms,
   createMapField
 };

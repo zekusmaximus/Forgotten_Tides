@@ -43,8 +43,9 @@ async function listen(server) {
   return `http://${HOST}:${server.address().port}/map/`;
 }
 
-async function openMap(browser, url) {
+async function openMap(browser, url, { beforeLoad = () => {} } = {}) {
   const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
+  beforeLoad(page);
   const errors = [];
   page.on('pageerror', err => errors.push(String(err)));
   page.on('console', message => { if (message.type() === 'error') errors.push(message.text()); });
@@ -88,9 +89,12 @@ const pinHidden = (page, id) => page.$eval(`#pins [data-id="${id}"]`, node => no
     });
 
     await test('each lens state matches its structural snapshot (screenshots saved)', async () => {
-      const { page } = await openMap(browser, authorUrl);
+      // Record tile requests from the first load: a small test render can be
+      // fully loaded at the home view, so later panning may request none.
       const tileRequests = [];
-      page.on('request', req => { if (req.url().includes('/map/tiles/galaxy_files/')) tileRequests.push(req.url()); });
+      const { page } = await openMap(browser, authorUrl, {
+        beforeLoad: tab => tab.on('request', req => { if (req.url().includes('/map/tiles/galaxy_files/')) tileRequests.push(req.url()); })
+      });
       await page.waitForTimeout(1500);
       for (const lens of ['primary', 'working', 'speculative']) {
         await page.click(`.lens [data-lens="${lens}"]`);
@@ -113,7 +117,8 @@ const pinHidden = (page, id) => page.$eval(`#pins [data-id="${id}"]`, node => no
         assert.equal(await pinHidden(page, 'loc-0014'), lens !== 'speculative', `Heavonly under ${lens}`);
         await page.screenshot({ path: path.join(SCREENSHOTS, `lens-${lens}.png`) });
       }
-      // Panning loads more tiles; every tile URL carries the render version.
+      // Every tile URL, from the first load or a later pan, carries the
+      // render version.
       await page.evaluate(() => window.__map.select('loc-0011'));
       await page.waitForTimeout(1500);
       assert(tileRequests.length > 0, 'tiles were requested');
@@ -157,6 +162,31 @@ const pinHidden = (page, id) => page.$eval(`#pins [data-id="${id}"]`, node => no
       await page.click('#list button[data-id="sleeve-9"]');
       assert.equal(await page.$eval('#panel h2', node => node.textContent), 'Sleeve IX');
       assert.match(await page.$eval('#panel', node => node.textContent), /900 people/);
+      await page.close();
+    });
+
+    await test('the chart carries its furniture, soundings, and isopleth values by zoom', async () => {
+      const { page, errors } = await openMap(browser, authorUrl);
+      const furniture = await page.$$eval('#world .furniture text', nodes => nodes.map(node => node.textContent));
+      assert(furniture.includes('THE KNOWN GALAXY'), 'title cartouche');
+      assert(furniture.includes('MEMORY DENSITY (coherence units)'), 'tint key');
+      assert(furniture.some(text => text.startsWith('Lanes mark where corridors tend to form')), 'notes say lanes are illustrative');
+      const core = await page.$eval('#labels .label.region[data-id="loc-0005"]', node => node.textContent);
+      assert.match(core, /0\.97/, 'the Core label carries its sounding');
+      const drift = await page.$eval('#labels .label.region[data-id="loc-0008"] .depth', node => node.textContent);
+      assert.equal(drift, '0.65 · Before the Tessarine Breach', 'a pre-breach sounding says so');
+      const isoHidden = () => page.$$eval('#labels .label.isopleth', nodes => nodes.filter(node => !node.hidden).length);
+      assert.equal(await isoHidden(), 0, 'no isopleth values at the overview');
+      assert.equal(await page.evaluate(() => window.__map.state.viewer.navigator.element.style.visibility), 'hidden', 'no minimap at the overview');
+      await page.evaluate(() => {
+        const { viewport } = window.__map.state.viewer;
+        viewport.zoomTo(viewport.getHomeZoom() * 3, null, true);
+      });
+      await page.waitForTimeout(300);
+      assert(await isoHidden() > 0, 'isopleth values appear when zoomed in');
+      assert.equal(await page.evaluate(() => window.__map.state.viewer.navigator.element.style.visibility), 'visible', 'the minimap appears when zoomed in');
+      await page.screenshot({ path: path.join(SCREENSHOTS, 'chart-zoom3.png') });
+      assert.deepEqual(errors, []);
       await page.close();
     });
 

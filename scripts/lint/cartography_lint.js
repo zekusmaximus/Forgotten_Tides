@@ -18,7 +18,10 @@
  *   declared band position.
  * - Density fidelity: the field reproduces each region's locked
  *   `memory_density` within 0.02 at its probes, and no non-finite value
- *   passes. A site with a density pulls the field to its own value by design
+ *   passes. An annulus is checked by the field's average around the ring at
+ *   its probe radius, since the spiral arms vary it along the ring by
+ *   design. Each value must also print in the same tint band of the chart
+ *   as the canon value (rule R11). A site with a density pulls the field to its own value by design
  *   (sites may peak above their surroundings), so at sites this only guards
  *   against overlapping kernels; a site's placement is checked by
  *   containment.
@@ -40,6 +43,12 @@ const { loadFrontmatter } = require('../lib/file_loader');
 const { inferCanonTier } = require('../lib/canon_policy');
 const { touches, disjoint, toXY } = require('../map/geometry');
 const layout = require('../map/layout');
+const { ringMean } = require('../map/field');
+const { TINT_STOPS } = require('../map/painter');
+
+// The tint band a density prints in on the chart. A value on a band edge
+// counts as above it, with room for floating-point error in ring averages.
+const tintBand = value => TINT_STOPS.filter(stop => value >= stop - 1e-9).length;
 
 const SCHEMA_PATH = path.join(__dirname, '../../docs/schemas/cartography.schema.json');
 const EDGE_TOLERANCE = 0.01;
@@ -279,16 +288,20 @@ function lintCartography({ root = layout.DEFAULT_ROOT } = {}) {
     error('field', err.message);
     return done();
   }
-  const check = (at, name, value, [x, y]) => {
-    const got = map.field(x, y);
+  const check = (at, name, value, [x, y], ring = false) => {
+    const got = ring ? ringMean(map.field, Math.hypot(x, y)) : map.field(x, y);
     if (!(Math.abs(got - value) <= FIDELITY_TOLERANCE)) {
       error(at, `density fidelity: the field gives ${got.toFixed(3)} at ${name}, but the atlas value is ${value}`);
+    } else if (tintBand(got) !== tintBand(value)) {
+      error(at, `rendered band: the field gives ${got.toFixed(3)} at ${name}, which prints in a different tint band from the atlas value ${value} (R11)`);
     }
   };
   for (const region of regions) {
     if (!map.values.has(region.id)) continue;
-    shapes.get(region.id).probes.forEach((probe, k) => {
-      check(`regions[${region.id}]`, `probe ${k}`, map.values.get(region.id), probe);
+    const shape = shapes.get(region.id);
+    shape.probes.forEach((probe, k) => {
+      const ring = shape.type === 'annulus';
+      check(`regions[${region.id}]`, ring ? `the ring average at probe ${k}` : `probe ${k}`, map.values.get(region.id), probe, ring);
     });
   }
   for (const site of sites) {

@@ -21,6 +21,8 @@ const path = require('path');
 const yaml = require('js-yaml');
 const layout = require('./layout');
 const { toXY } = require('./geometry');
+const { placeIsoplethLabels } = require('./isopleths');
+const { TINT_STOPS, TINTS } = require('./painter');
 const { lintCartography } = require('../lint/cartography_lint');
 
 const LINK_TYPES = new Set(['story', 'character', 'faction']);
@@ -35,7 +37,8 @@ function buildMapData({ root = layout.DEFAULT_ROOT, build = 'author' } = {}) {
   const lint = lintCartography({ root });
   if (lint.errors) throw new Error(`the cartography lint reports ${lint.errors} errors; run npm run lint:map`);
 
-  const { cartography, atlas } = layout.loadMapContext(root);
+  const context = layout.loadMapContext(root);
+  const { cartography, atlas } = context;
   const shapes = layout.buildShapes(cartography);
   const points = layout.buildPoints(cartography);
   const xy = polar => toXY(polar.r, polar.theta);
@@ -129,10 +132,35 @@ function buildMapData({ root = layout.DEFAULT_ROOT, build = 'author' } = {}) {
     points: route.path ? route.path.map(xy) : [route.from, route.to].map(end => points.get(end).xy)
   }));
 
+  // The chart key and isopleth labels come from the same field and tints as
+  // this build's tiles, so the public file never reflects a speculative
+  // density.
+  const include = isPublic ? entity => layout.CANON_TIERS.has(entity.tier) : () => true;
+  const { field } = layout.createMapField(context, shapes, { include });
+  const depthOf = treatment => {
+    const list = cartography.regions
+      .filter(region => region.treatment === treatment && include(atlas.get(region.id) || { tier: 'speculative' }))
+      .map(region => shapes.get(region.id));
+    return (x, y) => list.reduce((d, shape) => Math.max(d, shape.depth(x, y)), -Infinity);
+  };
+  const hex = c => `#${c.map(v => v.toString(16).padStart(2, '0')).join('')}`;
+  const chart = {
+    tints: TINTS.map((color, k) => ({ from: k === 0 ? 0 : TINT_STOPS[k - 1], to: k < TINT_STOPS.length ? TINT_STOPS[k] : 1, color: hex(color) })),
+    isopleth_interval: 0.05,
+    isopleths: placeIsoplethLabels({
+      field,
+      voidDepth: depthOf('void'),
+      ashDepth: depthOf('ash'),
+      fractureDepth: depthOf('fracture'),
+      avoid: [...sites.map(site => site.xy), ...features.filter(f => f.xy).map(f => f.xy)]
+    })
+  };
+
   return {
     generated: new Date().toISOString(),
     build,
     image: { extent: layout.IMAGE_EXTENT },
+    chart,
     frame: cartography.frame,
     field: cartography.field,
     regions,

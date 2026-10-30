@@ -120,11 +120,22 @@
   }
 
   // Label levels of detail, by zoom relative to the home view.
-  const LABEL_ZOOM = { region: [0, 12], site: [1.4, Infinity], feature: [2.2, Infinity], sleeve: [3, Infinity], route: [1.8, Infinity] };
+  const LABEL_ZOOM = { region: [0, 12], site: [1.4, Infinity], feature: [2.2, Infinity], sleeve: [3, Infinity], route: [1.8, Infinity], isopleth: [1.7, Infinity] };
 
   function labelVisible(kind, zoomRatio) {
     const [min, max] = LABEL_ZOOM[kind] || [0, Infinity];
     return zoomRatio >= min && zoomRatio < max;
+  }
+
+  // A sounding: a canon memory density printed at its place, with at least
+  // two decimals (0 -> "0.00", 0.015 -> "0.015"), and the as-of note without
+  // its event reference.
+  function sounding(entity) {
+    const value = entity && entity.memory_density;
+    if (typeof value !== 'number') return null;
+    const places = Math.max(2, (String(value).split('.')[1] || '').length);
+    const asOf = entity.memory_density_as_of ? String(entity.memory_density_as_of).replace(/\s*\([^)]*\)\s*$/, '') : null;
+    return { value: value.toFixed(places), note: asOf };
   }
 
   function tierLabel(tier) {
@@ -152,6 +163,7 @@
     parseHash,
     formatHash,
     labelVisible,
+    sounding,
     tierLabel
   };
 });
