@@ -93,7 +93,7 @@ invent geography.
 |---|----------|
 | Q22 | Inset geometry is *P.A.* Each inset element is canon, cited to file and line, or a drawing approval, which binds the chart only (R12). Approved interior arrangements never become working canon. |
 | Q23 | The Tessarine Vault inset is one framed plate at the site, holding three plans stacked in canon order: the silo bank at the top, the middle ring, and the audit hall at the base, joined by the stair. Up on the plate is the Vault's up. |
-| Q24 | The Vault's elements are T30–T35. Four arrangements are drawing approvals: two rows of eight booths numbered 1–8 and 9–16; the service door at the head of the hall; the stair arriving on the ring's inner side; housings I–IX in order along the arc; and the lower dock at the base, with no passage drawn to it. |
+| Q24 | The Vault's elements are T30–T35. Five arrangements are drawing approvals: two rows of eight booths numbered 1–8 and 9–16; the service door at the head of the hall; the stair arriving on the ring's inner side; housings I–IX in order along the arc; and the lower dock at the base, with no passage drawn to it. |
 | Q25 | The lost booths take the Void treatment: nothing inside, no crisp edge, numerals outside on leader lines (R13). |
 | Q26 | All nine housings are drawn in full. A pitch symbol by category, never a value, shows each silo's state (R13). |
 | Q27 | After the breach the lintel prints a blank the width of *only*, with no strike, brackets, or ellipsis. The word is absent from the After view (R14). |
@@ -148,7 +148,7 @@ sleeve, per T18).
 | T7 | The inner and mid sleeves include worlds; the outer sleeve is habitats. | D5; `ss/the_reliquarists_doubt:206`; `characters/Inya_Solven.md:90` | Approved |
 | T8 | "Sleeve" names a band of any region, relative to its inward edge. | D5; `ss/the_reliquarists_doubt:208` | Approved |
 | T9 | The inner relay is a corridor and courier node in the inner sleeve. | Q3 | Approved |
-| T10 | The Navigant house is at the inner relay. The run that left the Vault for it after the breach was stated as two pulls (amended by Q32). | `ss/spend_what_you_can_afford:903` | Canon |
+| T10 | The Navigant house is at the inner relay. The run bound for it from the Vault after the breach was stated as two pulls (amended by Q32). | `ss/spend_what_you_can_afford:903` | Canon |
 | T11 | Heavonly is at the Drift's inner edge, where it meets the Core. | D4, Q5 | Approved; speculative entity |
 | T12 | No galaxy beyond the home galaxy is drawn. | D4 | Approved |
 | T13 | The Lattice Gap is a rift at the Lattice's outer reach. It touches the outer edge of the Drift's outer sleeve, cuts into no sleeve, and runs outward. | D2, Q1 | Approved |
@@ -181,7 +181,7 @@ sleeve, per T18).
 | T40 | *The Archivist's Wake* run was released a hundred meters from Array Two and docked by manual latch. | `ss/the_archivists_wake:158-159,177` | Canon |
 | T41 | The Tessarine Vault's and the Helios Drift's soundings were measured before the breach. No post-breach measurement exists. | `atlas/Tessarine_Vault.md:57-58,125-126`; `atlas/Helios_Drift.md:59-60,83-84` | Canon |
 | T42 | After the breach the outer sleeve's regional coherence is reduced, and the Fourth and Ninth Sleeves are softening. Canon gives no figure for either. | `ss/spend_what_you_can_afford:211`; `atlas/Helios_Drift.md:73-84` | Canon |
-| T43 | After the breach, Elior Ren's cutter left the Vault for the Navigant house with seven null stones, a run stated as two pulls. The run and its cost are not recorded. | `ss/spend_what_you_can_afford:865,903`; `data/timeline/events.yaml#event-story-0022-008` | Canon |
+| T43 | After the breach, Elior Ren's cutter took on seven null stones at the Vault's lower dock, bound for the Navigant house at the inner relay, a run stated as two pulls. The run and its cost are not recorded. | `ss/spend_what_you_can_afford:606,843,865,903`; `atlas/Tessarine_Vault.md:122-123`; `data/timeline/events.yaml#event-story-0022-008` | Canon |
 
 ## 5. Drawing Rules
 
