@@ -16,7 +16,7 @@ Citations use the brief's basis key: `ss/<slug>` is
 
 | Plan point | Finding |
 |------------|---------|
-| §5.3 lists Halix Exchange and Skather-Ait as speculative | Both are primary canon (`CANONICAL_INDEX.md:256-257`). Their insets stay out of Phase 4's scope. Primary-canon interior detail exists if they are wanted later: the "four-kilometer bazaar-ship" and its fourth-deck inheritance quarter (`atlas/Halix_Exchange.md:56-63`), and the pod's coherence-frame mesh (`atlas/Skather-Ait_Pod.md:33-35`). |
+| §5.3 lists Halix Exchange and Skather-Ait as speculative | Both are primary canon (`CANONICAL_INDEX.md:256-257`). Their insets stay out of Phase 4's scope. Primary-canon interior detail exists if they are wanted later: the "four-kilometer bazaar-ship" and its fourth-deck inheritance quarter (`atlas/Halix_Exchange.md:58-65`), and the pod's coherence-frame mesh (`atlas/Skather-Ait_Pod.md:33-35`). |
 | §5.3 Heliodrome deck details | Array Two is primary canon (`ss/the_archivists_wake:158`). Deck Six (its "east residential spine," a "clean amber loop around the residential core"), the west loop, and Stairwell Nine appear only in two drafts: story-0016 (`ss/the_lie_that_learned_the_hallway:142-143,194,228`) and story-0014 (`ss/the_public_weight_of_a_private_lie:142,453`). The plan (lines 145-147) cites only story-0016. The "Deck six" of story-0005 (`ss/the_liturgy_of_rust:90`) is on Ostra-Vael, not the Heliodrome. `atlas/Heliodrome.md` names none of them. |
 | `loc-0016`, H-37 Route Chart | Primary canon (`CANONICAL_INDEX.md:258`), `location_type: artifact`. The lint already exempts artifacts from placement (`scripts/lint/cartography_lint.js:12-13,189`). Canon gives it no endpoints ("an internal Helios Drift crossing," `atlas/H_37_Route_Chart.md:52`; "booked for their freight from the inner Drift," `ss/receipt_for_a_voice:159`) and no pull count. See Q32. |
 | story-0021, promoted after the plan | Adds a run: Elior Ren from the inner relay to "the Halix relay" on an alternate corridor that "bent twice and paused at a release end" (`ss/receipt_for_a_voice:447-466`). It gives no pull count. Canon does not order it against the breach; story-0022's dependency on story-0021 was removed (`docs/PROCESS_REVIEW_STORY_DRAFTING_2026_10_20.md:442-444`). See Q32. |
@@ -38,7 +38,7 @@ Three further findings:
   flagged here, not resolved.
 - **Halix's breach report is not a standing state.** "Two decks have gone to
   full recitation" is "a reported breach condition, not a count of destroyed
-  decks" (`atlas/Halix_Exchange.md:85-86`). The After era does not draw it.
+  decks" (`atlas/Halix_Exchange.md:87-88`). The After era does not draw it.
 
 ## 1. Insets
 
