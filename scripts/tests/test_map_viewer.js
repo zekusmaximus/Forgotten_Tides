@@ -121,6 +121,101 @@ const DATA = {
     assert(!Core.labelVisible('sleeve', 2) && Core.labelVisible('sleeve', 3));
   });
 
+  await test('eras are two discrete states, and only an item\'s own era hides it', () => {
+    assert.deepEqual(Core.ERAS, ['before', 'after']);
+    assert.equal(Core.DEFAULT_ERA, 'after');
+    assert(Core.eraShows('both', 'before') && Core.eraShows(undefined, 'after'));
+    assert(Core.eraShows('after', 'after') && !Core.eraShows('after', 'before'));
+    assert(Core.eraShows('before', 'before') && !Core.eraShows('before', 'after'));
+    assert.equal(Core.lensTier('drawing-approved'), 'primary', 'a drawing approval shows under every lens');
+    assert.equal(Core.tierLabel('drawing-approved'), 'Drawing approved');
+  });
+
+  await test('a pre-breach sounding reads unmeasured after the breach, with no figure', () => {
+    const vault = { memory_density: 0.78, memory_density_as_of: 'Before the Tessarine Breach (event-story-0022-001)', era_sounding: { after: 'unmeasured' } };
+    const gap = { memory_density: 0.31 };
+    assert.deepEqual(Core.soundingIn(vault, 'after'), { value: 'unmeasured', note: null, unmeasured: true });
+    assert.deepEqual(Core.soundingIn(vault, 'before'), { value: '0.78', note: 'Before the Tessarine Breach' });
+    assert.deepEqual(Core.soundingIn(gap, 'after'), { value: '0.31', note: null });
+    assert(!/\d/.test(Core.soundingIn(vault, 'after').value), 'no figure after the breach');
+    assert.equal(Core.densityLine(vault, 'after'), 'Memory density unmeasured since the Tessarine Breach; last measured 0.78, before it.');
+    assert.equal(Core.densityLine(vault, 'before'), 'Memory density 0.78 · Before the Tessarine Breach (event-story-0022-001)');
+    assert.equal(Core.densityLine({}, 'after'), null);
+    assert(!Core.isoplethShown({ hidden_in: ['after'] }, 'after') && Core.isoplethShown({ hidden_in: ['after'] }, 'before') && Core.isoplethShown({}, 'after'));
+  });
+
+  await test('deep links carry the era when it is not the default', () => {
+    assert.equal(Core.formatHash({ id: 'loc-0011', view: { x: 0.65, y: 0.56, zoom: 4 }, era: 'before' }), '#loc-0011@0.6500,0.5600,4.00~before');
+    assert.equal(Core.formatHash({ id: 'loc-0011', era: 'after' }), '#loc-0011');
+    assert.deepEqual(Core.parseHash('#loc-0011@0.6500,0.5600,4.00~before'), { id: 'loc-0011', view: { x: 0.65, y: 0.56, zoom: 4 }, era: 'before' });
+    assert.deepEqual(Core.parseHash('#~before'), { era: 'before' });
+    assert.deepEqual(Core.parseHash('#loc-0011~during'), {}, 'an unknown era is malformed');
+    // Deep inside a plate the center needs more places.
+    assert.equal(Core.formatHash({ view: { x: 0.6490123, y: 0.5571189, zoom: 420 } }), '#@0.649012,0.557119,420.00');
+    // The era is written only when it differs from the data's default.
+    assert.equal(Core.formatHash({ id: 'loc-0011', era: 'after', defaultEra: 'before' }), '#loc-0011~after');
+    assert.equal(Core.formatHash({ id: 'loc-0011', era: 'before', defaultEra: 'before' }), '#loc-0011');
+  });
+
+  await test('a plate fades in by its width on screen, its labels by level, and Z0 below the home view', () => {
+    assert.equal(Core.plateOpacity(0), 0);
+    assert.equal(Core.plateOpacity(Core.PLATE_FADE[0]), 0);
+    assert.equal(Core.plateOpacity(Core.PLATE_FADE[1]), 1);
+    let last = 0;
+    for (let px = 0; px <= 400; px += 10) {
+      const opacity = Core.plateOpacity(px);
+      assert(opacity >= last, 'the fade never reverses');
+      last = opacity;
+    }
+    assert(!Core.insetLabelVisible('room', 200) && Core.insetLabelVisible('room', 300));
+    assert(!Core.insetLabelVisible('detail', 600) && Core.insetLabelVisible('detail', 700));
+    assert(!Core.insetLabelVisible('note', 800) && Core.insetLabelVisible('note', 900));
+    assert(Core.insetFontPx('note', 400, [1000, 1440]) >= 8 && Core.insetFontPx('note', 100000, [1000, 1440]) <= 18, 'plate text stays legible and bounded');
+    // The crossfade keeps the Before raster whole until the After one is in.
+    for (const mix of [0, 0.01, 0.5, 0.99]) {
+      assert.equal(Core.plateEraWeight('before', mix), 1, `Before at mix ${mix}`);
+      assert.equal(Core.plateEraWeight('after', mix), mix, `After at mix ${mix}`);
+    }
+    assert.equal(Core.plateEraWeight('before', 1), 0);
+    assert.equal(Core.plateEraWeight('after', 1), 1);
+    assert.equal(Core.plateEraWeight('both', 0.3), 1);
+    // The mat follows the plate, and only past the chart's resolution.
+    assert.equal(Core.matOpacity(0, 5), 0, 'no mat without a plate');
+    assert.equal(Core.matOpacity(1, 1), 0, 'no mat at the chart\'s own resolution');
+    assert(Core.matOpacity(1, 3) > 0.9);
+    assert(Core.matOpacity(0.3, 3) < 0.3, 'a plate still fading in keeps the mat light');
+    assert.equal(Core.universeOpacity(1), 0);
+    assert.equal(Core.universeOpacity(0.2), 1);
+    assert(Core.universeOpacity(0.6) > 0 && Core.universeOpacity(0.6) < 1);
+  });
+
+  await test('event markers: route pins alone, inset pins by room while the plate shows, else one glyph per site', () => {
+    const pins = [
+      { id: 'e-route', era: 'both', tier: 'primary_canon', xy: [0.6, 0.4], place: { kind: 'route', route: 'wake' } },
+      { id: 'e-hall-1', era: 'both', tier: 'primary_canon', xy: [0.41, -0.17], site_xy: [0.4, -0.2], place: { kind: 'inset', inset: 'vault', anchor: 'hall', room: 'Audit hall', site: 'loc-0011' } },
+      { id: 'e-hall-2', era: 'after', tier: 'primary_canon', xy: [0.41, -0.17], site_xy: [0.4, -0.2], place: { kind: 'inset', inset: 'vault', anchor: 'hall', room: 'Audit hall', site: 'loc-0011' } },
+      { id: 'e-bank', era: 'after', tier: 'primary_canon', xy: [0.42, -0.16], site_xy: [0.4, -0.2], place: { kind: 'inset', inset: 'vault', anchor: 'bank', room: 'Silo bank', site: 'loc-0011' } },
+      { id: 'e-draft', era: 'both', tier: 'draft', xy: [0.1, 0.1], place: { kind: 'route', route: 'wake' } }
+    ];
+    const far = Core.eventMarkers(pins, { era: 'after', lens: 'primary' });
+    assert.deepEqual(far.map(m => `${m.key}:${m.events.length}`), ['route:e-route:1', 'site:loc-0011:3']);
+    assert.deepEqual(far[1].xy, [0.4, -0.2], 'the glyph sits at the site');
+    const near = Core.eventMarkers(pins, { era: 'after', lens: 'primary', plates: new Set(['vault']) });
+    assert.deepEqual(near.map(m => `${m.key}:${m.events.length}`), ['route:e-route:1', 'room:vault:hall:2', 'room:vault:bank:1']);
+    const before = Core.eventMarkers(pins, { era: 'before', lens: 'primary', plates: new Set(['vault']) });
+    assert.deepEqual(before.map(m => `${m.key}:${m.events.length}`), ['route:e-route:1', 'room:vault:hall:1'], 'breach events are gone before the breach');
+    assert(Core.eventMarkers(pins, { era: 'after', lens: 'speculative' }).some(m => m.key === 'route:e-draft'), 'a draft pin shows only under + Speculative');
+  });
+
+  await test('search and the index respect the era', () => {
+    const data = { ...DATA, routes: [...DATA.routes, { key: 'run', label: 'Null-stone run', tier: 'canon', era: 'after', pulls: 2, points: [[0.4, -0.2], [0.18, -0.07]] }], event_pins: [{ id: 'event-x', summary: 'Booths lost', timestamp: 'T0', tier: 'primary_canon', era: 'after', xy: [0.4, -0.2], place: { kind: 'route', route: 'run' } }] };
+    const items = Core.buildIndex(data);
+    assert(items.some(item => item.kind === 'event' && item.era === 'after'));
+    assert.deepEqual(Core.search(items, 'null', 'primary', 8, 'after').map(item => item.id), ['run']);
+    assert.deepEqual(Core.search(items, 'null', 'primary', 8, 'before'), []);
+    assert.deepEqual(Core.search(items, 'booths', 'primary', 8, 'before'), []);
+  });
+
   await test('the map server serves the viewer, its data, and tiles, and nothing else', async () => {
     const outDir = path.join(ROOT, 'out', `map-viewer-test-${process.pid}`);
     fs.mkdirSync(path.join(outDir, 'tiles', 'galaxy_files', '0'), { recursive: true });
@@ -128,6 +223,10 @@ const DATA = {
     fs.writeFileSync(path.join(outDir, 'tiles', 'galaxy.dzi'), '<Image/>');
     fs.writeFileSync(path.join(outDir, 'tiles', 'galaxy_files', '0', '0_0.webp'), 'RIFF');
     fs.writeFileSync(path.join(outDir, 'tiles', 'secret.txt'), 'no');
+    fs.mkdirSync(path.join(outDir, 'insets', 'tessarine-vault-after_files', '0'), { recursive: true });
+    fs.writeFileSync(path.join(outDir, 'insets', 'tessarine-vault-after_files', '0', '0_0.webp'), 'RIFF');
+    fs.writeFileSync(path.join(outDir, 'insets', 'insets.json'), '{}');
+    fs.writeFileSync(path.join(outDir, 'insets', 'secret.txt'), 'no');
     let linked = false;
     try {
       fs.symlinkSync(path.join(ROOT, 'package.json'), path.join(outDir, 'tiles', 'galaxy_files', '0', '1_0.webp'));
@@ -155,6 +254,12 @@ const DATA = {
         '/map/data/atlas.public.json', '/map/README.md', '/package.json', '/map/../package.json',
         '/map/tiles/galaxy.dzi:x.json', '/map/tiles/galaxy.dzi.', '/map/tiles/galaxy.dzi%20', '/map/tiles/galaxy_files/0/0_0.webp?x=../../'
       ];
+      // The inset plates and the scaffold, under the same rules.
+      const inset = await request(port, '/map/insets/tessarine-vault-after_files/0/0_0.webp');
+      assert.equal(inset.status, 200);
+      assert.match(inset.headers['cache-control'], /max-age/);
+      assert.equal((await request(port, '/map/insets/insets.json')).headers['cache-control'], 'no-store', 'the inset manifest is never cached');
+      denied.push('/map/insets/secret.txt', '/map/insets/../tiles/galaxy.dzi', '/map/insets/%2e%2e/insets.json', '/map/insets/', '/map/insets/./insets.json');
       if (linked) denied.push('/map/tiles/galaxy_files/0/1_0.webp');
       for (const pathname of denied.filter(p => !p.includes('?'))) assert.equal((await request(port, pathname)).status, 404, `${pathname} must be denied`);
       assert.equal((await request(port, '/map/tiles/galaxy_files/0/0_0.webp?x=../../')).status, 200, 'a query string is ignored, not resolved');
@@ -164,11 +269,15 @@ const DATA = {
     }
   });
 
-  await test('each build serves its own tiles', async () => {
+  await test('each build serves its own tiles and plates', async () => {
     const outDir = path.join(ROOT, 'out', `map-viewer-builds-${process.pid}`);
     for (const dir of ['tiles', 'tiles-public']) {
       fs.mkdirSync(path.join(outDir, dir), { recursive: true });
       fs.writeFileSync(path.join(outDir, dir, 'galaxy.dzi'), dir);
+    }
+    for (const dir of ['insets', 'insets-public']) {
+      fs.mkdirSync(path.join(outDir, dir), { recursive: true });
+      fs.writeFileSync(path.join(outDir, dir, 'insets.json'), JSON.stringify({ dir }));
     }
     fs.writeFileSync(path.join(outDir, 'atlas.public.json'), JSON.stringify({ ...DATA, build: 'public' }));
     const server = createMapServer({ build: 'public', outDir });
@@ -176,6 +285,7 @@ const DATA = {
     try {
       const { port } = server.address();
       assert.equal((await request(port, '/map/tiles/galaxy.dzi')).body.toString(), 'tiles-public');
+      assert.equal(JSON.parse((await request(port, '/map/insets/insets.json')).body.toString()).dir, 'insets-public', 'the public build serves its own plates');
     } finally {
       await new Promise(resolve => server.close(resolve));
       fs.rmSync(outDir, { recursive: true, force: true });

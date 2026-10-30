@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 /**
  * Serves the atlas map viewer on loopback: the page and its scripts,
- * OpenSeadragon from node_modules, one built data file, and the rendered
- * tiles. Nothing else in the repository is reachable.
+ * OpenSeadragon from node_modules, one built data file, the rendered tiles,
+ * and the rendered inset plates and universe scaffold. Nothing else in the
+ * repository is reachable.
  *
  * Usage: node scripts/serve_map.js [--build author|public] [--port 8081]
  * Build the inputs first:
@@ -10,6 +11,8 @@
  *   npm run map:tiles              (optional; add -- --build public for the
  *                                   public tiles; without tiles the viewer
  *                                   draws overlays on a plain background)
+ *   npm run map:insets             (optional; the Z3 plates and the Z0
+ *                                   scaffold; add -- --build public likewise)
  */
 
 const fs = require('fs');
@@ -21,6 +24,10 @@ const DEFAULT_PORT = 8081;
 
 function tilesDirName(build) {
   return build === 'public' ? 'tiles-public' : 'tiles';
+}
+
+function insetsDirName(build) {
+  return build === 'public' ? 'insets-public' : 'insets';
 }
 const TYPES = {
   html: 'text/html; charset=utf-8',
@@ -47,10 +54,18 @@ function createMapServer({ root = ROOT, build = 'author', outDir = path.join(roo
   // Each build has its own tiles: the public pyramid is rendered from canon
   // densities only. Tile images may be cached (the viewer versions their URLs
   // with the render manifest); the descriptor and manifest never are.
+  // The inset plates and the scaffold follow the same rules, from their own
+  // render directory.
+  const imageTypes = { '.dzi': 'application/xml; charset=utf-8', '.webp': 'image/webp', '.json': TYPES.json };
   const prefixes = [{
     prefix: '/map/tiles/',
     dir: path.join(outDir, tilesDirName(build)),
-    types: { '.dzi': 'application/xml; charset=utf-8', '.webp': 'image/webp', '.json': TYPES.json },
+    types: imageTypes,
+    cache: { '.webp': 'public, max-age=86400' }
+  }, {
+    prefix: '/map/insets/',
+    dir: path.join(outDir, insetsDirName(build)),
+    types: imageTypes,
     cache: { '.webp': 'public, max-age=86400' }
   }];
   return createDashboardServer({ root, routes, prefixes });
@@ -72,12 +87,15 @@ function main() {
   if (!fs.existsSync(path.join(outDir, tilesDirName(build), 'galaxy.dzi'))) {
     console.warn(`No rendered tiles for the ${build} build; the viewer will draw overlays on a plain background. Run: npm run map:tiles${build === 'public' ? ' -- --build public' : ''}`);
   }
+  if (!fs.existsSync(path.join(outDir, insetsDirName(build), 'insets.json'))) {
+    console.warn(`No rendered inset plates for the ${build} build; zooming stops at the chart. Run: npm run map:insets${build === 'public' ? ' -- --build public' : ''}`);
+  }
   createMapServer({ build, outDir }).listen(port, HOST, () => {
     console.log(`Atlas map (${build} build): http://${HOST}:${port}/map/`);
   });
 }
 
-module.exports = { createMapServer, tilesDirName, DEFAULT_PORT };
+module.exports = { createMapServer, tilesDirName, insetsDirName, DEFAULT_PORT };
 
 if (require.main === module) {
   main();

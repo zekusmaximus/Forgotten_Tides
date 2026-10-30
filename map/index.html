@@ -21,6 +21,21 @@
       <button type="button" role="radio" aria-checked="false" data-lens="working">+ Working</button>
       <button type="button" role="radio" aria-checked="false" data-lens="speculative">+ Speculative</button>
     </div>
+    <div class="era" role="radiogroup" aria-label="Era">
+      <button type="button" role="radio" aria-checked="false" data-era="before">Before the Tessarine Breach</button>
+      <button type="button" role="radio" aria-checked="false" data-era="after">After</button>
+    </div>
+    <div class="layers-menu">
+      <button type="button" id="layers-toggle" class="bar-button" aria-expanded="false" aria-controls="layer-list">Layers</button>
+      <fieldset id="layer-list" class="layer-list" hidden>
+        <legend>Show</legend>
+        <label><input type="checkbox" data-layer="routes" checked> Story routes</label>
+        <label><input type="checkbox" data-layer="events" checked> Event pins</label>
+        <label><input type="checkbox" data-layer="insets" checked> Inset plates</label>
+        <label><input type="checkbox" data-layer="isopleths" checked> Isopleth values</label>
+        <label><input type="checkbox" data-layer="universe" checked> Universe scaffold</label>
+      </fieldset>
+    </div>
     <div class="search">
       <input id="search" type="search" placeholder="Search the chart" aria-label="Search the chart"
         autocomplete="off" aria-controls="results" aria-expanded="false" role="combobox">
@@ -34,8 +49,10 @@
     <div id="stage" class="stage">
       <div id="chart" class="chart" aria-label="Zoomable chart of the known galaxy"></div>
       <div id="layers" class="layers" aria-hidden="false">
+        <img id="universe" class="universe" alt="" hidden>
         <svg id="shapes" class="shapes" aria-hidden="true"><g id="world"></g></svg>
         <div id="labels" class="labels" aria-hidden="true"></div>
+        <div id="inset-labels" class="labels inset-labels" aria-hidden="true"></div>
         <div id="pins" class="pins"></div>
       </div>
       <div id="notice" class="notice" role="status" hidden></div>

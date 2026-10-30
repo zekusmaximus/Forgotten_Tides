@@ -34,6 +34,31 @@
  * - Feature positions lie within their region; `along` references resolve;
  *   route paths start at `from` and end at `to`; a route's story exists.
  * - Every listed relation (touches, disjoint, near) holds.
+ * - Phase 4 (rules R12-R18; lintDepthAndTime below):
+ *   - Every era state, inset, inset element, event pin, and the Z0
+ *     scaffold cites its basis. A canon inset element cites a primary- or
+ *     working-canon source; a drawing-approved one cites a claim the brief
+ *     marks "drawing approved"; a cartographic one cites a rule.
+ *   - Every figure a note or label states appears in the source lines it
+ *     cites (R14), and era notes state none. A route's pull count is the
+ *     figure of an "N pulls" phrase in its cited lines (R16). A counted
+ *     inset field (booths, lost booths, housings) equals the figures of a
+ *     phrase quoted verbatim from its cited lines.
+ *   - Every atlas sounding measured before the breach has an era state that
+ *     reads "unmeasured" after it, and only those do (R6, R15); a softening
+ *     sleeve carries no figure (R9).
+ *   - The Vault's housing states agree with the sleeves' silo states,
+ *     including the Second's binding.
+ *   - Nothing is placed inside a lost booth, plates and pins stay out of the
+ *     Voids, and every element, arcs included, lies on its plate.
+ *   - On a plate at a canon site no element is a draft or cites a draft or
+ *     speculative source, so nothing below canon reaches the public build or
+ *     shows under the Primary lens; a pin for an event below working canon
+ *     must say `tier: draft` (decision Q36).
+ *   - A route whose pull count only the breach story gives shows after the
+ *     breach only (R16); an After-only route cites the breach story.
+ *   - Event pins name real events, resolve their routes and anchors in every
+ *     era the event shows, and appear once.
  *
  * Usage: node scripts/lint/cartography_lint.js [--root <dir>] [--json]
  */
@@ -48,6 +73,7 @@ const { touches, disjoint, toXY } = require('../map/geometry');
 const layout = require('../map/layout');
 const { ringMean, ringStray } = require('../map/field');
 const { tintBand, readsAs } = require('../map/painter');
+const insetsLib = require('../map/insets');
 
 const SCHEMA_PATH = path.join(__dirname, '../../docs/schemas/cartography.schema.json');
 const EDGE_TOLERANCE = 0.01;
@@ -118,6 +144,30 @@ function resolveSource(root, source, cache) {
   }
   cache.set(source, result);
   return result;
+}
+
+// The text a citation points at: its lines, the whole file, or for a
+// timeline anchor that event's fields. Used to check the figures a note
+// states against what its source says (rule R14).
+function sourceText(root, source, cache) {
+  const key = `text|${source}`;
+  if (cache.has(key)) return cache.get(key);
+  const parsed = parseSource(source);
+  let text = '';
+  const full = parsed && path.join(root, parsed.file);
+  if (parsed && fs.existsSync(full) && fs.statSync(full).isFile()) {
+    const raw = fs.readFileSync(full, 'utf8');
+    if (parsed.anchor) {
+      const event = ((yaml.load(raw) || {}).events || []).find(entry => entry.id === parsed.anchor);
+      text = event ? [event.summary, event.causal_note].filter(Boolean).join(' ') : '';
+    } else if (parsed.start !== null) {
+      text = raw.split(/\r?\n/).slice(parsed.start - 1, parsed.end).join('\n');
+    } else {
+      text = raw;
+    }
+  }
+  cache.set(key, text);
+  return text;
 }
 
 function findKeys(value, key, trail = '', out = []) {
@@ -199,7 +249,12 @@ function lintCartography({ root = layout.DEFAULT_ROOT } = {}) {
     ...sites.map(e => [`sites[${e.id}]`, e]),
     ...features.map(e => [`features[${e.key}]`, e]),
     ...routes.map(e => [`routes[${e.key}]`, e]),
-    ...relations.map((e, k) => [`relations[${k}]`, e])
+    ...relations.map((e, k) => [`relations[${k}]`, e]),
+    ...((cartography.eras && cartography.eras.states) || []).map(e => [`eras.states[${e.key}]`, e]),
+    ...(cartography.insets || []).map(e => [`insets[${e.key}]`, e]),
+    ...(cartography.insets || []).flatMap(inset => inset.elements.map(e => [`insets[${inset.key}].elements[${e.key}]`, e])),
+    ...(cartography.event_pins || []).map(e => [`event_pins[${e.event}]`, e]),
+    ...(cartography.universe ? [['universe', cartography.universe]] : [])
   ];
   const sourceTiers = new Map();
   for (const [at, entry] of labelled) {
@@ -226,6 +281,9 @@ function lintCartography({ root = layout.DEFAULT_ROOT } = {}) {
     }
     if (entry.tier === 'approved' && !(entry.claims || []).length) error(at, 'is marked approved but cites no register claim');
     if (entry.tier === 'cartographic' && !(entry.rules || []).length) error(at, 'is marked cartographic but cites no drawing rule');
+    if (entry.tier === 'drawing-approved' && !(entry.claims || []).some(id => /drawing approved/i.test(register.status.get(id) || ''))) {
+      error(at, 'is marked drawing-approved but cites no claim the brief marks drawing approved (R12)');
+    }
   }
 
   let shapes;
@@ -405,7 +463,300 @@ function lintCartography({ root = layout.DEFAULT_ROOT } = {}) {
     if (!holds) error(at, `${relation.a} ${relation.type} ${relation.b} does not hold (${(relation.claims || []).join(', ') || 'no claim'})`);
   });
 
+  lintDepthAndTime({ root, cartography, atlas, register, shapes, points, error, warn, sourceCache });
+
   return done();
+}
+
+// Phase 4: eras, insets, event pins, and the Z0 scaffold (rules R12-R18).
+function lintDepthAndTime({ root, cartography, atlas, register, shapes, points, error, warn, sourceCache }) {
+  const { figuresIn, expandInset, insideLost } = insetsLib;
+  const features = cartography.features || [];
+  const routes = cartography.routes || [];
+  const insets = cartography.insets || [];
+  const pins = cartography.event_pins || [];
+  const eras = cartography.eras || null;
+  const timelinePath = path.join(root, 'data/timeline/events.yaml');
+  const timeline = new Map((fs.existsSync(timelinePath) ? (yaml.load(fs.readFileSync(timelinePath, 'utf8')) || {}).events || [] : []).map(event => [event.id, event]));
+  const voidShapes = cartography.regions.filter(region => region.treatment === 'void').map(region => shapes.get(region.id));
+  const inVoid = (x, y) => voidShapes.some(shape => shape.depth(x, y) > 0);
+  const normalize = text => String(text).toLowerCase().replace(/\s+/g, ' ');
+  const textOf = sources => (sources || []).map(source => sourceText(root, source, sourceCache)).join('\n');
+
+  // Figures a text states must appear in the lines it cites (R14).
+  const figuresOf = sources => {
+    const out = new Set();
+    for (const source of sources || []) for (const f of figuresIn(sourceText(root, source, sourceCache))) out.add(f);
+    return out;
+  };
+  const checkFigures = (at, what, text, sources) => {
+    const stated = [...figuresIn(text)];
+    if (!stated.length) return;
+    if (!(sources || []).length) {
+      error(at, `${what} states ${stated.join(', ')} but cites no source (R14)`);
+      return;
+    }
+    const given = figuresOf(sources);
+    for (const figure of stated) if (!given.has(figure)) error(at, `${what} states ${figure}, which its cited sources do not give (R14)`);
+  };
+  // A counted field equals the figures of a phrase quoted verbatim from its
+  // cited lines, so a number that merely occurs nearby cannot pass.
+  const checkQuote = (at, field, value, quote, sources) => {
+    if (!quote) {
+      error(at, `${field} needs a quote: a phrase from its cited lines whose figures it equals`);
+      return;
+    }
+    if (!normalize(textOf(sources)).includes(normalize(quote))) {
+      error(at, `the quote for ${field}, "${quote}", is not in its cited lines`);
+      return;
+    }
+    const want = [...figuresIn(quote)].sort((a, b) => a - b);
+    const have = [].concat(value).slice().sort((a, b) => a - b);
+    if (want.join(',') !== have.join(',')) error(at, `${field} reads ${have.join(', ')}, but its quote "${quote}" gives ${want.join(', ') || 'no figure'}`);
+  };
+  // The figures of every "N pulls" phrase in some cited lines (R16).
+  const pullCounts = sources => {
+    const out = new Set();
+    for (const match of textOf(sources).matchAll(/\b((?:[a-z]+[- ]){0,3}[a-z]+|\d+)\s+pulls?\b/gi)) {
+      for (const figure of figuresIn(match[1])) out.add(figure);
+    }
+    return out;
+  };
+
+  for (const feature of features) if (feature.note) checkFigures(`features[${feature.key}]`, 'its note', feature.note, feature.sources);
+
+  // Eras (R6, R9, R15).
+  const breach = eras ? timeline.get(eras.breach) : null;
+  if (eras) {
+    if (!breach) error('eras', `breach names ${eras.breach}, which is not in data/timeline/events.yaml`);
+    else if (!layout.CANON_TIERS.has(breach.canon_tier)) error('eras', `breach event ${eras.breach} is ${breach.canon_tier}, not primary or working canon`);
+  }
+  const breachSource = breach ? breach.source : null;
+  const eraOf = event => (breachSource && event && event.source === breachSource ? 'after' : 'both');
+  const states = (eras && eras.states) || [];
+  const soundingTargets = new Set();
+  for (const state of states) {
+    const at = `eras.states[${state.key}]`;
+    if (state.kind === 'sounding') {
+      soundingTargets.add(state.target);
+      const entity = atlas.get(state.target);
+      if (!entity) error(at, `target ${state.target} is not an atlas location`);
+      else if (!String(entity.memory_density_as_of || '').includes(eras.breach)) {
+        error(at, `${state.target} has no sounding measured before the breach (${eras.breach}); only a pre-breach sounding reads unmeasured after it (R15)`);
+      }
+    } else if (state.kind === 'sleeves') {
+      const feature = features.find(entry => entry.key === state.target);
+      if (!feature || feature.kind !== 'sleeves') error(at, `target ${state.target} is not a sleeves feature`);
+      else {
+        for (const sleeve of feature.sleeves || []) {
+          if (sleeve.post_breach && sleeve.post_breach.sleeve === 'softening' && figuresIn(sleeve.post_breach.note || '').size) {
+            error(`features[${feature.key}]`, `Sleeve ${sleeve.number} softens after the breach but its note states a figure (R9)`);
+          }
+        }
+      }
+    } else if (state.kind === 'isopleth-values') {
+      if (!shapes.has(state.within)) error(at, `within names ${state.within}, which is not a placed region or band`);
+    }
+    if (state.kind === 'legend-note' && figuresIn(state.after).size) error(at, 'the legend note states a figure; era notes state none (R15)');
+  }
+  if (eras) {
+    for (const entity of atlas.values()) {
+      if (!String(entity.memory_density_as_of || '').includes(eras.breach) || soundingTargets.has(entity.id)) continue;
+      if (cartography.sites.some(site => site.id === entity.id) || cartography.regions.some(region => region.id === entity.id)) {
+        error('eras', `${entity.id} (${entity.name}) was measured before the breach but has no sounding state reading unmeasured after it (R6, R15)`);
+      }
+    }
+  }
+
+  // Routes (R16).
+  for (const route of routes) {
+    const at = `routes[${route.key}]`;
+    if (route.pulls && !pullCounts(route.sources).has(route.pulls)) error(at, `its pull count is ${route.pulls}, but no "${route.pulls} pulls" phrase is in its cited lines`);
+    if (route.duration) checkFigures(at, 'its duration', route.duration, route.sources);
+    if (route.note) checkFigures(at, 'its note', route.note, route.sources);
+    for (const id of route.events || []) if (!timeline.has(id)) error(at, `events names ${id}, which is not in data/timeline/events.yaml`);
+    if (!breachSource) continue;
+    const fromBreachStory = source => (parseSource(source) || {}).file === breachSource;
+    if (route.era === 'after' && !(route.sources || []).some(fromBreachStory)) error(at, 'shows after the breach only but cites nothing from the breach story');
+    if (route.pulls && route.era !== 'after') {
+      const giving = (route.sources || []).filter(source => pullCounts([source]).has(route.pulls));
+      if (giving.length && giving.every(fromBreachStory)) error(at, `its ${route.pulls}-pull count comes only from the breach story, so it shows after the breach only (R16)`);
+    }
+  }
+
+  // Insets (R12-R14).
+  const sleeveFeature = features.find(feature => feature.kind === 'sleeves');
+  const expanded = new Map();
+  const insetKeys = new Set();
+  for (const inset of insets) {
+    const at = `insets[${inset.key}]`;
+    if (insetKeys.has(inset.key)) error(at, 'is defined more than once');
+    insetKeys.add(inset.key);
+    if (!points.has(inset.site) || !cartography.sites.some(site => site.id === inset.site)) {
+      error(at, `site ${inset.site} is not a placed site`);
+      continue;
+    }
+    if (inset.eras.includes('both') && inset.eras.length > 1) error(at, 'eras lists "both" with another era');
+    if (inset.caption) checkFigures(at, 'its caption', inset.caption, inset.sources);
+    const frame = insetsLib.plateFrame(inset, points.get(inset.site).xy);
+    const { rect } = frame;
+    const siteEntity = atlas.get(inset.site);
+    const canonSite = Boolean(siteEntity) && layout.CANON_TIERS.has(siteEntity.tier);
+    // The Voids are unions of discs: a plate reaches into one when the
+    // disc's center lies within its radius of the plate's rectangle.
+    const discReaches = ({ center: [cx, cy], radius }) => {
+      const dx = Math.max(rect.left - cx, 0, cx - rect.right);
+      const dy = Math.max(rect.bottom - cy, 0, cy - rect.top);
+      return Math.hypot(dx, dy) < radius;
+    };
+    // Discs are tested exactly; any other Void shape on a fine grid.
+    const sampleReaches = shape => {
+      for (let i = 0; i <= 40; i++) {
+        for (let j = 0; j <= 40; j++) {
+          if (shape.depth(rect.left + (rect.width * i) / 40, rect.bottom + (rect.height * j) / 40) > 0) return true;
+        }
+      }
+      return false;
+    };
+    const reaches = voidShapes.some(shape => (shape.items ? shape.items.some(discReaches) : shape.type === 'disc' ? discReaches(shape) : sampleReaches(shape)));
+    if (reaches) error(at, 'its plate reaches into a Void Region; nothing is charted inside (R12)');
+    const [uw, uh] = inset.plate.units;
+    const keys = new Set();
+    for (const element of inset.elements) {
+      const where = `${at}.elements[${element.key}]`;
+      if (keys.has(element.key)) error(where, 'repeats a key in this inset');
+      keys.add(element.key);
+      if (element.era && element.era !== 'both' && !inset.eras.includes(element.era)) error(where, `era ${element.era} is not one of this inset's eras`);
+      // Nothing below canon on a plate at a canon site: its raster cannot be
+      // filtered by lens, and the public build would carry it (Q36).
+      if (canonSite) {
+        if (element.tier === 'draft') error(where, 'is a draft element on a plate at a canon site; the plate shows under every lens and in the public build');
+        for (const source of element.sources || []) {
+          const resolved = resolveSource(root, source, sourceCache);
+          if (resolved.tier && !layout.CANON_TIERS.has(resolved.tier) && resolved.tier !== 'reference') {
+            error(where, `cites ${source}, which is ${resolved.tier}; a plate at a canon site cites canon only (Q36)`);
+          }
+        }
+      }
+      // Every element lies on its plate, arcs and housings by their extent.
+      const arc = (c, r, from, to) => Array.from({ length: 25 }, (_, k) => {
+        const angle = ((from + ((to - from) * k) / 24) * Math.PI) / 180;
+        return [c[0] + r * Math.cos(angle), c[1] + r * Math.sin(angle)];
+      });
+      const spots = [
+        ...(element.x !== undefined ? [[element.x, element.y], [element.x + (element.w || 0), element.y + (element.h || 0)]] : []),
+        ...['at', 'a', 'b', 'label_at', 'anchor'].filter(name => element[name]).map(name => element[name]),
+        ...(element.points || []),
+        ...(element.c && element.kind === 'hull' ? arc(element.c, element.r, 0, 360) : []),
+        ...(element.c && ['arc-wall', 'shelving', 'area'].includes(element.kind)
+          ? [element.r, element.r0, element.r1].filter(r => r !== undefined).flatMap(r => arc(element.c, r, element.from, element.to)) : []),
+        ...(element.kind === 'housings' ? insetsLib.housingLayout(element).flatMap(({ at }) => arc(at, element.size * 1.9, 0, 360)) : [])
+      ];
+      if (spots.some(([u, v]) => u < 0 || v < 0 || u > uw || v > uh)) error(where, 'lies off its plate');
+      for (const [name, text] of [['its label', element.label], ['its text', element.text]]) if (text) checkFigures(where, name, text, element.sources);
+      if (element.kind === 'booths') {
+        if (element.count !== 2 * element.per_row) error(where, `count ${element.count} does not equal two rows of ${element.per_row}`);
+        checkQuote(where, 'its booth count', element.count, (element.quotes || {}).count, element.sources);
+        if (element.lost_after) {
+          for (const number of element.lost_after) if (number > element.count) error(where, `lost booth ${number} is beyond the count of ${element.count}`);
+          checkQuote(where, 'its lost booths', element.lost_after, (element.quotes || {}).lost_after, element.sources);
+        }
+      }
+      if (element.kind === 'housings') {
+        checkQuote(where, 'its housing count', element.count, (element.quotes || {}).count, element.sources);
+        for (const number of Object.keys(element.after_states || {}).map(Number)) {
+          if (number > element.count) error(where, `after_states names housing ${number}, beyond the count of ${element.count}`);
+        }
+        // Each housing's state after the breach agrees with its sleeve's silo;
+        // a held silo whose note says it is bound is drawn bound.
+        for (let n = 1; n <= element.count; n++) {
+          const sleeve = sleeveFeature && (sleeveFeature.sleeves || []).find(entry => entry.number === n);
+          const silo = sleeve && sleeve.post_breach ? sleeve.post_breach.silo : null;
+          const bound = silo === 'held' && /\bbound\b/i.test(sleeve.post_breach.note || '');
+          const state = insetsLib.housingState(element, 'after', n);
+          const allowed = !silo ? ['holds'] : silo === 'lost' ? ['lost'] : silo === 'reduced-pitch' ? ['reduced'] : bound ? ['bound'] : ['holds'];
+          if (!allowed.includes(state)) error(where, `housing ${n} is drawn "${state}" after the breach, but Sleeve ${n}'s silo is ${bound ? 'held and bound' : silo || 'not listed as changed'}`);
+        }
+      }
+      if (element.kind === 'lintel' && element.forgotten_after && !element.text.split(' ').includes(element.forgotten_after)) {
+        error(where, `forgotten_after "${element.forgotten_after}" is not a word of the lintel text`);
+      }
+    }
+    const eraList = inset.eras.includes('both') ? ['both'] : inset.eras;
+    const byEra = new Map();
+    for (const era of eraList) {
+      let result;
+      try {
+        result = expandInset(inset, { era: era === 'both' ? 'after' : era });
+      } catch (err) {
+        error(at, err.message);
+        continue;
+      }
+      byEra.set(era, result);
+      // Nothing is placed inside a lost place (R13).
+      for (const [key, anchor] of Object.entries(result.anchors)) {
+        if (insideLost(result.lost, anchor)) error(`${at}.elements[${key}]`, `its anchor lies inside a lost booth in the ${era} era; nothing is placed where the booths were (R13)`);
+      }
+      for (const label of result.labels) {
+        if (label.style !== 'lost' && insideLost(result.lost, label.at)) error(`${at}.elements[${label.key}]`, `a label lies inside a lost booth in the ${era} era (R13)`);
+      }
+    }
+    expanded.set(inset.key, { inset, frame, byEra });
+  }
+
+  // Event pins (R17).
+  const seenPins = new Set();
+  for (const pin of pins) {
+    const at = `event_pins[${pin.event}]`;
+    if (seenPins.has(pin.event)) error(at, 'is pinned more than once');
+    seenPins.add(pin.event);
+    const event = timeline.get(pin.event);
+    if (!event) {
+      error(at, `${pin.event} is not in data/timeline/events.yaml`);
+      continue;
+    }
+    if (!layout.CANON_TIERS.has(event.canon_tier) && pin.tier !== 'draft') {
+      error(at, `${pin.event} is ${event.canon_tier || 'of no tier'}; mark the pin tier: draft so it stays out of the public build (Q36)`);
+    }
+    const era = eraOf(event);
+    if (pin.route) {
+      const route = routes.find(entry => entry.key === pin.route);
+      if (!route) {
+        error(at, `route ${pin.route} is not a route`);
+        continue;
+      }
+      if (route.era === 'after' && era !== 'after') error(at, `the event shows in both eras but its route ${pin.route} shows after the breach only`);
+      const ends = route.path ? route.path.map(p => toXY(p.r, p.theta)) : [route.from, route.to].map(end => points.has(end) ? points.get(end).xy : null);
+      if (ends.some(end => !end)) continue;
+      const [x, y] = [ends[0][0] + (ends[ends.length - 1][0] - ends[0][0]) * pin.along, ends[0][1] + (ends[ends.length - 1][1] - ends[0][1]) * pin.along];
+      if (inVoid(x, y)) error(at, 'lies inside a Void Region; nothing is charted inside');
+    } else {
+      const entry = expanded.get(pin.inset);
+      if (!entry) {
+        error(at, `inset ${pin.inset} is not an inset`);
+        continue;
+      }
+      const showsIn = entry.inset.eras.includes('both') ? ['both'] : era === 'after' ? ['after'] : entry.inset.eras;
+      for (const inEra of showsIn) {
+        const result = entry.byEra.get(inEra);
+        if (!result) {
+          error(at, `the event shows after the breach, but inset ${pin.inset} has no ${inEra} era`);
+        } else if (!result.anchors[pin.anchor]) {
+          error(at, `anchor ${pin.anchor} is not an anchor of inset ${pin.inset} in the ${inEra} era`);
+        }
+      }
+    }
+  }
+
+  // The Z0 scaffold (R8, R18).
+  const universe = cartography.universe;
+  if (universe) {
+    const perimeter = shapes.get(cartography.field.radial.perimeter);
+    const edge = !perimeter ? 0 : perimeter.type === 'annulus' ? perimeter.outer : Math.max(...perimeter.boundary(360).map(([x, y]) => Math.hypot(x, y)));
+    if (!(universe.hole >= edge - 1e-9)) error('universe', `hole ${universe.hole} would cover the chart inside r ${edge}`);
+    if (!(universe.extent > universe.hole)) error('universe', `extent ${universe.extent} must exceed hole ${universe.hole}`);
+    if (figuresIn(universe.label).size) error('universe', 'its label states a figure; Z0 carries only the chart title (R18)');
+  }
 }
 
 function main() {

@@ -168,6 +168,26 @@ these:
 - A `canon` feature or route without a canon source. Docs, design, and
   tooling files never count as canon sources.
 - A relation from the brief that no longer holds.
+- For Phase 4 (rules R12–R18 of the brief):
+  - an era state, inset element, event pin, or the Z0 scaffold with no
+    basis, or a drawing-approved inset element that cites no claim the brief
+    marks drawing approved;
+  - a figure in a note, label, or route note that its cited source lines
+    do not give;
+  - a booth count, lost-booth list, or housing count that does not equal the
+    figures of the phrase it quotes, or whose quote is not in its cited lines;
+  - a route pull count with no "N pulls" phrase of that figure in its cited
+    lines, or one shown in an era canon does not give it for;
+  - an atlas sounding measured before the Tessarine Breach with no era state
+    reading "unmeasured" after it, or an era state on any other sounding;
+  - a figure on a softening sleeve or an era note;
+  - a housing state after the breach that disagrees with its sleeve's silo
+    (a held silo whose note says it is bound is drawn bound);
+  - on a plate at a canon site, a draft element or a source below canon;
+  - an anchor or label inside a lost booth, a plate reaching into a Void, or
+    an element off its plate;
+  - an event pin for a missing event, route, or anchor, a pin placed twice,
+    or a pin for an event below canon that is not marked `tier: draft`.
 
 `map:data` refuses to build while the lint reports errors. The public build
 leaves speculative entities and draft material out of the file itself.
@@ -180,9 +200,13 @@ npm run map:data                          # data for the viewer
 npm run map:tiles                         # 16k chart, about 2.5 minutes on 4 cores
 npm run map:tiles -- --size 65536         # 65k release chart, about 36 minutes on 4 cores
 npm run map:tiles -- --build public       # public tiles, from canon densities only
+npm run map:insets                        # Z3 inset plates and the Z0 scaffold, about a minute on 4 cores
+npm run map:insets -- --build public      # the public build's plates
 npm run map                               # http://127.0.0.1:8081/map/ (author build)
 npm run map -- --build public             # serve the public build instead
 npm run map:frame -- --center 0.6,0.5 --span 0.3 --width 1600   # one crop to out/map/frames/frame.png
+npm run map:frame -- --inset tessarine-vault --era before --width 1000   # one inset plate
+npm run map:frame -- --universe --width 900                       # the Z0 scaffold (RGBA)
 npm run test:map-browser                  # headless browser tests; screenshots in out/map/screenshots/
 ```
 
@@ -198,7 +222,15 @@ which is gitignored.
 `map:frame` paints one window of the chart to a PNG with the same painter as
 the tiles: a style frame to review, or a print raster. `--center` and
 `--span` are in chart units (the whole chart is `--center 0,0 --span 2.8`),
-and `--out` sets the file.
+and `--out` sets the file. With `--inset <key>` and `--era before|after|both`
+it paints an inset plate instead, whole by default; with `--universe`, the
+Z0 scaffold. Plate rasters carry no text: the viewer sets every label live.
+
+`map:insets` renders each inset plate as its own deep-zoom pyramid per era
+(`--plate`, default 4096 pixels wide) and the Z0 scaffold as one image
+(`--universe`, default 4096), to `out/map/insets/` (or `insets-public/`). It
+takes `--build`, `--tile`, `--workers`, and `--quality` like `map:tiles`.
+Without it the viewer stops zooming at the chart and has no Z0 layer.
 Without tiles the viewer still draws its overlays on a plain background. See
 [map/README.md](../map/README.md) for the controls and the data contract.
 
