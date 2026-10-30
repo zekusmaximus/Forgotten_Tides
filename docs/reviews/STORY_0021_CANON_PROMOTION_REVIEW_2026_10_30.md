@@ -690,8 +690,10 @@ unchanged profile baselines, and the preserved scope.
 
 npm run lint and npm run check pass; continuity and timeline contain zero
 hard failures and zero soft warnings. npm run test:validate-work passes.
-The remaining test suites are exercised by final npm run validate:ci,
-which follows the promotion commit.
+Final npm run validate:ci passes after the promotion commit, exercising
+all included test suites and the map data/viewer/render/chart tests.
+Existing nonblocking advisories remain 21 schema warnings, 976 glossary
+candidates, and the two draft red-line warnings for stories 0005 and 0007.
 
 The local browser attempt using Debian Chromium 154 reported one resource
 404 in the first atlas test; the remaining browser assertions passed.
@@ -699,4 +701,5 @@ Playwright's pinned Chromium 153 is not installed, and its CDN download
 is blocked by this environment's network policy (HTTP 403, Domain
 forbidden). No test or map code is changed to accommodate that fallback.
 The required GitHub browser jobs use the pinned browser and must pass
-before merging. Final local CI parity and remote results are pending.
+before merging. Local CI parity passes; remote results and the final merge
+record are available on the promotion PR.
