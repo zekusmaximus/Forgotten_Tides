@@ -794,8 +794,9 @@ contradictions that the continuity checks and the map would otherwise flag.
 - **Done when** a full 65k render completes on the author's Windows machine,
   the lint passes against the rendered field, and Void interiors contain no
   labels or contours.
-- **Status (2026-10-30):** Built in style direction A, an Admiralty chart on
-  dark paper (the D9 follow-up in the brief).
+- **Status (2026-10-31):** Done. Merged in PR #54 and built in style
+  direction A, an Admiralty chart on dark paper (the D9 follow-up in the
+  brief).
   - `scripts/map/painter.js` draws stepped tints, isopleths, paper grain, all
     six treatments of §2.2, stars, and the frame. `scripts/map/lanes.js`
     computes the lanes and eddies (rule R10). The field gained spiral arms
@@ -814,12 +815,12 @@ contradictions that the continuity checks and the map would otherwise flag.
   - `npm run map:tiles -- --size 65536` completed on the final code in a
     4-core Linux container: 87,389 tiles in 17 levels, 36.4 minutes, 347 MB.
     A 16k render takes about 2.5 minutes there.
-  - Done 2026-10-30: the 65k render completed on the author's Windows
-    machine: 87,389 tiles in 17 levels in 20.3 minutes
+  - The 65k render completed on the author's Windows machine on
+    2026-10-30: 87,389 tiles in 17 levels in 20.3 minutes
     (`out/map/tiles/galaxy.json`). The renderer runs the cartography lint
     first and stops on any error, so the lint passed against the field it
-    rendered. Void interiors are checked by the painter test above; the
-    Windows tiles were not checked separately.
+    rendered. The author checked the Void interiors in the viewer on
+    2026-10-31 and found them clean.
 
 ### Phase 4 — Depth and time (two sessions)
 
@@ -827,8 +828,9 @@ contradictions that the continuity checks and the map would otherwise flag.
   routes, event pins, the era control, and the Z0 scaffold.
 - **Done when** zooming from Z1 into the Vault's silo bank is continuous,
   and the post-breach view shows no invented figure.
-- **Status (2026-10-30):** Built after the author accepted decisions
-  Q22–Q36 (the brief's third pass; the options weighed are in
+- **Status (2026-10-31):** Done. Merged in PR #58 on 2026-10-30, after the
+  author accepted decisions Q22–Q36 (the brief's third pass; the options
+  weighed are in
   [`ATLAS_MAP_PHASE4_QUESTIONS_2026_10_30.md`](ATLAS_MAP_PHASE4_QUESTIONS_2026_10_30.md)).
   - Corrections to §5.3:
     - Halix and Skather-Ait are primary canon since PR #45.
