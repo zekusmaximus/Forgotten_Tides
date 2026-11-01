@@ -1,10 +1,11 @@
 # Story-0007 linked-profile claim review
 
-**Decision checkpoint: November 1, 2026. The author approved all three defined
-recommendations; implementation remains a separate, pending decision.**
-Section 9 records the approval. No profile, status, manuscript, governing
-source, lexicon, event, placement or generated artifact changes are applied
-by this report.
+**Decision checkpoint: November 1, 2026. All three defined recommendations
+are approved and implemented following separate author authorization.**
+Section 9 preserves editorial approval; §10 records implementation and
+verification. Sections 1–8 preserve the original review checkpoint and exact
+proposals. No manuscript, governing source, lexicon, event or placement
+changes accompany this profile implementation.
 
 ## 1. Scope, baseline and authority
 
@@ -449,3 +450,75 @@ this approval record and the current revision plan. Documentation links,
 whitespace and preservation of all other tracked files passed verification
 before commit and push. The full CI-parity results in §8 belong to the original
 report checkpoint and are not presented as new runs for this decision note.
+
+## 10. Author-authorized implementation — November 1, 2026
+
+### Authorization and baseline
+
+After the separate editorial approval in §9 and an in-chat explanation of
+each scope's pros, cons and recommendation, the author instructed:
+**“implement A, B and C together in one PR”**. This supplies the separate
+implementation authorization; no additional claim scope is inferred.
+
+Current main was fetched again at `548ceaa2bf7c8d056ea6ae862a6330aa419fb009`.
+Branch `canon/profiles/story-0007-approved-claims` preserves the pushed
+review and approval commits `a4fe45a` and `0429875`. No unrelated working
+changes were present. `npm ci` with the writable temporary cache and full
+baseline `npm run validate:ci` passed before profile edits.
+
+### Implemented scopes
+
+| Scope | Applied implementation |
+| --- | --- |
+| A — Lira | §2's exact short summary and complete continuity block; existing long summary retained verbatim. §5's A reference cleanup removes copied sibling-profile dependencies while preserving every appearance list. |
+| B — Maren | §3's exact long summary and continuity block; existing short summary retained verbatim. §5's B cleanup preserves the primary story as direct episode evidence and retains all appearances. |
+| C — Solace | §4's exact summaries and complete body, with witnessed facilities, local practice, labeled working topology and provisional boundaries. §5's C links add the Gap and Void Regions and remove copied character dependencies. Station type, tags, region and map geometry are retained. |
+
+All three entries now have `metadata.status: canonical`; the existing policy
+resolves them to `primary_canon` / `authoritative`. No unsupported root tier
+or retrieval-role field is added. Modification timestamps are refreshed;
+IDs, names, schema versions, types, tags, creation dates and all other
+unselected fields are preserved.
+
+The provisional-profile register now records the completed separate approvals,
+and the current revision plan records implementation. Original review evidence,
+exact proposals and prior approval history remain available above.
+
+### Preservation and verification
+
+Exact comparisons against §§2–5 verify all approved summaries, continuity,
+reference changes and the Solace body. Character bodies remain empty and
+unchanged. The profile schemas pass; summary lengths remain Lira **82/369**,
+Maren **79/653**, and Solace **82/467**.
+
+All three graph artifacts are regenerated. The graph has **175 entities,
+818 relationships, zero orphaned targets**. The two added relationships
+link Solace to the Gap and Void Regions. Removed causal memberships retain
+their appearance edges, rather than deleting the people/place context.
+
+Both author and public map-data builds pass. Solace is newly included in
+the public build at its existing placement; the number of public sites
+increases by one. Every existing site's position and every region's geometry
+match the baseline. No placement file, region field or memory density changes,
+and no site deployment or tile publication is performed.
+
+Every manuscript, local event, shared timeline, lexicon, faction, governing
+source and map placement matches fetched main. Story-0007's approved body
+SHA-256 remains
+`fef003d4db1220f03d6e318b6267fdbf97e00ba51dd159cd5b2eb4fed8038455`.
+Its six events remain primary and local; the 0004/0015/0017/0021 events are
+also unchanged. Nim and draft 0018 remain speculative/draft; no later
+experience, witness device, Hael transfer, completed cure, flight clearance,
+missing-pod fate or inquiry outcome is added.
+
+Implementation `npm run validate:ci` passes, including lint, continuity,
+timeline, policy, tooling and the full map suites. Continuity/timeline have
+zero hard failures and zero soft warnings; cartography lint has zero errors
+and zero warnings. Existing advisories remain 21 schema warnings, 976
+glossary candidates and one draft red-line citation warning (0005). Report
+links, approved-scope comparisons and whitespace checks pass.
+
+The committed implementation head must also pass final-head local CI parity
+and every hosted check before merge under the author's standing authorization.
+Those final-head results and the PR disposition are recorded on the
+implementation PR. This batch selects no further story or profile scope.

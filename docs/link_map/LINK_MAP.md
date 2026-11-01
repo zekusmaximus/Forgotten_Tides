@@ -1,6 +1,6 @@
 # Link Map - Entity Relationships
 
-Generated: 2026-11-01T14:07:20.186Z
+Generated: 2026-11-01T19:23:42.428Z
 
 ## Entities (175)
 
@@ -11,8 +11,8 @@ Generated: 2026-11-01T14:07:20.186Z
 - `char-0005` (character, speculative, weight 60)
 - `char-0006` (character, speculative, weight 60)
 - `char-0007` (character, speculative, weight 60)
-- `char-0008` (character, speculative, weight 60)
-- `char-0009` (character, speculative, weight 60)
+- `char-0008` (character, primary_canon, weight 110)
+- `char-0009` (character, primary_canon, weight 110)
 - `char-0010` (character, primary_canon, weight 110)
 - `char-0011` (character, speculative, weight 60)
 - `char-0012` (character, speculative, weight 60)
@@ -77,7 +77,7 @@ Generated: 2026-11-01T14:07:20.186Z
 - `loc-0007` (location, primary_canon, weight 110)
 - `loc-0008` (location, primary_canon, weight 110)
 - `loc-0009` (location, speculative, weight 60)
-- `loc-0010` (location, speculative, weight 60)
+- `loc-0010` (location, primary_canon, weight 110)
 - `loc-0011` (location, primary_canon, weight 110)
 - `loc-0012` (location, speculative, weight 60)
 - `loc-0013` (location, primary_canon, weight 110)
@@ -180,7 +180,7 @@ Generated: 2026-11-01T14:07:20.186Z
 - `term-0033` (term, draft, weight 65)
 - `term-0034` (term, draft, weight 65)
 
-## Relationships (816)
+## Relationships (818)
 
 - `char-0001` → `char-0002` (characters; cross_refs, references)
 - `char-0001` → `char-0003` (characters; cross_refs, references)
@@ -212,16 +212,16 @@ Generated: 2026-11-01T14:07:20.186Z
 - `char-0006` → `story-0005` (stories; cross_refs, references)
 - `char-0007` → `loc-0009` (locations; cross_refs, references)
 - `char-0007` → `story-0006` (stories; cross_refs, references)
-- `char-0008` → `char-0009` (characters; cross_refs, references)
+- `char-0008` → `char-0009` (characters; cross_refs)
 - `char-0008` → `fact-0001` (factions; cross_refs, references)
 - `char-0008` → `fact-0006` (factions; cross_refs, references)
-- `char-0008` → `loc-0010` (locations; cross_refs, references)
+- `char-0008` → `loc-0010` (locations; cross_refs)
 - `char-0008` → `mech-0003` (mechanics; cross_refs, references)
 - `char-0008` → `story-0007` (stories; cross_refs, references)
-- `char-0009` → `char-0008` (characters; cross_refs, references)
+- `char-0009` → `char-0008` (characters; cross_refs)
 - `char-0009` → `fact-0001` (factions; cross_refs, references)
 - `char-0009` → `fact-0006` (factions; cross_refs, references)
-- `char-0009` → `loc-0010` (locations; cross_refs, references)
+- `char-0009` → `loc-0010` (locations; cross_refs)
 - `char-0009` → `mech-0002` (mechanics; cross_refs, references)
 - `char-0009` → `mech-0003` (mechanics; cross_refs, references)
 - `char-0009` → `story-0007` (stories; cross_refs, references)
@@ -647,10 +647,12 @@ Generated: 2026-11-01T14:07:20.186Z
 - `loc-0008` → `story-0022` (stories; cross_refs, references)
 - `loc-0009` → `char-0007` (characters; cross_refs, references)
 - `loc-0009` → `story-0006` (stories; cross_refs, references)
-- `loc-0010` → `char-0008` (characters; cross_refs, references)
-- `loc-0010` → `char-0009` (characters; cross_refs, references)
+- `loc-0010` → `char-0008` (characters; cross_refs)
+- `loc-0010` → `char-0009` (characters; cross_refs)
 - `loc-0010` → `fact-0001` (factions; cross_refs, references)
 - `loc-0010` → `fact-0006` (factions; cross_refs, references)
+- `loc-0010` → `loc-0003` (locations; cross_refs, references)
+- `loc-0010` → `loc-0006` (locations; cross_refs, references)
 - `loc-0010` → `mech-0003` (mechanics; cross_refs, references)
 - `loc-0010` → `story-0007` (stories; cross_refs, references)
 - `loc-0011` → `char-0010` (characters; cross_refs, references)
@@ -1006,9 +1008,9 @@ _none_
 ## Statistics
 
 - **Total Entities**: 175
-- **Total Relationships**: 816
+- **Total Relationships**: 818
 - **Orphaned Targets**: 0
 - **Entity Types**: character, event, faction, location, lore, mechanics, story, term
-- **Primary / Working Canon**: 107
+- **Primary / Working Canon**: 110
 - **Draft Entities**: 41
 - **Test / Sandbox / Deprecated Entities**: 7

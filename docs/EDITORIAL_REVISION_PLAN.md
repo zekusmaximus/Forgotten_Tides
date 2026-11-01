@@ -3,8 +3,8 @@
 Updated November 1, 2026. Repository: `zekusmaximus/Forgotten_Tides`.
 Editorial checkpoint: **d9ec94dd67997800065e9a11cf0970312d2fe2e6** (PR #62).
 Fetch current main before continuing; preserve this work and any later changes.
-The [continuation prompt](handoffs/EDITORIAL_CONTINUATION_PROMPT.md) starts the
-recommended next review when the author uses it in a new chat.
+The [continuation prompt](handoffs/EDITORIAL_CONTINUATION_PROMPT.md) preserves
+the original review request; the current checkpoint below records its outcome.
 
 This is the current planning document. It supersedes the October 30 audit's
 task ordering, while preserving that
@@ -36,9 +36,10 @@ zero orphaned targets**; continuity/timeline had zero hard failures or soft
 warnings. Existing advisories: 21 schema warnings, 976 glossary candidates,
 one draft red-line warning (0005). Rerun current gates in the next chat.
 
-## Profile claims approved; implementation pending
+## Profile claims approved and implemented
 
-The source story is approved. **All three entries remain speculative**:
+The source story and all three defined profile scopes are approved.
+**All three entries now have canonical status**:
 
 | Entry | File | Review scope |
 | --- | --- | --- |
@@ -57,14 +58,16 @@ the report's §9. C includes the stated public-map eligibility consequence
 when its approved status change is implemented. Approval does not expand
 any scope beyond the report's exact proposals.
 
-**Implementation remains a separate, pending decision**, as the author
-specified for this batch. All three files still have speculative status;
-their text, map placement and generated artifacts are unchanged. No manuscript
-revision, new term, geography change or next story is selected. The existing
-continuation prompt preserves the original review request; this checkpoint
-and the report's §9 now record its completed review and editorial approval.
+The author separately instructed **“implement A, B and C together in one PR”**.
+The exact approved wording, continuity limits, reference cleanup and canonical
+statuses are implemented, with the report's §10 recording verification and
+preservation. The provisional-profile register is updated and all three graph
+artifacts are regenerated. Solace's existing placement is now eligible for the
+public map build; its region, station classification and map geometry remain
+unchanged. Hosted checks and merge status belong to the implementation PR.
+No manuscript revision, new term, geography change or next story is selected.
 
-## Boundaries for the next review
+## Preserved editorial boundaries
 
 - Story-0007's signed consent assessment is Lira's local, disputed judgment.
   Written fragments survive without restoring Maren's lived route anchor.
@@ -76,10 +79,10 @@ and the report's §9 now record its completed review and editorial approval.
   profile claim. Hael's transfer to Solace has not happened on-page. Draft
   0018, Nim, the Void crossing and later witness-device behavior remain
   provisional; 0018 depends on now-primary 0007 and is not selected here.
-- Solace's speculative placement follows the approved cartographic brief
-  T18/Q16. Its region, classification and any spatial claims need evidence
-  in a claim proposal; map geometry remains interpretation. No automatic
-  location promotion or placement rewrite.
+- Solace's separately approved profile preserves the cartographic brief's
+  T18/Q16 placement as labeled working topology. Its witnessed station
+  classification is primary evidence; map geometry remains interpretation.
+  No placement rewrite, density or later-draft facility is introduced.
 - The ten 0004, five 0015, five 0017, four 0021 and six 0007 events remain
   local. Add a shared event only when an approved story actually requires it.
 
