@@ -1,6 +1,6 @@
 # Canonical Index
 
-This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-11-01T14:07:20.186Z
+This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-11-01T19:23:42.428Z
 
 ## Character
 - `char-0001` — Rell (`characters/Rell.md`)
@@ -200,6 +200,8 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `char-0002` - Sutira (character, primary_canon, weight 110, `characters/Sutira.md`)
 - `char-0003` - Estavan (character, primary_canon, weight 110, `characters/Estavan.md`)
 - `char-0004` - Tari (character, primary_canon, weight 110, `characters/Tari.md`)
+- `char-0008` - Lira Voss (character, primary_canon, weight 110, `characters/Lira_Voss.md`)
+- `char-0009` - Maren Holt (character, primary_canon, weight 110, `characters/Maren_Holt.md`)
 - `char-0010` - Inya Solven (character, primary_canon, weight 110, `characters/Inya_Solven.md`)
 - `char-0016` - Nara Oss (character, primary_canon, weight 110, `characters/Nara_Oss.md`)
 - `char-0017` - Elior Ren (character, primary_canon, weight 110, `characters/Elior_Ren.md`)
@@ -252,6 +254,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `loc-0006` - Void Regions (location, primary_canon, weight 110, `atlas/Void_Regions.md`)
 - `loc-0007` - Black Horizon (location, primary_canon, weight 110, `atlas/Black_Horizon.md`)
 - `loc-0008` - Helios Drift (location, primary_canon, weight 110, `atlas/Helios_Drift.md`)
+- `loc-0010` - Solace Hospice (location, primary_canon, weight 110, `atlas/Solace_Hospice.md`)
 - `loc-0011` - Tessarine Vault (location, primary_canon, weight 110, `atlas/Tessarine_Vault.md`)
 - `loc-0013` - Halix Exchange (location, primary_canon, weight 110, `atlas/Halix_Exchange.md`)
 - `loc-0015` - Skather-Ait pod (location, primary_canon, weight 110, `atlas/Skather-Ait_Pod.md`)
@@ -351,8 +354,6 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `char-0005` - Kaelen (character, speculative, weight 60, `characters/Kaelen.md`)
 - `char-0006` - Vane (character, speculative, weight 60, `characters/Vane.md`)
 - `char-0007` - Kael Voss (character, speculative, weight 60, `characters/Kael_Voss.md`)
-- `char-0008` - Lira Voss (character, speculative, weight 60, `characters/Lira_Voss.md`)
-- `char-0009` - Maren Holt (character, speculative, weight 60, `characters/Maren_Holt.md`)
 - `char-0011` - Sael Orro (character, speculative, weight 60, `characters/Sael_Orro.md`)
 - `char-0012` - Ives Mar (character, speculative, weight 60, `characters/Ives_Mar.md`)
 - `char-0013` - Veyr Anik (character, speculative, weight 60, `characters/Veyr_Anik.md`)
@@ -365,7 +366,6 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `char-0025` - Toma Vey (character, speculative, weight 60, `characters/Toma_Vey.md`)
 - `loc-0002` - Ostra-Vael (location, speculative, weight 60, `atlas/Ostra-Vael.md`)
 - `loc-0009` - Ebbhaven (location, speculative, weight 60, `atlas/Ebbhaven.md`)
-- `loc-0010` - Solace Hospice (location, speculative, weight 60, `atlas/Solace_Hospice.md`)
 - `loc-0012` - Narthex of Low Mercy (location, speculative, weight 60, `atlas/Narthex_of_Low_Mercy.md`)
 - `loc-0014` - Heavonly (location, speculative, weight 60, `atlas/Heavonly.md`)
 
