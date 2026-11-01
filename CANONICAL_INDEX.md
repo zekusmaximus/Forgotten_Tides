@@ -1,6 +1,6 @@
 # Canonical Index
 
-This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-10-30T07:46:00.134Z
+This index lists canonical entities, their IDs, source paths, and retrieval roles. Generated: 2026-11-01T14:07:20.186Z
 
 ## Character
 - `char-0001` — Rell (`characters/Rell.md`)
@@ -265,6 +265,7 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `mech-0003` - ANCHOR THEORY (mechanics, primary_canon, weight 110, `mechanics/ANCHOR_THEORY.md`)
 - `story-0001` - The Archivist's Wake (story, primary_canon, weight 110, `stories/short_story/the_archivists_wake/manuscript.md`)
 - `story-0004` - The Light Inheritance (story, primary_canon, weight 110, `stories/short_story/the_light_inheritance/manuscript.md`)
+- `story-0007` - The Hospice Knot (story, primary_canon, weight 110, `stories/short_story/the_hospice_knot/manuscript.md`)
 - `story-0008` - The Reliquarist's Doubt (story, primary_canon, weight 110, `stories/short_story/the_reliquarists_doubt/manuscript.md`)
 - `story-0012` - The Mercy Doctrine (story, primary_canon, weight 110, `stories/short_story/the_mercy_doctrine/manuscript.md`)
 - `story-0013` - The Smallest Burn (story, primary_canon, weight 110, `stories/short_story/the_smallest_burn/manuscript.md`)
@@ -333,7 +334,6 @@ This index lists canonical entities, their IDs, source paths, and retrieval role
 - `story-0004-outline` - The Light Inheritance - Outline (story, draft, weight 55, `stories/short_story/the_light_inheritance/outline.md`)
 - `story-0005` - The Liturgy of Rust (story, draft, weight 65, `stories/short_story/the_liturgy_of_rust/manuscript.md`)
 - `story-0006` - The Anchorless Tide (story, draft, weight 65, `stories/short_story/the_anchorless_tide/manuscript.md`)
-- `story-0007` - The Hospice Knot (story, draft, weight 65, `stories/short_story/the_hospice_knot/manuscript.md`)
 - `story-0009` - The Doctrine of Empty Stars (story, draft, weight 65, `stories/novella/NOVELLA_THE_DOCTRINE_OF_EMPTY_STARS/manuscript.md`)
 - `story-0010` - The Error That Remembered Itself (story, draft, weight 65, `stories/short_story/the_error_that_remembered_itself/manuscript.md`)
 - `story-0011` - The Quiet Census (story, draft, weight 65, `stories/short_story/the_quiet_census/manuscript.md`)

@@ -32,7 +32,7 @@ references:
 metadata:
   status: canonical
   created: '2026-05-27T00:00:00.000Z'
-  modified: '2026-10-30T20:43:39.732Z'
+  modified: '2026-11-01T14:08:20.726Z'
 ---
 
-The order's general hospice mandate, pilot counseling, mediation and transformation doctrine follow `lore/POLITIES_AND_FACTIONS.md` section 6. Story-0007 is draft provenance for Lira, Maren and the particular Solace Hospice episode; it does not independently approve the episode's consent procedure or the full profiles of those people and place.
+The order's general hospice mandate, pilot counseling, mediation and transformation doctrine follow `lore/POLITIES_AND_FACTIONS.md` section 6. Story-0007 is primary canon and establishes Lira and Maren's local, contested release episode at Solace Hospice. Approval of that story does not independently approve the full profiles of those people and place or turn the local consent assessment into a universal procedure.

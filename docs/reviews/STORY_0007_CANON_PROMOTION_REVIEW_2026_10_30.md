@@ -1,12 +1,13 @@
 # Canon Promotion Review: The Hospice Knot
 
-**Current checkpoint:** On October 30, 2026, the author approved the full
-F1–F7 draft-revision scope. It is implemented; section 10 records the fresh
-**62/70** readiness assessment and validation. Story-0007 remains draft and
-Lira, Maren and Solace remain speculative. No promotion or profile-status
-change is approved. Sections 1–9 preserve the original **38/70 Hold** review
-and its exact proposals; the former consent-detector finding is resolved by
-the approved revision, not an outstanding issue.
+**Current checkpoint:** On November 1, 2026, the author approved promotion
+of the **62/70** revision merged in PR #59. Story-0007 is now
+primary_canon / canonical / authoritative; its six local events are primary
+canon. Its approved manuscript body is byte-identical. Lira, Maren and Solace
+remain speculative pending separate full-profile claim approval. Section 11
+records the promotion. Sections 1–9 preserve the original **38/70 Hold**
+review and proposals; section 10 records the approved revision and readiness
+assessment. The former consent-detector finding remains resolved.
 
 ## 1. Scope and baseline
 
@@ -610,3 +611,114 @@ The final committed head must pass local CI parity and every hosted check,
 including both push/PR browser runs, before merge under the author's standing
 merge authorization. Hosted final-head results and the merge record are
 available on that PR. Those gates do not authorize story/profile promotion.
+
+## 11. Author-approved promotion — November 1, 2026
+
+### Authorization and current baseline
+
+The author instructed **“excellent, let's promote this story.”** This
+approves the revised story-0007 merged in PR #59 as
+`55c6194c8d0bc82039e05aee45b72850427a8dd9`, following its 62/70 readiness
+assessment. It does not approve the three full profiles or draft 0018.
+
+Fetched main is **4eececb2e4e3a7bff722709c6de5abe1bcc2c7d4**, including
+PRs #60/#61's atlas render records and completion documentation. Those later
+changes are preserved. Comparing the approved revision to this main finds no
+change to the manuscript, profiles, governing sources or relevant story-review
+instructions. Work began on a clean `canon/stories/promote-story-0007` branch.
+`npm ci` and the complete baseline `npm run validate:ci` pass on this head.
+
+### Applied promotion and body preservation
+
+Promotion-tool `--dry-run` passed link-map input preflight and found no
+unapproved story or shared-event prerequisite. `references.stories` remains
+empty and there is no event-level dependency or longer-draft outcome required.
+The applied tool sets:
+
+- `canon_tier: primary_canon`;
+- root and metadata `status: canonical`;
+- `retrieval_role: authoritative`;
+- `canon_tier: primary_canon` on all six existing local events;
+- the manuscript's modification timestamp.
+
+Original frontmatter formatting was restored after confirming its parsed data
+exactly matches the promotion tool's output. The body, including surrounding
+whitespace, remains byte-identical to the approved revision and fetched main.
+The count remains **2507 words**, summaries **121/349 characters**, and body
+SHA-256:
+
+~~~text
+fef003d4db1220f03d6e318b6267fdbf97e00ba51dd159cd5b2eb4fed8038455
+~~~
+
+All six event IDs, timestamps, summaries, source paths and involved-entity
+lists are unchanged. They stay **local**: no other work references an individual
+0007 event ID, and 0018 currently depends on the whole story. No entry is added
+to `data/timeline/events.yaml`. The previously approved 0004/0015/0017/0021
+local events also remain untouched.
+
+The approved outcome is Maren's permanent loss of one contested evacuation-route
+anchor, two other responsive anchors, retained partial testimony, present
+non-clearance for flight and Lira's named, disputed consent assessment. The
+missing pods' fate and later institutional judgment remain open. No device
+certifies consent, no record restores the lived anchor, and no universal
+clinical precision, Fleet immunity, permanent cure or complete route
+reconstruction is established.
+
+### Manual source-first checklist
+
+- **Lira, Maren and Solace:** all three files remain byte-identical to fetched
+  main with `metadata.status: speculative`. Their summaries, invariants,
+  watchlists, references, dates and coordinates are unchanged. Story approval
+  opens a separate full-profile claim review; it does not settle that review.
+- **Remembrancer source note:** identifies 0007 as primary canon and keeps
+  full-profile approval and universal procedure separate. Only that source
+  note and its modification timestamp change; status, summaries, baseline
+  doctrine and all structured links remain unchanged.
+- **Current orientation:** the story list now records primary/canonical.
+  The provisional-profile register records source approval while explicitly
+  retaining all three pending claim reviews, including Maren. The opportunities
+  introduction agrees with the ten current primary stories, correcting its
+  earlier 0017/0021 omissions alongside this promotion, and its Lira paragraph
+  distinguishes primary 0007 from draft 0018. Only the canon-status check date
+  is refreshed; the October 20 opportunity inventory and historical theme
+  counts remain as dated.
+- **Historical findings:** prior reports, the process review, working-lore
+  approval history and cartographic decision records retain their original
+  dated context. Their older 0007 draft/timing findings do not reopen the
+  completed PR #48 or #59 fixes. Current source state is recorded here and in
+  the index, not inferred from those historical snapshots.
+- **Lexicon:** manual first-appearance/source/related-term and prose searches
+  find no term introduced by 0007 requiring approval. The removed witness
+  stone does not become a lexicon term through promotion. Draft 0018/0020
+  witness devices remain unapproved review inputs.
+- **Map and later drafts:** no location tier or placement changes, and no
+  density or geography is invented. Solace remains speculative on the author
+  map. Draft 0018's text, tiers, local events and later consent/crossing claims
+  remain unchanged. No date is added relative to the Tessarine breach or
+  Elior's unfiled run.
+
+The impact report finds **four direct dependents** (the three speculative
+profiles and draft 0018), zero transitive dependents, and two faction
+appearance candidates. The faction causal-reference cleanup from #59 remains
+intact; no circular draft support is reintroduced.
+
+### Generated artifacts, validation and PR
+
+All three graph artifacts were regenerated. The graph remains **175 entities,
+816 relationships, zero orphaned targets**. Only 0007's retrieval authority
+changes to primary/authoritative at weight 110; no relationship is added.
+The three linked profiles retain speculative retrieval authority.
+
+`npm run lint` and `npm run check` pass after promotion. Continuity and
+timeline report zero hard failures and zero soft warnings. Existing advisories
+remain 21 schema warnings, 976 glossary candidates and the one draft red-line
+warning for 0005. Body/data comparisons, local-event checks, report links and
+whitespace checks pass. No other manuscript, profile, lexicon, shared timeline,
+governing source, atlas placement or tooling changes.
+
+The promotion commit must pass complete final-head `npm run validate:ci` and
+every hosted check, including both browser runs, before merge under the
+author's standing authorization. Final-head results and the merge record are
+recorded on the promotion PR. This source approval does not approve any
+additional profile claim.

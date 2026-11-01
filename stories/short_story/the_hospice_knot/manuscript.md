@@ -5,9 +5,9 @@ contract_version: v1.0.0
 type: story
 title: The Hospice Knot
 story_type: short-story
-status: draft
-canon_tier: draft
-retrieval_role: active_draft
+status: canonical
+canon_tier: primary_canon
+retrieval_role: authoritative
 summary_50: A Remembrancer must choose between a pilot's consent and the Canticle Fleet's demand to preserve his final useful anchor.
 summary_200: At the edge of the Lattice Gap, Remembrancer Lira Voss helps Canticle pilot Maren Holt release a contested route anchor. The anchor may be the last evidence of a failed evacuation, but preserving it would turn Maren into a living archive against his will. Lira must decide whether mercy can remain ethical when forgetting costs other people answers.
 cross_refs:
@@ -60,7 +60,7 @@ events:
   - id: event-story-0007-001
     timestamp: T0
     summary: "Maren's admission audit finds three weak responsive anchors while a Canticle preservation hold awaits outside."
-    canon_tier: draft
+    canon_tier: primary_canon
     source: stories/short_story/the_hospice_knot/manuscript.md
     involved_entities:
       - story-0007
@@ -72,7 +72,7 @@ events:
   - id: event-story-0007-002
     timestamp: T1
     summary: "Maren refuses further audit of the evacuation knot and requests permanent release despite the possible loss of missing-pod evidence."
-    canon_tier: draft
+    canon_tier: primary_canon
     source: stories/short_story/the_hospice_knot/manuscript.md
     involved_entities:
       - story-0007
@@ -84,7 +84,7 @@ events:
   - id: event-story-0007-003
     timestamp: T2
     summary: "Lira refuses to defer the rite for the Fleet panel and accepts a named objection for the dawn audit."
-    canon_tier: draft
+    canon_tier: primary_canon
     source: stories/short_story/the_hospice_knot/manuscript.md
     involved_entities:
       - story-0007
@@ -96,7 +96,7 @@ events:
   - id: event-story-0007-004
     timestamp: T3
     summary: "After warnings and repeated assent, Maren releases the evacuation-route anchor; two other anchors remain responsive."
-    canon_tier: draft
+    canon_tier: primary_canon
     source: stories/short_story/the_hospice_knot/manuscript.md
     involved_entities:
       - story-0007
@@ -108,7 +108,7 @@ events:
   - id: event-story-0007-005
     timestamp: T4
     summary: "At third watch, Lira supplies the assessor a copy of the written consent record and confirms Maren is not cleared for flight."
-    canon_tier: draft
+    canon_tier: primary_canon
     source: stories/short_story/the_hospice_knot/manuscript.md
     involved_entities:
       - story-0007
@@ -120,7 +120,7 @@ events:
   - id: event-story-0007-006
     timestamp: T5
     summary: "Lira writes her consent assessment, retained objection and Maren's two responsive anchors into the closing audit."
-    canon_tier: draft
+    canon_tier: primary_canon
     source: stories/short_story/the_hospice_knot/manuscript.md
     involved_entities:
       - story-0007
@@ -144,9 +144,10 @@ bible_refs:
   - bible/ARCHIVISTS_WAKE_STORY_BIBLE.md#71-anchor-rules
   - bible/ARCHIVISTS_WAKE_STORY_BIBLE.md#83-drift-logic-test
 metadata:
+  status: canonical
   word_count: 2507
   created: '2026-05-27T00:00:00.000Z'
-  modified: '2026-10-30T20:43:39.732Z'
+  modified: '2026-11-01T14:07:19.882Z'
 tags:
   - hospice
   - anchor-loss
