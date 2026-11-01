@@ -36,7 +36,7 @@ zero orphaned targets**; continuity/timeline had zero hard failures or soft
 warnings. Existing advisories: 21 schema warnings, 976 glossary candidates,
 one draft red-line warning (0005). Rerun current gates in the next chat.
 
-## Recommended next batch: three separate profile claim reviews
+## Profile claims approved; implementation pending
 
 The source story is approved. **All three entries remain speculative**:
 
@@ -46,18 +46,23 @@ The source story is approved. **All three entries remain speculative**:
 | Maren Holt, char-0009 | `characters/Maren_Holt.md` | Failed evacuation, three-to-two anchor accounting in the rite, permanent loss, surviving factual testimony, flight non-clearance and open inquiry. |
 | Solace Hospice, loc-0010 | `atlas/Solace_Hospice.md` | Local facilities/practice, station classification and approved speculative Gap–Void placement; distinguish witnessed details from institution-wide claims. |
 
-**Next action:** a read-only, primary-evidence-backed claim review. Read each
-complete profile and the complete approved source story; inspect declared
-dependents, non-indexed mentions and governing sources. Produce one tracked
-report under `docs/reviews/` with three independent choices, exact proposed
-wording/tier/reference changes, evidence, pros, cons and recommendation.
-Commit and push the report before requesting author decisions.
+The read-only [claim review](reviews/STORY_0007_PROFILE_CLAIM_REVIEW_2026_11_01.md)
+is complete and was committed and pushed as `a4fe45a`. It records exact
+wording, tier/status and reference proposals, primary and working evidence,
+dependency/mention checks, pros, cons and three independent recommendations.
 
-This review has not been performed. Story promotion and the earlier correction
-of speculative profiles do not approve their full claims. No implementation,
-status change, manuscript revision, new term or geography follows from this
-plan. No next story is selected. The new-chat prompt selects only the review
-when the author sends it.
+On November 1, 2026, the author instructed **“approve the recommendations”**,
+approving defined scopes A (Lira), B (Maren) and C (Solace), as recorded in
+the report's §9. C includes the stated public-map eligibility consequence
+when its approved status change is implemented. Approval does not expand
+any scope beyond the report's exact proposals.
+
+**Implementation remains a separate, pending decision**, as the author
+specified for this batch. All three files still have speculative status;
+their text, map placement and generated artifacts are unchanged. No manuscript
+revision, new term, geography change or next story is selected. The existing
+continuation prompt preserves the original review request; this checkpoint
+and the report's §9 now record its completed review and editorial approval.
 
 ## Boundaries for the next review
 

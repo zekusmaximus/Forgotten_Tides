@@ -1,9 +1,10 @@
 # Story-0007 linked-profile claim review
 
-**Decision checkpoint: November 1, 2026. Review only; awaiting three independent
-author decisions.** No profile, status, manuscript, governing source, lexicon,
-event, placement or generated artifact changes are applied by this report.
-Approval of this report as a record is not approval of its proposed profiles.
+**Decision checkpoint: November 1, 2026. The author approved all three defined
+recommendations; implementation remains a separate, pending decision.**
+Section 9 records the approval. No profile, status, manuscript, governing
+source, lexicon, event, placement or generated artifact changes are applied
+by this report.
 
 ## 1. Scope, baseline and authority
 
@@ -381,9 +382,10 @@ a completed Hael transfer or later D18 outcome.
 | B — Maren | §3's exact bounded case/anchor/record/non-clearance account and §5's B cleanup; then canonical status | Defer; keep speculative. No future flight or inquiry outcome is chosen. |
 | C — Solace | §4's exact local station profile/body, retained Q16/T18 topology and geometry, and §5's C links; then canonical status | Defer; keep speculative placement and current profile. Its map-build consequence is explicitly part of C, not A or B. |
 
-**All three decisions are pending.** The recommendation is A, B and C as
-defined, each separately approvable. Permission to implement and the
-editorial approval of each defined scope are separate from preparing this
+**At the original review checkpoint, all three decisions were pending.**
+The recommendation was A, B and C as defined, each separately approvable.
+The author's subsequent approval is recorded in §9. Permission to implement
+and the editorial approval of each defined scope are separate from preparing this
 review or the standing permission to merge approved work after gates pass.
 No implementation has occurred.
 
@@ -399,8 +401,9 @@ defined scopes returns to the author separately. No next story is selected.
 
 ## 8. Report verification and preservation
 
-The report is the only tracked change. All three original profiles retain
-speculative status. Every manuscript, source, placement, lexicon, shared
+At the original report checkpoint, the report was the only tracked change.
+All three original profiles retain speculative status. Every manuscript,
+source, placement, lexicon, shared
 timeline and generated graph artifact matches the reviewed main. Existing
 reports and archived placeholders are preserved. S's six events remain
 primary and local; its approved prose is unchanged.
@@ -419,3 +422,30 @@ warnings. Existing advisory counts are unchanged. Local full CI parity
 does not include hosted browser jobs; no hosted success or merge is claimed
 here. Commit and push results are recorded in the chat. No test result is
 editorial approval.
+
+## 9. Author approval — implementation pending
+
+On November 1, 2026, after the report was committed and pushed as
+`a4fe45a346f913d4092e2075612bcfb4fc4c0917`, the author instructed:
+**“approve the recommendations”**. This approves all three defined scopes:
+
+| Choice | Editorial decision | Defined scope |
+| --- | --- | --- |
+| A — Lira | Approved | §2's exact summaries and continuity, §5's A reference cleanup, and proposed canonical status. No broader specialty, general authority or later-draft biography. |
+| B — Maren | Approved | §3's exact case, anchor accounting, surviving record and present flight non-clearance, §5's B cleanup, and proposed canonical status. No later flight or inquiry outcome. |
+| C — Solace | Approved | §4's exact local station profile and body, retained Q16/T18 topology and geometry, §5's C links, and proposed canonical status, including the stated public-map eligibility consequence upon implementation. |
+
+The author separately specified that **“Implementation and profile approval
+remain separate decisions.”** This approval records the editorial choices;
+implementation remains pending. All three profile files still have
+`metadata.status: speculative`. No profile wording, status, map eligibility,
+placement, graph artifact, manuscript, lexicon or timeline change has been
+applied. The current revision plan records the same checkpoint. No new
+story is selected, and no PR or merge is performed by this decision record.
+
+Current main was fetched again and remains `548ceaa`; the existing review
+commit and clean working tree were preserved. This follow-up changes only
+this approval record and the current revision plan. Documentation links,
+whitespace and preservation of all other tracked files passed verification
+before commit and push. The full CI-parity results in §8 belong to the original
+report checkpoint and are not presented as new runs for this decision note.
