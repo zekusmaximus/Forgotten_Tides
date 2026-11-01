@@ -2,9 +2,9 @@
 
 A living document listing underexplored territory in *The Forgotten Tides* universe. Use this as a menu when deciding what to write next. Each entry describes a narrative gap, an open character arc, or thematic territory that is thin. Where a draft already touches an area, it is named so you can read it first and build on it rather than reinvent it.
 
-`story-0001`, `story-0004`, `story-0008`, `story-0012`, `story-0013`, `story-0015`, and `story-0022` are primary canon. Other stories cited below are drafts: prior claims to reconcile with, not locked canon. Check `CANONICAL_INDEX.md` before trusting any coverage statement here.
+`story-0001`, `story-0004`, `story-0007`, `story-0008`, `story-0012`, `story-0013`, `story-0015`, `story-0017`, `story-0021`, and `story-0022` are primary canon. Other stories cited below are drafts: prior claims to reconcile with, not locked canon. Check `CANONICAL_INDEX.md` before trusting any coverage statement here.
 
-Canon status checked: October 29, 2026. Opportunity inventory and theme counts last reviewed: October 20, 2026.
+Canon status checked: November 1, 2026. Opportunity inventory and theme counts last reviewed: October 20, 2026.
 
 ---
 
@@ -46,7 +46,7 @@ Canon status checked: October 29, 2026. Opportunity inventory and theme counts l
 ## Underexplored Factions
 
 ### The Remembrancers of Solace
-Lira Voss (char-0008) carries two drafts, *The Hospice Knot* (story-0007) and *The Navigator Who Forgot Enough* (story-0018), both at Solace Hospice. Still open:
+Lira Voss (char-0008) appears in primary *The Hospice Knot* (story-0007) and draft *The Navigator Who Forgot Enough* (story-0018), both at Solace Hospice. Her full profile remains speculative pending separate claim approval. Still open:
 - Hael (char-0029) after story-0022: a man with no knots whom rooms forget. Who consents for him, and what does Solace do with a patient it cannot hold in attention?
 - A Remembrancer called to mediate between the Archivist Orders and the Consortium
 - The order's own doctrine and training; story-0007 and story-0018 show one practitioner's ethics, never the institution's
